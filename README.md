@@ -13,3 +13,12 @@ usyd-03-2025-cs20-1-proj-assets
 
 ## Pipeline
 MP4 → JSON → Parser → Analysis
+
+## Environment
+Python 3.10+
+
+## Setup
+pip install -r requirements.txt
+
+## Usage
+Run notebooks or scripts in src/ for data processing and analysis.
