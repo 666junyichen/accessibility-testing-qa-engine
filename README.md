@@ -22,3 +22,6 @@ pip install -r requirements.txt
 
 ## Usage
 Run notebooks or scripts in src/ for data processing and analysis.
+
+## Step 1.1
+Completed: Built a parser to convert AWS Transcribe JSON into structured transcript, word-level items, and sentence-level segments.
