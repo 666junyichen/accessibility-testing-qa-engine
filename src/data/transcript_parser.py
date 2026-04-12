@@ -41,22 +41,22 @@ def parse_items(json_path):
 
     return pd.DataFrame(items_records)
 
-
 def parse_segments(json_path):
-    transcript = parse_transcript(json_path)
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    segments = []
-    sentences = transcript.split(".")
+    segments_records = []
 
-    for i, sentence in enumerate(sentences):
-        sentence = sentence.strip()
-        if sentence:
-            segments.append({
-                "segment_id": i,
-                "transcript": sentence
-            })
+    for i, seg in enumerate(data["results"].get("audio_segments", [])):
+        segments_records.append({
+            "segment_id": i,
+            "transcript": seg.get("transcript"),
+            "start_time": float(seg.get("start_time", 0)) if seg.get("start_time") else None,
+            "end_time": float(seg.get("end_time", 0)) if seg.get("end_time") else None,
+            "item_ids": ",".join(map(str, seg.get("items", []))) if seg.get("items") else None
+        })
 
-    return pd.DataFrame(segments)
+    return pd.DataFrame(segments_records)
 
 
 def extract_metadata(file_path):
