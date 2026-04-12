@@ -1,5 +1,4 @@
 import pandas as pd
-import json
 
 
 # Thresholds for rule-based detection
@@ -38,6 +37,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
                     'flag': 'DURATION_ANOMALY',
                     'detail': f"duration_ratio={duration_ratio} (< {THRESHOLDS['duration_ratio_min']})",
                     'window_id': None,
+                    'start_time': None,
+                    'end_time': None,
                     'value': duration_ratio,
                 })
             elif duration_ratio > THRESHOLDS['duration_ratio_max']:
@@ -48,6 +49,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
                     'flag': 'DURATION_ANOMALY',
                     'detail': f"duration_ratio={duration_ratio} (> {THRESHOLDS['duration_ratio_max']})",
                     'window_id': None,
+                    'start_time': None,
+                    'end_time': None,
                     'value': duration_ratio,
                 })
 
@@ -55,6 +58,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
     for _, row in audio_df.iterrows():
         window_id = row['window_id']
         video_id = row['video_id']
+        start_time = row.get('start_time', None)
+        end_time = row.get('end_time', None)
         silence_ratio = row.get('silence_ratio', None)
         narration_density = row.get('narration_density', None)
         avg_confidence = row.get('avg_confidence', None)
@@ -67,6 +72,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
                 'flag': 'EXCESSIVE_SILENCE',
                 'detail': f"silence_ratio={silence_ratio} (> {THRESHOLDS['silence_ratio_max']})",
                 'window_id': window_id,
+                'start_time': start_time,
+                'end_time': end_time,
                 'value': silence_ratio,
             })
 
@@ -78,6 +85,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
                 'flag': 'LOW_AUDIO_QUALITY',
                 'detail': f"avg_confidence={avg_confidence} (< {THRESHOLDS['avg_confidence_min']})",
                 'window_id': window_id,
+                'start_time': start_time,
+                'end_time': end_time,
                 'value': avg_confidence,
             })
 
@@ -89,6 +98,8 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
                 'flag': 'SPARSE_NARRATION',
                 'detail': f"narration_density={narration_density} (< {THRESHOLDS['narration_density_min']})",
                 'window_id': window_id,
+                'start_time': start_time,
+                'end_time': end_time,
                 'value': narration_density,
             })
 
