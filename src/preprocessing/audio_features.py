@@ -4,6 +4,11 @@ import librosa
 import subprocess
 import os
 
+# Silence energy threshold for short-term energy silence detection (16kHz sample rate)
+# Initial value based on empirical setting; should be validated against different
+# recording devices during EDA phase
+SILENCE_ENERGY_THRESHOLD = 0.001
+
 
 def extract_audio_from_video(video_path, audio_path):
     """Extract audio from MP4 video using ffmpeg."""
@@ -30,8 +35,10 @@ def get_audio_features_for_window(y, sr, start_time, end_time):
         np.sum(np.abs(y_window[i:i+frame_length]**2))
         for i in range(0, len(y_window)-frame_length, hop_length)
     ])
-    silence_threshold = 0.001
+    silence_threshold = SILENCE_ENERGY_THRESHOLD
     silence_ratio = np.mean(energy < silence_threshold)
+
+    # Narration density (proportion of time with speech)
     narration_density = 1.0 - silence_ratio
 
     # Average silence segment duration
@@ -68,17 +75,15 @@ def compute_avg_confidence(items_df, video_filename, start_time, end_time):
 
 
 def find_video_path(videos_dir, video_filename):
-    """Search for a video file by filename across all subdirectories."""
-    # Try with .mp4 extension variants
-    targets = [video_filename, video_filename + '.mp4']
+    """Search for a video file by exact filename across all subdirectories."""
+    targets = {
+        video_filename,
+        video_filename + '.mp4',
+        video_filename.replace('.mp4', '_video.mp4'),
+    }
     for root, dirs, files in os.walk(videos_dir):
         for f in files:
-            for target in targets:
-                if f == target or f == target.replace('.mp4', '_video.mp4'):
-                    return os.path.join(root, f)
-            # Fallback: match by tester name in filename
-            tester = video_filename.replace('.mp4', '').split('_')[-1]
-            if tester in f and f.endswith('.mp4'):
+            if f in targets:
                 return os.path.join(root, f)
     return None
 

@@ -2,6 +2,7 @@ import pandas as pd
 import subprocess
 import json
 import os
+import re
 
 
 def get_video_metadata(video_path):
@@ -79,24 +80,24 @@ def extract_all_metadata(videos_dir, tasks_dir, output_csv):
             tester_name = filename.replace('_video.mp4', '').split('_')[-1]
             project = os.path.basename(root)
 
-            # Compute duration_ratio using Timeguide from tasks.csv
+            # Compute duration_ratio by summing all task Timeguides for this project
             duration_ratio = None
             if not tasks_df.empty and 'Timeguide' in tasks_df.columns:
-                match = tasks_df[tasks_df['project'] == project]
-                if not match.empty:
-                    timeguide = match['Timeguide'].iloc[0]
-                    if pd.notna(timeguide):
-                        try:
-                            import re
-                            match = re.search(r'(\d+)', str(timeguide))
-                            if match:
-                                tg = float(match.group(1))
-                                if tg > 0:
-                                    duration_ratio = round(
-                                        metadata['duration_seconds'] / (tg * 60), 4
-                                    )
-                        except (ValueError, TypeError):
-                            pass
+                project_tasks = tasks_df[tasks_df['project'] == project]
+                if not project_tasks.empty:
+                    total_minutes = 0
+                    for tg in project_tasks['Timeguide']:
+                        tg_str = str(tg).strip()
+                        tg_match = re.search(r'(\d+)', tg_str)
+                        if tg_match:
+                            val = int(tg_match.group(1))
+                            if 'second' in tg_str.lower():
+                                val = val / 60
+                            total_minutes += val
+                    if total_minutes > 0:
+                        duration_ratio = round(
+                            metadata['duration_seconds'] / (total_minutes * 60), 4
+                        )
 
             results.append({
                 'video_filename': filename,
