@@ -94,7 +94,7 @@ extract_all_metadata(
 | Narration density | narration_density < 0.2 | `SPARSE_NARRATION` |
 
 - Each flag includes: video_filename, window_id, start_time, end_time, value
-- Output: `data/processed/layer1_flags.csv` (342 flags across 15 videos)
+- Output: `data/processed/layer1_flags.csv` (333 flags across 15 videos)
 
 ```python
 # Usage
