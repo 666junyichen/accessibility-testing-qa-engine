@@ -11,13 +11,18 @@ THRESHOLDS = {
 }
 
 
-def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
+def detect_flags(audio_features_csv, video_metadata_csv, windows_csv, output_csv):
     """
     Run Layer 1 rule-based detection on all videos.
     Returns a DataFrame with one row per flag detected.
     """
     audio_df = pd.read_csv(audio_features_csv)
     metadata_df = pd.read_csv(video_metadata_csv)
+    windows_df = pd.read_csv(windows_csv)
+
+    window_info = windows_df.set_index('window_id')[
+        ['video_filename', 'tester_name', 'project']
+    ].to_dict('index')
 
     flags = []
 
@@ -64,11 +69,16 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
         narration_density = row.get('narration_density', None)
         avg_confidence = row.get('avg_confidence', None)
 
+        info = window_info.get(window_id, {})
+        wf = info.get('video_filename')
+        tn = info.get('tester_name')
+        pj = info.get('project')
+
         if pd.notna(silence_ratio) and silence_ratio > THRESHOLDS['silence_ratio_max']:
             flags.append({
-                'video_filename': None,
-                'tester_name': None,
-                'project': None,
+                'video_filename': wf,
+                'tester_name': tn,
+                'project': pj,
                 'flag': 'EXCESSIVE_SILENCE',
                 'detail': f"silence_ratio={silence_ratio} (> {THRESHOLDS['silence_ratio_max']})",
                 'window_id': window_id,
@@ -79,9 +89,9 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
 
         if pd.notna(avg_confidence) and avg_confidence < THRESHOLDS['avg_confidence_min']:
             flags.append({
-                'video_filename': None,
-                'tester_name': None,
-                'project': None,
+                'video_filename': wf,
+                'tester_name': tn,
+                'project': pj,
                 'flag': 'LOW_AUDIO_QUALITY',
                 'detail': f"avg_confidence={avg_confidence} (< {THRESHOLDS['avg_confidence_min']})",
                 'window_id': window_id,
@@ -92,9 +102,9 @@ def detect_flags(audio_features_csv, video_metadata_csv, output_csv):
 
         if pd.notna(narration_density) and narration_density < THRESHOLDS['narration_density_min']:
             flags.append({
-                'video_filename': None,
-                'tester_name': None,
-                'project': None,
+                'video_filename': wf,
+                'tester_name': tn,
+                'project': pj,
                 'flag': 'SPARSE_NARRATION',
                 'detail': f"narration_density={narration_density} (< {THRESHOLDS['narration_density_min']})",
                 'window_id': window_id,
@@ -120,5 +130,6 @@ if __name__ == "__main__":
     detect_flags(
         audio_features_csv='data/processed/audio_features.csv',
         video_metadata_csv='data/processed/video_metadata.csv',
+        windows_csv='data/processed/windows.csv',
         output_csv='data/processed/layer1_flags.csv'
     )

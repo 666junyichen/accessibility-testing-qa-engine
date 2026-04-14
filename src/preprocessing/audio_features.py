@@ -138,6 +138,7 @@ def extract_all_features(windows_csv, items_csv, videos_dir, output_csv):
         results.append({
             'window_id': window_id,
             'video_id': video_id,
+            'video_filename': video_filename,
             'start_time': start_time,
             'end_time': end_time,
             'duration': duration,
