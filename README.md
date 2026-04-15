@@ -34,6 +34,7 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 3.1 — Layer 1 Rule-Based Detector](#step-31--layer-1-rule-based-detector)
 - [Step 3.2 — Layer 1 Validation on Development Samples](#step-32--layer-1-validation-on-development-samples)
 - [Step 4.1 — Layer 2 Feature Engineering](#step-41--layer-2-feature-engineering)
+- [Step 4.2 — Layer 2 Clustering](#step-42--layer-2-clustering)
 - [R3 NLP Semantic Analysis](#r3-nlp-semantic-analysis)
   - [Step 4.3 - Cluster Interpretation Preparation](#step-43---cluster-interpretation-preparation)
   - [Step 5.1 - Prompt Design](#step-51---prompt-design)
@@ -337,6 +338,30 @@ python -m src.layer2.feature_engineering
 #   data/processed/feature_engineering_imputation.log
 ```
 
+### Step 4.2 — Layer 2 Clustering
+
+在 876 个 60s 窗口的 7 维 standardized feature space 上运行 KMeans + DBSCAN exploratory clustering。
+
+**输入：** `data/processed/feature_matrix_scaled.csv`（scaled）+ `data/processed/feature_matrix_raw.csv`（summary 用）
+
+**模块：** `src/layer2/cluster_utils.py`（4 纯函数：fit_kmeans / fit_dbscan / build_cluster_summary / pca_project）
+
+**Orchestration：** `notebooks/04_layer2_clustering.ipynb`
+
+**算法配置：**
+- KMeans：k ∈ {2,3,4,5}，n_init=10，random_state=42，silhouette + elbow + cluster size 人工选 `final_k`
+- DBSCAN：`min_samples ∈ {7, 14}` 双档对比，k-distance plot 人选 eps；两档都可用时 notebook 写理由人工选一档，不预设偏好
+- `primary_cluster_id = kmeans_cluster_id`（无条件继承，不做小簇 -1 保护）
+- Round 1 先用启发式默认参数（`final_k=3` / `min_samples=7` / `eps=0.8`）跑通 pipeline；后续参数优化环节依据上述指标重选并更新 notebook 决策 cell。
+
+**输出：**
+- `outputs/layer2_cluster_assignments.csv`（876 行 × 7 列，R3 4.3 join key）
+- `outputs/layer2_cluster_summary.csv`（每簇一行，raw feature mean/std，ddof=0）
+- `outputs/layer2_cluster_composition.csv`（long-form：algorithm × cluster_id × dimension × value × count）
+- `outputs/figures/layer2_{silhouette,kdist,pca,tsne}.png`
+
+**边界声明：** fixed L1 v1 thresholds + 6 dev sample exploratory；DBSCAN 仅对照不进下游 join；若 cluster 结构被单一 tester 主导（当前观察值：`tester_name = terryaflint17`），唯一后续动作 = 扩样 + 第二轮 4.2，不在当前样本做剔除实验。高级算法（HDBSCAN / GMM / Spectral）属于 Future Work。
+
 ## R3 NLP Semantic Analysis
 
 This section documents the R3 NLP semantic analysis deliverables for Step 4.3, Step 5.1, Step 5.3, and Step 8.3.
@@ -383,5 +408,4 @@ This section documents the R3 NLP semantic analysis deliverables for Step 4.3, S
 - LLM classification outputs are not yet available.
 - Task context has not yet been automatically joined into each annotation row.
 - Step 5.3 and Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
-
 
