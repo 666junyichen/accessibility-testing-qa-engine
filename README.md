@@ -23,6 +23,23 @@ pip install -r requirements.txt
 ## Usage
 Run notebooks or scripts in src/ for data processing and analysis.
 
+## Contents
+- [Step 1.1 — Transcript JSON Parser](#step-11--transcript-json-parser)
+- [Step 1.2 — 60-Second Window Splitter](#step-12--60-second-window-splitter)
+- [Step 1.3 — Audio Feature Extraction](#step-13--audio-feature-extraction)
+- [Step 1.4 — Video Metadata Extraction](#step-14--video-metadata-extraction)
+- [Step 2.1 — Transcript Data EDA](#step-21--transcript-data-eda)
+- [Step 2.2 — Structured Data EDA](#step-22--structured-data-eda)
+- [Step 2.3 — EDA Report](#step-23--eda-report)
+- [Step 3.1 — Layer 1 Rule-Based Detector](#step-31--layer-1-rule-based-detector)
+- [Step 3.2 — Layer 1 Validation on Development Samples](#step-32--layer-1-validation-on-development-samples)
+- [Step 4.1 — Layer 2 Feature Engineering](#step-41--layer-2-feature-engineering)
+- [R3 NLP Semantic Analysis](#r3-nlp-semantic-analysis)
+  - [Step 4.3 - Cluster Interpretation Preparation](#step-43---cluster-interpretation-preparation)
+  - [Step 5.1 - Prompt Design](#step-51---prompt-design)
+  - [Step 5.3 - Manual Annotation Set](#step-53---manual-annotation-set)
+  - [Step 8.3 - Case Studies](#step-83---case-studies)
+
 ## Step 1.1 — Transcript JSON Parser
 - **Module**: `src/data/transcript_parser.py`
 - Parses AWS Transcribe JSON into three structured CSVs: `transcripts.csv`, `items.csv`, `segments.csv`
