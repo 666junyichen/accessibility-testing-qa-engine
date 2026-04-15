@@ -290,49 +290,94 @@ print(audio_dev['video_id'].nunique(), 'development samples')
 print(flags['flag'].value_counts())
 ```
 
-## R3 NLP Semantic Analysis
-
-This section documents the R3 NLP semantic analysis deliverables for Step 4.3, Step 5.1, Step 5.3, and Step 8.3.
-
-### Step 4.3 - Cluster Interpretation Preparation
-
+## Step 4.3 - R3 Cluster Interpretation Preparation
 - **Documents**: `docs/cluster_interpretation.md`
 - **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template.csv`
-- **Purpose**: reviews representative transcript windows and records early semantic patterns such as navigation issues, content clarity problems, interaction failures, accessibility barriers, and support or trust concerns.
-- **Current status**: draft interpretation preparation is complete based on sampled window-level transcript data.
-- **Pending dependency**: final cluster interpretation still requires Layer 2 clustering outputs, including `cluster_id`, representative windows, cluster sizes, and top terms or keywords.
+- Reviews sampled 60-second transcript windows and records early semantic patterns for later cluster interpretation.
+- The current draft uses sampled window text because Layer 2 cluster outputs are not yet available.
+- Final interpretation should be updated once `cluster_id`, representative windows, cluster sizes, and top terms are produced.
 
-### Step 5.1 - Prompt Design
+| Semantic pattern | Example signal | Taxonomy link |
+|------------------|----------------|---------------|
+| Navigation / findability | User cannot locate a feedback page, claim path, or key action | F1 |
+| Content clarity | User says wording is formal, unclear, or hard to understand | F2 |
+| Interaction / control | Form, MFA, upload, or validation flow blocks progress | F3 |
+| Accessibility / AT | Screen reader, VoiceOver, PDF, heading, or focus issue appears | F4 |
+| Support / trust / safety | User questions trust, support, sensitivity, or reassurance | F6 |
 
-- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md`
+```powershell
+# Usage
+python scripts\sample_r3_windows.py
+```
+
+## Step 5.1 - R3 Prompt Design
 - **Module**: `src/layer3/prompts.py`
-- **Purpose**: defines the R3 semantic taxonomy, prompt structure, and JSON output schema for future LLM-based window classification.
-- **Current status**: prompt template and schema are implemented.
-- **Important note**: `src/layer3/prompts.py` only builds prompt messages. It does not call an LLM API.
+- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md`
+- Defines the R3 semantic taxonomy, prompt structure, and JSON output schema for future LLM-based window classification.
+- `src/layer3/prompts.py` builds chat-style prompt messages only; it does not call an LLM API.
+- Output labels align with the manual annotation template used in Step 5.3.
 
-### Step 5.3 - Manual Annotation Set
+| Output field | Purpose |
+|--------------|---------|
+| `friction_type` | Dominant F1-F7 semantic friction category |
+| `severity` | Estimated seriousness of the issue |
+| `sentiment` | User attitude or emotional tone in the window |
+| `narration_type` | Main narration mode, such as navigation or feedback |
+| `primary_evidence` | Short quote supporting the chosen label |
+| `rationale` | Brief explanation for the classification |
 
-- **Data file**: `data/annotations/r3_manual_annotations_round1.csv`
+```python
+# Usage
+import sys; sys.path.insert(0, 'src')
+from layer3.prompts import build_messages
+
+messages = build_messages(
+    window_id='example_window_id',
+    project='example_project',
+    video_id='example_video_id',
+    window_text='Transcript window text goes here.',
+    task_title='Task title goes here.',
+    task_instructions='Task instructions go here.'
+)
+```
+
+## Step 5.3 - R3 Manual Annotation Set
 - **Script**: `scripts/create_r3_manual_annotation_round1.py`
-- **Purpose**: creates a first-round manual annotation sample from the R3 reviewed windows.
-- **Current status**: initial annotation sample is prepared with windows covering the F1-F7 friction categories.
-- **Pending dependency**: formal validation still requires independent annotation by another team member, adjudicated labels, and agreement evaluation.
+- **Input**: `data/annotations/r3_window_review_sample.csv`
+- **Outputs**: `data/annotations/r3_manual_annotations_round1.csv`, `data/annotations/round1_blind_for_r8.csv`
+- Creates a 14-window first-round annotation set covering the F1-F7 friction categories.
+- Adds `task_title` and `task_instructions` from the project task CSV files in `data/raw/`.
+- Produces a blind copy for R8 so Step 5.4 can later calculate inter-annotator agreement.
 
-### Step 8.3 - Case Studies
+| File | Audience | Contains R3 labels |
+|------|----------|--------------------|
+| `r3_manual_annotations_round1.csv` | R3 / Nix review | Yes |
+| `round1_blind_for_r8.csv` | R8 independent annotation | No |
 
+```powershell
+# Usage
+python scripts\create_r3_manual_annotation_round1.py
+```
+
+## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
-- **Purpose**: records early qualitative case studies using selected transcript windows to explain accessibility, navigation, readability, and support-related issues.
-- **Current status**: initial case study draft is complete.
-- **Pending dependency**: final case studies should be updated after full clustering, LLM classification, and final analysis outputs are available.
+- Uses selected transcript windows to write qualitative case studies for accessibility, navigation, readability, and support-related issues.
+- Current case studies are draft examples based on sampled R3 windows.
+- Final case studies should be updated after full clustering, LLM classification, and agreement results are available.
 
-### Helper Scripts
+| Case study focus | Related evidence source |
+|------------------|-------------------------|
+| Accessibility or assistive technology barrier | Transcript window + task context |
+| Navigation or findability breakdown | Window-level user narration |
+| Readability or content clarity problem | User feedback quote |
+| Support, trust, or safety concern | Window text and qualitative notes |
 
-- `scripts/sample_r3_windows.py` samples transcript windows from `data/processed/windows.csv` for R3 semantic review.
-- `scripts/create_r3_manual_annotation_round1.py` creates the first-round manual annotation CSV from the reviewed R3 sample.
-
-### R3 Current Limitations
-
+## R3 Current Limitations
 - Layer 2 clustering results are not yet available in the current repository.
+- LLM classification outputs are not yet available.
+- Step 5.3 still requires R8 independent annotation, adjudication, and agreement evaluation.
+- Step 8.3 should be revised once final cluster and classification outputs are complete.
+
 - LLM classification outputs are not yet available.
 - Task context has not yet been automatically joined into each annotation row.
 - Step 5.3 and Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
