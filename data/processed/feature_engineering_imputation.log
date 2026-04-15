@@ -1,0 +1,9 @@
+=== Feature engineering imputation log ===
+total_rows: 876
+threshold: 0.01
+
+[silence_ratio] nan_count=0 nan_rate=0.0000 filled=0
+[narration_density] nan_count=0 nan_rate=0.0000 filled=0
+[words_per_minute] nan_count=0 nan_rate=0.0000 filled=0
+[avg_silence_duration] nan_count=0 nan_rate=0.0000 filled=0
+[avg_confidence] nan_count=0 nan_rate=0.0000 filled=0

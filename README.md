@@ -290,6 +290,36 @@ print(audio_dev['video_id'].nunique(), 'development samples')
 print(flags['flag'].value_counts())
 ```
 
+## Step 4.1 — Layer 2 Feature Engineering
+- **Module**: `src/layer2/feature_engineering.py`
+- **Tests**: `tests/test_feature_engineering.py` (27 tests)
+- Builds the L2-only feature matrix (raw + standardized) from `audio_features.csv` and `windows.csv`
+- 7 features: `silence_ratio`, `narration_density`, `words_per_minute`, `avg_silence_duration`, `avg_confidence`, `unique_words_ratio`, `avg_sentence_length`
+- Two text features derived from `windows.text`:
+  - `unique_words_ratio` = unique tokens / total tokens (alnum tokens only, lowercased)
+  - `avg_sentence_length` = total tokens / sentence count (split on `.!?`, fallback = 1)
+- Imputation policy: per-column NaN rate `< 1%` filled with column mean; rate `≥ 1%` raises and aborts (no silent drop). Concentration by `video_id` is logged for debugging
+- Join consistency check: `video_id`, `video_filename`, `start_time`, `end_time` must agree between `audio_features.csv` and `windows.csv` (float tol = 1e-6)
+- Standardization: `StandardScaler` (z-score) applied to the 7 feature columns; column names retained without `_z` suffix
+- Outputs:
+  - `data/processed/feature_matrix_raw.csv` (876 windows)
+  - `data/processed/feature_matrix_scaled.csv` (876 windows)
+  - `data/processed/feature_engineering_imputation.log` (per-column nan_count / nan_rate / filled)
+- Scope: L2-only; not used by L3 / R5 / R6
+- Dev-set sanity (qualitative): `ghum` `avg_sentence_length ≈ 10.4`, `terryaflint17` ≈ `6.3`, `reneerussell99` ≈ `26.3` (outlier flagged for Step 4.2 review)
+
+```python
+# Usage
+python -m src.layer2.feature_engineering
+# Reads:
+#   data/processed/audio_features.csv
+#   data/processed/windows.csv
+# Writes:
+#   data/processed/feature_matrix_raw.csv
+#   data/processed/feature_matrix_scaled.csv
+#   data/processed/feature_engineering_imputation.log
+```
+
 ## R3 NLP Semantic Analysis
 
 This section documents the R3 NLP semantic analysis deliverables for Step 4.3, Step 5.1, Step 5.3, and Step 8.3.
