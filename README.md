@@ -82,6 +82,36 @@ extract_all_metadata(
 )
 ```
 
+## Step 2.2 — Structured Data EDA
+- **Notebook**: `notebooks/02_structured_data_eda.ipynb`
+- Performs exploratory data analysis on structured data across three projects
+- Focus areas:
+  - Number of testers and tasks per project
+  - Cross-project tester participation
+  - Task type distribution
+  - Timeguide distribution
+  - Deviation between actual video duration and expected Timeguide (`duration_ratio`)
+- Uses both processed data (`windows.csv`, `video_metadata.csv`) and minimal raw data (`tasks.csv`)
+- Output: summary tables and visualizations (notebook-based, no fixed CSV output)
+
+```python
+# Usage
+import sys; sys.path.insert(0, 'src')
+
+import pandas as pd
+
+# Load processed data
+windows = pd.read_csv('data/processed/windows.csv')
+video_metadata = pd.read_csv('data/processed/video_metadata.csv')
+
+# Load task-level data (minimal raw dependency)
+tasks_df = pd.read_csv('data/raw/.../tasks.csv')
+
+# Example analysis
+tester_per_project = windows.groupby("project")["tester_name"].nunique()
+task_per_project = tasks_df.groupby("project")["Order"].nunique()
+duration_ratio = video_metadata["duration_ratio"].describe()
+
 ## Step 3.1 — Layer 1 Rule-Based Detector
 - **Module**: `src/layer1/rule_detector.py`
 - Detects recording quality issues using hard-coded thresholds:
