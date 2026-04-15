@@ -289,3 +289,52 @@ audio_dev = audio[audio['video_id'].isin(DEV_VIDEO_IDS)]
 print(audio_dev['video_id'].nunique(), 'development samples')
 print(flags['flag'].value_counts())
 ```
+
+## R3 NLP Semantic Analysis
+
+This section documents the R3 NLP semantic analysis deliverables for Step 4.3, Step 5.1, Step 5.3, and Step 8.3.
+
+### Step 4.3 - Cluster Interpretation Preparation
+
+- **Documents**: `docs/cluster_interpretation.md`
+- **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template.csv`
+- **Purpose**: reviews representative transcript windows and records early semantic patterns such as navigation issues, content clarity problems, interaction failures, accessibility barriers, and support or trust concerns.
+- **Current status**: draft interpretation preparation is complete based on sampled window-level transcript data.
+- **Pending dependency**: final cluster interpretation still requires Layer 2 clustering outputs, including `cluster_id`, representative windows, cluster sizes, and top terms or keywords.
+
+### Step 5.1 - Prompt Design
+
+- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md`
+- **Module**: `src/layer3/prompts.py`
+- **Purpose**: defines the R3 semantic taxonomy, prompt structure, and JSON output schema for future LLM-based window classification.
+- **Current status**: prompt template and schema are implemented.
+- **Important note**: `src/layer3/prompts.py` only builds prompt messages. It does not call an LLM API.
+
+### Step 5.3 - Manual Annotation Set
+
+- **Data file**: `data/annotations/r3_manual_annotations_round1.csv`
+- **Script**: `scripts/create_r3_manual_annotation_round1.py`
+- **Purpose**: creates a first-round manual annotation sample from the R3 reviewed windows.
+- **Current status**: initial annotation sample is prepared with windows covering the F1-F7 friction categories.
+- **Pending dependency**: formal validation still requires independent annotation by another team member, adjudicated labels, and agreement evaluation.
+
+### Step 8.3 - Case Studies
+
+- **Document**: `docs/case_studies.md`
+- **Purpose**: records early qualitative case studies using selected transcript windows to explain accessibility, navigation, readability, and support-related issues.
+- **Current status**: initial case study draft is complete.
+- **Pending dependency**: final case studies should be updated after full clustering, LLM classification, and final analysis outputs are available.
+
+### Helper Scripts
+
+- `scripts/sample_r3_windows.py` samples transcript windows from `data/processed/windows.csv` for R3 semantic review.
+- `scripts/create_r3_manual_annotation_round1.py` creates the first-round manual annotation CSV from the reviewed R3 sample.
+
+### R3 Current Limitations
+
+- Layer 2 clustering results are not yet available in the current repository.
+- LLM classification outputs are not yet available.
+- Task context has not yet been automatically joined into each annotation row.
+- Step 5.3 and Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
+
+
