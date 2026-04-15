@@ -213,7 +213,7 @@ print(report_path.read_text(encoding="utf-8")[:1000])  # preview first part of t
 | Narration density | narration_density < 0.2 | `SPARSE_NARRATION` |
 
 - Each flag includes: video_filename, window_id, start_time, end_time, value
-- Output: `data/processed/layer1_flags.csv` (333 flags across 15 videos)
+- Output: `data/processed/layer1_flags.csv` (211 flags across 6 dev-sample videos)
 
 ```python
 # Usage
