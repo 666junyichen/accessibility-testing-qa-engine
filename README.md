@@ -412,7 +412,8 @@ messages = build_messages(
 )
 ```
 
-## Step 5.3 - R3 Manual Annotation Set
+## Step 5.3 - Manual Annotation Set + Kappa Agreement Check
+### R3 Manual Annotation Set
 - **Script**: `scripts/create_r3_manual_annotation_round1.py`
 - **Input**: `data/annotations/r3_window_review_sample.csv`
 - **Outputs**: `data/annotations/r3_manual_annotations_round1.csv`, `data/annotations/round1_blind_for_r8.csv`
@@ -428,6 +429,46 @@ messages = build_messages(
 ```powershell
 # Usage
 python scripts\create_r3_manual_annotation_round1.py
+```
+### R8 Manual Annotation Set + Kappa Agreement Check
+- **Script / Notebook:** `scripts/annotate_r8_round1.py`, `notebooks/04_kappa_agreement.ipynb`
+- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1.csv`
+- **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen’s kappa results for `friction_type`, `severity`, and `sentiment`
+- Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3.
+- Uses the field definitions from `docs/friction_taxonomy.md` and `docs/prompt_design.md` §6 to guide manual annotation.
+- Keeps the annotation process blind by using `round1_blind_for_r8.csv`, which does not contain R3 labels.
+- The annotation script does **not** read `data/annotations/r3_manual_annotations_round1.csv`, `docs/cluster_interpretation.md`, or `docs/case_studies.md` during annotation.
+- Adds the manual annotation fields: `narration_type`, `at_context_present`, `friction_type`, `severity`, `sentiment`, `confidence`, `notes`, and fixes `annotator = "R8"`.
+- Compares the R3 and R8 first-round manual annotations on the shared 14-window sample using `window_id`.
+- Standardises `friction_type` labels to the short-code format (`F1`–`F7`) before agreement calculation.
+- Reports Cohen’s kappa for:
+  - `friction_type`
+  - `severity`
+  - `sentiment`
+- Also reports a weighted kappa for `severity`, since severity is ordinal (`none < low < medium < high`).
+- Produces cross-tab agreement tables to support manual review of disagreement patterns.
+
+| File | Audience | Purpose |
+|---|---|---|
+| `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output |
+| `04_kappa_agreement.ipynb` | Team / review | Agreement calculation and disagreement inspection |
+
+### Kappa Agreement Results Summary
+
+The inter-annotator agreement was calculated on the shared 14-window round 1 annotation set.
+
+- `friction_type` kappa = **0.6606**
+- `severity` kappa = **0.3869**
+- `sentiment` kappa = **0.6640**
+- weighted `severity` kappa = **0.6038**
+
+These results suggest substantial agreement on `friction_type` and `sentiment`, and moderate agreement on `severity` when ordinal distance is considered.
+
+```python
+# Usage
+python scripts/annotate_r8_round1.py
+# Then open and run:
+notebooks/04_kappa_agreement.ipynb
 ```
 
 ## Step 8.3 - R3 Case Studies
