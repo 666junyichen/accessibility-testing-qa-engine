@@ -8,26 +8,33 @@ The case studies are based on manually reviewed transcript windows from:
 
 `data/annotations/r3_manual_annotations_round1.csv`
 
-The goal is to show how R3 semantic analysis can identify meaningful user experience patterns from transcript windows, including accessibility barriers, navigation problems, content clarity issues, and trust or safety concerns.
+The goal is to show how R3 semantic analysis can identify meaningful user
+experience patterns from transcript windows, including accessibility barriers,
+missing or hidden content pathways, comprehension friction, confidence friction,
+and excessive effort.
+
+The friction labels follow:
+
+`docs/friction_taxonomy.md`
 
 ## 2. Case Selection Criteria
 
 Cases were selected based on:
 
 - clear evidence in the transcript window
-- coverage across different friction types
-- relevance to accessibility, navigation, content clarity, or trust/safety
+- coverage across different official friction types
+- relevance to accessibility, missing information, comprehension, confidence, or effort
 - usefulness for final reporting and qualitative explanation
 - potential to inform Layer 3 LLM classification and future recommendations
 
 ## 3. Selected Case Overview
 
-| Case | Window ID | Project | Friction Type | Severity | Sentiment |
-|---|---|---|---|---|---|
-| Case 1 | `ghum_wa_w029` | Department of Premier and Cabinet WA | F4 Accessibility / Assistive Technology Issue | high | negative |
-| Case 2 | `ramazankawish_wa_w075` | Department of Premier and Cabinet WA | F1 Navigation / Findability Issue | medium | negative |
-| Case 3 | `Sharelinsonny_uq_w026` | The University of Queensland | F2 Content Clarity Issue | medium | negative |
-| Case 4 | `tianarosie1_wa_w015` | Department of Premier and Cabinet WA | F6 Support / Trust / Safety Concern | medium | mixed |
+| Case | Window ID | Project | Friction Type | Severity ID | Severity | Sentiment ID | Sentiment |
+|---|---|---|---|---|---|---|---|
+| Case 1 | `ghum_wa_w029` | Department of Premier and Cabinet WA | F3 Accessibility Friction | S3 | high | E4 | negative |
+| Case 2 | `ramazankawish_wa_w075` | Department of Premier and Cabinet WA | F6 Content Not Found | S5 | medium | E4 | negative |
+| Case 3 | `Sharelinsonny_uq_w026` | The University of Queensland | F1 Comprehension Friction | S5 | medium | E4 | negative |
+| Case 4 | `tianarosie1_wa_w015` | Department of Premier and Cabinet WA | F7 Excessive Effort | S5 | medium | E4 | mixed |
 
 ## 4. Case Study 1: Screen Reader Cannot Access PDF Content
 
@@ -35,9 +42,9 @@ Cases were selected based on:
 
 - Project: Department of Premier and Cabinet WA
 - Window ID: `ghum_wa_w029`
-- Friction Type: F4 Accessibility / Assistive Technology Issue
-- Severity: high
-- Sentiment: negative
+- Friction Type: F3 Accessibility Friction
+- Severity: S3 Severe Friction / high
+- Sentiment: E4 Negative / Frustrated
 
 ### Evidence
 
@@ -45,29 +52,39 @@ Cases were selected based on:
 
 ### What Happened
 
-The tester opened a PDF resource and attempted to access its content using a screen reader. The transcript shows repeated screen-reader output such as "page one containing empty group", suggesting that the PDF content was not properly exposed to assistive technology.
+The tester opened a PDF resource and attempted to access its content using a
+screen reader. The transcript shows repeated screen-reader output such as "page
+one containing empty group", suggesting that the PDF content was not properly
+exposed to assistive technology.
 
 ### Interpretation
 
-This is a major accessibility barrier. The user is not simply confused by the page; they are unable to access the actual content of the resource. This means the resource may be unusable for screen-reader users unless an accessible version or OCR-readable structure is provided.
+This is a major accessibility barrier. The user is not simply confused by the
+page; they are unable to access the actual content of the resource. Under the
+client framework, this maps to F3 because the barrier is caused by assistive
+technology compatibility and inaccessible document structure.
 
 ### Why This Case Matters
 
-This case is important because it shows that content availability is not enough. A resource can exist on the website but still fail users if the format is inaccessible. For sensitive public service content, such as coercive control support, inaccessible PDFs may prevent users from receiving critical information.
+This case is important because content availability is not enough. A resource
+can exist on the website but still fail users if the format is inaccessible. For
+sensitive public service content, such as coercive control support, inaccessible
+PDFs may prevent users from receiving critical information.
 
 ### Possible Recommendation
 
-Provide accessible HTML alternatives for PDF resources, ensure PDFs are tagged correctly, and test downloadable resources with screen readers.
+Provide accessible HTML alternatives for PDF resources, ensure PDFs are tagged
+correctly, and test downloadable resources with screen readers.
 
-## 5. Case Study 2: Feedback Page Findability Issue
+## 5. Case Study 2: Feedback Pathway Cannot Be Found
 
 ### Window
 
 - Project: Department of Premier and Cabinet WA
 - Window ID: `ramazankawish_wa_w075`
-- Friction Type: F1 Navigation / Findability Issue
-- Severity: medium
-- Sentiment: negative
+- Friction Type: F6 Content Not Found
+- Severity: S5 Medium Friction / medium
+- Sentiment: E4 Negative / Frustrated
 
 ### Evidence
 
@@ -75,19 +92,28 @@ Provide accessible HTML alternatives for PDF resources, ensure PDFs are tagged c
 
 ### What Happened
 
-The tester tried to locate a feedback or complaints page but could not easily find the correct pathway. They searched around headings and page sections, expecting an option to provide feedback, but the expected route was not visible.
+The tester tried to locate a feedback or complaints page but could not easily
+find the correct pathway. They searched around headings and page sections,
+expecting an option to provide feedback, but the expected route was not visible.
 
 ### Interpretation
 
-This is a navigation and findability problem. The user has a clear goal, but the information architecture does not make the path obvious. This type of issue is especially important for government or support websites, where feedback and complaints pathways should be easy to locate.
+This is a content-not-found problem. The user has a clear goal, but the pathway
+to the required information is hidden, missing, or placed somewhere unexpected.
+Under the client framework, this maps to F6 rather than F2 because the main
+barrier is locating a needed feedback pathway.
 
 ### Why This Case Matters
 
-A feedback pathway is part of service accountability. If users cannot find it, they may abandon the task or lose confidence in the service. In an NLP pipeline, this case would likely be detected through phrases such as "struggling to find", "feedback page", and repeated search/navigation behaviour.
+A feedback pathway is part of service accountability. If users cannot find it,
+they may abandon the task or lose confidence in the service. In an NLP pipeline,
+this case would likely be detected through phrases such as "struggling to find",
+"feedback page", and repeated search/navigation behaviour.
 
 ### Possible Recommendation
 
-Make feedback and complaints links more visible and consistently placed across relevant pages.
+Make feedback and complaints links more visible and consistently placed across
+relevant pages.
 
 ## 6. Case Study 3: Formal Legal Language Reduces Readability
 
@@ -95,9 +121,9 @@ Make feedback and complaints links more visible and consistently placed across r
 
 - Project: The University of Queensland
 - Window ID: `Sharelinsonny_uq_w026`
-- Friction Type: F2 Content Clarity Issue
-- Severity: medium
-- Sentiment: negative
+- Friction Type: F1 Comprehension Friction
+- Severity: S5 Medium Friction / medium
+- Sentiment: E4 Negative / Frustrated
 
 ### Evidence
 
@@ -105,29 +131,39 @@ Make feedback and complaints links more visible and consistently placed across r
 
 ### What Happened
 
-The tester reviewed a section of text related to cookies, analytics, advertising, marketing activities, and pixel tracking. They described the content as long, formal, legalistic, and unlikely to be read in detail.
+The tester reviewed a section of text related to cookies, analytics,
+advertising, marketing activities, and pixel tracking. They described the
+content as long, formal, legalistic, and unlikely to be read in detail.
 
 ### Interpretation
 
-This is a content clarity issue. The problem is not that the information is missing, but that the wording and presentation may be too dense for users to understand or engage with. The tester's response suggests that legal compliance text may reduce practical usability if it is not written or structured clearly.
+This is comprehension friction. The problem is not that the information is
+missing, but that the wording and presentation make the meaning difficult to
+absorb. Under the client framework, this maps to F1 because unclear or complex
+language reduces understanding.
 
 ### Why This Case Matters
 
-This case shows how R3 semantic analysis can detect readability and plain-language issues from user narration. It also demonstrates why window text should be interpreted semantically rather than only through audio or interaction features.
+This case shows how R3 semantic analysis can detect readability and
+plain-language issues from user narration. It also demonstrates why window text
+should be interpreted semantically rather than only through audio or interaction
+features.
 
 ### Possible Recommendation
 
-Simplify legal or privacy-related explanations, provide summaries, and use layered disclosure so users can understand key points before reading detailed policy text.
+Simplify legal or privacy-related explanations, provide summaries, and use
+layered disclosure so users can understand key points before reading detailed
+policy text.
 
-## 7. Case Study 4: Sensitive Content Feels Informative But Emotionally Heavy
+## 7. Case Study 4: Sensitive Content Creates High Cognitive Effort
 
 ### Window
 
 - Project: Department of Premier and Cabinet WA
 - Window ID: `tianarosie1_wa_w015`
-- Friction Type: F6 Support / Trust / Safety Concern
-- Severity: medium
-- Sentiment: mixed
+- Friction Type: F7 Excessive Effort
+- Severity: S5 Medium Friction / medium
+- Sentiment: E4 Negative / Frustrated, with mixed overall sentiment
 
 ### Evidence
 
@@ -135,33 +171,46 @@ Simplify legal or privacy-related explanations, provide summaries, and use layer
 
 ### What Happened
 
-The tester read examples of coercive control and found them informative but emotionally intense. They noted that the examples helped confirm that the scenario described coercive control, but also described the material as "full-on" to read.
+The tester read examples of coercive control and found them informative but
+emotionally intense. They noted that the examples helped confirm that the
+scenario described coercive control, but also described the material as
+"full-on" to read.
 
 ### Interpretation
 
-This is not a simple usability failure. The content is doing important explanatory work, but it also carries emotional weight. This kind of window is important for R3 because it shows that sensitive support content should be evaluated not only for clarity, but also for tone, pacing, and emotional load.
+This is not a simple content failure. The content is doing important explanatory
+work, but it creates a high cognitive and emotional load. Under the client
+framework, this is best treated as F7 because the issue is the amount of effort
+required to process the information, rather than missing content or unclear
+terminology.
 
 ### Why This Case Matters
 
-Support and safety information must balance detail with care. Users may need concrete examples to recognise abuse, but too much intense content at once may feel overwhelming. This case is a strong candidate for qualitative reporting because it captures the nuance of sensitive public service communication.
+Support and safety information must balance detail with care. Users may need
+concrete examples to recognise abuse, but too much intense content at once may
+feel overwhelming. This case is a strong candidate for qualitative reporting
+because it captures the nuance of sensitive public service communication.
 
 ### Possible Recommendation
 
-Use clear content warnings, chunk sensitive examples into manageable sections, and provide visible support pathways near emotionally heavy content.
+Use clear content warnings, chunk sensitive examples into manageable sections,
+and provide visible support pathways near emotionally heavy content.
 
 ## 8. Cross-Case Themes
 
 Across the selected cases, several themes appear:
 
 - Accessibility barriers can completely block access to content, especially when PDFs are not screen-reader friendly.
-- Navigation issues often appear through phrases like "I am struggling to find" or repeated attempts to locate a page.
-- Content clarity issues often involve formal language, undefined terms, or dense information.
-- Sensitive support content can be both useful and emotionally demanding.
-- Positive or no-friction cases are useful as contrast examples, but the strongest case studies usually come from high-evidence friction windows.
+- Missing or hidden pathways often appear through phrases like "I am struggling to find" or repeated attempts to locate a page.
+- Comprehension friction often involves formal language, undefined terms, or dense information.
+- Confidence friction appears when users understand the content but do not trust the pathway or feel unsure what will happen next.
+- Excessive effort can be caused by repeated steps, added setup work, or heavy content load.
+- Positive or no-friction cases are useful as contrast examples, but they should be labelled `none`, not F7.
 
 ## 9. Relationship To R3 NLP Work
 
-These case studies support the R3 NLP semantic analysis tasks by showing how transcript windows can be interpreted beyond surface keywords.
+These case studies support the R3 NLP semantic analysis tasks by showing how
+transcript windows can be interpreted beyond surface keywords.
 
 They connect to:
 
@@ -171,15 +220,18 @@ They connect to:
 - `src/layer3/prompts.py`
 - `docs/prompt_design.md`
 
-The same examples can later be used to evaluate whether Layer 3 LLM classification correctly identifies friction type, severity, sentiment, narration type, and supporting evidence.
+The same examples can later be used to evaluate whether Layer 3 LLM
+classification correctly identifies friction type, severity, sentiment,
+narration type, and supporting evidence.
 
 ## 10. Current Limitations
 
-These case studies are based on selected transcript windows rather than full video review.
+These case studies are based on selected transcript windows rather than full
+video review.
 
 Limitations:
 
 - Some surrounding context may be missing because each case uses a 60-second window.
-- Task descriptions have not yet been fully joined into the case table.
 - The examples are manually selected and should not be treated as statistically representative.
 - Final case studies may change after full clustering and LLM classification are available.
+- Step 8.3 still needs full pipeline outputs from later project stages before final reporting.
