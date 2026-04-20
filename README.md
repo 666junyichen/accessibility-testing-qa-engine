@@ -362,19 +362,23 @@ python -m src.layer2.feature_engineering
 **边界声明：** fixed L1 v1 thresholds + 6 dev sample exploratory；DBSCAN 仅对照不进下游 join；若 cluster 结构被单一 tester 主导（当前观察值：`tester_name = terryaflint17`），唯一后续动作 = 扩样 + 第二轮 4.2，不在当前样本做剔除实验。高级算法（HDBSCAN / GMM / Spectral）属于 Future Work。
 
 ## Step 4.3 - R3 Cluster Interpretation Preparation
-- **Documents**: `docs/cluster_interpretation.md`
+- **Document**: `docs/cluster_interpretation.md`
 - **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template.csv`
-- Reviews sampled 60-second transcript windows and records early semantic patterns for later cluster interpretation.
-- The current draft uses sampled window text because Layer 2 cluster outputs are not yet available.
+- Reviews sampled 60-second transcript windows and records early semantic patterns for later Layer 2 cluster interpretation.
+- Uses the client taxonomy from `docs/friction_taxonomy.md`, based on `Friction & Sentiment Classification Framework.pdf`.
+- The current draft uses sampled window text because final Layer 2 cluster outputs are not yet available.
 - Final interpretation should be updated once `cluster_id`, representative windows, cluster sizes, and top terms are produced.
 
-| Semantic pattern | Example signal | Taxonomy link |
-|------------------|----------------|---------------|
-| Navigation / findability | User cannot locate a feedback page, claim path, or key action | F1 |
-| Content clarity | User says wording is formal, unclear, or hard to understand | F2 |
-| Interaction / control | Form, MFA, upload, or validation flow blocks progress | F3 |
-| Accessibility / AT | Screen reader, VoiceOver, PDF, heading, or focus issue appears | F4 |
-| Support / trust / safety | User questions trust, support, sensitivity, or reassurance | F6 |
+| Semantic pattern | Example signal | Official taxonomy link |
+|------------------|----------------|------------------------|
+| Comprehension friction | User says wording is formal, unclear, technical, or hard to understand | F1 |
+| Confidence friction | User is unsure what to do next, whether to trust a result, or what will happen | F2 |
+| Accessibility friction | Screen reader, VoiceOver, PDF, heading, focus, keyboard, or zoom issue appears | F3 |
+| Unresponsive interface | User acts but the page gives no clear response or feedback | F4 |
+| Unexpected behaviour | Interface behaves differently from the label, design, or user expectation | F5 |
+| Content not found | User cannot locate a feedback page, claim path, support page, or needed information | F6 |
+| Excessive effort | Task is possible but requires too many steps, setup, scrolling, repeated entry, or cognitive effort | F7 |
+| No observed friction | Positive feedback, neutral reading, or successful task progress without a clear impediment | `none` |
 
 ```powershell
 # Usage
@@ -384,18 +388,23 @@ python scripts\sample_r3_windows.py
 ## Step 5.1 - R3 Prompt Design
 - **Module**: `src/layer3/prompts.py`
 - **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md`
-- Defines the R3 semantic taxonomy, prompt structure, and JSON output schema for future LLM-based window classification.
+- Defines the R3 prompt structure and JSON output schema for future LLM-based window classification.
 - `src/layer3/prompts.py` builds chat-style prompt messages only; it does not call an LLM API.
-- Output labels align with the manual annotation template used in Step 5.3.
+- Output labels align with the official client F1-F7 friction framework, S1-S6 severity framework, and E1-E5 sentiment framework.
+- `F7` means `Excessive Effort`; no-friction windows are labelled with `friction_type = "none"`.
 
 | Output field | Purpose |
 |--------------|---------|
-| `friction_type` | Dominant F1-F7 semantic friction category |
-| `severity` | Estimated seriousness of the issue |
-| `sentiment` | User attitude or emotional tone in the window |
-| `narration_type` | Main narration mode, such as navigation or feedback |
+| `friction_type` | Dominant official friction code: F1-F7, `none`, or `unclear` |
+| `friction_label` | Human-readable label for the selected friction type |
+| `severity_id` | Client source severity ID: S1-S6, `none`, or `unclear` |
+| `severity` | Simplified severity label: `none`, `low`, `medium`, or `high` |
+| `sentiment_id` | Client source sentiment ID: E1-E5 or `unclear` |
+| `sentiment` | Simplified sentiment label: `positive`, `neutral`, `negative`, `mixed`, or `unclear` |
+| `narration_type` | Main narration mode, such as navigation, reading, or feedback evaluation |
 | `primary_evidence` | Short quote supporting the chosen label |
 | `rationale` | Brief explanation for the classification |
+
 
 ```python
 # Usage
@@ -412,19 +421,20 @@ messages = build_messages(
 )
 ```
 
-## Step 5.3 - Manual Annotation Set + Kappa Agreement Check
-### R3 Manual Annotation Set
+## Step 5.3 - R3 Manual Annotation Set
 - **Script**: `scripts/create_r3_manual_annotation_round1.py`
 - **Input**: `data/annotations/r3_window_review_sample.csv`
-- **Outputs**: `data/annotations/r3_manual_annotations_round1.csv`, `data/annotations/round1_blind_for_r8.csv`
-- Creates a 14-window first-round annotation set covering the F1-F7 friction categories.
+- **Outputs**: `data/annotations/r3_manual_annotations_round1.csv`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r8_manual_annotations_round1.csv`
+- Creates a 14-window first-round annotation set for R3 using the official client taxonomy.
 - Adds `task_title` and `task_instructions` from the project task CSV files in `data/raw/`.
-- Produces a blind copy for R8 so Step 5.4 can later calculate inter-annotator agreement.
+- Produces a blind context-only file for R8 and a blank R8 annotation template so another annotator can label independently.
+- Supports later Step 5.4 agreement evaluation between R3 and R8.
 
-| File | Audience | Contains R3 labels |
-|------|----------|--------------------|
-| `r3_manual_annotations_round1.csv` | R3 / Nix review | Yes |
-| `round1_blind_for_r8.csv` | R8 independent annotation | No |
+| File | Audience | Purpose | Contains R3 labels |
+|------|----------|---------|--------------------|
+| `r3_manual_annotations_round1.csv` | R3 / Nix review | R3 completed round 1 annotation | Yes |
+| `round1_blind_for_r8.csv` | R8 independent annotation | Context-only blind sample | No |
+| `r8_manual_annotations_round1.csv` | R8 independent annotation | Blank annotation template for R8 | No |
 
 ```powershell
 # Usage
@@ -473,22 +483,25 @@ notebooks/04_kappa_agreement.ipynb
 
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
-- Uses selected transcript windows to write qualitative case studies for accessibility, navigation, readability, and support-related issues.
+- Uses selected transcript windows to write qualitative case studies for accessibility, missing information, comprehension, confidence, and excessive-effort issues.
 - Current case studies are draft examples based on sampled R3 windows.
 - Final case studies should be updated after full clustering, LLM classification, and agreement results are available.
 
-| Case study focus | Related evidence source |
-|------------------|-------------------------|
-| Accessibility or assistive technology barrier | Transcript window + task context |
-| Navigation or findability breakdown | Window-level user narration |
-| Readability or content clarity problem | User feedback quote |
-| Support, trust, or safety concern | Window text and qualitative notes |
+| Case study focus | Related evidence source | Taxonomy link |
+|------------------|-------------------------|---------------|
+| Accessibility or assistive technology barrier | Transcript window + task context | F3 |
+| Missing or hidden pathway | Window-level user narration | F6 |
+| Readability or comprehension problem | User feedback quote | F1 |
+| Confidence or trust uncertainty | Window text and qualitative notes | F2 |
+| High cognitive or process effort | Window text and qualitative notes | F7 |
+
 
 ## R3 Current Limitations
-- Layer 2 clustering results are not yet available in the current repository.
+- Layer 2 clustering results are not yet finalised for R3 cluster interpretation.
 - LLM classification outputs are not yet available.
-- Step 5.3 still requires R8 independent annotation, adjudication, and agreement evaluation.
-- Step 8.3 should be revised once final cluster and classification outputs are complete.
+- R8 still needs to complete independent annotation in `data/annotations/r8_manual_annotations_round1.csv`.
+- Step 5.4 agreement evaluation should be calculated after R8 annotation is complete.
+- Step 8.3 should be revised once final cluster assignments, LLM outputs, and agreement results are available.
 
 - LLM classification outputs are not yet available.
 - Task context has not yet been automatically joined into each annotation row.
