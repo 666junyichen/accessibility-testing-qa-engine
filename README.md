@@ -24,6 +24,9 @@ pip install -r requirements.txt
 Run notebooks or scripts in src/ for data processing and analysis.
 
 ## Contents
+- [Step 0.1 - Repository and Environment Setup](#step-01---repository-and-environment-setup)
+- [Step 0.2 - AWS Transcribe Export Collection](#step-02---aws-transcribe-export-collection)
+- [Step 0.3 - Structured Raw Data Preparation](#step-03---structured-raw-data-preparation)
 - [Step 1.1 — Transcript JSON Parser](#step-11--transcript-json-parser)
 - [Step 1.2 — 60-Second Window Splitter](#step-12--60-second-window-splitter)
 - [Step 1.3 — Audio Feature Extraction](#step-13--audio-feature-extraction)
@@ -39,6 +42,41 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 5.1 - R3 Prompt Design](#step-51---r3-prompt-design)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
+
+## Step 0.1 - Repository and Environment Setup
+- **Status**: completed
+- Sets up the project repository skeleton and shared working structure:
+  - `data/raw/`
+  - `data/processed/`
+  - `src/`
+  - `notebooks/`
+  - `tests/`
+- Uses Python `3.10+` with dependencies tracked in `requirements.txt`
+- Provides the baseline project README and runnable repository layout for team development
+
+## Step 0.2 - AWS Transcribe Export Collection
+- **Status**: completed with one retained edge case
+- Collects AWS Transcribe JSON outputs under `data/raw/transcribe-output/`
+- Current repository state includes transcribe outputs for the development projects used in downstream parsing
+- Known edge case retained in the dataset:
+  - `troyparnell` is kept as a transcript failure / near-empty-file case for later validation handling
+- These JSON files are the source inputs for `src/data/transcript_parser.py`
+
+## Step 0.3 - Structured Raw Data Preparation
+- **Status**: completed with source-data limitation noted
+- Organises structured raw files under `data/raw/`, including:
+  - `organisations-data.csv`
+  - `tester_db.csv`
+  - `schema-research.sql`
+  - project folders such as `department-of-premier-and-cabinet-wa/`, `suncorp-insurance/`, `the-university-of-queensland/`, and `bupa-uk/`
+- Maintains `data/raw/tester_video_mapping.csv` for the currently recoverable mapping:
+  - `video_filename -> project -> tester_name`
+- Source-data limitation:
+  - the current `*-assignments.csv` files in the repo contain tester roster fields such as `TesterFullName`, `OptedIn`, and `TesterCohorts`
+  - they do **not** contain tester-to-task linkage, so `assignment_id`, `task_id`, and `task_title` cannot be reliably recovered from the current source files
+- Practical implication:
+  - Step 0.3 is complete for data organisation and video/project/tester mapping
+  - task-level mapping should remain documented as unavailable unless a richer assignment export is provided later
 
 ## Step 1.1 — Transcript JSON Parser
 - **Module**: `src/data/transcript_parser.py`
@@ -158,17 +196,34 @@ print(word_conf_dist)
 print(narration_density_by_video)
 ```
 
-## Step 2.2 — Structured Data EDA
+## Step 2.2 - Structured Data EDA
 - **Notebook**: `notebooks/02_structured_data_eda.ipynb`
-- Performs exploratory data analysis on structured data across three projects
+- Performs exploratory data analysis on the current local structured-data snapshot
+- Structured scope in the current snapshot:
+  - full structured EDA for the 3 development projects (`department-of-premier-and-cabinet-wa`, `suncorp-insurance`, `the-university-of-queensland`)
+  - survey-only analysis for `bupa-uk`
+  - Brighton excluded because only raw videos are currently available locally
 - Focus areas:
-  - Number of testers and tasks per project
-  - Cross-project tester participation
-  - Task type distribution
+  - raw-data coverage by project
+  - number of testers and tasks per development project
+  - cross-project tester participation
+  - task type distribution
   - Timeguide distribution
-  - Deviation between actual video duration and expected Timeguide (`duration_ratio`)
-- Uses both processed data (`windows.csv`, `video_metadata.csv`) and minimal raw data (`tasks.csv`)
-- Output: summary tables and visualizations (notebook-based, no fixed CSV output)
+  - deviation between actual video duration and expected Timeguide (`duration_ratio`)
+  - survey bundle scale and question-type mix where local survey files exist
+- Uses both processed data (`windows.csv`, `video_metadata.csv`) and raw structured files such as project `tasks.csv`, `tester_db.csv`, and local survey bundles
+- Current raw-data limitation:
+  - `tester_video_mapping.csv` supports video/project/tester joins
+  - task-level tester assignment is not available from the current `*-assignments.csv` exports, so Step 2.2 should not assume a recoverable tester-to-task mapping
+  - AAMI / Suncorp survey files are not present in the current local snapshot
+- Output: summary tables and visualizations plus the following CSV exports in `outputs/`:
+  - `step2_2_project_overview.csv`
+  - `step2_2_tester_cross_project.csv`
+  - `step2_2_task_type_distribution.csv`
+  - `step2_2_tasks_with_timeguide_minutes.csv`
+  - `step2_2_data_coverage.csv`
+  - `step2_2_survey_project_summary.csv`
+  - `step2_2_survey_question_types.csv`
 
 ```python
 # Usage

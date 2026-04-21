@@ -26,6 +26,8 @@ In addition to the transcript-based EDA on the six development samples, the stru
 - **Item-level records:** 49,315 pronunciation items across all six videos
 - **Segment-level records:** 2,932 segments
 - All key transcript-analysis tables were verified to contain exactly 6 unique `video_id` values after filtering, confirming correct scope
+- Structured-data analysis currently has **full local metadata coverage for the 3 development projects only**
+- `bupa-uk` is represented locally by a survey bundle, while Brighton currently has raw videos only and cannot be included in structured-data EDA
 
 > ✅ No major structural gaps were identified. The dataset is suitable for preliminary Layer 1 rule development.
 
@@ -125,7 +127,12 @@ The following threshold suggestions are based on development-sample EDA findings
 
 ## 5. Cross-Project Structural Notes
 
-The structured-data EDA also reveals several cross-project patterns that may affect later modelling and feature design.
+The structured-data EDA reveals several cross-project patterns across the 3 development projects and adds a lighter survey-coverage comparison for the locally available UQ and Bupa bundles.
+
+Within the current local snapshot, this means:
+- the core project/task/tester comparisons remain restricted to WA, Suncorp, and UQ
+- UQ and Bupa can be compared only at the **survey-structure** level
+- Brighton remains out of scope for Step 2.2 because only raw videos are available locally
 
 | Project | Tester Count | Task Count | Mean Timeguide (min) | Notes |
 |---|---:|---:|---:|---|
@@ -156,6 +163,7 @@ The chart below shows the task-type distribution across the structured dataset a
 | Theme | Key Finding |
 |---|---|
 | Data coverage | Six development-sample videos successfully loaded; 49K+ word-level records available |
+| Structured-data scope | Full structured EDA currently covers WA / Suncorp / UQ; Bupa is survey-only and Brighton is excluded |
 | Biggest quality flag | `ghum_wa` WPM ~220, which requires verification before modelling |
 | Threshold to revisit | `LOW_AUDIO_QUALITY` at 0.7 appears too lenient; ~12% of words fall below 0.8 |
 | Best prototype case | `terryaflint17_suncorp` narration_density ≈ 0.23, which anchors `SPARSE_NARRATION` calibration |

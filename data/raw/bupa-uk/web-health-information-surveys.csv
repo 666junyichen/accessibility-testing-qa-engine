@@ -1,0 +1,2 @@
+id,project_id,title,description,is_active,show_progress,allow_partial_save,is_template,survey_key,survey_name,created_at,updated_at
+553e12c6-ea88-4016-a3ed-dcf6010553cd,903a3302-7839-4173-aa6d-d0cae5c3bc9f,Bupa website Accessibility Survey,Accessibility testing survey for Bupa website,True,True,False,False,bupa_accessibility_survey,Bupa website Survey,2026-04-13 10:31:29.305000+00:00,2026-04-13 10:31:29.305000+00:00
