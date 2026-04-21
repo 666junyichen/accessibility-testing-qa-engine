@@ -281,11 +281,12 @@ print(report_path.read_text(encoding="utf-8")[:1000])  # preview first part of t
 |------|-----------|------|
 | Video duration vs Timeguide | duration_ratio < 0.3 or > 3.0 | `DURATION_ANOMALY` |
 | Silence ratio | silence_ratio > 0.6 | `EXCESSIVE_SILENCE` |
-| Transcription confidence | avg_confidence < 0.7 | `LOW_AUDIO_QUALITY` |
-| Narration density | narration_density < 0.2 | `SPARSE_NARRATION` |
+| Transcription confidence | avg_confidence < 0.75 | `LOW_AUDIO_QUALITY` |
+| Narration density | narration_density < 0.3 | `SPARSE_NARRATION` |
 
 - Each flag includes: video_filename, window_id, start_time, end_time, value
-- Output: `data/processed/layer1_flags.csv` (211 flags across 6 dev-sample videos)
+- Output: `data/processed/layer1_flags.csv` (278 flags across 15 dev-sample videos)
+- Threshold recalibration: `LOW_AUDIO_QUALITY` raised from 0.7 → 0.75 and `SPARSE_NARRATION` from 0.2 → 0.3, per Step 3.2 recommendation. Flag count changed from 214 → 278 (+29 LOW_AUDIO_QUALITY, +35 SPARSE_NARRATION; EXCESSIVE_SILENCE and DURATION_ANOMALY unchanged).
 
 ```python
 # Usage
@@ -312,14 +313,14 @@ detect_flags(
 | Transcription confidence | `avg_confidence < 0.7` | Too permissive |
 | Narration density | `narration_density < 0.2` | Functional but conservative |
 
-- Threshold adjustment record:
+- Threshold adjustment record (applied in Step 3.1 recalibration):
 
-| Flag | Current | Recommended |
-|------|---------|-------------|
-| `DURATION_ANOMALY` | `< 0.3 or > 3.0` | No change |
-| `EXCESSIVE_SILENCE` | `> 0.6` | No change |
-| `LOW_AUDIO_QUALITY` | `< 0.7` | `< 0.75` |
-| `SPARSE_NARRATION` | `< 0.2` | `< 0.3` |
+| Flag | Previous | Applied | Status |
+|------|----------|---------|--------|
+| `DURATION_ANOMALY` | `< 0.3 or > 3.0` | `< 0.3 or > 3.0` | No change |
+| `EXCESSIVE_SILENCE` | `> 0.6` | `> 0.6` | No change |
+| `LOW_AUDIO_QUALITY` | `< 0.7` | `< 0.75` | ✅ Applied |
+| `SPARSE_NARRATION` | `< 0.2` | `< 0.3` | ✅ Applied |
 
 - Development samples:
   - `ghum_wa`

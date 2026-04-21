@@ -6,8 +6,8 @@ THRESHOLDS = {
     'duration_ratio_min': 0.3,
     'duration_ratio_max': 3.0,
     'silence_ratio_max': 0.6,
-    'avg_confidence_min': 0.7,
-    'narration_density_min': 0.2,
+    'avg_confidence_min': 0.75,
+    'narration_density_min': 0.3,
 }
 
 
