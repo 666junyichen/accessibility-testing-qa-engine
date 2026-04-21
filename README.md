@@ -441,46 +441,50 @@ messages = build_messages(
 python scripts\create_r3_manual_annotation_round1.py
 ```
 ### R8 Manual Annotation Set + Kappa Agreement Check
-- **Script / Notebook:** `scripts/annotate_r8_round1.py`, `notebooks/04_kappa_agreement.ipynb`
-- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1.csv`
-- **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen’s kappa results for `friction_type`, `severity`, and `sentiment`
-- Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3.
-- Uses the field definitions from `docs/friction_taxonomy.md` and `docs/prompt_design.md` §6 to guide manual annotation.
+- **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
+- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`
+- **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen's kappa per dimension
+- Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3, using the Round 5 canonical schema.
+- Uses the field definitions from `docs/friction_taxonomy.md` and `docs/prompt_design.md` to guide manual annotation.
 - Keeps the annotation process blind by using `round1_blind_for_r8.csv`, which does not contain R3 labels.
 - The annotation script does **not** read `data/annotations/r3_manual_annotations_round1.csv`, `docs/cluster_interpretation.md`, or `docs/case_studies.md` during annotation.
-- Adds the manual annotation fields: `narration_type`, `at_context_present`, `friction_type`, `severity`, `sentiment`, `confidence`, `notes`, and fixes `annotator = "R8"`.
-- Compares the R3 and R8 first-round manual annotations on the shared 14-window sample using `window_id`.
-- Standardises `friction_type` labels to the short-code format (`F1`–`F7`) before agreement calculation.
-- Reports Cohen’s kappa for:
-  - `friction_type`
-  - `severity`
-  - `sentiment`
-- Also reports a weighted kappa for `severity`, since severity is ordinal (`none < low < medium < high`).
-- Produces cross-tab agreement tables to support manual review of disagreement patterns.
+- Fields align with Round 5 canonical schema from `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`:
+  - **5.1-A finding-level:** `finding`, `observed_signal`, `stated_signal`, `signal_alignment`, `friction_type` (F1-F7 / none / unclear), `severity_s` (S1-S6 / none / unclear), `sentiment_e` (E1-E5 / null), `calibrator_score_l` (L1-L5), `rationale`, `structural_amplification_note`
+  - **5.1-B video-level:** `narration_quality`, `recording_quality`, `coaching_evidence`
+  - **Other:** `annotated`, `confidence`, `notes`, `annotator`
+- Tracks annotation completion via explicit `annotated` flag to correctly handle no-friction windows where `finding` is legitimately blank.
+- Compares R3 and R8 annotations on the shared 14-window sample using `window_id`.
+- Reports Cohen's kappa for:
+  - **5.1-A:** `friction_type`, `severity_s` (nominal + linear weighted), `sentiment_e`, `calibrator_score_l`
+  - **5.1-B:** `narration_quality`, `recording_quality`, `coaching_evidence`
+- Also reports a weighted kappa for `severity_s` since severity is ordinal (S1 > S2 > ... > S6 > none).
+- Produces cross-tab agreement tables and supporting field presence audit.
+- Eval discipline:
+  - `sentiment_e = E3` (neutral expressed) is not equal to null (no verbal expression)
+  - `calibrator_score_l` is audit signal only; not merged with `severity_s`
+  - E3 excluded from aggregate sentiment per client framework but retained in distribution stats
 
 | File | Audience | Purpose |
 |---|---|---|
-| `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output |
+| `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output (Round 5 schema) |
 | `04_kappa_agreement.ipynb` | Team / review | Agreement calculation and disagreement inspection |
 
 ### Kappa Agreement Results Summary
 
-The inter-annotator agreement was calculated on the shared 14-window round 1 annotation set.
+> **Pending** - R3 must re-annotate the same 14-window sample using Round 5 canonical schema before Kappa can be calculated. R8 round 1 annotation completed.
 
+Previous results (old schema, for reference only - not comparable to Round 5):
 - `friction_type` kappa = **0.6606**
-- `severity` kappa = **0.3869**
-- `sentiment` kappa = **0.6640**
+- `severity` kappa = **0.3869** (simplified label)
+- `sentiment` kappa = **0.6640** (simplified label)
 - weighted `severity` kappa = **0.6038**
-
-These results suggest substantial agreement on `friction_type` and `sentiment`, and moderate agreement on `severity` when ordinal distance is considered.
 
 ```python
 # Usage
-python scripts/annotate_r8_round1.py
-# Then open and run:
+python scripts\annotate_r8_round1_updated.py
+# Then open and run after R3 re-annotation:
 notebooks/04_kappa_agreement.ipynb
 ```
-
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
 - Uses selected transcript windows to write qualitative case studies for accessibility, missing information, comprehension, confidence, and excessive-effort issues.
