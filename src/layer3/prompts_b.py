@@ -9,6 +9,27 @@
 用途：6.1 fusion 时作为置信度 weight；6.2 Coaching 建议的主轴基底。
 
 本模块不调用 LLM API，仅负责 prompt 文本装配。
+
+R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
+==========================================================================
+2 处需要 R3 精修 prompt 正文。文件内 search `R3 TODO` 可快速跳转。
+
+  Item 5. DEFINITIONS_PROMPT > recording_quality 边界
+          当前 round-1 Kappa=0.00 (R3/R8 分歧完全随机或同值塌陷)。
+          需区分 "录音完整性/可分析性" vs "制作层面的音质" 的边界。
+          典型信号：静音段长度 / gap 数 / 麦克风 clipping / 背景噪声程度
+
+  Item 6. FEW_SHOT_EXAMPLES_B 常量（当前空 list）
+          至少填 2 条完整 video-level 例子，建议覆盖：
+            - 例 A：narration_quality=rich + recording_quality=good + coaching_evidence=none
+                    (主动 think-aloud 的理想 session)
+            - 例 B：narration_quality=sparse + recording_quality=acceptable + coaching_evidence=explicit
+                    (如果 14 条里没有 explicit 案例，可构造合理的 moderator 明确引导场景)
+
+Canonical 纪律：R3 **不可** 新增/改名 schema 字段，尤其 coaching_evidence 保
+二值 (`none` / `explicit`) — Round 11 决策已锁。Pydantic 真源是 `schemas_b.py`。
+
+完成后 Nix 跑 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
 """
 
 import json
@@ -57,6 +78,20 @@ Use only the evidence in the transcript. Return only valid JSON. No markdown,
 no commentary, no preamble.
 """
 
+# -----------------------------------------------------------------
+# [R3 TODO item 5]: recording_quality boundary refinement
+#   Round-1 Kappa=0.00 → R3 and R8 disagree or labels collapsed to single value.
+#   In DEFINITIONS_PROMPT below, expand poor/acceptable/good with concrete
+#   audio-integrity signs (NOT production/video quality):
+#     poor suggested: long silences breaking comprehension / transcript gaps
+#                     >30s / sustained noise obscuring speech / truncated session
+#     acceptable suggested: brief gaps <10s / mild background noise / occasional
+#                           clipping but all task-relevant speech understandable
+#     good suggested: clean audio throughout / minimal gaps / speech consistently
+#                     clear / no analysis-impeding defects
+#   Emphasise: this is about usability of the transcript for downstream LLM
+#   analysis, not about whether the recording "looks professional".
+# -----------------------------------------------------------------
 DEFINITIONS_PROMPT = """
 Field definitions:
 
@@ -88,6 +123,20 @@ Judging rules:
 - If moderator is absent or silent, coaching_evidence is "none".
 """
 
+# -----------------------------------------------------------------
+# [R3 TODO item 6]: Few-shot examples for 5.1-B
+#   Fill below list with 2 complete VideoAssessment dicts (3-field shape:
+#   narration_quality / recording_quality / coaching_evidence).
+#
+#   Suggested coverage:
+#     - Example A: rich + good + none (ideal think-aloud session)
+#     - Example B: sparse + acceptable + explicit (moderator-guided session)
+#
+#   If empty, prompt stays identical to round-1 骨架 (single OUTPUT_EXAMPLE).
+# -----------------------------------------------------------------
+FEW_SHOT_EXAMPLES_B: list = []  # R3 TODO item 6: fill with 2 video-level dicts
+
+
 USER_PROMPT_TEMPLATE = """
 Assess the following test session transcript.
 
@@ -111,12 +160,19 @@ Return JSON matching exactly this schema:
 
 Example output:
 {output_example}
-"""
+{few_shot_block}"""
 
 
 def _json_block(data):
     """Return stable, readable JSON for embedding in prompt text."""
     return json.dumps(data, indent=2, ensure_ascii=True)
+
+
+def _few_shot_block():
+    """Return formatted few-shot block or empty string if list empty."""
+    if not FEW_SHOT_EXAMPLES_B:
+        return ""
+    return "\nAdditional examples:\n" + _json_block(FEW_SHOT_EXAMPLES_B)
 
 
 def build_user_prompt(
@@ -135,6 +191,7 @@ def build_user_prompt(
         transcript=transcript,
         output_schema=_json_block(OUTPUT_SCHEMA),
         output_example=_json_block(OUTPUT_EXAMPLE),
+        few_shot_block=_few_shot_block(),
     ).strip()
 
 

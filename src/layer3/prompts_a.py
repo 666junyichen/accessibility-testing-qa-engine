@@ -11,7 +11,37 @@
 - L1-L5 / signal_alignment / structural_amplification_note
                            源自 `client/s3_snapshot/07-friction-score-calibrator-prompt.md`
 
-本模块不调用 LLM API，仅负责 prompt 文本装配。调用方见 `src/layer3/client.py`（待建）。
+本模块不调用 LLM API，仅负责 prompt 文本装配。
+
+R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
+==========================================================================
+4 处需要 R3 精修 prompt 正文。文件内 search `R3 TODO` 可快速跳转。
+
+  Item 1. TAXONOMY_PROMPT > Severity 段 > S4 vs S5 边界
+          当前 round-1 Kappa raw=0.34 / weighted=0.61，分歧集中在邻级。
+          Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Severity
+
+  Item 2. TAXONOMY_PROMPT > Sentiment 段 > E2 vs E3 边界
+          当前 round-1 Kappa=0.22（fair），Positive/Satisfied vs Neutral/Indifferent 混淆。
+          Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Sentiment
+
+  Item 3. FEW_SHOT_EXAMPLES 常量（当前空 list）
+          至少填 3 条 finding 例子，覆盖 signal_alignment 三档：
+            - aligned：observed 和 stated 一致
+              (推荐：今日 smoke test Sharelinsonny_wa_w000 F6/S2/E3/L4 ChatGPT 绕道)
+            - conflicted：observed 和 stated 矛盾
+              (从 r3_manual_annotations_round1_canonical.csv 里挑；没有就构造)
+            - stated_missing：窗口内无口头表达
+              (从 data/processed/layer1_flags.csv 里 SPARSE_NARRATION flag 窗口挑)
+
+  Item 4. OUTPUT_EXAMPLE 可选扩充
+          当前只 1 条 F6 样例，可增加 1-2 条覆盖 F1/F3/F7 等其他类型。
+          非必做。
+
+Canonical 纪律：R3 **不可** 新增/改名 schema 字段。所有修改只在 prompt 字符串内部
+文字层面。Pydantic schema 真源是 `schemas_a.py`。
+
+完成后 Nix 跑 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
 """
 
 import json
@@ -117,6 +147,25 @@ unstated motivations, diagnoses, or personal attributes.
 Return only valid JSON. No markdown, no commentary, no preamble.
 """
 
+# -----------------------------------------------------------------
+# [R3 TODO item 1]: Severity S4 vs S5 boundary refinement
+#   Round-1 Kappa raw=0.34, weighted=0.61. Disagreement on adjacent levels.
+#   In TAXONOMY_PROMPT below, expand S4 and S5 definitions with concrete signs:
+#     S4 suggested: multiple failed attempts / detour / substantial extra time /
+#                   workaround needed / >N min over expected / facilitator hint
+#     S5 suggested: hesitation / single correction / mild confusion /
+#                   non-optimal path but recovered quickly / no task risk
+#   Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Severity
+#
+# [R3 TODO item 2]: Sentiment E2 vs E3 boundary refinement
+#   Round-1 Kappa=0.22 (fair). Disagreement on expressed mild positive vs neutral.
+#   In TAXONOMY_PROMPT below, expand E2 and E3 definitions:
+#     E2 suggested: any expressed mild positive valence ("ok good", "nice that
+#                   worked", "perfect") — the cue is emotional valence, not magnitude
+#     E3 suggested: pure description without emotional valence ("so I'll click
+#                   this", "I'm reading the form") — matter-of-fact narration only
+#   Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Sentiment
+# -----------------------------------------------------------------
 TAXONOMY_PROMPT = """
 Friction types (F1-F7):
 - F1 Comprehension Friction: cannot understand content due to jargon, unclear
@@ -201,6 +250,28 @@ Extraction rules:
   friction_type and mention secondary issues in rationale.
 """
 
+# -----------------------------------------------------------------
+# [R3 TODO item 3]: Few-shot examples for 5.1-A
+#   Fill below list with 3 complete finding dicts (same 10-field shape as
+#   OUTPUT_EXAMPLE), one per signal_alignment value. Examples are injected into
+#   the user prompt automatically when non-empty.
+#
+#   Required coverage (one example each):
+#     - signal_alignment="aligned"          (observed ≈ stated)
+#     - signal_alignment="conflicted"       (observed != stated; score to lower)
+#     - signal_alignment="stated_missing"   (stated_signal=null, sentiment_e=null)
+#
+#   If empty, prompt stays identical to round-1 骨架 (single OUTPUT_EXAMPLE).
+#   Nix's smoke test (Sharelinsonny_wa_w000 → F6/S2/E3/L4) is a ready-to-use
+#   `aligned` example template.
+# -----------------------------------------------------------------
+FEW_SHOT_EXAMPLES: list = []  # R3 TODO item 3: fill with 3 finding dicts
+
+# -----------------------------------------------------------------
+# [R3 TODO item 4, OPTIONAL]: Enrich OUTPUT_EXAMPLE above with more friction
+# types (current only F6). Non-critical — few-shot coverage matters more.
+# -----------------------------------------------------------------
+
 USER_PROMPT_TEMPLATE = """
 Extract friction findings from the following transcript window.
 
@@ -228,12 +299,21 @@ is an array of zero or more finding objects):
 
 Example output:
 {output_example}
-"""
+{few_shot_block}"""
 
 
 def _json_block(data):
     """Return stable, readable JSON for embedding in prompt text."""
     return json.dumps(data, indent=2, ensure_ascii=True)
+
+
+def _few_shot_block():
+    """Return formatted few-shot block or empty string if list empty."""
+    if not FEW_SHOT_EXAMPLES:
+        return ""
+    return "\nAdditional examples (one per signal_alignment value):\n" + _json_block(
+        {"findings": FEW_SHOT_EXAMPLES}
+    )
 
 
 def build_user_prompt(
@@ -254,6 +334,7 @@ def build_user_prompt(
         window_text=window_text,
         output_schema=_json_block(OUTPUT_SCHEMA),
         output_example=_json_block(OUTPUT_EXAMPLE),
+        few_shot_block=_few_shot_block(),
     ).strip()
 
 
