@@ -1,4 +1,4 @@
-# CS20 Project
+<img width="1635" height="554" alt="image" src="https://github.com/user-attachments/assets/d0c293f0-dce1-4fd9-b0e4-b85313d1d14e" /># CS20 Project
 
 ## Data Source
 AWS S3 bucket:
@@ -442,9 +442,10 @@ Round-2 is diagnostic only; it does **not** update `layer2_cluster_assignments.c
 
 ## Step 4.3 - R3 Cluster Interpretation Preparation
 - **Document**: `docs/cluster_interpretation.md`
-- **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template.csv`
+- **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template_canonical.csv`
 - Reviews sampled 60-second transcript windows and records early semantic patterns for later Layer 2 cluster interpretation.
 - Uses the client taxonomy from `docs/friction_taxonomy.md`, based on `Friction & Sentiment Classification Framework.pdf`.
+- Uses Round 5 canonical annotation fields from `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`; the older `window_semantic_labels_template.csv` is retained only as a legacy template.
 - The current draft uses sampled window text because final Layer 2 cluster outputs are not yet available.
 - Final interpretation should be updated once `cluster_id`, representative windows, cluster sizes, and top terms are produced.
 
@@ -490,24 +491,31 @@ messages = build_messages(
 ```
 
 ## Step 5.3 - R3 Manual Annotation Set
-- **Script**: `scripts/create_r3_manual_annotation_round1.py`
-- **Input**: `data/annotations/r3_window_review_sample.csv`
-- **Outputs**: `data/annotations/r3_manual_annotations_round1.csv`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r8_manual_annotations_round1.csv`
-- Creates a 14-window first-round annotation set for R3 using the official client taxonomy.
-- Adds `task_title` and `task_instructions` from the project task CSV files in `data/raw/`.
-- Produces a blind context-only file for R8 and a blank R8 annotation template so another annotator can label independently.
-- Supports later Step 5.4 agreement evaluation between R3 and R8.
+- **Legacy setup script**: `scripts/create_r3_manual_annotation_round1.py`
+- **Canonical migration script**: `scripts/migrate_r3_annotations_to_canonical.py`
+- **Inputs**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/r3_manual_annotations_round1.csv`
+- **Canonical outputs**: `data/annotations/r3_manual_annotations_round1_canonical.csv`, `data/annotations/window_semantic_labels_template_canonical.csv`
+- The original 14-window first-round R3 file (`r3_manual_annotations_round1.csv`) is retained as a historical input and is no longer the Round 5 evaluation source.
+- `scripts/migrate_r3_annotations_to_canonical.py` migrates reusable fields from the legacy R3 file and fills the canonical-only fields required by `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`.
+- `r3_manual_annotations_round1_canonical.csv` matches the field order of `r8_manual_annotations_round1.csv`, so Step 5.4 can compare R3 and R8 labels directly.
+- `window_semantic_labels_template_canonical.csv` is a header-only template for future Round 5 annotation work; the older `window_semantic_labels_template.csv` is retained only as a legacy template.
 
-| File | Audience | Purpose | Contains R3 labels |
-|------|----------|---------|--------------------|
-| `r3_manual_annotations_round1.csv` | R3 / Nix review | R3 completed round 1 annotation | Yes |
+| File | Audience | Purpose | Round 5 evaluation source |
+|------|----------|---------|--------------------------|
+| `r3_manual_annotations_round1.csv` | R3 / Nix review | Legacy R3 round-1 annotation input | No |
+| `r3_manual_annotations_round1_canonical.csv` | R3 / R8 / Nix | R3 canonical annotation output with 14 completed rows | Yes |
 | `round1_blind_for_r8.csv` | R8 independent annotation | Context-only blind sample | No |
-| `r8_manual_annotations_round1.csv` | R8 independent annotation | Blank annotation template for R8 | No |
+| `r8_manual_annotations_round1.csv` | R8 / Nix | R8 canonical annotation output | Yes |
+| `window_semantic_labels_template_canonical.csv` | Future annotators | Empty canonical annotation template | No |
 
 ```powershell
-# Usage
+# Legacy setup (already completed)
 python scripts\create_r3_manual_annotation_round1.py
+
+# Canonical migration / regeneration
+python scripts\migrate_r3_annotations_to_canonical.py
 ```
+
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
 - **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`
@@ -531,15 +539,17 @@ python scripts\create_r3_manual_annotation_round1.py
   - `sentiment_e = E3` (neutral expressed) is not equal to null (no verbal expression)
   - `calibrator_score_l` is audit signal only; not merged with `severity_s`
   - E3 excluded from aggregate sentiment per client framework but retained in distribution stats
-
+- Kappa should compare `data/annotations/r3_manual_annotations_round1_canonical.csv` against `data/annotations/r8_manual_annotations_round1.csv`.
+  
 | File | Audience | Purpose |
 |---|---|---|
+| `r3_manual_annotations_round1_canonical.csv` | R3 canonical annotation | Completed Round 5 schema output for the 14-window sample |
 | `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output (Round 5 schema) |
 | `04_kappa_agreement.ipynb` | Team / review | Agreement calculation and disagreement inspection |
 
 ### Kappa Agreement Results Summary
 
-> **Pending** - R3 must re-annotate the same 14-window sample using Round 5 canonical schema before Kappa can be calculated. R8 round 1 annotation completed.
+> **Ready for recomputation** - R3 has migrated the same 14-window sample to `r3_manual_annotations_round1_canonical.csv`; R8 round 1 annotation is already in canonical schema. Step 5.4 can now recompute Kappa using the two canonical CSVs.
 
 Previous results (old schema, for reference only - not comparable to Round 5):
 - `friction_type` kappa = **0.6606**
@@ -550,7 +560,7 @@ Previous results (old schema, for reference only - not comparable to Round 5):
 ```python
 # Usage
 python scripts\annotate_r8_round1_updated.py
-# Then open and run after R3 re-annotation:
+# Then open and run after pointing R3_PATH to r3_manual_annotations_round1_canonical.csv:
 notebooks/04_kappa_agreement.ipynb
 ```
 ## Step 8.3 - R3 Case Studies
@@ -571,10 +581,8 @@ notebooks/04_kappa_agreement.ipynb
 ## R3 Current Limitations
 - Layer 2 clustering results are not yet finalised for R3 cluster interpretation.
 - LLM classification outputs are not yet available.
-- R8 still needs to complete independent annotation in `data/annotations/r8_manual_annotations_round1.csv`.
-- Step 5.4 agreement evaluation should be calculated after R8 annotation is complete.
+- Step 5.4 agreement evaluation still needs to be recomputed using `data/annotations/r3_manual_annotations_round1_canonical.csv` and `data/annotations/r8_manual_annotations_round1.csv`.
 - Step 8.3 should be revised once final cluster assignments, LLM outputs, and agreement results are available.
 
-- LLM classification outputs are not yet available.
 - Task context has not yet been automatically joined into each annotation row.
-- Step 5.3 and Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
+- Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
