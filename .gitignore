@@ -5,3 +5,4 @@ venv/
 .venv/
 *.pyc
 outputs/
+data/processed/items.csv
