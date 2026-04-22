@@ -3,3 +3,9 @@ pandas
 numpy
 jupyter
 python-dotenv
+pydantic>=2.0
+librosa
+scikit-learn
+matplotlib
+seaborn
+pytest

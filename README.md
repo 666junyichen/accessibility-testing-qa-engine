@@ -39,7 +39,7 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 4.1 — Layer 2 Feature Engineering](#step-41--layer-2-feature-engineering)
 - [Step 4.2 — Layer 2 Clustering](#step-42--layer-2-clustering)
 - [Step 4.3 - R3 Cluster Interpretation Preparation](#step-43---r3-cluster-interpretation-preparation)
-- [Step 5.1 - R3 Prompt Design](#step-51---r3-prompt-design)
+- [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
 
@@ -441,31 +441,20 @@ python -m src.layer2.feature_engineering
 python scripts\sample_r3_windows.py
 ```
 
-## Step 5.1 - R3 Prompt Design
-- **Module**: `src/layer3/prompts.py`
-- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md`
-- Defines the R3 prompt structure and JSON output schema for future LLM-based window classification.
-- `src/layer3/prompts.py` builds chat-style prompt messages only; it does not call an LLM API.
-- Output labels align with the official client F1-F7 friction framework, S1-S6 severity framework, and E1-E5 sentiment framework.
-- `F7` means `Excessive Effort`; no-friction windows are labelled with `friction_type = "none"`.
-
-| Output field | Purpose |
-|--------------|---------|
-| `friction_type` | Dominant official friction code: F1-F7, `none`, or `unclear` |
-| `friction_label` | Human-readable label for the selected friction type |
-| `severity_id` | Client source severity ID: S1-S6, `none`, or `unclear` |
-| `severity` | Simplified severity label: `none`, `low`, `medium`, or `high` |
-| `sentiment_id` | Client source sentiment ID: E1-E5 or `unclear` |
-| `sentiment` | Simplified sentiment label: `positive`, `neutral`, `negative`, `mixed`, or `unclear` |
-| `narration_type` | Main narration mode, such as navigation, reading, or feedback evaluation |
-| `primary_evidence` | Short quote supporting the chosen label |
-| `rationale` | Brief explanation for the classification |
-
+## Step 5.1 - Prompt Design (Round 5 canonical)
+- **Modules**: `src/layer3/schemas_a.py` + `prompts_a.py` (5.1-A finding-level) / `schemas_b.py` + `prompts_b.py` (5.1-B video-level)
+- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md` (semantic definitions only; schema source-of-truth lives in pydantic models)
+- Defines two prompt tracks for LLM-based classification:
+  - **5.1-A** emits a list of findings per window (F1-F7 / S1-S6 / E1-E5 / L1-L5 per finding, with `observed_signal` / `stated_signal` / `signal_alignment` + optional `structural_amplification_note`).
+  - **5.1-B** emits one video-level assessment (`narration_quality` / `recording_quality` / `coaching_evidence`).
+- Modules build chat-style prompt messages only; they do not call an LLM API.
+- Output labels align with the SMP canonical frameworks (F1-F7 friction, S1-S6 severity, E1-E5 sentiment, L1-L5 calibrator score).
+- Field definitions, enums, and null discipline are documented in the `schemas_*.py` module docstrings — treat those as the single source of truth.
 
 ```python
-# Usage
+# Usage (5.1-A finding-level)
 import sys; sys.path.insert(0, 'src')
-from layer3.prompts import build_messages
+from layer3.prompts_a import build_messages
 
 messages = build_messages(
     window_id='example_window_id',

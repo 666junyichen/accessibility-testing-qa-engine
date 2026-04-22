@@ -275,7 +275,7 @@ Limitations:
 
 - Wait for Layer 2 clustering output.
 - Map each cluster to one official semantic label.
-- Use this interpretation to support `src/layer3/prompts.py`.
+- Use this interpretation to support `src/layer3/prompts_a.py` / `prompts_b.py`.
 - Reuse strong examples for `docs/prompt_design.md` and future
   `docs/case_studies.md`.
 - Ask R8 to annotate the blind round 1 file using the same taxonomy so Step 5.4

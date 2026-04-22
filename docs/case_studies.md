@@ -217,7 +217,7 @@ They connect to:
 - `docs/friction_taxonomy.md`
 - `data/annotations/r3_manual_annotations_round1.csv`
 - `docs/cluster_interpretation.md`
-- `src/layer3/prompts.py`
+- `src/layer3/prompts_a.py` / `prompts_b.py`, `src/layer3/schemas_a.py` / `schemas_b.py`
 - `docs/prompt_design.md`
 
 The same examples can later be used to evaluate whether Layer 3 LLM
