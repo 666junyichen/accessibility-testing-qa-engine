@@ -190,16 +190,23 @@ Severity (S1-S6):
   blocked.
 - S3 Severe Friction: significant component failure or barrier worked around
   or skipped.
-- S4 High Friction: major difficulty requiring substantial effort, workaround,
-  or repeated attempts.
-- S5 Medium Friction: noticeable delay, hesitation, or confusion; completion
-  not seriously threatened.
+- S4 High Friction: major difficulty that materially slows progress but does
+  not fully block the component task. Use S4 when there are multiple failed
+  attempts, a clear detour, substantial extra time, an external workaround, a
+  facilitator hint, or repeated attempts before recovery.
+- S5 Medium Friction: noticeable but recoverable friction. Use S5 for brief
+  hesitation, one correction, mild confusion, or a non-optimal path when the
+  participant recovers quickly and the task outcome is not at risk.
 - S6 Low Friction: minor issue with negligible impact.
 
 Sentiment (E1-E5):
 - E1 Positive / Delighted: genuine delight, praise, or pleasant surprise.
-- E2 Positive / Satisfied: things worked as expected with mild positive feeling.
-- E3 Neutral / Indifferent: matter-of-fact narration without clear emotion.
+- E2 Positive / Satisfied: things worked as expected with mild positive
+  valence. Any expressed positive cue counts here, even if subtle, such as
+  "ok good", "nice", "perfect", or "that worked".
+- E3 Neutral / Indifferent: matter-of-fact narration without emotional valence,
+  such as describing the next action ("I will click this") or reading content
+  aloud. Do not use E3 for mild praise; use E2 when positive valence is stated.
 - E4 Negative / Frustrated: annoyance, confusion, disappointment, irritation.
 - E5 Negative / Angry: strong negative emotion, hostility, or intent to abandon.
 
@@ -265,7 +272,80 @@ Extraction rules:
 #   Nix's smoke test (Sharelinsonny_wa_w000 → F6/S2/E3/L4) is a ready-to-use
 #   `aligned` example template.
 # -----------------------------------------------------------------
-FEW_SHOT_EXAMPLES: list = []  # R3 TODO item 3: fill with 3 finding dicts
+FEW_SHOT_EXAMPLES: list = [
+    {
+        "finding": (
+            "Participant could not find the required pathway in the site and "
+            "used ChatGPT as an external workaround to continue."
+        ),
+        "observed_signal": (
+            "Participant searched the page, opened unrelated areas, then left "
+            "the product flow to ask ChatGPT for the next step."
+        ),
+        "stated_signal": "I cannot find it here, so I will use ChatGPT.",
+        "signal_alignment": "aligned",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "rationale": (
+            "The participant's behaviour and statement both show that the "
+            "required pathway was not found inside the product. Because the "
+            "component task depended on an external workaround, this fits S2 "
+            "and the L4 gate rather than a recoverable search delay."
+        ),
+        "structural_amplification_note": None,
+    },
+    {
+        "finding": (
+            "Participant briefly hesitated on the date filter but completed "
+            "the selection without needing help."
+        ),
+        "observed_signal": (
+            "Participant paused, opened the date filter once, corrected the "
+            "selection, and submitted the form successfully."
+        ),
+        "stated_signal": "This filter is confusing.",
+        "signal_alignment": "conflicted",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "rationale": (
+            "The statement is negative, but the observed behaviour shows only "
+            "one correction and quick recovery. Following the conflict rule, "
+            "severity is scored to the lower observed behaviour level rather "
+            "than the stronger stated frustration."
+        ),
+        "structural_amplification_note": None,
+    },
+    {
+        "finding": (
+            "Participant repeatedly cycled through unlabeled controls with the "
+            "keyboard and skipped the upload action without verbal comment."
+        ),
+        "observed_signal": (
+            "Participant tabbed through the same unlabeled controls several "
+            "times, did not activate the upload button, and moved on."
+        ),
+        "stated_signal": None,
+        "signal_alignment": "stated_missing",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": None,
+        "calibrator_score_l": "L3",
+        "rationale": (
+            "There is no verbal statement, so stated_signal and sentiment_e "
+            "remain null. The repeated keyboard cycling and skipped action are "
+            "observable accessibility evidence, matching high friction without "
+            "a full task blocker."
+        ),
+        "structural_amplification_note": (
+            "Keyboard or assistive-technology reliance amplified the impact of "
+            "the unlabeled controls."
+        ),
+    },
+]
 
 # -----------------------------------------------------------------
 # [R3 TODO item 4, OPTIONAL]: Enrich OUTPUT_EXAMPLE above with more friction

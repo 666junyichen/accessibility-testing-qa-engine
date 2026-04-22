@@ -103,9 +103,17 @@ narration_quality — how useful the participant's verbalisation is for analysis
 
 recording_quality — whether the session is usable for downstream analysis
 (this is about transcript/audio integrity, NOT production/film quality):
-- poor: audio broken or large gaps; session barely usable.
-- acceptable: usable with some defects (brief gaps, noise, minor clipping).
-- good: clean and complete recording.
+- poor: recording/transcript defects prevent reliable analysis. Use poor when
+  long silences or transcript gaps over 30 seconds break comprehension,
+  sustained background noise or microphone clipping obscures task-relevant
+  speech, or the session is truncated/missing important task sections.
+- acceptable: usable for analysis despite limited defects. Use acceptable for
+  brief gaps under about 10 seconds, mild background noise, or occasional
+  clipping when all task-relevant speech and participant intent remain
+  understandable.
+- good: clean, complete, and consistently understandable recording. Use good
+  when speech is clear throughout, gaps are minimal or irrelevant, and there
+  are no audio/transcript defects that impede downstream LLM analysis.
 
 coaching_evidence — whether the moderator directly coached the participant
 through tasks (binary scale for now):
@@ -134,7 +142,18 @@ Judging rules:
 #
 #   If empty, prompt stays identical to round-1 骨架 (single OUTPUT_EXAMPLE).
 # -----------------------------------------------------------------
-FEW_SHOT_EXAMPLES_B: list = []  # R3 TODO item 6: fill with 2 video-level dicts
+FEW_SHOT_EXAMPLES_B: list = [
+    {
+        "narration_quality": "rich",
+        "recording_quality": "good",
+        "coaching_evidence": "none",
+    },
+    {
+        "narration_quality": "sparse",
+        "recording_quality": "acceptable",
+        "coaching_evidence": "explicit",
+    },
+]
 
 
 USER_PROMPT_TEMPLATE = """
