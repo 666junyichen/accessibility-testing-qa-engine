@@ -2,11 +2,17 @@
 
 ## 1. Purpose
 
-This document explains the prompt design for Step 5.1 Layer 3 LLM
+This document explains the semantic design for Step 5.1 Layer 3 LLM
 classification.
 
-The prompt is designed to classify each transcript window using the client
-friction and sentiment framework documented in:
+Step 5.1 is split into two prompts:
+
+- 5.1-A finding-level classification for friction, severity, sentiment, and
+  calibrator audit signals.
+- 5.1-B video/session-level assessment for narration quality, recording
+  quality, and coaching evidence.
+
+The prompts use the client friction and sentiment framework documented in:
 
 `docs/friction_taxonomy.md`
 
@@ -22,15 +28,17 @@ This prompt design supports:
 - Step 5.4 Agreement Evaluation
 - Step 8.3 Case Study
 
-## 2. Input Unit
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
-The basic input unit is one transcript window from:
+## 2. Input Units
+
+5.1-A uses one transcript window from:
 
 `data/processed/windows.csv`
 
-Each window represents approximately 60 seconds of tester narration.
-
-The core input fields are:
+Each window represents approximately 60 seconds of tester narration. The core
+input fields are:
 
 | Field | Source | Purpose |
 |---|---|---|
@@ -41,6 +49,13 @@ The core input fields are:
 | `task_title` | raw task CSV files | Provides task context |
 | `task_instructions` | raw task CSV files | Helps interpret whether behaviour is relevant to the task |
 
+5.1-B uses a full video/session transcript and the same project/task context
+where available. It assigns session-level quality signals rather than extracting
+individual friction findings.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
+
 ## 3. Why Task Context Is Included
 
 Window text alone can be ambiguous.
@@ -50,7 +65,7 @@ without knowing what they were asked to find.
 
 Therefore, the prompt includes both:
 
-- transcript window text
+- transcript text
 - task title and task instructions
 
 This allows the LLM to distinguish between:
@@ -61,65 +76,28 @@ This allows the LLM to distinguish between:
 - successful completion
 - content feedback without a task barrier
 
-## 4. Prompt Components
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
-The prompt design is implemented in:
+## 4. Canonical Prompt Modules
 
-`src/layer3/prompts.py`
+The Step 5.1 implementation is split across the canonical Round 5 modules:
 
-It contains:
-
-| Component | Purpose |
+| Module | Role |
 |---|---|
-| `SYSTEM_PROMPT` | Defines the LLM role and output constraints |
-| `TAXONOMY_PROMPT` | Provides friction, severity, sentiment, narration, and boundary definitions |
-| `USER_PROMPT_TEMPLATE` | Formats one window and its task context |
-| `OUTPUT_SCHEMA` | Defines the required JSON output fields |
-| `OUTPUT_EXAMPLE` | Provides an example JSON structure |
-| `build_user_prompt()` | Builds the user prompt for one window |
-| `build_messages()` | Builds chat-style messages for an LLM client |
+| `src/layer3/prompts_a.py` | Builds 5.1-A finding-level prompt messages |
+| `src/layer3/prompts_b.py` | Builds 5.1-B video/session-level prompt messages |
+| `src/layer3/schemas_a.py` | Defines the 5.1-A pydantic output schema |
+| `src/layer3/schemas_b.py` | Defines the 5.1-B pydantic output schema |
 
-## 5. Output JSON Schema
+The prompt modules may embed a JSON-shaped example for LLM instruction, but the
+authoritative field structure is the pydantic schema. Documentation should not
+define a separate JSON schema or alternate field names.
 
-The LLM must return valid JSON only.
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
-Expected output:
-
-```json
-{
-  "window_id": "string",
-  "friction_type": "F1 | F2 | F3 | F4 | F5 | F6 | F7 | none | unclear",
-  "friction_label": "string",
-  "severity_id": "S1 | S2 | S3 | S4 | S5 | S6 | none | unclear",
-  "severity": "none | low | medium | high",
-  "sentiment_id": "E1 | E2 | E3 | E4 | E5 | unclear",
-  "sentiment": "positive | neutral | negative | mixed | unclear",
-  "narration_type": "thinking_aloud | reading_page | navigation | feedback_evaluation | task_response | off_task | unclear",
-  "at_context_present": "yes | no | unclear",
-  "primary_evidence": "short quote from the transcript window",
-  "rationale": "brief explanation of the classification",
-  "confidence": "low | medium | high"
-}
-```
-
-## 6. Field Definitions
-
-| Field | Meaning |
-|---|---|
-| `window_id` | The transcript window being classified |
-| `friction_type` | One client F-code, or `none` / `unclear` |
-| `friction_label` | Human-readable name of the selected friction type |
-| `severity_id` | Client source severity ID from S1-S6, or `none` / `unclear` |
-| `severity` | Simplified severity label used by current R3 annotation files |
-| `sentiment_id` | Client source sentiment ID from E1-E5, or `unclear` |
-| `sentiment` | Simplified sentiment label used by current R3 annotation files |
-| `narration_type` | The main type of narration in the window |
-| `at_context_present` | Whether accessibility or assistive technology context is present |
-| `primary_evidence` | A short quote supporting the classification |
-| `rationale` | Short explanation of why this label was selected |
-| `confidence` | Model confidence in the classification |
-
-## 7. Friction Type Mapping
+## 5. Friction Type Boundaries
 
 The friction labels follow `docs/friction_taxonomy.md`.
 
@@ -132,80 +110,168 @@ The friction labels follow `docs/friction_taxonomy.md`.
 | F5 | Unexpected Behaviour |
 | F6 | Content Not Found |
 | F7 | Excessive Effort |
-| none | No observed friction |
-| unclear | Unclear friction evidence |
+
+Boundary rules:
+
+- Use F1 when the main issue is understanding wording, terminology,
+  instructions, or content meaning.
+- Use F2 when the tester understands the content but is unsure what will
+  happen, what to choose, whether an action is correct, or where to go next.
+- Use F3 when the issue involves screen readers, keyboard access, focus,
+  headings, labels, zoom, PDF accessibility, or other accessibility/assistive
+  technology barriers.
+- Use F4 when the tester takes an action but the interface gives no response,
+  delayed response, or unclear feedback.
+- Use F5 when the interface behaves differently from what the label, design, or
+  prior pattern suggested.
+- Use F6 when the tester cannot locate information or a pathway needed for the
+  task because it is missing, hidden, or placed unexpectedly.
+- Use F7 when the task is technically possible but requires too many steps,
+  repeated entries, time, scrolling, setup, or cognitive effort.
 
 Important boundary:
 
-- `F7` does not mean "no issue". In the client framework, `F7` means
-  excessive effort.
-- Use `none` when the window shows positive feedback, normal progress, neutral
-  reading, or successful completion without an observed impediment.
-- Use `unclear` when the transcript or task context is too ambiguous.
+- `F7` does not mean "no issue". In the client framework, `F7` means excessive
+  effort.
+- A no-friction window is represented by an empty `findings` array in 5.1-A, not
+  by a special friction label.
+- When multiple issues appear in one event, choose the dominant friction type
+  and explain secondary issues in `rationale`.
 
-## 8. Severity Mapping
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
-The prompt asks for both the client source severity ID and a simplified severity
-label.
+## 6. Severity Boundaries
 
-| Source ID | Client Label | Simplified Label |
+Severity uses the client S1-S6 framework. Severity is separate from friction
+type: the same F-code can appear at different severity levels.
+
+| Source ID | Client Label | Boundary |
 |---|---|---|
-| S1 | Blocker (Project) | high |
-| S2 | Task Blocker | high |
-| S3 | Severe Friction | high |
-| S4 | High Friction | medium |
-| S5 | Medium Friction | medium |
-| S6 | Low Friction | low |
-| none | No observed friction | none |
-| unclear | Insufficient evidence | choose best simplified value only if evidence allows |
+| S1 | Blocker (Project) | Primary project outcome cannot be achieved independently; abandonment or facilitator intervention is required. |
+| S2 | Task Blocker | Overall project may continue, but one assigned task is completely blocked. |
+| S3 | Severe Friction | Significant component failure or barrier; tester works around, skips, or proceeds without being able to verify something important. |
+| S4 | High Friction | Major difficulty with substantial effort, repeated attempts, workaround, or extended time. |
+| S5 | Medium Friction | Noticeable delay, hesitation, or confusion, but completion is not seriously threatened. |
+| S6 | Low Friction | Minor issue with negligible impact on task progress. |
 
-## 9. Sentiment Mapping
+Do not use simplified severity labels as prompt output requirements. Manual
+annotation and LLM outputs must use the canonical field in `schemas_a.py`.
 
-The prompt asks for both the client source sentiment ID and a simplified
-sentiment label.
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
-| Source ID | Client Label | Simplified Label |
+## 7. Sentiment Boundaries
+
+Sentiment uses the client E1-E5 framework and captures expressed participant
+feeling, not the objective severity of the friction.
+
+| Source ID | Client Label | Boundary |
 |---|---|---|
-| E1 | Positive / Delighted | positive |
-| E2 | Positive / Satisfied | positive |
-| E3 | Neutral / Indifferent | neutral |
-| E4 | Negative / Frustrated | negative |
-| E5 | Negative / Angry | negative |
-| unclear | Insufficient evidence | unclear |
+| E1 | Positive / Delighted | Genuine delight, praise, or pleasant surprise. |
+| E2 | Positive / Satisfied | Mild positive feeling; things worked as expected. |
+| E3 | Neutral / Indifferent | Matter-of-fact verbal expression without clear emotion. |
+| E4 | Negative / Frustrated | Annoyance, confusion, disappointment, irritation, or frustration. |
+| E5 | Negative / Angry | Strong negative emotion, hostility, or clear intent to abandon or avoid. |
 
-If both positive and negative sentiment appear in the same window, use simplified
-sentiment `mixed` and choose the strongest matching `sentiment_id`.
+Sentiment discipline:
+
+- `E3` means neutral sentiment was expressed.
+- `null` means no emotional evidence was available.
+- `E3` and `null` are not interchangeable.
+- If the participant makes any verbal expression in the finding, use E1-E5.
+- Only use `null` when there is no stated signal and no emotion evidence.
+
+Do not use simplified sentiment labels as prompt output requirements. Manual
+annotation and LLM outputs must use the canonical field in `schemas_a.py`.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
+
+## 8. Signal Alignment And Calibrator Boundaries
+
+5.1-A findings use a dual-signal interpretation:
+
+- `observed_signal`: what the participant actually did.
+- `stated_signal`: what the participant said.
+- `signal_alignment`: whether the observed and stated signals agree.
+
+Alignment rules:
+
+- Use `aligned` when observed behaviour and stated experience support the same
+  interpretation.
+- Use `conflicted` when the participant's statement and behaviour disagree; in
+  that case, score to the lower observed behaviour level rather than averaging.
+- Use `stated_missing` when the transcript contains no relevant verbal
+  statement for the finding.
+
+`calibrator_score_l` is an L1-L5 audit signal from the SMP calibrator prompt. It
+coexists with `severity_s` but must not be merged with it or treated as the same
+scale.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
+
+## 9. Video-Level Quality Boundaries
+
+5.1-B is a video/session-level assessment. It is independent from 5.1-A and
+should not list friction findings or severity.
+
+Semantic boundaries:
+
+- `narration_quality` measures whether the participant verbalised enough
+  context for analysis, from no useful narration to rich think-aloud evidence.
+- `recording_quality` measures whether the transcript/audio is usable for
+  downstream analysis. It is not a judgement of production or film quality.
+- `coaching_evidence` identifies moderator coaching. Neutral prompts such as
+  "what are you thinking?" or "can you describe that?" are not coaching.
+  Explicitly telling the participant where to click, naming the target control,
+  or giving the answer is coaching.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
 ## 10. Design Rules
 
-The prompt uses the following rules:
+The prompts use the following rules:
 
-- Use evidence from the transcript window.
-- Use task context to interpret whether behaviour is relevant.
-- Do not infer personal attributes or unstated motivations.
-- Choose one dominant friction type.
+- Use only evidence from the transcript and task context.
+- Use task context to decide whether behaviour is relevant.
+- Do not infer personal attributes, unstated motivations, diagnoses, or
+  unsupported cohort details.
+- Produce one finding per distinct friction event in 5.1-A.
+- Return an empty findings array when no friction is present.
+- Choose one dominant friction type per finding.
 - If multiple issues appear, explain the main one in `rationale`.
-- Return only valid JSON.
-- Use `none` when there is no clear friction.
 - Do not use F7 for no-friction or positive-only windows.
-- Use `unclear` when the transcript is too ambiguous.
+- Use cohort context only in `structural_amplification_note` / `rationale`; do
+  not upweight severity or calibrator score because of cohort identity alone.
+- Return only valid JSON from the prompt response.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
 ## 11. Relationship To Manual Annotation
 
-The prompt output fields align with the manual annotation fields in:
+Manual annotation must use pydantic canonical fields from:
 
-`data/annotations/window_semantic_labels_template.csv`
+- `src/layer3/schemas_a.py`
+- `src/layer3/schemas_b.py`
 
-The current manual annotation CSVs still use a simplified `severity` and
-`sentiment` field. The prompt additionally includes `severity_id` and
-`sentiment_id` so future agreement evaluation can be closer to the client
-source framework.
+The annotation CSV used for agreement should align with the same fields as
+`data/annotations/r8_manual_annotations_round1.csv`. Older fields such as
+`friction_label`, `severity_id`, simplified `severity`, `sentiment_id`,
+simplified `sentiment`, and `primary_evidence` are historical inputs only and
+should not be used as the evaluation source for Round 5.
 
 This makes it easier to compare:
 
 - human labels
 - LLM labels
 - cluster interpretation labels
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
 ## 12. Relationship To Cluster Interpretation
 
@@ -216,26 +282,27 @@ The prompt design also uses the semantic patterns identified in:
 For example:
 
 - unclear wording, jargon, or technical/legal terminology maps to F1
-- uncertainty about next action, consequence, or wayfinding maps to F2
-- inaccessible PDFs, focus issues, labels, headings, screen reader barriers, or keyboard barriers map to F3
-- no response, delayed response, or missing confirmation after an action maps to F4
+- uncertainty about next action, consequence, trust, or wayfinding maps to F2
+- inaccessible PDFs, focus issues, labels, headings, screen reader barriers, or
+  keyboard barriers map to F3
+- no response, delayed response, or missing confirmation after an action maps to
+  F4
 - surprising system behaviour maps to F5
 - missing or hidden information maps to F6
-- too many steps, repeated entry, or excessive scrolling maps to F7
+- too many steps, repeated entry, extra setup, or excessive scrolling maps to F7
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
 ## 13. Future Use
 
-This prompt will later support Step 5.2 LLM classification.
+These prompts support Step 5.2 LLM classification.
 
-A future classifier can import:
-
-```python
-from layer3.prompts import build_messages
-```
-
-and call:
+5.1-A finding-level messages:
 
 ```python
+from layer3.prompts_a import build_messages
+
 messages = build_messages(
     window_id=window_id,
     project=project,
@@ -246,11 +313,33 @@ messages = build_messages(
 )
 ```
 
-These messages can then be sent to an LLM API.
+5.1-B video/session-level messages:
+
+```python
+from layer3.prompts_b import build_messages
+
+messages = build_messages(
+    video_id=video_id,
+    project=project,
+    transcript=transcript,
+    task_title=task_title,
+    task_instructions=task_instructions,
+)
+```
+
+These messages can then be sent to an LLM API. Outputs should be validated
+against `schemas_a.py` / `schemas_b.py`.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
 
 ## 14. Current Limitations
 
-- The current prompt does not call any LLM API.
+- The current prompt modules build messages only; they do not call any LLM API.
 - Task context is not yet automatically joined into every production window.
-- The prompt has not yet been evaluated against a completed two-annotator manual annotation set.
-- The JSON schema may be refined after Step 5.3 manual annotation and Step 5.4 agreement evaluation.
+- R3 round-1 annotations still need migration to the Round 5 canonical schema.
+- The prompts have not yet been evaluated against a completed two-annotator
+  canonical annotation set.
+
+Field schema lives in `src/layer3/schemas_a.py` / `schemas_b.py`; this doc only
+explains semantic boundaries.
