@@ -303,7 +303,7 @@ detect_flags(
 
 ## Step 3.2 — Layer 1 Validation on Development Samples
 - **Notebook**: `notebooks/03_layer1_validation.ipynb`
-- Validates Layer 1 on **6 development samples** through manual inspection and threshold review
+- Validates Layer 1 on **6 development samples** through manual inspection, threshold review, and precision/recall analysis
 - Threshold recalibration applied 2026-04-22: `LOW_AUDIO_QUALITY` raised 0.7 → **0.75**, `SPARSE_NARRATION` raised 0.2 → **0.3**; flag count changed from 214 → **278** across all 55 dev videos (+29 LOW_AUDIO_QUALITY, +35 SPARSE_NARRATION; EXCESSIVE_SILENCE and DURATION_ANOMALY unchanged)
 - Rule assessment (v2 — post-recalibration):
 
@@ -341,8 +341,19 @@ detect_flags(
 | `SPARSE_NARRATION` | 5 | 15 | +10 | All from `terryaflint17_suncorp`; no new samples affected |
 | **Total** | **66** | **95** | **+29** | |
 
+- Precision / Recall analysis (Section 7 of notebook) — `DURATION_ANOMALY` and `EXCESSIVE_SILENCE` excluded (thresholds unchanged):
+
+| Rule | Version | Precision | Recall | Change vs v1 |
+|------|---------|----------:|-------:|---|
+| `LOW_AUDIO_QUALITY` | v1 `< 0.70` | 1.000 | 0.525 | baseline |
+| `LOW_AUDIO_QUALITY` | v2 `< 0.75` | 0.975 | 0.709 | precision −0.025; recall +0.184 |
+| `SPARSE_NARRATION` | v1 `< 0.20` | 1.000 | 0.333 | baseline |
+| `SPARSE_NARRATION` | v2 `< 0.30` | 1.000 | 0.395 | precision unchanged; recall +0.062 |
+
+- Precision/Recall conclusion: precision did not drop substantially for either rule (LOW_AUDIO_QUALITY: −2.5%; SPARSE_NARRATION: unchanged). No threshold rollback or further adjustment recommended. One marginal FP noted in `LOW_AUDIO_QUALITY` (`ramazankawish_uq_w061`, confidence=0.721) — isolated spike in otherwise high-confidence sample (mean=0.934).
+
 - Output:
-  - updated sample-level validation notebook (v2)
+  - updated sample-level validation notebook (v2) with precision/recall analysis
   - manual rule assessment with v1/v2 comparison
   - threshold adjustment record (applied to `src/layer1/rule_detector.py`)
 
