@@ -518,29 +518,27 @@ python scripts\migrate_r3_annotations_to_canonical.py
 
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
-- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`
+- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
 - **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen's kappa per dimension
 - Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3, using the Round 5 canonical schema.
 - Uses the field definitions from `docs/friction_taxonomy.md` and `docs/prompt_design.md` to guide manual annotation.
 - Keeps the annotation process blind by using `round1_blind_for_r8.csv`, which does not contain R3 labels.
 - The annotation script does **not** read `data/annotations/r3_manual_annotations_round1.csv`, `docs/cluster_interpretation.md`, or `docs/case_studies.md` during annotation.
 - Fields align with Round 5 canonical schema from `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`:
-  - **5.1-A finding-level:** `finding`, `observed_signal`, `stated_signal`, `signal_alignment`, `friction_type` (F1-F7 / none / unclear), `severity_s` (S1-S6 / none / unclear), `sentiment_e` (E1-E5 / null), `calibrator_score_l` (L1-L5), `rationale`, `structural_amplification_note`
+  - **5.1-A finding-level:** `finding`, `observed_signal`, `stated_signal`, `signal_alignment`, `friction_type` (F1–F7 / none / unclear), `severity_s` (S1–S6 / none / unclear), `sentiment_e` (E1–E5 / null), `calibrator_score_l` (L1–L5), `rationale`, `structural_amplification_note`
   - **5.1-B video-level:** `narration_quality`, `recording_quality`, `coaching_evidence`
   - **Other:** `annotated`, `confidence`, `notes`, `annotator`
 - Tracks annotation completion via explicit `annotated` flag to correctly handle no-friction windows where `finding` is legitimately blank.
-- Compares R3 and R8 annotations on the shared 14-window sample using `window_id`.
-- Reports Cohen's kappa for:
-  - **5.1-A:** `friction_type`, `severity_s` (nominal + linear weighted), `sentiment_e`, `calibrator_score_l`
+- Compares `r3_manual_annotations_round1_canonical.csv` and `r8_manual_annotations_round1.csv` on the shared 14-window sample using `window_id`.
+- Reports Cohen's kappa for all Round 5 canonical dimensions:
+  - **5.1-A:** `friction_type`, `severity_s` (nominal + linear weighted), `sentiment_e`, `calibrator_score_l` (nominal + linear weighted), `signal_alignment`
   - **5.1-B:** `narration_quality`, `recording_quality`, `coaching_evidence`
-- Also reports a weighted kappa for `severity_s` since severity is ordinal (S1 > S2 > ... > S6 > none).
-- Produces cross-tab agreement tables and supporting field presence audit.
+- Produces cross-tab agreement tables, disagreement `window_id` lists per dimension, and supporting field presence audit.
 - Eval discipline:
   - `sentiment_e = E3` (neutral expressed) is not equal to null (no verbal expression)
   - `calibrator_score_l` is audit signal only; not merged with `severity_s`
   - E3 excluded from aggregate sentiment per client framework but retained in distribution stats
-- Kappa should compare `data/annotations/r3_manual_annotations_round1_canonical.csv` against `data/annotations/r8_manual_annotations_round1.csv`.
-  
+
 | File | Audience | Purpose |
 |---|---|---|
 | `r3_manual_annotations_round1_canonical.csv` | R3 canonical annotation | Completed Round 5 schema output for the 14-window sample |
@@ -549,9 +547,29 @@ python scripts\migrate_r3_annotations_to_canonical.py
 
 ### Kappa Agreement Results Summary
 
-> **Ready for recomputation** - R3 has migrated the same 14-window sample to `r3_manual_annotations_round1_canonical.csv`; R8 round 1 annotation is already in canonical schema. Step 5.4 can now recompute Kappa using the two canonical CSVs.
+Round 5 canonical Kappa computed 2026-04-22 using `r3_manual_annotations_round1_canonical.csv` + `r8_manual_annotations_round1.csv` (14 shared windows):
 
-Previous results (old schema, for reference only - not comparable to Round 5):
+| Schema | Dimension | Kappa | Level |
+|---|---|---|---|
+| 5.1-A | `friction_type` | **0.8293** | Almost perfect |
+| 5.1-A | `severity_s` (nominal) | **0.3378** | Fair |
+| 5.1-A | `severity_s` (weighted) | **0.6056** | Substantial |
+| 5.1-A | `sentiment_e` | **0.2222** | Fair |
+| 5.1-A | `calibrator_score_l` (nominal) | **0.8971** | Almost perfect |
+| 5.1-A | `calibrator_score_l` (weighted) | **0.9271** | Almost perfect |
+| 5.1-A | `signal_alignment` | N/A | 100% agree (single class) |
+| 5.1-B | `narration_quality` | **0.5882** | Moderate |
+| 5.1-B | `recording_quality` | 0.0 (92.9% agree) | Class imbalance |
+| 5.1-B | `coaching_evidence` | N/A | 100% agree (single class) |
+
+Key observations:
+- `friction_type` and `calibrator_score_l` show almost perfect agreement
+- `severity_s` nominal kappa is fair (0.34) but weighted kappa is substantial (0.61) — all disagreements are between adjacent levels
+- `sentiment_e` kappa is fair (0.22); 6 of 8 disagreements are at the E3/E4 boundary — joint calibration session recommended before Step 5.4 final evaluation
+- `signal_alignment`, `coaching_evidence`: all 14 windows labelled identically by both annotators; kappa undefined (single class)
+- `recording_quality` kappa = 0.0 due to class imbalance (13/14 = `good`); observed agreement is 92.9%
+
+Previous results (old schema, for reference only — not comparable to Round 5):
 - `friction_type` kappa = **0.6606**
 - `severity` kappa = **0.3869** (simplified label)
 - `sentiment` kappa = **0.6640** (simplified label)
@@ -560,9 +578,10 @@ Previous results (old schema, for reference only - not comparable to Round 5):
 ```python
 # Usage
 python scripts\annotate_r8_round1_updated.py
-# Then open and run after pointing R3_PATH to r3_manual_annotations_round1_canonical.csv:
+# Then open and run:
 notebooks/04_kappa_agreement.ipynb
 ```
+
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
 - Uses selected transcript windows to write qualitative case studies for accessibility, missing information, comprehension, confidence, and excessive-effort issues.
