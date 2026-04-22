@@ -304,23 +304,24 @@ detect_flags(
 ## Step 3.2 — Layer 1 Validation on Development Samples
 - **Notebook**: `notebooks/03_layer1_validation.ipynb`
 - Validates Layer 1 on **6 development samples** through manual inspection and threshold review
-- Reviews whether rule outputs are reasonable under the current hard-coded thresholds:
+- Threshold recalibration applied 2026-04-22: `LOW_AUDIO_QUALITY` raised 0.7 → **0.75**, `SPARSE_NARRATION` raised 0.2 → **0.3**; flag count changed from 214 → **278** across all 55 dev videos (+29 LOW_AUDIO_QUALITY, +35 SPARSE_NARRATION; EXCESSIVE_SILENCE and DURATION_ANOMALY unchanged)
+- Rule assessment (v2 — post-recalibration):
 
-| Rule | Threshold | Verdict |
-|------|-----------|---------|
-| Video duration vs Timeguide | `duration_ratio < 0.3 or > 3.0` | Appropriate |
-| Silence ratio | `silence_ratio > 0.6` | Appropriate |
-| Transcription confidence | `avg_confidence < 0.7` | Too permissive |
-| Narration density | `narration_density < 0.2` | Functional but conservative |
+| Rule | Threshold v1 | Threshold v2 | Verdict |
+|------|-------------|-------------|---------|
+| Video duration vs Timeguide | `duration_ratio < 0.3 or > 3.0` | `< 0.3 or > 3.0` | ✅ No change needed |
+| Silence ratio | `silence_ratio > 0.6` | `> 0.6` | ✅ No change needed |
+| Transcription confidence | `avg_confidence < 0.7` | `< 0.75` | ✅ Target achieved |
+| Narration density | `narration_density < 0.2` | `< 0.3` | ✅ Target achieved |
 
-- Threshold adjustment record (applied in Step 3.1 recalibration):
+- Threshold adjustment record:
 
-| Flag | Previous | Applied | Status |
-|------|----------|---------|--------|
+| Flag | v1 threshold | v2 threshold | Status |
+|------|-------------|-------------|--------|
 | `DURATION_ANOMALY` | `< 0.3 or > 3.0` | `< 0.3 or > 3.0` | No change |
 | `EXCESSIVE_SILENCE` | `> 0.6` | `> 0.6` | No change |
-| `LOW_AUDIO_QUALITY` | `< 0.7` | `< 0.75` | ✅ Applied |
-| `SPARSE_NARRATION` | `< 0.2` | `< 0.3` | ✅ Applied |
+| `LOW_AUDIO_QUALITY` | `< 0.7` | `< 0.75` | ✅ Applied 2026-04-22 |
+| `SPARSE_NARRATION` | `< 0.2` | `< 0.3` | ✅ Applied 2026-04-22 |
 
 - Development samples:
   - `ghum_wa`
@@ -330,25 +331,26 @@ detect_flags(
   - `ramazankawish_uq`
   - `jenniferparry7_uq`
 
-- Validation summary:
-  - `DURATION_ANOMALY`: **2** flagged cases, both judged reasonable
-  - `EXCESSIVE_SILENCE`: **38** flagged windows, all from `terryaflint17_suncorp`
-  - `LOW_AUDIO_QUALITY`: **21** flagged windows across 4 development samples
-  - `SPARSE_NARRATION`: **5** flagged windows, all from `terryaflint17_suncorp`
+- Validation summary (dev 6 samples, v2 thresholds, 95 total flags):
+
+| Flag | v1 count | v2 count | Change | Notes |
+|------|---:|---:|---:|---|
+| `DURATION_ANOMALY` | 2 | 2 | — | `carlpatrickrobinson_suncorp` (0.144) + `jenniferparry7_uq` (0.159), both genuine short recordings |
+| `EXCESSIVE_SILENCE` | 38 | 38 | — | All from `terryaflint17_suncorp` (mean silence_ratio 0.618) |
+| `LOW_AUDIO_QUALITY` | 21 | 40 | +19 | `terryaflint17_suncorp` (28) + `jenniferparry7_uq` (9) + `ramazankawish_uq` (2) + `reneerussell99_wa` (1) |
+| `SPARSE_NARRATION` | 5 | 15 | +10 | All from `terryaflint17_suncorp`; no new samples affected |
+| **Total** | **66** | **95** | **+29** | |
 
 - Output:
-  - sample-level validation notebook
-  - manual rule assessment
-  - threshold adjustment record
-  - proposed Layer 1 threshold updates for v2
+  - updated sample-level validation notebook (v2)
+  - manual rule assessment with v1/v2 comparison
+  - threshold adjustment record (applied to `src/layer1/rule_detector.py`)
 
 ```python
 import pandas as pd
-
 flags = pd.read_csv('data/processed/layer1_flags.csv')
 audio = pd.read_csv('data/processed/audio_features.csv')
 metadata = pd.read_csv('data/processed/video_metadata.csv')
-
 DEV_VIDEO_IDS = [
     'ghum_wa',
     'reneerussell99_wa',
@@ -357,7 +359,6 @@ DEV_VIDEO_IDS = [
     'ramazankawish_uq',
     'jenniferparry7_uq'
 ]
-
 audio_dev = audio[audio['video_id'].isin(DEV_VIDEO_IDS)]
 print(audio_dev['video_id'].nunique(), 'development samples')
 print(flags['flag'].value_counts())
