@@ -244,32 +244,32 @@ task_per_project = tasks_df.groupby("project")["Order"].nunique()
 duration_ratio = video_metadata["duration_ratio"].describe()
 ```
 
-## Step 2.3 — EDA Report 
-- **Report**: `eda_report.md`
+## Step 2.3 — EDA Report
+- **Report**: `docs/eda_report.md`
 - Consolidates findings from:
-  - Step 2.1 — Transcript Data EDA
-  - Step 2.2 — Structured Data EDA
-- Summarises key data quality issues, prototype cases, and implications for later Layer 1 rule design
+  - Step 2.1 — Transcript Data EDA (`notebooks/01_transcript_eda.ipynb`)
+  - Step 2.2 — Structured Data EDA (`notebooks/02_structured_data_eda.ipynb`)
+- Summarises key data quality issues, prototype cases, and implications for Layer 1 rule design
 - Main report themes:
   - dataset coverage and development-sample scope
   - anomalous speech-rate case (`ghum_wa`)
   - low-confidence transcription patterns
   - duration deviation from Timeguide
   - sparse-narration prototype case (`terryaflint17_suncorp`)
-  - cross-project structural observations
-  - preliminary threshold suggestions for Layer 1
+  - cross-project structural observations and survey coverage
+  - Layer 1 threshold outcomes (v2 applied 2026-04-22)
 - Key findings:
-  - `ghum_wa` shows an anomalously high average WPM (~220), which requires verification
-  - around **12% of words** fall below confidence **0.8**, suggesting the current `LOW_AUDIO_QUALITY` threshold may be too lenient
-  - `terryaflint17_suncorp` is the clearest sparse-narration prototype (`narration_density` ≈ 0.23)
-  - actual durations substantially exceed Timeguide expectations (**mean duration ratio ≈ 5.66×**)
-- Output: integrated markdown report for W7/W8 discussion and Layer 1 calibration reference
+  - `ghum_wa` shows an anomalously high average WPM (~220), which requires verification before use as a modelling signal
+  - **5.6% of words** fall below confidence **0.5**; **12.0% of words** fall below **0.8** — `LOW_AUDIO_QUALITY` threshold raised from 0.7 → **0.75** (applied 2026-04-22)
+  - `terryaflint17_suncorp` is the clearest sparse-narration prototype (`narration_density` = 0.233) — `SPARSE_NARRATION` threshold raised from 0.2 → **0.3** (applied 2026-04-22)
+  - actual recording durations are shorter than Timeguide expectations (**mean duration ratio = 0.53**); 3 videos flagged as `DURATION_ANOMALY` (ratio < 0.3)
+  - 18 testers appear across multiple projects; survey EDA covers UQ + Bupa only (AAMI/Suncorp survey files not present locally)
+- Output: `docs/eda_report.md` — integrated markdown report for W7/W8 discussion and Layer 1 calibration reference
 
 ```python
 # Usage
 from pathlib import Path
-
-report_path = Path("eda_report.md")
+report_path = Path("docs/eda_report.md")
 print(report_path.read_text(encoding="utf-8")[:1000])  # preview first part of the report
 ```
 
