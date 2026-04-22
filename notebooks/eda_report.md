@@ -23,11 +23,12 @@ In addition to the transcript-based EDA on the six development samples, the stru
 ## 1. Dataset Scale & Coverage
 
 - **Window-level records:** 331 transcript windows / 326 audio-feature windows (near-complete join)
-- **Item-level records:** 49,315 pronunciation items across all six videos
+- **Item-level records:** 49,315 pronunciation items (40,997 after filtering to `type=pronunciation`)
 - **Segment-level records:** 2,932 segments
 - All key transcript-analysis tables were verified to contain exactly 6 unique `video_id` values after filtering, confirming correct scope
 - Structured-data analysis currently has **full local metadata coverage for the 3 development projects only**
-- `bupa-uk` is represented locally by a survey bundle, while Brighton currently has raw videos only and cannot be included in structured-data EDA
+- `bupa-uk` is represented locally by a survey bundle only (no local `projects/tasks/assignments` files); Brighton has raw videos only and is excluded from structured-data EDA
+- AAMI / Suncorp survey files are not present in the current local snapshot; survey EDA covers **UQ and Bupa only**
 
 > ✅ No major structural gaps were identified. The dataset is suitable for preliminary Layer 1 rule development.
 
@@ -58,8 +59,8 @@ Window-level average confidence appears generally healthy across the development
 
 | Confidence threshold | Proportion of words below |
 |---|---|
-| < 0.5 | Small (isolated failures) |
-| < 0.8 | **~12% of all words** |
+| < 0.5 | **5.6%** of all words |
+| < 0.8 | **12.0%** of all words |
 
 The histogram below shows the full word-level confidence distribution across the six development samples.
 
@@ -67,22 +68,28 @@ The histogram below shows the full word-level confidence distribution across the
 
 This suggests that the current `LOW_AUDIO_QUALITY` threshold of **0.7** may be too permissive. A noticeable proportion of words already fall below 0.8, which means a 0.7 window-average cutoff may miss borderline low-quality cases.
 
-**Recommendation:** raise the threshold to **0.75–0.8**, or supplement window-average confidence with a word-level low-confidence ratio feature.
+**Outcome:** threshold raised to **0.75** (applied 2026-04-22 per Step 3.2 validation). Word-level low-confidence ratio can be considered as a supplementary feature in later modelling.
 
 
 ---
 
 ### 2.3 Duration Deviation — Structured Data
 
-Across the structured-data analysis, actual recording durations substantially exceed Timeguide expectations, with a **mean duration ratio of 5.66×** and a median of **6.07×**. In this dataset, the main deviation pattern is on the high side: many videos exceed the 3.0× threshold, while no videos fall below 0.3×.
+Across the structured-data analysis, actual recording durations are substantially **shorter** than Timeguide expectations, with a **mean duration ratio of 0.53** and a median of **0.62**. In the current 15-video local snapshot, the main deviation pattern is on the low side: three videos fall below the 0.3 threshold, while no videos exceed 3.0×.
 
-This pattern appears across projects and is more likely to reflect genuine tester behaviour, such as longer exploration, pauses, or repeated attempts, rather than a pure data error. However, it also means that Timeguide alone should not be treated as a reliable expected-duration baseline in Layer 1 rules.
+| Video | Project | duration_ratio | Flag |
+|---|---|---:|---|
+| `carlpatrickrobinson` (UQ) | the-university-of-queensland | 0.146 | ✅ `DURATION_ANOMALY` |
+| `jenniferparry7` (UQ) | the-university-of-queensland | 0.159 | ✅ `DURATION_ANOMALY` |
+| `carlpatrickrobinson` (Suncorp) | suncorp-insurance | 0.144 | ✅ `DURATION_ANOMALY` |
 
-The chart below shows the distribution of Timeguide values across the structured dataset. Although it does not directly plot duration ratio, it provides useful context for understanding why Timeguide alone is not a reliable expected-duration baseline.
+These three cases are all genuinely short recordings and are correctly captured by the Layer 1 `DURATION_ANOMALY` rule (`duration_ratio < 0.3`). No videos in the current snapshot exceed the upper threshold of 3.0×.
+
+The chart below shows the distribution of Timeguide values across the structured dataset, providing context for understanding why Timeguide alone is not a strict quality baseline.
 
 ![Timeguide Distribution](figures/chart4_timeguide_distribution.png)
 
-**Takeaway:** Structured-data analysis shows that recording durations are consistently much longer than Timeguide expectations. Timeguide should therefore be treated as a loose reference only, rather than a strict quality baseline. High duration-ratio cases are more useful as anomaly candidates for later Layer 1 validation.
+**Takeaway:** Recording durations in the current dev snapshot are consistently shorter than Timeguide expectations. The `DURATION_ANOMALY` rule correctly identifies the three extreme short-recording cases. Timeguide should be treated as a loose reference only.
 
 ---
 
@@ -90,10 +97,10 @@ The chart below shows the distribution of Timeguide values across the structured
 
 | Sample / Case | Feature | Value | Interpretation |
 |---|---|---|---|
-| `terryaflint17_suncorp` | narration_density | **≈ 0.23** | `SPARSE_NARRATION` prototype |
+| `terryaflint17_suncorp` | narration_density | **0.233** | `SPARSE_NARRATION` prototype |
 | `ghum_wa` | words_per_minute | **~220 WPM** | needs verification |
 | several windows | silence_ratio | right-skewed distribution | high-silence windows observed |
-| several videos | duration_ratio | > 3.0× | `DURATION_ANOMALY` candidates |
+| `carlpatrickrobinson` (×2) + `jenniferparry7` | duration_ratio | 0.144–0.159 | `DURATION_ANOMALY` flagged (< 0.3) |
 
 Among the prototype cases listed above, `terryaflint17_suncorp` is the clearest sparse-narration example in the development set. With a narration density of about 0.23, it falls comfortably below a reasonable sparse-narration boundary and provides a useful calibration anchor for later Layer 1 rule validation.
 
@@ -120,8 +127,9 @@ The following threshold suggestions are based on development-sample EDA findings
 - High-silence windows and sparse-narration windows may overlap, so Layer 1 rule documentation should note the possibility of double-flagging
 
 ### Duration (`DURATION_ANOMALY`)
-- Extreme deviations (ratio < 0.3 or > 3.0) clearly exist in the structured data
-- Timeguide should not be used as a hard baseline given the observed 5.65× average duration ratio
+- Extreme short-recording deviations (ratio < 0.3) are present: 3 videos flagged in the current 15-video snapshot
+- No videos exceed the upper threshold of 3.0× in the current snapshot
+- Timeguide should be treated as a loose reference only; the mean duration ratio of 0.53 across the dev snapshot reflects genuine session-length variation rather than data error
 
 ---
 
@@ -131,24 +139,26 @@ The structured-data EDA reveals several cross-project patterns across the 3 deve
 
 Within the current local snapshot, this means:
 - the core project/task/tester comparisons remain restricted to WA, Suncorp, and UQ
-- UQ and Bupa can be compared only at the **survey-structure** level
+- UQ and Bupa can be compared at the **survey-structure** level; both have 43 questions and 20 completed responses
+- AAMI / Suncorp survey files are **not present locally**; survey conclusions should be framed as partial coverage until those files are available
 - Brighton remains out of scope for Step 2.2 because only raw videos are available locally
 
-| Project | Tester Count | Task Count | Mean Timeguide (min) | Notes |
-|---|---:|---:|---:|---|
-| Department of Premier and Cabinet (WA) | 17 | 14 | 9.36 | relatively shorter Timeguides |
-| Suncorp Insurance | 21 | 11 | 10.95 | moderate project scale |
-| University of Queensland | 19 | 10 | 16.60 | longer Timeguides on average |
+| Project | Tester Count | Task Count | Mean Timeguide (min) | Median Timeguide (min) | Notes |
+|---|---:|---:|---:|---:|---|
+| Department of Premier and Cabinet (WA) | 17 | 14 | 9.36 | 10.0 | relatively shorter Timeguides |
+| Suncorp Insurance | 21 | 11 | 10.95 | 10.0 | moderate project scale |
+| University of Queensland | 19 | 10 | 16.60 | 15.0 | longest Timeguides; max 45 min |
 
 | Structural Aspect | Key Finding | Implication |
 |---|---|---|
 | Cross-project participation | 18 testers appear across multiple projects | useful for later cross-project comparison |
 | Task labels | labels are fragmented / compound | task-type normalisation may be needed |
 | Timeguide | mean = 11.93 min, median = 10 min, max = 45 min | project context should be considered in duration interpretation |
+| Survey coverage | UQ (43 questions, 20 responses) + Bupa (43 questions, 20 responses) locally available | AAMI / Suncorp survey files not present in current snapshot |
 
 - Tester counts are broadly comparable across the three client projects, while task counts vary slightly according to project scope.
 - **18 testers appear across multiple projects**, which may support later cross-project performance tracking.
-- Task-type analysis shows that labels are not fully standardised across the structured dataset. The most common task types are `CNT` and `SRH` (5 each), followed by several sparse or compound labels such as `CNT;LND`, `WEB;HOM;MNU`, and `NAV;SRH`.
+- Task-type analysis shows that labels are not fully standardised across the structured dataset. The most common task types are `CNT` and `SRH` (5 each), followed by `<NA>` (3 tasks with no type assigned), then `BRD` and `NAV` (2 each), with the remaining 18 types appearing only once — many as compound labels such as `CNT;LND`, `WEB;HOM;MNU`, and `NAV;SRH`.
 - This fragmented task-type structure suggests that task-type normalisation is likely to be necessary before task-related features are used in later modelling.
 - UQ tasks have longer Timeguides on average than WA and Suncorp, which suggests that project context should be considered when interpreting duration-related behaviour.
 
@@ -167,8 +177,10 @@ The chart below shows the task-type distribution across the structured dataset a
 | Biggest quality flag | `ghum_wa` WPM ~220, which requires verification before modelling |
 | Threshold to revisit | `LOW_AUDIO_QUALITY` at 0.7 appears too lenient; ~12% of words fall below 0.8 |
 | Best prototype case | `terryaflint17_suncorp` narration_density ≈ 0.23, which anchors `SPARSE_NARRATION` calibration |
-| Structural finding | Videos run ~5.6× longer than Timeguide on average, so Timeguide is not a reliable duration baseline |
-| Next step | verify the `ghum_wa` WPM anomaly and refine Layer 1 threshold settings in W8 |
+| Structural finding | Recording durations in the dev snapshot average 0.53× Timeguide (shorter than expected); 3 videos flagged as `DURATION_ANOMALY` (< 0.3) |
+| Survey coverage | UQ + Bupa survey EDA available; AAMI / Suncorp survey files not present locally |
+| Layer 1 outcome | `LOW_AUDIO_QUALITY` threshold raised 0.7 → 0.75, `SPARSE_NARRATION` raised 0.2 → 0.3 (applied 2026-04-22); total flags 214 → 278 |
+| Next step | verify the `ghum_wa` WPM anomaly; Step 5.3 R8 annotation complete; Kappa pending R3 canonical re-annotation |
 
 ---
 
