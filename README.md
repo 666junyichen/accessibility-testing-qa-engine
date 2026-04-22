@@ -429,6 +429,17 @@ python -m src.layer2.feature_engineering
 
 **边界声明：** fixed L1 v1 thresholds + 6 dev sample exploratory；DBSCAN 仅对照不进下游 join；若 cluster 结构被单一 tester 主导（当前观察值：`tester_name = terryaflint17`），唯一后续动作 = 扩样 + 第二轮 4.2，不在当前样本做剔除实验。高级算法（HDBSCAN / GMM / Spectral）属于 Future Work。
 
+### Round-2 Diagnostic (2026-04-22)
+
+Round-2 is diagnostic only; it does **not** update `layer2_cluster_assignments.csv` / `primary_cluster_id`. Artifacts live in `outputs/layer2_round2_*.csv` and notebook cells 10–17.
+
+- **KMeans k sweep (k=2-5)**: `k=2` max silhouette (0.504) but one cluster still 95.6% single-tester; `k=3/4/5` mean max tester share climbs 0.84 -> 0.88 -> 0.91.
+- **DBSCAN grid**: `eps=0.8` keeps 97-100% tester dominance in non-noise clusters; `eps>=1.0` collapses to a single cluster. Tuning eps does not produce interpretable quality groups.
+- **Tester specificity ratio**: `silence_ratio` / `narration_density` = 9.71 (mirror features, 1-x), `words_per_minute` = 3.01. PC1 explains 55% variance, dominated by silence/narration/confidence/unique-word axes - i.e., the principal axis encodes tester identity, not window quality.
+- **Leave-one-tester-out**: holding out `terryaflint17` drops k=2 silhouette 0.50 -> 0.39; holding out `ghum` raises k=3 silhouette 0.42 -> 0.54. 6-tester sample is structurally unstable.
+
+**Decision**: round-1 parameters (`final_k=3, min_samples=7, eps=0.8`) remain the current default. Round-3 parameter re-tune is deferred until sample expansion (more tester x project coverage via Step 8.1 batch pipeline). Downstream (R3 Step 4.3) should treat current clusters as exploratory tester-dominated evidence, not as quality labels.
+
 ## Step 4.3 - R3 Cluster Interpretation Preparation
 - **Document**: `docs/cluster_interpretation.md`
 - **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template.csv`
@@ -567,4 +578,3 @@ notebooks/04_kappa_agreement.ipynb
 - LLM classification outputs are not yet available.
 - Task context has not yet been automatically joined into each annotation row.
 - Step 5.3 and Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
-
