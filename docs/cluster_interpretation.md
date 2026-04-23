@@ -7,7 +7,7 @@
 > - Cluster 1: 96% `terryaflint17` windows
 > - Cluster 2: mixed-tester remainder
 >
-> Diagnostic evidence in `outputs/layer2_round2_*.csv` confirms tuning `k` / `eps` does not resolve tester dominance under the current 6-tester dev sample; principal axes encode tester identity (silence_ratio / narration_density / wpm are the most tester-specific features). This means semantic interpretation of the current clusters will reflect individual speaking styles more than window-level quality differences.
+> Diagnostic evidence in `data/processed/layer2_round2_*.csv` confirms tuning `k` / `eps` does not resolve tester dominance under the current 6-tester dev sample; principal axes encode tester identity (silence_ratio / narration_density / wpm are the most tester-specific features). This means semantic interpretation of the current clusters will reflect individual speaking styles more than window-level quality differences.
 >
 > **Implication for Step 4.3**: label these clusters as "exploratory, tester-dominated, interpretation provisional" rather than mapping them to canonical quality tiers. Re-interpret after round-3 (sample expansion + feature selection).
 

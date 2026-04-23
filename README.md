@@ -422,16 +422,16 @@ python -m src.layer2.feature_engineering
 - Round 1 先用启发式默认参数（`final_k=3` / `min_samples=7` / `eps=0.8`）跑通 pipeline；后续参数优化环节依据上述指标重选并更新 notebook 决策 cell。
 
 **输出：**
-- `outputs/layer2_cluster_assignments.csv`（876 行 × 7 列，R3 4.3 join key）
-- `outputs/layer2_cluster_summary.csv`（每簇一行，raw feature mean/std，ddof=0）
-- `outputs/layer2_cluster_composition.csv`（long-form：algorithm × cluster_id × dimension × value × count）
-- `outputs/figures/layer2_{silhouette,kdist,pca,tsne}.png`
+- `data/processed/layer2_cluster_assignments.csv`（876 行 × 7 列，R3 4.3 join key）
+- `data/processed/layer2_cluster_summary.csv`（每簇一行，raw feature mean/std，ddof=0）
+- `data/processed/layer2_cluster_composition.csv`（long-form：algorithm × cluster_id × dimension × value × count）
+- `outputs/figures/layer2_{silhouette,kdist,pca,tsne}.png`（gitignored，二进制图）
 
 **边界声明：** fixed L1 v1 thresholds + 6 dev sample exploratory；DBSCAN 仅对照不进下游 join；若 cluster 结构被单一 tester 主导（当前观察值：`tester_name = terryaflint17`），唯一后续动作 = 扩样 + 第二轮 4.2，不在当前样本做剔除实验。高级算法（HDBSCAN / GMM / Spectral）属于 Future Work。
 
 ### Round-2 Diagnostic (2026-04-22)
 
-Round-2 is diagnostic only; it does **not** update `layer2_cluster_assignments.csv` / `primary_cluster_id`. Artifacts live in `outputs/layer2_round2_*.csv` and notebook cells 10–17.
+Round-2 is diagnostic only; it does **not** update `layer2_cluster_assignments.csv` / `primary_cluster_id`. Artifacts live in `data/processed/layer2_round2_*.csv` and notebook cells 10–17.
 
 - **KMeans k sweep (k=2-5)**: `k=2` max silhouette (0.504) but one cluster still 95.6% single-tester; `k=3/4/5` mean max tester share climbs 0.84 -> 0.88 -> 0.91.
 - **DBSCAN grid**: `eps=0.8` keeps 97-100% tester dominance in non-noise clusters; `eps>=1.0` collapses to a single cluster. Tuning eps does not produce interpretable quality groups.
