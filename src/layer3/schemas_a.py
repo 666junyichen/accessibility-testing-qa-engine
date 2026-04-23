@@ -18,13 +18,16 @@
                     conflicted: 两者矛盾（此时按 observed 打低分，不平均）
                     stated_missing: stated_signal 为 null 时使用（工程扩展，
                     非 07 原文）
-`friction_type`     F1-F7，见 SMP framework v1.5 / docs/friction_taxonomy.md
-`severity_s`        S1-S6，来自 SMP framework v1.5 严重度分级
+`friction_type`     F1-F7 或 null。null 仅作为 LLM shell finding 防御层，
+                    classifier 后处理会丢弃该 finding
+`severity_s`        S1-S6 或 null。null 仅作为 LLM shell finding 防御层，
+                    classifier 后处理会丢弃该 finding
 `sentiment_e`       E1-E5 或 null。纪律：
                     - 参与者有口头表达 → 至少 E3（不得 null）
                     - 窗口无任何口头表达 → null（与 stated_signal=null 同步）
                     - E3（neutral/indifferent）≠ null（无情绪证据）
-`calibrator_score_l` L1-L5，来自 SMP calibrator prompt v4.0 打分档
+`calibrator_score_l` L1-L5 或 null。null 仅作为 LLM shell finding 防御层，
+                    classifier 后处理会丢弃该 finding
 `rationale`         2-3 句综合说明，需引用 observed/stated 与 gate 定义
 `structural_amplification_note`
                     若 cohort（Blind/ND/ESL 等）造成结构性放大，填描述；
@@ -50,10 +53,10 @@ class Finding(BaseModel):
     observed_signal: str = Field(min_length=1)
     stated_signal: Optional[str] = None
     signal_alignment: SignalAlignment
-    friction_type: FrictionType
-    severity_s: SeverityS
+    friction_type: Optional[FrictionType] = None
+    severity_s: Optional[SeverityS] = None
     sentiment_e: Optional[SentimentE] = None
-    calibrator_score_l: CalibratorScoreL
+    calibrator_score_l: Optional[CalibratorScoreL] = None
     rationale: str = Field(min_length=1)
     structural_amplification_note: Optional[str] = None
 

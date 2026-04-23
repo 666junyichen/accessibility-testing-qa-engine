@@ -47,6 +47,7 @@ class ClassificationResult:
     usage: dict
     error: Optional[str]
     latency_ms: int
+    findings_dropped: int = 0
 
 
 def _to_anthropic_payload(messages: list[dict], max_tokens: int) -> dict:
@@ -206,6 +207,7 @@ def _classify_with_schema(
         usage = raw.get("usage", {}) or {}
         obj = _parse_json_object(raw_text)
         output = schema_cls.model_validate(obj)
+        output, findings_dropped = _drop_null_enum_findings(output)
         return ClassificationResult(
             output=output,
             flag="ok",
@@ -213,6 +215,7 @@ def _classify_with_schema(
             usage=usage,
             error=None,
             latency_ms=int((time.monotonic() - start) * 1000),
+            findings_dropped=findings_dropped,
         )
     except ValidationError as exc:
         return ClassificationResult(
@@ -242,6 +245,23 @@ def _classify_with_schema(
             error=str(exc),
             latency_ms=int((time.monotonic() - start) * 1000),
         )
+
+
+def _drop_null_enum_findings(output):
+    if not isinstance(output, FindingsOutput):
+        return output, 0
+
+    kept = [
+        finding
+        for finding in output.findings
+        if finding.friction_type is not None
+        and finding.severity_s is not None
+        and finding.calibrator_score_l is not None
+    ]
+    dropped = len(output.findings) - len(kept)
+    if dropped == 0:
+        return output, 0
+    return FindingsOutput(findings=kept), dropped
 
 
 def classify_finding_level(
@@ -310,6 +330,7 @@ class BatchSummary:
     total_output_tokens: int
     estimated_cost_usd: float
     elapsed_seconds: float
+    findings_dropped: int
 
 
 _CHECKPOINT_FLAGS = {"ok", "schema_violation", "json_parse_error"}
@@ -321,6 +342,7 @@ _OUTPUT_FIELDS = [
     "output_tokens",
     "latency_ms",
     "error",
+    "findings_dropped",
     "timestamp_utc",
 ]
 _CHECKPOINT_FIELDS = ["window_id", "flag", "timestamp_utc"]
@@ -370,7 +392,7 @@ def _append_csv_row(path: str, fieldnames: list[str], row: dict) -> None:
 
 def _result_output_json(result: ClassificationResult) -> str:
     if result.output is None:
-        return ""
+        return result.raw_text
     return result.output.model_dump_json()
 
 
@@ -383,6 +405,7 @@ def _mock_finding_result() -> ClassificationResult:
         usage={"input_tokens": 0, "output_tokens": 0},
         error=None,
         latency_ms=0,
+        findings_dropped=0,
     )
 
 
@@ -399,6 +422,7 @@ def _mock_video_result() -> ClassificationResult:
         usage={"input_tokens": 0, "output_tokens": 0},
         error=None,
         latency_ms=0,
+        findings_dropped=0,
     )
 
 
@@ -427,6 +451,7 @@ def _summarize_batch(
         total_output_tokens=total_output_tokens,
         estimated_cost_usd=estimated_cost,
         elapsed_seconds=elapsed_seconds,
+        findings_dropped=sum(result.findings_dropped for result in results),
     )
 
 
@@ -448,6 +473,7 @@ def _record_batch_result(
             "output_tokens": int(result.usage.get("output_tokens", 0)),
             "latency_ms": result.latency_ms,
             "error": result.error or "",
+            "findings_dropped": result.findings_dropped,
             "timestamp_utc": timestamp,
         },
     )

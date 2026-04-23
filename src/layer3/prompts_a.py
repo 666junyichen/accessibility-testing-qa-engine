@@ -137,14 +137,28 @@ OUTPUT_EXAMPLE = {
 SYSTEM_PROMPT = """
 You analyse transcript windows from accessibility and usability testing sessions.
 
-Your task is to extract zero or more friction findings from one transcript window,
-using the See Me Please classification framework (v1.5) and the calibrator scoring
-prompt (v4.0).
+CRITICAL DEFINITION: A "finding" in this schema represents ONE FRICTION EVENT
+only. Friction means the participant experienced actual impediment, confusion,
+difficulty, or negative reaction.
+
+DO NOT emit a finding for:
+- successful task completion, even if the participant sounds happy
+- positive observations, praise of the product, or satisfaction statements
+- neutral descriptions, reading page content aloud, or narration without reaction
+- smooth navigation or confident behaviour
+
+If no friction event occurred in the window, return {"findings": []}. An empty
+findings array is a CORRECT answer, not a deficiency.
+
+Every emitted finding MUST have non-null friction_type (F1-F7), severity_s
+(S1-S6), and calibrator_score_l (L1-L5). If you cannot confidently assign all
+three, DO NOT emit the finding. A shell finding with null enum fields is
+forbidden; return an empty findings array instead.
 
 Use only the evidence in the task context and transcript window. Do not infer
 unstated motivations, diagnoses, or personal attributes.
 
-Return only valid JSON. No markdown, no commentary, no preamble.
+Return only valid JSON. No markdown fences, no commentary, no preamble.
 """
 
 # -----------------------------------------------------------------
@@ -250,6 +264,13 @@ Extraction rules:
   findings per window are allowed.
 - If the window shows normal progress, reading aloud, successful completion,
   or positive feedback without any impediment, return an empty findings array.
+- Pure narration or description of page content is NOT friction when there is no
+  impediment, disorientation, confusion, or negative reaction. This includes
+  reading aloud, describing layout, or listing information seen on the page.
+  Example of pure narration that should return {"findings": []}: "And for the
+  counseling services. The phone number is the Australia domestic violence
+  helpline. Information about support services..." The participant is reading
+  page content aloud; no friction is observed.
 - The "finding" field is a one-sentence description of what happened (not a
   quote). The transcript itself is the source of truth for verbatim evidence.
 - Use task context to decide whether behaviour is relevant to the assigned task.
@@ -347,6 +368,60 @@ FEW_SHOT_EXAMPLES: list = [
     },
 ]
 
+COMPLETE_OUTPUT_EXAMPLES: list[dict] = [
+    {
+        "window_text": (
+            "Participant said: 'This was easy to navigate, I found it quickly. "
+            "That worked well.'"
+        ),
+        "output": {"findings": []},
+        "why": (
+            "Positive outcome and satisfaction are not friction. Do not emit a "
+            "finding just to document praise."
+        ),
+    },
+    {
+        "window_text": (
+            "Participant said: 'I can't find the help button. Let me try "
+            "clicking around... ok, I found it eventually.'"
+        ),
+        "output": {
+            "findings": [
+                {
+                    "finding": (
+                        "Participant had difficulty locating the help button "
+                        "and recovered after clicking around."
+                    ),
+                    "observed_signal": (
+                        "Participant searched around before eventually finding "
+                        "the help button."
+                    ),
+                    "stated_signal": (
+                        "I can't find the help button. Let me try clicking "
+                        "around... ok, I found it eventually."
+                    ),
+                    "signal_alignment": "aligned",
+                    "friction_type": "F2",
+                    "severity_s": "S5",
+                    "sentiment_e": "E4",
+                    "calibrator_score_l": "L2",
+                    "rationale": (
+                        "The participant stated uncertainty and used a brief "
+                        "search detour before recovering. This is one genuine "
+                        "wayfinding friction event; the later successful outcome "
+                        "does not require a second positive finding."
+                    ),
+                    "structural_amplification_note": None,
+                }
+            ]
+        },
+        "why": (
+            "Emit only the real friction event. Do not add a second finding for "
+            "the eventual success or relief."
+        ),
+    },
+]
+
 # -----------------------------------------------------------------
 # [R3 TODO item 4, OPTIONAL]: Enrich OUTPUT_EXAMPLE above with more friction
 # types (current only F6). Non-critical — few-shot coverage matters more.
@@ -379,6 +454,7 @@ is an array of zero or more finding objects):
 
 Example output:
 {output_example}
+{complete_output_block}
 {few_shot_block}"""
 
 
@@ -394,6 +470,10 @@ def _few_shot_block():
     return "\nAdditional examples (one per signal_alignment value):\n" + _json_block(
         {"findings": FEW_SHOT_EXAMPLES}
     )
+
+
+def _complete_output_block():
+    return "\nComplete output examples:\n" + _json_block(COMPLETE_OUTPUT_EXAMPLES)
 
 
 def build_user_prompt(
@@ -414,6 +494,7 @@ def build_user_prompt(
         window_text=window_text,
         output_schema=_json_block(OUTPUT_SCHEMA),
         output_example=_json_block(OUTPUT_EXAMPLE),
+        complete_output_block=_complete_output_block(),
         few_shot_block=_few_shot_block(),
     ).strip()
 

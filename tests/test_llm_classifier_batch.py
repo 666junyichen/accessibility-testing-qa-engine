@@ -147,6 +147,58 @@ def test_batch_classify_windows_counts_flags_and_excludes_api_error_checkpoint(
     assert {row["flag"] for row in checkpoint_rows} == {"ok", "schema_violation"}
 
 
+def test_schema_violation_writes_raw_text_to_output_json(tmp_path, monkeypatch):
+    raw_text = '{"findings":[{"friction_type":null,"severity_s":null}]}'
+    mock_classify = Mock(
+        return_value=ClassificationResult(
+            output=None,
+            flag="schema_violation",
+            raw_text=raw_text,
+            usage={"input_tokens": 100, "output_tokens": 50},
+            error="schema failed",
+            latency_ms=5,
+        )
+    )
+    monkeypatch.setattr("layer3.llm_classifier.classify_finding_level", mock_classify)
+
+    batch_classify_windows(
+        [_window("w1")],
+        output_csv=str(tmp_path / "out.csv"),
+        checkpoint_csv=str(tmp_path / "checkpoint.csv"),
+        max_concurrency=1,
+    )
+
+    rows = _read_csv(tmp_path / "out.csv")
+    assert rows[0]["flag"] == "schema_violation"
+    assert rows[0]["output_json"] == raw_text
+
+
+def test_batch_writes_findings_dropped_column_and_summary(tmp_path, monkeypatch):
+    mock_classify = Mock(
+        return_value=ClassificationResult(
+            output=FindingsOutput(findings=[]),
+            flag="ok",
+            raw_text='{"findings":[{"friction_type":null}]}',
+            usage={"input_tokens": 100, "output_tokens": 50},
+            error=None,
+            latency_ms=5,
+            findings_dropped=2,
+        )
+    )
+    monkeypatch.setattr("layer3.llm_classifier.classify_finding_level", mock_classify)
+
+    summary = batch_classify_windows(
+        [_window("w1")],
+        output_csv=str(tmp_path / "out.csv"),
+        checkpoint_csv=str(tmp_path / "checkpoint.csv"),
+        max_concurrency=1,
+    )
+
+    rows = _read_csv(tmp_path / "out.csv")
+    assert rows[0]["findings_dropped"] == "2"
+    assert summary.findings_dropped == 2
+
+
 def test_batch_classify_windows_max_concurrency_one_calls_each_window(tmp_path, monkeypatch):
     mock_classify = Mock(return_value=_ok_finding_result())
     monkeypatch.setattr("layer3.llm_classifier.classify_finding_level", mock_classify)

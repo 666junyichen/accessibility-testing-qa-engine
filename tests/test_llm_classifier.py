@@ -140,6 +140,34 @@ def test_classify_finding_level_schema_violation_for_extra_field(monkeypatch):
     assert "evidence_quote" in result.error
 
 
+def test_classify_finding_level_drops_null_enum_shell_finding(monkeypatch):
+    valid = json.loads(_valid_finding_json())["findings"][0]
+    shell = {
+        "finding": "Participant made a positive observation about the page.",
+        "observed_signal": "Participant read content smoothly.",
+        "stated_signal": "This is helpful.",
+        "signal_alignment": "aligned",
+        "friction_type": None,
+        "severity_s": None,
+        "sentiment_e": "E2",
+        "calibrator_score_l": None,
+        "rationale": "Positive observation only.",
+        "structural_amplification_note": None,
+    }
+    raw = {
+        "content": [{"type": "text", "text": json.dumps({"findings": [valid, shell]})}],
+        "usage": {"input_tokens": 12, "output_tokens": 34},
+    }
+    monkeypatch.setattr("layer3.llm_classifier.invoke_bedrock", Mock(return_value=raw))
+
+    result = classify_finding_level("w1", "wa", "v1", "text", "Task", "Instructions")
+
+    assert result.flag == "ok"
+    assert result.findings_dropped == 1
+    assert len(result.output.findings) == 1
+    assert result.output.findings[0].friction_type == "F6"
+
+
 def test_classify_video_level_success(monkeypatch):
     raw = {
         "content": [
