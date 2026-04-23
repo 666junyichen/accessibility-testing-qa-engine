@@ -516,6 +516,44 @@ python scripts\create_r3_manual_annotation_round1.py
 python scripts\migrate_r3_annotations_to_canonical.py
 ```
 
+## Step 7.1 — Pipeline Orchestration (Fusion Runner)
+
+- **Script**: `scripts/run_pipeline.py`
+- **Tests**: `tests/test_run_pipeline.py`
+
+Implements the orchestration layer that integrates outputs from Layer 1, Layer 2, and Layer 3 and generates final video-level Quality Reports.
+
+### Functionality
+- Loads processed CSV inputs from `data/processed/`:
+  - `windows.csv`
+  - `layer1_flags.csv`
+  - `layer2_cluster_assignments.csv`
+  - `layer3_findings_filtered.csv`
+  - `layer3_video_assessments.csv`
+- Collects all available `video_id`s across datasets
+- For each video:
+  - Filters relevant rows
+  - Calls `fuse_video(...)` from `src/pipeline/fusion.py`
+  - Writes one JSON report per video
+
+### Output
+- Per-video reports:
+  - `data/processed/reports/{video_id}.json`
+- Summary file:
+  - `data/processed/reports/_summary.csv`
+
+### CLI Usage
+
+```bash
+# Run for a single video
+PYTHONPATH=. python scripts/run_pipeline.py --video <video_id>
+
+# Run for all videos
+PYTHONPATH=. python scripts/run_pipeline.py --all
+
+# Specify output directory
+PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports_r7
+
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
 - **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
