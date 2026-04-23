@@ -1,0 +1,168 @@
+{
+  "video_id": "tacitdesign_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "tacitdesign",
+  "total_windows": 136,
+  "duration_sec": 8955.113,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 72,
+    "by_friction_type": {
+      "F1": 22,
+      "F2": 7,
+      "F3": 21,
+      "F4": 8,
+      "F5": 8,
+      "F6": 6
+    },
+    "by_severity": {
+      "S2": 3,
+      "S3": 7,
+      "S4": 11,
+      "S5": 49,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 10,
+      "E4": 62
+    },
+    "by_calibrator_score": {
+      "L1": 3,
+      "L2": 48,
+      "L3": 19,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 70,
+      "stated_missing": 2
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "tacitdesign_wa_w005",
+        "video_id": "tacitdesign_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tacitdesign",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the website exploration and resorted to a Google search as an external workaround to find information about domestic violence support.",
+        "observed_signal": "Participant stated intention to do a Google search, then attempted to access selected.com and Google rather than continuing to explore the Family and Domestic Violence page.",
+        "stated_signal": "I would just do a Google search.",
+        "rationale": "The participant could not locate the necessary information pathway on the provided website and explicitly chose to use Google as an external workaround instead of continuing exploration. Both observed behaviour (leaving the site) and stated intention (Google search) indicate the required content or pathway was not found within the product, fitting the S2 gate (component task blocked, requiring external workaround) and L4 (severe friction with near-abandonment of the assigned task).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "tacitdesign_wa_w055",
+        "video_id": "tacitdesign_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tacitdesign",
+        "friction_type": "F3",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a technical malfunction where screen reader output was rendering as repeated bullet points and nonsense text instead of readable content, preventing task completion.",
+        "observed_signal": "Participant reported experiencing repeated 'bullet, bullet, bullet' output and 'neurosci' text from the screen reader, stated the issue persisted across browser (Edge), and decided to wrap up the task and move forward.",
+        "stated_signal": "That whole time it was just reading bullet, bullet, bullet bullet bullet. So yeah, it's not even working in edge, so I'm guessing there might be an issue with that. Um, OK, so I'll wrap up task six and, uh, keep going through with the task. Unfortunately I wasn't able to actually view that task sheet.",
+        "rationale": "The participant, a blind screen reader user, could not access page content due to rendering corruption in the assistive technology output. Both observed (participant abandoning the task) and stated signals (explicit report of malfunction and inability to view content) confirm an accessibility blocker for the component task. This is a structural accessibility failure affecting screen reader users specifically.",
+        "structural_amplification_note": "Blind/screen reader users are uniquely dependent on correct accessibility API rendering. Corrupted ARIA or semantic output entirely blocks access; sighted users might work around visual rendering issues. This participant could not proceed without a product fix."
+      },
+      {
+        "window_id": "tacitdesign_wa_w029",
+        "video_id": "tacitdesign_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tacitdesign",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a technical issue with a laggy interface and incorrect URL, preventing task initiation.",
+        "observed_signal": "Participant attempted to navigate to the task URL, encountered lag, and discovered the URL was incorrect for the current task (task 5 instead of the intended page).",
+        "stated_signal": "Jules is very laggy today, bear with me. So Yeah, definitely the wrong um URL. Bear with me, this is task 5.",
+        "rationale": "The participant's observed struggle with lag and URL mismatch, combined with explicit statements about the problem, indicates unresponsive interface and wrong pathway. The task could not proceed as designed without resolution, blocking the exploration component task.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "tacitdesign_wa_w025",
+        "video_id": "tacitdesign_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tacitdesign",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot access share icons with screen reader; arrowed down three times but reached silence instead of functional controls.",
+        "observed_signal": "Participant attempted to navigate share icons using arrow keys, arrowed down 3 times, and encountered silence (no control announcement).",
+        "stated_signal": "The share icons don't work with my screen reader. Uh, it's a list of three items, I've arrowed down 3 times, uh, to silence.",
+        "rationale": "The participant explicitly stated the share icons do not work with the screen reader and demonstrated repeated navigation attempts that resulted in silence (loss of focus or missing labels). This is a clear accessibility failure affecting a component on the page. The participant expressed frustration and used effort to diagnose the issue, matching S3 severe friction and L3 significant friction with multiple failed attempts.",
+        "structural_amplification_note": "Screen reader user encountered inaccessible interactive controls; the three-item list structure is not properly labelled or announced, causing complete loss of keyboard and AT navigation."
+      },
+      {
+        "window_id": "tacitdesign_wa_w048",
+        "video_id": "tacitdesign_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tacitdesign",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user encountered blank page content with only interface controls announced, indicating inaccessible or missing document content.",
+        "observed_signal": "Participant opened a fact sheet PDF and the screen reader announced only 'blank, blank, blank' followed by interface controls (zoom, rotate, download, print) with no readable document text.",
+        "stated_signal": "My screen reader is just saying blank, blank, blank.",
+        "rationale": "The participant's screen reader failed to extract or announce the content of the PDF, rendering the document inaccessible. This is a structural accessibility failure where the primary content is not available to assistive technology, blocking the user from reading the fact sheet despite successful navigation to it. The participant's statement directly confirms the friction observed.",
+        "structural_amplification_note": "Screen reader users are structurally blocked when PDF content is not properly tagged or embedded for accessibility. This cohort cannot work around inaccessible PDFs without manual intervention or alternative formats."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

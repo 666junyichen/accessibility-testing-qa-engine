@@ -1,0 +1,151 @@
+{
+  "video_id": "reneerussell99_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "reneerussell99",
+  "total_windows": 36,
+  "duration_sec": 3128.546,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 1.0,
+    "cluster_distribution": {
+      "2": 36
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 20,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 3,
+      "F3": 2,
+      "F4": 6,
+      "F5": 6,
+      "F6": 1,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 3,
+      "S4": 2,
+      "S5": 13,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 4,
+      "E4": 16
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 13,
+      "L3": 5,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 19,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "reneerussell99_uq_w022",
+        "video_id": "reneerussell99_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reneerussell99",
+        "friction_type": "F3",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered inaccessible date picker controls on the form that would not open, blocking further progress on the task.",
+        "observed_signal": "Participant attempted multiple methods to interact with date pickers and stated they could not open them; participant explicitly said this is as far as they can get.",
+        "stated_signal": "Unfortunately this is as far as I can get, um, because the date pickers on this particular page are not accessible to me, um, they will not open, um, no matter what way I try.",
+        "rationale": "The participant explicitly identified inaccessible date picker controls that would not open despite multiple attempts. The stated inability to proceed and the accessibility barrier (non-functional date pickers with keyboard/AT interaction) constitute a component task blocker. The participant's negative emotion and explicit statement that this is the end point align with the observed inability to continue.",
+        "structural_amplification_note": "Participant is using assistive technology or keyboard navigation. Non-functional date pickers represent a structural accessibility failure that completely blocks AT/keyboard-dependent users from interacting with this form component, while sighted mouse users may have an alternative pathway."
+      },
+      {
+        "window_id": "reneerussell99_uq_w021",
+        "video_id": "reneerussell99_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reneerussell99",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to select or interact with elements on the page; multiple attempts to click or interact with page components resulted in no response.",
+        "observed_signal": "Participant attempted to select elements, stated elements were not responding to interaction attempts, and tried multiple times to interact with different components on the page.",
+        "stated_signal": "No, it's not letting me select it. Is this one gonna work? No, no, it doesn't appear to be.",
+        "rationale": "The participant's stated inability to select or interact with page elements is directly supported by repeated failed interaction attempts. The participant expressed frustration and acknowledged this barrier would limit task completion ('I think this is going to be the furthest that I'm going to be able to get'). This represents a significant component failure requiring workaround or skip.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_uq_w023",
+        "video_id": "reneerussell99_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reneerussell99",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant unable to activate date pickers after multiple attempts, forcing a workaround by switching to document upload pathway.",
+        "observed_signal": "Participant tried multiple ways to activate date pickers, reached an impasse, then announced intention to find and use the document upload feature instead.",
+        "stated_signal": "I've tried multiple ways of activating those date pickers and this is as far as I can get. So I'm going to find where the document upload is and try and upload the document from there.",
+        "rationale": "The participant explicitly stated repeated unsuccessful attempts to activate date pickers and decided to abandon that pathway in favour of an alternative. The observed behaviour (multiple attempts followed by workaround) and stated frustration both confirm a significant component barrier that was skipped rather than resolved, matching S3 and L3 (significant friction with workaround).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_uq_w026",
+        "video_id": "reneerussell99_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reneerussell99",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot view the resources section despite successfully navigating to it via heading navigation.",
+        "observed_signal": "Participant navigated to the resources section using heading navigation to skip irrelevant content, but then stated inability to view the resources.",
+        "stated_signal": "I can't view the resources.",
+        "rationale": "The participant successfully located the resources section via heading navigation but encountered an unresponsive or non-functional interface element that prevented viewing the content. This is a significant component failure (resources were expected to be viewable but were not), indicating S3 severity and L3 calibrator score.",
+        "structural_amplification_note": "For users relying on heading navigation and assistive technology, content that loads visually but remains inaccessible or non-functional represents a structural barrier in progressive disclosure."
+      },
+      {
+        "window_id": "reneerussell99_uq_w010",
+        "video_id": "reneerussell99_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reneerussell99",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the citizenship status field in the expected area during registration and only discovered it after an error dialogue appeared.",
+        "observed_signal": "Participant did not see the citizenship status field until an error message appeared upon submission, indicating the field was positioned unexpectedly at the top of the form.",
+        "stated_signal": "I didn't see the citizenship type, like citizenship status, until it actually popped up with the error dialogue when I tried to register. The reason being was because it wasn't in the area that I was expecting it to be. It was right at the top.",
+        "rationale": "The participant explicitly stated they did not find the field where expected and only discovered it after a failed submission attempt. This represents a wayfinding failure requiring form resubmission; the unexpected placement and error-driven discovery caused material slowdown and frustration, matching S4 (major difficulty with multiple attempts) and L3 (significant friction, struggle with eventual recovery).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": []
+}

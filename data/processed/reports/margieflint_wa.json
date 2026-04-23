@@ -1,0 +1,170 @@
+{
+  "video_id": "margieflint_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "margieflint",
+  "total_windows": 75,
+  "duration_sec": 5159.337,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 79,
+    "by_friction_type": {
+      "F1": 24,
+      "F2": 20,
+      "F3": 3,
+      "F4": 1,
+      "F5": 1,
+      "F6": 24,
+      "F7": 6
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 8,
+      "S4": 12,
+      "S5": 55,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 19,
+      "E4": 60
+    },
+    "by_calibrator_score": {
+      "L1": 9,
+      "L2": 50,
+      "L3": 18,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 75,
+      "conflicted": 1,
+      "stated_missing": 3
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "margieflint_wa_w007",
+        "video_id": "margieflint_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to proceed with finding support options after encountering the 'not available' error, leaving the exploration task incomplete.",
+        "observed_signal": "After receiving the 'not available' error, the participant did not attempt further navigation or locate an alternative pathway to access support information.",
+        "stated_signal": "now we want to find out what options and support is available... not available.",
+        "rationale": "The participant's explicit intention to find support options was blocked by the error state. The pathway to the needed information became inaccessible, preventing completion of the exploration task component without intervention.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_wa_w013",
+        "video_id": "margieflint_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed inability to find actionable written information to share and contemplated using a contact form as an alternative pathway, suggesting the primary content discovery failed.",
+        "observed_signal": "Participant navigated to a contact form option and stated intent to fill it in to request written information rather than finding it directly on the page.",
+        "stated_signal": "I think I'd be filling in the form to say, can you give me some actual information that's written down that I can read and show my friend who is in...",
+        "rationale": "The participant's statement and action both show reliance on a contact form workaround rather than discovering existing written information on the page. This represents a significant component failure—the expected pathway to find shareable information was not available—and the participant needed an external workaround (contacting support) to proceed, matching the S3/L4 gate.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_wa_w011",
+        "video_id": "margieflint_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern that the current page does not provide sufficient information to help someone in need, particularly for users who may have hearing or comprehension difficulties.",
+        "observed_signal": "Participant reviewed helpline and police information on the page, then stated dissatisfaction with the content depth available.",
+        "stated_signal": "It's not really giving me enough that I want to look at as someone who wants to help. If I call someone, I'm not gonna have the, the right information in front of me. I might not hear properly, I might not understand properly.",
+        "rationale": "The participant explicitly stated that the page lacks sufficient information for their use case (helping someone), and they anticipated accessibility barriers (hearing, comprehension) that would make phone-based support inadequate. This represents a significant gap between available content and the user's informational needs, which they worked around by clicking to a service directory link. The combination of stated frustration and observed search for alternative pathways indicates severe friction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_wa_w011",
+        "video_id": "margieflint_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant clicked on the service directory link as an alternative after finding the current page insufficient, indicating redirection to a secondary resource rather than full task completion on the primary pathway.",
+        "observed_signal": "After expressing dissatisfaction, participant clicked on the 'Center for Women's Safety and Wellbeing service directory' link.",
+        "stated_signal": "OK, so the Center for Women's Safety and Wellbeing has developed a service directory that enables you to search a type of, OK, let's click on that one.",
+        "rationale": "The participant's stated reasoning ('enables you to search a type of') and observed action (clicking the link) show they were seeking more comprehensive information than the primary page offered. This represents a component task barrier that required navigation to an external resource, fitting the S3 severity gate.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_wa_w028",
+        "video_id": "margieflint_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "margieflint",
+        "friction_type": "F7",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified a critical usability gap: QR code scanning method is inaccessible to users in urgent situations who need to clear browser history or lack immediate device access.",
+        "observed_signal": "Participant read through the support information, noted the QR code option, then articulated concern about its practicality for someone in a hurry who needs to hide their activity or lacks immediate scanning capability.",
+        "stated_signal": "I don't think, if somebody was in a hurry and wanted to get some information before their partner returned, wanted to clear the history off the computer, they might even have a phone.",
+        "rationale": "The participant's stated concern about QR code accessibility for at-risk users—specifically those in urgent situations or without technical means—reveals a significant barrier. This represents excessive effort and inadequate design for a critical user cohort (domestic violence survivors in immediate danger). The observed behaviour (articulate critique) and stated signal (explicit concern) are aligned in identifying a substantial component failure that could prevent vulnerable users from accessing emergency support.",
+        "structural_amplification_note": "Domestic violence survivors in acute safety situations experience structurally amplified friction: time pressure, device limitations, surveillance risk, and need for covert access all make QR-code-only pathways particularly harmful to this cohort."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

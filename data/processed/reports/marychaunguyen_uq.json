@@ -1,0 +1,167 @@
+{
+  "video_id": "marychaunguyen_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "marychaunguyen",
+  "total_windows": 32,
+  "duration_sec": 2138.111,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 20,
+    "by_friction_type": {
+      "F1": 5,
+      "F2": 5,
+      "F3": 2,
+      "F4": 3,
+      "F5": 2,
+      "F6": 3
+    },
+    "by_severity": {
+      "S2": 3,
+      "S3": 1,
+      "S4": 3,
+      "S5": 12,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 5,
+      "E4": 15
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 12,
+      "L3": 4,
+      "L4": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 20
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "marychaunguyen_uq_w028",
+        "video_id": "marychaunguyen_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to access the expected page and encountered an unexpected interface state without the search functionality previously available.",
+        "observed_signal": "Participant attempted to navigate to task 5, tried logging in multiple times, refreshed the page, and reported receiving a page missing expected search links and program pathways.",
+        "stated_signal": "I tried to log in a few times and I've tried to refresh and everything, and I'm getting this page which doesn't have the search for programs or any of those links that I saw before previously. Um, so I don't know, I can't, I can't get to go into, um, page 105.",
+        "rationale": "The participant's repeated attempts (log in multiple times, refresh) produced no responsive or correct state, and the interface remained unresponsive to expected navigation. The participant stated inability to proceed to the required page, indicating a task component is completely blocked. This matches F4 (unresponsive interface) and S2 (task blocker) with L4 severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_uq_w031",
+        "video_id": "marychaunguyen_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to log into the portal and therefore could not access the feedback form, despite confirming the form itself functioned well when reached.",
+        "observed_signal": "Participant attempted to access the feedback form through the portal but was blocked by login failure and could not proceed to the form.",
+        "stated_signal": "I wasn't able to even log in, um, so yeah... getting to it or looking for it through the portal, I wasn't able to.",
+        "rationale": "The participant clearly stated inability to log in to the portal, which blocked access to the feedback form despite the form working correctly once reached. This is a component-task blocker: the feedback form itself is functional, but the required pathway (portal login) is inaccessible, requiring an external workaround or facilitator intervention to proceed.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_uq_w029",
+        "video_id": "marychaunguyen_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the application submission pathway or document download section that was available in a previous task, and after refreshing and re-registering was unable to proceed.",
+        "observed_signal": "Participant refreshed the page, attempted re-registration, and navigated through menus but could not find the application or document download functionality; eventually stated inability to complete the task.",
+        "stated_signal": "It doesn't have like you know where I can search for the programs and apply like I did previously in task 4, so I, I, I'm not able to put an application through unfortunately. I've tried to refresh her, so I don't know what what to do from here. I don't have the document download section where I saw it previously in task 4. I'm so not able to do this part either.",
+        "rationale": "The participant explicitly stated inability to locate critical pathways (application submission and document download) that were present in a prior session. Observed behaviour shows multiple recovery attempts (refresh, re-registration) that failed. This represents a component task blocker, as the overall outcome (submitting an application) is blocked, matching S2 and the L4 gate (severe friction with near-abandonment).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_uq_w025",
+        "video_id": "marychaunguyen_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate matching postgraduate programs when searching for 'Master of Business' and 'Master of Business Law' on the university website.",
+        "observed_signal": "Participant performed multiple search attempts using different keywords ('Master of Business', 'Master of Business Law') and repeatedly encountered 'No. Matchings' results, indicating no programs were found.",
+        "stated_signal": "No. Matchings. No. Matchings. ... No mention programs, OK. No more keyword master of business law field.",
+        "rationale": "The participant's stated expressions ('No. Matchings', 'No mention programs') combined with repeated unsuccessful search attempts show that the required postgraduate program information was not found through the website search functionality. The participant tried multiple keyword variations without success, indicating a significant barrier to the core task of discovering available postgraduate courses.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_uq_w016",
+        "video_id": "marychaunguyen_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled with repeated screen reader announcements of form fields and struggled to understand the form structure, requiring multiple attempts to navigate and complete the citizenship status selection.",
+        "observed_signal": "Participant cycled through the citizenship status popup multiple times, heard the same field labels repeatedly announced, double-tapped to activate controls, and appeared to restart or re-navigate the form structure multiple times before eventually selecting 'Australian citizen'.",
+        "stated_signal": "Did it work? (after attempting to complete the field, indicating uncertainty about whether the action succeeded)",
+        "rationale": "The participant is using assistive technology (screen reader) and encountered accessibility friction: the repeated announcements of the same field labels, the need for multiple double-tap activations, and the unclear form structure caused significant difficulty. The stated uncertainty ('Did it work?') combined with observed multiple cycles through the same controls indicates substantial friction that required multiple attempts before recovery. The task was eventually completed but with considerable extra effort.",
+        "structural_amplification_note": "Screen reader user experienced structural amplification due to verbose or repetitive field announcements and unclear popup control semantics, making form navigation significantly more difficult than for sighted users."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

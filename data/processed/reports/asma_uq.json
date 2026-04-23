@@ -1,0 +1,166 @@
+{
+  "video_id": "asma_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "asma",
+  "total_windows": 63,
+  "duration_sec": 5162.8910000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 40,
+    "by_friction_type": {
+      "F1": 15,
+      "F2": 10,
+      "F3": 1,
+      "F6": 12,
+      "F7": 2
+    },
+    "by_severity": {
+      "S3": 8,
+      "S4": 5,
+      "S5": 26,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 39
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 25,
+      "L3": 13
+    },
+    "signal_alignment_distribution": {
+      "aligned": 34,
+      "conflicted": 1,
+      "stated_missing": 5
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "asma_uq_w015",
+        "video_id": "asma_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "asma",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed difficulty finding specific course information and reported becoming confused and lost while navigating the website.",
+        "observed_signal": "Participant was evaluating the website's usability for locating postgraduate course information during the task.",
+        "stated_signal": "Finding any specific information is not quite easy in this one, especially when you're looking for a specific course or looking for some options. It's, you get mixed up very easily and you get lost very easily.",
+        "rationale": "The participant explicitly stated that finding specific course information is difficult and that the website causes confusion and disorientation. The stated experience of getting 'mixed up' and 'lost easily' indicates significant friction in locating required content, matching F6 (Content Not Found) and S3 (significant component failure or barrier worked around). The negative tone and description of being lost support E4 sentiment and L3 calibration.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "asma_uq_w018",
+        "video_id": "asma_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "asma",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified missing documentation and application process information on the university website, noting the absence of a centralized search bar or link to required steps.",
+        "observed_signal": "Participant described what information is missing from the current website structure and expressed that documentation and application process visibility are inadequate.",
+        "stated_signal": "If they could provide a search bar or anything or any like link where people could see all the required documentation and all the steps, like what the application process looks like, and these are all this information that I could see that they are missing here.",
+        "rationale": "The participant cannot locate critical application process and documentation pathways on the website. Both observed frustration and stated criticism align on the absence of a clear centralized access point. This represents significant component failure (application information discovery) that impacts the postgraduate course discovery task, meeting the S3 and L3 gates.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "asma_uq_w019",
+        "video_id": "asma_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "asma",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified unclear navigation and terminology barriers that prevent users from finding specific courses and programs on the website.",
+        "observed_signal": "Participant described navigating the website and observing multiple barriers to finding specific information; stated that clicking through one level does not reveal desired courses.",
+        "stated_signal": "There are so many barriers in terms of finding a specific information. You could see that in by navigating the website by one click, for example, like, you can't find the course that you're looking for. And also, program and courses and degrees are not quite clear.",
+        "rationale": "The participant explicitly stated that terminology and labeling are unclear ('program and courses and degrees are not quite clear') and that navigation fails to surface relevant courses, indicating comprehension friction driven by unclear language and poor information architecture. This is a significant component barrier affecting the core task of discovering postgraduate courses.",
+        "structural_amplification_note": "ESL and international students are structurally disadvantaged by unclear terminology and complex labeling, as the participant noted that non-native English speakers face added barriers in understanding program distinctions."
+      },
+      {
+        "window_id": "asma_uq_w019",
+        "video_id": "asma_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "asma",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified wayfinding uncertainty caused by insufficient navigation depth and inability to locate specific courses within one click.",
+        "observed_signal": "Participant articulated that single-click navigation does not reveal the desired course information and that the pathway to find specific programs is not apparent.",
+        "stated_signal": "You can't find the course that you're looking for... by navigating the website by one click.",
+        "rationale": "The participant expressed uncertainty about where to go and how to navigate to find specific courses, stating that one click does not suffice. This is wayfinding friction—uncertainty about the correct pathway—and constitutes a significant component barrier to the task of discovering course information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "asma_uq_w026",
+        "video_id": "asma_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "asma",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate specific course details including location information on the university website.",
+        "observed_signal": "Participant searched the website but did not find the course details they were seeking.",
+        "stated_signal": "I couldn't find him. I couldn't find exactly the course details that that I'm looking forward to have it, for example, like the course, the, their location and everything.",
+        "rationale": "The participant explicitly stated they could not find the specific course details and location information they needed. This is a content discovery failure for a core task requirement (finding postgraduate course information). The participant did not complete the task objective of identifying course details, representing a significant component failure.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "video_id": "Sharelinsonny_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "Sharelinsonny",
+  "total_windows": 105,
+  "duration_sec": 7159.774,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 40,
+    "by_friction_type": {
+      "F1": 15,
+      "F2": 11,
+      "F4": 2,
+      "F5": 1,
+      "F6": 10,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 2,
+      "S4": 1,
+      "S5": 32,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 26,
+      "E4": 14
+    },
+    "by_calibrator_score": {
+      "L1": 6,
+      "L2": 29,
+      "L3": 3,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 36,
+      "stated_missing": 4
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "Sharelinsonny_wa_w000",
+        "video_id": "Sharelinsonny_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the assigned exploration task and switched to using ChatGPT as an external tool to research coercive control terminology instead of continuing within the product.",
+        "observed_signal": "Participant stated they are now in ChatGPT and proceeded to query it for the definition of coercive control rather than exploring the Family and Domestic Violence page as instructed.",
+        "stated_signal": "So now I'm in Chat GPT. I'm using Chat GPT. So I want to, um, Understandable term of coercive control.",
+        "rationale": "The participant could not find or proceed with the assigned exploration pathway within the product and used an external workaround (ChatGPT) to continue their information-seeking goal. Both observed behaviour (leaving the product flow) and stated signal (explicit switch to ChatGPT) indicate that the required content or pathway was not found or accessible within the product, requiring facilitator-level intervention to redirect.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_wa_w009",
+        "video_id": "Sharelinsonny_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the page exploration task and decided to use Google as an external workaround instead of continuing to explore the provided pathways.",
+        "observed_signal": "Participant was reading through resource content on the page, then stated 'I think just Google it' and appeared to disengage from further page exploration.",
+        "stated_signal": "I think just Google it and then um. Yeah. So I think.",
+        "rationale": "The participant did not find the information pathway sufficiently clear or navigable to continue within the product, and resorted to an external search tool instead. Both the observed disengagement and stated intention to use Google indicate that the required information pathway was not discoverable through the provided content structure, requiring external intervention to proceed.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_wa_w071",
+        "video_id": "Sharelinsonny_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant articulated awareness of a critical accessibility need—the ability to quickly hide a website for users experiencing domestic abuse—but did not find or verify that functionality on the page.",
+        "observed_signal": "Participant verbally described a use case (someone monitoring internet use, needing to hide the website quickly) but did not demonstrate exploring or locating an emergency hide or quick-exit feature.",
+        "stated_signal": "sometimes they are in a situation where someone else might be monitoring the internet use, or maybe like, you know, for example, like if someone experiencing abuse is using the website and needs to hide it quickly.",
+        "rationale": "The participant identified a legitimate information need relevant to the domain (Family and Domestic Violence support) but the transcript does not show evidence of locating such a feature. The stated concern is matter-of-fact observation rather than emotional reaction. This represents a significant content or pathway gap for a vulnerable use case, fitting S3 and L3.",
+        "structural_amplification_note": "Users experiencing domestic abuse or under monitoring face structurally heightened need for discrete navigation and quick-exit functionality; absence or discoverability issues create disproportionate friction for this cohort."
+      },
+      {
+        "window_id": "Sharelinsonny_wa_w097",
+        "video_id": "Sharelinsonny_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a technical issue on the website that interrupted their exploration of the Family and Domestic Violence page.",
+        "observed_signal": "Participant was mid-exploration when they encountered and reported a technical issue, stating 'I might website a technical issue.'",
+        "stated_signal": "I might website a technical issue.",
+        "rationale": "The participant reported a technical issue that interrupted task progress. The observed halt in navigation combined with the stated problem indicates an unresponsive or malfunctioning interface element that created a significant barrier to continuing the exploration task, matching the S3/L3 gate (significant component failure).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_wa_w006",
+        "video_id": "Sharelinsonny_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant's speech became fragmented and incoherent, making it impossible to understand their reasoning for navigation choices or expectations about content.",
+        "observed_signal": "Participant attempted to verbalize their thinking process but the speech contained incomplete sentences, false starts, unclear references ('TPT words', 'coive control'), and trailing thoughts without resolution.",
+        "stated_signal": "Um, Oh Because that's usually the fastest way to find information, so I might have something like uh. Since I already did the first, um, just, uh, use the TPT words is, uh, conceive of the term of coive control is like the really shows what is, and I know like how exactly looks like of um how. Um Experiencing domestic violence, so I think This is domestic violence, so it just might be um like such what to do.",
+        "rationale": "The participant's verbalisation contains significant comprehension friction: unclear terminology ('TPT words', 'coive control'), malformed sentence structures, and incomplete thoughts make it impossible to extract clear intent or understanding. The stated speech is unintelligible enough that the task directive (explain what draws attention, what you expect to find, why you choose links) cannot be reliably answered. This represents significant friction in the communication of reasoning, though the task itself may continue.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

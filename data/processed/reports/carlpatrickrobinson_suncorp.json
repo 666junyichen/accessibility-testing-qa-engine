@@ -1,0 +1,165 @@
+{
+  "video_id": "carlpatrickrobinson_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "carlpatrickrobinson",
+  "total_windows": 15,
+  "duration_sec": 1008.7090000000002,
+  "l1": {
+    "flag_counts": {
+      "DURATION_ANOMALY": 1
+    },
+    "total_flags": 1,
+    "flagged_window_ids": [],
+    "duration_anomaly": true
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 1.0,
+    "cluster_distribution": {
+      "2": 15
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 6,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 1,
+      "F3": 1,
+      "F6": 3
+    },
+    "by_severity": {
+      "S3": 1,
+      "S5": 5
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 4
+    },
+    "by_calibrator_score": {
+      "L2": 5,
+      "L3": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 5,
+      "conflicted": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "carlpatrickrobinson_suncorp_w007",
+        "video_id": "carlpatrickrobinson_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate the Product Disclosure Statement and explicitly stated they could not find it.",
+        "observed_signal": "Participant attempted to search for the Product Disclosure Statement but did not successfully retrieve it; the search action did not yield a result.",
+        "stated_signal": "I'm not able to find the product disclosure statement because",
+        "rationale": "The participant explicitly stated inability to find the Product Disclosure Statement, a key document needed to understand payment policies and support options relevant to the financial hardship task. The observed search failure aligns with the stated inability. This represents a significant barrier to accessing critical information needed to address the task, fitting S3 (significant component failure).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_suncorp_w005",
+        "video_id": "carlpatrickrobinson_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced initial confusion understanding what 'contents insurance' meant before working through the definition themselves.",
+        "observed_signal": "Participant paused while reading the home insurance product page and stated uncertainty about contents insurance terminology.",
+        "stated_signal": "It took me a while to figure out what contents insurance was, um, but I understand that it's the contents within the home.",
+        "rationale": "The participant encountered jargon ('contents insurance') that was not immediately clear, requiring cognitive effort to deduce the meaning. However, they resolved it independently and proceeded without impediment, matching brief hesitation and non-optimal initial comprehension. Task context shows this is peripheral to the assigned financial hardship task, but the friction on terminology is still present.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_suncorp_w003",
+        "video_id": "carlpatrickrobinson_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant selected an incorrect navigation option (Make a Claim) and had to backtrack to the homepage because they did not understand what the option would do.",
+        "observed_signal": "Participant clicked on 'Make a Claim', then immediately said they didn't know what it was and navigated back to the homepage.",
+        "stated_signal": "I didn't know what it was, so I'll go back to the homepage.",
+        "rationale": "The participant selected an option without understanding its purpose, realized the mistake, and recovered by returning to the homepage. The stated uncertainty and observed backtrack both indicate brief wayfinding friction. The task outcome was not at risk and recovery was immediate, fitting S5 and L2.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_suncorp_w008",
+        "video_id": "carlpatrickrobinson_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "conflicted",
+        "finding": "Participant reported that finding specific information on the website became difficult after the initial impression, despite completing the home and contents insurance quote task.",
+        "observed_signal": "Participant navigated successfully through the home and contents insurance quote flow (home and property → home and contents → get quote), but then stated the experience became difficult.",
+        "stated_signal": "Initially the website's easy to use, but going forward, it became quite difficult to find specific things.",
+        "rationale": "The participant expressed that finding specific information became difficult (stated friction), but the observed behaviour shows successful completion of the quote task without visible struggle or detours. The conflict is resolved to the lower observed behaviour level (S5, L2) because the task was completed without intervention. The stated dissatisfaction is noted but not elevated beyond medium friction given the successful observable outcome.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_suncorp_w011",
+        "video_id": "carlpatrickrobinson_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced visual focus difficulty due to inconsistent font size contrast, making text hard to read on the page.",
+        "observed_signal": "Participant paused and described struggling to focus visually on the content.",
+        "stated_signal": "It's a bit difficult. The letters, my eyes are having trouble focusing. I find that my eyes tend to go straight to one font size, and when the font sizes are too different apart, it's hard to focus.",
+        "rationale": "The participant explicitly reported visual accessibility friction related to font size inconsistency causing focus difficulty. The observed hesitation and stated concern align. This is noticeable friction that affects readability but the participant is still able to proceed; it does not fully block task progress, fitting S5 and L2.",
+        "structural_amplification_note": "Users with visual processing or accommodation challenges (presbyopia, astigmatism, or other focus difficulties) experience amplified friction when font sizes lack sufficient visual hierarchy and spacing."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

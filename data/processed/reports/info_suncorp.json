@@ -1,0 +1,172 @@
+{
+  "video_id": "info_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "info",
+  "total_windows": 54,
+  "duration_sec": 3890.362,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 59,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 14,
+      "F3": 8,
+      "F4": 2,
+      "F5": 12,
+      "F6": 13,
+      "F7": 4
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 4,
+      "S3": 10,
+      "S4": 14,
+      "S5": 28,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 54,
+      "none": 2
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 28,
+      "L3": 25,
+      "L4": 3,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 56,
+      "stated_missing": 3
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "info_suncorp_w050",
+        "video_id": "info_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "info",
+        "friction_type": "F2",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the primary financial hardship task and pivoted to an unrelated action (cancel policy) visible in the navigation menu.",
+        "observed_signal": "After struggling to find search, the participant stated they would 'cancel my policy' and began navigating to that menu option instead of continuing to search for financial hardship or support information.",
+        "stated_signal": "I'll cancel my policy.",
+        "rationale": "The participant failed to locate the required information pathway and, rather than persisting with or finding an alternative route to the financial hardship support content, switched to an entirely different menu action. This represents a task abandonment of the primary project outcome (understanding financial hardship help and support options). No evidence shows the participant found or viewed relevant financial hardship or support content. The S1 and L5 gates apply because the primary project outcome was not achieved independently.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "info_suncorp_w044",
+        "video_id": "info_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "info",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that the online payment management system is unavailable when a payment has been missed, creating a barrier to the self-service resolution they sought.",
+        "observed_signal": "Participant read through the four-step payment management process and then encountered the blocking statement: 'All your policy needs to be up to date with payments to make these changes online. There won't be a pay now button available as you have missed the window to make a one-off payment online or if you have more than one unpaid installment.'",
+        "stated_signal": "So all your policy needs to be up to date with payments to make these changes online. There won't be a pay now button available as you have missed the window to make a one-off payment online.",
+        "rationale": "The participant clearly articulated the task goal (self-service resolution of missed payment) at the start, but the system explicitly blocks the primary self-service pathway because the payment is missed. The participant has now discovered that the online tool they were directed to cannot help them, forcing reliance on an alternative support channel. This is a component task blocker (S2) because the self-service outcome is blocked, though the overall task can be redirected to phone support.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "info_suncorp_w051",
+        "video_id": "info_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "info",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted multiple times to navigate to financial hardship or payment support information but encountered only generic product pages and navigation menus that did not address the task.",
+        "observed_signal": "Participant repeatedly tried different navigation paths, scrolled through product listings (cars, home, businesses), accessed menu items like 'Cancel my policy' and 'Pay or renew', and stated frustration that the information was not appearing or working.",
+        "stated_signal": "I don't know where the actual information for that's coming up. Yes, and that's not working either.",
+        "rationale": "The participant cannot locate the required information pathway for financial hardship support on the website despite multiple navigation attempts. Both observed behaviour (repeated unsuccessful searches through menus and pages) and stated signal (expressing that information is not coming up and nothing is working) confirm that the task component—finding hardship support information—is blocked. This meets S2 (overall task not completed; component completely blocked) and L4 (near-abandonment with facilitator potentially needed to redirect).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "info_suncorp_w053",
+        "video_id": "info_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "info",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration and a sense of task failure after exhausting navigation attempts through menus and chat functions without locating needed information.",
+        "observed_signal": "Participant navigated through multiple areas (menus, chat options, app mentions) and concluded with statements indicating incomplete task outcome ('I feel like I've kind of cooked this one' and 'I was unable to find what I needed at this point').",
+        "stated_signal": "Um, yeah, I hope that covers everything. I, I feel like I've kind of cooked this one, but um... menus didn't get me there, can't find the search function... PS I was unable to find what I needed at this point.",
+        "rationale": "The participant's repeated statements indicate the primary task outcome (finding financial hardship support information) was not achieved through independent navigation. While the participant did not request facilitator intervention in this window, the explicit statement of inability to find needed information and self-assessment of task failure ('cooked this one') indicates near-abandonment and a component task blocker, fitting S2 and L4.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "info_suncorp_w031",
+        "video_id": "info_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "info",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not progress into the section after selecting cover type because the interface failed to respond correctly, blocking the quote completion flow.",
+        "observed_signal": "Participant selected a cover type, attempted to proceed through the modal interaction, encountered page/section access failure, and stated inability to get into the section.",
+        "stated_signal": "I couldn't actually get into the um section where the, I selected, I think I selected the type of cover and then it dumped me out of the page.",
+        "rationale": "The participant's stated inability to access the section after cover selection, combined with observed modal failure and page dump, indicates an unresponsive or broken interface pathway. This is a component task blocker within the larger get-a-quote flow, as the participant cannot progress beyond cover selection.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

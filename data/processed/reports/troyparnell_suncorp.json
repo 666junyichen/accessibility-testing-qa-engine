@@ -1,0 +1,82 @@
+{
+  "video_id": "troyparnell_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "troyparnell",
+  "total_windows": 1,
+  "duration_sec": 1114.61,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 0,
+    "by_friction_type": {},
+    "by_severity": {},
+    "by_sentiment": {},
+    "by_calibrator_score": {},
+    "signal_alignment_distribution": {},
+    "top_severity": null,
+    "calibrator_aggregate": null,
+    "top_findings": []
+  },
+  "l3_assessment": {
+    "narration_quality": "none",
+    "recording_quality": "poor",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "recording unusable"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality limits reliable downstream analysis",
+      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "advice": [
+        "Treat this session as low-confidence evidence.",
+        "Improve recording setup and audio checks before the next session begins.",
+        "Consider excluding this session from analyses that require detailed behavioural evidence."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "poor",
+      "priority": 5,
+      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "tags": [
+        "recording",
+        "reliability",
+        "analysis-risk"
+      ]
+    },
+    {
+      "category": "narration",
+      "title": "Narration is insufficient for reliable interpretation",
+      "summary": "The participant barely spoke during the session, making it difficult to interpret intent, confusion, or decision-making.",
+      "advice": [
+        "Set think-aloud expectations clearly before the task begins.",
+        "Use neutral reminders to encourage verbalisation without directing task behaviour.",
+        "Treat detailed behavioural conclusions from this session with caution if low narration persists."
+      ],
+      "trigger_field": "narration_quality",
+      "trigger_value": "none",
+      "priority": 4,
+      "evidence_note": "5.1-B marks narration as effectively absent.",
+      "tags": [
+        "narration",
+        "analysis-risk",
+        "session-level"
+      ]
+    }
+  ]
+}

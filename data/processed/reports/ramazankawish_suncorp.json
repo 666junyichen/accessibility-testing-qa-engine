@@ -1,0 +1,166 @@
+{
+  "video_id": "ramazankawish_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "ramazankawish",
+  "total_windows": 71,
+  "duration_sec": 4603.9710000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 0.9577464788732394,
+    "cluster_distribution": {
+      "0": 3,
+      "2": 68
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 38,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 8,
+      "F3": 1,
+      "F6": 20,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 8,
+      "S4": 12,
+      "S5": 18
+    },
+    "by_sentiment": {
+      "E3": 9,
+      "E4": 29
+    },
+    "by_calibrator_score": {
+      "L2": 18,
+      "L3": 20
+    },
+    "signal_alignment_distribution": {
+      "aligned": 37,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "ramazankawish_suncorp_w002",
+        "video_id": "ramazankawish_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant is reading insurance product definitions aloud but has not engaged with the task goal of finding financial hardship support or payment flexibility information.",
+        "observed_signal": "Participant read aloud definitions of home buildings insurance, contents insurance, and combined policies. No evidence of searching for hardship support, payment assistance, fee information, or related pathways.",
+        "stated_signal": "Terms of Kawa. Home buildings insurance covers the physical structure... A combined home and content of often the most cost offensive. Effective option... Right now there is no companies explaining the home insurance.",
+        "rationale": "The participant is navigating general insurance product information rather than the assigned task pathway (financial hardship, payment support, late fees, or support options). The stated observation 'there is no companies explaining the home insurance' suggests the participant recognizes content is missing or unhelpful relative to their need. This is a significant friction event where the required information or pathway has not been located, and the participant has spent effort on irrelevant content.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_suncorp_w032",
+        "video_id": "ramazankawish_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the financial hardship support information on the homepage and expressed uncertainty about where to find the required content.",
+        "observed_signal": "Participant looked at the homepage, mentioned not being able to see the information anywhere, then attempted to navigate by clicking on unrelated product categories (Home and Property, Buildings) without finding the target content.",
+        "stated_signal": "I have to go to where to find it. Maybe in the homepage. And where is that? I'm not sure. Can't see it anywhere, yeah. I'm not sure how to find these things that I'm asked to do. I couldn't find exactly the thing.",
+        "rationale": "The participant made multiple stated expressions of uncertainty and inability to locate the required information ('I'm not sure', 'Can't see it anywhere', 'I couldn't find exactly the thing'). Observed behaviour shows navigation attempts through unrelated sections, indicating the critical pathway for financial hardship support was not discoverable. This represents a significant component barrier that was not fully resolved within the window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_suncorp_w033",
+        "video_id": "ramazankawish_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate financial hardship or payment support information despite navigating through multiple menu sections and page areas.",
+        "observed_signal": "Participant scrolled through footer links, opened the Products menu (Car insurance, Home and property, Life insurance, etc.), clicked into Car insurance, and stated they cannot see any relevant documents or information.",
+        "stated_signal": "To be honest, I found it difficult here to find it. The things that I'm looking for... But uh no, I can't see anything in here... I cannot see any. Um, documents here.",
+        "rationale": "The participant explicitly stated difficulty finding the required information and conducted multiple navigation attempts across footer sections and product categories without locating the target pathway. The task outcome—understanding financial hardship support options—remains incomplete after the search, indicating a significant component failure that was not resolved within this window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_suncorp_w034",
+        "video_id": "ramazankawish_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate PDF files or the specific product option 'Home and Building' and expressed uncertainty about where to find them.",
+        "observed_signal": "Participant browsed through menu options (Home insurance, Options home and contents, Landlord, Renters, business strata, Other benefits) but could not find the requested PDF files or the 'Home and Building' product; instead found 'Home and property' which did not match the task requirement.",
+        "stated_signal": "I cannot find any PDF files in here. I couldn't find these things that I was asked to read. The PDF files. I'm not sure what to do and where can I find it because there is no search button and I was asked to find the product called Home and Building, but here is home and property with no home and building option here.",
+        "rationale": "The participant explicitly stated inability to find both the PDF files and the required product option, and observed behaviour confirms extensive searching without success. The absence of a search function compounded the difficulty. This represents a significant barrier to the task outcome (understanding financial hardship support); the participant skipped this component and expressed frustration, matching S3 and L3 gates.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_suncorp_w057",
+        "video_id": "ramazankawish_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ramazankawish",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the presented support option (installment payment) does not adequately address long-term financial hardship, expressing concern that it only provides temporary relief without solving the underlying problem.",
+        "observed_signal": "Participant reviewed the information on the page and analyzed the limitations of the installment payment option for extended financial difficulty.",
+        "stated_signal": "If a person is in financial hardship, it will not be a temporary few weeks. It would be like possibly a few months or a year or more. So in that case, in the long-term, it doesn't help the customer. But in the temporary manner, it will help... I consider that a small help but not solving the problem.",
+        "rationale": "The participant understood the content presented but found it inadequate for the stated task context (addressing financial hardship). The mismatch between what is offered and what the participant needs in a realistic hardship scenario (months or years of difficulty, not weeks) represents a comprehension friction event where the available information does not clarify or reassure about genuine long-term support. This is a significant barrier to task resolution despite information being present.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "video_id": "gracieha22_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "gracieha22",
+  "total_windows": 36,
+  "duration_sec": 2412.8680000000004,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 14,
+    "by_friction_type": {
+      "F1": 2,
+      "F2": 7,
+      "F3": 1,
+      "F4": 1,
+      "F5": 1,
+      "F6": 1,
+      "F7": 1
+    },
+    "by_severity": {
+      "S4": 1,
+      "S5": 12,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 8,
+      "E4": 6
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 12,
+      "L3": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 13,
+      "stated_missing": 1
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "gracieha22_wa_w028",
+        "video_id": "gracieha22_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "gracieha22",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified a missing critical element in the emergency support pathway: no direct emergency phone number is displayed alongside the 'Get help right away' call-to-action.",
+        "observed_signal": "Participant navigated to and examined the 'Get help right away' section, then explicitly noted the absence of a phone number and suggested it should be added.",
+        "stated_signal": "Not sure if this is a, it might be a good thing to put in is like even just a 000 number, um, just so when you say get help right away, you've got the 000 number right here.",
+        "rationale": "The participant understood the purpose of the section but expressed concern that the interface lacks the necessary contact information to act on the call-to-action. The stated worry about incorrect routing and the explicit suggestion for improvement indicate confidence friction: the user knows what to do but is uncertain whether the pathway will lead to the correct emergency outcome. This represents significant friction in a high-stakes context (domestic violence support), though the participant was able to identify and articulate the gap.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_wa_w005",
+        "video_id": "gracieha22_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "gracieha22",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant read content aloud while scanning the page for relevant sections, demonstrating active exploration and comprehension of the material presented.",
+        "observed_signal": "Participant clicked through sections and read aloud: 'isolation', 'monitoring, tracking, financial control', 'controlling', indicating engagement with the content structure.",
+        "stated_signal": "Um, Yep, so we're gonna find out what it's about, um. It OK. Delay the signs. Yep. Yep, so isolation, isolation, yep. Monitoring, tracking, financial control. Yep, controlling, let me just section, um, go from spiritual.",
+        "rationale": "The participant's speech is fragmented and contains unclear phrasing ('Delay the signs', 'go from spiritual'), suggesting difficulty articulating thoughts or following a coherent navigation pattern. However, the participant is reading content and continuing to explore. The fragmented utterance and hesitant verbal pattern indicate mild friction in comprehension or expression, not a complete block.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_wa_w001",
+        "video_id": "gracieha22_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "gracieha22",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed lack of confidence in understanding terminology used in content about controlling behaviours, despite being able to recognize the concepts descriptively.",
+        "observed_signal": "Participant stated they are not confident in understanding the term used (conserve/control), then proceeded to explain the concept in their own words by describing specific controlling behaviours.",
+        "stated_signal": "I'm not too confident in understanding this, but um I know a lot of different, um, behaviors, but I don't actually know the terms for them.",
+        "rationale": "The participant explicitly stated lack of confidence in understanding the terminology and jargon used on the page. However, they were able to work around this by translating the formal language into their own descriptive understanding, demonstrating a recoverable comprehension barrier rather than a blocking issue. This matches S5 (noticeable but recoverable friction) and L2 (moderate friction with non-optimal path).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_wa_w009",
+        "video_id": "gracieha22_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "gracieha22",
+        "friction_type": "F4",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a technical issue where content stopped displaying and attempted to refresh the page to recover.",
+        "observed_signal": "Participant stated that something was not showing up anymore and attempted to refresh the page; the refresh did not resolve the issue.",
+        "stated_signal": "Oh, it's not showing up anymore. Uh, I'll just refresh the page. Nope.",
+        "rationale": "The participant observed that content disappeared and attempted a standard recovery action (page refresh). The issue was brief and the participant moved forward without facilitator intervention. The stated frustration and observed recovery attempt align at medium friction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_wa_w008",
+        "video_id": "gracieha22_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "gracieha22",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant was confused by the presence of two different search bars on the website.",
+        "observed_signal": "Participant tested both search bars and noticed they produced different results and behaviors.",
+        "stated_signal": "Bit confused why there were two, there's two different search bars, but I assume that was the one where you do it when you're not on the page, so if I go to the actual page, um, It shows up.",
+        "rationale": "The participant expressed confusion about the dual search bar design and attempted to reason through the difference. The stated confusion and observed testing behavior both indicate uncertainty about which search bar to use and why they differ, but the participant recovered by inferring context (one for off-page, one for on-page) and continued the task successfully.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

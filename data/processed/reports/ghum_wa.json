@@ -1,0 +1,173 @@
+{
+  "video_id": "ghum_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "ghum",
+  "total_windows": 83,
+  "duration_sec": 5675.359999999999,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 0,
+    "dominant_cluster_pct": 0.8313253012048193,
+    "cluster_distribution": {
+      "0": 69,
+      "2": 14
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 61,
+    "by_friction_type": {
+      "F1": 11,
+      "F2": 21,
+      "F3": 16,
+      "F4": 2,
+      "F5": 5,
+      "F6": 4,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 4,
+      "S4": 11,
+      "S5": 44,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 19,
+      "E4": 40,
+      "none": 2
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 41,
+      "L3": 15,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 55,
+      "stated_missing": 6
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "ghum_wa_w065",
+        "video_id": "ghum_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user cannot access a significant portion of the page content, rendering the resource unusable for their needs.",
+        "observed_signal": "Participant stated they cannot access the resource with their screen reader and that much content is missing or not visible to the assistive technology.",
+        "stated_signal": "I can't access the resource with my screen reader. I don't know what it is, how accessible it is. So much of it is missing. So much of it is not visible to my screen reader. This page is not useful at all to me.",
+        "rationale": "The participant explicitly reported that the resource cannot be accessed with a screen reader and that content is missing from assistive technology. This is a blocking accessibility issue where the primary outcome (exploring and assessing the page content) cannot be achieved independently by this user, meeting the S1 and L5 definitions.",
+        "structural_amplification_note": "Blind and screen reader users experience structurally amplified friction on this page due to missing or inaccessible content that sighted users can see. The barrier is not a workaround-able obstacle but a complete loss of content visibility."
+      },
+      {
+        "window_id": "ghum_wa_w029",
+        "video_id": "ghum_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant clicked on a PDF file and encountered inaccessible content with no readable text output from the screen reader.",
+        "observed_signal": "Participant clicked on a PDF file, and the screen reader announced only structural elements ('page one containing', 'empty group', 'close button') with no actual content readable.",
+        "stated_signal": "I've got no access to the content in here at all.",
+        "rationale": "The participant's screen reader encountered a PDF with no accessible text content, rendering the file unusable. The stated signal confirms frustration at complete inaccessibility. The participant was unable to access a resource they clicked on, forcing a workaround consideration (OCR app on phone), meeting the S3 gate for significant component failure.",
+        "structural_amplification_note": "Screen reader user experienced complete barrier to PDF content due to lack of text accessibility. This is a structural accessibility issue that prevents assistive technology users from accessing the resource while sighted users may still view it."
+      },
+      {
+        "window_id": "ghum_wa_w062",
+        "video_id": "ghum_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user encountered fragmented content across multiple pages with missing image descriptions, making the information incoherent and unusable.",
+        "observed_signal": "Participant navigated through pages 4-7, encountered repeated list counts and fragmented text references to coercive control definitions, then stated the content was not helpful.",
+        "stated_signal": "Having it all on separate pages like this. For me as a screen reader user, going through it makes it harder to use. No, so it's not helpful at all for me as a screen reader user. Um, maybe there's a lot of images here that I'm not told about. I don't have descriptions for the images, so. Because there's parts missing, the bits that are here don't really make a lot of sense.",
+        "rationale": "The participant's observed navigation behaviour (moving through fragmented pages with list counts and unclear references) combined with explicit stated frustration about missing image descriptions and structural fragmentation indicates significant accessibility friction. The content was technically navigable but rendered effectively unusable for a screen reader user due to missing labels and pagination, matching S3 (significant component failure) and L3 (struggle and frustration, task completed).",
+        "structural_amplification_note": "Screen reader users experience structurally amplified friction when content relies on visual layout across multiple pages and images lack alt text. The fragmented pagination and missing image descriptions create barriers specific to assistive technology users that sighted users would not encounter."
+      },
+      {
+        "window_id": "ghum_wa_w063",
+        "video_id": "ghum_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered inaccessible list content that failed to render or announce properly, causing them to skip over substantive information about coercive control tactics.",
+        "observed_signal": "Participant navigated through pages 7–12 reading accessible heading and paragraph text aloud, but when encountering list items on pages 10–11, the screen reader reported 'List 0 items' repeatedly, indicating empty or unlabeled lists that were not accessible.",
+        "stated_signal": "So I don't know what things they might do that doesn't read for me.",
+        "rationale": "The participant explicitly stated that content 'doesn't read' for them, and the observed behaviour (repeated 'List 0 items' announcements) confirms that the list structure is not accessible to assistive technology. This is a structural accessibility failure that prevented discovery of key information about coercive control tactics, constituting significant friction with a component task partially blocked.",
+        "structural_amplification_note": "This friction is structurally amplified for assistive-technology users (blind, low-vision, or keyboard-only participants). Screen readers fail to announce list content when markup is missing or improperly labelled, making substantive information entirely unavailable to this cohort."
+      },
+      {
+        "window_id": "ghum_wa_w082",
+        "video_id": "ghum_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant's primary concern was whether they had selected the correct form for their feedback scenario, rather than encountering accessibility barriers during form completion.",
+        "observed_signal": "Participant acknowledged that the form's accessibility (recapture verification, overall form design) was functional and acceptable, but focused complaint on wayfinding confidence rather than interface usability.",
+        "stated_signal": "Accessibility of the form is fine, just my confidence in knowing that I'm doing the right form is, is the issue.",
+        "rationale": "The participant could not locate or confidently identify the correct information pathway (form) for their specific feedback scenario. Although the form itself was accessible, the inability to find the appropriate entry point for the intended use case represents a barrier that was not resolved within the window, matching S3 (significant component failure or barrier) and the L3 gate.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

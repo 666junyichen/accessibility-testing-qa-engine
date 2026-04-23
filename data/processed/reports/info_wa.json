@@ -1,0 +1,168 @@
+{
+  "video_id": "info_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "info",
+  "total_windows": 60,
+  "duration_sec": 4285.880999999999,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 77,
+    "by_friction_type": {
+      "F1": 16,
+      "F2": 16,
+      "F3": 21,
+      "F4": 1,
+      "F5": 6,
+      "F6": 7,
+      "F7": 10
+    },
+    "by_severity": {
+      "S3": 8,
+      "S4": 11,
+      "S5": 54,
+      "S6": 4
+    },
+    "by_sentiment": {
+      "E3": 25,
+      "E4": 42,
+      "none": 10
+    },
+    "by_calibrator_score": {
+      "L1": 8,
+      "L2": 50,
+      "L3": 19
+    },
+    "signal_alignment_distribution": {
+      "aligned": 64,
+      "stated_missing": 13
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "info_wa_w023",
+        "video_id": "info_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "info",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a PDF that did not render readable content with their screen reader, preventing access to the document.",
+        "observed_signal": "Participant attempted to open a PDF, heard OCR output describing empty pages ('page one containing nothing'), and stated they could not read anything from it.",
+        "stated_signal": "And that's not letting me read anything at all... that's consistently my experience with PDFs... especially government websites.",
+        "rationale": "The participant's screen reader failed to extract readable content from the PDF, making it inaccessible. Both observed behaviour (inability to parse the document) and stated frustration (consistent accessibility problem with government PDFs) align on a significant accessibility barrier. The participant worked around it by moving to the next task rather than resolving it within the PDF.",
+        "structural_amplification_note": "Screen reader users are structurally blocked by PDFs that do not include properly tagged text or alternative formats. The participant explicitly noted that on-website content and docs versions are navigable, but this PDF was not."
+      },
+      {
+        "window_id": "info_wa_w038",
+        "video_id": "info_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "info",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "External links are not read aloud by the screen reader, preventing the participant from accessing support service information without leaving the page.",
+        "observed_signal": "Participant navigated to services and resources section containing external links but could not read them with their assistive technology, requiring them to open external websites to discover link destinations.",
+        "stated_signal": "The biggest issue accessibility wise is these link external, um, links. They all seem to be consistently across the website not reading out. Most of us use Chrome, so without being able to read the support services listed here because saw a link external, I need to go into those websites.",
+        "rationale": "The participant explicitly identified that external links are not being announced by the screen reader, preventing them from understanding link destinations before activation. This is a consistent accessibility failure across the website that forces workaround behaviour (opening external sites) to discover information. The participant expresses frustration about a significant systemic issue affecting assistive technology users.",
+        "structural_amplification_note": "Blind and screen reader users are structurally unable to access external link destinations, creating a complete barrier to understanding available support services without leaving the page."
+      },
+      {
+        "window_id": "info_wa_w046",
+        "video_id": "info_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "info",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected to find a quick exit button prominently displayed on the Family and Domestic Violence page but could not locate it, despite believing it should be present.",
+        "observed_signal": "Participant stated they have seen quick exit features on other pages but not on this page. They noted it should be 'quite towards the top' to be obvious. Later, they mentioned 'it must be there somewhere because it worked' but expressed uncertainty about whether the screen reader could see it.",
+        "stated_signal": "I haven't seen it on this page. I feel like it definitely should be on here... quite towards the top, so it's very obvious... I don't know whether my screen reader couldn't see it or whatever, but yeah, it's not there.",
+        "rationale": "The participant expected a quick exit button and could not reliably locate or access it, with specific indication that assistive technology (screen reader) may not be exposing it properly. The feature exists but is either not accessible via keyboard/screen reader or not visually obvious. This is a significant accessibility barrier for a safety-critical feature, particularly for users with disabilities who depend on assistive technology.",
+        "structural_amplification_note": "Screen reader user experienced structural accessibility friction; a critical safety feature (quick exit) was not detected or reliably accessible via assistive technology, creating a substantially higher barrier than for sighted users."
+      },
+      {
+        "window_id": "info_wa_w047",
+        "video_id": "info_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "info",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered multiple inaccessible PDF documents that could not be downloaded or have text extracted, blocking access to content.",
+        "observed_signal": "Participant clicked through PDF links and encountered repeated error messages: 'This PDF is inaccessible. Couldn't download text extraction files. Please try again.' This occurred at least three times across different pages in the document.",
+        "stated_signal": "End of this PDF is inaccessible. Couldn't download end of banner.",
+        "rationale": "The participant's observed behaviour of encountering repeated PDF accessibility failures aligns with their stated inability to access content. The accessibility friction prevented the participant from retrieving information from multiple pathways, representing a significant component failure.",
+        "structural_amplification_note": "Assistive-technology users or those relying on text extraction would experience severe structural amplification of this accessibility barrier, as the PDFs are explicitly reported as inaccessible for download and text extraction."
+      },
+      {
+        "window_id": "info_wa_w049",
+        "video_id": "info_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "info",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": null,
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered unlabeled or blank clickable elements that prevented completion of the exploration task.",
+        "observed_signal": "Participant read through support helpline information and contact details, then encountered blank bullets and unlabeled clickable elements ('If blank bullet click there is blank bullet click on the unlabeled end of page 20'), and the transcript ends with 'end of PDF document containing 20 pages group' indicating no further navigation occurred.",
+        "stated_signal": null,
+        "rationale": "The participant encountered unlabeled or blank interactive elements that blocked further exploration. The screen reader output shows structural accessibility issues ('blank bullet click on the unlabeled') that prevented the participant from understanding what actions were available. No verbal statement was made, but the observed failure to progress past these elements and the end of the transcript indicate a significant barrier to task completion.",
+        "structural_amplification_note": "Assistive technology user (screen reader) experienced severe amplification due to completely unlabeled and blank interactive controls, which are non-functional in accessibility context."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

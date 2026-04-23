@@ -1,0 +1,169 @@
+{
+  "video_id": "marychaunguyen_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "marychaunguyen",
+  "total_windows": 49,
+  "duration_sec": 3573.27,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 31,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 5,
+      "F3": 1,
+      "F4": 3,
+      "F5": 1,
+      "F6": 12,
+      "F7": 1
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 10,
+      "S4": 8,
+      "S5": 12
+    },
+    "by_sentiment": {
+      "E3": 8,
+      "E4": 22,
+      "none": 1
+    },
+    "by_calibrator_score": {
+      "L2": 12,
+      "L3": 18,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 26,
+      "conflicted": 2,
+      "stated_missing": 3
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "marychaunguyen_suncorp_w045",
+        "video_id": "marychaunguyen_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant's screen reader output is garbled and unnavigable, presenting fragmented headings, page numbers, and navigation labels without coherent structure, making it impossible to understand the page layout or find relevant information.",
+        "observed_signal": "Participant listened to the screen reader output which contained repetitive, fragmented text including partial headings, page counts, product names, and navigation elements in a confusing sequence without clear hierarchy or actionable pathways.",
+        "stated_signal": "Lucky there's no search function now, let's try.",
+        "rationale": "The participant is using a screen reader and the accessibility output is severely malformed, presenting a stream of fragmented and incoherent content. The participant's verbal comment indicates frustration and recognition that search is unavailable. The inability to extract meaningful page structure or navigation pathways from the screen reader output means the participant cannot independently complete the task of finding financial hardship information, meeting the S1 blocker criterion and the L5 (blocking) gate.",
+        "structural_amplification_note": "Blind or assistive-technology-dependent users are structurally amplified by severe screen reader output corruption. The garbled heading hierarchy, unlabeled navigation elements, and repetitive page-number sequences make the interface completely unusable without visual fallback."
+      },
+      {
+        "window_id": "marychaunguyen_suncorp_w008",
+        "video_id": "marychaunguyen_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": null,
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered a page filled with unrelated insurance product categories (business, pet, life insurance) while searching for financial hardship support, indicating difficulty locating task-relevant information.",
+        "observed_signal": "Participant scrolled through extensive product listings including business insurance, pet insurance, life insurance, market stall insurance, and customer reviews without finding financial hardship or payment support information.",
+        "stated_signal": null,
+        "rationale": "The participant's navigation shows they encountered content that does not match the task objective (finding financial hardship support and payment flexibility information). The extensive scrolling through irrelevant product categories without locating the required information represents significant friction in the information-seeking pathway. No verbal expression is present, so sentiment remains null.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_suncorp_w010",
+        "video_id": "marychaunguyen_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant was unable to locate financial hardship or payment support information despite multiple interactions with the page.",
+        "observed_signal": "Participant cycled through pages (1–14), read regulatory/AFSL information, accessed menu items (Log in, Get a quote, Make a claim, Pay, Renew, Get documents, Track a claim, Cancel my policy), and ended without accessing content relevant to the task (financial hardship support, late payment fees, payment flexibility options).",
+        "stated_signal": null,
+        "rationale": "The task required locating information on financial hardship support, late-payment fees, and flexible payment options. The participant navigated the homepage, menu structure, and multiple pages without discovering or accessing relevant support pathways. Although no explicit verbal frustration was recorded in this window, the complete absence of task-relevant content discovery constitutes a significant component failure. The outcome is unresolved and suggests the necessary information pathway was skipped or not available in the accessed areas.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_suncorp_w014",
+        "video_id": "marychaunguyen_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant navigated through multiple pop-ups and dialogs showing insurance product details and policy information that were not relevant to the stated task of finding financial hardship support, suggesting the navigation pathway did not surface the required information.",
+        "observed_signal": "Participant encountered and cycled through pop-ups displaying: duty of disclosure, policy start date picker, live chat options, and common questions—none of which addressed financial hardship, late payment fees, or support options. Participant continued opening and closing dialogs without finding the target information.",
+        "stated_signal": "More information about replacement, but nothing came up. I understand but OK, I understand.",
+        "rationale": "The participant's stated observation ('nothing came up') combined with observed cycling through unrelated content (product details, policy dates, chat links) demonstrates that the required information pathway was not located. The participant searched multiple pop-ups without finding financial hardship support information, indicating a significant component failure to access task-critical content.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_suncorp_w015",
+        "video_id": "marychaunguyen_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate information on financial hardship support and instead navigated away from the relevant pathway into generic insurance quote pages.",
+        "observed_signal": "Participant interacted with policy start date dialogues, form fields, and eventually cycled through browser tabs searching for home insurance quotes and generic insurance information, rather than locating hardship policy or support documentation.",
+        "stated_signal": "I guess that's where I would go get go put a quote form in I guess. No, I just wanna look at more information.",
+        "rationale": "The participant stated they wanted to find more information (on financial hardship support), but observed behaviour shows navigation to irrelevant quote pages and generic insurance content. The participant did not locate the required hardship policy, support options, or fee information specified in the task. This is a significant component failure (not locating the core task content) that was worked around or skipped, matching S3.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}
