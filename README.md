@@ -553,6 +553,7 @@ PYTHONPATH=. python scripts/run_pipeline.py --all
 
 # Specify output directory
 PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports_r7
+```
 
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
