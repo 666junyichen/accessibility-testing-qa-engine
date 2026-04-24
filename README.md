@@ -1,4 +1,4 @@
-<img width="1635" height="554" alt="image" src="https://github.com/user-attachments/assets/d0c293f0-dce1-4fd9-b0e4-b85313d1d14e" /># CS20 Project
+# CS20 Project
 
 ## Data Source
 AWS S3 bucket:
