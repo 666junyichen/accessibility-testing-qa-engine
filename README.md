@@ -516,45 +516,6 @@ python scripts\create_r3_manual_annotation_round1.py
 python scripts\migrate_r3_annotations_to_canonical.py
 ```
 
-## Step 7.1 — Pipeline Orchestration (Fusion Runner)
-
-- **Script**: `scripts/run_pipeline.py`
-- **Tests**: `tests/test_run_pipeline.py`
-
-Implements the orchestration layer that integrates outputs from Layer 1, Layer 2, and Layer 3 and generates final video-level Quality Reports.
-
-### Functionality
-- Loads processed CSV inputs from `data/processed/`:
-  - `windows.csv`
-  - `layer1_flags.csv`
-  - `layer2_cluster_assignments.csv`
-  - `layer3_findings_filtered.csv`
-  - `layer3_video_assessments.csv`
-- Collects all available `video_id`s across datasets
-- For each video:
-  - Filters relevant rows
-  - Calls `fuse_video(...)` from `src/pipeline/fusion.py`
-  - Writes one JSON report per video
-
-### Output
-- Per-video reports:
-  - `data/processed/reports/{video_id}.json`
-- Summary file:
-  - `data/processed/reports/_summary.csv`
-
-### CLI Usage
-
-```bash
-# Run for a single video
-PYTHONPATH=. python scripts/run_pipeline.py --video <video_id>
-
-# Run for all videos
-PYTHONPATH=. python scripts/run_pipeline.py --all
-
-# Specify output directory
-PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports_r7
-```
-
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
 - **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
@@ -619,6 +580,95 @@ Previous results (old schema, for reference only — not comparable to Round 5):
 python scripts\annotate_r8_round1_updated.py
 # Then open and run:
 notebooks/04_kappa_agreement.ipynb
+```
+
+## Step 5.4 — LLM Kappa
+- **Notebook**: `notebooks/04_kappa_agreement.ipynb` (Section 10)
+- **Inputs:**
+  - `data/processed/layer3_findings_filtered.csv` (2,133 findings, pseudo-positives removed)
+  - `data/processed/layer3_video_assessments.csv` (57 videos, 5.1-B video-level labels)
+  - `data/annotations/r8_manual_annotations_round1.csv` (14 windows, R8 round-1 human annotations)
+- **Join strategy**: join on `window_id`; 10 of 14 windows have LLM findings; 4 no-finding windows treated as `friction_type='none'`; multi-finding windows resolved by highest `calibrator_score_l` (ties: first occurrence)
+- **Decision gate**: `friction_type` κ ≥ 0.5 → V2 prompt acceptable, no V3 revision needed
+
+### Kappa Results
+
+| Schema | Dimension | LLM V2 vs R8 κ | R3 vs R8 κ (ref) | Level | Verdict |
+|---|---|---|---|---|---|
+| 5.1-A | `friction_type` | **0.7407** | 0.8293 | Substantial | ✅ Gate passed (≥ 0.5); V2 retained |
+| 5.1-A | `severity_s` (nominal) | **0.5238** | 0.3378 | Moderate | ✅ Acceptable |
+| 5.1-A | `severity_s` (weighted) | **0.7603** | 0.6056 | Substantial | ✅ Strong ordinal agreement |
+| 5.1-A | `sentiment_e` | **0.0000** | 0.2222 | Slight | ⚠️ Systematic E3→E4 inflation by LLM |
+| 5.1-A | `calibrator_score_l` (nominal) | **0.3103** | 0.8971 | Fair | ⚠️ n=10; no-finding windows excluded |
+| 5.1-A | `calibrator_score_l` (weighted) | **0.4118** | 0.9271 | Fair | ⚠️ Fair directional agreement |
+| 5.1-A | `signal_alignment` | **0.0000** | N/A | — | ℹ️ Schema convention diff: R8=aligned, LLM=stated_missing for no-finding windows |
+| 5.1-B | `narration_quality` | **0.0000** | 0.5882 | Slight | ⚠️ LLM defaults to `rich` for all videos |
+| 5.1-B | `recording_quality` | **0.0118** | 0.0000 | Slight | ⚠️ LLM defaults to `acceptable`; R8 uses `good` for most |
+| 5.1-B | `coaching_evidence` | N/A | N/A | — | ✅ All `none` on both sides |
+
+### Key Findings
+
+- **`friction_type` κ = 0.7407 (Substantial)** — final judge passes. V2 prompt is retained; no V3 revision needed. 3 disagreements: `giuliaclemente26_uq_w050` (R8=F7, LLM=F1), `marychaunguyen_suncorp_w011` (R8=F3, LLM=F7), `giuliaclemente26_uq_w004` (R8=F5, LLM=F7). All are borderline multi-friction windows.
+- **`sentiment_e` κ = 0.0** — LLM V2 systematically assigns E4 (Frustrated) regardless of actual tester tone. R8 correctly differentiates E2/E3/E4. Does not trigger V3 but should be addressed with E3 calibration examples if sentiment accuracy becomes a downstream requirement.
+- **`calibrator_score_l`** gap is partly structural — 4 no-finding windows have no LLM score (n=10). Weighted kappa (0.4118) is more informative and shows fair directional agreement.
+- **5.1-B video-level labels** show systematic default behaviour: LLM assigns `rich` to all `narration_quality` and `acceptable` to all `recording_quality` regardless of session content. This is a V2 prompt calibration gap in the 5.1-B assessment, separate from the finding-level friction verdict.
+
+```python
+# Usage — Step 5.4 LLM Kappa (Section 10 of notebook)
+# Inputs required:
+#   data/processed/layer3_findings_filtered.csv
+#   data/processed/layer3_video_assessments.csv
+#   data/annotations/r8_manual_annotations_round1.csv
+
+# Open and run Section 10 of:
+notebooks/04_kappa_agreement.ipynb
+
+# Section 10 depends on variables defined in Sections 1-3 (helper functions).
+# Always run the full notebook from top, or at minimum run:
+#   Cell 1  — imports
+#   Cell 7  — helper functions (compute_kappa, sev_weighted, cal_weighted, crosstab_and_disagree)
+#   Cell 21 — LLM load + join + 6-dimension kappa
+#   Cell 22 — error cases
+#   Cell 23 — conclusion (markdown, no run needed)
+```
+
+## Step 7.1 — Pipeline Orchestration (Fusion Runner)
+
+- **Script**: `scripts/run_pipeline.py`
+- **Tests**: `tests/test_run_pipeline.py`
+
+Implements the orchestration layer that integrates outputs from Layer 1, Layer 2, and Layer 3 and generates final video-level Quality Reports.
+
+### Functionality
+- Loads processed CSV inputs from `data/processed/`:
+  - `windows.csv`
+  - `layer1_flags.csv`
+  - `layer2_cluster_assignments.csv`
+  - `layer3_findings_filtered.csv`
+  - `layer3_video_assessments.csv`
+- Collects all available `video_id`s across datasets
+- For each video:
+  - Filters relevant rows
+  - Calls `fuse_video(...)` from `src/pipeline/fusion.py`
+  - Writes one JSON report per video
+
+### Output
+- Per-video reports:
+  - `data/processed/reports/{video_id}.json`
+- Summary file:
+  - `data/processed/reports/_summary.csv`
+
+### CLI Usage
+
+```bash
+# Run for a single video
+PYTHONPATH=. python scripts/run_pipeline.py --video <video_id>
+
+# Run for all videos
+PYTHONPATH=. python scripts/run_pipeline.py --all
+
+# Specify output directory
+PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports_r7
 ```
 
 ## Step 8.3 - R3 Case Studies
