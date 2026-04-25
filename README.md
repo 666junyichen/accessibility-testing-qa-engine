@@ -662,13 +662,13 @@ Implements the orchestration layer that integrates outputs from Layer 1, Layer 2
 
 ```bash
 # Run for a single video
-PYTHONPATH=. python scripts/run_pipeline.py --video <video_id>
+PYTHONPATH=. python scripts/run_pipeline.py --video <video_filename>
 
 # Run for all videos
 PYTHONPATH=. python scripts/run_pipeline.py --all
 
 # Specify output directory
-PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports_r7
+PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports
 ```
 
 ## Step 8.3 - R3 Case Studies
