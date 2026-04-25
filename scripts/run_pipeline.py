@@ -174,38 +174,52 @@ def save_report(report, output_path: Path) -> None:
 def build_summary_row(video_id: str, ok: bool, output_dir: Path) -> dict:
     if not ok:
         return {
-            "status": "failed",
             "video_id": video_id,
+            "tester": "",
             "project": "",
-            "tester_name": "",
-            "total_windows": 0,
-            "duration_sec": 0.0,
-            "overall_quality_tier": "",
-            "overall_reasoning": "",
-            "recording_quality": "",
-            "narration_quality": "",
-            "coaching_evidence": "",
-            "total_findings": 0,
-            "recommendation_count": 0,
+            "windows": 0,
+            "duration_s": 0,
+            "l1_total": 0,
+            "l1_duration_anomaly": False,
+            "l2_coverage": 0.0,
+            "l3_findings": 0,
+            "top_severity": "",
+            "narration": "",
+            "recording": "",
+            "tier": "",
+            "reason": "",
+            "coach_recs": 0,
         }
 
     report_path = output_dir / f"{video_id}.json"
     payload = json.loads(report_path.read_text(encoding="utf-8"))
 
+    l1 = payload.get("l1", {})
+    l2 = payload.get("l2", {})
+    l3_findings = payload.get("l3_findings", {})
+    l3_assessment = payload.get("l3_assessment", {})
+    overall = payload.get("overall", {})
+
+    reasoning = overall.get("reasoning", "")
+    if isinstance(reasoning, list):
+        reasoning = " | ".join(str(x) for x in reasoning)
+
     return {
-        "status": "success",
-        "video_id": payload.get("video_id", ""),
+        "video_id": payload.get("video_id", video_id),
+        "tester": payload.get("tester_name", ""),
         "project": payload.get("project", ""),
-        "tester_name": payload.get("tester_name", ""),
-        "total_windows": payload.get("total_windows", 0),
-        "duration_sec": payload.get("duration_sec", 0.0),
-        "overall_quality_tier": payload.get("overall", {}).get("quality_tier", ""),
-        "overall_reasoning": " | ".join(payload.get("overall", {}).get("reasoning", [])),
-        "recording_quality": payload.get("l3_assessment", {}).get("recording_quality", ""),
-        "narration_quality": payload.get("l3_assessment", {}).get("narration_quality", ""),
-        "coaching_evidence": payload.get("l3_assessment", {}).get("coaching_evidence", ""),
-        "total_findings": payload.get("l3_findings", {}).get("total_findings", 0),
-        "recommendation_count": len(payload.get("coaching_recommendations", [])),
+        "windows": payload.get("total_windows", 0),
+        "duration_s": int(round(payload.get("duration_sec", 0))),
+        "l1_total": l1.get("total_flags", 0),
+        "l1_duration_anomaly": l1.get("duration_anomaly", False),
+        "l2_coverage": l2.get("coverage", 0.0),
+        "l3_findings": l3_findings.get("total_findings", 0),
+        "top_severity": l3_findings.get("top_severity", ""),
+        "narration": l3_assessment.get("narration_quality", ""),
+        "recording": l3_assessment.get("recording_quality", ""),
+        "tier": overall.get("quality_tier", ""),
+        "reason": reasoning,
+        "coach_recs": len(payload.get("coaching_recommendations", [])),
     }
 
 
