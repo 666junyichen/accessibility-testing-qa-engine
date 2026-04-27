@@ -1,0 +1,229 @@
+video_id,config,tier,reason,l1_total,l3_findings,top_severity
+Sharelinsonny_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,27,S2
+Sharelinsonny_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,27,S2
+Sharelinsonny_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,27,S2
+Sharelinsonny_suncorp,No-L3,good,no major quality concerns detected,0,0,
+Sharelinsonny_uq,Full,poor,task-blocking friction: S1/S2 present,0,29,S1
+Sharelinsonny_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,29,S1
+Sharelinsonny_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,29,S1
+Sharelinsonny_uq,No-L3,good,no major quality concerns detected,0,0,
+Sharelinsonny_wa,Full,poor,task-blocking friction: S1/S2 present,0,40,S2
+Sharelinsonny_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,40,S2
+Sharelinsonny_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,40,S2
+Sharelinsonny_wa,No-L3,good,no major quality concerns detected,0,0,
+asma_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,30,S2
+asma_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,30,S2
+asma_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,30,S2
+asma_suncorp,No-L3,good,no major quality concerns detected,0,0,
+asma_uq,Full,acceptable,multiple medium-severity findings,0,40,S3
+asma_uq,No-L1,acceptable,multiple medium-severity findings,0,40,S3
+asma_uq,No-L2,acceptable,multiple medium-severity findings,0,40,S3
+asma_uq,No-L3,good,no major quality concerns detected,0,0,
+carlpatrickrobinson_suncorp,Full,acceptable,multiple medium-severity findings,1,6,S3
+carlpatrickrobinson_suncorp,No-L1,acceptable,multiple medium-severity findings,0,6,S3
+carlpatrickrobinson_suncorp,No-L2,acceptable,multiple medium-severity findings,1,6,S3
+carlpatrickrobinson_suncorp,No-L3,good,no major quality concerns detected,1,0,
+carlpatrickrobinson_uq,Full,poor,task-blocking friction: S1/S2 present,2,8,S1
+carlpatrickrobinson_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,8,S1
+carlpatrickrobinson_uq,No-L2,poor,task-blocking friction: S1/S2 present,2,8,S1
+carlpatrickrobinson_uq,No-L3,good,no major quality concerns detected,2,0,
+fjone7_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,56,S2
+fjone7_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,56,S2
+fjone7_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,56,S2
+fjone7_suncorp,No-L3,good,no major quality concerns detected,0,0,
+fjone7_uq,Full,poor,task-blocking friction: S1/S2 present,0,60,S2
+fjone7_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,60,S2
+fjone7_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,60,S2
+fjone7_uq,No-L3,good,no major quality concerns detected,0,0,
+gameoverdan_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,50,S2
+gameoverdan_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,50,S2
+gameoverdan_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,50,S2
+gameoverdan_suncorp,No-L3,good,no major quality concerns detected,0,0,
+gameoverdan_uq,Full,poor,task-blocking friction: S1/S2 present,0,52,S1
+gameoverdan_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,52,S1
+gameoverdan_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,52,S1
+gameoverdan_uq,No-L3,good,no major quality concerns detected,0,0,
+ghum_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,76,S1
+ghum_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,76,S1
+ghum_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,76,S1
+ghum_suncorp,No-L3,good,no major quality concerns detected,0,0,
+ghum_uq,Full,poor,task-blocking friction: S1/S2 present,0,93,S1
+ghum_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,93,S1
+ghum_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,93,S1
+ghum_uq,No-L3,good,no major quality concerns detected,0,0,
+ghum_wa,Full,poor,task-blocking friction: S1/S2 present,0,61,S1
+ghum_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,61,S1
+ghum_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,61,S1
+ghum_wa,No-L3,good,no major quality concerns detected,0,0,
+giuliaclemente26_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,27,S2
+giuliaclemente26_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,27,S2
+giuliaclemente26_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,27,S2
+giuliaclemente26_suncorp,No-L3,good,no major quality concerns detected,0,0,
+giuliaclemente26_uq,Full,poor,task-blocking friction: S1/S2 present,0,54,S2
+giuliaclemente26_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,54,S2
+giuliaclemente26_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,54,S2
+giuliaclemente26_uq,No-L3,good,no major quality concerns detected,0,0,
+giuliaclemente26_wa,Full,acceptable,multiple medium-severity findings,0,91,S3
+giuliaclemente26_wa,No-L1,acceptable,multiple medium-severity findings,0,91,S3
+giuliaclemente26_wa,No-L2,acceptable,multiple medium-severity findings,0,91,S3
+giuliaclemente26_wa,No-L3,good,no major quality concerns detected,0,0,
+gracieha22_suncorp,Full,acceptable,multiple medium-severity findings,0,15,S4
+gracieha22_suncorp,No-L1,acceptable,multiple medium-severity findings,0,15,S4
+gracieha22_suncorp,No-L2,acceptable,multiple medium-severity findings,0,15,S4
+gracieha22_suncorp,No-L3,good,no major quality concerns detected,0,0,
+gracieha22_uq,Full,acceptable,multiple medium-severity findings,0,7,S5
+gracieha22_uq,No-L1,acceptable,multiple medium-severity findings,0,7,S5
+gracieha22_uq,No-L2,acceptable,multiple medium-severity findings,0,7,S5
+gracieha22_uq,No-L3,good,no major quality concerns detected,0,0,
+gracieha22_wa,Full,acceptable,multiple medium-severity findings,0,14,S4
+gracieha22_wa,No-L1,acceptable,multiple medium-severity findings,0,14,S4
+gracieha22_wa,No-L2,acceptable,multiple medium-severity findings,0,14,S4
+gracieha22_wa,No-L3,good,no major quality concerns detected,0,0,
+info_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,59,S1
+info_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,59,S1
+info_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,59,S1
+info_suncorp,No-L3,good,no major quality concerns detected,0,0,
+info_wa,Full,acceptable,multiple medium-severity findings,0,77,S3
+info_wa,No-L1,acceptable,multiple medium-severity findings,0,77,S3
+info_wa,No-L2,acceptable,multiple medium-severity findings,0,77,S3
+info_wa,No-L3,good,no major quality concerns detected,0,0,
+jenniferparry7_uq,Full,poor,task-blocking friction: S1/S2 present,10,9,S1
+jenniferparry7_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,9,S1
+jenniferparry7_uq,No-L2,poor,task-blocking friction: S1/S2 present,10,9,S1
+jenniferparry7_uq,No-L3,good,no major quality concerns detected,10,0,
+kweslake_uq,Full,acceptable,multiple medium-severity findings,0,24,S3
+kweslake_uq,No-L1,acceptable,multiple medium-severity findings,0,24,S3
+kweslake_uq,No-L2,acceptable,multiple medium-severity findings,0,24,S3
+kweslake_uq,No-L3,good,no major quality concerns detected,0,0,
+laurenrosemetzler_suncorp,Full,acceptable,multiple medium-severity findings,0,34,S3
+laurenrosemetzler_suncorp,No-L1,acceptable,multiple medium-severity findings,0,34,S3
+laurenrosemetzler_suncorp,No-L2,acceptable,multiple medium-severity findings,0,34,S3
+laurenrosemetzler_suncorp,No-L3,good,no major quality concerns detected,0,0,
+laurenrosemetzler_uq,Full,poor,task-blocking friction: S1/S2 present,0,36,S2
+laurenrosemetzler_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,36,S2
+laurenrosemetzler_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,36,S2
+laurenrosemetzler_uq,No-L3,good,no major quality concerns detected,0,0,
+laurenrosemetzler_wa,Full,poor,task-blocking friction: S1/S2 present,0,23,S2
+laurenrosemetzler_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,23,S2
+laurenrosemetzler_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,23,S2
+laurenrosemetzler_wa,No-L3,good,no major quality concerns detected,0,0,
+margieflint_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,64,S2
+margieflint_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,64,S2
+margieflint_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,64,S2
+margieflint_suncorp,No-L3,good,no major quality concerns detected,0,0,
+margieflint_uq,Full,poor,task-blocking friction: S1/S2 present,0,46,S1
+margieflint_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,46,S1
+margieflint_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,46,S1
+margieflint_uq,No-L3,good,no major quality concerns detected,0,0,
+margieflint_wa,Full,poor,task-blocking friction: S1/S2 present,0,79,S2
+margieflint_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,79,S2
+margieflint_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,79,S2
+margieflint_wa,No-L3,good,no major quality concerns detected,0,0,
+marychaunguyen_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,31,S1
+marychaunguyen_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,31,S1
+marychaunguyen_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,31,S1
+marychaunguyen_suncorp,No-L3,good,no major quality concerns detected,0,0,
+marychaunguyen_uq,Full,poor,task-blocking friction: S1/S2 present,0,20,S2
+marychaunguyen_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,20,S2
+marychaunguyen_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,20,S2
+marychaunguyen_uq,No-L3,good,no major quality concerns detected,0,0,
+marychaunguyen_wa,Full,poor,task-blocking friction: S1/S2 present,0,43,S1
+marychaunguyen_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,43,S1
+marychaunguyen_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,43,S1
+marychaunguyen_wa,No-L3,good,no major quality concerns detected,0,0,
+mgblackwell2001_suncorp,Full,poor,recording unusable,0,15,S3
+mgblackwell2001_suncorp,No-L1,poor,recording unusable,0,15,S3
+mgblackwell2001_suncorp,No-L2,poor,recording unusable,0,15,S3
+mgblackwell2001_suncorp,No-L3,good,no major quality concerns detected,0,0,
+oliviamitchell22_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,26,S2
+oliviamitchell22_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,26,S2
+oliviamitchell22_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,26,S2
+oliviamitchell22_suncorp,No-L3,good,no major quality concerns detected,0,0,
+praveshuprety307_wa,Full,acceptable,multiple medium-severity findings,0,30,S3
+praveshuprety307_wa,No-L1,acceptable,multiple medium-severity findings,0,30,S3
+praveshuprety307_wa,No-L2,acceptable,multiple medium-severity findings,0,30,S3
+praveshuprety307_wa,No-L3,good,no major quality concerns detected,0,0,
+rae_suncorp,Full,acceptable,multiple medium-severity findings,0,50,S3
+rae_suncorp,No-L1,acceptable,multiple medium-severity findings,0,50,S3
+rae_suncorp,No-L2,acceptable,multiple medium-severity findings,0,50,S3
+rae_suncorp,No-L3,good,no major quality concerns detected,0,0,
+rae_uq,Full,poor,task-blocking friction: S1/S2 present,0,35,S2
+rae_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,35,S2
+rae_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,35,S2
+rae_uq,No-L3,good,no major quality concerns detected,0,0,
+ramazankawish_suncorp,Full,acceptable,multiple medium-severity findings,0,38,S3
+ramazankawish_suncorp,No-L1,acceptable,multiple medium-severity findings,0,38,S3
+ramazankawish_suncorp,No-L2,acceptable,multiple medium-severity findings,0,38,S3
+ramazankawish_suncorp,No-L3,good,no major quality concerns detected,0,0,
+ramazankawish_uq,Full,poor,task-blocking friction: S1/S2 present,2,78,S1
+ramazankawish_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,78,S1
+ramazankawish_uq,No-L2,poor,task-blocking friction: S1/S2 present,2,78,S1
+ramazankawish_uq,No-L3,good,no major quality concerns detected,2,0,
+ramazankawish_wa,Full,poor,task-blocking friction: S1/S2 present,0,34,S1
+ramazankawish_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,34,S1
+ramazankawish_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,34,S1
+ramazankawish_wa,No-L3,good,no major quality concerns detected,0,0,
+reececraigie_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,26,S2
+reececraigie_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,26,S2
+reececraigie_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,26,S2
+reececraigie_suncorp,No-L3,good,no major quality concerns detected,0,0,
+reececraigie_uq,Full,acceptable,multiple medium-severity findings,0,20,S3
+reececraigie_uq,No-L1,acceptable,multiple medium-severity findings,0,20,S3
+reececraigie_uq,No-L2,acceptable,multiple medium-severity findings,0,20,S3
+reececraigie_uq,No-L3,good,no major quality concerns detected,0,0,
+reececraigie_wa,Full,poor,task-blocking friction: S1/S2 present,0,34,S2
+reececraigie_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,34,S2
+reececraigie_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,34,S2
+reececraigie_wa,No-L3,good,no major quality concerns detected,0,0,
+reneerussell99_suncorp,Full,acceptable,multiple medium-severity findings,0,14,S3
+reneerussell99_suncorp,No-L1,acceptable,multiple medium-severity findings,0,14,S3
+reneerussell99_suncorp,No-L2,acceptable,multiple medium-severity findings,0,14,S3
+reneerussell99_suncorp,No-L3,good,no major quality concerns detected,0,0,
+reneerussell99_uq,Full,poor,task-blocking friction: S1/S2 present,0,20,S2
+reneerussell99_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,20,S2
+reneerussell99_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,20,S2
+reneerussell99_uq,No-L3,good,no major quality concerns detected,0,0,
+reneerussell99_wa,Full,acceptable,multiple medium-severity findings,1,15,S3
+reneerussell99_wa,No-L1,acceptable,multiple medium-severity findings,0,15,S3
+reneerussell99_wa,No-L2,acceptable,multiple medium-severity findings,1,15,S3
+reneerussell99_wa,No-L3,good,no major quality concerns detected,1,0,
+tacitdesign_wa,Full,poor,task-blocking friction: S1/S2 present,0,72,S2
+tacitdesign_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,72,S2
+tacitdesign_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,72,S2
+tacitdesign_wa,No-L3,good,no major quality concerns detected,0,0,
+terryaflint17_suncorp,Full,poor,recording unusable,81,22,S1
+terryaflint17_suncorp,No-L1,poor,recording unusable,0,22,S1
+terryaflint17_suncorp,No-L2,poor,recording unusable,81,22,S1
+terryaflint17_suncorp,No-L3,good,no major quality concerns detected,81,0,
+terryaflint17_uq,Full,poor,task-blocking friction: S1/S2 present,117,43,S1
+terryaflint17_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,43,S1
+terryaflint17_uq,No-L2,poor,task-blocking friction: S1/S2 present,117,43,S1
+terryaflint17_uq,No-L3,good,no major quality concerns detected,117,0,
+terryaflint17_wa,Full,poor,task-blocking friction: S1/S2 present,64,16,S1
+terryaflint17_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,16,S1
+terryaflint17_wa,No-L2,poor,task-blocking friction: S1/S2 present,64,16,S1
+terryaflint17_wa,No-L3,good,no major quality concerns detected,64,0,
+thanoptions_suncorp,Full,poor,recording unusable,0,7,S4
+thanoptions_suncorp,No-L1,poor,recording unusable,0,7,S4
+thanoptions_suncorp,No-L2,poor,recording unusable,0,7,S4
+thanoptions_suncorp,No-L3,good,no major quality concerns detected,0,0,
+thanoptions_uq,Full,poor,task-blocking friction: S1/S2 present,0,41,S1
+thanoptions_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,41,S1
+thanoptions_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,41,S1
+thanoptions_uq,No-L3,good,no major quality concerns detected,0,0,
+thanoptions_wa,Full,poor,recording unusable,0,0,
+thanoptions_wa,No-L1,poor,recording unusable,0,0,
+thanoptions_wa,No-L2,poor,recording unusable,0,0,
+thanoptions_wa,No-L3,good,no major quality concerns detected,0,0,
+tharayil_wa,Full,poor,task-blocking friction: S1/S2 present,0,57,S2
+tharayil_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,57,S2
+tharayil_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,57,S2
+tharayil_wa,No-L3,good,no major quality concerns detected,0,0,
+tianarosie1_wa,Full,poor,task-blocking friction: S1/S2 present,0,59,S1
+tianarosie1_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,59,S1
+tianarosie1_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,59,S1
+tianarosie1_wa,No-L3,good,no major quality concerns detected,0,0,
+troyparnell_suncorp,Full,poor,recording unusable,0,0,
+troyparnell_suncorp,No-L1,poor,recording unusable,0,0,
+troyparnell_suncorp,No-L2,poor,recording unusable,0,0,
+troyparnell_suncorp,No-L3,good,no major quality concerns detected,0,0,
