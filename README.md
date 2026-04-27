@@ -673,24 +673,23 @@ PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/re
 
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
-- Uses selected transcript windows to write qualitative case studies for accessibility, missing information, comprehension, confidence, and excessive-effort issues.
-- Current case studies are draft examples based on sampled R3 windows.
-- Final case studies should be updated after full clustering, LLM classification, and agreement results are available.
+- Uses selected video-level MVP reports from `data/processed/reports/` to write qualitative case studies for accessibility, missing information, comprehension, confidence, excessive-effort, recording-quality, and coaching issues.
+- Current case studies cover 5 selected videos (`ghum_uq`, `margieflint_wa`, `giuliaclemente26_wa`, `jenniferparry7_uq`, `thanoptions_wa`) across different tiers and trigger reasons.
+- Each case cites `quality_tier` + reason, L1 flags, L3 finding summaries (`friction_type`, `severity_s`, `sentiment_e`, `calibrator_score_l`), and coaching recommendations from the corresponding JSON report.
+- The original 4 window-level examples are retained inside `docs/case_studies.md` as supporting qualitative evidence rather than standalone case studies.
 
 | Case study focus | Related evidence source | Taxonomy link |
 |------------------|-------------------------|---------------|
-| Accessibility or assistive technology barrier | Transcript window + task context | F3 |
-| Missing or hidden pathway | Window-level user narration | F6 |
-| Readability or comprehension problem | User feedback quote | F1 |
-| Confidence or trust uncertainty | Window text and qualitative notes | F2 |
-| High cognitive or process effort | Window text and qualitative notes | F7 |
+| Accessibility or assistive technology barrier | Video report top findings + retained window evidence | F3 |
+| Missing or hidden pathway | Video-level L3 finding summaries + user narration | F6 |
+| Readability or comprehension problem | Retained window evidence + L3 findings | F1 |
+| Confidence or trust uncertainty | Video report top findings and stated/observed signals | F2 |
+| High cognitive or process effort | Video report top findings and qualitative notes | F7 |
+| Recording or narration quality risk | 5.1-B video-level assessment + coaching recommendations | Session quality |
 
 
 ## R3 Current Limitations
-- Layer 2 clustering results are not yet finalised for R3 cluster interpretation.
-- LLM classification outputs are not yet available.
-- Step 5.4 agreement evaluation still needs to be recomputed using `data/annotations/r3_manual_annotations_round1_canonical.csv` and `data/annotations/r8_manual_annotations_round1.csv`.
-- Step 8.3 should be revised once final cluster assignments, LLM outputs, and agreement results are available.
-
-- Task context has not yet been automatically joined into each annotation row.
-- Step 8.3 will need updates after team-level annotation, clustering, and classification results are complete.
+- Layer 2 clustering remains exploratory and tester-dominated, so Step 8.3 uses it only as supporting context rather than as a final quality label.
+- Step 8.3 is now aligned with the MVP video-level reports, but the selected cases should still be spot-checked before final client-facing submission.
+- Recording-poor sessions such as `thanoptions_wa` should be used to demonstrate evidence-quality caution, not as strong product conclusions.
+- Case wording should remain aligned with Step 5.4 agreement findings as the progress report is finalised.
