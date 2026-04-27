@@ -633,6 +633,101 @@ notebooks/04_kappa_agreement.ipynb
 #   Cell 23 — conclusion (markdown, no run needed)
 ```
 
+## Step 6.3 — Performance Tracking
+- **Module**: `src/tracking/performance_model.py`
+- **Tests**: `tests/test_performance_model.py` (24 tests)
+- **Script**: `scripts/build_performance_tracking.py`
+- **Document**: `docs/performance_tracking_design.md`
+- **Inputs**:
+  - `data/processed/layer3_findings_filtered.csv` (5.1-A finding-level rows)
+  - `data/processed/layer3_video_assessments.csv` (5.1-B video-level rows)
+  - Optional auxiliaries: `data/processed/windows.csv` (`total_windows`), `data/processed/layer1_flags.csv` (`duration_anomaly`)
+- **Outputs**:
+  - `data/processed/performance/per_submission.csv` (57 rows — per-video score / tier / cap reasoning)
+  - `data/processed/performance/per_tester.csv` (27 rows — per-tester aggregate, trajectory, persistent friction)
+
+### SMP alignment principle
+R6 adopts SMP **score language** — 0–100 scale, four-tier output (Foundational / Developing / Proficient / Leading), cap-based severity rules. R6 does **not** reproduce SMP Model B, does not own product-accessibility scoring, and does not inject any SMP cohort weighting into the scoring chain. R6 produces *tester-performance-dimension aggregation*; Model B remains the SMP-side product scorer. Mapping to the four SMP design docs (`01-scoring-model-success-criteria.md` / `02-scoring-model-comparison-A-B-C-D.md` / `03-scoring-model-assessment-ABDC2.md` / `04-model-E-reworked-cap-based.md`) is documented section-by-section in `docs/performance_tracking_design.md` §2.
+
+### Per-submission scoring
+
+Three named dimension scores feed a weighted composite, then severity caps bind:
+
+| Dimension | Source | Weight | Lookup / formula |
+|---|---|---:|---|
+| D1 — Narration Substantiveness | `narration_quality` | 0.50 | rich=90, adequate=75, sparse=55, none=25 |
+| D2 — Friction-Surfacing Quality | findings density + alignment + mid-high severity share | 0.35 | `60 + 20·clamp(density/0.6) + 10·aligned_share + 10·mid_high_share` |
+| D3 — Recording Usability | `recording_quality` (+ `duration_anomaly` cap to 60) | 0.15 | good=90, acceptable=70, poor=40 |
+
+Severity caps (Model E style — applied after raw composite, minimum cap binds):
+
+| Trigger | Cap |
+|---|---:|
+| Any S1 finding present | ≤ 55 |
+| ≥2 S2 findings | ≤ 65 |
+| `narration_quality == 'none'` AND no findings | ≤ 40 |
+| `recording_quality == 'poor'` | ≤ 70 |
+
+Tier mapping:
+
+| Score range | Tier |
+|---|---|
+| 85–100 | Leading |
+| 70–84 | Proficient |
+| 55–69 | Developing |
+| 0–54 | Foundational |
+
+`calibrator_score_l` (L1–L5) is audit-only per Step 6.1 main/auxiliary discipline — never enters score or cap. `sentiment_e` is surfaced as a per-tester facet, not as a score input (E3 excluded from aggregate per `06`).
+
+### Per-tester trajectory
+For each tester with ≥2 non-low-evidence submissions:
+- ordered by `(project, video_id)` (placeholder until real submission timestamps land — `ordering_basis` field documents this)
+- `direction ∈ {improving, stable, declining}` from `delta = score[last] − score[first]` with ±5 stable band
+- `persistent_friction_types` = friction types appearing in top-3 across ≥2 submissions
+- `cross_check_lane ∈ {with_overrides, raw_only, dev_only}` per Katie's UQ note (UQ has no Model C3 overrides, so AAMI/Bupa vs UQ must bucket separately)
+- `low_evidence` (total_windows < 5) records are emitted in per-submission CSV but excluded from trajectory slope (protects against single noisy submissions swinging direction)
+
+### Result summary
+
+| Layer | Distribution |
+|---|---|
+| Per-submission tier | Leading 23 · Proficient 5 · Developing 27 · Foundational 2 |
+| Cap binding rate | 29 / 57 submissions (51%) — caps doing the work the design intends |
+| Per-tester tier | Leading 7 · Proficient 8 · Developing 11 · Foundational 1 (n=27 testers) |
+| Trajectory direction | improving 3 · stable 7 · declining 8 (n=18 testers with ≥2 scored submissions) |
+
+Worked example — `Sharelinsonny_suncorp`: D1=90, D2=83.7, D3=70 → raw=84.8; ≥2 S2 cap binds → final 65.0 / Developing. The cap-based shape is binding here, exactly as Model E intends.
+
+### Boundaries
+- W9 deliverable is design + reference module + per-tester sketch on dev 57. It does not constitute Freeze 4 (R6 mapping rules) sign-off — that's `docs/eval_freeze.md` Gate 2 territory and requires Nix's explicit approval after the rotating-validation results land.
+- Bupa held-out is out of scope until Gate 1 ∧ Gate 2 are green. R6 mapping must not be run on Bupa data prior to that.
+
+```python
+
+# Reads:
+#   data/processed/layer3_findings_filtered.csv
+#   data/processed/layer3_video_assessments.csv
+
+# Writes:
+#   data/processed/performance/per_submission.csv
+#   data/processed/performance/per_tester.csv
+```
+
+```python
+
+from src.tracking.performance_model import (
+    score_submissions_from_csv, build_per_tester_table,
+)
+
+records = score_submissions_from_csv(
+    findings_csv="data/processed/layer3_findings_filtered.csv",
+    assessments_csv="data/processed/layer3_video_assessments.csv",
+    windows_csv="data/processed/windows.csv",
+    layer1_flags_csv="data/processed/layer1_flags.csv",
+)
+trajectories = build_per_tester_table(records)
+```
+
 ## Step 7.1 — Pipeline Orchestration (Fusion Runner)
 
 - **Script**: `scripts/run_pipeline.py`
