@@ -41,6 +41,7 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 4.3 - R3 Cluster Interpretation Preparation](#step-43---r3-cluster-interpretation-preparation)
 - [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
+- [Step 6.3 — Performance Tracking](#step-63--performance-tracking)
 - [Step 8.1 - Dev55 Batch Run](#step-81---dev55-batch-run)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
 
