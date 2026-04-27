@@ -1,0 +1,169 @@
+{
+  "video_id": "margieflint_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "margieflint",
+  "total_windows": 70,
+  "duration_sec": 4725.870000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 64,
+    "by_friction_type": {
+      "F1": 14,
+      "F2": 14,
+      "F4": 3,
+      "F5": 1,
+      "F6": 28,
+      "F7": 4
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 6,
+      "S4": 15,
+      "S5": 38,
+      "S6": 4
+    },
+    "by_sentiment": {
+      "E3": 18,
+      "E4": 46
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 39,
+      "L3": 20,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 59,
+      "conflicted": 1,
+      "stated_missing": 4
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "margieflint_suncorp_w048",
+        "video_id": "margieflint_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate financial hardship support information and resorted to searching by unrelated topic (storm) instead of finding the relevant hardship assistance pathway.",
+        "observed_signal": "Participant stated they wanted to know how the company supports customers in financial difficulty but said 'I can't find that' and then pivoted to searching for storm-related information instead.",
+        "stated_signal": "But it's saying that you want to know how you support customers and I can't find that, storm, OK, let's try storm.",
+        "rationale": "The participant explicitly stated inability to locate the financial hardship support information and abandoned the search for the required pathway. Instead of finding the intended content, they navigated to an unrelated topic (storm preparation). This represents a component task blocker where the primary information need was not met and the participant did not recover to find the correct pathway within the session window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_suncorp_w011",
+        "video_id": "margieflint_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate information relevant to the task (financial hardship support, late payment fees) and expressed frustration after browsing claims-related content that was not applicable.",
+        "observed_signal": "Participant read through claims information, reviews about car accidents, and stated 'Can't see anything there about. Housing, I need to see something' before continuing to scroll through unrelated content.",
+        "stated_signal": "Can't see anything there about. Housing, I need to see something.",
+        "rationale": "The participant explicitly stated they cannot find relevant content (financial hardship, housing-related support) and the observed behaviour shows browsing through irrelevant claims and review sections. This is a significant component failure—the participant is off-track from the assigned task goal and expressed frustration without finding the required information pathway.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_suncorp_w012",
+        "video_id": "margieflint_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant searched multiple sections of the website looking for financial hardship or payment difficulty information but could not locate relevant content.",
+        "observed_signal": "Participant navigated to car insurance, home insurance, and make a claim sections, then reviewed FAQ and other subsections, but did not find information addressing payment difficulties or financial hardship support.",
+        "stated_signal": "Car insurance, car insurance, maybe I'm on the wrong page, but I can't see anything about. Hm Houses. Um, car insurance again, maybe I've gone to the wrong spot.",
+        "rationale": "The participant explicitly stated uncertainty about being on the correct page and cycled through multiple sections without finding the required information about financial hardship or payment support options. The stated signals show confusion and the observed navigation pattern shows a struggle across multiple sections. This is a significant barrier to completing the core task of understanding hardship support.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_suncorp_w047",
+        "video_id": "margieflint_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate information about financial hardship support independently and had to request assistant help to find the relevant support pathway.",
+        "observed_signal": "Participant searched the available navigation and resources but was unable to locate the relevant support information, then stated the need to ask the assistant.",
+        "stated_signal": "I had to actually ask the assistant because I can't see anywhere.",
+        "rationale": "The participant explicitly stated inability to locate the required information on the site ('I can't see anywhere') and resorted to asking the assistant to find it. This represents a significant component failure—the task required self-service information discovery, but the pathway was not discoverable, forcing external assistance. This fits S3 (barrier worked around) and L3 (struggle with task completion).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint_suncorp_w062",
+        "video_id": "margieflint_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant navigated through multiple payment-related pages but could not find information on how to make a manual payment or what steps to take after missing a payment.",
+        "observed_signal": "Participant clicked through 'manage my monthly payments', 'change your upcoming debit date', 'pay my excess', and 'pay online now' pages, but did not locate the required information and continued searching.",
+        "stated_signal": "Nothing about manual payment. So it still doesn't come up with how to pay. You know, let's pay my excess... you would know if you've missed payment and what steps you should take. So it still doesn't come up with how to pay.",
+        "rationale": "The participant explicitly stated the required information was not found ('Nothing about manual payment', 'it still doesn't come up with how to pay'). Despite navigating multiple relevant pages, the core task component—understanding payment options and steps after missing a payment—remained unresolved. This represents a significant barrier that was worked around rather than resolved.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -41,6 +41,7 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 4.3 - R3 Cluster Interpretation Preparation](#step-43---r3-cluster-interpretation-preparation)
 - [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
+- [Step 8.1 - Dev55 Batch Run](#step-81---dev55-batch-run)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
 
 ## Step 0.1 - Repository and Environment Setup
@@ -670,6 +671,27 @@ PYTHONPATH=. python scripts/run_pipeline.py --all
 # Specify output directory
 PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports
 ```
+
+## Step 8.1 - Dev55 Batch Run
+
+- **Status**: completed as a dev-batch reporting close-out
+- **Entrypoint**: `scripts/run_pipeline.py`
+- Existing batch run produced:
+  - `data/processed/reports/*.json`
+  - `data/processed/reports/_summary.csv` (`57` rows)
+- Official `Step 8.1` reporting scope is the governance-defined `dev55`, not all `57` generated rows
+- Official scope files:
+  - `data/processed/reports/dev55_official_list.csv`
+  - `data/processed/reports/_summary_dev55.csv`
+  - `data/processed/reports/dev55/` (`55` official JSON reports)
+- Excluded from the formal `dev55` set:
+  - `troyparnell_suncorp`
+  - `thanoptions_wa`
+- Basis for exclusion:
+  - `docs/eval_freeze.md` defines the dev set as `57` total with `2` transcription failures, yielding `55` official videos
+  - `README.md` already documents `troyparnell` as a retained transcript-failure / near-empty edge case
+  - both excluded rows have near-empty outputs in the current batch artifacts
+- This Step 8.1 close-out uses existing processed CSV/JSON artifacts only; it does not introduce new API calls or held-out evaluation
 
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`

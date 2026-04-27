@@ -1,0 +1,176 @@
+{
+  "video_id": "ghum_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "ghum",
+  "total_windows": 77,
+  "duration_sec": 5410.786,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 0,
+    "dominant_cluster_pct": 0.974025974025974,
+    "cluster_distribution": {
+      "0": 75,
+      "2": 2
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 76,
+    "by_friction_type": {
+      "F1": 20,
+      "F2": 12,
+      "F3": 11,
+      "F4": 2,
+      "F5": 5,
+      "F6": 24,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 4,
+      "S3": 20,
+      "S4": 17,
+      "S5": 32,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 12,
+      "E4": 59,
+      "none": 5
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 32,
+      "L3": 37,
+      "L4": 4,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 64,
+      "conflicted": 1,
+      "stated_missing": 11
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "ghum_suncorp_w026",
+        "video_id": "ghum_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": null,
+        "calibrator_score_l": "L5",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant did not locate financial hardship, payment flexibility, late/missed payment fee, or hardship support information after extensive navigation through product insurance pages.",
+        "observed_signal": "Participant read through optional covers (excess free glass, home assist), product information pages, and general home and contents insurance details without finding or accessing any section addressing financial hardship, payment difficulty, fees, or support options relevant to the assigned task context.",
+        "stated_signal": null,
+        "rationale": "The primary task outcome—finding information on financial hardship support, late payment fees, and flexibility options—was not achieved. The participant navigated extensively but remained on product pages unrelated to the stated need, and no pathway to the required information was accessed or completed independently.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_suncorp_w009",
+        "video_id": "ghum_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant could not locate information relevant to the financial hardship task (fees for late/missed payments, support options) within the visible product listing page.",
+        "observed_signal": "Participant read through multiple product categories and quotes without identifying or navigating to content about payment difficulties, hardship support, or fee structures. The transcript shows only product offerings and promotional discounts, no evidence of finding hardship-related content.",
+        "stated_signal": null,
+        "rationale": "The task requires finding information about financial hardship support and late payment fees. The participant's navigation reveals no pathways to this content; instead, only product listings and promotions are visible. This is a task blocker for the component outcome (locating hardship support information) even though the participant has not yet abandoned the task. This matches S2 and the L4 gate (severe friction requiring likely intervention or external workaround).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_suncorp_w025",
+        "video_id": "ghum_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant navigated through multiple pages of content about accidental damage coverage instead of finding information about financial hardship support, indicating inability to locate the relevant pathway for the assigned task.",
+        "observed_signal": "Participant's screen reader output shows progression through headings, content, and FAQs all related to accidental damage at home coverage. No navigation to financial hardship, payment difficulties, fees, or support options is evident in the transcript.",
+        "stated_signal": "What did that all come down to?",
+        "rationale": "The participant expressed a statement that suggests disorientation or confusion about relevance. The observed behaviour shows navigation through product feature content that is entirely unrelated to the task goal (financial hardship, payment support, fees). This represents a component task blocker: the participant cannot find the required information pathway within the product and has not achieved the task objective despite exploring the site.",
+        "structural_amplification_note": "Screen reader user encountering poor information architecture or navigation structure; heading hierarchy and content organisation may not support efficient wayfinding for assistive technology users seeking specific support pathways."
+      },
+      {
+        "window_id": "ghum_suncorp_w045",
+        "video_id": "ghum_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant did not locate the required information about financial hardship support, fees, or payment assistance options within the document traversal.",
+        "observed_signal": "Participant cycled through policy document pages (covering insured value, excess, coverage details, legal liability) without identifying or accessing sections addressing financial hardship, late payment fees, or support options. The search did not yield task-relevant content.",
+        "stated_signal": null,
+        "rationale": "The participant navigated extensively through the document but never accessed or mentioned sections addressing the core task need (hardship support, payment flexibility, late fees). The task required independent online research; the inability to locate relevant pathways is a component task blocker, even though general page navigation was technically possible.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_suncorp_w067",
+        "video_id": "ghum_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find information about when a claim can be made after resolving payment issues and received no helpful answer from the virtual chat assistant.",
+        "observed_signal": "Participant navigated through FAQ headings, contacted support via phone number, and stated the virtual chat assistant did not answer the question.",
+        "stated_signal": "I don't know how I can find that information out. Chat with the virtual assistant. Um, the chat hasn't answered that at all.",
+        "rationale": "The participant explicitly stated they cannot find the information and the chat failed to help. The participant then resorted to a phone call as an external workaround to get an answer, indicating the required information was not locatable online. This component task was not achieved within the product without external intervention.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

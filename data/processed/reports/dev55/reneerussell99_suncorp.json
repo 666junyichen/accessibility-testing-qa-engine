@@ -1,0 +1,146 @@
+{
+  "video_id": "reneerussell99_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "reneerussell99",
+  "total_windows": 30,
+  "duration_sec": 2470.7340000000004,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 1.0,
+    "cluster_distribution": {
+      "2": 30
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 14,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 3,
+      "F3": 1,
+      "F6": 8,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 1,
+      "S5": 10,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 9,
+      "E4": 5
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 10,
+      "L3": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 14
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "reneerussell99_suncorp_w024",
+        "video_id": "reneerussell99_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reneerussell99",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the search feature on the website and suspects it is hidden, buried in navigation, or not visible to their screen reader.",
+        "observed_signal": "Participant looked at the menu, closed a dialogue about the app, and continued searching but did not find the search feature. They then decided to try the chat feature instead.",
+        "stated_signal": "I can't find the search feature, um, I haven't done the whole time I've been looking at the website, it's not where I would expect it to be, like it, it's either hidden or like, you know, like it's buried in the navigation or voiceover can't see it, um, cos yeah, it's not where I'd expect it to be, normally I would expect it to be like right up the top.",
+        "rationale": "The participant explicitly stated they cannot find the search feature after sustained effort throughout their session and expressed frustration about its location. They suspect either accessibility or navigation issues. The participant worked around this by attempting the chat feature instead, indicating a significant component barrier that was bypassed rather than resolved.",
+        "structural_amplification_note": "VoiceOver (screen reader) user may experience compounded friction if the search feature lacks proper ARIA labels, semantic markup, or keyboard accessibility. The participant identified voiceover as a possible reason for the feature being inaccessible."
+      },
+      {
+        "window_id": "reneerussell99_suncorp_w029",
+        "video_id": "reneerussell99_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reneerussell99",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate the search function on the website and could not use it to find information about financial hardship support.",
+        "observed_signal": "Participant attempted to find and use the search function but was unsuccessful; they then switched to using the help center as an alternative pathway.",
+        "stated_signal": "unfortunately I was not able to find, The search function, um, so I wasn't actually able to search for anything",
+        "rationale": "The participant explicitly stated they could not find the search function and therefore could not search. This is a content/pathway not found event that forced the participant to adopt a workaround (help center) to proceed. The task outcome was achieved through an alternative route, meeting the S3 gate (significant component failure worked around).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_suncorp_w028",
+        "video_id": "reneerussell99_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reneerussell99",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant using a screen reader cannot locate the search feature on the website and suspects it is hidden, buried in navigation, or inaccessible to assistive technology.",
+        "observed_signal": "Participant searched the website during the entire session without finding the search feature; closed dialogue and looked at menu again; attempted to use chat feature as alternative.",
+        "stated_signal": "I can't find the search feature, um, I haven't done the whole time I've been looking at the website, it's not where I would expect it to be, like it, it's either hidden or like, you know, like it's buried in the navigation or voiceover can't see it, um, cos yeah, it's not where I'd expect it to be, normally I would expect it to be like right up the top.",
+        "rationale": "The participant's observed sustained inability to locate the search feature across the entire session, combined with explicit stated suspicion that VoiceOver cannot see it and that it is not in the expected position, indicates accessibility friction. The participant recovered by pivoting to chat, but the search feature remains inaccessible and this represents significant accessibility barrier matching L3 (multiple attempts, frustration, task completed via workaround).",
+        "structural_amplification_note": "Screen reader user (VoiceOver) encountered a search control that is either not properly labeled, not in the DOM accessibility tree, or not keyboard-accessible. This is a structural accessibility barrier that disproportionately affects AT users."
+      },
+      {
+        "window_id": "reneerussell99_suncorp_w008",
+        "video_id": "reneerussell99_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reneerussell99",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a rendering error displaying encoded character instead of apostrophe in award text, causing initial confusion about the content's meaning.",
+        "observed_signal": "Participant browsed the home and contents insurance page, noticed text showing 'we' followed by what appeared to be a character code ('we end number 39. Semicolon') instead of 'we've', paused to examine it, then decoded the error.",
+        "stated_signal": "That's confusing, what does that mean? ...it looks like they've actually put the Ayext character...it's supposed to say like we've won.",
+        "rationale": "The participant encountered a comprehension impediment caused by a character encoding error that rendered as nonsensical text. Both observed behaviour (pausing to examine) and stated signal (expressing confusion) confirm the friction event. The participant recovered quickly by decoding the error, placing this at S5 (noticeable but recoverable friction with brief hesitation) and L2 (moderate friction with non-optimal path but task completed).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_suncorp_w010",
+        "video_id": "reneerussell99_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reneerussell99",
+        "friction_type": "F7",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified inefficient navigation design requiring repeated scrolling between two content sections to compare covered and uncovered items.",
+        "observed_signal": "Participant pressed a button to view one section, scrolled to read information, then had to scroll back up to access the other section.",
+        "stated_signal": "I think a better way to do this sort of what's covered and what's not covered situation, cos you press one button and then you scroll down a bit to like read the information, then you have to scroll back-up to say what's not covered.",
+        "rationale": "The participant observed and articulated a design inefficiency requiring excessive scrolling and repeated navigation steps to complete a comparison task. While the page is accessible and the participant recovered, the acknowledged extra effort and non-optimal pathway represent recoverable friction without blocking the outcome.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": []
+}

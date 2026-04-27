@@ -1,0 +1,168 @@
+{
+  "video_id": "fjone7_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "fjone7",
+  "total_windows": 113,
+  "duration_sec": 8101.295,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 60,
+    "by_friction_type": {
+      "F1": 15,
+      "F2": 13,
+      "F3": 13,
+      "F4": 7,
+      "F5": 10,
+      "F6": 2
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 6,
+      "S4": 9,
+      "S5": 38,
+      "S6": 5
+    },
+    "by_sentiment": {
+      "E3": 16,
+      "E4": 44
+    },
+    "by_calibrator_score": {
+      "L1": 5,
+      "L2": 38,
+      "L3": 15,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 57,
+      "stated_missing": 3
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "fjone7_uq_w075",
+        "video_id": "fjone7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "fjone7",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to submit a form but encountered validation errors that the system did not clearly communicate, blocking progress.",
+        "observed_signal": "Participant filled in form fields (name, email, phone, application details) and attempted submission, then stated the system won't let them proceed and won't display what the errors are.",
+        "stated_signal": "It doesn't tell me what the errors are of Queensland University of Queensland privacy. So this might be as far as I can go because I don't know what the errors are to fix necessarily.",
+        "rationale": "The participant's observed inability to proceed (form will not submit) and their explicit statement that error messages are missing align on a blocking validation issue. The system is unresponsive to the submission attempt with no feedback, preventing the component task (form submission) from completing; this matches S2 (task blocker) and L4 (near-abandonment).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_uq_w077",
+        "video_id": "fjone7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "fjone7",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to complete the enrollment application form submission and could only progress as far as the submit button.",
+        "observed_signal": "Participant reached the submit button on the UQ postgraduate testing portal enrollment form but stated they could not finish the form and could not proceed further.",
+        "stated_signal": "I can't finish the form. This is apparently as far as I can go.",
+        "rationale": "The participant clearly states they cannot complete the form submission despite reaching the submit button, indicating an unresponsive or blocking interface element. The observed behaviour (stopped at the button) and stated frustration (confused, unable to finish) both indicate the form submission action produced no successful response, blocking a component task of the enrollment process.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_uq_w041",
+        "video_id": "fjone7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "fjone7",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced severe technical difficulty or confusion with browser setup and accessibility link navigation, stating the process 'has gone completely awry' and apologizing.",
+        "observed_signal": "Participant attempted to navigate to accessibility pages and browser settings, mentioned multiple browser options (Google Chrome, Internet Explorer), and expressed that the process was not working as intended.",
+        "stated_signal": "This has gone completely awry. I do apologize.",
+        "rationale": "The participant's stated apology and description of the process going 'completely awry' combined with observed confusion about browser and page navigation indicate a significant technical or interface responsiveness failure. The participant struggled through multiple attempts without clear progress on the task objective, matching the S3 and L3 gate (significant component failure or repeated attempts before recovery).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_uq_w044",
+        "video_id": "fjone7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "fjone7",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a CAPTCHA accessibility barrier on the testing portal that required a workaround involving cookies, creating significant friction in the task flow.",
+        "observed_signal": "Participant described being confused and lost while trying to get past the CAPTCHA, used a cookie-based workaround (described as 'a roll of the dice'), and only proceeded after resolving this barrier.",
+        "stated_signal": "That was a huge accessibility barrier, um, and what I did in order to get past it was honestly, um, a bit of a roll of the dice because sometimes those cookies don't work. Um, there's a program that uses this. And if the cookie doesn't set, then you can't get past the captcha, and that's uh a really, really big issue.",
+        "rationale": "The participant explicitly identified the CAPTCHA as a huge accessibility barrier and struggled with an unreliable workaround (cookie-dependent), describing it as 'a roll of the dice.' While the participant eventually progressed to the Find a Program screen, the significant friction and workaround required match S3 (significant component failure worked around) and L3 (struggle with multiple attempts and frustration before recovery). This is an accessibility friction event (F3) because the barrier specifically blocks assistive technology or standard access patterns.",
+        "structural_amplification_note": "This CAPTCHA barrier is structurally amplified for users relying on assistive technology (AT users). Standard CAPTCHA implementations often fail with screen readers and keyboard navigation; the participant's reliance on a cookie workaround rather than audio-based alternatives compounds the accessibility friction."
+      },
+      {
+        "window_id": "fjone7_uq_w076",
+        "video_id": "fjone7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "fjone7",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a form validation error that they could not identify or resolve despite multiple attempts to locate and fix it.",
+        "observed_signal": "Participant attempted to submit a form, was told there was one error on the page, searched through form fields (clicking on 'responsib', 'academics test', 'save', etc.), but could not locate or fix the error and eventually gave up.",
+        "stated_signal": "It says there's one error to fix on the page, but I for the life of me cannot figure out what it is. I'm gonna have to give up. I have no idea.",
+        "rationale": "The participant received a form submission response indicating an error but the interface did not provide sufficient feedback or clarity to identify which field was problematic. Multiple search attempts failed, and the participant explicitly abandoned the task. Both observed behaviour (repeated unsuccessful searches) and stated frustration align on a significant barrier that blocked this component task.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

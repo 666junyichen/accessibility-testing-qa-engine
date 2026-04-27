@@ -1,0 +1,167 @@
+{
+  "video_id": "fjone7_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "fjone7",
+  "total_windows": 106,
+  "duration_sec": 7508.723,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 56,
+    "by_friction_type": {
+      "F1": 16,
+      "F2": 16,
+      "F3": 2,
+      "F5": 3,
+      "F6": 17,
+      "F7": 2
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 8,
+      "S4": 9,
+      "S5": 37,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 8,
+      "E4": 48
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 37,
+      "L3": 17,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 56
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "fjone7_suncorp_w077",
+        "video_id": "fjone7_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "fjone7",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a login requirement barrier while searching for financial hardship information and could not proceed without credentials.",
+        "observed_signal": "Participant clicked through various help center links (monthly payments, renewals, manage payments) and repeatedly encountered 'Log into my account' prompts requiring reference number and email address.",
+        "stated_signal": "I need to log in.",
+        "rationale": "The participant explicitly stated the login barrier ('I need to log in') while attempting to navigate payment and hardship-related information. The task required self-service discovery of financial hardship support, but all relevant pathways led to mandatory authentication. This blocks the component task of finding support information without logging in, fitting S2 severity and L4 gate (near-abandonment due to product constraint).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_suncorp_w065",
+        "video_id": "fjone7_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "fjone7",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered content about claims lodging and weather preparedness that did not address the financial hardship task, causing confusion about relevance.",
+        "observed_signal": "Participant read through headings and content related to emergency/weather events and claims lodging, then expressed uncertainty with 'Telling me a lot' and 'Oh yeah, here we go,' indicating disorientation about whether the content matched the search goal.",
+        "stated_signal": "When I was going through the headings on the homepage, the heading that I saw was, um, prepare for an emergency event or like expecting a natural disaster, and that aligns precisely with the kind of cue that I was listening for... Telling me a lot. Oh yeah, here we go.",
+        "rationale": "The participant selected a page based on a cue (emergency/hardship alignment assumption) but encountered content about claims and weather events instead of financial hardship support. The stated vocalizations ('Telling me a lot', 'Oh yeah, here we go') and the observed behaviour of reading through irrelevant content sections indicate the participant did not find the required information pathway and was redirected by misleading content cues. This represents a significant component failure (finding financial hardship information) that required navigation away from the initial heading.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_suncorp_w076",
+        "video_id": "fjone7_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "fjone7",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered incoherent or fragmented content when seeking information about missed payments and financial hardship support.",
+        "observed_signal": "Participant asked 'What happens if you miss payments though?' and then received disjointed text fragments about premiums, virtual assistants, and policy management that do not directly answer the question about missed payment consequences.",
+        "stated_signal": "What happens if you miss payments though? Why do premium premiums.",
+        "rationale": "The participant explicitly asked a task-critical question about missed payments and fees, which is central to the financial hardship task. The content returned is fragmented, difficult to parse, and does not clearly address the question. The participant's repetition ('Why do premium premiums') and the garbled nature of the response both indicate significant comprehension friction. This is a component task barrier that was not fully resolved in the window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_suncorp_w075",
+        "video_id": "fjone7_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "fjone7",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not identify relevant support or hardship information on the property insurance product pages and expressed frustration with the lack of clarity.",
+        "observed_signal": "Participant navigated through multiple product pages (home and contents insurance options, policy management), reading prices and renewal information aloud, but never located financial hardship or payment support information.",
+        "stated_signal": "It doesn't tell me anything, does it? What is this?",
+        "rationale": "The participant searched through product pages but could not locate the required pathway to financial hardship support or payment flexibility information. Both observed navigation (cycling through irrelevant product pages) and stated expressions ('It doesn't tell me anything', 'What is this?') indicate the participant is unable to find the needed content. This represents a significant barrier to the primary task outcome, met at the S3 level.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "fjone7_suncorp_w078",
+        "video_id": "fjone7_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "fjone7",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate financial hardship information on the homepage and resorted to using live chat as a workaround.",
+        "observed_signal": "Participant searched the homepage, stated they were lost, then abandoned the self-service pathway and opened live chat to ask about missed installments and financial hardship.",
+        "stated_signal": "No idea. I'm a little bit lost. Looking on the homepage and stuff, cos for me that was horribly hard to find.",
+        "rationale": "The participant explicitly stated confusion and inability to find information on the homepage, then bypassed the self-service pathway to use live chat. Both observed behaviour (abandoning homepage search) and stated signal (horribly hard to find) align on a content location failure. The participant found the answer eventually via chat, but the primary task goal of sorting it out online was compromised by the workaround.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

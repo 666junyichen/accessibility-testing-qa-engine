@@ -1,0 +1,169 @@
+{
+  "video_id": "gameoverdan_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "gameoverdan",
+  "total_windows": 46,
+  "duration_sec": 3037.4100000000003,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 52,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 8,
+      "F3": 18,
+      "F4": 6,
+      "F5": 5,
+      "F6": 5,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 7,
+      "S4": 23,
+      "S5": 20
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 45,
+      "E5": 5
+    },
+    "by_calibrator_score": {
+      "L2": 20,
+      "L3": 30,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 52
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "gameoverdan_uq_w031",
+        "video_id": "gameoverdan_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gameoverdan",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a form submission error that persisted despite providing what appeared to be valid data, and was unable to resolve it.",
+        "observed_signal": "Participant filled out a form with real name, email address, phone number, and country code selected. Clicked Submit and received a '2 errors' message. Attempted Submit again with the same result and stated they did not know what was wrong.",
+        "stated_signal": "There's a real name, it's a real email address, it's a real phone number. There's the country code, we have picked it. It's in, why does it keeps coming back up. Hang on. Uh, let's try Submit. No, it's still 2 errors, I have no idea. This is, this is as far as I go. Um, I'm not sure what's going on.",
+        "rationale": "The participant's observed behaviour (filled valid-looking data, clicked Submit twice, received persistent error messages) and stated signals (confusion, inability to understand what is wrong, explicit statement 'this is as far as I go') both indicate the form submission is blocked. The participant abandoned the task without resolving the error and stated they could not proceed, matching the S1 and L5 gates for blocking friction requiring product intervention.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_uq_w043",
+        "video_id": "gameoverdan_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gameoverdan",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not progress past a form on the accessibility website sign-up flow and had to abandon the pathway.",
+        "observed_signal": "Participant mentioned being unable to progress on a 2nd or 3rd page of a sign-up form on the accessibility website and indicated the issue was blocking further advancement.",
+        "stated_signal": "The website with the issue, oh I don't know, I'd have to go back and find it and paste it, but let's just say it is the accessibility website. Um, it wasn't, it was the, um. The sign-up form, just 3rd or 2nd page in the sign-up form that was the issue, um, we couldn't progress.",
+        "rationale": "Both observed and stated signals indicate the participant encountered a blocking issue on a sign-up form that prevented progress. The participant explicitly stated 'we couldn't progress,' indicating task component failure. The lack of visible or timely response from the form interface that allowed progression matches F4. This is S2 because the overall project outcome was affected but some progress was made; L4 reflects near-abandonment and reliance on external intervention.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_uq_w003",
+        "video_id": "gameoverdan_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the website's white background and lack of built-in dark mode or accessibility controls will force reliance on color inversion, which breaks image legibility and reduces the site to text-only.",
+        "observed_signal": "Participant examined the menu, looked for accessibility features, and scanned the page footer for accessibility options without finding them.",
+        "stated_signal": "Nothing in there about accessibility or anything like that. The website pretty much just becomes text for me. Pictures will be inverted, they won't look correct, so that kind of makes that null and void.",
+        "rationale": "The participant, an assistive technology user with visual accessibility needs, identified a critical design gap: no dark mode or built-in accessibility controls force a workaround (color inversion) that degrades the experience by rendering images unusable. Both observed behaviour (checking menu and footer) and stated concern show significant friction on a core accessibility requirement. This meets S3 (significant barrier worked around) and L3 (struggle and frustration with accessibility-dependent task).",
+        "structural_amplification_note": "Blind or low-vision users relying on high-contrast modes, dark mode, or colour inversion are structurally disadvantaged by white-background designs without accessible alternatives. The absence of accessibility controls and options creates a compounding barrier for this cohort."
+      },
+      {
+        "window_id": "gameoverdan_uq_w017",
+        "video_id": "gameoverdan_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified persistent accessibility issues with white background contrast across the website that become problematic when color inversion is applied.",
+        "observed_signal": "Participant described encountering the same accessibility issues across the whole website with white background, noting the problem is exacerbated after inverting colors.",
+        "stated_signal": "We're having the same accessibility issues across the whole website, the white background, so now that we've inverted the colors, this is going to be an issue because.",
+        "rationale": "The participant explicitly stated a structural accessibility barrier affecting color contrast and readability that persists across multiple pages and is amplified by assistive technology use (color inversion). This is a significant component failure that impacts usability for users relying on contrast adjustments, matching S3 (significant component failure worked around or skipped).",
+        "structural_amplification_note": "This friction is structurally amplified for users with low vision or colour blindness who rely on color inversion or high-contrast modes; the white background creates compound accessibility failures when assistive technologies are activated."
+      },
+      {
+        "window_id": "gameoverdan_uq_w034",
+        "video_id": "gameoverdan_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gameoverdan",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unresponsive link that could not be reached and had to switch browsers to proceed.",
+        "observed_signal": "Participant pressed a link, received no response or error, paused the task, acknowledged the issue, then opened Chrome as an alternative.",
+        "stated_signal": "No, it can't be reached, ah, that's annoying. Um, OK, I'm just gonna pause this and we'll come back when we've got the website. No, there's nothing, so we're gonna open it in uh Chrome.",
+        "rationale": "The participant's action (pressing the link) produced no visible or timely response, requiring task pause and browser switch. Both the stated frustration ('that's annoying') and the observed workaround (opening Chrome) indicate significant friction that blocked the initial pathway and required external intervention to recover.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

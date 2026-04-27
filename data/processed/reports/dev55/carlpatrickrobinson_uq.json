@@ -1,0 +1,170 @@
+{
+  "video_id": "carlpatrickrobinson_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "carlpatrickrobinson",
+  "total_windows": 18,
+  "duration_sec": 1253.526,
+  "l1": {
+    "flag_counts": {
+      "DURATION_ANOMALY": 1,
+      "LOW_AUDIO_QUALITY": 1
+    },
+    "total_flags": 2,
+    "flagged_window_ids": [
+      "carlpatrickrobinson_uq_w006"
+    ],
+    "duration_anomaly": true
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 0.9444444444444444,
+    "cluster_distribution": {
+      "1": 1,
+      "2": 17
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 8,
+    "by_friction_type": {
+      "F2": 3,
+      "F3": 1,
+      "F4": 4
+    },
+    "by_severity": {
+      "S1": 1,
+      "S5": 5,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 6
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 5,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 7,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "carlpatrickrobinson_uq_w010",
+        "video_id": "carlpatrickrobinson_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Website failed to load properly, preventing the participant from beginning the search task.",
+        "observed_signal": "Participant waited for the website to load, acknowledged the load failure, and stated inability to complete the task.",
+        "stated_signal": "I am unable to load. Unfortunately the website didn't load properly, so I'm unable to complete the task.",
+        "rationale": "The participant observed no visible or timely response from the website and explicitly stated the task could not be completed due to the load failure. Both observed behaviour (waiting, then abandoning) and stated signals (inability to load, unable to complete) indicate a blocking technical failure that prevented task initiation and completion.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_uq_w004",
+        "video_id": "carlpatrickrobinson_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F4",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced slow internet performance that interrupted the task flow when attempting to open a link in a new tab.",
+        "observed_signal": "Participant was about to click 'open link in new tab' and then stated that internet was slow.",
+        "stated_signal": "My internet's being a bit slow today.",
+        "rationale": "The participant observed no visible or timely response from the interface due to slow network conditions. The stated complaint and observed pause both indicate an unresponsive interface moment, though the participant did not report task abandonment or full blocking. This is moderate friction that caused hesitation but did not prevent completion.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_uq_w003",
+        "video_id": "carlpatrickrobinson_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the grayscale contrast difficult to see and expressed difficulty reading visual elements on the page.",
+        "observed_signal": "Participant paused navigation and verbally identified a contrast issue with the grayscale design.",
+        "stated_signal": "Which from a gray scale is a bit hard to see.",
+        "rationale": "The participant explicitly stated difficulty perceiving content due to grayscale contrast, which is an accessibility friction event. The brief hesitation and stated concern indicate noticeable but recoverable friction; the participant did not abandon navigation but flagged a visual accessibility barrier.",
+        "structural_amplification_note": "Grayscale contrast issues disproportionately affect users with low vision, color blindness, or those using high-contrast or reduced-motion accessibility settings."
+      },
+      {
+        "window_id": "carlpatrickrobinson_uq_w008",
+        "video_id": "carlpatrickrobinson_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about whether the Master of Business program found in the law faculty would actually contain law content, and was uncertain about the next step—whether to apply immediately or seek more information first.",
+        "observed_signal": "Participant located a Master of Business program in the law faculty but paused and verbalized uncertainty about the program's actual content and the appropriate next action.",
+        "stated_signal": "I don't know if that means it will have law in it though. I'm a bit confused because I don't know whether I should just go straight to apply now, and then look for the information or who to contact for more information, possibly.",
+        "rationale": "The participant found a relevant program but experienced wayfinding and decisional uncertainty about the program's scope and the correct next action. Both the stated confusion and the observed hesitation indicate confidence friction. The participant recovered without external intervention, making this a brief, recoverable moment rather than a full blocker.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "carlpatrickrobinson_uq_w009",
+        "video_id": "carlpatrickrobinson_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "carlpatrickrobinson",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected contact information to be located at the bottom of the page but had difficulty finding it, requiring a re-search.",
+        "observed_signal": "Participant searched the page, stated the location was not ideal, then had to find the information again before locating a phone number (5583) and an 'Apply now' button.",
+        "stated_signal": "It would be handy if they put. Uh, who to contact. At the bottom. It's probably not good. So, let's find it again.",
+        "rationale": "The participant expressed uncertainty about where contact information should be located and had to re-search the page to find it. The behaviour shows a brief wayfinding hesitation and one corrective search; the task was ultimately completed but with a non-optimal path, matching the S5/L2 gate.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

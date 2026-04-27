@@ -1,0 +1,147 @@
+{
+  "video_id": "laurenrosemetzler_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "laurenrosemetzler",
+  "total_windows": 59,
+  "duration_sec": 4218.704000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 23,
+    "by_friction_type": {
+      "F1": 2,
+      "F2": 3,
+      "F3": 3,
+      "F4": 2,
+      "F5": 4,
+      "F6": 5,
+      "F7": 4
+    },
+    "by_severity": {
+      "S2": 2,
+      "S5": 20,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 3,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 20,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 22,
+      "conflicted": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "laurenrosemetzler_wa_w002",
+        "video_id": "laurenrosemetzler_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant decided to abandon the website exploration and use ChatGPT as an external tool to address the information need instead of continuing to navigate the page.",
+        "observed_signal": "Participant was presented with the task to explore the Family and Domestic Violence page and find relevant support resources. Instead of clicking links or sections on the page, the participant stated they would use ChatGPT to input a scenario about a neighbor experiencing domestic control.",
+        "stated_signal": "I would probably, instead of Googling it, I would probably write a story scenario in Chachi BT... I have a neighbor. Who um sounds like she is being controlled by her husband.",
+        "rationale": "The participant identified a relevant information need (understanding domestic violence resources) but chose to exit the product flow entirely and use an external tool (ChatGPT) rather than explore the available pathways on the page. Both observed behaviour (no navigation on page) and stated preference (explicit choice of ChatGPT over site exploration) indicate the required information pathway was not discoverable or compelling enough to pursue. This constitutes a component task failure met through external workaround, fitting S2 and L4.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_wa_w003",
+        "video_id": "laurenrosemetzler_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E2",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant stated preference for using ChatGPT as a research tool rather than exploring the provided website content directly.",
+        "observed_signal": "Participant verbally expressed intent to input the scenario into ChatGPT to have it scan the internet for information rather than navigating the current page.",
+        "stated_signal": "I would put in this story scenario because I feel like ChatGPT will kind of run through all of the different articles for me instead of just Googling it. I've been using ChatGPT now for a while and just feel more comfortable with like story scenarios.",
+        "rationale": "The participant expressed comfort and preference for an external tool (ChatGPT) over the website's native pathways, indicating the content discovery pathway on the Family and Domestic Violence page did not meet their information-seeking expectations. Although the participant did identify some relevant content (24-hour support hotlines, safety resources), their stated intent was to bypass the website entirely in favour of an external workaround, which constitutes a component task blocker requiring external intervention.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_wa_w001",
+        "video_id": "laurenrosemetzler_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about their understanding of coercive control, rating their comprehension at 6 or 7 out of 10 and noting subtle aspects they may have missed.",
+        "observed_signal": "Participant articulated incomplete understanding of coercive control terminology and identified gaps in their knowledge of subtle manifestations.",
+        "stated_signal": "I'm not sure I grasp all of it. I feel like there are some things that maybe are subtle that I don't quite understand as coercive control that maybe I've missed the meaning of. But I think broadly, I kind of grasp what it might be. Out of a scale of 1 to 10, I would think my understanding of the term probably falls in like a 6 or a 7.",
+        "rationale": "The participant's explicit statement about incomplete grasp of terminology and missed subtle meanings indicates comprehension friction (F1). The moderate self-assessed rating (6–7/10) and identified knowledge gaps constitute noticeable but recoverable friction, as the participant retained a broad understanding. Sentiment is E4 because the participant expressed mild frustration about what they don't understand.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_wa_w005",
+        "video_id": "laurenrosemetzler_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "conflicted",
+        "finding": "Participant stated an intention to search for 'coercive control' on the website but the transcript does not show the search being executed or its results.",
+        "observed_signal": "Participant announced intention to search for coercive control on the website but no subsequent search action or result is documented in the window.",
+        "stated_signal": "I would probably just search, I am searching for coercive control.",
+        "rationale": "The participant stated a search intent but the observed signal shows no evidence of search execution or navigation. The stated intention suggests confidence in a pathway, but the absence of observed search action or results indicates the search may not have been completed or found what was needed. This represents mild wayfinding uncertainty, scored to the lower observed behaviour level.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_wa_w014",
+        "video_id": "laurenrosemetzler_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant clicked on an element that produced an unexpected or unclear response, leaving them uncertain about what triggered the action.",
+        "observed_signal": "Participant clicked on something, then immediately said 'I did that just. Oh that just happened.' indicating surprise at the interface response.",
+        "stated_signal": "I did that just. Oh that just happened.",
+        "rationale": "The participant's action produced a visible response that was not anticipated based on the interface affordance or label. The stated surprise and brief confusion align with unexpected behaviour. The participant recovered quickly without task abandonment, matching S5 and L2.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": []
+}

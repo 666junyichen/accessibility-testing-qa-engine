@@ -1,0 +1,148 @@
+{
+  "video_id": "reneerussell99_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "reneerussell99",
+  "total_windows": 33,
+  "duration_sec": 3645.7450000000003,
+  "l1": {
+    "flag_counts": {
+      "LOW_AUDIO_QUALITY": 1
+    },
+    "total_flags": 1,
+    "flagged_window_ids": [
+      "reneerussell99_wa_w031"
+    ],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 0.9696969696969697,
+    "cluster_distribution": {
+      "1": 1,
+      "2": 32
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 15,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 4,
+      "F3": 4,
+      "F6": 3
+    },
+    "by_severity": {
+      "S3": 2,
+      "S5": 13
+    },
+    "by_sentiment": {
+      "E3": 6,
+      "E4": 9
+    },
+    "by_calibrator_score": {
+      "L2": 13,
+      "L3": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 14,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "reneerussell99_wa_w002",
+        "video_id": "reneerussell99_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reneerussell99",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant decided to use Google search as an external workaround rather than continue exploring the provided page to find information about reporting suspected abuse.",
+        "observed_signal": "Participant stated they started a Google search rather than continuing to use the website pathways presented on the Family and Domestic Violence page.",
+        "stated_signal": "I started my Google search rather just googling um what to do if I think that my neighbor is being abused.",
+        "rationale": "The participant abandoned the provided content pathway and turned to external search to find critical information about reporting suspected abuse. Both the observed behaviour (leaving the site) and stated signal (explicitly choosing Google over the current page) indicate that the required information pathway was not found or felt accessible within the page. This represents a significant component failure requiring an external workaround.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_wa_w013",
+        "video_id": "reneerussell99_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reneerussell99",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to open a PDF link multiple times but encountered a blank webpage instead, making the PDF content inaccessible with assistive technology.",
+        "observed_signal": "Participant clicked on the PDF download link multiple times and reached a blank webpage that did not render the PDF content properly.",
+        "stated_signal": "I've tried to open the PDF multiple times, um, I've clicked on the link that said to um download the PDF and it's taken me to what appears to be a blank webpage um with voiceover, so therefore, um, the PDF itself is um like I'm, Unable to read it with my assistive tech.",
+        "rationale": "The participant's multiple attempts to access the PDF and the blank webpage response both indicate accessibility friction with assistive technology. The participant stated the content was unreadable via voiceover, and although they inferred the resource would be valuable, the actual barrier prevented access to the promised content. This constitutes a significant component failure that blocked access to the resource pathway.",
+        "structural_amplification_note": "Blind or low-vision users relying on assistive technology experience structurally amplified friction when PDF links render as blank webpages instead of accessible documents. Standard sighted users might see and interact with the PDF, but AT users encounter a complete access barrier."
+      },
+      {
+        "window_id": "reneerussell99_wa_w015",
+        "video_id": "reneerussell99_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reneerussell99",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified an unlabeled link paired with a phone number in the hotline section at the top of the page.",
+        "observed_signal": "Participant pointed out and described the layout: 'Women's domestic violence hotline. Their number, men's domestic violence. Then an unlabeled link and a phone number under it.'",
+        "stated_signal": "So up the top where the phone numbers are... there's an unlabeled link and a phone number under it.",
+        "rationale": "The participant observed and articulated a missing label on a link in the hotline section. This is an accessibility issue affecting screen reader users and those relying on clear semantic labeling. The participant completed the overall task but flagged this as a notable gap in an otherwise well-structured page, fitting S5 (noticeable but recoverable friction with minor impact on independent navigation).",
+        "structural_amplification_note": "This unlabeled link would create significant friction for blind or low-vision users relying on screen readers or keyboard navigation, who would be unable to determine the link's purpose or destination without a descriptive label."
+      },
+      {
+        "window_id": "reneerussell99_wa_w016",
+        "video_id": "reneerussell99_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reneerussell99",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified unlabeled phone number links on the page as confusing and unclear about their purpose.",
+        "observed_signal": "Participant pointed out two phone numbers on the page with unclear labels and stated this was confusing.",
+        "stated_signal": "And then another unlabellled link with a phone number on it. Um, so those, it's, it's unclear, um, what those two phone numbers are for. Um, that's like the only thing though that I could see on the page that was confusing.",
+        "rationale": "The participant explicitly stated the unlabeled phone number links were unclear and confusing, indicating comprehension friction due to missing labels or context. However, the participant isolated this as the only confusing element and continued exploring, completing the overall task without abandonment or major detour, matching S5 and L2 gates.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reneerussell99_wa_w021",
+        "video_id": "reneerussell99_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reneerussell99",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant learned useful information from the resource but expressed uncertainty about where to seek help if they experienced domestic violence.",
+        "observed_signal": "Participant navigated to the Family Domestic Violence helpline services page and reviewed content.",
+        "stated_signal": "While I learnt a lot from this resource, um, there are things that still do feel a bit unclear as to like where I should go, um, if I feel like I'm in a situation where I might require help.",
+        "rationale": "The participant stated explicit uncertainty about the next step to take if they needed help, despite successfully finding the helpline services page. This is confidence friction—the participant understands the content but is unsure where to proceed. The mild frustration tone and stated confusion, combined with task completion and resource discovery, indicates medium friction without blocking the exploration task.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": []
+}

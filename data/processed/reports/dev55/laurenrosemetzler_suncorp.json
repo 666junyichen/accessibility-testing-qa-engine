@@ -1,0 +1,146 @@
+{
+  "video_id": "laurenrosemetzler_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "laurenrosemetzler",
+  "total_windows": 50,
+  "duration_sec": 3362.8399999999997,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 34,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 8,
+      "F4": 2,
+      "F5": 11,
+      "F6": 1,
+      "F7": 6
+    },
+    "by_severity": {
+      "S3": 1,
+      "S4": 7,
+      "S5": 23,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 32,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 3,
+      "L2": 23,
+      "L3": 8
+    },
+    "signal_alignment_distribution": {
+      "aligned": 34
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "laurenrosemetzler_suncorp_w038",
+        "video_id": "laurenrosemetzler_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that the support application process requires a phone call rather than online self-service, which contradicted their stated preference and caused disappointment.",
+        "observed_signal": "Participant navigated to support information and found that applying for hardship assistance requires calling, not completing an online form.",
+        "stated_signal": "I'm kind of disappointed that I can't just apply for the support here. I mean, I'm paying this insurance, why can't I just apply for the help I need online? Why do I have to call?",
+        "rationale": "The participant expected to complete the application online based on the task instructions but discovered the interface only offers phone support. Both observed behaviour (finding a phone-only pathway) and stated frustration (explicit complaint about lack of online option) align on this unexpected workflow barrier. This is a significant component failure that blocks the preferred self-service outcome.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_suncorp_w011",
+        "video_id": "laurenrosemetzler_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a technical error blocking navigation and was forced to restart the form entry process.",
+        "observed_signal": "Participant received an error message 'We're unable to go back to your previous page. Please try again later or contact us.' and had to re-enter information by clicking through the form again.",
+        "stated_signal": "OK, uh, it's so annoying. OK, so I guess I'll just put in a real address. Um, yep. I would like your policy to start. I'm just basically clicking through everything I've already clicked through.",
+        "rationale": "The participant encountered an unresponsive or broken interface state that prevented forward navigation. Both the observed error state and stated frustration ('it's so annoying') indicate significant friction. The participant was forced to repeat multiple steps already completed, creating substantial extra effort and clear detour before recovery.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_suncorp_w010",
+        "video_id": "laurenrosemetzler_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F5",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant entered an address that the system could not find and received an error message, then encountered an unexpected additional requirement to specify property type before being able to proceed.",
+        "observed_signal": "Participant typed a street address, pressed next, and received an error message 'I've run into a problem confirming your address. What type of property are you searching for?' indicating the system rejected the address entry and introduced a new unexpected field.",
+        "stated_signal": "It's not going to find my address. Mm, OK. I do like that it pops up when I enter the postcode... I'll just pop in. My address, and since I couldn't find it, I'll just type that in.",
+        "rationale": "The participant stated concern that the address would not be found, proceeded with manual entry, and then encountered an unexpected error response combined with a new field requirement not previously presented. The observed error and stated concern align on a significant friction event where the interface behaved unexpectedly—the system rejected the address after acceptance appeared imminent and introduced a conditional property-type field that was not part of the initial form flow.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_suncorp_w014",
+        "video_id": "laurenrosemetzler_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an overwhelming form requiring extensive input just to get a cost estimate, and expressed frustration about the excessive effort required.",
+        "observed_signal": "Participant navigated through a lengthy form with multiple fields (open floor plan question, content coverage amount), recognized the need to use a content calculator, but remained in the form experiencing the full complexity.",
+        "stated_signal": "This form is overwhelming, and I'm already in this form. So it's actually quite frustrating that I'm gonna have to figure this all out, just to get an idea of how much it will be. What this is a very long process just for an idea of how much it might cost per month.",
+        "rationale": "The participant explicitly stated the form is overwhelming and frustrating, and remarked multiple times on the excessive length and effort required just to obtain basic cost information. The observed behaviour shows the participant struggling through a multi-step form process. Both stated frustration and observed struggle indicate excessive cognitive and procedural effort that materially slows progress toward the goal of understanding financial hardship support options.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_suncorp_w022",
+        "video_id": "laurenrosemetzler_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F5",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected a direct PDF download but was redirected through an unexpected pathway, causing confusion and anxiety about whether they performed an incorrect action.",
+        "observed_signal": "Participant clicked on what appeared to be a product disclosure statement link, was redirected to another part of the website instead of receiving a direct download, and then had to navigate to download the PDF through an alternate route.",
+        "stated_signal": "I thought it would just automatically download a PDF for me, but somehow I've been directed to another part of the website. I would prefer to just be a direct download instead of having to go through all this again. For me, that just gives me anxiety, like I've done something wrong. I thought it said product disclosure statement, and it was highlighted, so I thought it would download automatically.",
+        "rationale": "The participant's expectation (direct download) did not match the interface behavior (redirection to another page). Both observed detour and stated anxiety about having made a mistake indicate unexpected behaviour that created frustration. The participant recovered by eventually downloading the PDF, but the roundabout path and induced anxiety represent significant friction matching the L3 gate (struggle and frustration; task completed).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": []
+}
