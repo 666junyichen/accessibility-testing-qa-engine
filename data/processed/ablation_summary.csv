@@ -211,10 +211,6 @@ thanoptions_uq,Full,poor,task-blocking friction: S1/S2 present,0,41,S1
 thanoptions_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,41,S1
 thanoptions_uq,No-L2,poor,task-blocking friction: S1/S2 present,0,41,S1
 thanoptions_uq,No-L3,good,no major quality concerns detected,0,0,
-thanoptions_wa,Full,poor,recording unusable,0,0,
-thanoptions_wa,No-L1,poor,recording unusable,0,0,
-thanoptions_wa,No-L2,poor,recording unusable,0,0,
-thanoptions_wa,No-L3,good,no major quality concerns detected,0,0,
 tharayil_wa,Full,poor,task-blocking friction: S1/S2 present,0,57,S2
 tharayil_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,57,S2
 tharayil_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,57,S2
@@ -223,7 +219,3 @@ tianarosie1_wa,Full,poor,task-blocking friction: S1/S2 present,0,59,S1
 tianarosie1_wa,No-L1,poor,task-blocking friction: S1/S2 present,0,59,S1
 tianarosie1_wa,No-L2,poor,task-blocking friction: S1/S2 present,0,59,S1
 tianarosie1_wa,No-L3,good,no major quality concerns detected,0,0,
-troyparnell_suncorp,Full,poor,recording unusable,0,0,
-troyparnell_suncorp,No-L1,poor,recording unusable,0,0,
-troyparnell_suncorp,No-L2,poor,recording unusable,0,0,
-troyparnell_suncorp,No-L3,good,no major quality concerns detected,0,0,

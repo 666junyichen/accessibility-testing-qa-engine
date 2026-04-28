@@ -1,17 +1,24 @@
 """
 Step 8.2 Ablation Study (R4)
 
-Re-runs fuse_video() across all 57 development videos under 4 configurations:
+Re-runs fuse_video() across the official dev55 set (default) or the full 57
+development videos (with --full-57) under 4 configurations:
   - Full   : all layers as-is (baseline)
   - No-L1  : l1_flags input set to empty
   - No-L2  : l2_assignments input set to empty
   - No-L3  : l3_findings empty + neutral default l3_assessment
+
+The default scope follows the dev55 official list defined in
+`data/processed/reports/dev55_official_list.csv` (R1, see
+`docs/step8_1_dev55_scope.md`). The two excluded edge cases are
+`troyparnell_suncorp` and `thanoptions_wa` (transcript failure / near-empty).
 
 Outputs:
   - data/processed/ablation_summary.csv (per-video x per-config tier + counts)
   - prints comparison table to stdout
 """
 
+import argparse
 import json
 import sys
 from collections import Counter
@@ -34,6 +41,7 @@ from src.pipeline.fusion import fuse_video  # noqa: E402
 
 PROCESSED_DIR = ROOT / "data" / "processed"
 OUTPUT_CSV = PROCESSED_DIR / "ablation_summary.csv"
+DEV55_LIST_CSV = PROCESSED_DIR / "reports" / "dev55_official_list.csv"
 
 # Default neutral assessment used when L3 is ablated (No-L3).
 # Reflects "system has no LLM signal at all" — neutral inputs,
@@ -52,6 +60,16 @@ def list_video_ids(data: dict[str, pd.DataFrame]) -> list[str]:
     if windows.empty or "video_id" not in windows.columns:
         return []
     return sorted(windows["video_id"].astype(str).unique().tolist())
+
+
+def load_dev55_video_ids() -> list[str]:
+    if not DEV55_LIST_CSV.exists():
+        raise FileNotFoundError(
+            f"dev55 official list not found at {DEV55_LIST_CSV}. "
+            "Either restore the file or run with --full-57."
+        )
+    df = pd.read_csv(DEV55_LIST_CSV)
+    return sorted(df["video_id"].astype(str).unique().tolist())
 
 
 def run_one_config(
@@ -102,10 +120,36 @@ def run_one_config(
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--full-57",
+        action="store_true",
+        help=(
+            "Run ablation across the full 57-video set including the two "
+            "edge-case videos excluded from the official dev55 scope "
+            "(troyparnell_suncorp, thanoptions_wa). Default is dev55."
+        ),
+    )
+    args = parser.parse_args()
+
     data = load_inputs(PROCESSED_DIR)
-    video_ids = list_video_ids(data)
+    if args.full_57:
+        video_ids = list_video_ids(data)
+        scope_label = "full-57"
+    else:
+        all_ids = set(list_video_ids(data))
+        dev55_ids = load_dev55_video_ids()
+        missing = [vid for vid in dev55_ids if vid not in all_ids]
+        if missing:
+            print(
+                f"Warning: {len(missing)} dev55 video(s) not found in inputs: "
+                f"{missing[:3]}{'...' if len(missing) > 3 else ''}"
+            )
+        video_ids = [vid for vid in dev55_ids if vid in all_ids]
+        scope_label = "dev55-official"
+
     if not video_ids:
-        print("No videos found in windows.csv; abort.")
+        print("No videos found for ablation scope; abort.")
         return 1
 
     rows = []
@@ -118,11 +162,15 @@ def main() -> int:
 
     df = pd.DataFrame(rows)
     df.to_csv(OUTPUT_CSV, index=False)
-    print(f"Wrote {OUTPUT_CSV} ({len(df)} rows = {df['video_id'].nunique()} videos x 4 configs)")
+    n_videos = df["video_id"].nunique()
+    print(
+        f"Wrote {OUTPUT_CSV} ({len(df)} rows = {n_videos} videos x 4 configs, "
+        f"scope={scope_label})"
+    )
     print()
 
     print("=" * 68)
-    print("Tier distribution per config (across 57 videos)")
+    print(f"Tier distribution per config (across {n_videos} videos, scope={scope_label})")
     print("=" * 68)
     tier_table = (
         df.groupby(["config", "tier"]).size().unstack(fill_value=0).reindex(CONFIGS)
