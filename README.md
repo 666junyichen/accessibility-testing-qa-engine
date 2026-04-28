@@ -768,6 +768,126 @@ PYTHONPATH=. python scripts/run_pipeline.py --all
 PYTHONPATH=. python scripts/run_pipeline.py --all --output-dir data/processed/reports
 ```
 
+## Step 7.2 — Streamlit Demonstration Interface
+
+### Overview
+
+In this step, a lightweight Streamlit-based demonstration interface was implemented to visualise the outputs of the end-to-end pipeline. The purpose of this component is to provide a simple reviewer-facing interface that allows users to explore Quality Reports without re-running the full pipeline.
+
+The demo integrates both:
+- The **summary-level overview** (`_summary_dev55.csv`)
+- The **detailed per-video Quality Report JSON files**
+
+This aligns with the project objective of supporting internal reviewers in efficiently assessing tester submissions.
+
+---
+
+### Data Sources
+
+The demo reads from the following pre-generated outputs:
+
+- `data/processed/reports/dev55/`  
+  → 55 per-video **Quality Report JSON files**
+
+- `data/processed/reports/_summary_dev55.csv`  
+  → Aggregated summary table (one row per video)
+
+The demo operates on the **dev55 official dataset**, excluding transcription-failed videos, to ensure consistency with Step 8.1 evaluation scope.
+
+---
+
+### Key Features
+
+#### 1. Video Selection
+
+Users can select a specific video via a sidebar dropdown. Each selection loads:
+- Corresponding row from `_summary_dev55.csv`
+- Corresponding detailed JSON report
+
+---
+
+#### 2. Summary Overview Panel
+
+Displays high-level information extracted from the summary CSV:
+
+- `video_id`
+- `tester`
+- `project`
+- `quality tier`
+- `number of L3 findings`
+- `reason for classification`
+
+This provides a quick overview of the tester’s performance.
+
+---
+
+#### 3. Detailed Quality Report
+
+Displays structured outputs from the pipeline:
+
+- **Basic Information**
+  - Total windows
+  - Duration
+
+- **Layer 1 (Rule-based)**
+  - Flags and anomalies
+
+- **Layer 2 (Clustering)**
+  - Coverage and cluster distribution
+
+- **Layer 3 (LLM Classification)**
+  - Findings distribution (F1–F7, S1–S6, E1–E5)
+  - Top findings
+
+- **Video-level Assessment**
+  - Narration quality
+  - Recording quality
+  - Coaching evidence
+
+- **Overall Assessment**
+  - Quality tier
+  - Reasoning
+
+---
+
+#### 4. Coaching Recommendations
+
+Displays generated coaching suggestions, including:
+
+- Category (e.g., recording)
+- Summary
+- Actionable advice
+- Trigger conditions
+
+---
+
+#### 5. Raw JSON Viewer
+
+A collapsible section allows full inspection of the original JSON output for transparency and debugging.
+
+---
+
+### Design Rationale
+
+- **Separation of concerns**:  
+  The demo reads precomputed outputs instead of invoking the pipeline, ensuring fast and stable interaction.
+
+- **Consistency with evaluation scope**:  
+  Only dev55 data is used to match Step 8.1 and avoid inconsistencies caused by failed transcripts.
+
+- **Reviewer-oriented design**:  
+  Combines summary-level scanning with deep inspection of individual reports.
+
+---
+
+### How to Run
+
+From the project root directory:
+
+```bash
+streamlit run app/streamlit_demo.py
+```
+
 ## Step 8.1 - Dev55 Batch Run
 
 - **Status**: completed as a dev-batch reporting close-out
