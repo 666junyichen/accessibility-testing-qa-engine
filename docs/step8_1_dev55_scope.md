@@ -42,3 +42,26 @@ The following two rows should be excluded from formal `Step 8.1` reporting:
 - `suncorp-insurance`: `20`
 - `the-university-of-queensland`: `19`
 - total: `55`
+
+## Sync discipline
+
+`data/processed/reports/dev55/` is the **official dev55 physical whitelist**:
+a byte-level subset of the current `data/processed/reports/` main directory,
+restricted to the 55 video IDs listed in `dev55_official_list.csv`.
+
+Whenever the main `data/processed/reports/` directory is regenerated, for example
+after fusion changes, prompt revisions, classifier reruns, or full pipeline
+reruns, the `dev55/` subset must be re-synced from the new main reports to
+avoid content drift between the two locations.
+
+Check for drift before syncing:
+
+```powershell
+python scripts/sync_dev55.py --check
+```
+
+Rebuild the physical dev55 subset from the current main reports:
+
+```powershell
+python scripts/sync_dev55.py
+```
