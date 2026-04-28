@@ -782,8 +782,6 @@ The demo integrates both:
 
 This aligns with the project objective of supporting internal reviewers in efficiently assessing tester submissions.
 
----
-
 ### Data Sources
 
 The demo reads from the following pre-generated outputs:
@@ -796,8 +794,6 @@ The demo reads from the following pre-generated outputs:
 
 The demo operates on the **dev55 official dataset**, excluding transcription-failed videos, to ensure consistency with Step 8.1 evaluation scope.
 
----
-
 ### Key Features
 
 #### 1. Video Selection
@@ -805,8 +801,6 @@ The demo operates on the **dev55 official dataset**, excluding transcription-fai
 Users can select a specific video via a sidebar dropdown. Each selection loads:
 - Corresponding row from `_summary_dev55.csv`
 - Corresponding detailed JSON report
-
----
 
 #### 2. Summary Overview Panel
 
@@ -820,8 +814,6 @@ Displays high-level information extracted from the summary CSV:
 - `reason for classification`
 
 This provides a quick overview of the tester’s performance.
-
----
 
 #### 3. Detailed Quality Report
 
@@ -850,8 +842,6 @@ Displays structured outputs from the pipeline:
   - Quality tier
   - Reasoning
 
----
-
 #### 4. Coaching Recommendations
 
 Displays generated coaching suggestions, including:
@@ -861,15 +851,11 @@ Displays generated coaching suggestions, including:
 - Actionable advice
 - Trigger conditions
 
----
-
 #### 5. Raw JSON Viewer
 
 A collapsible section allows full inspection of the original JSON output for transparency and debugging.
 
----
-
-### Design Rationale
+#### Design Rationale
 
 - **Separation of concerns**:  
   The demo reads precomputed outputs instead of invoking the pipeline, ensuring fast and stable interaction.
@@ -879,8 +865,6 @@ A collapsible section allows full inspection of the original JSON output for tra
 
 - **Reviewer-oriented design**:  
   Combines summary-level scanning with deep inspection of individual reports.
-
----
 
 ### How to Run
 
