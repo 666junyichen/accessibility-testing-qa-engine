@@ -1,5 +1,3 @@
-<img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/5bd4588e-c64d-442f-98ca-375c8878520b" /># CS20 Project
-
 ## Data Source
 AWS S3 bucket:
 usyd-03-2025-cs20-1-proj-assets
