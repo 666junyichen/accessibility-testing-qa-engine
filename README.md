@@ -898,7 +898,7 @@ streamlit run app/streamlit_demo.py
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
 - Uses selected video-level MVP reports from `data/processed/reports/` to write qualitative case studies for accessibility, missing information, comprehension, confidence, excessive-effort, recording-quality, and coaching issues.
-- Current case studies cover 5 selected videos (`ghum_uq`, `margieflint_wa`, `giuliaclemente26_wa`, `jenniferparry7_uq`, `thanoptions_wa`) across different tiers and trigger reasons.
+- Current case studies cover 5 selected videos (`ghum_uq`, `margieflint_wa`, `giuliaclemente26_wa`, `jenniferparry7_uq`, `mgblackwell2001_suncorp`) across different tiers and trigger reasons.
 - Each case cites `quality_tier` + reason, L1 flags, L3 finding summaries (`friction_type`, `severity_s`, `sentiment_e`, `calibrator_score_l`), and coaching recommendations from the corresponding JSON report.
 - The original 4 window-level examples are retained inside `docs/case_studies.md` as supporting qualitative evidence rather than standalone case studies.
 
@@ -915,5 +915,5 @@ streamlit run app/streamlit_demo.py
 ## R3 Current Limitations
 - Layer 2 clustering remains exploratory and tester-dominated, so Step 8.3 uses it only as supporting context rather than as a final quality label.
 - Step 8.3 is now aligned with the MVP video-level reports, but the selected cases should still be spot-checked before final client-facing submission.
-- Recording-poor sessions such as `thanoptions_wa` should be used to demonstrate evidence-quality caution, not as strong product conclusions.
+- Recording-poor dev55 sessions such as `mgblackwell2001_suncorp` should be used to demonstrate evidence-quality caution, not as strong product conclusions.
 - Case wording should remain aligned with Step 5.4 agreement findings as the progress report is finalised.

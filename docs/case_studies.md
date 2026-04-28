@@ -40,7 +40,7 @@ pipeline outputs into human-readable usability findings.
 | 2 | `margieflint_wa` | Department of Premier and Cabinet WA | missing support pathways in a sensitive public-service journey | 79 | S2 | rich | acceptable | poor |
 | 3 | `giuliaclemente26_wa` | Department of Premier and Cabinet WA | acceptable-tier multilingual access case with many medium findings | 91 | S3 | rich | acceptable | acceptable |
 | 4 | `jenniferparry7_uq` | The University of Queensland | Layer 1 duration/audio anomaly plus severe account access barrier | 9 | S1 | rich | acceptable | poor |
-| 5 | `thanoptions_wa` | Department of Premier and Cabinet WA | poor recording and sparse narration with zero reliable findings | 0 | none | sparse | poor | poor |
+| 5 | `mgblackwell2001_suncorp` | Suncorp Insurance | dev55 poor-recording case with usable but low-confidence L3 evidence | 15 | S3 | adequate | poor | poor |
 
 ## 4. Case 1: UQ Authentication Flow Blocks Course Discovery
 
@@ -254,50 +254,56 @@ signals. It is a good example for the progress report section on reliability:
 the pipeline can surface an important usability issue while preserving caution
 about the evidence quality.
 
-## 8. Case 5: Poor Recording Produces a Low-Confidence Zero-Finding Session
+## 8. Case 5: Poor Recording Limits Confidence In A Suncorp Support Journey
 
 ### Source
 
-- Report: `data/processed/reports/thanoptions_wa.json`
-- Summary row: `thanoptions_wa`
-- Windows: 2
-- Layer 3 findings: 0
-- Narration quality: sparse
+- Report: `data/processed/reports/dev55/mgblackwell2001_suncorp.json`
+- Summary row: `mgblackwell2001_suncorp` in `data/processed/reports/_summary_dev55.csv`
+- Windows: 42
+- Layer 3 findings: 15
+- Narration quality: adequate
 - Recording quality: poor
 - `quality_tier` + reason: `poor` - recording unusable
 - L1 flags: none (`total_flags=0`)
-- L3 summary: no finding-level friction, severity, sentiment, or calibrator
-  scores were produced because the session evidence is too weak for reliable
-  downstream interpretation.
+- L3 summary: friction distribution `F1=5, F2=5, F6=4, F7=1`;
+  severity distribution `S3=2, S4=1, S5=12`; sentiment distribution
+  `E3=1, E4=14`; calibrator distribution `L2=12, L3=3`.
 - Coaching recommendations: recording quality limits reliable downstream
-  analysis (`recording_quality=poor`, priority 5); increase participant
-  verbalisation (`narration_quality=sparse`, priority 3).
+  analysis (`recording_quality=poor`, priority 5); make narration more
+  consistently explicit (`narration_quality=adequate`, priority 1).
 
 ### Key Pipeline Signals
 
-This is a negative case rather than a friction-rich case. The session has zero
-Layer 3 findings, but the pipeline does not treat that as strong evidence of a
-smooth experience. Instead, the video-level assessment marks narration as sparse
-and recording quality as poor.
+This is a formal dev55 poor-recording case, not an excluded transcription
+failure. The session still contains 15 Layer 3 findings, but the video-level
+assessment marks recording quality as poor, so the case should be used as
+low-confidence evidence rather than as a strong product conclusion.
 
-The generated recommendations are:
+Top findings include:
 
-- Recording quality limits reliable downstream analysis.
-- Increase participant verbalisation.
+- `mgblackwell2001_suncorp_w032`: F6/S3/L3, the participant preferred online
+  self-service but found no suitable online contact method and decided to call.
+- `mgblackwell2001_suncorp_w037`: F6/S3/L3, the participant again had to shift
+  from online resolution to phone-based resolution.
+- `mgblackwell2001_suncorp_w040`: F6/S4/L3, the participant could not locate a
+  search or self-help function and expressed confusion about its absence.
+- `mgblackwell2001_suncorp_w004`: F2/S5/L2, the participant was uncertain where
+  to start looking for financial hardship information.
 
 ### Interpretation
 
-This case is important because a zero-finding output can mean two very different
-things: either the user had little friction, or the evidence is not strong enough
-to support detailed interpretation. Here, the second explanation is more
-appropriate. Poor recording and sparse narration make the session low-confidence
-evidence.
+This case shows the distinction between product friction and evidence quality.
+Layer 3 finds a consistent pattern around missing online self-service and
+uncertainty about hardship information, while 5.1-B warns that poor recording
+quality limits how strongly the evidence should be interpreted.
 
 ### Reporting Value
 
-Use this case to show that the MVP does not over-claim. The pipeline can flag
-analysis risk and recommend recording/narration improvements rather than
-pretending that a lack of findings means a successful user experience.
+Use this case to show that the MVP can keep formal dev55 cases in scope while
+still communicating confidence limits. It is useful for W9 reporting because it
+links a poor recording-quality tier to concrete but cautious L3 findings and
+session-level coaching recommendations.
 
 ## 9. Retained Window-Level Evidence From Previous Draft
 
@@ -340,7 +346,8 @@ Across the five selected cases, several themes are visible:
   repeated translation steps, or English-only media.
 - Layer 1 quality flags are useful guardrails for deciding how confidently to
   interpret Layer 3 findings.
-- Zero findings must be interpreted alongside narration and recording quality.
+- Poor recording must be interpreted alongside L3 findings so the report can
+  distinguish product friction from evidence-quality risk.
 
 ## 11. Relationship To R3 Work
 
