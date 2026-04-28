@@ -38,7 +38,11 @@ def fuse_video(
     l1_summary = _summarize_l1(l1_flags)
     l2_summary = _summarize_l2(windows, l2_assignments)
     l3_summary = _summarize_l3_findings(l3_findings)
-    overall = _compute_overall_quality(l3_summary, assessment)
+    overall = _compute_overall_quality(
+        l3_summary,
+        assessment,
+        duration_anomaly=l1_summary.duration_anomaly,
+    )
 
     engine = coaching_engine or RecommendationEngine()
     recommendations = [item.to_dict() for item in engine.generate(assessment)]
@@ -172,6 +176,7 @@ def _summarize_l3_findings(l3_findings: pd.DataFrame) -> L3FindingsSummary:
 def _compute_overall_quality(
     l3_findings: L3FindingsSummary,
     assessment: VideoAssessment,
+    duration_anomaly: bool = False,
 ) -> OverallQuality:
     if assessment.recording_quality == "poor":
         return OverallQuality(quality_tier="poor", reasoning=["recording unusable"])
@@ -206,10 +211,16 @@ def _compute_overall_quality(
             reasoning=["acceptable recording with some findings"],
         )
 
-    return OverallQuality(
+    overall = OverallQuality(
         quality_tier="good",
         reasoning=["no major quality concerns detected"],
     )
+    if duration_anomaly:
+        return OverallQuality(
+            quality_tier="acceptable",
+            reasoning=overall.reasoning + ["duration anomaly caps session confidence"],
+        )
+    return overall
 
 
 def _counts_for_column(

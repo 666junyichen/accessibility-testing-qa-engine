@@ -21,20 +21,22 @@ def _windows(n=6):
     )
 
 
-def _l1_flags():
-    return pd.DataFrame(
-        [
-            {
-                "video_filename": "video1.mp4",
-                "tester_name": "tester-a",
-                "project": "project-a",
-                "flag": "LOW_AUDIO_QUALITY",
-                "detail": "avg_confidence=0.5",
-                "window_id": "video1_w001",
-                "start_time": 60.0,
-                "end_time": 120.0,
-                "value": 0.5,
-            },
+def _l1_flags(include_duration_anomaly=True):
+    rows = [
+        {
+            "video_filename": "video1.mp4",
+            "tester_name": "tester-a",
+            "project": "project-a",
+            "flag": "LOW_AUDIO_QUALITY",
+            "detail": "avg_confidence=0.5",
+            "window_id": "video1_w001",
+            "start_time": 60.0,
+            "end_time": 120.0,
+            "value": 0.5,
+        },
+    ]
+    if include_duration_anomaly:
+        rows.append(
             {
                 "video_filename": "video1.mp4",
                 "tester_name": "tester-a",
@@ -45,9 +47,9 @@ def _l1_flags():
                 "start_time": None,
                 "end_time": None,
                 "value": 0.2,
-            },
-        ]
-    )
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def _l2_assignments():
@@ -107,7 +109,7 @@ def test_fuse_video_happy_path():
     report = fuse_video(
         video_id="video1",
         windows=_windows(),
-        l1_flags=_l1_flags(),
+        l1_flags=_l1_flags(include_duration_anomaly=False),
         l2_assignments=_l2_assignments(),
         l3_findings=findings,
         l3_assessment=_assessment(),
@@ -118,8 +120,8 @@ def test_fuse_video_happy_path():
     assert report.tester_name == "tester-a"
     assert report.total_windows == 6
     assert report.duration_sec == 360.0
-    assert report.l1.flag_counts == {"LOW_AUDIO_QUALITY": 1, "DURATION_ANOMALY": 1}
-    assert report.l1.duration_anomaly is True
+    assert report.l1.flag_counts == {"LOW_AUDIO_QUALITY": 1}
+    assert report.l1.duration_anomaly is False
     assert report.l2.coverage == 4 / 6
     assert report.l2.dominant_cluster_id == 2
     assert report.l2.dominant_cluster_pct == 3 / 4
@@ -129,6 +131,39 @@ def test_fuse_video_happy_path():
     assert report.l3_findings.calibrator_aggregate == "L5"
     assert [item["severity_s"] for item in report.l3_findings.top_findings] == ["S3", "S4"]
     assert report.overall.quality_tier == "good"
+
+
+def test_duration_anomaly_caps_base_good_to_acceptable():
+    report = fuse_video(
+        video_id="video1",
+        windows=_windows(),
+        l1_flags=_l1_flags(),
+        l2_assignments=pd.DataFrame(),
+        l3_findings=pd.DataFrame(),
+        l3_assessment=_assessment(),
+    )
+
+    assert report.l1.duration_anomaly is True
+    assert report.overall.quality_tier == "acceptable"
+    assert report.overall.reasoning == [
+        "no major quality concerns detected",
+        "duration anomaly caps session confidence",
+    ]
+
+
+def test_duration_anomaly_does_not_override_base_poor():
+    report = fuse_video(
+        video_id="video1",
+        windows=_windows(),
+        l1_flags=_l1_flags(),
+        l2_assignments=pd.DataFrame(),
+        l3_findings=pd.DataFrame([_finding(severity_s="S2")]),
+        l3_assessment=_assessment(),
+    )
+
+    assert report.l1.duration_anomaly is True
+    assert report.overall.quality_tier == "poor"
+    assert report.overall.reasoning == ["task-blocking friction: S1/S2 present"]
 
 
 def test_recording_poor_downgrades_to_poor():
