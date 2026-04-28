@@ -1,4 +1,4 @@
-# CS20 Project
+<img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/5bd4588e-c64d-442f-98ca-375c8878520b" /># CS20 Project
 
 ## Data Source
 AWS S3 bucket:
@@ -42,6 +42,8 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
 - [Step 6.3 — Performance Tracking](#step-63--performance-tracking)
+- [Step 7.1 - Pipeline Orchestration](#step-71--pipeline-orchestration-fusion-runner)
+- [Step 7.2 - Streamlit Demostration Interface](#step-72--streamlit-demonstration-interface)
 - [Step 8.1 - Dev55 Batch Run](#step-81---dev55-batch-run)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
 
