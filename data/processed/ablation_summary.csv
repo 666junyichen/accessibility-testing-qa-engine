@@ -22,11 +22,11 @@ asma_uq,No-L3,good,no major quality concerns detected,0,0,
 carlpatrickrobinson_suncorp,Full,acceptable,multiple medium-severity findings,1,6,S3
 carlpatrickrobinson_suncorp,No-L1,acceptable,multiple medium-severity findings,0,6,S3
 carlpatrickrobinson_suncorp,No-L2,acceptable,multiple medium-severity findings,1,6,S3
-carlpatrickrobinson_suncorp,No-L3,good,no major quality concerns detected,1,0,
+carlpatrickrobinson_suncorp,No-L3,acceptable,no major quality concerns detected | duration anomaly caps session confidence,1,0,
 carlpatrickrobinson_uq,Full,poor,task-blocking friction: S1/S2 present,2,8,S1
 carlpatrickrobinson_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,8,S1
 carlpatrickrobinson_uq,No-L2,poor,task-blocking friction: S1/S2 present,2,8,S1
-carlpatrickrobinson_uq,No-L3,good,no major quality concerns detected,2,0,
+carlpatrickrobinson_uq,No-L3,acceptable,no major quality concerns detected | duration anomaly caps session confidence,2,0,
 fjone7_suncorp,Full,poor,task-blocking friction: S1/S2 present,0,56,S2
 fjone7_suncorp,No-L1,poor,task-blocking friction: S1/S2 present,0,56,S2
 fjone7_suncorp,No-L2,poor,task-blocking friction: S1/S2 present,0,56,S2
@@ -90,7 +90,7 @@ info_wa,No-L3,good,no major quality concerns detected,0,0,
 jenniferparry7_uq,Full,poor,task-blocking friction: S1/S2 present,10,9,S1
 jenniferparry7_uq,No-L1,poor,task-blocking friction: S1/S2 present,0,9,S1
 jenniferparry7_uq,No-L2,poor,task-blocking friction: S1/S2 present,10,9,S1
-jenniferparry7_uq,No-L3,good,no major quality concerns detected,10,0,
+jenniferparry7_uq,No-L3,acceptable,no major quality concerns detected | duration anomaly caps session confidence,10,0,
 kweslake_uq,Full,acceptable,multiple medium-severity findings,0,24,S3
 kweslake_uq,No-L1,acceptable,multiple medium-severity findings,0,24,S3
 kweslake_uq,No-L2,acceptable,multiple medium-severity findings,0,24,S3
