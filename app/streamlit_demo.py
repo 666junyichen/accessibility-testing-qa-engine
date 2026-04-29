@@ -97,21 +97,23 @@ def main() -> None:
         if not selected_summary.empty:
             row = selected_summary.iloc[0]
 
-            col1, col2, col3, col4, col5 = st.columns(5)
+            row1_col1, row1_col2 = st.columns(2)
 
-            with col1:
+            with row1_col1:
                 st.metric("Video ID", row.get("video_id", "N/A"))
 
-            with col2:
-                st.metric("Tester", row.get("tester", "N/A"))
-
-            with col3:
+            with row1_col2:
                 st.metric("Project", row.get("project", "N/A"))
 
-            with col4:
+            row2_col1, row2_col2, row2_col3 = st.columns(3)
+            
+            with row2_col1:
+                st.metric("Tester", row.get("tester", "N/A"))
+
+            with row2_col2:
                 st.metric("Tier", row.get("tier", "N/A"))
 
-            with col5:
+            with row2_col3:
                 st.metric("L3 Findings", row.get("l3_findings", "N/A"))
 
             st.write("Reason:")
@@ -132,19 +134,22 @@ def main() -> None:
     # -----------------------
     st.header("Detailed Quality Report")
 
-    col1, col2, col3, col4 = st.columns(4)
+    row1_col1, row1_col2 = st.columns(2)
 
-    with col1:
+    with row1_col1:
         st.metric("Video ID", report.get("video_id", "N/A"))
-
-    with col2:
+        
+    with row1_col2:
         st.metric("Project", report.get("project", "N/A"))
+        
+    row2_col1, row2_col2 = st.columns(2)
 
-    with col3:
+    with row2_col1:
         st.metric("Tester", report.get("tester_name", "N/A"))
-
-    with col4:
+    
+    with row2_col2:
         st.metric("Quality Tier", report.get("overall", {}).get("quality_tier", "N/A"))
+        
 
     show_section("Basic Information", {
         "total_windows": report.get("total_windows"),
