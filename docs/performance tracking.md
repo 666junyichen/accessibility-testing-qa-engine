@@ -1,17 +1,17 @@
 # Step 6.3 — Performance Tracking
 
 > **Author**: Ruihan Shan
-> **Inputs (canonical, per W9 plan)**:
+> **Inputs**:
 > - `data/processed/layer3_findings_filtered.csv` — finding-level rows from Step 5.1-A
 > - `data/processed/layer3_video_assessments.csv` — video-level rows from Step 5.1-B
 >
-> **Inputs (optional auxiliaries)** — fill in two fields the two primary CSVs can't supply:
+> **Inputs** — fill in two fields the two primary CSVs can't supply:
 > - `data/processed/windows.csv` → `total_windows` (else: lower-bounded by distinct findings windows)
 > - `data/processed/layer1_flags.csv` → `duration_anomaly` (else: defaults to False)
 >
 > **Outputs**:
 > - `src/tracking/performance_model.py` — pure-function aggregation module
-> - `data/processed/performance/per_submission.csv`, `per_tester.csv` — per-tester analysis sketch (dev 55 + 2 edge case = 57)
+> - `data/processed/performance/per_submission.csv` (57 rows = dev 55 + 2 edge cases) and `per_tester.csv` (27 rows = one per dev tester) — per-tester analysis sketch. Regenerate with `python scripts/build_performance_tracking.py`.
 > - this document (data model, scoring rules, SMP mapping table)
 >
 > **Out of scope**:
@@ -125,13 +125,13 @@ If `total_findings == 0` and narration is `rich` or `adequate`: D2 = 50 (neutral
 
 If `l1.duration_anomaly == True`: D3 = min(D3, 60) (cap, not penalty stacking).
 
-### 4.3 Composite submission score
+### 4.3 Composite submission score (heuristic v1)
 
 ```
 raw = 0.50 · D1 + 0.35 · D2 + 0.15 · D3
 ```
 
-Weights deliberately favor D1 (narration is the upstream prerequisite — without it D2 is mostly noise), then D2, then D3 (D3 mostly disqualifies extreme cases via the cap, not the weight).
+> **heuristic v1.** The 0.50 / 0.35 / 0.15 split is a defensible-but-not-validated heuristic locked in W9 (P2#8a, Nix-confirmed). It has *not* been calibrated against held-out data. The ratio is intended to favor D1 (narration is the upstream prerequisite — without it D2 is mostly noise), then D2, then D3 (D3 mostly disqualifies extreme cases via the cap, not the weight). Weights are revisited once (a) per-tester sketch is reviewed and (b) Final Report cycle opens; until then any consumer of these numbers should treat them as a v1 working point, not as anointed weights.
 
 Sentiment (E1–E5) deliberately does **not** enter `raw`. Per `06`, E3 is excluded from aggregation, and E4/E5 *about a product* should not penalize the tester. We instead surface sentiment in the per-tester layer as a *facet*, not as a score input.
 
@@ -169,7 +169,23 @@ Final: 65 → tier *Developing* (per §4.7). The cap is the binding constraint h
 
 ### 4.7 Calibrator-L as audit signal only
 
-Per §6.1 fusion's "main / auxiliary" rule, `calibrator_score_l` (L1–L5) is **never** weighted into `raw` or the cap. It's stored on the record as `calibrator_score_l_aggregate` and surfaced in the per-tester CSV as a sanity check: large mismatches between our composite tier and the L-aggregate are flagged for human review, not auto-corrected.
+Per §6.1 fusion's "main / auxiliary" rule, `calibrator_score_l` (L1–L5) is **never** weighted into `raw` or the cap. It's stored on the record as `calibrator_aggregate` (the per-video weighted-mean L-label) and surfaced as a sanity check.
+
+**Mismatch flag (W9 P1#8b lock-in).** Each `PerformanceRecord` carries a boolean `calibrator_aggregate_mismatch_flag`. It is True iff the composite tier (from §4.8) and the *implied* tier of the calibrator aggregate diverge by **≥ 2 tier steps**. The implied-tier mapping is:
+
+| `calibrator_aggregate` | Implied tier | Tier rank |
+|---|---|---|
+| L1 (minor friction) | Leading | 4 |
+| L2 (moderate) | Proficient | 3 |
+| L3 (significant) | Developing | 2 |
+| L4 (severe / near-abandonment) | Foundational | 1 |
+| L5 (blocking) | Foundational | 1 |
+
+Tier-rank gap ≥ 2 is the threshold (e.g. composite = `Leading` but calibrator aggregate → `Foundational` ⇒ flag). At < 2-step gap, the cross-check is treated as agreement-within-noise.
+
+**Audit-only contract (R5/R6 decoupling).** The mismatch flag is surfaced as a column on `per_submission.csv`, and as a roll-up count (`calibrator_aggregate_mismatch_count`) on `per_tester.csv`, for human review. It does **not** trigger a Step 6.2 (R5) coaching priority bump under any circumstance — keeping R5 and R6 cleanly decoupled is a hard W9 constraint, and any future "auto-bump on mismatch" is explicitly out of scope for the Final Report cycle.
+
+When `calibrator_aggregate` is `null` (no findings, or all blanks) the flag is `False` — a missing audit signal is treated as "cross-check unavailable", not as "mismatch".
 
 ### 4.8 Final tier mapping
 
@@ -188,9 +204,11 @@ Per §6.1 fusion's "main / auxiliary" rule, `calibrator_score_l` (L1–L5) is **
 
 For each tester with ≥2 non-low-evidence submissions:
 
-### 5.1 Trajectory direction
+### 5.1 Trajectory direction (ordered proxy / longitudinal sketch)
 
-Order submissions chronologically (currently we only have 1 batch = 1 timepoint per project pair, so we order by `(project, video_id)` as a stand-in until a real submission timestamp arrives — see §7 caveats).
+> **Wording lock-in (W9 P1#8c).** This section produces an *ordered proxy* — a longitudinal sketch — **not** a real improvement trend. The dev set has no reliable per-submission timestamps, so we order each tester's submissions by `(project, video_id)` (`ordering_basis = "project_video_id_proxy"` on the per-tester CSV). Any downstream prose must say "ordered proxy / longitudinal sketch" rather than "real improvement trend"; treating the direction label as a true time-series claim is explicitly out of scope until a submission-timestamp source lands.
+
+Within that proxy ordering:
 
 ```
 delta = score[last] − score[first]
@@ -202,7 +220,7 @@ delta = score[last] − score[first]
 | −5 ≤ delta ≤ +5 | stable |
 | < −5 | declining |
 
-±5 is intentionally narrow but the chunked tier boundaries (15 points) absorb most noise; we use score deltas not tier deltas because tier deltas hide partial movement.
+The ±5 stable band is locked in (W9 P1#8c). It is intentionally narrow, but the chunked tier boundaries (15 points) absorb most noise; we use score deltas not tier deltas because tier deltas hide partial movement. The direction labels (`improving` / `stable` / `declining`) describe the *ordered proxy* only — they do not assert real-world improvement until a true timestamp ordering is available.
 
 ### 5.2 Persistent friction flag
 
@@ -245,13 +263,13 @@ For the W9 progress report deliverable (this step), all 57 reports are `dev_only
 **Out of scope / explicit non-goals**:
 - Bupa held-out — gated by `docs/eval_freeze.md`. We must not run R6 mapping on Bupa data until Gate 1 ∧ Gate 2 are green and Freeze 4 (R6 mapping rules) is signed.
 - Modifying fusion schema — that's Freeze 3 territory.
-- Real chronological order — current dev set has no reliable submission timestamps. We use `(project, video_id)` ordering as a placeholder; this is documented in the per-tester CSV as `ordering_basis = filename_stable_sort`.
+- Real chronological order — current dev set has no reliable submission timestamps. We use `(project, video_id)` ordering as a placeholder; this is documented in the per-tester CSV as `ordering_basis = project_video_id_proxy` (an *ordered proxy* — see §5.1).
 - Coaching recommendation generation — owned by R5 (Step 6.2). R6 surfaces the facts (persistent friction, declining trajectory) but does not write coaching copy.
 
 **Open items (for Final Report cycle)**:
-1. Confirm dimension weights with Nix once the per-tester sketch CSV is reviewed (the 50/35/15 split is defensible but not anointed).
-2. Decide whether `calibrator_aggregate` mismatch flag should auto-trigger a coaching priority bump in Step 6.2 (R5 input needed).
-3. The ±5 stable band for trajectory direction was set on intuition; revisit after looking at the actual delta distribution in the per-tester CSV.
+1. The 0.50 / 0.35 / 0.15 weights are locked as **heuristic v1** for W9 (P2#8a). Revisit once the per-tester sketch CSV is reviewed; until then any downstream claim must label them v1, not "validated".
+2. ~~Decide whether `calibrator_aggregate` mismatch flag should auto-trigger a coaching priority bump in Step 6.2 (R5 input needed).~~ **Closed (W9 P1#8b)**: mismatch flag stays audit-only and does not feed R5 priority. R5/R6 remain decoupled. (See §4.7.)
+3. ~~The ±5 stable band for trajectory direction was set on intuition; revisit after looking at the actual delta distribution in the per-tester CSV.~~ **Closed (W9 P1#8c)**: ±5 band locked in; direction labels are documented as an *ordered proxy*, not a real trend. (See §5.1.)
 
 ---
 
