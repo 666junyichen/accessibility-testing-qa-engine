@@ -34,6 +34,33 @@ _MID_HIGH_SEVERITY = {"S1", "S2", "S3", "S4"}
 _CALIBRATOR_RANK = {"L1": 1, "L2": 2, "L3": 3, "L4": 4, "L5": 5}
 _CALIBRATOR_LABELS = {v: k for k, v in _CALIBRATOR_RANK.items()}
 
+# Composite tier rank, low → high. Used for the calibrator-aggregate mismatch
+# audit signal (§4.7) where we compare composite tier against the implied tier
+# from the calibrator-aggregate label.
+_TIER_RANK: dict[str, int] = {
+    "Foundational": 1,
+    "Developing": 2,
+    "Proficient": 3,
+    "Leading": 4,
+}
+
+# Calibrator label → implied tier rank. L1 means "minor friction reported"
+# which corresponds to a Leading-tier session experience; L5 means "blocking"
+# which corresponds to Foundational. Higher L = more severe friction = lower
+# implied tier. (Audit-only — see §4.7 of docs/performance tracking.md.)
+_CALIBRATOR_IMPLIED_TIER_RANK: dict[str, int] = {
+    "L1": 4,  # Leading
+    "L2": 3,  # Proficient
+    "L3": 2,  # Developing
+    "L4": 1,  # Foundational
+    "L5": 1,  # Foundational
+}
+
+# Threshold at which composite-vs-calibrator divergence is flagged for human
+# review (audit column only — does NOT trigger any R5 coaching priority bump,
+# per the W9 lock-in to keep R5/R6 decoupled).
+_CALIBRATOR_MISMATCH_TIER_GAP = 2
+
 
 _PROJECT_LANE: dict[str, CrossCheckLane] = {
 
@@ -82,6 +109,12 @@ class PerformanceRecord(BaseModel):
 
 
     calibrator_aggregate: Optional[str] = None
+    # Audit-only flag (§4.7): True when composite tier and the implied tier
+    # from `calibrator_aggregate` diverge by ≥ 2 tier steps (e.g. composite =
+    # Leading but calibrator aggregate implies Foundational). Surfaced as a
+    # column in per_submission/per_tester CSVs for human review — does NOT feed
+    # R5 priority bumps (R5/R6 stay decoupled).
+    calibrator_aggregate_mismatch_flag: bool = False
     low_evidence: bool = False
 
     cross_check_lane: CrossCheckLane = "dev_only"
@@ -108,13 +141,22 @@ class TesterTrajectory(BaseModel):
 
     persistent_friction_types: list[str] = Field(default_factory=list)
     sentiment_distribution: dict[str, int] = Field(default_factory=dict)
+    # Audit-only roll-up of the per-submission mismatch flag (§4.7). Counts how
+    # many of this tester's submissions tripped the composite-vs-calibrator
+    # divergence flag; consumed downstream as a human-review hint, not as an
+    # R5 coaching trigger.
+    calibrator_aggregate_mismatch_count: int = 0
 
     projects: list[str] = Field(default_factory=list)
     cross_check_lanes: list[CrossCheckLane] = Field(default_factory=list)
 
+    # `(project, video_id)` ordered proxy — NOT a real chronological timestamp.
+    # Surfaced in the per-tester CSV so downstream readers know this is a
+    # longitudinal sketch, not a true time series. See §5.1 / §7 of
+    # docs/performance tracking.md.
     ordering_basis: Literal[
-        "submission_timestamp", "filename_stable_sort"
-    ] = "filename_stable_sort"
+        "submission_timestamp", "project_video_id_proxy"
+    ] = "project_video_id_proxy"
 
     model_config = {"extra": "forbid"}
 
@@ -228,6 +270,29 @@ def _top_friction_types(by_friction_type: dict[str, int], k: int = 3) -> list[st
     return [label for label, _ in items[:k]]
 
 
+def _calibrator_mismatch_flag(
+    composite_tier: Tier,
+    calibrator_aggregate: Optional[str],
+) -> bool:
+    """Audit-only check: composite tier vs implied tier from calibrator aggregate.
+
+    Returns True only when the two tier ranks diverge by ≥ 2 steps (e.g.
+    composite=Leading but calibrator aggregate implies Foundational). Returns
+    False when the calibrator aggregate is None (no findings or all blanks) —
+    a missing audit signal is not a mismatch, just an unavailable cross-check.
+
+    Per W9 P1 lock-in: this flag is audit-only. It must NOT feed R5 coaching
+    priority calculations. Keeps R5/R6 decoupled.
+    """
+    if calibrator_aggregate is None:
+        return False
+    implied = _CALIBRATOR_IMPLIED_TIER_RANK.get(calibrator_aggregate)
+    if implied is None:
+        return False
+    composite_rank = _TIER_RANK[composite_tier]
+    return abs(composite_rank - implied) >= _CALIBRATOR_MISMATCH_TIER_GAP
+
+
 def score_submission(report: dict) -> PerformanceRecord:
 
     video_id = report["video_id"]
@@ -271,15 +336,19 @@ def score_submission(report: dict) -> PerformanceRecord:
     )
 
     score = round(capped, 1)
+    composite_tier = _tier_for(score)
 
     low_evidence = total_windows < 5
+
+    calibrator_aggregate = _calibrator_aggregate(by_calibrator)
+    mismatch_flag = _calibrator_mismatch_flag(composite_tier, calibrator_aggregate)
 
     return PerformanceRecord(
         video_id=video_id,
         tester_name=tester_name,
         project=project,
         score=score,
-        tier=_tier_for(score),
+        tier=composite_tier,
         d1_narration=round(d1, 1),
         d2_friction_surfacing=round(d2, 1),
         d3_recording=round(d3, 1),
@@ -292,7 +361,8 @@ def score_submission(report: dict) -> PerformanceRecord:
         by_severity=by_severity,
         by_sentiment=by_sentiment,
         top_friction_types=_top_friction_types(by_friction_type),
-        calibrator_aggregate=_calibrator_aggregate(by_calibrator),
+        calibrator_aggregate=calibrator_aggregate,
+        calibrator_aggregate_mismatch_flag=mismatch_flag,
         low_evidence=low_evidence,
         cross_check_lane=_lane_for(project),
     )
@@ -358,6 +428,10 @@ def aggregate_tester(records: list[PerformanceRecord]) -> TesterTrajectory:
         for label, count in r.by_sentiment.items():
             sentiment_total[label] += count
 
+    mismatch_count = sum(
+        1 for r in ordered if r.calibrator_aggregate_mismatch_flag
+    )
+
     return TesterTrajectory(
         tester_name=tester_name,
         submission_count=len(ordered),
@@ -371,9 +445,10 @@ def aggregate_tester(records: list[PerformanceRecord]) -> TesterTrajectory:
         submission_tiers=submission_tiers,
         persistent_friction_types=_persistent_friction(ordered),
         sentiment_distribution=dict(sentiment_total),
+        calibrator_aggregate_mismatch_count=mismatch_count,
         projects=projects,
         cross_check_lanes=lanes,
-        ordering_basis="filename_stable_sort",
+        ordering_basis="project_video_id_proxy",
     )
 
 
