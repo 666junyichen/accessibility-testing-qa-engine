@@ -171,6 +171,52 @@ def test_calibrator_aggregate_is_audit_only_label():
     assert record.calibrator_aggregate == "L2"
 
 
+def test_calibrator_aggregate_mismatch_flag_off_for_baseline():
+    """Baseline lands Leading with calibrator aggregate L2 (implied Proficient).
+    Tier-rank gap = 1 < 2 → no mismatch."""
+    record = score_submission(_make_report())
+    assert record.tier in {"Proficient", "Leading"}
+    assert record.calibrator_aggregate == "L2"
+    assert record.calibrator_aggregate_mismatch_flag is False
+
+
+def test_calibrator_aggregate_mismatch_flag_triggers_when_tier_gap_ge_2():
+    """Composite Leading + calibrator L4 (implied Foundational) → gap=3 → flag."""
+    report = _make_report()
+    report["l3_findings"]["by_calibrator_score"] = {"L4": 14, "L5": 6}
+    record = score_submission(report)
+    assert record.tier == "Leading"
+    assert record.calibrator_aggregate == "L4"
+    assert record.calibrator_aggregate_mismatch_flag is True
+
+
+def test_calibrator_aggregate_mismatch_flag_false_when_aggregate_missing():
+    """No calibrator findings → aggregate is None → flag is False (cross-check
+    unavailable, not a mismatch)."""
+    report = _make_report()
+    report["l3_findings"]["by_calibrator_score"] = {}
+    record = score_submission(report)
+    assert record.calibrator_aggregate is None
+    assert record.calibrator_aggregate_mismatch_flag is False
+
+
+def test_calibrator_aggregate_mismatch_flag_off_at_one_tier_gap():
+    """Composite Leading + calibrator L3 (implied Developing) → gap=2 → flag.
+    Composite Leading + calibrator L2 (implied Proficient) → gap=1 → no flag."""
+    edge_report = _make_report()
+    edge_report["l3_findings"]["by_calibrator_score"] = {"L3": 20}
+    edge_record = score_submission(edge_report)
+    assert edge_record.tier == "Leading"
+    assert edge_record.calibrator_aggregate == "L3"
+    assert edge_record.calibrator_aggregate_mismatch_flag is True
+
+    safe_report = _make_report()
+    safe_report["l3_findings"]["by_calibrator_score"] = {"L2": 20}
+    safe_record = score_submission(safe_report)
+    assert safe_record.calibrator_aggregate == "L2"
+    assert safe_record.calibrator_aggregate_mismatch_flag is False
+
+
 def test_zero_findings_with_rich_narration_gives_neutral_d2():
     report = _make_report()
     report["l3_findings"]["total_findings"] = 0
@@ -276,6 +322,22 @@ def test_low_evidence_records_excluded_from_trajectory_slope():
     assert traj.direction is None
     assert traj.submission_count == 2
     assert traj.submission_count_scored == 1
+
+
+def test_per_tester_calibrator_aggregate_mismatch_count_rolls_up():
+    matched = score_submission(_make_report(video_id="v1", tester_name="t"))
+    flagged_report = _make_report(video_id="v2", tester_name="t")
+    flagged_report["l3_findings"]["by_calibrator_score"] = {"L4": 14, "L5": 6}
+    flagged = score_submission(flagged_report)
+
+    assert matched.calibrator_aggregate_mismatch_flag is False
+    assert flagged.calibrator_aggregate_mismatch_flag is True
+
+    traj = aggregate_tester([matched, flagged])
+    assert traj.calibrator_aggregate_mismatch_count == 1
+    # Ordering basis is the (project, video_id) proxy — surfaced as such on
+    # the per-tester CSV so consumers don't read it as a real time series.
+    assert traj.ordering_basis == "project_video_id_proxy"
 
 
 def test_build_per_tester_table_groups_by_tester():
