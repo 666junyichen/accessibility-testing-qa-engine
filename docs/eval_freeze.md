@@ -25,11 +25,13 @@
 
 ## 三、Gate 1 — 代码完成态（客观可验证）
 
-- [ ] Step 6.1 `fusion_*.py` 代码合并到主分支
-- [ ] Step 6.1 pytest 全绿（含 fusion rule unit test + R6 mapping unit test）
-- [ ] 5.1-A / 5.1-B prompt 有 pinned 版本号 + commit hash
-- [ ] 5.2 LLM classifier 在 dev 55 视频上完成一次全量推理，输出 artefact 落盘（`data/processed/layer3_classifications.csv`）
-- [ ] 5.4 project-stratified evaluation 报告产出（含 AAMI/UQ/DPC-WA 三项目分布对比）
+- [x] Step 6.1 `fusion_*.py` 代码合并到主分支 — `src/pipeline/{schemas,fusion}.py`，commit `dfe1b0b`（2026-04-23）
+- [x] Step 6.1 pytest 全绿（含 fusion rule unit test + R6 mapping unit test）— **133 passed**（2026-05-04 基线，含 fusion 10 + R6 performance_model 29）
+- [x] 5.1-A / 5.1-B prompt 有 pinned 版本号 + commit hash — V2 canonical，commit `dfe1b0b`（2026-04-23）；R3 few-shot 注入 commit `d015fcf`
+- [x] 5.2 LLM classifier 在 dev 55 视频上完成一次全量推理，输出 artefact 落盘 — `data/processed/layer3_findings.csv` (2,219) + `layer3_findings_filtered.csv` (2,133) + `layer3_video_assessments.csv` (57)，commit `dfe1b0b`
+- [x] 5.4 project-stratified evaluation 报告产出（含 AAMI/UQ/DPC-WA 三项目分布对比）— commits `a2e1e18` / `ae42f50`（2026-04-25），`friction_type` κ = 0.7407 ≥ 0.5 门槛通过，V2 retained
+
+**Gate 1 状态：✅ 全绿（2026-05-04）。** 触发 held-out 仅余 Gate 2（Nix 4 类 freeze 签字）+ Bupa 数据准备（转录未做，~$90–125）。
 
 ## 四、Gate 2 — Nix 显式签字（治理动作）
 

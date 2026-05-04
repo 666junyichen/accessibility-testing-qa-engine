@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+import warnings
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Iterable, Literal, Optional
@@ -178,10 +179,26 @@ def _tier_for(score: float) -> Tier:
 
 
 def _d1_narration(narration_quality: str) -> float:
+    # CSV input path bypasses schemas_b validation; surface unknown labels as a
+    # warning so typos in narration_quality don't get silently scored at 50.
+    if narration_quality not in _NARRATION_D1:
+        warnings.warn(
+            f"unknown narration_quality {narration_quality!r}; falling back to "
+            f"50.0. expected one of {sorted(_NARRATION_D1)}",
+            stacklevel=2,
+        )
     return _NARRATION_D1.get(narration_quality, 50.0)
 
 
 def _d3_recording(recording_quality: str, duration_anomaly: bool) -> float:
+    # CSV input path bypasses schemas_b validation; surface unknown labels as a
+    # warning so typos in recording_quality don't get silently scored at 60.
+    if recording_quality not in _RECORDING_D3:
+        warnings.warn(
+            f"unknown recording_quality {recording_quality!r}; falling back to "
+            f"60.0. expected one of {sorted(_RECORDING_D3)}",
+            stacklevel=2,
+        )
     base = _RECORDING_D3.get(recording_quality, 60.0)
     if duration_anomaly:
         base = min(base, 60.0)
