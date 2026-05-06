@@ -587,7 +587,7 @@ Round-2 is diagnostic only; it does **not** update `layer2_cluster_assignments.c
 - **Document**: `docs/cluster_interpretation.md`
 - **Data files**: `data/annotations/r3_window_review_sample.csv`, `data/annotations/window_semantic_labels_template_canonical.csv`
 - Reviews sampled 60-second transcript windows and records early semantic patterns for later Layer 2 cluster interpretation.
-- Uses the client taxonomy from `docs/friction_taxonomy.md`, based on `Friction & Sentiment Classification Framework.pdf`.
+- Uses the client taxonomy through `docs/l3_design.md`, based on `Friction & Sentiment Classification Framework.pdf`.
 - Uses Round 5 canonical annotation fields from `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`; the older `window_semantic_labels_template.csv` is retained only as a legacy template.
 - The current draft uses sampled window text because final Layer 2 cluster outputs are not yet available.
 - Final interpretation should be updated once `cluster_id`, representative windows, cluster sizes, and top terms are produced.
@@ -610,7 +610,7 @@ python scripts\sample_r3_windows.py
 
 ## Step 5.1 - Prompt Design (Round 5 canonical)
 - **Modules**: `src/layer3/schemas_a.py` + `prompts_a.py` (5.1-A finding-level) / `schemas_b.py` + `prompts_b.py` (5.1-B video-level)
-- **Documents**: `docs/friction_taxonomy.md`, `docs/prompt_design.md` (semantic definitions only; schema source-of-truth lives in pydantic models)
+- **Document**: `docs/l3_design.md` (unified Layer 3 design reference; schema source-of-truth lives in pydantic models)
 - Defines two prompt tracks for LLM-based classification:
   - **5.1-A** emits a list of findings per window (F1-F7 / S1-S6 / E1-E5 / L1-L5 per finding, with `observed_signal` / `stated_signal` / `signal_alignment` + optional `structural_amplification_note`).
   - **5.1-B** emits one video-level assessment (`narration_quality` / `recording_quality` / `coaching_evidence`).
@@ -661,10 +661,10 @@ python scripts\migrate_r3_annotations_to_canonical.py
 
 ### R8 Manual Annotation Set + Kappa Agreement Check
 - **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
-- **Inputs:** `docs/friction_taxonomy.md`, `docs/prompt_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
+- **Inputs:** `docs/l3_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
 - **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen's kappa per dimension
 - Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3, using the Round 5 canonical schema.
-- Uses the field definitions from `docs/friction_taxonomy.md` and `docs/prompt_design.md` to guide manual annotation.
+- Uses the field definitions and boundary rules from `docs/l3_design.md` to guide manual annotation.
 - Keeps the annotation process blind by using `round1_blind_for_r8.csv`, which does not contain R3 labels.
 - The annotation script does **not** read `data/annotations/r3_manual_annotations_round1.csv`, `docs/cluster_interpretation.md`, or `docs/case_studies.md` during annotation.
 - Fields align with Round 5 canonical schema from `src/layer3/schemas_a.py` and `src/layer3/schemas_b.py`:
