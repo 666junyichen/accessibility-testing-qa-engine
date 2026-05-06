@@ -276,8 +276,12 @@ def _calibrator_aggregate(by_calibrator_score: dict[str, int]) -> Optional[str]:
         total += count
     if total == 0:
         return None
-    avg = round(weighted / total)
-    avg = max(1, min(5, int(avg)))
+    # ROUND_HALF_UP rather than Python's default banker's rounding so a .5
+    # mean (e.g. {L2: 1, L3: 1} → 2.5) maps to the more-severe label (L3),
+    # not the less-severe one. Banker's would silently bias toward even labels
+    # (round(2.5) == 2). Locked in by W10 P2#4.
+    avg = int(weighted / total + 0.5)
+    avg = max(1, min(5, avg))
     return _CALIBRATOR_LABELS[avg]
 
 
