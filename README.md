@@ -418,6 +418,7 @@ print(report_path.read_text(encoding="utf-8")[:1000])  # preview first part of t
 
 ## Step 3.1 — Layer 1 Rule-Based Detector
 - **Module**: `src/layer1/rule_detector.py`
+- **Design rationale**: see [`docs/layer1_design.md`](docs/layer1_design.md) for feature provenance, threshold derivation, and the fusion-cap contract.
 - Detects recording quality issues using hard-coded thresholds:
 
 | Rule | Threshold | Flag |
