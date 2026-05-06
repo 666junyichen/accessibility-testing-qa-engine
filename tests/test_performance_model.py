@@ -453,6 +453,70 @@ def test_score_submissions_from_csv_uses_windows_csv_when_provided(tmp_path):
     assert records[0].total_windows == 50
 
 
+# ---------------------------------------------------------------------------
+# W10 P2 cleanup — boundary tests
+# ---------------------------------------------------------------------------
+
+
+def test_d3_duration_anomaly_caps_at_60():
+    """Per §4.2: `l1.duration_anomaly == True` caps D3 at 60 (cap, not penalty
+    stacking). Even with `recording_quality == 'good'` (D3 base = 90), the cap
+    must bind at 60."""
+    report = _make_report(
+        l3_assessment={
+            "narration_quality": "rich",
+            "recording_quality": "good",
+            "coaching_evidence": "none",
+        }
+    )
+    report["l1"]["duration_anomaly"] = True
+    record = score_submission(report)
+    assert record.d3_recording == 60.0
+
+    # Sanity: without the anomaly, the same input produces D3 = 90.
+    report["l1"]["duration_anomaly"] = False
+    assert score_submission(report).d3_recording == 90.0
+
+
+def test_aggregate_tester_sentiment_distribution_sums_across_submissions():
+    """Per §5.4: per-tester `sentiment_distribution` is the sum of E1..E5
+    across all that tester's submissions. Verifies the aggregation accumulates
+    rather than (e.g.) overwriting from the last submission."""
+    r1_report = _make_report(video_id="v1", tester_name="t")
+    r1_report["l3_findings"]["by_sentiment"] = {"E1": 3, "E4": 5}
+    r2_report = _make_report(video_id="v2", tester_name="t")
+    r2_report["l3_findings"]["by_sentiment"] = {"E1": 2, "E2": 4, "E4": 1}
+    r1 = score_submission(r1_report)
+    r2 = score_submission(r2_report)
+    traj = aggregate_tester([r1, r2])
+    assert traj.sentiment_distribution == {"E1": 5, "E2": 4, "E4": 6}
+
+
+def test_calibrator_aggregate_invalid_label_is_ignored():
+    """Per §4.7: an unknown calibrator label (e.g. 'L9') is not in the L1..L5
+    rank table. It should be silently dropped from the weighted mean rather
+    than crashing or producing a bogus tier."""
+    from src.tracking.performance_model import _calibrator_aggregate
+    # Only invalid labels → no aggregate at all.
+    assert _calibrator_aggregate({"L9": 5}) is None
+    # Mixed: invalid label dropped, valid labels still produce an aggregate.
+    assert _calibrator_aggregate({"L9": 5, "L2": 4}) == "L2"
+
+
+def test_calibrator_aggregate_uses_round_half_up_at_point_five():
+    """Per W10 P2#4: weighted-mean .5 rounds *up* (ROUND_HALF_UP) rather than
+    Python's default banker's rounding (which would map 2.5 → 2). This guards
+    the .5 boundary so a tie between two L-labels resolves to the more-severe
+    one, not silently to whichever is even."""
+    from src.tracking.performance_model import _calibrator_aggregate
+    # mean = 2.5 → must map to L3, not L2 (banker's would give L2).
+    assert _calibrator_aggregate({"L2": 1, "L3": 1}) == "L3"
+    # mean = 4.5 → must map to L5, not L4.
+    assert _calibrator_aggregate({"L4": 1, "L5": 1}) == "L5"
+    # mean = 1.5 → must map to L2, not L1.
+    assert _calibrator_aggregate({"L1": 1, "L2": 1}) == "L2"
+
+
 def test_score_submissions_from_csv_handles_missing_assessment_video(tmp_path):
     findings_csv = _write_csv(
         tmp_path,
