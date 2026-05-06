@@ -25,6 +25,7 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 0.1 - Repository and Environment Setup](#step-01---repository-and-environment-setup)
 - [Step 0.2 - AWS Transcribe Export Collection](#step-02---aws-transcribe-export-collection)
 - [Step 0.3 - Structured Raw Data Preparation](#step-03---structured-raw-data-preparation)
+- [Step 0.4 - End-to-End Data Flow](#step-04---end-to-end-data-flow)
 - [Step 1.1 — Transcript JSON Parser](#step-11--transcript-json-parser)
 - [Step 1.2 — 60-Second Window Splitter](#step-12--60-second-window-splitter)
 - [Step 1.3 — Audio Feature Extraction](#step-13--audio-feature-extraction)
@@ -44,41 +45,181 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 7.2 - Streamlit Demostration Interface](#step-72--streamlit-demonstration-interface)
 - [Step 8.1 - Dev55 Batch Run](#step-81---dev55-batch-run)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
+- [How to reproduce from scratch](#how-to-reproduce-from-scratch)
 
 ## Step 0.1 - Repository and Environment Setup
 - **Status**: completed
-- Sets up the project repository skeleton and shared working structure:
-  - `data/raw/`
-  - `data/processed/`
-  - `src/`
-  - `notebooks/`
-  - `tests/`
-- Uses Python `3.10+` with dependencies tracked in `requirements.txt`
-- Provides the baseline project README and runnable repository layout for team development
+- **Purpose**: give new contributors a stable local layout before modelling work starts.
+- **Python**: `3.10+`
+- **Dependency file**: `requirements.txt`
+
+| Path | Role |
+|---|---|
+| `data/raw/` | Local raw exports from the client sandbox / S3 snapshot, including structured CSVs and AWS Transcribe JSON. |
+| `data/processed/` | Reproducible CSV / JSON artifacts consumed by Layer 1, Layer 2, Layer 3, fusion, performance tracking, and reports. |
+| `src/` | Core Python modules for parsing, preprocessing, rule detection, clustering, LLM postprocessing, fusion, coaching, and tracking. |
+| `scripts/` | CLI-style orchestration helpers for Layer 3, postprocessing, pipeline reports, ablation, dev55 sync, and performance outputs. |
+| `notebooks/` | EDA and experimental notebooks used to inspect transcript, structured, and clustering behavior. |
+| `docs/` | Governance notes, design docs, ablation findings, case studies, prompt notes, freeze rules, and Step 8.1 scope records. |
+| `app/` | Streamlit demo that reads precomputed `dev55` report artifacts. |
+| `tests/` | Unit and regression tests for preprocessing, Layer 2 utilities, fusion, coaching, and performance tracking. |
+
+Raw client inputs stay under `data/raw/`. Downstream modules read reproducible
+artifacts from `data/processed/`. Large generated files should be regenerated
+from scripts where possible rather than manually edited.
+
+### Data reality and scope
+
+The data scope follows `PROJECT.md` section 2, with the current local governance
+mirror in `docs/eval_freeze.md`. Canonical label and scoring references are:
+
+| Reference | Purpose |
+|---|---|
+| `client/s3_snapshot/06-friction-sentiment-framework.md` | Canonical friction, severity, and sentiment label framework. |
+| `client/s3_snapshot/07-friction-score-calibrator-prompt.md` | Canonical calibrator score prompt and `L1`-`L5` score language. |
+| Katie scoring-reference materials | Client-side scoring and evaluation language used for final report alignment. |
+
+Current project coverage:
+
+| Project | Local raw status | Transcribe status | Survey status | Current role |
+|---|---|---:|---|---|
+| DPC-WA (`department-of-premier-and-cabinet-wa`) | Collated project, assignment, and task CSVs | 17 JSON outputs | No local survey CSVs | Dev source; 16 official `dev55` reports after excluding one transcription failure. |
+| AAMI / Suncorp (`suncorp-insurance`) | Collated project, assignment, and task CSVs | 21 JSON outputs | No local survey CSVs | Dev source; 20 official `dev55` reports after excluding one transcription failure. |
+| UQ (`the-university-of-queensland`) | Collated project, assignment, task, and survey CSVs | 19 JSON outputs | 4 survey CSVs present | Dev source; 19 official `dev55` reports. |
+| Bupa (`bupa-uk`) | Survey-only CSVs currently present locally; collated held-out videos are not pulled in W10 | Not run in W10 | 4 survey CSVs present | Held-out evaluation target: 42 videos, only after budget approval and freeze gates. |
+| Brighton | Raw-only package outside current local repo snapshot | Not run | Not available locally | Not included because collated metadata / survey / task alignment is unavailable. |
+
+Evaluation split from `docs/eval_freeze.md`:
+
+| Split | Contents | Size | Rationale |
+|---|---|---:|---|
+| Development set | Old 3 collated projects: AAMI 21 + UQ 19 + DPC-WA 17, with 2 transcription failures excluded for formal reporting | 55 videos | Prompt tuning, schema finalisation, manual Kappa checks, ablation, rotating validation, and demo reports. |
+| Held-out set | Bupa collated videos | 42 videos | Reserved for one-time evaluation only after Gate 1 and Gate 2 are both approved. |
+| Not included | Brighton raw package and Bupa raw package | Brighton raw 105 + Bupa raw 315 noted in governance docs | Excluded because raw-only assets cannot be aligned reliably to collated tasks / survey / reporting scope. |
 
 ## Step 0.2 - AWS Transcribe Export Collection
-- **Status**: completed with one retained edge case
-- Collects AWS Transcribe JSON outputs under `data/raw/transcribe-output/`
-- Current repository state includes transcribe outputs for the development projects used in downstream parsing
-- Known edge case retained in the dataset:
-  - `troyparnell` is kept as a transcript failure / near-empty-file case for later validation handling
-- These JSON files are the source inputs for `src/data/transcript_parser.py`
+- **Status**: completed for the three development projects; held-out Bupa is not started in W10.
+- **Input source**: S3 collated MP4 assets for the development projects.
+- **Local JSON path**: `data/raw/transcribe-output/`
+- **Parser**: `src/data/transcript_parser.py`
+
+AWS Transcribe converts collated MP4 recordings into JSON outputs. The relevant
+downstream payload is under `results`:
+
+| AWS Transcribe field | Meaning in this project |
+|---|---|
+| `results.transcripts` | Full transcript text for each video. |
+| `results.items` | Word-level and punctuation-level items with `start_time`, `end_time`, and confidence values for pronunciation tokens. |
+| `results.audio_segments` | Segment-level transcript spans used to build `segments.csv` and later 60-second windows. |
+
+The JSON preserves word-level confidence and second-based timestamps. The current
+pipeline stores these timestamps as numeric seconds, so downstream windowing and
+duration logic can operate at sub-second precision.
+
+Current development transcribe coverage:
+
+| Project | JSON count under `data/raw/transcribe-output/` |
+|---|---:|
+| `department-of-premier-and-cabinet-wa` | 17 |
+| `suncorp-insurance` | 21 |
+| `the-university-of-queensland` | 19 |
+| **Total generated development JSONs** | **57** |
+
+Two development outputs are retained as abnormal transcription cases rather than
+silently deleted:
+
+| Video ID | Project | Handling |
+|---|---|---|
+| `troyparnell_suncorp` | AAMI / Suncorp | Retained as a near-empty / failed transcript edge case, excluded from formal `dev55`. |
+| `thanoptions_wa` | DPC-WA | Retained as a sparse / failed transcript edge case, excluded from formal `dev55`. |
+
+This is why the repo can contain `57` generated reports while the official
+development reporting scope is `55`.
 
 ## Step 0.3 - Structured Raw Data Preparation
-- **Status**: completed with source-data limitation noted
-- Organises structured raw files under `data/raw/`, including:
-  - `organisations-data.csv`
-  - `tester_db.csv`
-  - `schema-research.sql`
-  - project folders such as `department-of-premier-and-cabinet-wa/`, `suncorp-insurance/`, `the-university-of-queensland/`, and `bupa-uk/`
-- Maintains `data/raw/tester_video_mapping.csv` for the currently recoverable mapping:
-  - `video_filename -> project -> tester_name`
-- Source-data limitation:
-  - the current `*-assignments.csv` files in the repo contain tester roster fields such as `TesterFullName`, `OptedIn`, and `TesterCohorts`
-  - they do **not** contain tester-to-task linkage, so `assignment_id`, `task_id`, and `task_title` cannot be reliably recovered from the current source files
-- Practical implication:
-  - Step 0.3 is complete for data organisation and video/project/tester mapping
-  - task-level mapping should remain documented as unavailable unless a richer assignment export is provided later
+- **Status**: completed with source-data limitations documented.
+- **Primary local path**: `data/raw/`
+
+Structured data currently available in the repository:
+
+| Path / file group | Current contents | Use |
+|---|---|---|
+| `data/raw/organisations-data.csv` | Organisation-level structured export | Organisation reference and project context. |
+| `data/raw/tester_db.csv` | Tester roster / profile export | Tester reference, with caution around restricted or unclear attributes. |
+| `data/raw/schema-research.sql` | Database schema reference | Helps interpret CSV fields and likely source relationships. |
+| `data/raw/department-of-premier-and-cabinet-wa/` | Project CSV, assignment CSV, 14 task rows | DPC-WA dev structured context. |
+| `data/raw/suncorp-insurance/` | Project CSV, assignment CSV, 11 task rows | AAMI / Suncorp dev structured context. |
+| `data/raw/the-university-of-queensland/` | Project CSV, assignment CSV, 10 task rows, 4 survey CSVs | UQ dev structured and survey context. |
+| `data/raw/bupa-uk/` | 4 survey CSVs: 580 answers, 43 questions, 20 responses, survey metadata | Held-out survey context only; Bupa videos are not pulled in W10. |
+| `data/raw/tester_video_mapping.csv` | Local mapping helper | Practical bridge for video filename, project, and tester identity where recoverable. |
+
+Known structured-data limitation:
+
+- The current `*-assignments.csv` files contain useful roster fields such as tester name, opt-in status, and cohort information.
+- They do not provide a reliable tester-to-task linkage in the current local snapshot.
+- Therefore `assignment_id`, `task_id`, and `task_title` should not be treated as fully recoverable ground truth.
+- Task context is useful for project-level interpretation, but task-level joins should remain documented as incomplete unless a richer export is provided later.
+
+Structured EDA in `notebooks/02_structured_data_eda.ipynb` uses this snapshot to
+inspect project coverage, tester participation, task distributions, Timeguide
+fields, actual-duration vs expected-duration behavior, and survey availability.
+
+## Step 0.4 - End-to-End Data Flow
+- **Status**: documented for W10 Step 9.2-A.
+- **Purpose**: show how raw data becomes model-ready artifacts, fused reports, performance tables, and demo outputs.
+
+High-level flow:
+
+```text
+S3 collated MP4 / sandbox CSV
+  -> AWS Transcribe JSON + structured raw CSVs
+  -> transcript_parser.py
+  -> transcripts.csv / items.csv / segments.csv
+  -> window_splitter.py
+  -> windows.csv
+  -> audio_features.py + video_metadata.py
+  -> audio_features.csv / video_metadata.csv
+  -> Layer 1 rule detector
+  -> layer1_flags.csv
+  -> Layer 2 feature engineering + clustering
+  -> feature matrices + cluster assignments
+  -> Layer 3 Bedrock LLM classification + postprocessing
+  -> layer3_findings_filtered.csv + layer3_video_assessments.csv
+  -> fusion pipeline
+  -> data/processed/reports/*.json + _summary.csv
+  -> dev55 filtering / sync
+  -> data/processed/reports/dev55/ + _summary_dev55.csv
+  -> R6 performance tracking
+  -> per_submission.csv + per_tester.csv
+  -> Streamlit demo / final report evidence
+```
+
+Current processed artifact inventory:
+
+| Stage | Artifact | Current rows / files | Purpose |
+|---|---|---:|---|
+| Transcript parser | `data/processed/transcripts.csv` | 57 rows | One full transcript row per generated development video. |
+| Transcript parser | `data/processed/segments.csv` | 26,191 rows | Segment-level transcript spans from `results.audio_segments`. |
+| Transcript parser | `data/processed/items.csv` | Regenerable, not currently present in this checkout | Word-level timing and confidence table from `results.items`; large intermediate artifact. |
+| Windowing | `data/processed/windows.csv` | 3,331 rows | Approximately 60-second analysis windows across 57 videos. |
+| Audio features | `data/processed/audio_features.csv` | 876 rows | Window-level silence, narration density, words-per-minute, confidence, and silence duration features. |
+| Video metadata | `data/processed/video_metadata.csv` | 15 rows | Sample video metadata and duration-ratio checks. |
+| Layer 1 | `data/processed/layer1_flags.csv` | 278 rows | Rule-based quality flags such as `LOW_AUDIO_QUALITY`, `SPARSE_NARRATION`, and `DURATION_ANOMALY`. |
+| Layer 2 | `data/processed/feature_matrix_raw.csv` | 876 rows | Raw L2 feature matrix. |
+| Layer 2 | `data/processed/feature_matrix_scaled.csv` | 876 rows | Scaled L2 feature matrix. |
+| Layer 2 | `data/processed/layer2_cluster_assignments.csv` | 876 rows | Window-level cluster labels. |
+| Layer 2 | `data/processed/layer2_cluster_summary.csv` | 6 rows | Cluster-level feature summaries. |
+| Layer 2 | `data/processed/layer2_cluster_composition.csv` | 47 rows | Cluster composition by tester and project. |
+| Layer 3 | `data/processed/layer3_findings.csv` | 2,219 rows | Raw flattened L3 finding outputs after Bedrock classification. |
+| Layer 3 | `data/processed/layer3_findings_filtered.csv` | 2,133 rows | Filtered L3 findings used by fusion. |
+| Layer 3 | `data/processed/layer3_video_assessments.csv` | 57 rows | Video-level narration, recording, and coaching-evidence assessment. |
+| Fusion / reports | `data/processed/reports/*.json` | 57 files | One QualityReport JSON per generated development video. |
+| Fusion / reports | `data/processed/reports/_summary.csv` | 57 rows | Batch-level report summary, including the two abnormal transcript cases. |
+| Step 8.1 scope | `data/processed/reports/dev55_official_list.csv` | 55 rows | Official development whitelist. |
+| Step 8.1 scope | `data/processed/reports/_summary_dev55.csv` | 55 rows | Official filtered report summary. |
+| Step 8.1 scope | `data/processed/reports/dev55/*.json` | 55 files | Physical whitelist subset of current main reports. |
+| R6 performance | `data/processed/performance/per_submission.csv` | Generated by Step 6.3 script | Per-video score, tier, caps, findings, and quality dimensions. |
+| R6 performance | `data/processed/performance/per_tester.csv` | Generated by Step 6.3 script | Per-tester aggregate score, trajectory sketch, and persistent friction types. |
 
 ## Step 1.1 — Transcript JSON Parser
 - **Module**: `src/data/transcript_parser.py`
@@ -915,3 +1056,141 @@ streamlit run app/streamlit_demo.py
 - Step 8.3 is now aligned with the MVP video-level reports, but the selected cases should still be spot-checked before final client-facing submission.
 - Recording-poor dev55 sessions such as `mgblackwell2001_suncorp` should be used to demonstrate evidence-quality caution, not as strong product conclusions.
 - Case wording should remain aligned with Step 5.4 agreement findings as the progress report is finalised.
+
+## How to reproduce from scratch
+
+The target smoke-test outcome is that a new contributor can reach the existing
+development report state within about one hour once AWS SSO, S3, Bedrock, and
+local video/audio prerequisites are available. Bupa held-out data must not be
+pulled or run until the budget approval and freeze gates in `docs/eval_freeze.md`
+are both satisfied.
+
+### 1. Clone, environment, and AWS identity
+
+```powershell
+git clone https://github.com/seemeplease/usyd-03-2025-cs20-1.git
+cd usyd-03-2025-cs20-1
+python --version
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+aws sso login --profile smp-cs20
+aws sts get-caller-identity --profile smp-cs20
+```
+
+### 2. Prepare raw data and transcript tables
+
+```powershell
+New-Item -ItemType Directory -Force data\raw\transcribe-output
+aws s3 sync s3://usyd-03-2025-cs20-1-proj-assets/transcribe-output/ data/raw/transcribe-output/ --profile smp-cs20
+python src/data/transcript_parser.py
+python src/preprocessing/window_splitter.py
+python src/preprocessing/audio_features.py
+python src/preprocessing/video_metadata.py
+```
+
+Expected transcript/preprocessing checkpoints:
+
+```powershell
+(Import-Csv data/processed/transcripts.csv).Count
+(Import-Csv data/processed/segments.csv).Count
+(Import-Csv data/processed/windows.csv).Count
+(Import-Csv data/processed/audio_features.csv).Count
+```
+
+Expected current values are `57`, `26191`, `3331`, and `876` respectively,
+assuming the same development transcribe JSON and local video/audio availability.
+
+### 3. Run Layer 1 and Layer 2 artifacts
+
+```powershell
+python src/layer1/rule_detector.py
+python src/layer2/feature_engineering.py
+jupyter nbconvert --to notebook --execute notebooks/04_layer2_clustering.ipynb --output 04_layer2_clustering.executed.ipynb
+```
+
+Expected current processed outputs:
+
+```powershell
+(Import-Csv data/processed/layer1_flags.csv).Count
+(Import-Csv data/processed/feature_matrix_raw.csv).Count
+(Import-Csv data/processed/feature_matrix_scaled.csv).Count
+(Import-Csv data/processed/layer2_cluster_assignments.csv).Count
+```
+
+Expected current values are `278`, `876`, `876`, and `876`.
+
+### 4. Run Layer 3 with Bedrock
+
+Layer 3 uses AWS Bedrock LLM calls. Before running the non-dry-run commands,
+confirm that the AWS use-case form / Bedrock model access has been approved for
+the `smp-cs20` profile. To test the wiring without cost:
+
+```powershell
+python scripts/run_layer3_dev.py --level A --input data/processed/windows.csv --limit 3 --dry-run
+python scripts/run_layer3_dev.py --level B --input data/processed/windows.csv --limit 3 --dry-run
+```
+
+Full development run:
+
+```powershell
+python scripts/run_layer3_dev.py --level A --input data/processed/windows.csv --output outputs/layer3_dev_level_A_results.csv --checkpoint outputs/layer3_dev_level_A_checkpoint.csv --max-concurrency 4
+python scripts/run_layer3_dev.py --level B --input data/processed/windows.csv --output outputs/layer3_dev_level_B_results.csv --checkpoint outputs/layer3_dev_level_B_checkpoint.csv --max-concurrency 2
+python scripts/postprocess_layer3.py --level A --input outputs/layer3_dev_level_A_results.csv --output data/processed/layer3_findings.csv
+python scripts/postprocess_layer3.py --level B --input outputs/layer3_dev_level_B_results.csv --output data/processed/layer3_video_assessments.csv
+python scripts/filter_l3_ok_contamination.py
+```
+
+Expected current Layer 3 checkpoints:
+
+```powershell
+(Import-Csv data/processed/layer3_findings.csv).Count
+(Import-Csv data/processed/layer3_findings_filtered.csv).Count
+(Import-Csv data/processed/layer3_video_assessments.csv).Count
+```
+
+Expected current values are `2219`, `2133`, and `57`.
+
+### 5. Build reports, dev55 subset, and performance tables
+
+```powershell
+python scripts/run_pipeline.py --all --output-dir data/processed/reports
+python scripts/remove_pipeline_abnormal_lines.py
+python scripts/sync_dev55.py --check
+python scripts/build_performance_tracking.py
+```
+
+Expected final checkpoints:
+
+```powershell
+Get-ChildItem data/processed/reports -Filter *.json | Measure-Object
+(Import-Csv data/processed/reports/_summary.csv).Count
+Get-ChildItem data/processed/reports/dev55 -Filter *.json | Measure-Object
+(Import-Csv data/processed/reports/_summary_dev55.csv).Count
+(Import-Csv data/processed/performance/per_submission.csv).Count
+(Import-Csv data/processed/performance/per_tester.csv).Count
+```
+
+Expected report state:
+
+| Output | Expected result |
+|---|---:|
+| `data/processed/reports/*.json` | 57 files |
+| `data/processed/reports/_summary.csv` | 57 rows |
+| `data/processed/reports/dev55/*.json` | 55 files |
+| `data/processed/reports/_summary_dev55.csv` | 55 rows |
+| `data/processed/performance/per_submission.csv` | 57 rows |
+| `data/processed/performance/per_tester.csv` | 27 rows |
+
+### 6. Optional local review surfaces
+
+```powershell
+pytest
+python scripts/ablation_study.py --scope dev55 --output data/processed/ablation_summary.csv
+streamlit run app/streamlit_demo.py
+```
+
+Use `data/processed/reports/_summary.csv` for the full generated development
+batch, and `data/processed/reports/_summary_dev55.csv` for formal dev-set
+reporting, demo, and final-report evidence.

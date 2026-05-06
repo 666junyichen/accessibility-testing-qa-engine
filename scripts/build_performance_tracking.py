@@ -1,4 +1,4 @@
-"""Step 6.3 analysis sketch — build per_submission.csv + per_tester.csv.
+"""Step 6.3 analysis sketch - build per_submission.csv + per_tester.csv.
 
 Reads the canonical Step 5.1 outputs (findings + video assessments) plus the
 optional auxiliary CSVs (windows, layer-1 flags) and writes the two performance
@@ -150,7 +150,10 @@ def _write_csv(path: Path, columns: list[str], rows: list[dict]) -> None:
 
 
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument(
         "--findings-csv",
         type=Path,
