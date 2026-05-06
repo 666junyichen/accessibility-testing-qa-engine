@@ -688,35 +688,7 @@ python scripts\migrate_r3_annotations_to_canonical.py
 | `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output (Round 5 schema) |
 | `04_kappa_agreement.ipynb` | Team / review | Agreement calculation and disagreement inspection |
 
-### Kappa Agreement Results Summary
-
-Round 5 canonical Kappa computed 2026-04-22 using `r3_manual_annotations_round1_canonical.csv` + `r8_manual_annotations_round1.csv` (14 shared windows):
-
-| Schema | Dimension | Kappa | Level |
-|---|---|---|---|
-| 5.1-A | `friction_type` | **0.8293** | Almost perfect |
-| 5.1-A | `severity_s` (nominal) | **0.3378** | Fair |
-| 5.1-A | `severity_s` (weighted) | **0.6056** | Substantial |
-| 5.1-A | `sentiment_e` | **0.2222** | Fair |
-| 5.1-A | `calibrator_score_l` (nominal) | **0.8971** | Almost perfect |
-| 5.1-A | `calibrator_score_l` (weighted) | **0.9271** | Almost perfect |
-| 5.1-A | `signal_alignment` | N/A | 100% agree (single class) |
-| 5.1-B | `narration_quality` | **0.5882** | Moderate |
-| 5.1-B | `recording_quality` | 0.0 (92.9% agree) | Class imbalance |
-| 5.1-B | `coaching_evidence` | N/A | 100% agree (single class) |
-
-Key observations:
-- `friction_type` and `calibrator_score_l` show almost perfect agreement
-- `severity_s` nominal kappa is fair (0.34) but weighted kappa is substantial (0.61) — all disagreements are between adjacent levels
-- `sentiment_e` kappa is fair (0.22); 6 of 8 disagreements are at the E3/E4 boundary — joint calibration session recommended before Step 5.4 final evaluation
-- `signal_alignment`, `coaching_evidence`: all 14 windows labelled identically by both annotators; kappa undefined (single class)
-- `recording_quality` kappa = 0.0 due to class imbalance (13/14 = `good`); observed agreement is 92.9%
-
-Previous results (old schema, for reference only — not comparable to Round 5):
-- `friction_type` kappa = **0.6606**
-- `severity` kappa = **0.3869** (simplified label)
-- `sentiment` kappa = **0.6640** (simplified label)
-- weighted `severity` kappa = **0.6038**
+> **Methodology, full Kappa tables, and downstream confidence-propagation rules are documented in [`docs/evaluation_design.md`](docs/evaluation_design.md) (§3.2 dimension grouping, §3.3 LC-1 to LC-4 rules, §7 Step 5.4 evaluation).** This README section covers the operational artefacts only.
 
 ```python
 # Usage
@@ -733,28 +705,9 @@ notebooks/04_kappa_agreement.ipynb
   - `data/annotations/r8_manual_annotations_round1.csv` (14 windows, R8 round-1 human annotations)
 - **Join strategy**: join on `window_id`; 10 of 14 windows have LLM findings; 4 no-finding windows treated as `friction_type='none'`; multi-finding windows resolved by highest `calibrator_score_l` (ties: first occurrence)
 - **Decision gate**: `friction_type` κ ≥ 0.5 → V2 prompt acceptable, no V3 revision needed
+- **Verdict (2026-04-25)**: `friction_type` κ = **0.7407** (Substantial) — gate passed, V2 retained.
 
-### Kappa Results
-
-| Schema | Dimension | LLM V2 vs R8 κ | R3 vs R8 κ (ref) | Level | Verdict |
-|---|---|---|---|---|---|
-| 5.1-A | `friction_type` | **0.7407** | 0.8293 | Substantial | ✅ Gate passed (≥ 0.5); V2 retained |
-| 5.1-A | `severity_s` (nominal) | **0.5238** | 0.3378 | Moderate | ✅ Acceptable |
-| 5.1-A | `severity_s` (weighted) | **0.7603** | 0.6056 | Substantial | ✅ Strong ordinal agreement |
-| 5.1-A | `sentiment_e` | **0.0000** | 0.2222 | Slight | ⚠️ Systematic E3→E4 inflation by LLM |
-| 5.1-A | `calibrator_score_l` (nominal) | **0.3103** | 0.8971 | Fair | ⚠️ n=10; no-finding windows excluded |
-| 5.1-A | `calibrator_score_l` (weighted) | **0.4118** | 0.9271 | Fair | ⚠️ Fair directional agreement |
-| 5.1-A | `signal_alignment` | **0.0000** | N/A | — | ℹ️ Schema convention diff: R8=aligned, LLM=stated_missing for no-finding windows |
-| 5.1-B | `narration_quality` | **0.0000** | 0.5882 | Slight | ⚠️ LLM defaults to `rich` for all videos |
-| 5.1-B | `recording_quality` | **0.0118** | 0.0000 | Slight | ⚠️ LLM defaults to `acceptable`; R8 uses `good` for most |
-| 5.1-B | `coaching_evidence` | N/A | N/A | — | ✅ All `none` on both sides |
-
-### Key Findings
-
-- **`friction_type` κ = 0.7407 (Substantial)** — final judge passes. V2 prompt is retained; no V3 revision needed. 3 disagreements: `giuliaclemente26_uq_w050` (R8=F7, LLM=F1), `marychaunguyen_suncorp_w011` (R8=F3, LLM=F7), `giuliaclemente26_uq_w004` (R8=F5, LLM=F7). All are borderline multi-friction windows.
-- **`sentiment_e` κ = 0.0** — LLM V2 systematically assigns E4 (Frustrated) regardless of actual tester tone. R8 correctly differentiates E2/E3/E4. Does not trigger V3 but should be addressed with E3 calibration examples if sentiment accuracy becomes a downstream requirement.
-- **`calibrator_score_l`** gap is partly structural — 4 no-finding windows have no LLM score (n=10). Weighted kappa (0.4118) is more informative and shows fair directional agreement.
-- **5.1-B video-level labels** show systematic default behaviour: LLM assigns `rich` to all `narration_quality` and `acceptable` to all `recording_quality` regardless of session content. This is a V2 prompt calibration gap in the 5.1-B assessment, separate from the finding-level friction verdict.
+> **Full result tables (LLM V2 vs R8 across all 8 dimensions), R3 vs R8 reference comparison, error pattern analysis, and confidence-propagation rules are in [`docs/evaluation_design.md`](docs/evaluation_design.md) §3.2 + §7.**
 
 ```python
 # Usage — Step 5.4 LLM Kappa (Section 10 of notebook)
@@ -774,6 +727,7 @@ notebooks/04_kappa_agreement.ipynb
 #   Cell 22 — error cases
 #   Cell 23 — conclusion (markdown, no run needed)
 ```
+
 
 ## Step 6.3 — Performance Tracking
 - **Module**: `src/tracking/performance_model.py`
