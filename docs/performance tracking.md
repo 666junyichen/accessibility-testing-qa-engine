@@ -28,7 +28,7 @@ The fusion output in `data/processed/reports/*.json` answers *"how good is this 
 1. **Per-submission rendering** — give each submission a single 0-100 score and a tier (Foundational / Developing / Proficient / Leading) using SMP score-language, so coaching, dashboards, and the Final Report all speak the same vocabulary.
 2. **Cross-submission trajectory** — for testers with ≥2 submissions, classify their movement (improving / stable / declining) and surface persistent friction patterns (same `friction_type` recurring across submissions).
 
-Per the dev split, 27 testers cover 57 videos; 12 testers have 3 submissions and 6 have 2. That's enough longitudinal density for a meaningful trajectory layer in dev. (Bupa held-out: most testers ≤1 submission — trajectory layer there is a future-work caveat, not a goal.)
+Per the dev split, 28 testers (27 dev + 1 edge case from full 57) cover 57 videos; 12 testers have 3 submissions and 6 have 2. That's enough longitudinal density for a meaningful trajectory layer in dev. (Bupa held-out: most testers ≤1 submission — trajectory layer there is a future-work caveat, not a goal.)
 
 ---
 
@@ -250,7 +250,7 @@ Per-tester `sentiment_distribution = sum of E1..E5 across submissions` — surfa
 - **AAMI / Bupa lane** — when the per-tester layer is later cross-checked against an SMP score (Step 8.5 territory), the comparison is against `score-overrides.csv` values (post-C3).
 - **UQ lane** — the per-tester layer is cross-checked against raw survey only, not against overrides. The output CSV carries a `cross_check_lane ∈ {with_overrides, raw_only, dev_only}` column so downstream readers don't silently treat empty UQ overrides as "we agree with SMP on UQ" — they're "no override exists" in the first place.
 
-For the W9 progress report deliverable (this step), all 57 reports are `dev_only`; the lane field is filled in pre-emptively so the field exists when 8.5 needs it.
+Lanes are pre-populated for known dev projects (`suncorp` / `wa` → `with_overrides`, `uq` → `raw_only`); Bupa held-out 触发后会消费此字段, so the column already exists when Step 8.5 needs it.
 
 ---
 
