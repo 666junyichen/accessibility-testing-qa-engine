@@ -81,17 +81,14 @@ def hero_card(
             caps_html = f'<div class="smp-hero-cap"><strong>Cap reasons:</strong> {cap_chips}</div>'
 
     st.markdown(
-        f"""
-        <div class="smp-hero">
-          <h2>{escape(title)}</h2>
-          <div class="subtitle">{escape(subtitle)}</div>
-          <div class="smp-hero-grid">
-            {tier_html}
-            {stat_html}
-          </div>
-          {caps_html}
-        </div>
-        """,
+        (
+            f'<div class="smp-hero">'
+            f'<h2>{escape(title)}</h2>'
+            f'<div class="subtitle">{escape(subtitle)}</div>'
+            f'<div class="smp-hero-grid">{tier_html}{stat_html}</div>'
+            f'{caps_html}'
+            f'</div>'
+        ),
         unsafe_allow_html=True,
     )
 
