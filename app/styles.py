@@ -1,7 +1,9 @@
 """Visual design tokens and CSS for the SMP demo app.
 
-Single source of truth for colors, spacing, and typography. Imported by
-streamlit_demo.py once at startup; do not import from per-render code paths.
+Design principle: color = signal, not decoration.
+Only TIER and SEVERITY use saturated color (they drive judgement).
+Friction / sentiment / calibrator / alignment use grayscale + code, so the
+eye is not pulled by 5 competing color systems.
 """
 from __future__ import annotations
 
@@ -10,17 +12,19 @@ from __future__ import annotations
 # Color tokens
 # ---------------------------------------------------------------------------
 
-# Brand
 USYD_RED = "#C8102E"
 INK = "#0F172A"
 SLATE_700 = "#334155"
 SLATE_500 = "#64748B"
+SLATE_400 = "#94A3B8"
 SLATE_300 = "#CBD5E1"
+SLATE_200 = "#E2E8F0"
 SLATE_100 = "#F1F5F9"
 SLATE_50 = "#F8FAFC"
 WHITE = "#FFFFFF"
 
-# Quality tier
+
+# Quality tier — saturated (key judgement signal)
 TIER_COLORS = {
     "good": {"bg": "#DCFCE7", "fg": "#166534", "border": "#16A34A"},
     "acceptable": {"bg": "#FEF3C7", "fg": "#92400E", "border": "#F59E0B"},
@@ -31,7 +35,8 @@ TIER_COLORS = {
     "foundational": {"bg": "#FEE2E2", "fg": "#991B1B", "border": "#DC2626"},
 }
 
-# Severity (S1 worst -> S6 mildest)
+
+# Severity — saturated (drives finding ordering & clinical attention)
 SEVERITY_COLORS = {
     "S1": {"bg": "#FECACA", "fg": "#7F1D1D"},
     "S2": {"bg": "#FED7AA", "fg": "#9A3412"},
@@ -41,16 +46,11 @@ SEVERITY_COLORS = {
     "S6": {"bg": "#F1F5F9", "fg": "#64748B"},
 }
 
-# Friction type chips (F1-F7)
-FRICTION_COLORS = {
-    "F1": {"bg": "#E0E7FF", "fg": "#3730A3"},  # Comprehension
-    "F2": {"bg": "#FCE7F3", "fg": "#9D174D"},  # Confidence
-    "F3": {"bg": "#CFFAFE", "fg": "#155E75"},  # Accessibility
-    "F4": {"bg": "#FEE2E2", "fg": "#991B1B"},  # Unresponsive
-    "F5": {"bg": "#FEF3C7", "fg": "#92400E"},  # Unexpected
-    "F6": {"bg": "#DDD6FE", "fg": "#5B21B6"},  # Content not found
-    "F7": {"bg": "#E0F2FE", "fg": "#075985"},  # Excessive Effort
-}
+
+# Friction / sentiment / calibrator: grayscale, code-only
+GRAY_CHIP = {"bg": SLATE_100, "fg": SLATE_700}
+GRAY_CHIP_MUTED = {"bg": SLATE_50, "fg": SLATE_500}
+
 
 FRICTION_LABELS = {
     "F1": "Comprehension",
@@ -62,14 +62,6 @@ FRICTION_LABELS = {
     "F7": "Excessive Effort",
 }
 
-# Sentiment chips
-SENTIMENT_COLORS = {
-    "E1": {"bg": "#FECACA", "fg": "#7F1D1D"},
-    "E2": {"bg": "#FED7AA", "fg": "#9A3412"},
-    "E3": {"bg": "#E2E8F0", "fg": "#334155"},
-    "E4": {"bg": "#DBEAFE", "fg": "#1E40AF"},
-    "E5": {"bg": "#DCFCE7", "fg": "#166534"},
-}
 SENTIMENT_LABELS = {
     "E1": "Strongly negative",
     "E2": "Negative",
@@ -78,6 +70,21 @@ SENTIMENT_LABELS = {
     "E5": "Strongly positive",
 }
 
+
+# Project shortname (full slug -> demo label)
+PROJECT_SHORTNAMES = {
+    "department-of-premier-and-cabinet-wa": "DPC-WA",
+    "suncorp-insurance": "AAMI",
+    "the-university-of-queensland": "UQ",
+    "web-health-information": "Bupa",
+    "web-health-information-bupa": "Bupa",
+    "digital-brochure": "Brighton",
+    "wa": "DPC-WA",
+    "suncorp": "AAMI",
+    "uq": "UQ",
+}
+
+
 # Coaching category icons
 CATEGORY_ICONS = {
     "narration": "🎙️",
@@ -85,7 +92,8 @@ CATEGORY_ICONS = {
     "moderation": "👤",
 }
 
-# Tier emoji for sidebar
+
+# Tier emoji for sidebar list
 TIER_EMOJI = {
     "good": "🟢",
     "acceptable": "🟡",
@@ -103,206 +111,223 @@ TIER_EMOJI = {
 
 GLOBAL_CSS = f"""
 <style>
-  /* Page-wide typography & spacing */
   .stApp {{
     background-color: {SLATE_50};
   }}
+
   h1, h2, h3 {{
     color: {INK};
     font-weight: 700;
     letter-spacing: -0.01em;
   }}
-  h1 {{ font-size: 2.0rem; }}
-  h2 {{ font-size: 1.4rem; margin-top: 1.5rem; }}
-  h3 {{ font-size: 1.15rem; margin-top: 1.0rem; }}
+  h1 {{ font-size: 1.85rem; }}
+  h2 {{ font-size: 1.3rem; margin-top: 1.4rem; }}
+  h3 {{ font-size: 1.05rem; margin-top: 0.9rem; color: {SLATE_700}; }}
+  h5 {{
+    color: {SLATE_500};
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+  }}
 
-  /* Streamlit metric card */
+  /* Streamlit metric */
   div[data-testid="stMetric"] {{
     background-color: {WHITE};
-    border: 1px solid {SLATE_300};
+    border: 1px solid {SLATE_200};
     border-radius: 10px;
     padding: 12px 16px;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
   }}
   div[data-testid="stMetricLabel"] {{
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: {SLATE_500};
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-weight: 600;
   }}
   div[data-testid="stMetricValue"] {{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: {INK};
     font-weight: 700;
   }}
 
-  /* Container card */
-  .smp-card {{
-    background-color: {WHITE};
-    border: 1px solid {SLATE_300};
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  }}
-
-  /* Hero card (top of single video view) */
+  /* Hero card */
   .smp-hero {{
-    background: linear-gradient(135deg, {WHITE} 0%, {SLATE_50} 100%);
-    border-left: 5px solid {USYD_RED};
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    background: {WHITE};
+    border-left: 4px solid {USYD_RED};
+    border-radius: 10px;
+    padding: 20px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
   }}
   .smp-hero h2 {{
     margin: 0 0 4px 0;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: {INK};
   }}
-  .smp-hero .smp-subtitle {{
+  .smp-hero .subtitle {{
     color: {SLATE_500};
-    font-size: 0.95rem;
-    margin-bottom: 14px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
   }}
   .smp-hero-grid {{
     display: flex;
-    gap: 28px;
+    gap: 32px;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
   }}
   .smp-hero-stat {{
     display: flex;
     flex-direction: column;
+    min-width: 70px;
   }}
   .smp-hero-stat .label {{
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: {SLATE_500};
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
   }}
   .smp-hero-stat .value {{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: {INK};
     font-weight: 700;
     margin-top: 2px;
+    line-height: 1.2;
+  }}
+  .smp-hero-cap {{
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid {SLATE_100};
+    font-size: 0.78rem;
+    color: {SLATE_500};
   }}
 
   /* Tier badge */
   .tier-badge {{
     display: inline-block;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 999px;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 700;
     border: 1.5px solid;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }}
   .tier-badge-lg {{
-    padding: 10px 22px;
-    font-size: 1.05rem;
+    padding: 8px 18px;
+    font-size: 0.95rem;
   }}
 
-  /* Severity / friction / sentiment chips */
+  /* Chip */
   .smp-chip {{
     display: inline-block;
-    padding: 3px 10px;
+    padding: 2px 9px;
     border-radius: 999px;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 600;
     margin-right: 6px;
     margin-bottom: 4px;
     white-space: nowrap;
+    line-height: 1.6;
   }}
 
   /* Coaching card */
   .coaching-card {{
     background-color: {WHITE};
-    border: 1px solid {SLATE_300};
-    border-left: 4px solid {USYD_RED};
-    border-radius: 10px;
-    padding: 18px 22px;
-    margin-bottom: 14px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    border: 1px solid {SLATE_200};
+    border-left: 3px solid {USYD_RED};
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
   }}
   .coaching-card .icon {{
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     margin-right: 8px;
   }}
   .coaching-card .title {{
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: {INK};
     margin-bottom: 4px;
   }}
   .coaching-card .summary {{
     color: {SLATE_700};
-    font-size: 0.92rem;
-    margin-bottom: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
     line-height: 1.55;
   }}
   .coaching-card ul {{
     margin: 0;
-    padding-left: 20px;
+    padding-left: 18px;
     color: {SLATE_700};
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.7;
   }}
   .coaching-card .meta {{
     color: {SLATE_500};
-    font-size: 0.78rem;
-    margin-top: 12px;
-    border-top: 1px solid {SLATE_100};
-    padding-top: 10px;
+    font-size: 0.75rem;
+    margin-top: 10px;
   }}
 
   /* Finding row */
   .finding-row {{
     background-color: {WHITE};
-    border: 1px solid {SLATE_300};
+    border: 1px solid {SLATE_200};
     border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
   }}
   .finding-row .head {{
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }}
+  .finding-row .head .window-id {{
+    color: {SLATE_400};
+    font-size: 0.74rem;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    margin-left: auto;
   }}
   .finding-row .body {{
     color: {INK};
-    font-size: 0.92rem;
-    line-height: 1.6;
-    margin-bottom: 6px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }}
+  .finding-row details {{
+    margin-top: 8px;
+  }}
+  .finding-row details summary {{
+    cursor: pointer;
+    color: {SLATE_500};
+    font-size: 0.78rem;
+    user-select: none;
+  }}
+  .finding-row details summary:hover {{
+    color: {USYD_RED};
   }}
   .finding-row .quote {{
     background-color: {SLATE_50};
-    border-left: 3px solid {SLATE_300};
+    border-left: 3px solid {SLATE_200};
     padding: 8px 12px;
     color: {SLATE_700};
-    font-size: 0.86rem;
+    font-size: 0.85rem;
     font-style: italic;
-    margin-top: 6px;
+    margin-top: 8px;
     border-radius: 4px;
-  }}
-  .finding-row .window-id {{
-    color: {SLATE_500};
-    font-size: 0.78rem;
-    font-family: 'SF Mono', Menlo, Consolas, monospace;
   }}
 
   /* Footer */
   .smp-footer {{
-    margin-top: 48px;
-    padding-top: 16px;
-    border-top: 1px solid {SLATE_300};
-    color: {SLATE_500};
-    font-size: 0.78rem;
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid {SLATE_200};
+    color: {SLATE_400};
+    font-size: 0.74rem;
     text-align: center;
     line-height: 1.7;
   }}
@@ -310,18 +335,19 @@ GLOBAL_CSS = f"""
     background-color: {SLATE_100};
     padding: 1px 6px;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    color: {SLATE_500};
   }}
 
   /* Sidebar */
   section[data-testid="stSidebar"] {{
     background-color: {WHITE};
-    border-right: 1px solid {SLATE_300};
+    border-right: 1px solid {SLATE_200};
   }}
   section[data-testid="stSidebar"] h2 {{
     color: {USYD_RED};
-    font-size: 1.1rem;
-    margin-bottom: 16px;
+    font-size: 1.05rem;
+    margin-bottom: 14px;
   }}
 
   /* Tabs */
@@ -333,8 +359,51 @@ GLOBAL_CSS = f"""
     color: {USYD_RED};
   }}
 
+  /* Dataframe softening */
+  .stDataFrame {{
+    border-radius: 8px;
+    overflow: hidden;
+  }}
+
+  /* Multiselect chip — neutral gray (override default red) */
+  div[data-baseweb="select"] span[data-baseweb="tag"] {{
+    background-color: {SLATE_100} !important;
+    color: {SLATE_700} !important;
+    border-radius: 999px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+  }}
+  div[data-baseweb="select"] span[data-baseweb="tag"] span[role="presentation"] {{
+    color: {SLATE_700} !important;
+  }}
+  div[data-baseweb="select"] span[data-baseweb="tag"] svg {{
+    fill: {SLATE_500} !important;
+  }}
+
   /* Hide streamlit branding */
   #MainMenu {{ visibility: hidden; }}
   footer[data-testid="stFooter"] {{ visibility: hidden; }}
+
+  /* Dist bar segment text */
+  .dist-bar {{
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid {SLATE_200};
+    height: 26px;
+    margin-bottom: 14px;
+  }}
+  .dist-bar .seg {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    min-width: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+  }}
 </style>
 """
