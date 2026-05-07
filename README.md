@@ -734,22 +734,63 @@ notebooks/04_kappa_agreement.ipynb
 
 ## Step 6.2 — Coaching Recommendation Engine
 - **Module**: `src/coaching/recommendation_engine.py`
-- **Tests**: `tests/test_recommendation_engine.py` (8 tests, session-level MVP)
+- **Tests**: `tests/test_recommendation_engine.py` (12 tests covering MVP + severity-aware extension logic)
 - **Templates**: `docs/coaching_templates.md`
-- **Inputs**: one `VideoAssessment` row from 5.1-B (`narration_quality` / `recording_quality` / `coaching_evidence`)
-- **Output**: zero or more `Recommendation` objects, each with `category ∈ {narration, recording, moderation}`, title, summary, ordered `advice[]`, integer `priority`, optional `evidence_note`, and `tags[]`. Consumed by `fuse_video()` and surfaced in the per-video QualityReport JSON under `coaching_recommendations`.
+- **Inputs**:
+  - one `VideoAssessment` row from 5.1-B (`narration_quality` / `recording_quality` / `coaching_evidence`)
+  - optional 5.1-A finding-level records (`severity_s`, representative finding text)
+- **Output**: zero or more `Recommendation` objects, each with `category`, `title`, `summary`, ordered `advice[]`, integer `priority`, optional `evidence_note`, and `tags[]`.
+
+  The V2 extension additionally supports:
+  - severity-aware recommendation routing
+  - representative finding evidence injection
+  - finding-level priority escalation
 
 ### Trigger logic (MVP, template-based)
 - **Narration templates** keyed off `narration_quality` (`none` / `sparse` / `adequate` / `rich`) — produce coaching focused on think-aloud density and framing language
 - **Recording templates** keyed off `recording_quality` (`poor` / `acceptable` / `good`) — produce coaching on audio capture, mic placement, ambient noise
 - **Moderation templates** keyed off `coaching_evidence` (`explicit` / `none`, two-valued per Round 11) — flag explicit moderator intervention so review teams can spot tester guidance leakage
 
+### V2 Severity-aware Extension
+The V2 extension optionally consumes Step 5.1-A finding-level outputs and introduces severity-aware recommendation orchestration.
+
+#### Severity routing
+- `S1` / `S2`
+  - generate high-priority coaching recommendations
+  - prioritise task-blocking or near-blocking friction
+- `S3` / `S4`
+  - generate targeted severity coaching
+  - preserve standard narration / recording / moderation recommendations
+- `S5` / `S6`
+  - treated as low-priority evidence
+  - may be omitted or merged in future aggregation stages
+
+#### Representative finding evidence
+The recommendation engine now summarises:
+- finding-level severity distribution
+- representative findings
+These are surfaced through `evidence_note` to provide more grounded coaching context.
+
+#### Backward compatibility
+The original session-level API remains unchanged:
+```python
+engine.generate(assessment)
+```
+
 ### Boundaries
-- **Session-level only**: the MVP does not consume 5.1-A finding-level evidence, does not emit timestamps, and does not stratify by friction-type or severity. These are the W10+ extension targets (severity-tier coaching depth / friction aggregation / meta-coaching across multiple findings) — currently scoped under R5 owner, not part of the W9 MVP deliverable.
+- **Partial 5.1-A support**:
+  the current extension consumes only `severity_s` and representative finding text from Step 5.1-A.
+  It does not yet support:
+  - friction-type (`F1–F7`) aggregation
+  - timestamp-aware recommendation synthesis
+  - multi-finding coaching compression
+  - contextual LLM-generated coaching
 - **No coupling to R6 calibrator-mismatch flag**: per W9 P1#8b lock-in, coaching priority is **not** auto-bumped from R6 audit signals; R5 and R6 stay decoupled by hard constraint.
 
-### Result on dev 57
-Across 57 reports, narration-driven recommendations dominate the `acceptable`-tier slice; recording-driven recommendations cluster in the 5 recording-`poor` videos. Moderation flag is rare in dev (think-aloud prompts are framed as neutral instructions, not explicit coaching). Distribution per category is summarised in `_summary.csv`.
+## Result on dev 57
+Across 57 reports, the V2 extension introduces more differentiated coaching behaviour through severity-aware recommendation routing.
+High-severity findings (`S1` / `S2`) now generate elevated coaching priority and inject representative findings into `evidence_note`. Narration-driven recommendations remain common in the `acceptable` recording slice, while recording-focused coaching dominates the 5 recording-`poor` sessions.
+The extension preserves backward compatibility with the original session-level API while enabling more grounded coaching recommendations from 5.1-A evidence.
 
 ## Step 6.3 — Performance Tracking
 - **Module**: `src/tracking/performance_model.py`
