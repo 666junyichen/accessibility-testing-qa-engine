@@ -21,6 +21,7 @@ import sys
 from pathlib import Path
 from typing import Any, Optional
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -70,6 +71,50 @@ def _load_report(path_str: str) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Multiselect with quick All / Clear buttons
+# ---------------------------------------------------------------------------
+
+def _multiselect_all(
+    container: Any,
+    label: str,
+    options: list,
+    key: str,
+) -> list:
+    """Multiselect with All / Clear quick buttons. Default selects everything.
+
+    If options change between reruns (e.g. switching video), prune the
+    persisted session value to remain a subset of new options.
+    """
+    options = list(options)
+    if key not in st.session_state:
+        st.session_state[key] = list(options)
+    else:
+        # prune stale values that are no longer valid options
+        st.session_state[key] = [v for v in st.session_state[key] if v in options]
+
+    container.markdown(
+        f'<div style="font-size:0.8rem; font-weight:600; color:{S.SLATE_700}; '
+        f'margin-top:6px; margin-bottom:4px;">{label}</div>',
+        unsafe_allow_html=True,
+    )
+    bcols = container.columns([1, 1])
+    with bcols[0]:
+        if container.button("All", key=f"{key}__all", use_container_width=True):
+            st.session_state[key] = list(options)
+            st.rerun()
+    with bcols[1]:
+        if container.button("Clear", key=f"{key}__clear", use_container_width=True):
+            st.session_state[key] = []
+            st.rerun()
+    return container.multiselect(
+        label,
+        options=options,
+        key=key,
+        label_visibility="collapsed",
+    )
+
+
+# ---------------------------------------------------------------------------
 # Sidebar
 # ---------------------------------------------------------------------------
 
@@ -99,18 +144,20 @@ def _sidebar(
         opts["project"] = "?"
         opts["tier"] = "?"
 
-    tier_pick = st.sidebar.multiselect(
+    tier_pick = _multiselect_all(
+        st.sidebar,
         "Tier",
         options=["poor", "acceptable", "good"],
-        default=["poor", "acceptable", "good"],
+        key="filter_tier",
     )
 
     project_short_map = {p: C.project_short(p) for p in opts["project"].dropna().unique()}
     project_short_options = sorted(set(project_short_map.values()))
-    project_pick_short = st.sidebar.multiselect(
+    project_pick_short = _multiselect_all(
+        st.sidebar,
         "Project",
         options=project_short_options,
-        default=project_short_options,
+        key="filter_project",
     )
 
     # Filter
@@ -288,19 +335,9 @@ def _render_findings(
 
     fcols = st.columns([2, 2, 1])
     with fcols[0]:
-        sev_pick = st.multiselect(
-            "Severity",
-            options=sev_options,
-            default=sev_options,
-            key="finding_sev",
-        )
+        sev_pick = _multiselect_all(fcols[0], "Severity", sev_options, "finding_sev")
     with fcols[1]:
-        ft_pick = st.multiselect(
-            "Friction type",
-            options=ft_options,
-            default=ft_options,
-            key="finding_ft",
-        )
+        ft_pick = _multiselect_all(fcols[1], "Friction type", ft_options, "finding_ft")
     with fcols[2]:
         sort_mode = st.selectbox(
             "Sort",
@@ -414,20 +451,73 @@ def _view_tester_trajectory(per_tester_df: Optional[pd.DataFrame]) -> None:
     # Trajectory chart
     if sub_ids and sub_scores_raw and len(sub_ids) == len(sub_scores_raw):
         st.markdown("##### Submission scores")
-        # Drop None scores for line chart but keep them in table
+        projects_list = _safe_split_csv(row.get("projects"))
+        if len(projects_list) == len(sub_ids):
+            x_labels = [C.project_short(p) for p in projects_list]
+        else:
+            x_labels = sub_ids
         traj = pd.DataFrame({
+            "order": list(range(1, len(sub_ids) + 1)),
             "submission": sub_ids,
+            "project": x_labels,
             "score": sub_scores_raw,
             "tier": sub_tiers + [""] * (len(sub_ids) - len(sub_tiers)),
         })
-        chart_data = traj.dropna(subset=["score"]).set_index("submission")["score"]
-        if len(chart_data) >= 2:
-            st.line_chart(chart_data, height=220)
-        elif len(chart_data) == 1:
-            st.info(f"Single scored submission: **{chart_data.iloc[0]:.0f}/100**. No trajectory yet.")
+        traj_plot = traj.dropna(subset=["score"])
+        if len(traj_plot) >= 1:
+            chart = (
+                alt.Chart(traj_plot)
+                .mark_line(
+                    color=S.USYD_RED,
+                    strokeWidth=2.5,
+                    point=alt.OverlayMarkDef(
+                        size=140, filled=True, color=S.USYD_RED, stroke=S.WHITE, strokeWidth=2,
+                    ),
+                )
+                .encode(
+                    x=alt.X(
+                        "order:O",
+                        title=None,
+                        axis=alt.Axis(
+                            labelAngle=0,
+                            labelFontSize=12,
+                            labelExpr=(
+                                "{"
+                                + ", ".join(f"{r.order}: '{r.project}'" for r in traj_plot.itertuples())
+                                + "}[datum.value]"
+                            ),
+                        ),
+                    ),
+                    y=alt.Y(
+                        "score:Q",
+                        title="Score",
+                        scale=alt.Scale(domain=[0, 100]),
+                        axis=alt.Axis(
+                            values=[0, 25, 50, 75, 100],
+                            labelFontSize=11,
+                            titleFontSize=12,
+                            grid=True,
+                            gridColor=S.SLATE_100,
+                        ),
+                    ),
+                    tooltip=[
+                        alt.Tooltip("submission:N", title="Submission"),
+                        alt.Tooltip("project:N", title="Project"),
+                        alt.Tooltip("score:Q", title="Score"),
+                        alt.Tooltip("tier:N", title="Tier"),
+                    ],
+                )
+                .properties(height=240)
+                .configure_view(stroke=None)
+            )
+            st.altair_chart(chart, use_container_width=True)
         else:
             st.caption("No scored submissions in this trajectory.")
-        st.dataframe(traj, use_container_width=True, hide_index=True)
+        st.dataframe(
+            traj.drop(columns=["order"]),
+            use_container_width=True,
+            hide_index=True,
+        )
 
     # Persistent friction + sentiment in one row
     persistent = _safe_split_csv(row.get("persistent_friction_types"))
