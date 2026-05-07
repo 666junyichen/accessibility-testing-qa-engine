@@ -142,7 +142,7 @@ Cases were selected for evidence-pattern coverage, not statistical representativ
 | 2 | `margieflint_wa` | DPC-WA | 79 findings, S2; missing actionable support pathways | poor |
 | 3 | `giuliaclemente26_wa` | DPC-WA | 91 findings, S3; multilingual access, external workarounds | acceptable |
 | 4 | `jenniferparry7_uq` | UQ | L1 DURATION_ANOMALY + LOW_AUDIO_QUALITY alongside S1 barrier | poor |
-| 5 | `mgblackwell2001_suncorp` | Suncorp | Poor recording (LC-3 rule); 15 findings usable as low-confidence evidence | poor |
+| 5 | `mgblackwell2001_suncorp` | AAMI | Poor recording (LC-3 rule); 15 findings usable as low-confidence evidence | poor |
 
 Case 4 shows the correct posture when L1 quality flags co-exist with a severe L3 finding: retain the finding, attach the confidence caveat, do not discard. Case 5 directly operationalises Rule LC-3 (§3.3). Cross-case themes and limitations: `docs/case_studies.md §10–12`.
 
@@ -160,10 +160,10 @@ The Bupa held-out set's validity as a final benchmark depends on the guarantee t
 
 Gate 2 requires Nix's explicit sign-off before any held-out run. Current status (see `docs/eval_freeze.md §四–五`):
 
-- **Freeze 1** — `friction_type / severity / sentiment / score_L` definitions: *pending Round 5 convergence*
-- **Freeze 2** — `narration_quality / recording_quality / coaching_evidence` enumerations: *pending Round 5 convergence*
-- **Freeze 3** — Step 6.1 fusion I/O schema: *pending Step 6.1 code completion sign-off*
-- **Freeze 4** — R6 mapping rules: *pending R6 design alignment*
+- **Freeze 1** — `friction_type / severity / sentiment / score_L` definitions: *Round 5 converged (canonical F1–F7 / S1–S6 / E1–E5 / L1–L5); pending Nix sign-off*
+- **Freeze 2** — `narration_quality / recording_quality / coaching_evidence` enumerations: *Round 5 / Round 11 converged (`coaching_evidence` two-valued `{none, explicit}`); pending Nix sign-off*
+- **Freeze 3** — Step 6.1 fusion I/O schema: *code merged in `dfe1b0b`, pytest 133 passed; pending Nix sign-off*
+- **Freeze 4** — R6 mapping rules: *design + reference module landed (commit `ee8d5ce`, CC review HIGH quality 2026-05-04); pending Nix sign-off*
 
 **Gate 1 status as of 2026-05-04: ✅ all green.** Held-out execution is blocked solely by Gate 2 sign-off + Bupa transcription budget (~$90–125). Pre-freeze, Bupa collated 42 videos may only be used for coverage statistics and structural data distribution comparisons; LLM inference and human annotation are prohibited. See `docs/eval_freeze.md §七`.
 
@@ -179,7 +179,7 @@ The full 5.2 classifier runs once across all 55 dev-set videos. Outputs are slic
 
 ### Annotation Sample
 
-Inter-annotator agreement is computed on **14 shared windows** (R3 and R8 independent blind annotation, round-1 canonical schema). Project breakdown: **UQ ×6, Suncorp ×5, DPC-WA ×3**. AAMI is **not represented** in the annotation sample — this is a known limitation; see §7 Limitations below.
+Inter-annotator agreement is computed on **14 shared windows** (R3 and R8 independent blind annotation, round-1 canonical schema). Project breakdown: **UQ ×6, AAMI ×5, DPC-WA ×3** — all three dev projects are represented (note: AAMI project files use `_suncorp` filename suffix for historical reasons; see §7 Limitations for sample-size caveats).
 
 The 14 windows are: `Sharelinsonny_uq_w026`, `fjone7_uq_w066`, `gameoverdan_suncorp_w040`, `ghum_wa_w029`, `giuliaclemente26_uq_w004`, `giuliaclemente26_uq_w050`, `margieflint_suncorp_w007`, `marychaunguyen_suncorp_w011`, `oliviamitchell22_suncorp_w007`, `oliviamitchell22_suncorp_w017`, `ramazankawish_wa_w075`, `reneerussell99_uq_w009`, `thanoptions_uq_w008`, `tianarosie1_wa_w015`.
 
@@ -224,7 +224,7 @@ UQ sessions concentrate F4/F5 (authentication and form barriers) with a higher S
 
 ### Limitations
 
-- AAMI is absent from the annotation sample (n=14 windows cover UQ, Suncorp, DPC-WA only). The combined-κ values therefore reflect agreement on UQ and DPC-WA patterns more heavily. Whether the classifier generalises to AAMI-specific friction patterns cannot be validated from this sample.
+- The 14-window sample is small and unevenly distributed across projects (UQ ×6, AAMI ×5, DPC-WA ×3). Per-project κ stratification is therefore not pursued; combined-κ values are the primary inter-annotator metric. Whether project-specific friction patterns are uniformly recognised cannot be tightly validated at this sample size — Step 8.4 round-2 annotation is reserved for this if the held-out Bupa run surfaces project-level instability.
 - The 5.1-B LLM default bias means that video-level quality labels in the production pipeline should not be treated as classifier-generated assessments — they are outputs of a known-biased module pending prompt calibration.
 
 ---

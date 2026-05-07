@@ -40,10 +40,12 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 4.3 - R3 Cluster Interpretation Preparation](#step-43---r3-cluster-interpretation-preparation)
 - [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
+- [Step 6.2 — Coaching Recommendation Engine](#step-62--coaching-recommendation-engine)
 - [Step 6.3 — Performance Tracking](#step-63--performance-tracking)
 - [Step 7.1 - Pipeline Orchestration](#step-71--pipeline-orchestration-fusion-runner)
 - [Step 7.2 - Streamlit Demostration Interface](#step-72--streamlit-demonstration-interface)
 - [Step 8.1 - Dev55 Batch Run](#step-81---dev55-batch-run)
+- [Step 8.2 — Layer Ablation Study](#step-82--layer-ablation-study)
 - [Step 8.3 - R3 Case Studies](#step-83---r3-case-studies)
 - [How to reproduce from scratch](#how-to-reproduce-from-scratch)
 
@@ -730,6 +732,25 @@ notebooks/04_kappa_agreement.ipynb
 ```
 
 
+## Step 6.2 — Coaching Recommendation Engine
+- **Module**: `src/coaching/recommendation_engine.py`
+- **Tests**: `tests/test_recommendation_engine.py` (8 tests, session-level MVP)
+- **Templates**: `docs/coaching_templates.md`
+- **Inputs**: one `VideoAssessment` row from 5.1-B (`narration_quality` / `recording_quality` / `coaching_evidence`)
+- **Output**: zero or more `Recommendation` objects, each with `category ∈ {narration, recording, moderation}`, title, summary, ordered `advice[]`, integer `priority`, optional `evidence_note`, and `tags[]`. Consumed by `fuse_video()` and surfaced in the per-video QualityReport JSON under `coaching_recommendations`.
+
+### Trigger logic (MVP, template-based)
+- **Narration templates** keyed off `narration_quality` (`none` / `sparse` / `adequate` / `rich`) — produce coaching focused on think-aloud density and framing language
+- **Recording templates** keyed off `recording_quality` (`poor` / `acceptable` / `good`) — produce coaching on audio capture, mic placement, ambient noise
+- **Moderation templates** keyed off `coaching_evidence` (`explicit` / `none`, two-valued per Round 11) — flag explicit moderator intervention so review teams can spot tester guidance leakage
+
+### Boundaries
+- **Session-level only**: the MVP does not consume 5.1-A finding-level evidence, does not emit timestamps, and does not stratify by friction-type or severity. These are the W10+ extension targets (severity-tier coaching depth / friction aggregation / meta-coaching across multiple findings) — currently scoped under R5 owner, not part of the W9 MVP deliverable.
+- **No coupling to R6 calibrator-mismatch flag**: per W9 P1#8b lock-in, coaching priority is **not** auto-bumped from R6 audit signals; R5 and R6 stay decoupled by hard constraint.
+
+### Result on dev 57
+Across 57 reports, narration-driven recommendations dominate the `acceptable`-tier slice; recording-driven recommendations cluster in the 5 recording-`poor` videos. Moderation flag is rare in dev (think-aloud prompts are framed as neutral instructions, not explicit coaching). Distribution per category is summarised in `_summary.csv`.
+
 ## Step 6.3 — Performance Tracking
 - **Module**: `src/tracking/performance_model.py`
 - **Tests**: `tests/test_performance_model.py` (24 tests)
@@ -790,7 +811,7 @@ For each tester with ≥2 non-low-evidence submissions:
 |---|---|
 | Per-submission tier | Leading 23 · Proficient 5 · Developing 27 · Foundational 2 |
 | Cap binding rate | 29 / 57 submissions (51%) — caps doing the work the design intends |
-| Per-tester tier | Leading 7 · Proficient 8 · Developing 11 · Foundational 1 (n=27 testers) |
+| Per-tester tier | Leading 7 · Proficient 8 · Developing 11 · Foundational 1 (n=27 dev testers) |
 | Trajectory direction | improving 3 · stable 7 · declining 8 (n=18 testers with ≥2 scored submissions) |
 
 Worked example — `Sharelinsonny_suncorp`: D1=90, D2=83.7, D3=70 → raw=84.8; ≥2 S2 cap binds → final 65.0 / Developing. The cap-based shape is binding here, exactly as Model E intends.
@@ -989,6 +1010,30 @@ streamlit run app/streamlit_demo.py
   - both excluded rows have near-empty outputs in the current batch artifacts
 - This Step 8.1 close-out uses existing processed CSV/JSON artifacts only; it does not introduce new API calls or held-out evaluation
 
+## Step 8.2 — Layer Ablation Study
+- **Script**: `scripts/ablation_study.py`
+- **Document**: `docs/ablation_study.md`
+- **Output**: `data/processed/ablation_summary.csv` (220 rows = 55 dev55 videos × 4 configurations)
+- **Scope**: 55 official dev55 videos by default; `--full-57` flag retained as edge-case sensitivity run
+- **Configurations**: `Full` (production baseline) / `No-L1` (empty `l1_flags`) / `No-L2` (empty `l2_assignments`) / `No-L3` (empty findings + neutral assessment default `{narration: rich, recording: good, coaching_evidence: none}`)
+
+### Method
+`scripts/ablation_study.py` reuses `load_inputs()` and the per-video filter helpers from `scripts/run_pipeline.py` (R7 orchestrator) so input-loading semantics match production exactly, then replays `fuse_video()` under each configuration. For each (video, configuration) pair we record final `quality_tier`, `reasoning` string, mean L1 flag count, and mean L3 finding count. Tier deltas are computed against the `Full` baseline.
+
+### Headline result
+| Configuration | good | acceptable | poor |
+|---|---:|---:|---:|
+| Full | 0 | 15 | 40 |
+| No-L1 | 0 | 15 | 40 |
+| No-L2 | 0 | 15 | 40 |
+| No-L3 | 55 | 0 | 0 |
+
+L3 is the binding signal under the current fusion rules — without finding-level evidence, every dev55 video collapses to the neutral default. L1 and L2 contribute supporting context but do not flip the tier on this dataset; the §4.2 ablation document soft-frames this as "current fusion tier decision is L3-dependent under this counterfactual" rather than as a permanent architectural claim, since L1/L2 may bind on different distributions (e.g. Bupa held-out).
+
+### Boundaries
+- Counterfactual is **input ablation** at the fusion layer, not retraining. The 5.2 LLM classifier is not re-run.
+- Edge-case 57-video run is reported only as sensitivity, not as the headline number — see `docs/step8_1_dev55_scope.md` for scope rationale.
+
 ## Step 8.3 - R3 Case Studies
 - **Document**: `docs/case_studies.md`
 - Uses selected video-level MVP reports from `data/processed/reports/` to write qualitative case studies for accessibility, missing information, comprehension, confidence, excessive-effort, recording-quality, and coaching issues.
@@ -1111,7 +1156,6 @@ Expected current values are `2219`, `2133`, and `57`.
 
 ```powershell
 python scripts/run_pipeline.py --all --output-dir data/processed/reports
-python scripts/remove_pipeline_abnormal_lines.py
 python scripts/sync_dev55.py --check
 python scripts/build_performance_tracking.py
 ```
