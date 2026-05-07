@@ -1,12 +1,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict, field
-from typing import List, Literal, Optional
+from collections import Counter
+from typing import Any, List, Literal, Optional
 
 from src.layer3.schemas_b import VideoAssessment
 
-RecommendationCategory = Literal["narration", "recording", "moderation"]
+RecommendationCategory = Literal["narration", "recording", "moderation", "severity"]
 
+_SEVERITY_RANK = {
+    "S1": 1,
+    "S2": 2,
+    "S3": 3,
+    "S4": 4,
+    "S5": 5,
+    "S6": 6,
+}
 
 @dataclass
 class Recommendation:
@@ -53,10 +62,20 @@ class RecommendationEngine:
         - this version is intentionally template-based
     """
 
-    def generate(self, assessment: VideoAssessment) -> List[Recommendation]:
+        def generate(
+        self,
+        assessment: VideoAssessment,
+        findings: Optional[List[dict[str, Any]]] = None,
+    ) -> List[Recommendation]:
         """
         Generate recommendations from one 5.1-B assessment object.
+
+        Optional:
+            findings: 5.1-A finding-level records used for severity-aware
+            coaching. This keeps the original session-level MVP behaviour
+            backward-compatible while enabling the Step 6.2 V2 extension.
         """
+        findings = findings or []
         recommendations: List[Recommendation] = []
 
         narration_rec = self._build_narration_recommendation(assessment)
@@ -71,7 +90,138 @@ class RecommendationEngine:
         if moderation_rec is not None:
             recommendations.append(moderation_rec)
 
+        severity_rec = self._build_severity_recommendation(findings)
+        if severity_rec is not None:
+            recommendations.append(severity_rec)
+
         return sorted(recommendations, key=lambda item: item.priority, reverse=True)
+
+    # ------------------------------------------------------------------
+    # Finding-level severity templates
+    # ------------------------------------------------------------------
+
+    def _build_severity_recommendation(
+        self,
+        findings: List[dict[str, Any]],
+    ) -> Optional[Recommendation]:
+        """
+        Optional 5.1-A extension.
+
+        Uses finding-level severity_s to generate one severity-aware coaching
+        recommendation. This extension summarises the severity distribution,
+        selects the highest severity, and emits one aggregated coaching item
+        rather than one item per finding.
+        """
+        severity_values = [
+            str(item.get("severity_s"))
+            for item in findings
+            if item.get("severity_s") in _SEVERITY_RANK
+        ]
+
+        if not severity_values:
+            return None
+
+        counts = Counter(severity_values)
+        highest = min(severity_values, key=lambda value: _SEVERITY_RANK[value])
+        total = sum(counts.values())
+
+        severity_summary = ", ".join(
+            f"{key}={counts[key]}"
+            for key in ["S1", "S2", "S3", "S4", "S5", "S6"]
+            if counts.get(key)
+        )
+
+        top_findings = self._select_top_findings(findings, limit=3)
+        evidence_examples = [
+            str(item.get("finding"))
+            for item in top_findings
+            if item.get("finding")
+        ]
+
+        evidence_note = f"5.1-A severity distribution: {severity_summary}."
+        if evidence_examples:
+            evidence_note += " Representative findings: " + " | ".join(evidence_examples)
+
+        if highest in {"S1", "S2"}:
+            return Recommendation(
+                category="severity",
+                title="Prioritise task-blocking friction before general coaching",
+                summary=(
+                    f"The session contains {total} finding-level issue(s), including "
+                    f"task-blocking or near-blocking severity ({highest})."
+                ),
+                advice=[
+                    "Review the highest-severity findings before applying general coaching templates.",
+                    "Prioritise issues that prevented or substantially disrupted task completion.",
+                    "Use the highest-severity findings to guide focused follow-up coaching.",
+                ],
+                trigger_field="severity_s",
+                trigger_value=highest,
+                priority=5,
+                evidence_note=evidence_note,
+                tags=["severity", "finding-level", "high-priority"],
+            )
+
+        if highest in {"S3", "S4"}:
+            return Recommendation(
+                category="severity",
+                title="Review high-friction moments before lower-level issues",
+                summary=(
+                    f"The session contains {total} finding-level issue(s), with the "
+                    f"highest severity at {highest}."
+                ),
+                advice=[
+                    "Identify the common pattern behind the higher-severity findings.",
+                    "Focus coaching on the most disruptive parts of the session first.",
+                    "Avoid treating all findings as equal when severity levels differ.",
+                ],
+                trigger_field="severity_s",
+                trigger_value=highest,
+                priority=4,
+                evidence_note=evidence_note,
+                tags=["severity", "finding-level", "targeted-coaching"],
+            )
+
+        if total >= 5:
+            return Recommendation(
+                category="severity",
+                title="Monitor repeated low-severity friction patterns",
+                summary=(
+                    f"The session contains {total} low-severity finding-level issues. "
+                    "Individually they are minor, but repetition may still indicate a pattern."
+                ),
+                advice=[
+                    "Review whether repeated low-severity findings point to the same underlying issue.",
+                    "Combine minor findings into one coaching theme rather than treating each separately.",
+                    "Use this as a lower-priority follow-up after higher-severity issues are addressed.",
+                ],
+                trigger_field="severity_s",
+                trigger_value="S5/S6",
+                priority=2,
+                evidence_note=evidence_note,
+                tags=["severity", "finding-level", "low-priority"],
+            )
+
+        return None
+
+    def _select_top_findings(
+        self,
+        findings: List[dict[str, Any]],
+        limit: int = 3,
+    ) -> List[dict[str, Any]]:
+        """
+        Select representative findings ordered by severity.
+        """
+        valid = [
+            item
+            for item in findings
+            if item.get("severity_s") in _SEVERITY_RANK
+        ]
+
+        return sorted(
+            valid,
+            key=lambda item: _SEVERITY_RANK[str(item.get("severity_s"))],
+        )[:limit]
 
     # ------------------------------------------------------------------
     # Narration templates
@@ -274,7 +424,23 @@ if __name__ == "__main__":
     )
 
     engine = RecommendationEngine()
-    output = engine.generate(example)
+        output = engine.generate(
+        example,
+        findings=[
+            {
+                "finding": "Participant could not locate the required pathway and needed help.",
+                "friction_type": "F6",
+                "severity_s": "S2",
+                "rationale": "The task could not be completed independently.",
+            },
+            {
+                "finding": "Participant hesitated before recovering from a confusing label.",
+                "friction_type": "F2",
+                "severity_s": "S5",
+                "rationale": "The issue was recoverable but still visible.",
+            },
+        ],
+    )
 
     print("=== RAW OUTPUT ===")
     for item in output:
