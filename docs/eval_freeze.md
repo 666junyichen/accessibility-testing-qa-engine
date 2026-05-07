@@ -61,10 +61,10 @@ Gate 1 全绿后，Nix 需对以下 **4 类 freeze** 逐条签字。签字形式
 
 | Freeze 类别 | Commit Hash | 日期 | 签字人 | 备注 |
 |---|---|---|---|---|
-| Freeze 1 — friction/severity/sentiment | `TBD` | `TBD` | Nix | 等 Round 5 收敛 |
-| Freeze 2 — narration/recording quality | `TBD` | `TBD` | Nix | 等 Round 5 收敛 |
-| Freeze 3 — 6.1 fusion I/O schema | `TBD` | `TBD` | Nix | 等 Step 6.1 代码完成 |
-| Freeze 4 — R6 mapping 规则 | `TBD` | `TBD` | Nix | 等 R6 设计对齐 |
+| Freeze 1 — friction/severity/sentiment | `dfe1b0b` | 2026-05-07 | Nix approved | Round 5 canonical 收敛于 V2 prompt + schemas_a/b（F1–F7 / S1–S6 / E1–E5 / L1–L5）；Step 5.4 LLM Kappa `friction_type` κ=0.7407 ≥ 0.5 门槛通过，V2 retained |
+| Freeze 2 — narration/recording quality | `dfe1b0b` | 2026-05-07 | Nix approved | 同 5.1-B schema canonical；`coaching_evidence` 二值 `{none, explicit}`（Round 11 决策）；R5 / R6 已据此实现 |
+| Freeze 3 — 6.1 fusion I/O schema | `dfe1b0b` | 2026-05-07 | Nix approved | `src/pipeline/{schemas,fusion}.py` 合入；7 quality_tier 规则 + DURATION_ANOMALY cap (P2#7) 锁定；pytest 137 passed |
+| Freeze 4 — R6 mapping 规则 | `ee8d5ce` | 2026-05-07 | Nix approved | `src/tracking/performance_model.py` 645 行 + 29 tests；权重 0.50/0.35/0.15 / 4 cap 规则 / mismatch flag tier gap≥2 / ±5 stable band / calibrator audit-only；CC code review HIGH quality (2026-05-04) |
 
 ## 六、"只测一次" 纪律
 
