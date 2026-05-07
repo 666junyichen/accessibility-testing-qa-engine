@@ -62,7 +62,7 @@ class RecommendationEngine:
         - this version is intentionally template-based
     """
 
-        def generate(
+    def generate(
         self,
         assessment: VideoAssessment,
         findings: Optional[List[dict[str, Any]]] = None,
@@ -424,7 +424,7 @@ if __name__ == "__main__":
     )
 
     engine = RecommendationEngine()
-        output = engine.generate(
+    output = engine.generate(
         example,
         findings=[
             {
