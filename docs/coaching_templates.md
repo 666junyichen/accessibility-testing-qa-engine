@@ -16,7 +16,7 @@ These fields determine three coaching categories:
 2. Recording
 3. Moderation
 
-This draft is intentionally template-based and session-level only. It does not yet include fine-grained timestamped evidence or 5.1-A finding-level evidence.
+The baseline templates are session-level and template-based. The V2 extension adds optional 5.1-A severity-aware support, but does not yet include timestamped evidence, friction-type aggregation, or LLM-based contextual coaching.
 
 ---
 
@@ -291,16 +291,38 @@ The current code implementation outputs recommendation objects with the followin
 
 ---
 
+## V2 Severity-aware Expansion
+
+The V2 extension adds optional 5.1-A finding-level severity support while preserving the original 5.1-B session-level recommendation interface.
+
+In addition to the original narration / recording / moderation templates, the recommendation engine can now consume optional finding-level records and use `severity_s` to generate severity-aware coaching recommendations.
+
+Severity handling follows three tiers:
+
+- `S1` / `S2`: generate a high-priority severity recommendation for task-blocking or near-blocking friction.
+- `S3` / `S4`: generate a targeted severity recommendation for high-friction moments.
+- `S5` / `S6`: do not generate a standalone recommendation unless repeated low-severity findings form a larger pattern.
+
+The severity extension also summarises the finding-level severity distribution and surfaces representative findings in `evidence_note`. This allows coaching recommendations to reflect the seriousness of observed issues without changing the existing public API.
+
+The original call remains valid:
+
+```python
+engine.generate(assessment)
+```
+---
+
 ## Current Limitations
 
-This first-stage template draft has the following limitations:
+The current implementation still has several limitations despite the V2 severity-aware extension:
 
-- session-level only
-- no timestamp references
-- no 5.1-A finding-level evidence
-- no F1–F7 evidence injection
-- no Step 6.1 fused weighting
-- no complex issue generation with LLM
+- recommendations remain primarily session-level
+- no timestamp-level evidence injection
+- only `severity_s` from 5.1-A is currently consumed
+- friction-type (`F1–F7`) aggregation is not yet implemented
+- no multi-finding coaching synthesis across related friction patterns
+- no Step 6.1 fused weighting integration
+- no complex contextual recommendation generation with LLM
 - no survey-based validator integration
 
 ---
@@ -309,9 +331,11 @@ This first-stage template draft has the following limitations:
 
 Potential future extensions include:
 
-- integrating Step 5.1-A finding-level evidence
-- adding timestamp references
-- using F1–F7 only as evidence support, not as taxonomy anchors
-- adjusting recommendation priority or tone based on Step 6.1 outputs
-- adding survey-supported validation for complex issues
-- generating more contextual coaching for non-template cases
+- friction-type (`F1–F7`) aggregation across multiple findings
+- meta-coaching generation using narration + recording combinations
+- timestamp-aware recommendation evidence
+- top-K finding selection and recommendation compression
+- recommendation diversity optimisation across reports
+- adaptive recommendation tone based on Step 6.1 fused outputs
+- survey-supported validation for complex issue escalation
+- more contextual LLM-assisted coaching generation for non-template cases
