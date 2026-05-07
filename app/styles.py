@@ -365,6 +365,31 @@ GLOBAL_CSS = f"""
     overflow: hidden;
   }}
 
+  /* Popover trigger button — make it look like a select dropdown */
+  div[data-testid="stPopover"] button[data-testid="baseButton-secondary"],
+  div[data-testid="stPopover"] > button {{
+    background-color: {WHITE} !important;
+    border: 1px solid {SLATE_300} !important;
+    color: {SLATE_700} !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
+    justify-content: space-between !important;
+    padding: 6px 12px !important;
+    height: auto !important;
+    min-height: 36px !important;
+  }}
+  div[data-testid="stPopover"] > button:hover {{
+    border-color: {USYD_RED} !important;
+    color: {INK} !important;
+  }}
+  div[data-testid="stPopover"] > button::after {{
+    content: "▾";
+    color: {SLATE_400};
+    margin-left: auto;
+    font-size: 0.7rem;
+  }}
+
   /* Multiselect chip — neutral gray (override default red) */
   div[data-baseweb="select"] span[data-baseweb="tag"] {{
     background-color: {SLATE_100} !important;

@@ -80,38 +80,57 @@ def _multiselect_all(
     options: list,
     key: str,
 ) -> list:
-    """Multiselect with All / Clear quick buttons. Default selects everything.
+    """Popover-style multiselect with per-option checkboxes + Select all toggle.
 
-    If options change between reruns (e.g. switching video), prune the
-    persisted session value to remain a subset of new options.
+    The popover button shows `<label> · <n>/<total>` (or `· all` / `· none`).
+    Inside the popover: a single Select all / Clear all toggle, a divider,
+    then one checkbox per option.
+
+    State is persisted in st.session_state under per-option keys
+    (`<key>__chk__<option>`). Stale per-option keys for options no longer
+    in the option set are removed automatically.
+
+    Default behaviour: every option starts selected.
     """
     options = list(options)
-    if key not in st.session_state:
-        st.session_state[key] = list(options)
-    else:
-        # prune stale values that are no longer valid options
-        st.session_state[key] = [v for v in st.session_state[key] if v in options]
 
-    container.markdown(
-        f'<div style="font-size:0.8rem; font-weight:600; color:{S.SLATE_700}; '
-        f'margin-top:6px; margin-bottom:4px;">{label}</div>',
-        unsafe_allow_html=True,
-    )
-    bcols = container.columns([1, 1])
-    with bcols[0]:
-        if container.button("All", key=f"{key}__all", use_container_width=True):
-            st.session_state[key] = list(options)
-            st.rerun()
-    with bcols[1]:
-        if container.button("Clear", key=f"{key}__clear", use_container_width=True):
-            st.session_state[key] = []
-            st.rerun()
-    return container.multiselect(
-        label,
-        options=options,
-        key=key,
-        label_visibility="collapsed",
-    )
+    # Initialize per-option keys (default = checked) and prune stale keys
+    valid_keys = {f"{key}__chk__{opt}" for opt in options}
+    for opt in options:
+        opt_key = f"{key}__chk__{opt}"
+        if opt_key not in st.session_state:
+            st.session_state[opt_key] = True
+    for k in [k for k in st.session_state.keys() if k.startswith(f"{key}__chk__") and k not in valid_keys]:
+        del st.session_state[k]
+
+    selected = [opt for opt in options if st.session_state.get(f"{key}__chk__{opt}", False)]
+    n_sel, n_total = len(selected), len(options)
+    if n_total == 0:
+        btn_label = f"{label} · (no options)"
+    elif n_sel == n_total:
+        btn_label = f"{label} · all ({n_total})"
+    elif n_sel == 0:
+        btn_label = f"{label} · none"
+    else:
+        btn_label = f"{label} · {n_sel}/{n_total}"
+
+    with container.popover(btn_label, use_container_width=True):
+        if n_total > 0:
+            if n_sel == n_total:
+                if st.button("Clear all", key=f"{key}__sa", use_container_width=True):
+                    for opt in options:
+                        st.session_state[f"{key}__chk__{opt}"] = False
+                    st.rerun()
+            else:
+                if st.button(f"✓ Select all ({n_total})", key=f"{key}__sa", use_container_width=True):
+                    for opt in options:
+                        st.session_state[f"{key}__chk__{opt}"] = True
+                    st.rerun()
+            st.divider()
+            for opt in options:
+                st.checkbox(opt, key=f"{key}__chk__{opt}")
+
+    return [opt for opt in options if st.session_state.get(f"{key}__chk__{opt}", False)]
 
 
 # ---------------------------------------------------------------------------
