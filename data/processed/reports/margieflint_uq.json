@@ -146,6 +146,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 46 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=4, S2=2, S3=7, S4=8, S5=25. Representative findings: Participant encountered a two-factor authentication code entry barrier and could not locate the required six-digit code from their authenticator app. | Participant entered an authenticator code multiple times but received repeated rejection errors and could not progress past the authentication step. | Participant could not locate alternative methods or help information to resolve the authenticator code entry failure.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

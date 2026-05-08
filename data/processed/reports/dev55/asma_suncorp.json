@@ -143,6 +143,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 30 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=3, S4=10, S5=15. Representative findings: Participant described the task as very confusing and stated they could not find all the required information independently. | Participant expressed inability to understand the content or information structure and stated they would need to contact the helpline instead of finding the information online. | Participant expressed strong difficulty with PDF files on the platform, stating they require account access and are hard to navigate, edit, and understand, particularly for users with limited English or technology experience.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

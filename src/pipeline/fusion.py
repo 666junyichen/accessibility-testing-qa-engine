@@ -45,7 +45,12 @@ def fuse_video(
     )
 
     engine = coaching_engine or RecommendationEngine()
-    recommendations = [item.to_dict() for item in engine.generate(assessment)]
+    findings_records = (
+        l3_findings.to_dict("records") if not l3_findings.empty else []
+    )
+    recommendations = [
+        item.to_dict() for item in engine.generate(assessment, findings=findings_records)
+    ]
 
     return QualityReport(
         video_id=video_id,

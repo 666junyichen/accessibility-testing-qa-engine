@@ -158,6 +158,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 9 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S5=8. Representative findings: Participant encountered a registration or account access barrier and was unable to proceed past it to complete the task. | Participant encountered a mandatory residential status prompt that blocked further navigation on the university website. | Participant expressed uncertainty about which search entry point to use when presented with multiple similar options on the page.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

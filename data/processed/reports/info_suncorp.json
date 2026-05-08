@@ -150,6 +150,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 59 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=4, S3=10, S4=14, S5=28, S6=2. Representative findings: Participant abandoned the primary financial hardship task and pivoted to an unrelated action (cancel policy) visible in the navigation menu. | Participant could not progress into the section after selecting cover type because the interface failed to respond correctly, blocking the quote completion flow. | Participant discovered that the online payment management system is unavailable when a payment has been missed, creating a barrier to the self-service resolution they sought.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

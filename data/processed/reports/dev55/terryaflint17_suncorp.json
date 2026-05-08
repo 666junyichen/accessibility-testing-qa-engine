@@ -216,6 +216,25 @@
         "reliability",
         "analysis-risk"
       ]
+    },
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 22 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=3, S4=3, S5=14. Representative findings: Participant could not find information about financial hardship support on the website and abandoned the search after checking multiple pages. | Participant did not proceed with exploring the insurer's website for financial hardship support and instead decided to use Google as an external search mechanism. | Participant's internet connection failed during the task, causing content to disappear and interrupting progress.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
     }
   ]
 }

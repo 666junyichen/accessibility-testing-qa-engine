@@ -143,6 +143,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 24 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=9, S5=12, S6=1. Representative findings: Participant identified that password creation with system requirements is extremely challenging for people with low vision during account registration. | Participant's screen display was adversely affected by an accessibility setting (invert mode) that automatically triggered dark mode, preventing them from viewing documents they needed to upload. | Participant required a phone magnifier app to read content on the screen due to insufficient contrast or text size.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

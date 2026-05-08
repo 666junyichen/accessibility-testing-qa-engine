@@ -156,6 +156,25 @@
         "quality",
         "session-level"
       ]
+    },
+    {
+      "category": "severity",
+      "title": "Monitor repeated low-severity friction patterns",
+      "summary": "The session contains 7 low-severity finding-level issues. Individually they are minor, but repetition may still indicate a pattern.",
+      "advice": [
+        "Review whether repeated low-severity findings point to the same underlying issue.",
+        "Combine minor findings into one coaching theme rather than treating each separately.",
+        "Use this as a lower-priority follow-up after higher-severity issues are addressed."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S5/S6",
+      "priority": 2,
+      "evidence_note": "5.1-A severity distribution: S5=6, S6=1. Representative findings: Participant was uncertain whether the postgraduate course was offered online or in-person and required clarification from the page content. | Participant expressed frustration that the university website lacks depth of information and actionable navigation beyond basic course details. | Participant encountered an unexpected search behaviour where entering 'Business masters' did not return results, requiring clarification that the search requires the actual program name rather than degree type.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "low-priority"
+      ]
     }
   ]
 }

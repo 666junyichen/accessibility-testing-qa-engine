@@ -138,5 +138,25 @@
       "task-blocking friction: S1/S2 present"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 26 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=5, S5=20. Representative findings: Participant was routed to the bushfire hub instead of financial hardship information and expressed that this was not the relevant pathway for their task. | Participant expressed suspicion that the insurer is deliberately hiding financial hardship information, indicating low trust in the website's transparency. | Participant could not locate the financial hardship or payment support information and expressed uncertainty about whether the content exists on the site.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    }
+  ]
 }

@@ -189,6 +189,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 16 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=1, S5=13. Representative findings: Participant abandoned the assigned task and switched to using Google search instead of exploring the provided page. | Participant accidentally navigated away from the task page and expressed confusion about what happened before deciding to return to Google instead of continuing. | Participant expressed inability to find resources on the page relevant to their situation.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

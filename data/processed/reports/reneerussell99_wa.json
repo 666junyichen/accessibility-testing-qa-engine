@@ -144,5 +144,25 @@
       "multiple medium-severity findings"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 15 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S5=13. Representative findings: Participant decided to use Google search as an external workaround rather than continue exploring the provided page to find information about reporting suspected abuse. | Participant attempted to open a PDF link multiple times but encountered a blank webpage instead, making the PDF content inaccessible with assistive technology. | Participant identified an unlabeled link paired with a phone number in the hotline section at the top of the page.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    }
+  ]
 }

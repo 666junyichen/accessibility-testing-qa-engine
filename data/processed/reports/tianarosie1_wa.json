@@ -147,6 +147,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 59 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S3=16, S4=10, S5=31, S6=1. Representative findings: Participant using a screen reader cannot access page content because the interface only outputs heading level labels with no accompanying text, making the page unreadable. | Screen reader user cannot identify the names of external helpline links; the accessible label reads only 'link is external' without disclosing the actual helpline name. | External links on the page lack descriptive text and only announce 'Link is external' without indicating the link destination or purpose, making them inaccessible.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

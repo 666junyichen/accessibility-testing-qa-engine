@@ -146,6 +146,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 40 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=2, S4=1, S5=32, S6=3. Representative findings: Participant abandoned the assigned exploration task and switched to using ChatGPT as an external tool to research coercive control terminology instead of continuing within the product. | Participant abandoned the page exploration task and decided to use Google as an external workaround instead of continuing to explore the provided pathways. | Participant articulated awareness of a critical accessibility need—the ability to quickly hide a website for users experiencing domestic abuse—but did not find or verify that functionality on the page.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

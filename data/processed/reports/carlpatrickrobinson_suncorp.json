@@ -143,6 +143,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 6 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=1, S5=5. Representative findings: Participant was unable to locate the Product Disclosure Statement and explicitly stated they could not find it. | Participant experienced initial confusion understanding what 'contents insurance' meant before working through the definition themselves. | Participant selected an incorrect navigation option (Make a Claim) and had to backtrack to the homepage because they did not understand what the option would do.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

@@ -48,7 +48,7 @@ reneerussell99_suncorp,reneerussell99,suncorp-insurance,89.2,Leading,89.2,90.0,8
 reneerussell99_uq,reneerussell99,the-university-of-queensland,90.4,Leading,90.4,90.0,91.0,90.0,,,20,36,"F4,F5,F2",L2,False,False,raw_only
 tacitdesign_wa,tacitdesign,department-of-premier-and-cabinet-wa,65.0,Developing,87.1,90.0,90.3,70.0,65.0,>=2 S2 task-blockers,72,136,"F1,F3,F4",L2,False,False,with_overrides
 terryaflint17_wa,terryaflint17,department-of-premier-and-cabinet-wa,55.0,Developing,83.0,90.0,78.6,70.0,55.0,S1 project-level blocker present,16,73,"F2,F6,F1",L2,False,False,with_overrides
-terryaflint17_suncorp,terryaflint17,suncorp-insurance,55.0,Developing,80.3,90.0,83.7,40.0,55.0,S1 project-level blocker present; recording_quality == poor,22,73,"F6,F1,F2",L2,False,False,with_overrides
+terryaflint17_suncorp,terryaflint17,suncorp-insurance,55.0,Developing,80.3,90.0,83.7,40.0,55.0,S1 project-level blocker present; recording_quality == poor,22,73,"F6,F1,F2",L3,False,False,with_overrides
 terryaflint17_uq,terryaflint17,the-university-of-queensland,55.0,Developing,87.5,90.0,91.4,70.0,55.0,S1 project-level blocker present,43,78,"F6,F2,F4",L2,False,False,raw_only
 thanoptions_wa,thanoptions,department-of-premier-and-cabinet-wa,47.5,Foundational,47.5,55.0,40.0,40.0,,,0,2,,,False,True,with_overrides
 thanoptions_suncorp,thanoptions,suncorp-insurance,70.0,Proficient,79.3,90.0,80.8,40.0,70.0,recording_quality == poor,7,36,"F1,F2",L2,False,False,with_overrides

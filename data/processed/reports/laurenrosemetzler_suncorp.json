@@ -142,5 +142,25 @@
       "multiple medium-severity findings"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 34 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=1, S4=7, S5=23, S6=3. Representative findings: Participant discovered that the support application process requires a phone call rather than online self-service, which contradicted their stated preference and caused disappointment. | Participant encountered a technical error blocking navigation and was forced to restart the form entry process. | Participant entered an address that the system could not find and received an error message, then encountered an unexpected additional requirement to specify property type before being able to proceed.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    }
+  ]
 }

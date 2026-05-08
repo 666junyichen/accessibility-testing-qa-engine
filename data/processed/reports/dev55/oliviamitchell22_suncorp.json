@@ -143,6 +143,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 26 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=5, S4=3, S5=16, S6=1. Representative findings: Participant using screen reader and Zoom could not locate the product disclosure statement anywhere on the website despite exhaustively navigating the entire page. | Participant encountered confusing and intimidating content when exploring a specific product section and abandoned the pathway due to fear of the interface. | Participant could not locate a search function on the homepage and was unable to find relevant financial hardship information online, requiring them to consider calling customer support instead.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

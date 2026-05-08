@@ -144,6 +144,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 14 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=1, S5=12, S6=1. Representative findings: Participant identified a missing critical element in the emergency support pathway: no direct emergency phone number is displayed alongside the 'Get help right away' call-to-action. | Participant read content aloud while scanning the page for relevant sections, demonstrating active exploration and comprehension of the material presented. | Participant expressed lack of confidence in understanding terminology used in content about controlling behaviours, despite being able to recognize the concepts descriptively.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

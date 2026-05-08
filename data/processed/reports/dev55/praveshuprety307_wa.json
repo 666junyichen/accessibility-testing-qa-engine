@@ -145,6 +145,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 30 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=3, S5=23, S6=2. Representative findings: Participant discovered that subcontent under sections on the Family and Domestic Violence page is difficult for people to access, despite the content being available. | Participant encountered an error or limitation when attempting to send feedback in text form and could not proceed with that action. | Participant found the page content insufficient and poorly organized, with only one paragraph explaining key concepts and unclear navigation between related topics.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

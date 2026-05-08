@@ -145,6 +145,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 20 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=3, S3=1, S4=3, S5=12, S6=1. Representative findings: Participant was unable to access the expected page and encountered an unexpected interface state without the search functionality previously available. | Participant was unable to log into the portal and therefore could not access the feedback form, despite confirming the form itself functioned well when reached. | Participant could not locate the application submission pathway or document download section that was available in a previous task, and after refreshing and re-registering was unable to proceed.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

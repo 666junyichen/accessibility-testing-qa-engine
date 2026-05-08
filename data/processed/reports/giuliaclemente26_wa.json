@@ -145,6 +145,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 91 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=6, S5=71, S6=12. Representative findings: Participant encountered a PDF resource that requires language translation, necessitating a multi-step external workaround (download, upload to AI tool) to access in their preferred language. | Participant identified that video content is only available in English, creating a barrier for non-English speakers who need to access support information. | Participant attempted to use the Italian language option but it did not function, then attempted to use Google Translate extension which also did not work.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

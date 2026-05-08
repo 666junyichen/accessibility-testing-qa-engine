@@ -148,6 +148,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 79 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=8, S4=12, S5=55, S6=3. Representative findings: Participant was unable to proceed with finding support options after encountering the 'not available' error, leaving the exploration task incomplete. | Participant expressed concern that the current page does not provide sufficient information to help someone in need, particularly for users who may have hearing or comprehension difficulties. | Participant clicked on the service directory link as an alternative after finding the current page insufficient, indicating redirection to a secondary resource rather than full task completion on the primary pathway.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

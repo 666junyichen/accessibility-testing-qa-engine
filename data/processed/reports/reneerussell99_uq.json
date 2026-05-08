@@ -147,5 +147,25 @@
       "task-blocking friction: S1/S2 present"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 20 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=3, S4=2, S5=13, S6=1. Representative findings: Participant encountered inaccessible date picker controls on the form that would not open, blocking further progress on the task. | Participant was unable to select or interact with elements on the page; multiple attempts to click or interact with page components resulted in no response. | Participant unable to activate date pickers after multiple attempts, forcing a workaround by switching to document upload pathway.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    }
+  ]
 }

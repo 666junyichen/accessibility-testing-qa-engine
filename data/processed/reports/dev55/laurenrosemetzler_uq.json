@@ -144,5 +144,25 @@
       "task-blocking friction: S1/S2 present"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 36 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=1, S4=2, S5=29, S6=3. Representative findings: Participant entered an incorrect password and could not proceed because there was no visible forgot password option or password visibility toggle. | Participant cannot differentiate between similar master's program titles and cannot access detailed information to compare them before applying. | Participant entered a password multiple times but received no feedback on why the entries were rejected, and requested a password visibility toggle to debug the mismatch.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    }
+  ]
 }

@@ -146,6 +146,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 72 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=3, S3=7, S4=11, S5=49, S6=2. Representative findings: Participant abandoned the website exploration and resorted to a Google search as an external workaround to find information about domestic violence support. | Participant encountered a technical issue with a laggy interface and incorrect URL, preventing task initiation. | Participant encountered a technical malfunction where screen reader output was rendering as repeated bullet points and nonsense text instead of readable content, preventing task completion.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

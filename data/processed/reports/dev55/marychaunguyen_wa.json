@@ -149,6 +149,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 43 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=2, S3=5, S4=9, S5=26, S6=1. Representative findings: Participant encountered a corrupted or scrambled transcript output that made it impossible to identify coherent navigation actions or pathway exploration on the Family and Domestic Violence page. | Participant encountered severely degraded or corrupted transcript content that prevented coherent understanding of their navigation choices and reasoning. | Participant encountered multiple 'link not found' errors while exploring the content pathway.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

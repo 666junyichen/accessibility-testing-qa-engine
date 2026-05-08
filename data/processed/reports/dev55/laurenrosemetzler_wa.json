@@ -143,5 +143,25 @@
       "task-blocking friction: S1/S2 present"
     ]
   },
-  "coaching_recommendations": []
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 23 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S5=20, S6=1. Representative findings: Participant decided to abandon the website exploration and use ChatGPT as an external tool to address the information need instead of continuing to navigate the page. | Participant stated preference for using ChatGPT as a research tool rather than exploring the provided website content directly. | Participant expressed uncertainty about their understanding of coercive control, rating their comprehension at 6 or 7 out of 10 and noting subtle aspects they may have missed.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    }
+  ]
 }

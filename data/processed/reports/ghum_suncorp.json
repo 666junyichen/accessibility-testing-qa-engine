@@ -154,6 +154,25 @@
   },
   "coaching_recommendations": [
     {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 76 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=4, S3=20, S4=17, S5=32, S6=2. Representative findings: Participant did not locate financial hardship, payment flexibility, late/missed payment fee, or hardship support information after extensive navigation through product insurance pages. | Participant could not locate information relevant to the financial hardship task (fees for late/missed payments, support options) within the visible product listing page. | Participant navigated through multiple pages of content about accidental damage coverage instead of finding information about financial hardship support, indicating inability to locate the relevant pathway for the assigned task.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
