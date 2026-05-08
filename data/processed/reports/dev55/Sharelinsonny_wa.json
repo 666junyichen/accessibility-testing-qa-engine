@@ -169,8 +169,8 @@
       "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
       "summary": "This session shows 40 findings spanning 6 distinct friction types (F1,F2,F6,F4,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
       "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
         "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
-        "Review the highest-severity findings within the dominant pattern before broadening to other types.",
         "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
       ],
       "trigger_field": "friction_type_distribution",

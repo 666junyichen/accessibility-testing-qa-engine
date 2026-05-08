@@ -325,7 +325,7 @@ The internal priority ladder is now:
 | 5 | severity | one or more S1 / S2 task-blocking finding |
 | 5 | recording | recording_quality = `poor` |
 | 4 | severity | highest severity among findings is S3 / S4 |
-| 4 | friction-aggregation | total ≥ 5 findings, ≥ 3 distinct friction types, at least one finding in S1–S4 |
+| 4 | friction-aggregation | total ≥ 8 findings, ≥ 3 distinct friction types, ≥ 2 types each carry an S1–S4 finding, top-type share ≤ 0.70 |
 | 4 | moderation | coaching_evidence = `explicit` |
 | 4 | narration | narration_quality = `none` |
 | 3 | narration | narration_quality = `sparse` |
@@ -339,11 +339,12 @@ The internal priority ladder is now:
 
 Triggers when a session shows multi-pattern friction across several friction types — issuing one parallel recommendation per type would duplicate coaching effort.
 
-**All three guard rails must be satisfied:**
+**All four guard rails must be satisfied (V3.1, after codex.md follow-up — earlier V3 rule was 3-rail and over-triggered on dev57):**
 
-1. `total findings (with valid friction_type AND severity_s) >= 5`
+1. `total findings (with valid friction_type AND severity_s) >= 8` — tightened from 5 to suppress generic multi-label noise on small samples
 2. `>= 3 distinct friction types` among those valid findings
-3. at least one finding sits in `{S1, S2, S3, S4}` — pure S5 / S6 noise should not be elevated to a multi-pattern coaching item
+3. `>= 2 distinct friction types each carry at least one S1-S4 finding` — a single non-trivial type plus several low-severity types is not multi-pattern
+4. `top type share <= 0.70` — when one friction type dominates (e.g. `F1=20, F2=1, F6=1`), that's a single-pattern session, not a multi-pattern one
 
 **Output:**
 
@@ -351,7 +352,7 @@ Triggers when a session shows multi-pattern friction across several friction typ
 - `trigger_field = "friction_type_distribution"`
 - `trigger_value` is the comma-joined list of friction-type codes ordered by count desc, F-code asc on ties — e.g. `"F1,F6,F2"`
 - `evidence_note` summarises the count distribution: `5.1-A: total=12 findings across 4 distinct friction types (F1=5, F2=4, F6=2, F7=1)`
-- advice anchors coaching on the dominant friction type, then names the secondary types using their short labels (Comprehension / Confidence / Accessibility / Unresponsive / Unexpected / Not Found / Excessive Effort)
+- advice begins with an explicit cross-reference to the severity item ("After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel"), then anchors coaching on the dominant friction type and names the secondary types using their short labels (Comprehension / Confidence / Accessibility / Unresponsive / Unexpected / Not Found / Excessive Effort). The cross-reference avoids reviewer-side perceived duplication when severity and friction-aggregation co-occur (≈ 65% of dev57 sessions).
 
 Findings with missing or unknown `friction_type` / `severity_s` are skipped silently — the builder will not crash on partially populated input.
 

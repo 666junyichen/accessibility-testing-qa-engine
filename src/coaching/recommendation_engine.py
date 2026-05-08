@@ -76,20 +76,35 @@ class Recommendation:
 
 class RecommendationEngine:
     """
-    Step 6.2 Coaching Recommendation Engine (MVP)
+    Step 6.2 Coaching Recommendation Engine.
 
-    Input:
-        - one VideoAssessment from 5.1-B
+    Inputs:
+        - VideoAssessment from 5.1-B (mandatory)
+        - findings: optional list of 5.1-A finding-level dicts with
+          ``severity_s`` / ``friction_type``. When omitted the engine
+          degrades to the v1 session-level behaviour for backward
+          compatibility (see ``test_legacy_single_argument_call_remains_
+          backward_compatible``).
 
-    Output:
-        - zero or more high-level coaching recommendations
-        - grouped into narration / recording / moderation
+    Output: zero or more Recommendation items in six possible categories,
+    sorted by priority desc:
+
+        - narration / recording / moderation  (5.1-B session-level, v1)
+        - severity                            (5.1-A finding-level, v2)
+        - friction-aggregation                (5.1-A multi-pattern, v3)
+        - meta                                (5.1-B combined, v3 — fires
+          when narration ∈ {none, sparse} ∧ recording ∈ {poor, acceptable}
+          and suppresses the isolated narration + recording items)
 
     Design notes:
-        - narration templates are driven by narration_quality
-        - recording templates are driven by recording_quality
-        - moderation templates are driven by coaching_evidence
-        - this version is intentionally template-based
+        - templates are session-level: no timestamp / per-window grounding
+        - finding-level builders only consume severity_s and friction_type
+          today; sentiment_e and calibrator_score_l are reserved for later
+        - priorities here are an internal display-ordering signal; they do
+          not share a scale with R6 score or fusion quality_tier
+        - per ``docs/eval_freeze.md §六``, Step 6.2 coaching content is not
+          a freeze trigger — extending categories here does not invalidate
+          held-out
     """
 
     def generate(
@@ -278,16 +293,25 @@ class RecommendationEngine:
         Optional 5.1-A extension.
 
         Emit one aggregated coaching item when a session shows multi-pattern
-        friction across several friction types — issuing one parallel
-        recommendation per friction type would duplicate coaching effort.
+        friction — i.e. several friction types each carrying real weight —
+        so coaching can anchor on the dominant pattern instead of one
+        parallel item per type.
 
-        Trigger guard rails (per cc.md / codex.md convergence):
+        Trigger guard rails (V3.1, per codex.md follow-up):
 
-        - `total_findings >= 5` (avoid surfacing aggregation on tiny samples)
-        - `>= 3 distinct friction types` among findings
-        - at least one finding sits in {S1,S2,S3,S4} — a session of pure
-          S5/S6 noise should not be elevated to a multi-pattern coaching
-          item.
+        1. `valid findings >= 8` — tightened from 5 to avoid generic
+           multi-label noise on small samples.
+        2. `>= 3 distinct friction types` among valid findings.
+        3. `>= 2 distinct friction types each carry at least one S1-S4
+           finding` — a single non-trivial type plus several low-severity
+           types is not a multi-pattern session.
+        4. `top type share <= 0.70` — when one friction type dominates
+           (e.g. F1=20, F2=1, F6=1), that's a single-pattern session, not
+           a multi-pattern one.
+
+        Findings with missing / unknown `friction_type` or `severity_s`
+        are silently skipped so partially populated input does not crash
+        the builder.
         """
         # Filter rows with valid friction_type AND severity_s; we need both
         # to apply the non-trivial-severity guard rail without crashing on
@@ -298,7 +322,7 @@ class RecommendationEngine:
             if item.get("friction_type") in _FRICTION_LABELS
             and item.get("severity_s") in _SEVERITY_RANK
         ]
-        if len(valid) < 5:
+        if len(valid) < 8:
             return None
 
         friction_counts = Counter(
@@ -308,10 +332,21 @@ class RecommendationEngine:
         if distinct_types < 3:
             return None
 
-        if not any(
-            item.get("severity_s") in _NON_TRIVIAL_SEVERITIES
+        # Distributional guard: at least 2 distinct types must each carry
+        # a non-trivial-severity finding. A single F-type with the only
+        # S1-S4 + several low-severity types is not multi-pattern.
+        non_trivial_types = {
+            str(item["friction_type"])
             for item in valid
-        ):
+            if item.get("severity_s") in _NON_TRIVIAL_SEVERITIES
+        }
+        if len(non_trivial_types) < 2:
+            return None
+
+        # Dominance guard: when one type accounts for >70% of findings,
+        # the session is single-pattern even if other types appear.
+        top_count = friction_counts.most_common(1)[0][1]
+        if top_count / len(valid) > 0.70:
             return None
 
         # Stable order: by count desc, then by F-code asc for ties.
@@ -356,13 +391,14 @@ class RecommendationEngine:
             ),
             advice=[
                 (
+                    "After addressing any severity-priority recommendation "
+                    "first, use this aggregation to group the remaining "
+                    "coaching themes — do not treat the two as parallel."
+                ),
+                (
                     f"Treat {dominant} ({_FRICTION_LABELS[dominant]}) as the "
                     f"primary coaching anchor; secondary types ({secondary_text}) "
                     f"provide supporting context."
-                ),
-                (
-                    "Review the highest-severity findings within the dominant "
-                    "pattern before broadening to other types."
                 ),
                 (
                     "Avoid issuing parallel recommendations for each friction "

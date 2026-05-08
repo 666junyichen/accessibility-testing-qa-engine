@@ -1,11 +1,11 @@
 video_id,tester,project,windows,duration_s,l1_total,l1_duration_anomaly,l2_coverage,l3_findings,top_severity,narration,recording,tier,reason,coach_recs
 Sharelinsonny_suncorp,Sharelinsonny,suncorp-insurance,81,5274,0,False,0.0,27,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
-Sharelinsonny_uq,Sharelinsonny,the-university-of-queensland,61,4099,0,False,0.0,29,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+Sharelinsonny_uq,Sharelinsonny,the-university-of-queensland,61,4099,0,False,0.0,29,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,2
 Sharelinsonny_wa,Sharelinsonny,department-of-premier-and-cabinet-wa,105,7160,0,False,0.0,40,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 asma_suncorp,asma,suncorp-insurance,63,4984,0,False,0.0,30,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 asma_uq,asma,the-university-of-queensland,63,5163,0,False,0.0,40,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
-carlpatrickrobinson_suncorp,carlpatrickrobinson,suncorp-insurance,15,1009,1,True,1.0,6,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
-carlpatrickrobinson_uq,carlpatrickrobinson,the-university-of-queensland,18,1254,2,True,1.0,8,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+carlpatrickrobinson_suncorp,carlpatrickrobinson,suncorp-insurance,15,1009,1,True,1.0,6,S3,rich,acceptable,acceptable,multiple medium-severity findings,2
+carlpatrickrobinson_uq,carlpatrickrobinson,the-university-of-queensland,18,1254,2,True,1.0,8,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,2
 fjone7_suncorp,fjone7,suncorp-insurance,106,7509,0,False,0.0,56,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 fjone7_uq,fjone7,the-university-of-queensland,113,8101,0,False,0.0,60,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 gameoverdan_suncorp,gameoverdan,suncorp-insurance,53,3525,0,False,0.0,50,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
@@ -16,23 +16,23 @@ ghum_wa,ghum,department-of-premier-and-cabinet-wa,83,5675,0,False,1.0,61,S1,rich
 giuliaclemente26_suncorp,giuliaclemente26,suncorp-insurance,31,2037,0,False,0.0,27,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 giuliaclemente26_uq,giuliaclemente26,the-university-of-queensland,56,3781,0,False,0.0,54,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 giuliaclemente26_wa,giuliaclemente26,department-of-premier-and-cabinet-wa,71,4726,0,False,0.0,91,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
-gracieha22_suncorp,gracieha22,suncorp-insurance,20,1299,0,False,0.0,15,S4,rich,acceptable,acceptable,multiple medium-severity findings,3
+gracieha22_suncorp,gracieha22,suncorp-insurance,20,1299,0,False,0.0,15,S4,rich,acceptable,acceptable,multiple medium-severity findings,2
 gracieha22_uq,gracieha22,the-university-of-queensland,24,1644,0,False,0.0,7,S5,rich,acceptable,acceptable,multiple medium-severity findings,2
-gracieha22_wa,gracieha22,department-of-premier-and-cabinet-wa,36,2413,0,False,0.0,14,S4,rich,acceptable,acceptable,multiple medium-severity findings,3
+gracieha22_wa,gracieha22,department-of-premier-and-cabinet-wa,36,2413,0,False,0.0,14,S4,rich,acceptable,acceptable,multiple medium-severity findings,2
 info_suncorp,info,suncorp-insurance,54,3890,0,False,0.0,59,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 info_wa,info,department-of-premier-and-cabinet-wa,60,4286,0,False,0.0,77,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
-jenniferparry7_uq,jenniferparry7,the-university-of-queensland,23,1543,10,True,1.0,9,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+jenniferparry7_uq,jenniferparry7,the-university-of-queensland,23,1543,10,True,1.0,9,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,2
 kweslake_uq,kweslake,the-university-of-queensland,33,2685,0,False,0.0,24,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
 laurenrosemetzler_suncorp,laurenrosemetzler,suncorp-insurance,50,3363,0,False,0.0,34,S3,rich,good,acceptable,multiple medium-severity findings,2
 laurenrosemetzler_uq,laurenrosemetzler,the-university-of-queensland,57,3813,0,False,0.0,36,S2,rich,good,poor,task-blocking friction: S1/S2 present,2
-laurenrosemetzler_wa,laurenrosemetzler,department-of-premier-and-cabinet-wa,59,4219,0,False,0.0,23,S2,rich,good,poor,task-blocking friction: S1/S2 present,2
+laurenrosemetzler_wa,laurenrosemetzler,department-of-premier-and-cabinet-wa,59,4219,0,False,0.0,23,S2,rich,good,poor,task-blocking friction: S1/S2 present,1
 margieflint_suncorp,margieflint,suncorp-insurance,70,4726,0,False,0.0,64,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 margieflint_uq,margieflint,the-university-of-queensland,73,4756,0,False,0.0,46,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 margieflint_wa,margieflint,department-of-premier-and-cabinet-wa,75,5159,0,False,0.0,79,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 marychaunguyen_suncorp,marychaunguyen,suncorp-insurance,49,3573,0,False,0.0,31,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 marychaunguyen_uq,marychaunguyen,the-university-of-queensland,32,2138,0,False,0.0,20,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 marychaunguyen_wa,marychaunguyen,department-of-premier-and-cabinet-wa,64,4562,0,False,0.0,43,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
-mgblackwell2001_suncorp,mgblackwell2001,suncorp-insurance,42,2786,0,False,0.0,15,S3,adequate,poor,poor,recording unusable,4
+mgblackwell2001_suncorp,mgblackwell2001,suncorp-insurance,42,2786,0,False,0.0,15,S3,adequate,poor,poor,recording unusable,3
 oliviamitchell22_suncorp,oliviamitchell22,suncorp-insurance,25,1610,0,False,0.0,26,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
 praveshuprety307_wa,praveshuprety307,department-of-premier-and-cabinet-wa,59,4004,0,False,0.0,30,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
 rae_suncorp,rae,suncorp-insurance,84,5513,0,False,0.0,50,S3,rich,good,acceptable,multiple medium-severity findings,2
