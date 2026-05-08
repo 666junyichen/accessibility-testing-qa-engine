@@ -6,7 +6,14 @@ from typing import Any, List, Literal, Optional
 
 from src.layer3.schemas_b import VideoAssessment
 
-RecommendationCategory = Literal["narration", "recording", "moderation", "severity"]
+RecommendationCategory = Literal[
+    "narration",
+    "recording",
+    "moderation",
+    "severity",
+    "friction-aggregation",
+    "meta",
+]
 
 _SEVERITY_RANK = {
     "S1": 1,
@@ -16,6 +23,29 @@ _SEVERITY_RANK = {
     "S5": 5,
     "S6": 6,
 }
+
+# Short, demo-friendly labels for F1-F7. Used by the friction-aggregation
+# builder to render evidence_note text without leaking the canonical
+# definitions document. Keep in sync with docs/l3_design.md §Friction Types.
+_FRICTION_LABELS = {
+    "F1": "Comprehension",
+    "F2": "Confidence",
+    "F3": "Accessibility",
+    "F4": "Unresponsive",
+    "F5": "Unexpected",
+    "F6": "Not Found",
+    "F7": "Excessive Effort",
+}
+
+# Severity rungs that count as "non-trivial" for the friction-aggregation
+# trigger. A multi-pattern report that consists entirely of S5/S6 findings
+# is downgraded — surfacing a high-priority aggregation item there would
+# misrepresent low-impact noise as a structural pattern.
+_NON_TRIVIAL_SEVERITIES = {"S1", "S2", "S3", "S4"}
+
+# Meta-coaching triggers (5.1-B narration + recording combination).
+_META_NARRATION_TRIGGER = {"none", "sparse"}
+_META_RECORDING_TRIGGER = {"poor", "acceptable"}
 
 @dataclass
 class Recommendation:
@@ -78,21 +108,34 @@ class RecommendationEngine:
         findings = findings or []
         recommendations: List[Recommendation] = []
 
+        # Session-level builders (5.1-B). Build all three first so we can
+        # decide whether the meta builder should suppress narration + recording.
         narration_rec = self._build_narration_recommendation(assessment)
-        if narration_rec is not None:
-            recommendations.append(narration_rec)
-
         recording_rec = self._build_recording_recommendation(assessment)
-        if recording_rec is not None:
-            recommendations.append(recording_rec)
-
         moderation_rec = self._build_moderation_recommendation(assessment)
+        meta_rec = self._build_meta_recommendation(assessment)
+
+        if meta_rec is not None:
+            # Suppress isolated narration + recording in favour of one
+            # combined meta item; moderation is independent and still emits.
+            recommendations.append(meta_rec)
+        else:
+            if narration_rec is not None:
+                recommendations.append(narration_rec)
+            if recording_rec is not None:
+                recommendations.append(recording_rec)
+
         if moderation_rec is not None:
             recommendations.append(moderation_rec)
 
+        # Finding-level builders (5.1-A) — independent of meta suppression.
         severity_rec = self._build_severity_recommendation(findings)
         if severity_rec is not None:
             recommendations.append(severity_rec)
+
+        friction_rec = self._build_friction_aggregation_recommendation(findings)
+        if friction_rec is not None:
+            recommendations.append(friction_rec)
 
         return sorted(recommendations, key=lambda item: item.priority, reverse=True)
 
@@ -222,6 +265,187 @@ class RecommendationEngine:
             valid,
             key=lambda item: _SEVERITY_RANK[str(item.get("severity_s"))],
         )[:limit]
+
+    # ------------------------------------------------------------------
+    # Finding-level friction-aggregation template
+    # ------------------------------------------------------------------
+
+    def _build_friction_aggregation_recommendation(
+        self,
+        findings: List[dict[str, Any]],
+    ) -> Optional[Recommendation]:
+        """
+        Optional 5.1-A extension.
+
+        Emit one aggregated coaching item when a session shows multi-pattern
+        friction across several friction types — issuing one parallel
+        recommendation per friction type would duplicate coaching effort.
+
+        Trigger guard rails (per cc.md / codex.md convergence):
+
+        - `total_findings >= 5` (avoid surfacing aggregation on tiny samples)
+        - `>= 3 distinct friction types` among findings
+        - at least one finding sits in {S1,S2,S3,S4} — a session of pure
+          S5/S6 noise should not be elevated to a multi-pattern coaching
+          item.
+        """
+        # Filter rows with valid friction_type AND severity_s; we need both
+        # to apply the non-trivial-severity guard rail without crashing on
+        # NaN / None / unknown enum values.
+        valid = [
+            item
+            for item in findings
+            if item.get("friction_type") in _FRICTION_LABELS
+            and item.get("severity_s") in _SEVERITY_RANK
+        ]
+        if len(valid) < 5:
+            return None
+
+        friction_counts = Counter(
+            str(item["friction_type"]) for item in valid
+        )
+        distinct_types = len(friction_counts)
+        if distinct_types < 3:
+            return None
+
+        if not any(
+            item.get("severity_s") in _NON_TRIVIAL_SEVERITIES
+            for item in valid
+        ):
+            return None
+
+        # Stable order: by count desc, then by F-code asc for ties.
+        ordered_types = [
+            ft for ft, _ in sorted(
+                friction_counts.items(),
+                key=lambda kv: (-kv[1], kv[0]),
+            )
+        ]
+        trigger_value = ",".join(ordered_types)
+        dominant = ordered_types[0]
+        secondary = ordered_types[1:3]  # at most two for the advice copy
+
+        type_summary = ", ".join(
+            f"{ft}={friction_counts[ft]}" for ft in ordered_types
+        )
+
+        evidence_note = (
+            f"5.1-A: total={len(valid)} findings across {distinct_types} "
+            f"distinct friction types ({type_summary})."
+        )
+
+        secondary_text = (
+            ", ".join(
+                f"{code} {_FRICTION_LABELS[code]}" for code in secondary
+            )
+            if secondary
+            else "the remaining friction types"
+        )
+
+        return Recommendation(
+            category="friction-aggregation",
+            title=(
+                f"Multi-pattern friction across {distinct_types} categories — "
+                f"anchor coaching on the dominant pattern"
+            ),
+            summary=(
+                f"This session shows {len(valid)} findings spanning "
+                f"{distinct_types} distinct friction types "
+                f"({trigger_value}). Coaching should follow the dominant "
+                f"pattern first rather than issuing one item per type."
+            ),
+            advice=[
+                (
+                    f"Treat {dominant} ({_FRICTION_LABELS[dominant]}) as the "
+                    f"primary coaching anchor; secondary types ({secondary_text}) "
+                    f"provide supporting context."
+                ),
+                (
+                    "Review the highest-severity findings within the dominant "
+                    "pattern before broadening to other types."
+                ),
+                (
+                    "Avoid issuing parallel recommendations for each friction "
+                    "type when patterns interact within the same session."
+                ),
+            ],
+            trigger_field="friction_type_distribution",
+            trigger_value=trigger_value,
+            priority=4,
+            evidence_note=evidence_note,
+            tags=[
+                "friction-aggregation",
+                "finding-level",
+                "multi-pattern",
+            ],
+        )
+
+    # ------------------------------------------------------------------
+    # Session-level meta template
+    # ------------------------------------------------------------------
+
+    def _build_meta_recommendation(
+        self,
+        assessment: VideoAssessment,
+    ) -> Optional[Recommendation]:
+        """
+        Optional 5.1-B extension.
+
+        When narration quality is low *and* recording quality is at the same
+        time degraded, emitting two parallel recommendations (one per
+        category) creates noise: weak audio also weakens the narration
+        signal, so coaching the participant on think-aloud cadence before
+        fixing the recording channel is unlikely to land.
+
+        This builder emits one meta item that names the combined situation,
+        and `generate()` suppresses the isolated narration + recording items
+        when this meta item fires. Moderation, severity, and friction-
+        aggregation are not affected.
+        """
+        narration = assessment.narration_quality
+        recording = assessment.recording_quality
+
+        if narration not in _META_NARRATION_TRIGGER:
+            return None
+        if recording not in _META_RECORDING_TRIGGER:
+            return None
+
+        return Recommendation(
+            category="meta",
+            title="Address recording setup before deepening narration coaching",
+            summary=(
+                f"Both narration ({narration}) and recording ({recording}) "
+                f"are below ideal. Improving the recording channel first "
+                f"will let later narration coaching land more reliably; "
+                f"isolated narration and recording recommendations are "
+                f"suppressed in favour of this combined item."
+            ),
+            advice=[
+                (
+                    "Resolve recording-setup issues — microphone clarity, "
+                    "ambient noise, clipping — before pushing for richer "
+                    "narration."
+                ),
+                (
+                    "Re-state think-aloud expectations to the participant "
+                    "only after the recording channel is reliable, so "
+                    "verbalisation is captured cleanly."
+                ),
+                (
+                    "Treat current narration-quality readings as lower-"
+                    "confidence until recording stabilises."
+                ),
+            ],
+            trigger_field="narration_recording_combo",
+            trigger_value=f"{narration}+{recording}",
+            priority=6,
+            evidence_note=(
+                f"5.1-B narration={narration} ∧ recording={recording}; "
+                "isolated narration / recording recommendations are "
+                "suppressed in favour of this meta item."
+            ),
+            tags=["meta", "session-level", "suppression"],
+        )
 
     # ------------------------------------------------------------------
     # Narration templates

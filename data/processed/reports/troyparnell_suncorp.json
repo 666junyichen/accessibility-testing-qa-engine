@@ -41,41 +41,22 @@
   },
   "coaching_recommendations": [
     {
-      "category": "recording",
-      "title": "Recording quality limits reliable downstream analysis",
-      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "category": "meta",
+      "title": "Address recording setup before deepening narration coaching",
+      "summary": "Both narration (none) and recording (poor) are below ideal. Improving the recording channel first will let later narration coaching land more reliably; isolated narration and recording recommendations are suppressed in favour of this combined item.",
       "advice": [
-        "Treat this session as low-confidence evidence.",
-        "Improve recording setup and audio checks before the next session begins.",
-        "Consider excluding this session from analyses that require detailed behavioural evidence."
+        "Resolve recording-setup issues — microphone clarity, ambient noise, clipping — before pushing for richer narration.",
+        "Re-state think-aloud expectations to the participant only after the recording channel is reliable, so verbalisation is captured cleanly.",
+        "Treat current narration-quality readings as lower-confidence until recording stabilises."
       ],
-      "trigger_field": "recording_quality",
-      "trigger_value": "poor",
-      "priority": 5,
-      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "trigger_field": "narration_recording_combo",
+      "trigger_value": "none+poor",
+      "priority": 6,
+      "evidence_note": "5.1-B narration=none ∧ recording=poor; isolated narration / recording recommendations are suppressed in favour of this meta item.",
       "tags": [
-        "recording",
-        "reliability",
-        "analysis-risk"
-      ]
-    },
-    {
-      "category": "narration",
-      "title": "Narration is insufficient for reliable interpretation",
-      "summary": "The participant barely spoke during the session, making it difficult to interpret intent, confusion, or decision-making.",
-      "advice": [
-        "Set think-aloud expectations clearly before the task begins.",
-        "Use neutral reminders to encourage verbalisation without directing task behaviour.",
-        "Treat detailed behavioural conclusions from this session with caution if low narration persists."
-      ],
-      "trigger_field": "narration_quality",
-      "trigger_value": "none",
-      "priority": 4,
-      "evidence_note": "5.1-B marks narration as effectively absent.",
-      "tags": [
-        "narration",
-        "analysis-risk",
-        "session-level"
+        "meta",
+        "session-level",
+        "suppression"
       ]
     }
   ]

@@ -165,6 +165,25 @@
       ]
     },
     {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 46 findings spanning 5 distinct friction types (F4,F6,F2,F1,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "Treat F4 (Unresponsive) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Review the highest-severity findings within the dominant pattern before broadening to other types.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F4,F6,F2,F1,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=46 findings across 5 distinct friction types (F4=13, F6=12, F2=11, F1=5, F5=5).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
       "category": "recording",
       "title": "Recording quality is usable but should be improved",
       "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",

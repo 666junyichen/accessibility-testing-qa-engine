@@ -104,8 +104,11 @@ def test_results_are_sorted_by_priority_desc():
 def test_output_contains_expected_trigger_fields():
     engine = RecommendationEngine()
 
+    # Use narration_quality="adequate" so the meta builder does not fire and
+    # the isolated narration / recording recommendations are still emitted.
+    # The intent of this test is to verify trigger_field type coverage.
     assessment = VideoAssessment(
-        narration_quality="sparse",
+        narration_quality="adequate",
         recording_quality="acceptable",
         coaching_evidence="explicit",
     )
@@ -217,3 +220,180 @@ def test_few_low_severity_findings_do_not_generate_severity_recommendation():
     results = engine.generate(assessment, findings=findings)
 
     assert not any(item.category == "severity" for item in results)
+
+
+# ---------------------------------------------------------------------------
+# V3 friction-aggregation builder
+# ---------------------------------------------------------------------------
+
+def _aggregation_assessment():
+    """Neutral 5.1-B fixture so meta / narration / recording do not fire and
+    the friction-aggregation builder can be tested in isolation."""
+    return VideoAssessment(
+        narration_quality="rich",
+        recording_quality="good",
+        coaching_evidence="none",
+    )
+
+
+def _make_finding(friction_type: str, severity: str, idx: int = 0) -> dict:
+    return {
+        "finding": f"Synthetic finding {idx}",
+        "friction_type": friction_type,
+        "severity_s": severity,
+        "rationale": "synthetic",
+    }
+
+
+def test_friction_aggregation_fires_with_three_types_and_non_trivial_severity():
+    engine = RecommendationEngine()
+    findings = [
+        _make_finding("F1", "S2", 1),
+        _make_finding("F1", "S3", 2),
+        _make_finding("F2", "S3", 3),
+        _make_finding("F6", "S5", 4),
+        _make_finding("F6", "S5", 5),
+    ]
+    results = engine.generate(_aggregation_assessment(), findings=findings)
+
+    agg = [r for r in results if r.category == "friction-aggregation"]
+    assert len(agg) == 1
+    rec = agg[0]
+    assert rec.priority == 4
+    assert rec.trigger_field == "friction_type_distribution"
+    # Stable order: count desc then F-code asc -> F1(2),F6(2) tied break by code,F2(1)
+    assert rec.trigger_value == "F1,F6,F2"
+
+
+def test_friction_aggregation_does_not_fire_with_only_two_types():
+    engine = RecommendationEngine()
+    findings = [
+        _make_finding("F1", "S2", i) for i in range(3)
+    ] + [_make_finding("F2", "S3", 9), _make_finding("F2", "S3", 10)]
+    results = engine.generate(_aggregation_assessment(), findings=findings)
+    assert not any(r.category == "friction-aggregation" for r in results)
+
+
+def test_friction_aggregation_does_not_fire_below_total_threshold():
+    engine = RecommendationEngine()
+    # 4 findings with 3 distinct types — fails total >= 5
+    findings = [
+        _make_finding("F1", "S2", 1),
+        _make_finding("F2", "S3", 2),
+        _make_finding("F6", "S4", 3),
+        _make_finding("F1", "S5", 4),
+    ]
+    results = engine.generate(_aggregation_assessment(), findings=findings)
+    assert not any(r.category == "friction-aggregation" for r in results)
+
+
+def test_friction_aggregation_does_not_fire_when_all_findings_low_severity():
+    engine = RecommendationEngine()
+    # 6 findings, 3 distinct types, but everything in S5/S6
+    findings = [
+        _make_finding("F1", "S5", 1),
+        _make_finding("F2", "S5", 2),
+        _make_finding("F2", "S6", 3),
+        _make_finding("F7", "S6", 4),
+        _make_finding("F7", "S6", 5),
+        _make_finding("F1", "S6", 6),
+    ]
+    results = engine.generate(_aggregation_assessment(), findings=findings)
+    assert not any(r.category == "friction-aggregation" for r in results)
+
+
+def test_friction_aggregation_handles_missing_fields_without_crashing():
+    engine = RecommendationEngine()
+    findings = [
+        {"finding": "missing severity"},  # no severity_s
+        {"finding": "missing friction", "severity_s": "S2"},  # no friction_type
+        {"friction_type": "F4", "severity_s": "??"},  # invalid severity
+        _make_finding("F1", "S2", 1),
+        _make_finding("F2", "S3", 2),
+        _make_finding("F6", "S3", 3),
+        _make_finding("F1", "S4", 4),
+        _make_finding("F2", "S4", 5),
+    ]
+    # Should not raise, and aggregation should fire on the 5 valid rows.
+    results = engine.generate(_aggregation_assessment(), findings=findings)
+    assert any(r.category == "friction-aggregation" for r in results)
+
+
+# ---------------------------------------------------------------------------
+# V3 meta builder + suppression behaviour
+# ---------------------------------------------------------------------------
+
+def test_meta_fires_and_suppresses_isolated_narration_and_recording():
+    engine = RecommendationEngine()
+    assessment = VideoAssessment(
+        narration_quality="sparse",
+        recording_quality="acceptable",
+        coaching_evidence="explicit",
+    )
+    results = engine.generate(assessment)
+    categories = {r.category for r in results}
+
+    assert "meta" in categories
+    assert "narration" not in categories
+    assert "recording" not in categories
+    # moderation must still fire — meta does not suppress it
+    assert "moderation" in categories
+    meta_rec = next(r for r in results if r.category == "meta")
+    assert meta_rec.priority == 6
+    assert meta_rec.trigger_value == "sparse+acceptable"
+
+
+def test_meta_does_not_fire_when_recording_is_good():
+    engine = RecommendationEngine()
+    assessment = VideoAssessment(
+        narration_quality="sparse",
+        recording_quality="good",
+        coaching_evidence="none",
+    )
+    results = engine.generate(assessment)
+    categories = {r.category for r in results}
+
+    # No meta, narration still emits as a standalone item.
+    assert "meta" not in categories
+    assert "narration" in categories
+
+
+def test_meta_coexists_with_severity_and_friction_aggregation():
+    engine = RecommendationEngine()
+    assessment = VideoAssessment(
+        narration_quality="none",
+        recording_quality="poor",
+        coaching_evidence="none",
+    )
+    findings = [
+        _make_finding("F1", "S1", 1),
+        _make_finding("F2", "S2", 2),
+        _make_finding("F6", "S3", 3),
+        _make_finding("F1", "S4", 4),
+        _make_finding("F2", "S5", 5),
+    ]
+    results = engine.generate(assessment, findings=findings)
+    categories = {r.category for r in results}
+
+    # Meta suppresses narration + recording but other builders are independent.
+    assert "meta" in categories
+    assert "severity" in categories
+    assert "friction-aggregation" in categories
+    assert "narration" not in categories
+    assert "recording" not in categories
+
+
+def test_legacy_single_argument_call_remains_backward_compatible():
+    """Calling generate(assessment) without findings must behave exactly like
+    the v1 MVP: only narration/recording/moderation builders run, and no
+    severity / friction-aggregation items appear."""
+    engine = RecommendationEngine()
+    assessment = VideoAssessment(
+        narration_quality="adequate",   # avoid meta trigger
+        recording_quality="acceptable",
+        coaching_evidence="explicit",
+    )
+    results = engine.generate(assessment)
+    categories = {r.category for r in results}
+
+    assert categories == {"narration", "recording", "moderation"}

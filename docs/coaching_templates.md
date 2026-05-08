@@ -312,15 +312,78 @@ engine.generate(assessment)
 ```
 ---
 
+## V3 Friction-aggregation + Meta Expansion
+
+V3 adds two additional builders on top of the V2 severity-aware extension. The single public entrypoint `engine.generate(assessment, findings=...)` is unchanged — V3 only widens the set of categories that may appear in the result list. The legacy single-argument call `engine.generate(assessment)` still produces only the original V1 narration / recording / moderation items.
+
+The internal priority ladder is now:
+
+| Priority | Category | Trigger |
+|---|---|---|
+| 7 (reserved) | — | held for future high-impact builders |
+| 6 | meta | narration ∈ {none, sparse} ∧ recording ∈ {poor, acceptable} |
+| 5 | severity | one or more S1 / S2 task-blocking finding |
+| 5 | recording | recording_quality = `poor` |
+| 4 | severity | highest severity among findings is S3 / S4 |
+| 4 | friction-aggregation | total ≥ 5 findings, ≥ 3 distinct friction types, at least one finding in S1–S4 |
+| 4 | moderation | coaching_evidence = `explicit` |
+| 4 | narration | narration_quality = `none` |
+| 3 | narration | narration_quality = `sparse` |
+| 2 | severity | repeated S5 / S6 only (≥ 5 low-severity findings) |
+| 2 | recording | recording_quality = `acceptable` |
+| 1 | narration | narration_quality = `adequate` |
+
+**Priorities here are an internal ordering signal for displaying the most actionable items first; they are not on the same scale as the R6 0–100 score or the fusion `quality_tier`.**
+
+### Friction-aggregation builder (priority 4)
+
+Triggers when a session shows multi-pattern friction across several friction types — issuing one parallel recommendation per type would duplicate coaching effort.
+
+**All three guard rails must be satisfied:**
+
+1. `total findings (with valid friction_type AND severity_s) >= 5`
+2. `>= 3 distinct friction types` among those valid findings
+3. at least one finding sits in `{S1, S2, S3, S4}` — pure S5 / S6 noise should not be elevated to a multi-pattern coaching item
+
+**Output:**
+
+- `category = "friction-aggregation"`
+- `trigger_field = "friction_type_distribution"`
+- `trigger_value` is the comma-joined list of friction-type codes ordered by count desc, F-code asc on ties — e.g. `"F1,F6,F2"`
+- `evidence_note` summarises the count distribution: `5.1-A: total=12 findings across 4 distinct friction types (F1=5, F2=4, F6=2, F7=1)`
+- advice anchors coaching on the dominant friction type, then names the secondary types using their short labels (Comprehension / Confidence / Accessibility / Unresponsive / Unexpected / Not Found / Excessive Effort)
+
+Findings with missing or unknown `friction_type` / `severity_s` are skipped silently — the builder will not crash on partially populated input.
+
+### Meta builder (priority 6)
+
+Triggers on the 5.1-B combination `narration_quality ∈ {none, sparse}` ∧ `recording_quality ∈ {poor, acceptable}`. When recording is degraded, the narration signal is also degraded; coaching the participant on think-aloud cadence before fixing the recording channel is unlikely to land.
+
+When this builder fires, `generate()` **suppresses** the isolated `narration` and `recording` items in favour of one combined meta item. Moderation, severity, and friction-aggregation are independent and still emit normally — only the two builders driven by the same 5.1-B signals are suppressed.
+
+**Output:**
+
+- `category = "meta"`
+- `trigger_field = "narration_recording_combo"`
+- `trigger_value` = e.g. `"sparse+acceptable"` or `"none+poor"`
+- `evidence_note` flags the suppression: `5.1-B narration=sparse ∧ recording=acceptable; isolated narration / recording recommendations are suppressed in favour of this meta item.`
+
+When narration is `adequate` / `rich`, or recording is `good`, the meta builder is silent and the original narration / recording items emit as in V1.
+
+### Eval-freeze posture
+
+Per `docs/eval_freeze.md §六`, the only-once trigger list covers prompts, 4.2 parameters, 5.x JSON schema, 6.1 fusion rules / weights, R6 mapping, and post-processing thresholds. Step 6.2 coaching content is **not** in that list. The V3 expansion only adds items to `QualityReport.coaching_recommendations` and does not alter any frozen surface, so it does not invalidate Bupa held-out.
+
+---
+
 ## Current Limitations
 
-The current implementation still has several limitations despite the V2 severity-aware extension:
+After V2 + V3, residual limitations are:
 
-- recommendations remain primarily session-level
-- no timestamp-level evidence injection
-- only `severity_s` from 5.1-A is currently consumed
-- friction-type (`F1–F7`) aggregation is not yet implemented
-- no multi-finding coaching synthesis across related friction patterns
+- recommendations remain session-level — no per-window or timestamp evidence
+- finding-level inputs only consume `severity_s` and `friction_type`; `sentiment_e` and `calibrator_score_l` are not yet routed to coaching
+- friction-aggregation uses count-only stable ordering — it does not weight types by severity
+- meta builder is binary (suppress or not); it does not soften individual narration / recording wording inside the meta item
 - no Step 6.1 fused weighting integration
 - no complex contextual recommendation generation with LLM
 - no survey-based validator integration
@@ -331,11 +394,10 @@ The current implementation still has several limitations despite the V2 severity
 
 Potential future extensions include:
 
-- friction-type (`F1–F7`) aggregation across multiple findings
-- meta-coaching generation using narration + recording combinations
-- timestamp-aware recommendation evidence
-- top-K finding selection and recommendation compression
-- recommendation diversity optimisation across reports
+- timestamp-aware recommendation evidence (per-window grounding)
+- top-K finding selection and recommendation compression for very dense sessions
+- weighting friction-aggregation ordering by severity instead of raw count
 - adaptive recommendation tone based on Step 6.1 fused outputs
+- consuming `sentiment_e` and `calibrator_score_l` for tone calibration
 - survey-supported validation for complex issue escalation
 - more contextual LLM-assisted coaching generation for non-template cases

@@ -41,41 +41,22 @@
   },
   "coaching_recommendations": [
     {
-      "category": "recording",
-      "title": "Recording quality limits reliable downstream analysis",
-      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "category": "meta",
+      "title": "Address recording setup before deepening narration coaching",
+      "summary": "Both narration (sparse) and recording (poor) are below ideal. Improving the recording channel first will let later narration coaching land more reliably; isolated narration and recording recommendations are suppressed in favour of this combined item.",
       "advice": [
-        "Treat this session as low-confidence evidence.",
-        "Improve recording setup and audio checks before the next session begins.",
-        "Consider excluding this session from analyses that require detailed behavioural evidence."
+        "Resolve recording-setup issues — microphone clarity, ambient noise, clipping — before pushing for richer narration.",
+        "Re-state think-aloud expectations to the participant only after the recording channel is reliable, so verbalisation is captured cleanly.",
+        "Treat current narration-quality readings as lower-confidence until recording stabilises."
       ],
-      "trigger_field": "recording_quality",
-      "trigger_value": "poor",
-      "priority": 5,
-      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "trigger_field": "narration_recording_combo",
+      "trigger_value": "sparse+poor",
+      "priority": 6,
+      "evidence_note": "5.1-B narration=sparse ∧ recording=poor; isolated narration / recording recommendations are suppressed in favour of this meta item.",
       "tags": [
-        "recording",
-        "reliability",
-        "analysis-risk"
-      ]
-    },
-    {
-      "category": "narration",
-      "title": "Increase participant verbalisation",
-      "summary": "The session contains only fragments or very short utterances, which limits the usefulness of downstream interpretation.",
-      "advice": [
-        "Encourage more continuous think-aloud narration throughout the task.",
-        "Use neutral moderator prompts such as asking what the participant is seeing or trying to do.",
-        "Aim for brief but frequent verbal check-ins rather than long periods of silence."
-      ],
-      "trigger_field": "narration_quality",
-      "trigger_value": "sparse",
-      "priority": 3,
-      "evidence_note": "5.1-B marks narration as sparse at the session level.",
-      "tags": [
-        "narration",
-        "coverage",
-        "session-level"
+        "meta",
+        "session-level",
+        "suppression"
       ]
     }
   ]
