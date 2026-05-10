@@ -205,6 +205,35 @@ GLOBAL_CSS = f"""
     color: {SLATE_500};
   }}
 
+  /* Compact info grid */
+  .smp-info-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 2px 0 18px 0;
+  }}
+  .smp-info-card {{
+    background: {WHITE};
+    border: 1px solid {SLATE_200};
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }}
+  .smp-info-card .label {{
+    font-size: 0.72rem;
+    color: {SLATE_500};
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }}
+  .smp-info-card .value {{
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: {INK};
+    font-weight: 600;
+  }}
+
   /* Tier badge */
   .tier-badge {{
     display: inline-block;
@@ -388,6 +417,12 @@ GLOBAL_CSS = f"""
     color: {SLATE_400};
     margin-left: auto;
     font-size: 0.7rem;
+  }}
+
+  /* Inputs used around filters */
+  div[data-testid="stTextInput"] input,
+  div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
+    border-radius: 10px !important;
   }}
 
   /* Multiselect chip — neutral gray (override default red) */

@@ -94,6 +94,29 @@ def hero_card(
 
 
 # ---------------------------------------------------------------------------
+# Compact info grid
+# ---------------------------------------------------------------------------
+
+def info_grid(items: Iterable[tuple[str, str]]) -> None:
+    cards = []
+    for label, value in items:
+        if value is None:
+            continue
+        cards.append(
+            f'<div class="smp-info-card">'
+            f'<div class="label">{escape(str(label))}</div>'
+            f'<div class="value">{escape(str(value))}</div>'
+            f'</div>'
+        )
+    if not cards:
+        return
+    st.markdown(
+        f'<div class="smp-info-grid">{"".join(cards)}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+# ---------------------------------------------------------------------------
 # Coaching card
 # ---------------------------------------------------------------------------
 
@@ -223,9 +246,20 @@ def distribution_bar(counts: dict[str, int], color_map: Optional[dict] = None) -
 # Sidebar option label with tier emoji
 # ---------------------------------------------------------------------------
 
-def video_option_label(video_id: str, tier: Optional[str]) -> str:
+def video_option_label(
+    video_id: str,
+    tier: Optional[str],
+    *,
+    tester: Optional[str] = None,
+    project: Optional[str] = None,
+) -> str:
     emoji = S.TIER_EMOJI.get((tier or "").lower(), "⚪")
-    return f"{emoji}  {video_id}"
+    parts = [video_id]
+    if tester:
+        parts.append(str(tester))
+    if project:
+        parts.append(project_short(project))
+    return f"{emoji}  " + " · ".join(parts)
 
 
 # ---------------------------------------------------------------------------

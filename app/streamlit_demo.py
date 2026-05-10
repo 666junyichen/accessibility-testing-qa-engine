@@ -162,6 +162,11 @@ def _sidebar(
         opts = pd.DataFrame({"video_id": [Path(f).stem for f in report_files]})
         opts["project"] = "?"
         opts["tier"] = "?"
+        opts["tester"] = "?"
+
+    for col in ["project", "tier", "tester"]:
+        if col not in opts.columns:
+            opts[col] = "?"
 
     tier_pick = _multiselect_all(
         st.sidebar,
@@ -191,23 +196,48 @@ def _sidebar(
         st.sidebar.warning("No videos match filters.")
         return view, None
 
+    st.sidebar.caption(f"Showing {len(filtered)} of {len(opts)} videos")
+
     # Sort: poor first for demo flow
     tier_rank = {"poor": 0, "acceptable": 1, "good": 2}
     if "tier" in filtered.columns:
         filtered = filtered.assign(
             _r=filtered["tier"].map(lambda t: tier_rank.get(t, 99))
-        ).sort_values(["_r", "video_id"])
+        ).sort_values(["_r", "project", "tester", "video_id"])
 
     label_map = {
-        row["video_id"]: C.video_option_label(row["video_id"], row.get("tier"))
+        row["video_id"]: C.video_option_label(
+            row["video_id"],
+            row.get("tier"),
+            tester=row.get("tester"),
+            project=row.get("project"),
+        )
         for _, row in filtered.iterrows()
     }
+    selected_options = list(label_map.keys())
+    current_selected = st.session_state.get("sidebar_video_select")
+    if current_selected not in selected_options:
+        current_selected = selected_options[0]
 
     selected = st.sidebar.selectbox(
         f"Video ({len(label_map)})",
-        options=list(label_map.keys()),
+        options=selected_options,
+        index=selected_options.index(current_selected),
         format_func=lambda v: label_map.get(v, v),
+        key="sidebar_video_select",
     )
+    selected_row = filtered[filtered["video_id"] == selected].iloc[0]
+    st.sidebar.markdown(
+        "\n".join(
+            [
+                f"**Tester**: `{selected_row.get('tester', '—')}`",
+                f"**Project**: `{C.project_short(selected_row.get('project'))}`",
+                f"**Tier**: `{selected_row.get('tier', '—')}`",
+            ]
+        )
+    )
+    if "reason" in selected_row and pd.notna(selected_row.get("reason")):
+        st.sidebar.caption(str(selected_row.get("reason")))
     return view, selected
 
 
@@ -260,6 +290,14 @@ def _view_single_video(
 
     # Tier reasoning (one-line, just below hero)
     reasoning = overall.get("reasoning") or []
+    C.info_grid(
+        [
+            ("Tester", str(report.get("tester_name") or "—")),
+            ("Project", C.project_short(report.get("project"))),
+            ("Top severity", str(l3f.get("top_severity") or "—")),
+            ("Reason", str(reasoning[0] if reasoning else "—")),
+        ]
+    )
     if reasoning:
         st.caption("Tier reasoning:  " + "  ·  ".join(escape_safe(r) for r in reasoning))
 
@@ -342,11 +380,14 @@ def _render_findings(
     by_sev = findings_summary.get("by_severity") or {}
     by_ft = findings_summary.get("by_friction_type") or {}
     top_ft = max(by_ft.items(), key=lambda kv: kv[1])[0] if by_ft else "—"
-    cols = st.columns(4)
-    cols[0].metric("Total", total)
-    cols[1].metric("S1", by_sev.get("S1", 0))
-    cols[2].metric("S2", by_sev.get("S2", 0))
-    cols[3].metric("Top friction", top_ft)
+    C.info_grid(
+        [
+            ("Total findings", str(total)),
+            ("S1", str(by_sev.get("S1", 0))),
+            ("S2", str(by_sev.get("S2", 0))),
+            ("Top friction", top_ft),
+        ]
+    )
 
     # Filters in sidebar-style row (compact pills)
     sev_options = sorted({(r.get("severity_s") or "—") for r in rows if r.get("severity_s")})
@@ -367,7 +408,8 @@ def _render_findings(
     sev_rank = {f"S{i}": i for i in range(1, 7)}
     filtered_rows = [
         r for r in rows
-        if r.get("severity_s") in sev_pick and r.get("friction_type") in ft_pick
+        if r.get("severity_s") in sev_pick
+        and r.get("friction_type") in ft_pick
     ]
     if sort_mode.startswith("Severity"):
         filtered_rows.sort(key=lambda r: sev_rank.get(r.get("severity_s") or "S6", 99))
@@ -375,6 +417,21 @@ def _render_findings(
         filtered_rows.sort(key=lambda r: r.get("window_id") or "")
 
     st.caption(f"Showing **{len(filtered_rows)}** of **{len(rows)}** findings.")
+    if filtered_rows:
+        filtered_by_sev = pd.Series(
+            [r.get("severity_s") or "—" for r in filtered_rows]
+        ).value_counts()
+        C.info_grid(
+            [
+                ("Visible S1-S2", str(int(filtered_by_sev.get("S1", 0) + filtered_by_sev.get("S2", 0)))),
+                ("Visible severity bands", str(len(filtered_by_sev))),
+                ("Visible friction types", str(len({r.get("friction_type") for r in filtered_rows if r.get("friction_type")}))),
+                ("Sort", sort_mode),
+            ]
+        )
+    else:
+        st.warning("No findings match the current filters.")
+        return
 
     # Render
     for r in filtered_rows:
