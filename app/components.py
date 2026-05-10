@@ -174,8 +174,12 @@ def finding_row(f: dict[str, Any]) -> None:
             f'<div style="margin-top:8px;">{rows_html}</div></details>'
         )
 
-    stated = f.get("stated_signal") or ""
-    quote_html = f'<div class="quote">"{escape(stated)}"</div>' if stated else ""
+    stated = f.get("stated_signal")
+
+    if pd.isna(stated) or stated is None:
+        quote_html = ""
+    else:
+        quote_html = f'<div class="quote">"{escape(str(stated))}"</div>'
 
     st.markdown(
         f"""
