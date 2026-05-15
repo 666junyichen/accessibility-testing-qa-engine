@@ -1,0 +1,9 @@
+metadata_area,status,local_path,notes
+project,partial,data/raw/organisations-data.csv,organisations-data.csv is available locally but does not contain a Bupa organisation row; processed project_key was fixed to web-health-information-bupa.
+survey,available,data/raw/bupa-uk,"Bupa survey metadata is available locally: 1 survey, 20 responses, 43 questions, 580 answers."
+tester_metadata,available,data/raw/tester_db.csv,tester_db.csv is available locally with 122 tester rows.
+assignment_tester_mapping,missing_or_unresolved,data/raw/tester_video_mapping.csv,tester_video_mapping.csv appears to be a mislabeled Excel/xlsx payload rather than a readable CSV and was not used as a reliable Bupa assignment mapping.
+task_scenario,missing,,No Bupa task/scenario CSV was present in the local workspace.
+scoring_reference_context,missing,,scoring-reference content exists as an S3 top-level folder in screenshots but was not present in the local workspace for this closeout.
+llm_insights_reference_context,missing,,llm-insights-reference content exists as an S3 top-level folder in screenshots but was not present in the local workspace for this closeout.
+transcript_failure,recorded,data/heldout/bupa/processed/transcription_status.csv,manyi_tan was recorded as failed because AWS Transcribe submission reported that the source S3 URI did not point to an existing object.
