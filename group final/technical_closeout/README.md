@@ -46,7 +46,7 @@ R7 owns the next step:
 
 R7 should run the frozen Bupa pipeline with path-isolated outputs and record exact commands, output paths, success/failure count, and dev55 demo sanity status.
 
-There is no separate R2 task to assign at this stage. R2/Nix has already completed the directly actionable pre-run work: input correction, 21/21 transcript validation, R4 status reconciliation, and R6 lane/key confirmation.
+There is no separate R2 task to assign at this stage. The directly actionable pre-run work is already complete: input correction, 21/21 transcript validation, R4 status reconciliation, and R6 lane/key confirmation.
 
 ## Dependencies After R7
 
@@ -56,6 +56,6 @@ After R7 generates Bupa reports and processed CSVs:
 - R3 writes Bupa case studies.
 - R5 reviews Bupa coaching recommendations.
 - R8 writes the Bupa held-out evaluation summary.
-- Nix/Codex directly reconciles final technical closeout after the member outputs return.
+- The final technical reconciliation happens after the member outputs return.
 
 Do not start Final Report prose, presentation bullet points, contribution statement, AI usage statement, or signatures from this folder.

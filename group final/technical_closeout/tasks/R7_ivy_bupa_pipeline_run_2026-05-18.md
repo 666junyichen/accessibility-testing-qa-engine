@@ -76,6 +76,8 @@ Do not write Bupa outputs to:
 
 Generate or verify:
 
+- `data/heldout/bupa/processed/segments.csv`
+- `data/heldout/bupa/processed/items.csv`
 - `data/heldout/bupa/processed/windows.csv`
 - `data/heldout/bupa/processed/layer1_flags.csv`
 - `data/heldout/bupa/processed/layer2_cluster_assignments.csv` if required by the report step; otherwise document if empty/audit-only
@@ -84,6 +86,14 @@ Generate or verify:
 - `data/heldout/bupa/processed/layer3_video_assessments.csv`
 - `data/heldout/bupa/reports/*.json`
 - `data/heldout/bupa/reports/_summary.csv`
+
+Suggested first preprocessing step:
+
+1. Read `data/heldout/bupa/processed/manifest.csv`.
+2. Read the 21 transcript JSON files under `data/heldout/bupa/raw/transcribe-output/web-health-information-bupa/`.
+3. Use manifest-aware metadata mapping to build Bupa-specific `segments.csv` and `items.csv`.
+4. Generate Bupa-specific `windows.csv` from those files.
+5. Do not reuse `data/processed/windows.csv`; that file belongs to the dev set.
 
 Final report generation should use explicit Bupa paths, for example:
 
@@ -117,7 +127,7 @@ Submit a markdown note to:
 
 `group final/technical_closeout/submissions/R7_ivy_bupa_pipeline_demo_2026-05-18.md`
 
-If the local `group final` folder is not available, either commit the note under the repository path above or send the markdown file directly to Nix.
+Commit the note under the repository path above.
 
 Include:
 
