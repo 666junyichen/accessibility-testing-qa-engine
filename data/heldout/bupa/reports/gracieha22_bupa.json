@@ -1,0 +1,203 @@
+{
+  "video_id": "gracieha22_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "gracieha22",
+  "total_windows": 28,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 18,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 5,
+      "F3": 3,
+      "F5": 3,
+      "F6": 2,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 1,
+      "S4": 2,
+      "S5": 14
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 15
+    },
+    "by_calibrator_score": {
+      "L2": 14,
+      "L3": 3,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 18
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "gracieha22_bupa_w014",
+        "video_id": "gracieha22_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility settings or accessibility page and conducted multiple failed searches across different page locations.",
+        "observed_signal": "Participant stated they would find the accessibility page, then checked multiple locations on the page ('it's not here', 'it's at the bottom', 'it's not there', 'is it here? Nope') without successfully locating it.",
+        "stated_signal": "Alright, so I'm gonna find, find the accessibility settings or accessibility page. OK, so it's not here. Um, OK, let's see if I can find it. It's at the bottom. Um, OK, so it's not there. So, is it here? Nope.",
+        "rationale": "The participant actively searched multiple locations without finding the accessibility page, which appears to be a required component of their task. The repeated 'not here' statements and exhausted search attempts indicate the pathway was not found. This represents a task component blocker matching S2 severity and L4 calibrator score (near-abandonment without facilitator intervention visible in this window).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_bupa_w027",
+        "video_id": "gracieha22_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that August dates cannot be clicked in the date picker, blocking selection of that month.",
+        "observed_signal": "Participant attempted to click on August dates and found they were not clickable, then worked around by selecting July instead.",
+        "stated_signal": "I can't click any dates on here... I can click for April. I can click for May. I can cook for June and July. But I can't do August.",
+        "rationale": "The participant explicitly identified that August dates are not clickable while other months are, indicating unexpected behaviour inconsistent with the expected pattern. The participant worked around the limitation by selecting July instead, completing the task but skipping the intended month. This is a significant component failure (inability to select August) that was circumvented rather than resolved.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_bupa_w015",
+        "video_id": "gracieha22_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility information and searched multiple menu areas before finding it under Contact Us instead of the expected Help and Support section.",
+        "observed_signal": "Participant looked under Help and Support first, then Contact Us, and finally found the accessibility page under Contact Us.",
+        "stated_signal": "I can't find the accessibility. I thought it'd be under health and support, what about contact us, is it under here? That was very not in a great spot. I thought it'd be under help and support, uh, not contact us.",
+        "rationale": "The participant explicitly stated they could not find the accessibility information and searched multiple menu locations before locating it. Both observed behaviour (multiple menu attempts) and stated frustration (negative commentary about placement) indicate significant wayfinding friction. The task was eventually completed but required multiple failed attempts and expressed frustration, matching the L3 gate.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_bupa_w022",
+        "video_id": "gracieha22_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the page layout overwhelming and criticized the information architecture as poorly organized, describing it as excessive imagery without efficient content structure.",
+        "observed_signal": "Participant navigated through the page, opened expandable sections (life insurance, home insurance, health), then paused and made critical comments about the design and layout.",
+        "stated_signal": "This is very overwhelming. I love the images but it's too much, it's too much and not a lot of efficient information. This looks like a website that was just chucked together. Like a news agency with all these images and just these headings to try and grab your attention, without explaining anything.",
+        "rationale": "Both stated and observed signals indicate the participant experienced significant cognitive overload due to excessive visual density and insufficient information hierarchy. The participant explicitly stated overwhelm and made repeated critical statements about inefficient layout, matching the S4 gate (major difficulty materially slowing progress) and L3 calibrator (significant friction with frustrated sentiment and multiple critical assessments).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_bupa_w008",
+        "video_id": "gracieha22_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that a key content element (new symptom section) lacks visual prominence and suggested it should be more bold or obvious.",
+        "observed_signal": "Participant reviewed the page structure including expert info, interaction types, causes, symptoms, diagnosis, self-help, treatments, complications, prevention, feedback, and then noted the new symptom section specifically.",
+        "stated_signal": "I would make this more bold or more obvious, um, just so that...",
+        "rationale": "The participant expressed uncertainty about the visibility and discoverability of the new symptom section, indicating wayfinding or attention friction. The stated suggestion and observed pause both signal mild confidence friction; the participant completed their review but flagged a design concern that could cause future users to miss this element.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 18 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=1, S4=2, S5=14. Representative findings: Participant could not locate the accessibility settings or accessibility page and conducted multiple failed searches across different page locations. | Participant discovered that August dates cannot be clicked in the date picker, blocking selection of that month. | Participant could not locate the accessibility information and searched multiple menu areas before finding it under Contact Us instead of the expected Help and Support section.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 18 findings spanning 6 distinct friction types (F2,F1,F3,F5,F6,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F3 Accessibility) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F3,F5,F6,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=18 findings across 6 distinct friction types (F2=5, F1=4, F3=3, F5=3, F6=2, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

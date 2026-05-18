@@ -1,0 +1,207 @@
+{
+  "video_id": "deanmills1987_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "deanmills1987",
+  "total_windows": 85,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 41,
+    "by_friction_type": {
+      "F1": 18,
+      "F2": 4,
+      "F3": 4,
+      "F4": 2,
+      "F5": 2,
+      "F6": 10,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 5,
+      "S4": 8,
+      "S5": 27,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E2": 2,
+      "E3": 4,
+      "E4": 34,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 27,
+      "L3": 13
+    },
+    "signal_alignment_distribution": {
+      "aligned": 40,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "deanmills1987_bupa_w050",
+        "video_id": "deanmills1987_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern that the support section lacks sufficient information and guidance for new users of assistive technology, despite recognizing it as accessible overall.",
+        "observed_signal": "Participant reviewed the support section, noted labeling and guidance gaps, and stated that new assistive tech users would find the experience confusing.",
+        "stated_signal": "I'm quite an advanced advanced user of assistive tech, but I think for a new person that will throw them off a lot. I think it needs a lot more information. About what is successful and how to change things that don't work.",
+        "rationale": "The participant identified that the support section's content and instructions are not comprehensible enough for new assistive technology users. The stated concern about insufficient guidance on 'what is successful and how to change things that don't work' indicates F1 comprehension friction. This is a significant barrier for a key user cohort, matching S3 severity.",
+        "structural_amplification_note": "Assistive technology users, particularly those new to AT, would experience structurally amplified friction due to inadequate labeling, missing contextual information, and lack of clear procedural guidance in the support section."
+      },
+      {
+        "window_id": "deanmills1987_bupa_w053",
+        "video_id": "deanmills1987_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled to comprehend the insurance comparison table content, which was presented with fragmented, incoherent language and unclear column headings.",
+        "observed_signal": "Participant read aloud from the page but the reading output was garbled, with repeated partial words, truncated phrases ('Comprehensive column availability 2 Comprehensive comprehensive column'), and disjointed references to table columns and treatment options that did not form coherent meaning.",
+        "stated_signal": "So here is task number 7. the detailed tables, so they're asking me here to compare insurance plans tables.",
+        "rationale": "The participant's verbal output demonstrates inability to parse the comparison table structure coherently. The fragmented reading pattern (repeated 'comprehensive,' 'column,' 'comprehensive treatment') indicates confusion with the page content organization and labelling. This is comprehension friction stemming from unclear or poorly structured table presentation that blocked the participant's ability to extract meaningful information from the comparison interface.",
+        "structural_amplification_note": "If this participant uses a screen reader or other assistive technology, the fragmented table markup would amplify comprehension friction; the garbled output suggests possible accessibility labelling or semantic structure deficiencies in the table markup."
+      },
+      {
+        "window_id": "deanmills1987_bupa_w057",
+        "video_id": "deanmills1987_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed lack of confidence to make a decision due to insufficient clarity on plan differences, ending with more questions than answers.",
+        "observed_signal": "Participant stated uncertainty about what each plan contains and what is included in each option, indicating incomplete task readiness.",
+        "stated_signal": "No. enoughfidence to make a decision. What do you find yourself with more questions than answers. I'm honestly question more thinking, well, what is each plan got?",
+        "rationale": "Participant explicitly stated lack of confidence and inability to make a decision due to unclear information about plan contents. The stated cognitive friction ('more questions than answers') combined with expressed uncertainty aligns with F2 (confidence friction about what to do next). This represents a significant barrier to the component outcome of comparing options, scoring S3 (significant component failure).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "deanmills1987_bupa_w058",
+        "video_id": "deanmills1987_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to use an AI comparison feature as a workaround but indicated it was not the intended method for completing the task.",
+        "observed_signal": "Participant decided to use an AI feature to break down and compare different plans and their offerings, stating this wasn't really what they wanted to do but wanted to show it was possible.",
+        "stated_signal": "I want to show you the fact that I can do this. Give me a select. Break up uh different different uh and what they offer.",
+        "rationale": "The participant could not find an intuitive pathway to compare plan options directly and resorted to an external AI feature as a workaround. This indicates the required comparison functionality or clear information pathway was not readily located within the normal interface flow, forcing a detour to an alternative method.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "deanmills1987_bupa_w082",
+        "video_id": "deanmills1987_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed significant concern about the appointment cost and appeared reluctant to proceed with payment.",
+        "observed_signal": "Participant stated unwillingness to pay the quoted price and expressed doubt about proceeding, though continued to review the form.",
+        "stated_signal": "I'm not paying £900 for an appointment.",
+        "rationale": "The participant encountered an unexpectedly high cost at the payment step, which created significant friction and negative emotion. While not a complete task blocker, the £900 price was a substantial barrier that the participant explicitly rejected, fitting S3 severe friction with strong negative sentiment.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 41 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=5, S4=8, S5=27, S6=1. Representative findings: Participant expressed concern that the support section lacks sufficient information and guidance for new users of assistive technology, despite recognizing it as accessible overall. | Participant struggled to comprehend the insurance comparison table content, which was presented with fragmented, incoherent language and unclear column headings. | Participant expressed lack of confidence to make a decision due to insufficient clarity on plan differences, ending with more questions than answers.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 41 findings spanning 7 distinct friction types (F1,F6,F2,F3,F4,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F2,F3,F4,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=41 findings across 7 distinct friction types (F1=18, F6=10, F2=4, F3=4, F4=2, F5=2, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

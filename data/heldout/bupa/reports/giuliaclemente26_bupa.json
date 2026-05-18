@@ -1,0 +1,205 @@
+{
+  "video_id": "giuliaclemente26_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "giuliaclemente26",
+  "total_windows": 48,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 51,
+    "by_friction_type": {
+      "F1": 24,
+      "F2": 10,
+      "F3": 2,
+      "F5": 6,
+      "F6": 7,
+      "F7": 2
+    },
+    "by_severity": {
+      "S3": 5,
+      "S4": 6,
+      "S5": 36,
+      "S6": 4
+    },
+    "by_sentiment": {
+      "E3": 5,
+      "E4": 46
+    },
+    "by_calibrator_score": {
+      "L1": 7,
+      "L2": 33,
+      "L3": 11
+    },
+    "signal_alignment_distribution": {
+      "aligned": 49,
+      "conflicted": 1,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "giuliaclemente26_bupa_w022",
+        "video_id": "giuliaclemente26_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that content boxes do not resize responsively when text overflows, causing layout and readability problems.",
+        "observed_signal": "Participant examined the page layout and pointed out that text overflows from content boxes.",
+        "stated_signal": "This text overflows. Um, yeah, OK, so all the content boxes are not responsive to the content inside them.",
+        "rationale": "The participant observed and articulated that content boxes fail to respond responsively to their content, causing text overflow. This is an unexpected behaviour—boxes should adapt to content. The participant's tone indicates concern and frustration about the design flaw and its potential impact on translations and future updates, matching significant component failure.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_bupa_w023",
+        "video_id": "giuliaclemente26_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that content boxes do not responsively adjust to their content, creating a structural design problem that would affect future text updates and translations.",
+        "observed_signal": "Participant analyzed the layout and articulated a specific technical concern about box responsiveness and flexibility.",
+        "stated_signal": "All the content boxes are not responsive to the content inside them. This could be an issue not only for translation but also for responsiveness. If you update the text for some reason, it would be nice if the box will be a flex box and so it would adjust.",
+        "rationale": "The participant observed and stated a clear accessibility and responsive design failure: content boxes do not flex or adapt to content changes. This is an accessibility friction issue (F3) because inflexible layouts can severely impact usability across viewport sizes, text scaling, and translation scenarios. The participant's tone reflects concern and frustration, indicating recognition of a significant barrier.",
+        "structural_amplification_note": "This issue would be structurally amplified for users relying on text scaling, zoom, or assistive technologies that change content flow."
+      },
+      {
+        "window_id": "giuliaclemente26_bupa_w023",
+        "video_id": "giuliaclemente26_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant requested specific scenario-based examples to understand coverage details but was unable to locate or receive this information from the current interface.",
+        "observed_signal": "Participant asked for clarification by requesting specific examples (e.g., shoulder injury from volleyball) to understand what is covered under different plan options, indicating the existing interface did not provide this level of specificity.",
+        "stated_signal": "I think I will need to know more and I will need more specific examples. Probably a scenario like let's say I injured my shoulder playing volleyball, um, if I have this first cover option. What is covered? If I have the 2nd 1, what is covered?",
+        "rationale": "The participant actively searched for scenario-based information to understand coverage but could not find it in the current presentation. They expressed the need for specific examples rather than generic descriptions, indicating the required information pathway or content depth is not available or not discoverable. This is F6 (Content Not Found) because the participant needed clarification that the interface did not adequately provide.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_bupa_w034",
+        "video_id": "giuliaclemente26_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration about the overall complexity and opacity of health insurance information and processes, stating they cannot understand why it is so difficult to get clear information despite having a master's degree.",
+        "observed_signal": "Participant verbally articulated confusion and frustration about health insurance terminology (health insurance vs. diagnostic insurance distinction) and the complexity of out-of-pocket determination processes.",
+        "stated_signal": "What's the difference? Like I mean, I have a master's degree. So, I have no idea. All OK. What I don't understand of whole health insurances is why it is so hard. To have information, to have clear information, I don't know. I don't understand. ... why? I don't know. That's why I'm like.",
+        "rationale": "The participant explicitly stated inability to understand core health insurance concepts (terminology distinctions) and the broader system logic, despite high educational attainment. The stated confusion and frustration align with observed hesitation and repeated expressions of not understanding. This represents significant comprehension friction due to jargon, unclear language, and complex terminology within the health insurance domain.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_bupa_w041",
+        "video_id": "giuliaclemente26_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the appointment booking pathway and explicitly stated inability to find it.",
+        "observed_signal": "Participant reviewed the contact page layout and was unable to identify where to make an appointment.",
+        "stated_signal": "What if I want to make an appointment. I don't find it. I don't find where to make an appointment.",
+        "rationale": "The participant explicitly stated inability to find the appointment booking function twice, indicating a content not found barrier. The repeated statement and observed failure to locate the pathway show significant friction with a component task (appointment making) that could not be completed during this window, matching S3 and L3 gates.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 51 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=5, S4=6, S5=36, S6=4. Representative findings: Participant identified that content boxes do not resize responsively when text overflows, causing layout and readability problems. | Participant identified that content boxes do not responsively adjust to their content, creating a structural design problem that would affect future text updates and translations. | Participant requested specific scenario-based examples to understand coverage details but was unable to locate or receive this information from the current interface.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 51 findings spanning 6 distinct friction types (F1,F2,F6,F5,F3,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F6,F5,F3,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=51 findings across 6 distinct friction types (F1=24, F2=10, F6=7, F5=6, F3=2, F7=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

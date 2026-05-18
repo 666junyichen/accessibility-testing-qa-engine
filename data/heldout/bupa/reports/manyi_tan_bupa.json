@@ -1,0 +1,127 @@
+{
+  "video_id": "manyi_tan_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "manyi_tan",
+  "total_windows": 12,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 2,
+    "by_friction_type": {
+      "F2": 1,
+      "F6": 1
+    },
+    "by_severity": {
+      "S5": 2
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 1
+    },
+    "by_calibrator_score": {
+      "L2": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 2
+    },
+    "top_severity": "S5",
+    "calibrator_aggregate": "L2",
+    "top_findings": [
+      {
+        "window_id": "manyi_tan_bupa_w002",
+        "video_id": "manyi_tan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "manyi_tan",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant had to search beyond the first page of Google results to find Bupa's website, indicating the product's discoverability was low relative to competitor offerings.",
+        "observed_signal": "Participant searched Google for insurance matching visa requirements, found more attractive competitor results on page 1 (12 weeks free offer), and had to go to page 2 to locate Bupa's website recommendation.",
+        "stated_signal": "The most eye-catching and attractive result was still the plan offering the 1st 12 weeks free. I didn't go beyond the second page. Took me 2 pages to find Buba's website recommendation.",
+        "rationale": "The participant explicitly stated that Bupa appeared on page 2 of search results after more eye-catching competitor offers on page 1. This represents a content discoverability issue where the product required extra effort to locate externally, though the participant ultimately found it and completed the search. The effort was noticeable but recoverable, matching S5 and L2.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "manyi_tan_bupa_w009",
+        "video_id": "manyi_tan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "manyi_tan",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about whether a search result (orthodontics) is available under the health insurance offering and decided to try a different keyword instead.",
+        "observed_signal": "Participant stated they should change keywords and suggested searching for another option rather than proceeding with the current result.",
+        "stated_signal": "Maybe this one is not. Not available for health insurance. Maybe when I'm like searching for the other one.",
+        "rationale": "The participant experienced wayfinding and decision uncertainty regarding whether a specific health service (orthodontics) is covered, leading them to pivot to a different search term. This is mild confusion with quick recovery and a viable workaround, matching S5 and L2 gates.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "adequate",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "acceptable recording with some findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    },
+    {
+      "category": "narration",
+      "title": "Narration could be more consistently explicit",
+      "summary": "The participant provided enough verbal content for analysis, but the session would benefit from more regular think-aloud narration.",
+      "advice": [
+        "Encourage the participant to briefly explain what they are noticing while moving through the task.",
+        "Prefer short, regular verbal updates instead of only commenting after an action is completed.",
+        "Use neutral prompts to invite process narration when long silent stretches appear."
+      ],
+      "trigger_field": "narration_quality",
+      "trigger_value": "adequate",
+      "priority": 1,
+      "evidence_note": "5.1-B marks narration as adequate but not rich.",
+      "tags": [
+        "narration",
+        "template",
+        "session-level"
+      ]
+    }
+  ]
+}

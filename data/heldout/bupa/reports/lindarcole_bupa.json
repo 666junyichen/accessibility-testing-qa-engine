@@ -1,0 +1,207 @@
+{
+  "video_id": "lindarcole_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "lindarcole",
+  "total_windows": 48,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 63,
+    "by_friction_type": {
+      "F1": 15,
+      "F2": 9,
+      "F3": 4,
+      "F4": 3,
+      "F5": 8,
+      "F6": 15,
+      "F7": 9
+    },
+    "by_severity": {
+      "S3": 6,
+      "S4": 7,
+      "S5": 45,
+      "S6": 5
+    },
+    "by_sentiment": {
+      "E2": 2,
+      "E3": 5,
+      "E4": 55,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 5,
+      "L2": 45,
+      "L3": 12,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 63
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "lindarcole_bupa_w044",
+        "video_id": "lindarcole_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to book an appointment online due to 'no appointments available within 28 days' and was directed to call instead, blocking self-service completion and prompting task abandonment.",
+        "observed_signal": "Participant progressed through the booking flow, discovered no available appointments, and encountered a 'call us to book' message.",
+        "stated_signal": "No appointments available within 28 days, few later dates, so that's quite a long way off. And it's taking what, ages to go through. Now it's saying call us to book. I would probably give up at this point, to be honest, to spend 1500 pounds to get an appointment. And I can't even book it online at a time and venue to suit me. So I would find that an absolute turn off to be honest.",
+        "rationale": "The participant followed the booking pathway but encountered a dead-end: no availability and forced phone booking. Both observed (escalation to phone call requirement) and stated signals (explicit 'I would give up' and 'absolute turn off') demonstrate severe friction that led to near-abandonment. The lack of self-service completion and the high cost barrier triggered strong negative emotion and withdrawal intent, fitting S3 and L4.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "lindarcole_bupa_w024",
+        "video_id": "lindarcole_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the website lacks a phone call option for accessibility support, noting this would be easier for people with visual differences.",
+        "observed_signal": "Participant audited the contact/support pathway and noted the absence of a phone contact option.",
+        "stated_signal": "Is there an option for people to call you because that might be easier for people with visual differences.",
+        "rationale": "The participant identified that a necessary accessibility pathway (phone support) is not available on the site. This is a significant barrier for users with visual impairments who may find alternative contact methods essential. The observation reflects an audit finding rather than a task completion failure, but represents a genuine content/pathway gap.",
+        "structural_amplification_note": "Users with visual impairments or blindness would experience structural friction from the absence of phone contact; this accessibility feature is foundational for equitable access."
+      },
+      {
+        "window_id": "lindarcole_bupa_w024",
+        "video_id": "lindarcole_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant noted that YouTube videos on the site have closed captions but lack the ability to turn off music, which limits accessibility for users with auditory sensitivity or hearing differences.",
+        "observed_signal": "Participant reviewed multimedia content and identified the missing feature to disable background music while retaining captions.",
+        "stated_signal": "While you've got YouTube videos, I'd love it to be possible to turn off the music in addition to having closed captions.",
+        "rationale": "The participant identified an accessibility gap in multimedia controls. The inability to independently control music and captions is a barrier for users with auditory processing sensitivities or hearing loss. This is a significant accessibility friction point that affects content usability.",
+        "structural_amplification_note": "Users with hearing loss, auditory processing disorder, or sensory sensitivities would experience structural friction from the inability to disable background music independently of captions."
+      },
+      {
+        "window_id": "lindarcole_bupa_w027",
+        "video_id": "lindarcole_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed disappointment that the cheaper pricing option is not available online, identifying this as a barrier that excludes people with hearing difficulties, anxiety, or speech difficulties who prefer not to use phone channels.",
+        "observed_signal": "Participant reviewed the pricing and availability information, then made an evaluative statement about the limitations of the online channel.",
+        "stated_signal": "I'm disappointed that your cheaper option is not available online because that immediately excludes people with hearing difficulties who are perhaps less keen on phone use. Immediately excludes those with anxiety or speech difficulties.",
+        "rationale": "The participant identified a pathway (affordable pricing) that is not available through the required channel (online), constituting a content/option not found barrier. The stated disappointment and explicit naming of excluded user cohorts demonstrate significant friction. This is a component failure (the cheaper option cannot be accessed online) that was not worked around but rather flagged as a design gap.",
+        "structural_amplification_note": "This barrier structurally amplifies friction for neurodivergent users (anxiety, speech difficulties) and Deaf/hard-of-hearing users who may have reduced access to synchronous phone communication or heightened anxiety around voice calls."
+      },
+      {
+        "window_id": "lindarcole_bupa_w033",
+        "video_id": "lindarcole_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the cheaper insurance option is not available online, which they perceive as excluding people with hearing difficulties, anxiety, or speech difficulties who prefer not to use phone channels.",
+        "observed_signal": "Participant stated dissatisfaction with the product limitation and articulated the accessibility and inclusion impact of the phone-only purchasing restriction for the cheaper option.",
+        "stated_signal": "I'm disappointed that your cheaper option is not available online because that immediately excludes people with hearing difficulties who are perhaps less keen on phone use. Immediately excludes those with anxiety or speech difficulties, um. That would be an immediate turn off for me.",
+        "rationale": "The participant cannot access the cheaper purchasing pathway through their preferred channel (online), which is a content/pathway availability problem. The stated disappointment and explicit identification of exclusion combined with the observation that this would be an 'immediate turn off' indicates significant friction that aligns with the L3 gate (significant component failure or barrier that may be worked around by selecting a different product tier).",
+        "structural_amplification_note": "This barrier structurally amplifies friction for Deaf/hard-of-hearing users, neurodivergent individuals (anxiety, speech difficulties), and others who rely on non-voice communication. The exclusion is not incidental but deliberate product design."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 63 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=6, S4=7, S5=45, S6=5. Representative findings: Participant identified that the website lacks a phone call option for accessibility support, noting this would be easier for people with visual differences. | Participant noted that YouTube videos on the site have closed captions but lack the ability to turn off music, which limits accessibility for users with auditory sensitivity or hearing differences. | Participant expressed disappointment that the cheaper pricing option is not available online, identifying this as a barrier that excludes people with hearing difficulties, anxiety, or speech difficulties who prefer not to use phone channels.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 63 findings spanning 7 distinct friction types (F1,F6,F2,F7,F5,F3,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F2,F7,F5,F3,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=63 findings across 7 distinct friction types (F1=15, F6=15, F2=9, F7=9, F5=8, F3=4, F4=3).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

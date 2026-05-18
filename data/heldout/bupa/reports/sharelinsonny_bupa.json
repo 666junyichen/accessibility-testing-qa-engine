@@ -1,0 +1,209 @@
+{
+  "video_id": "sharelinsonny_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "sharelinsonny",
+  "total_windows": 95,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 49,
+    "by_friction_type": {
+      "F1": 11,
+      "F2": 15,
+      "F3": 5,
+      "F5": 2,
+      "F6": 9,
+      "F7": 7
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 9,
+      "S4": 5,
+      "S5": 32,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 9,
+      "E4": 39
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 32,
+      "L3": 14,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 46,
+      "stated_missing": 3
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "sharelinsonny_bupa_w085",
+        "video_id": "sharelinsonny_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F5",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the task because the postcode field expected UK postcodes, which are incompatible with Australian addresses, and the participant had no valid postcode to enter.",
+        "observed_signal": "Participant stopped attempting to proceed and explicitly stated intention to cease the task.",
+        "stated_signal": "Why doesn't the postcode... probably because this is more power for UK and it's not for Australia, so I don't think... I'm going to stop from here because I couldn't do anything because I didn't know any posts for.",
+        "rationale": "The participant identified that the postcode field is region-locked to UK format, which creates an unexpected barrier for an Australian user. The participant explicitly abandoned the task, stating inability to proceed, which meets the S1 blocker gate (primary project outcome not achieved independently). Both observed abandonment and stated reasoning align on this blocking issue.",
+        "structural_amplification_note": "Participants accessing a health information website from Australia would structurally encounter this region mismatch, creating a hard barrier when no localization or region-detection is present."
+      },
+      {
+        "window_id": "sharelinsonny_bupa_w086",
+        "video_id": "sharelinsonny_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant stopped the task because they did not know which posts were relevant for their location (Australia) and could not proceed with booking.",
+        "observed_signal": "Participant halted the task and expressed inability to continue due to uncertainty about location-specific content availability.",
+        "stated_signal": "I couldn't do anything because I didn't know any posts for the UK. Since I'm based in Australia... I didn't know to put the um Waco is an Australia was good... I stopped.",
+        "rationale": "The participant could not locate or identify location-specific information needed to proceed with booking and explicitly stated they stopped the task as a result. The observed behaviour (task abandonment) and stated signal (inability to find relevant posts) both indicate that a required pathway was not accessible or discoverable, resulting in a component task blocker.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "sharelinsonny_bupa_w057",
+        "video_id": "sharelinsonny_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified absence of explanatory tooltips and feature clarifications in the health assessment comparison table as a missing feature needed to support decision-making.",
+        "observed_signal": "Participant reviewed the table and noted that while the side-by-side layout and clear presentation were positive, key information was missing.",
+        "stated_signal": "I think this table could be improved by adding simple explanation or tool tips for each feature and highlighting, especially, like, you know, highlighting key difference or recommended options.",
+        "rationale": "The participant could not locate detailed explanations, assessment descriptions, or recommended pathways within the table, forcing reliance on implicit understanding. While the participant did not abandon the task, the stated need for tooltips and explanations indicates that required supporting information was not found, representing content not found friction (F6) at a severe level.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "sharelinsonny_bupa_w058",
+        "video_id": "sharelinsonny_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F7",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the table requires significant cognitive effort to understand and lacks sufficient support features to enable confident plan selection.",
+        "observed_signal": "Participant reviewed the table and articulated multiple missing elements: explanations, tooltips, key difference highlighting, visual indicators, and summary guidance.",
+        "stated_signal": "This table could be improved by adding simple explanation or tool tips for each feature and highlighting key differences or recommended options. It's helpful as a starting point, but not enough on its own to conveniently make a decision. It still requires effort to fully understand.",
+        "rationale": "Both observed critique and stated feedback confirm that the comparison table imposes excessive cognitive load and lacks scaffolding features necessary for independent decision-making. The participant explicitly stated the effort required is a barrier to convenient use, and identified specific missing design elements (tooltips, visual hierarchy, summary). This constitutes significant component friction due to design deficiency.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "sharelinsonny_bupa_w062",
+        "video_id": "sharelinsonny_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed lack of confidence in choosing a plan due to unexplained health assessment terminology and missing details about test procedures and duration.",
+        "observed_signal": "Participant reviewed the table and articulated specific unanswered questions about what each assessment involves, how long it takes, and which is best for their health concern.",
+        "stated_signal": "I still wouldn't feel completely confident choosing a plan based on this. What does each assessment involve in detail and how long does it take and which one is best for my specific health concern?",
+        "rationale": "The participant stated that terms could be simplified or explained better and explicitly noted uncertainty about plan selection due to missing contextual information about assessments. This represents significant comprehension friction: the content is not sufficiently clear to support the decision-making task, even though the table layout improved readability.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 49 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=9, S4=5, S5=32, S6=1. Representative findings: Participant abandoned the task because the postcode field expected UK postcodes, which are incompatible with Australian addresses, and the participant had no valid postcode to enter. | Participant stopped the task because they did not know which posts were relevant for their location (Australia) and could not proceed with booking. | Participant identified absence of explanatory tooltips and feature clarifications in the health assessment comparison table as a missing feature needed to support decision-making.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 49 findings spanning 6 distinct friction types (F2,F1,F6,F7,F3,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F6,F7,F3,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=49 findings across 6 distinct friction types (F2=15, F1=11, F6=9, F7=7, F3=5, F5=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

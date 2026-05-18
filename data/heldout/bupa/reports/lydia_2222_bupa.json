@@ -1,0 +1,203 @@
+{
+  "video_id": "lydia_2222_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "lydia_2222",
+  "total_windows": 51,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 29,
+    "by_friction_type": {
+      "F1": 7,
+      "F2": 12,
+      "F4": 3,
+      "F5": 2,
+      "F6": 3,
+      "F7": 2
+    },
+    "by_severity": {
+      "S3": 1,
+      "S4": 2,
+      "S5": 25,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 11,
+      "E4": 18
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 26,
+      "L3": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 29
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "lydia_2222_bupa_w021",
+        "video_id": "lydia_2222_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lydia_2222",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a video playback error message and was unable to interact with video content as intended.",
+        "observed_signal": "Participant read aloud an error message stating 'the videos cannot be played. Please ensure you interact with videos and other content' and proceeded to navigate away from the video area.",
+        "stated_signal": "So, the videos cannot be played. Please ensure you interact with videos and other content, other content.",
+        "rationale": "The participant encountered a non-functional video feature with an error message, preventing interaction with that content modality. The participant acknowledged the error and worked around it by navigating to alternative content (mental health journey), indicating a significant component failure that was skipped rather than resolved.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "lydia_2222_bupa_w023",
+        "video_id": "lydia_2222_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lydia_2222",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant repeatedly searched for accessibility information or features on the website but could not locate them, despite multiple attempts.",
+        "observed_signal": "Participant searched for 'Accessibility' multiple times, expressed confusion about where to find accessibility features, and cycled through the site without successfully locating the information.",
+        "stated_signal": "I don't know, like, say what, how you help the this this Paralympics athletes, it will be, I think it's something that you can improve. This is not what I'm looking for. How can you find accessibility? I cannot easily let's see if there is accessibility here.",
+        "rationale": "The participant explicitly stated they were looking for accessibility information or features and repeated the search attempt at least three times without success. Both observed cycling behaviour and stated frustration ('This is not what I'm looking for', 'How can you find accessibility?') indicate significant friction in locating required content. The task outcome is at risk after multiple failed attempts.",
+        "structural_amplification_note": "The participant noted they do not usually use accessibility accommodations, yet the website lacks visible or easily discoverable accessibility information, which may amplify friction for users seeking to understand support options or accommodate specific needs."
+      },
+      {
+        "window_id": "lydia_2222_bupa_w024",
+        "video_id": "lydia_2222_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lydia_2222",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not easily locate the accessibility feature on the Bupa homepage and expressed frustration that it was buried rather than prominently placed.",
+        "observed_signal": "Participant searched for accessibility on the homepage, struggled to find it, then located an accessibility statement link but continued to express dissatisfaction with its placement.",
+        "stated_signal": "So it is not easy to find accessibility on the Bupa homepage. Oh, this is bad, I think, how about people who need accessibility? OK, I can't find it. You've seen it on the website, it will be good if you put this on top of the website, so it's easier for people who need it. I don't want to see your statement, I want to see this on, like on the first page, like on the homepage.",
+        "rationale": "The participant explicitly stated inability to find accessibility ('I can't find it') and observed frustration about poor discoverability. The stated concern about placement and accessibility for users who need it, combined with the search behaviour, indicates significant friction in content location. The participant did eventually locate an accessibility statement but criticized its visibility and placement, matching the L3 gate (significant component failure or barrier worked around).",
+        "structural_amplification_note": "For users with accessibility needs, the poor discoverability of accessibility features on the homepage creates a compounded barrier; users seeking assistance are forced to search rather than encountering help prominently."
+      },
+      {
+        "window_id": "lydia_2222_bupa_w001",
+        "video_id": "lydia_2222_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lydia_2222",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about which option to select from multiple pathways and cycled through several navigation attempts before committing to a choice.",
+        "observed_signal": "Participant said 'let's go back', then tried 'healthcare', then 'hospitals and extra', then questioned 'What is this?' and tried another option ('Health insurance compare policy'), suggesting multiple failed or uncertain navigation attempts.",
+        "stated_signal": "Let's go back, uh, the one that caught my eyes is the one that's a cheap private health insurance and more. What is this?",
+        "rationale": "The participant demonstrated wayfinding uncertainty by reversing direction multiple times and questioning what options were ('What is this?'), indicating confusion about the correct pathway. However, the participant continued exploring and eventually selected an option, suggesting recovery without full blockage. This matches medium-friction wayfinding with non-optimal navigation.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "lydia_2222_bupa_w003",
+        "video_id": "lydia_2222_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lydia_2222",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about which navigation path to choose between 'Browse A to Z' and 'Browse by health topic' before deciding on health topic navigation.",
+        "observed_signal": "Participant read through available options, paused, asked clarifying questions about what to search for, then deliberated between two browsing methods before selecting 'Browse by health topic'.",
+        "stated_signal": "I was going to click on browse by health topic, but when I go here, there is mental health here, so I think I want to look at mental health. I don't need to, I think if it is not under here, then you would browse by health topic. I think A to Z is too much, maybe health topic is, gives you something smaller.",
+        "rationale": "The participant stated explicit uncertainty about the best navigation path and deliberated between options before committing to a choice. Both observed hesitation and stated reasoning show wayfinding uncertainty, but the participant recovered quickly and made a decision without abandoning the task, matching the S5/L2 gate for noticeable but recoverable friction.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 29 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=1, S4=2, S5=25, S6=1. Representative findings: Participant encountered a video playback error message and was unable to interact with video content as intended. | Participant repeatedly searched for accessibility information or features on the website but could not locate them, despite multiple attempts. | Participant could not easily locate the accessibility feature on the Bupa homepage and expressed frustration that it was buried rather than prominently placed.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 29 findings spanning 6 distinct friction types (F2,F1,F4,F6,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F4 Unresponsive) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F4,F6,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=29 findings across 6 distinct friction types (F2=12, F1=7, F4=3, F6=3, F5=2, F7=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "video_id": "olekwane_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "olekwane",
+  "total_windows": 112,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 106,
+    "by_friction_type": {
+      "F1": 37,
+      "F2": 12,
+      "F3": 24,
+      "F4": 4,
+      "F5": 11,
+      "F6": 9,
+      "F7": 9
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 20,
+      "S4": 14,
+      "S5": 67,
+      "S6": 4
+    },
+    "by_sentiment": {
+      "E2": 2,
+      "E3": 6,
+      "E4": 91,
+      "E5": 7
+    },
+    "by_calibrator_score": {
+      "L1": 5,
+      "L2": 66,
+      "L3": 32,
+      "L4": 2,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 101,
+      "stated_missing": 5
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "olekwane_bupa_w002",
+        "video_id": "olekwane_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F2",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed dissatisfaction with pricing and decided to abandon the product in favor of a competitor.",
+        "observed_signal": "Participant stated intention to leave the Bupa website and use Gemini instead, citing a pricing concern.",
+        "stated_signal": "Claude is asking me to pay more money. So now I need to go to Gemini.",
+        "rationale": "The participant encountered a pricing barrier or request that triggered loss of confidence in the product pathway. The stated signal and observed behaviour both indicate the participant is abandoning the primary task on Bupa to seek information elsewhere. This is a project blocker because the participant did not complete the health insurance inquiry task on the assigned product.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "olekwane_bupa_w087",
+        "video_id": "olekwane_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed strong intent to abandon the website due to cumulative design and accessibility issues.",
+        "observed_signal": "Participant stated definitively they would not return to the website.",
+        "stated_signal": "Yeah, I'm not coming back here. It's as simple as that.",
+        "rationale": "The participant's repeated negative statements ('not enjoying this website', 'epic fail', 'not coming back') combined with accessibility barriers (color contrast, text size, image clarity) created cumulative friction that led to strong abandonment intent, indicating severe friction even though the participant did not formally abandon during this window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "olekwane_bupa_w091",
+        "video_id": "olekwane_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced accessibility friction from excessive color variance, inconsistent image styles, and high-contrast color combinations that caused visual discomfort and threatened task continuation.",
+        "observed_signal": "Participant remained on the page while expressing strong dissatisfaction with the visual design, color choices, and contrast levels, and stated intent to leave the website due to eyesight strain and migraine risk.",
+        "stated_signal": "The different color variances are too many. Just pick a standard 4 colors. If you're gonna use blue as your backdrop color, stick to blue. Why are we at black now? And now it's black against yellow. The blinding yellow of this brand is just not accessible. I really want to leave this website, cause it's not the sort of website I can spend a lot of time on just for my own eyesight. Blindingly bright contrasting colors are like an easy recipe towards a migraine.",
+        "rationale": "The participant explicitly identified multiple accessibility violations: inconsistent color palettes, mixed image styles, poor contrast combinations, and high visual brightness that triggered physiological discomfort. Both observed behaviour (continued presence despite stated desire to leave) and stated signals (strong negative emotion, migraine concern, intent to abandon) indicate significant accessibility barrier that substantially undermines usability. This meets S3 (significant component failure) and L4 (near-abandonment) severity.",
+        "structural_amplification_note": "This friction is structurally amplified for users with visual sensitivities, migraine conditions, colour blindness, or low vision. High-contrast, inconsistent colour schemes and blinding brightness are known accessibility violations that disproportionately impact these cohorts. The participant's physiological response (migraine risk) signals cumulative visual cognitive load that could be severe for users with preexisting visual or neurological conditions."
+      },
+      {
+        "window_id": "olekwane_bupa_w006",
+        "video_id": "olekwane_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not click the reject cookies button and was forced to accept cookies, which caused frustration and stated intent to abandon.",
+        "observed_signal": "Participant attempted to click the reject cookies option but the button did not respond to their clicks, leaving them unable to proceed without accepting.",
+        "stated_signal": "Oh, this is hard. It's not letting me reject cookies, which is not nice. I don't know why it's not letting me click that, but I can't click that. So something like this would actually put me off.",
+        "rationale": "The participant's observed inability to interact with the reject button combined with their stated frustration and explicit statement that this would put them off the product indicates a significant accessibility or interaction barrier. The unresponsive interface forced an unwanted outcome (cookie acceptance) and generated genuine negative emotion, matching S3 and L3 (significant friction with workaround or skipped component).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "olekwane_bupa_w044",
+        "video_id": "olekwane_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration that disability-related terminology is absent or avoided throughout the website content about athletes with disabilities, creating confusion about the site's messaging and inclusivity stance.",
+        "observed_signal": "Participant scrolled through multiple sections of the website and explicitly noted the absence of the word 'disability' despite the content being about disabled athletes (Paralympians). Participant then attempted to watch a video to clarify the site's intent.",
+        "stated_signal": "You're talking about athletes who have disabilities. And not once have you mentioned the word disability, and I'm almost at the bottom of your website. Are Paralympians not considered disabled? What are we Like why are we avoiding the word? It's not a bad word. And the fact that I've gone halfway through your website and the word disability hasn't showed up. It's a bit suspect for me.",
+        "rationale": "The participant clearly understood the website content but could not comprehend why disability terminology was being avoided when the subject matter directly relates to disability. The stated suspicion and frustration align with observed navigation behavior revealing a consistent gap in language and framing. This creates significant confusion about the site's messaging and inclusivity position, representing a comprehension barrier around content framing and terminology.",
+        "structural_amplification_note": "For disabled users or advocates, avoidance of disability terminology when discussing disabled athletes may amplify concerns about representation, authenticity, and whether the site genuinely centers disabled perspectives or is using euphemistic language that obscures disability identity."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 106 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S3=20, S4=14, S5=67, S6=4. Representative findings: Participant expressed dissatisfaction with pricing and decided to abandon the product in favor of a competitor. | Participant could not click the reject cookies button and was forced to accept cookies, which caused frustration and stated intent to abandon. | Participant expressed frustration that disability-related terminology is absent or avoided throughout the website content about athletes with disabilities, creating confusion about the site's messaging and inclusivity stance.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 106 findings spanning 7 distinct friction types (F1,F3,F2,F5,F6,F7,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F3 Accessibility, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F3,F2,F5,F6,F7,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=106 findings across 7 distinct friction types (F1=37, F3=24, F2=12, F5=11, F6=9, F7=9, F4=4).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

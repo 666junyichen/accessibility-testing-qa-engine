@@ -1,0 +1,206 @@
+{
+  "video_id": "matthew_mayston_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "matthew_mayston",
+  "total_windows": 41,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 41,
+    "by_friction_type": {
+      "F1": 11,
+      "F2": 9,
+      "F3": 2,
+      "F5": 4,
+      "F6": 12,
+      "F7": 3
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 2,
+      "S4": 1,
+      "S5": 32,
+      "S6": 5
+    },
+    "by_sentiment": {
+      "E3": 4,
+      "E4": 37
+    },
+    "by_calibrator_score": {
+      "L1": 6,
+      "L2": 31,
+      "L3": 3,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 38,
+      "stated_missing": 3
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "matthew_mayston_bupa_w018",
+        "video_id": "matthew_mayston_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the required information page after multiple search attempts and decided to abandon the search and return to the task page.",
+        "observed_signal": "Participant searched using 'CS', then searched 'helping support', reviewed results, stated inability to find the target page, and decided to go back to the task page.",
+        "stated_signal": "I'm not sure this is what I want, so I'm going to go back and try again. I can't actually find the er page that I was looking for.",
+        "rationale": "The participant made two distinct search attempts, both yielded results the participant explicitly rejected as not matching what was needed. The stated inability to find the target page combined with the decision to abandon and restart indicates the component task of locating the specific page was blocked, requiring external intervention (returning to task page). This matches S2 (overall outcome may still be achieved but this specific component task is completely blocked) and L4 (near-abandonment).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston_bupa_w012",
+        "video_id": "matthew_mayston_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that some definition links do not work as expected, leading to incorrect pages or dead ends instead of definitions.",
+        "observed_signal": "Participant clicked on definition links and found they either brought to basic health information or led nowhere.",
+        "stated_signal": "Some of them don't work, particularly er this word here, just brings you to the basic health information rather than to a definition. And if I scroll down to the bottom. If I go down to the bottom, this one. Uh, doesn't lead to anything, and also this one about preventing constipation doesn't lead anywhere.",
+        "rationale": "The participant explicitly identified multiple definition links that behave unexpectedly—some redirect to wrong content, others are dead ends. This is unexpected interface behaviour rather than working as labelled. The participant tested multiple instances and discovered a pattern of failure, indicating significant friction in a component feature.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston_bupa_w020",
+        "video_id": "matthew_mayston_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant identified a gap in accessibility support for nonverbal autistic users, indicating that current service accommodations do not fully address neurodivergent needs.",
+        "observed_signal": "Participant reviewed the accessibility and services pages, praised multiple accommodations (remote appointments, language support, hearing accommodations), but then stated concern about nonverbal autistic persons not being adequately served.",
+        "stated_signal": "However, I feel that if someone was a non, a nonverbal autistic person.",
+        "rationale": "The participant's statement trails off but clearly signals that a specific accessibility pathway or service option for nonverbal autistic individuals is missing or unclear from the website. This is a content gap that represents a significant barrier for a specific user cohort, meeting S3 (significant component failure or barrier skipped).",
+        "structural_amplification_note": "Neurodivergent users, particularly nonspeaking or minimally speaking autistic individuals, experience structurally higher friction when communication accommodations are not explicitly visible or available; the absence of this pathway is a material gap in the service design."
+      },
+      {
+        "window_id": "matthew_mayston_bupa_w025",
+        "video_id": "matthew_mayston_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the comparison interface confusing because it only allows selecting 2–3 options to compare from 6 available, rather than displaying all 6 options simultaneously.",
+        "observed_signal": "Participant navigated to the compare health assessments page, reviewed the table of 6 options with ticks and crosses, and expressed confusion about the limited selection mechanism.",
+        "stated_signal": "You seem to only be able to guess the have the two options to compare from, with only the option of adding an additional third option, whereas I was expecting to have all 6 of them together and I feel that that would be much easier to compare the different types of care.",
+        "rationale": "The participant stated clear wayfinding and expectation friction: the interface design (forced selection of 2–3 from 6) contradicted the expected pattern (viewing all 6 simultaneously). The participant completed the task but expressed frustration about a non-optimal path and the need to 'pick and choose,' indicating significant friction and material slowdown.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston_bupa_w006",
+        "video_id": "matthew_mayston_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the 'Be ahead and be reassured' messaging confusing and unclear without prior membership context.",
+        "observed_signal": "Participant read through the page content and explicitly stated confusion about the messaging, noting it would not be good for first-time users.",
+        "stated_signal": "Be ahead and be reassured, it doesn't really seem to fit and it, I find that a bit confusing. And so you'd need to have already be a booth member to understand what they mean by that. And so it wouldn't be very good for first time users.",
+        "rationale": "The participant explicitly stated confusion about unclear messaging that requires prior knowledge to understand. The friction is comprehension-related; the participant identified a barrier to first-time user understanding but continued through the page without task abandonment, matching S5 and L2 gates.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 41 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=2, S4=1, S5=32, S6=5. Representative findings: Participant could not locate the required information page after multiple search attempts and decided to abandon the search and return to the task page. | Participant discovered that some definition links do not work as expected, leading to incorrect pages or dead ends instead of definitions. | Participant identified a gap in accessibility support for nonverbal autistic users, indicating that current service accommodations do not fully address neurodivergent needs.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 41 findings spanning 6 distinct friction types (F6,F1,F2,F5,F7,F3). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F1 Comprehension, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F1,F2,F5,F7,F3",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=41 findings across 6 distinct friction types (F6=12, F1=11, F2=9, F5=4, F7=3, F3=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

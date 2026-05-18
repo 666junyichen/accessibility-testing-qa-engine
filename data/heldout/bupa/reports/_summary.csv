@@ -1,0 +1,22 @@
+video_id,tester,project,windows,duration_s,l1_total,l1_duration_anomaly,l2_coverage,l3_findings,top_severity,narration,recording,tier,reason,coach_recs
+allenabegum123_bupa,allenabegum123,web-health-information-bupa,79,0,0,False,0.0,32,S2,sparse,poor,poor,recording unusable,3
+chiomaenenmoh_bupa,chiomaenenmoh,web-health-information-bupa,107,0,0,False,0.0,63,S3,rich,good,acceptable,multiple medium-severity findings,2
+daniellepaigejones07_bupa,daniellepaigejones07,web-health-information-bupa,96,0,0,False,0.0,64,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+deanmills1987_bupa,deanmills1987,web-health-information-bupa,85,0,0,False,0.0,41,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+dsouza_annabelle_bupa,dsouza_annabelle,web-health-information-bupa,61,0,0,False,0.0,27,S3,rich,good,acceptable,multiple medium-severity findings,2
+gameoverdan_bupa,gameoverdan,web-health-information-bupa,68,0,0,False,0.0,44,S3,rich,good,acceptable,multiple medium-severity findings,2
+ghum_bupa,ghum,web-health-information-bupa,71,0,0,False,0.0,61,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+giuliaclemente26_bupa,giuliaclemente26,web-health-information-bupa,48,0,0,False,0.0,51,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+gracieha22_bupa,gracieha22,web-health-information-bupa,28,0,0,False,0.0,18,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+iakhtar1_bupa,iakhtar1,web-health-information-bupa,92,0,0,False,0.0,96,S2,rich,good,poor,task-blocking friction: S1/S2 present,2
+jadesharp92_bupa,jadesharp92,web-health-information-bupa,75,0,0,False,0.0,25,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+laurenrosemetzler_bupa,laurenrosemetzler,web-health-information-bupa,72,0,0,False,0.0,31,S3,rich,good,acceptable,multiple medium-severity findings,1
+lindarcole_bupa,lindarcole,web-health-information-bupa,48,0,0,False,0.0,63,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+lydia_2222_bupa,lydia_2222,web-health-information-bupa,51,0,0,False,0.0,29,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+manyi_tan_bupa,manyi_tan,web-health-information-bupa,12,0,0,False,0.0,2,S5,adequate,acceptable,acceptable,acceptable recording with some findings,2
+margieflint_bupa,margieflint,web-health-information-bupa,81,0,0,False,0.0,78,S2,rich,good,poor,task-blocking friction: S1/S2 present,2
+matthew_mayston_bupa,matthew_mayston,web-health-information-bupa,41,0,0,False,0.0,41,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+olekwane_bupa,olekwane,web-health-information-bupa,112,0,0,False,0.0,106,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+ripabegum_bupa,ripabegum,web-health-information-bupa,27,0,0,False,0.0,18,S3,rich,acceptable,acceptable,multiple medium-severity findings,3
+sharelinsonny_bupa,sharelinsonny,web-health-information-bupa,95,0,0,False,0.0,49,S1,rich,acceptable,poor,task-blocking friction: S1/S2 present,3
+terryaflint17_bupa,terryaflint17,web-health-information-bupa,112,0,0,False,0.0,24,S2,rich,acceptable,poor,task-blocking friction: S1/S2 present,3

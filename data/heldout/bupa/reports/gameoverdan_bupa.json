@@ -1,0 +1,185 @@
+{
+  "video_id": "gameoverdan_bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "gameoverdan",
+  "total_windows": 68,
+  "duration_sec": 0.0,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 44,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 5,
+      "F3": 20,
+      "F5": 5,
+      "F6": 8
+    },
+    "by_severity": {
+      "S3": 8,
+      "S4": 11,
+      "S5": 22,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 5,
+      "E4": 36,
+      "E5": 2
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 22,
+      "L3": 18
+    },
+    "signal_alignment_distribution": {
+      "aligned": 44
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "gameoverdan_bupa_w032",
+        "video_id": "gameoverdan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility menu on the Bupa homepage despite searching multiple navigation areas, and noted that accessibility features should be immediately visible and not hidden.",
+        "observed_signal": "Participant searched the homepage for an accessibility menu, checking the hamburger menu area, care home section, dental health, scripts, health service, Bupa login, and help and support—all unsuccessful searches.",
+        "stated_signal": "There should be an accessibility menu which I haven't seen so far, which is already I would consider a fail. If you're going to have accessibility issue, if you're gonna have something for accessibility, it should be right there and upfront so that it's not hidden, you should be able to turn it on from the home page so that it becomes immediately accessible.",
+        "rationale": "The participant explicitly stated the accessibility menu was not found and characterized this as a design failure. The observed behaviour confirms a systematic search across multiple navigation areas without success. This is a significant component barrier for an accessibility task, matching S3 and L3 (significant friction with repeated unsuccessful attempts).",
+        "structural_amplification_note": "For users reliant on accessibility features, the absence of an upfront accessibility menu is a structural barrier that prevents independent access to tools designed to help them."
+      },
+      {
+        "window_id": "gameoverdan_bupa_w033",
+        "video_id": "gameoverdan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility link or feature on the website and expressed frustration that it appears to be missing or hidden.",
+        "observed_signal": "Participant searched through multiple menu sections (accessibility, health insurance, cash assessments, mental health, dental) looking for an accessibility option, then stated the accessibility feature is not there or hidden by dark reader.",
+        "stated_signal": "No, that is not. Yeah, OK, so already, um, the biggest problem, look, it's, it's not a bad website straight off the bat, don't get me wrong, um, but the fact that there's no accessibility, Um Is that or if it's hidden by a dark reader.",
+        "rationale": "The participant systematically searched for an accessibility link or feature across multiple sections of the site and could not find it. Both the observed search pattern and the stated concern ('there's no accessibility') indicate the participant could not locate required accessibility functionality. The participant characterized this as 'the biggest problem' with the website, indicating significant friction that was worked around rather than resolved.",
+        "structural_amplification_note": "For users relying on accessibility features (keyboard navigation, screen readers, dark reader mode), the absence or poor visibility of accessibility controls creates structurally amplified friction, as these users cannot proceed without finding these controls."
+      },
+      {
+        "window_id": "gameoverdan_bupa_w034",
+        "video_id": "gameoverdan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot read content on the page due to white background interfering with Dark Reader, preventing access to information.",
+        "observed_signal": "Participant stated inability to read anything with the white background and described the situation as something blocking their view of content.",
+        "stated_signal": "I can't actually read anything with the white background so we're just kinda looking for what wasn't there before.",
+        "rationale": "The participant is using assistive technology (Dark Reader) and reports complete inability to read page content due to colour contrast or display settings. This is an accessibility friction event where the interface does not work correctly with the assistive tool. The participant expresses frustration and describes it as a significant barrier ('a bit ironic'), indicating severe friction that requires workaround or navigation around the affected content.",
+        "structural_amplification_note": "Assistive-technology user (Dark Reader) experiencing structural amplification due to insufficient contrast or incompatibility between white background and Dark Reader overlay, creating a complete content visibility barrier."
+      },
+      {
+        "window_id": "gameoverdan_bupa_w035",
+        "video_id": "gameoverdan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that contrast level tick marks are too light and hard to see, contradicting the accessibility statement's claim of high contrast.",
+        "observed_signal": "Participant examined the accessibility statement, noted the tick marks next to contrast level claims, tested toggling the contrast setting, and observed that the ticks remain difficult to perceive even after changing settings.",
+        "stated_signal": "Contrast levels, non-existent, they're not high contrast, this, these ticks. The fact uh so. Contrast levels and then you have this tick next to it, that's almost irony, these ticks are so light and hard to see and they're not actually a contrast.",
+        "rationale": "Both observed inspection and stated criticism reveal a genuine accessibility failure: visual indicators (ticks) meant to show contrast improvements are themselves insufficiently contrasty, creating a barrier for users who rely on visual cues or have low vision. This is a significant component failure in the accessibility feature itself, not a workaround-able issue.",
+        "structural_amplification_note": "Users with low vision, color blindness, or contrast sensitivity would experience heightened friction from light tick marks that fail to meet their own stated contrast criteria."
+      },
+      {
+        "window_id": "gameoverdan_bupa_w039",
+        "video_id": "gameoverdan_bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that the website lacks true accessibility features; high contrast mode is non-functional because text remains thin and unreadable against a white background.",
+        "observed_signal": "Participant activated browser high contrast mode and found the text still difficult to read due to thin font weight against white background.",
+        "stated_signal": "If it was truly accessible, I wouldn't have to use this. This website is horrendously bright. You have accessibility features on a white background which makes this writing here no longer accessible because it's thin and the white quickly overpowers it. You don't have a high contrast mode.",
+        "rationale": "The participant both observed and stated that accessibility features (high contrast mode) are ineffective due to poor contrast design: thin text on white background remains unreadable. This is a structural accessibility barrier that forces reliance on external workarounds and indicates significant component failure in the accessibility implementation.",
+        "structural_amplification_note": "Users with low vision or colour blindness experience structurally amplified friction from inadequate contrast ratios and non-functional high contrast implementations. The thin font weight compounds this for all users needing contrast support."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 44 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=8, S4=11, S5=22, S6=3. Representative findings: Participant was unable to find pricing information for the health plan option despite locating other details like coverage and waiting period. | Participant could not locate the accessibility menu on the Bupa homepage despite searching multiple navigation areas, and noted that accessibility features should be immediately visible and not hidden. | Participant could not locate the accessibility link or feature on the website and expressed frustration that it appears to be missing or hidden.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 44 findings spanning 5 distinct friction types (F3,F6,F1,F2,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F3 (Accessibility) as the primary coaching anchor; secondary types (F6 Not Found, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F3,F6,F1,F2,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=44 findings across 5 distinct friction types (F3=20, F6=8, F1=6, F2=5, F5=5).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}
