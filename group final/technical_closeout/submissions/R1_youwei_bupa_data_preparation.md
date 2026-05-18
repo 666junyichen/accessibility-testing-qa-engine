@@ -15,12 +15,11 @@ The S3 collated Bupa scope contains 21 tester folders. Each visible tester folde
 ## Results
 
 - Bupa collated videos found: 21
-- AWS Transcribe jobs completed successfully: 20
-- AWS Transcribe failures / unable to process: 1
-- Failed tester/video: `manyi_tan`
-- Failure reason: AWS Transcribe submission reported that the configured source S3 URI did not point to an existing S3 object. This was left as unable to process per R1 decision.
+- AWS Transcribe jobs completed successfully: 21
+- AWS Transcribe failures / unable to process: 0
+- Correction: `manyi_tan` initially failed because the manifest used `3c9fbbce-ec6b-4f1a-99a7-ccd19fda82a1`; the live S3 key is `3c9fbbce-ec6b-4f1a-99a7-cdd19fda82a1`. The corrected job completed on 2026-05-16.
 
-All 20 available transcript JSON files were copied into the heldout output folder and validated locally by checking JSON load, `results`, transcript text, and word-level `items`.
+All 21 available transcript JSON files were copied into the heldout output folder and validated locally by checking JSON load, `results`, transcript text, and word-level `items`.
 
 ## Metadata Coverage
 
@@ -54,8 +53,7 @@ Detailed metadata gap table:
 - Transcript validation: `data/heldout/bupa/processed/transcript_validation.csv`
 - Metadata gaps: `data/heldout/bupa/processed/metadata_gaps.csv`
 - Heldout transcript JSON folder: `data/heldout/bupa/raw/transcribe-output/web-health-information-bupa/`
-- Original local synced transcript JSON folder: `data/raw/transcribe-output/web-health-information-bupa/`
 
 ## Notes
 
-The final heldout transcript folder contains 20 transcript JSON files. The missing transcript is `manyi_tan`, recorded explicitly as failed in both `manifest.csv` and `transcription_status.csv`.
+The final heldout transcript folder contains 21 transcript JSON files. No Bupa collated transcript is currently missing after the corrected `manyi_tan` run.
