@@ -65,7 +65,8 @@ Earlier R7 first-run note:
 
 After the corrected Bupa reports and processed CSVs are available:
 
-- R6 generates Bupa performance outputs.
+- R6 performance outputs have been generated in `data/heldout/bupa/performance/`.
+- R6 still needs to review/sign off the generated performance outputs.
 - R3 writes Bupa case studies.
 - R5 reviews Bupa coaching recommendations.
 - R8 writes the Bupa held-out evaluation summary.

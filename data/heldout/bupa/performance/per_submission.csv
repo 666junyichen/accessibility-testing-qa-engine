@@ -1,0 +1,22 @@
+video_id,tester_name,project,score,tier,raw_score,d1_narration,d2_friction_surfacing,d3_recording,cap_applied,cap_reasons,total_findings,total_windows,top_friction_types,calibrator_aggregate,calibrator_aggregate_mismatch_flag,low_evidence,cross_check_lane
+allenabegum123__web-health-information-bupa,allenabegum123,web-health-information-bupa,85.1,Leading,85.1,90.0,84.5,70.0,,,26,67,"F2,F1,F4",L2,False,False,with_overrides
+chiomaenenmoh__web-health-information-bupa,chiomaenenmoh,web-health-information-bupa,88.9,Leading,88.9,90.0,86.8,90.0,,,47,97,"F6,F1,F7",L2,False,False,with_overrides
+daniellepaigejones07__web-health-information-bupa,daniellepaigejones07,web-health-information-bupa,90.7,Leading,90.7,90.0,92.0,90.0,,,59,78,"F1,F3,F2",L2,False,False,with_overrides
+deanmills1987__web-health-information-bupa,deanmills1987,web-health-information-bupa,55.0,Developing,87.1,90.0,90.2,70.0,55.0,S1 project-level blocker present,36,71,"F1,F6,F3",L2,False,False,with_overrides
+dsouza_annabelle__web-health-information-bupa,dsouza_annabelle,web-health-information-bupa,87.9,Leading,87.9,90.0,84.1,90.0,,,20,55,"F5,F6,F3",L2,False,False,with_overrides
+gameoverdan__web-health-information-bupa,gameoverdan,web-health-information-bupa,55.0,Developing,91.5,90.0,94.4,90.0,55.0,S1 project-level blocker present,39,60,"F3,F6,F5",L2,False,False,with_overrides
+ghum__web-health-information-bupa,ghum,web-health-information-bupa,88.3,Leading,88.3,90.0,93.7,70.0,,,49,61,"F6,F2,F1",L2,False,False,with_overrides
+giuliaclemente26__web-health-information-bupa,giuliaclemente26,web-health-information-bupa,87.3,Leading,87.3,90.0,90.9,70.0,,,44,42,"F1,F2,F5",L2,False,False,with_overrides
+gracieha22__web-health-information-bupa,gracieha22,web-health-information-bupa,86.3,Leading,86.3,90.0,88.1,70.0,,,13,25,"F5,F2,F6",L2,False,False,with_overrides
+iakhtar1__web-health-information-bupa,iakhtar1,web-health-information-bupa,87.9,Leading,87.9,90.0,92.7,70.0,,,78,76,"F1,F2,F3",L2,False,False,with_overrides
+jadesharp92__web-health-information-bupa,jadesharp92,web-health-information-bupa,65.0,Developing,89.5,90.0,88.5,90.0,65.0,>=2 S2 task-blockers,26,59,"F3,F2,F1",L2,False,False,with_overrides
+laurenrosemetzler__web-health-information-bupa,laurenrosemetzler,web-health-information-bupa,88.2,Leading,88.2,90.0,84.9,90.0,,,25,61,"F1,F7,F2",L2,False,False,with_overrides
+lindarcole__web-health-information-bupa,lindarcole,web-health-information-bupa,90.5,Leading,90.5,90.0,91.5,90.0,,,53,40,"F6,F1,F2",L2,False,False,with_overrides
+lydia_2222__web-health-information-bupa,lydia_2222,web-health-information-bupa,87.5,Leading,87.5,90.0,91.4,70.0,,,28,45,"F2,F1,F6",L2,False,False,with_overrides
+manyi_tan__web-health-information-bupa,manyi_tan,web-health-information-bupa,76.4,Proficient,76.4,75.0,81.1,70.0,,,2,6,F6,L2,False,False,with_overrides
+margieflint__web-health-information-bupa,margieflint,web-health-information-bupa,90.4,Leading,90.4,90.0,91.2,90.0,,,67,72,"F1,F2,F6",L2,False,False,with_overrides
+matthew_mayston__web-health-information-bupa,matthew_mayston,web-health-information-bupa,87.1,Leading,87.1,90.0,90.3,70.0,,,36,35,"F6,F1,F2",L2,False,False,with_overrides
+olekwane__web-health-information-bupa,olekwane,web-health-information-bupa,55.0,Developing,91.2,90.0,93.4,90.0,55.0,S1 project-level blocker present,82,97,"F1,F3,F2",L2,False,False,with_overrides
+ripabegum__web-health-information-bupa,ripabegum,web-health-information-bupa,88.1,Leading,88.1,90.0,93.2,70.0,,,19,24,"F1,F6,F2",L2,False,False,with_overrides
+sharelinsonny__web-health-information-bupa,sharelinsonny,web-health-information-bupa,55.0,Developing,87.4,90.0,91.1,70.0,55.0,S1 project-level blocker present,46,82,"F1,F2,F6",L2,False,False,with_overrides
+terryaflint17__web-health-information-bupa,terryaflint17,web-health-information-bupa,82.5,Proficient,82.5,90.0,77.2,70.0,,,18,99,"F1,F6,F2",L2,False,False,with_overrides

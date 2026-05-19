@@ -1,0 +1,22 @@
+tester_name,submission_count,submission_count_scored,score,tier,direction,delta_first_to_last,submission_video_ids,submission_scores,submission_tiers,persistent_friction_types,sentiment_distribution,calibrator_aggregate_mismatch_count,projects,cross_check_lanes,ordering_basis
+allenabegum123,1,1,85.1,Leading,,,allenabegum123__web-health-information-bupa,85.1,Leading,,"{""E3"": 9, ""E4"": 16}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+chiomaenenmoh,1,1,88.9,Leading,,,chiomaenenmoh__web-health-information-bupa,88.9,Leading,,"{""E2"": 2, ""E3"": 10, ""E4"": 35}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+daniellepaigejones07,1,1,90.7,Leading,,,daniellepaigejones07__web-health-information-bupa,90.7,Leading,,"{""E2"": 1, ""E3"": 5, ""E4"": 52, ""E5"": 1}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+deanmills1987,1,1,55.0,Developing,,,deanmills1987__web-health-information-bupa,55.0,Developing,,"{""E2"": 3, ""E3"": 1, ""E4"": 31, ""E5"": 1}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+dsouza_annabelle,1,1,87.9,Leading,,,dsouza_annabelle__web-health-information-bupa,87.9,Leading,,"{""E3"": 1, ""E4"": 19}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+gameoverdan,1,1,55.0,Developing,,,gameoverdan__web-health-information-bupa,55.0,Developing,,"{""E2"": 1, ""E3"": 3, ""E4"": 33, ""E5"": 2}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+ghum,1,1,88.3,Leading,,,ghum__web-health-information-bupa,88.3,Leading,,"{""E3"": 7, ""E4"": 42}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+giuliaclemente26,1,1,87.3,Leading,,,giuliaclemente26__web-health-information-bupa,87.3,Leading,,"{""E3"": 5, ""E4"": 39}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+gracieha22,1,1,86.3,Leading,,,gracieha22__web-health-information-bupa,86.3,Leading,,"{""E3"": 1, ""E4"": 12}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+iakhtar1,1,1,87.9,Leading,,,iakhtar1__web-health-information-bupa,87.9,Leading,,"{""E2"": 3, ""E3"": 12, ""E4"": 63}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+jadesharp92,1,1,65.0,Developing,,,jadesharp92__web-health-information-bupa,65.0,Developing,,"{""E2"": 1, ""E3"": 6, ""E4"": 19}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+laurenrosemetzler,1,1,88.2,Leading,,,laurenrosemetzler__web-health-information-bupa,88.2,Leading,,"{""E4"": 25}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+lindarcole,1,1,90.5,Leading,,,lindarcole__web-health-information-bupa,90.5,Leading,,"{""E2"": 1, ""E3"": 7, ""E4"": 44, ""E5"": 1}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+lydia_2222,1,1,87.5,Leading,,,lydia_2222__web-health-information-bupa,87.5,Leading,,"{""E3"": 7, ""E4"": 21}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+manyi_tan,1,1,76.4,Proficient,,,manyi_tan__web-health-information-bupa,76.4,Proficient,,"{""E3"": 1, ""E4"": 1}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+margieflint,1,1,90.4,Leading,,,margieflint__web-health-information-bupa,90.4,Leading,,"{""E2"": 1, ""E3"": 5, ""E4"": 61}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+matthew_mayston,1,1,87.1,Leading,,,matthew_mayston__web-health-information-bupa,87.1,Leading,,"{""E3"": 2, ""E4"": 34}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+olekwane,1,1,55.0,Developing,,,olekwane__web-health-information-bupa,55.0,Developing,,"{""E2"": 1, ""E3"": 10, ""E4"": 65, ""E5"": 6}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+ripabegum,1,1,88.1,Leading,,,ripabegum__web-health-information-bupa,88.1,Leading,,"{""E3"": 3, ""E4"": 16}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+sharelinsonny,1,1,55.0,Developing,,,sharelinsonny__web-health-information-bupa,55.0,Developing,,"{""E2"": 2, ""E3"": 6, ""E4"": 38}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
+terryaflint17,1,1,82.5,Proficient,,,terryaflint17__web-health-information-bupa,82.5,Proficient,,"{""E3"": 2, ""E4"": 16}",0,web-health-information-bupa,with_overrides,project_video_id_proxy
