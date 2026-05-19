@@ -1,0 +1,183 @@
+{
+  "video_id": "laurenrosemetzler__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "laurenrosemetzler",
+  "total_windows": 61,
+  "duration_sec": 4193.731999999999,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 25,
+    "by_friction_type": {
+      "F1": 7,
+      "F2": 5,
+      "F3": 1,
+      "F5": 2,
+      "F6": 4,
+      "F7": 6
+    },
+    "by_severity": {
+      "S3": 1,
+      "S4": 2,
+      "S5": 21,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E4": 25
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 21,
+      "L3": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 25
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "laurenrosemetzler__web-health-information-bupa_w060",
+        "video_id": "laurenrosemetzler__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant had significant difficulty locating the accordion section containing health assessments, which was positioned at the bottom of the page, and nearly abandoned the task thinking the wrong link had been sent.",
+        "observed_signal": "Participant searched for and struggled to find the accordion, reporting it was positioned far down the page.",
+        "stated_signal": "The accordion was really hard for me to find. It was all the way down at the bottom. Uh, I almost didn't find it, um, I thought maybe I'd been sent the wrong link.",
+        "rationale": "The participant explicitly stated difficulty finding the accordion and nearly abandoned the task, believing an error had occurred. The observed struggle to locate a key content section combined with near-abandonment represents significant component failure, matching the S3 gate and L3 calibrator (significant friction, multiple attempts, frustration).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler__web-health-information-bupa_w036",
+        "video_id": "laurenrosemetzler__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not consistently locate accessibility information through search and expressed frustration that the results were unpredictable and unhelpful.",
+        "observed_signal": "Participant used the search function, landed on an unexpected page, noted that search results differed from previous attempts, and found irrelevant results (e.g., 'Business mental health advantage') when looking for accessibility content.",
+        "stated_signal": "I don't know why it's landed me here. That's kind of annoying. Accessibility and additional support wasn't the first thing that popped up, it was something else. I'm actually finding it quite difficult to find anything on accessibility from the homepage.",
+        "rationale": "The participant explicitly stated difficulty finding accessibility information and demonstrated multiple failed search attempts with inconsistent, irrelevant results. Both observed behaviour (landing on wrong pages, receiving different results than expected) and stated frustration align to show significant content-location friction. The participant did not abandon the task but expressed clear annoyance and struggled across multiple attempts.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler__web-health-information-bupa_w060",
+        "video_id": "laurenrosemetzler__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that accordion-based interaction pattern for health assessments reduces discoverability and accessibility compared to tile-based layouts with icons.",
+        "observed_signal": "Participant suggested replacing accordions with tiles and icons, referencing the homepage layout as a more accessible alternative.",
+        "stated_signal": "I feel like these could be tiles with the icons, and then each section, and then book a health assessment as the call to action button with, uh, similar to the uh homepage, having the tiles means I don't have to click, you know, these accordions to, to hide and see the information that I'm looking for. Just make it easier, I think, and more accessible for me.",
+        "rationale": "The participant explicitly stated that accordions require excessive clicking and cognitive effort compared to a tile layout, and framed this as an accessibility barrier. The friction stems from the interaction pattern demanding unnecessary steps to reveal information that could be visible by default, matching F7 (excessive effort) and the S4/L3 gates (major difficulty causing material slowdown and frustration).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler__web-health-information-bupa_w004",
+        "video_id": "laurenrosemetzler__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about the complexity of the page layout and navigation options before proceeding with a search strategy.",
+        "observed_signal": "Participant paused after reading the page intro and stated the page seemed complex, then identified cancer as a clickable option and prepared to click on it.",
+        "stated_signal": "Seems a bit complex.",
+        "rationale": "The participant expressed hesitation about the page structure and navigation options ('Seems a bit complex'), indicating brief wayfinding uncertainty. However, the participant quickly identified a clear pathway (cancer information) and proceeded without becoming blocked or requiring assistance. This represents noticeable but recoverable friction with minimal impact on task progress.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler__web-health-information-bupa_w005",
+        "video_id": "laurenrosemetzler__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered uncertainty about whether embedded video content was playing and could not confirm its functionality.",
+        "observed_signal": "Participant paused mid-navigation, noted the presence of video content, expressed uncertainty about playback status, and then pivoted to a different pathway (different types of cancer link) rather than investigating further.",
+        "stated_signal": "Looks here like there's a video or something, but I'm not sure. If it's not playing, uh, I'm not really certain why it's not.",
+        "rationale": "The participant encountered a video element but was uncertain whether it was functioning or how to interact with it. The stated confusion and observed pivot to an alternative navigation path both indicate brief wayfinding friction. The participant recovered by choosing an alternative route and continued successfully, matching the S5/L2 gate for noticeable but quickly recoverable friction.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 25 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=1, S4=2, S5=21, S6=1. Representative findings: Participant had significant difficulty locating the accordion section containing health assessments, which was positioned at the bottom of the page, and nearly abandoned the task thinking the wrong link had been sent. | Participant could not consistently locate accessibility information through search and expressed frustration that the results were unpredictable and unhelpful. | Participant identified that accordion-based interaction pattern for health assessments reduces discoverability and accessibility compared to tile-based layouts with icons.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 25 findings spanning 6 distinct friction types (F1,F7,F2,F6,F5,F3). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F7 Excessive Effort, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F7,F2,F6,F5,F3",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=25 findings across 6 distinct friction types (F1=7, F7=6, F2=5, F6=4, F5=2, F3=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

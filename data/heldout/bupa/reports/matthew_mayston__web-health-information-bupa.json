@@ -1,0 +1,184 @@
+{
+  "video_id": "matthew_mayston__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "matthew_mayston",
+  "total_windows": 35,
+  "duration_sec": 2370.97,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 36,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 8,
+      "F3": 2,
+      "F5": 4,
+      "F6": 13,
+      "F7": 1
+    },
+    "by_severity": {
+      "S4": 2,
+      "S5": 33,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 34
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 33,
+      "L3": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 35,
+      "stated_missing": 1
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "matthew_mayston__web-health-information-bupa_w015",
+        "video_id": "matthew_mayston__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant performed multiple search attempts with different query terms but stated uncertainty about whether results matched the intended goal, requiring repeated restarts.",
+        "observed_signal": "Participant searched 'access', reviewed results (24 items shown), stated dissatisfaction, went back, retyped query, reviewed results again, stated continued uncertainty, then switched to searching 'helping support'.",
+        "stated_signal": "I'm not sure this is what I want, so I'm going to go back and try again. I don't think this is exactly what I was looking for for accessibility and additional support.",
+        "rationale": "The participant could not locate information matching their accessibility goal through search and explicitly stated uncertainty about result relevance. Multiple search restarts and query reformulations indicate significant difficulty finding the target content, though the participant continued attempting alternative pathways rather than abandoning the task entirely.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston__web-health-information-bupa_w025",
+        "video_id": "matthew_mayston__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant reported significant difficulty locating the accessibility page through both search and home page navigation.",
+        "observed_signal": "Participant described struggling to find the accessibility page by searching or browsing the home page.",
+        "stated_signal": "It was er very difficult to get to the accessibility page either by searching or looking at through the home.",
+        "rationale": "The participant explicitly stated difficulty finding the accessibility page through two primary navigation methods (search and home browsing). This is a content discovery friction event where the required information pathway was hard to locate, matching S4 (major difficulty that slows progress) and L3 (significant friction with multiple attempts or detours implied by trying two different approaches).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston__web-health-information-bupa_w002",
+        "video_id": "matthew_mayston__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the font size is too small and difficult to read, which impedes comfortable content consumption.",
+        "observed_signal": "Participant navigated to the treatment section, reviewed the content layout, and then stated a concern about font size.",
+        "stated_signal": "However, I do feel that it would be better to have the font slightly larger so that it'd be easier to read.",
+        "rationale": "The participant successfully navigated to and reviewed content but explicitly stated difficulty with font size readability. This is an accessibility friction issue affecting visual comfort and ease of reading. The participant did not abandon the task, indicating moderate but recoverable friction at the S5 level.",
+        "structural_amplification_note": "Font sizing is a critical accessibility requirement for users with low vision or visual sensitivity; small default fonts create structural barriers for this cohort."
+      },
+      {
+        "window_id": "matthew_mayston__web-health-information-bupa_w006",
+        "video_id": "matthew_mayston__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not understand what the house subscription icon represents without accompanying text.",
+        "observed_signal": "Participant viewed the 'what can we help you with today' section containing 6 boxes with icons and stated uncertainty about one specific icon's meaning.",
+        "stated_signal": "the house subscription one, if I saw that on its own, I wouldn't have any clue that that was for house subscription.",
+        "rationale": "The participant explicitly stated they could not understand what the house subscription icon meant without the label. This is a comprehension friction event tied to unclear iconography. The participant recovered by reading the accompanying text label, indicating brief hesitation without task blockage.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "matthew_mayston__web-health-information-bupa_w005",
+        "video_id": "matthew_mayston__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "matthew_mayston",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the messaging 'Be ahead and be reassured' confusing and unclear, noting it requires prior membership knowledge and would not work well for first-time users.",
+        "observed_signal": "Participant read the slogan aloud and explicitly stated confusion about its meaning and applicability to new users.",
+        "stated_signal": "Be ahead and be reassured, it doesn't really seem to fit and it, I find that a bit confusing. And so you'd need to have already be a booth member to understand what they mean by that. And so it wouldn't be very good for first time users.",
+        "rationale": "The participant could not understand the meaning of the slogan without prior context and explicitly stated confusion. This is a comprehension issue driven by unclear or jargon-heavy messaging that assumes existing membership knowledge. The participant recovered by analyzing the problem rather than being blocked, making this medium friction rather than severe.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 36 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=2, S5=33, S6=1. Representative findings: Participant performed multiple search attempts with different query terms but stated uncertainty about whether results matched the intended goal, requiring repeated restarts. | Participant reported significant difficulty locating the accessibility page through both search and home page navigation. | Participant identified that the font size is too small and difficult to read, which impedes comfortable content consumption.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

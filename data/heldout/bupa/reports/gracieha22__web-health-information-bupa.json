@@ -1,0 +1,183 @@
+{
+  "video_id": "gracieha22__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "gracieha22",
+  "total_windows": 25,
+  "duration_sec": 1612.5880000000002,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 13,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 2,
+      "F3": 1,
+      "F5": 6,
+      "F6": 2,
+      "F7": 1
+    },
+    "by_severity": {
+      "S4": 1,
+      "S5": 10,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 12
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 10,
+      "L3": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 13
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "gracieha22__web-health-information-bupa_w019",
+        "video_id": "gracieha22__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the color scheme inaccessible in dark mode and had to disable dark mode to read the page content properly.",
+        "observed_signal": "Participant stated the color combination was problematic, then disabled dark mode to improve readability.",
+        "stated_signal": "My dark mode does not like the color schemes, this is the worst combo of colors, um, we've, mustard yellow, as I say, or light blue... I'm just gonna turn this off so I can actually read this properly.",
+        "rationale": "The participant explicitly identified a contrast or color accessibility problem in dark mode that made content unreadable. They required a workaround (disabling dark mode) to proceed. This is accessibility friction with multiple failed attempts at normal use before recovery, matching S4 and L3.",
+        "structural_amplification_note": "Dark mode users experience structurally higher friction when color contrast and color scheme combinations are not tested across accessibility modes."
+      },
+      {
+        "window_id": "gracieha22__web-health-information-bupa_w008",
+        "video_id": "gracieha22__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unexpected ad element on the page and expressed confusion about its purpose and how to dismiss it.",
+        "observed_signal": "Participant paused navigation, questioned the presence of the ad, noted it was there, then asked how to remove it without completing that action.",
+        "stated_signal": "Oh, is this, why is this here? Um, oh, OK, um. Oh, OK, um, oh, OK, this is just access, there's an, there's that's an ad, OK, um. Self-help Um OK, that can go away. How do you get rid of?",
+        "rationale": "The participant observed an ad element that disrupted their navigation flow, questioned why it was present, and attempted to remove it. Both stated confusion and observed hesitation indicate unexpected interface behaviour that momentarily interrupted task flow but was recoverable; the participant did not abandon the task.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22__web-health-information-bupa_w010",
+        "video_id": "gracieha22__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to access or view video content and expressed confusion about how to enable it, attributing the issue to cookie settings.",
+        "observed_signal": "Participant clicked on a video, questioned whether it was a video, attempted to access a transcript instead, and ultimately could not proceed with video viewing.",
+        "stated_signal": "I struggle to hear people's voices in videos. I don't know how to change my cookies in order to watch it. I think that might be what's causing the issue.",
+        "rationale": "The participant encountered uncertainty about how to enable video playback and expressed confusion about the cause (cookies) but recovered by using the transcript alternative. The stated confusion and observable workaround behaviour both indicate wayfinding and confidence friction; the participant was able to continue via an alternative pathway, placing this at S5 (noticeable but recoverable).",
+        "structural_amplification_note": "Participants who rely on transcripts or have hearing difficulties may experience amplified friction when video accessibility settings are unclear or non-obvious."
+      },
+      {
+        "window_id": "gracieha22__web-health-information-bupa_w010",
+        "video_id": "gracieha22__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant accidentally changed a setting to 'reject' and did not know how to reverse the change.",
+        "observed_signal": "Participant stated they accidentally changed something to reject and expressed uncertainty about how to undo it.",
+        "stated_signal": "I don't know how to change it accidentally to reject, so I don't know how to change it.",
+        "rationale": "The participant experienced an unexpected or accidental state change and lacked clarity on how to reverse it. The stated confusion and recovery via transcript use indicate medium confidence friction; the participant did not appear to be fully blocked but expressed genuine uncertainty about the interface behaviour.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22__web-health-information-bupa_w012",
+        "video_id": "gracieha22__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected video playback to trigger cookie settings but instead had to navigate to a separate location, causing confusion about the interaction model.",
+        "observed_signal": "Participant pressed play on a video and then realized they needed to click elsewhere and navigate to another location to access cookie settings.",
+        "stated_signal": "I wish that if I pressed play it would pop up with the cookie settings, I didn't realize I had to click on there and go to another thing to watch, like actually click on it, so that was a bit um yeah. That was a bit annoying.",
+        "rationale": "The participant's stated expectation (play button triggers cookie settings popup) conflicted with the actual design (separate navigation required). The participant expressed annoyance and experienced a non-optimal path, but recovered and completed the action. This is a single instance of unexpected behaviour with brief frustration and quick recovery, fitting S5 and L2.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 13 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=1, S5=10, S6=2. Representative findings: Participant found the color scheme inaccessible in dark mode and had to disable dark mode to read the page content properly. | Participant encountered an unexpected ad element on the page and expressed confusion about its purpose and how to dismiss it. | Participant was unable to access or view video content and expressed confusion about how to enable it, attributing the issue to cookie settings.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

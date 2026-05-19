@@ -1,10 +1,10 @@
 # Technical Closeout - Bupa Held-out Run
 
-Date: 2026-05-18
+Date: 2026-05-19
 
 ## Current Status
 
-The project is in final technical closeout. The next blocking step is the corrected official Bupa held-out pipeline run.
+The project is in final technical closeout. The corrected official Bupa held-out pipeline run has been completed and committed-ready in held-out paths.
 
 Bupa scope is fixed at 21 collated videos. The earlier 42 count was 21 MP4 files plus 21 VTT sidecars.
 
@@ -23,13 +23,18 @@ Current lane/key status:
 - `web-health-information-bupa` maps to R6 `cross_check_lane=with_overrides`.
 - `bupa-uk` is only a source/S3 folder alias. It must not be used as the processed `project` value because it falls back to `dev_only`.
 
-R7 first-run review status:
+Corrected run status:
 
 - R7 produced a first Bupa run on 2026-05-18 with 21/21 reports.
-- Review found that the generated `windows.csv` did not use the frozen dev windowing logic and lacked required columns such as `duration`.
-- As a result, the first-run reports had `duration_s=0` and should not be treated as final.
-- `scripts/build_bupa_processed_inputs.py` has been corrected to use manifest-aware metadata and the frozen `src/preprocessing/window_splitter.py` logic.
-- R7 should rerun preprocessing, Layer 3, postprocess, and report generation from the corrected script before downstream R6/R3/R5/R8 tasks begin.
+- Review found that the first generated `windows.csv` did not use the frozen dev windowing logic and lacked required columns such as `duration`.
+- `scripts/build_bupa_processed_inputs.py` was corrected to use manifest-aware metadata and the frozen `src/preprocessing/window_splitter.py` logic.
+- The corrected official run was executed on 2026-05-19.
+- Corrected preprocessing generated 21 transcripts, 204981 items, 10194 segments, and 1252 windows.
+- Corrected Layer 3 Level B succeeded for 21/21 videos with 0 schema/json/api errors.
+- Corrected Layer 3 Level A succeeded for 1252/1252 windows with 0 schema/json/api errors.
+- Corrected report generation produced 21/21 reports with 0 failed reports.
+- Corrected report summary has no zero-duration videos.
+- Old first-run `*_bupa.json` reports were removed; final report filenames now use the manifest video IDs.
 
 ## Freeze Boundary
 
@@ -46,19 +51,19 @@ Bupa is evaluation only. Do not use Bupa outputs to tune:
 
 Any weakness found on Bupa should be recorded as a limitation or future-work item.
 
-## Next Owner
+## Run Record
 
-R7 owns the next step:
+Primary corrected run record:
 
-`tasks/R7_ivy_bupa_pipeline_run_2026-05-18.md`
+`submissions/bupa_corrected_pipeline_run_2026-05-19.md`
 
-R7 should run the frozen Bupa pipeline with path-isolated outputs and record exact commands, output paths, success/failure count, and dev55 demo sanity status.
+Earlier R7 first-run note:
 
-There is no separate R2 task to assign at this stage. The directly actionable pre-run work is already complete: input correction, 21/21 transcript validation, R4 status reconciliation, and R6 lane/key confirmation.
+`submissions/R7_ivy_bupa_pipeline_demo_2026-05-18.md`
 
-## Dependencies After R7
+## Remaining Technical Dependencies
 
-After R7 generates Bupa reports and processed CSVs:
+After the corrected Bupa reports and processed CSVs are available:
 
 - R6 generates Bupa performance outputs.
 - R3 writes Bupa case studies.

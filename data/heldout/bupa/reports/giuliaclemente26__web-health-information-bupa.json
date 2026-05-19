@@ -1,0 +1,185 @@
+{
+  "video_id": "giuliaclemente26__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "giuliaclemente26",
+  "total_windows": 42,
+  "duration_sec": 2736.586,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 44,
+    "by_friction_type": {
+      "F1": 22,
+      "F2": 7,
+      "F3": 2,
+      "F5": 5,
+      "F6": 5,
+      "F7": 3
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 3,
+      "S5": 35,
+      "S6": 4
+    },
+    "by_sentiment": {
+      "E3": 5,
+      "E4": 39
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 35,
+      "L3": 5
+    },
+    "signal_alignment_distribution": {
+      "aligned": 43,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "giuliaclemente26__web-health-information-bupa_w021",
+        "video_id": "giuliaclemente26__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty and gave up on completing the cost calculation task, stating the interface was too complex.",
+        "observed_signal": "Participant attempted to engage with a cost or postcode entry feature, then abandoned it to enter an alternative postcode instead.",
+        "stated_signal": "Things you need to put in place, which I'm not really sure how it works. This is too complex, I can't do it.",
+        "rationale": "The participant explicitly stated confusion about how the cost feature works and declared the task too complex to complete. Rather than persist, the participant abandoned the intended task flow and substituted an alternative action (entering a London postcode instead). This represents a significant component failure that was skipped, fitting S3 and L3 (struggle and workaround).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26__web-health-information-bupa_w029",
+        "video_id": "giuliaclemente26__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration with the complexity and lack of clarity in the health insurance coverage process, including the need to call insurers to clarify out-of-pocket costs.",
+        "observed_signal": "Participant reflected on the ongoing difficulty even after obtaining insurance, describing a confusing multi-step process involving doctors, codes, and insurance calls.",
+        "stated_signal": "Like, even Even when you have the, it's not only before you have the insurance, it's even when you have the insurance, the doctor, the specialist, or whomever needs to give you a piece of paper. With a series of codes and things, and then you need to call the insurance and check what's going to be out of pocket, what's going to be covered, it's like, do these things change every day? Why? I don't know.",
+        "rationale": "The participant describes a systemic comprehension problem: the insurance terminology, code systems, and coverage rules are not clearly explained, requiring external phone calls to resolve uncertainty. The repeated rhetorical question 'Why?' and 'I don't know' indicate unresolved confusion about fundamental insurance concepts. This represents significant friction with the information architecture and clarity of health insurance content.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26__web-health-information-bupa_w009",
+        "video_id": "giuliaclemente26__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about how retirement home services relate to medical insurance coverage and felt overwhelmed by the information architecture.",
+        "observed_signal": "Participant stated uncertainty about the relationship between retirement home and medical insurance, then indicated they would need to go through information one by one or contact Bupa directly, and described feeling overwhelmed.",
+        "stated_signal": "How does retirement home fit with? Uh Medical insurance, I'm not too sure, so yeah. I'm a bit confused. I think that here what I would do is I would have to go one by one or um or ask someone who is with Bupa or what do you have, what does it cover, and then getting that first level of information, digging a bit deeper because here I feel like I'm a bit overwhelmed with information.",
+        "rationale": "The participant explicitly stated confusion about content relationships and feeling overwhelmed with information. They indicated the need to either manually dig through content or contact support to clarify coverage—indicating the current content structure or labeling does not make the relationship clear. This represents significant comprehension friction requiring external help or excessive effort to resolve.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26__web-health-information-bupa_w020",
+        "video_id": "giuliaclemente26__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about what is covered under different insurance plan options and found the information obscure and difficult to parse.",
+        "observed_signal": "Participant asked clarifying questions about coverage scenarios (e.g., 'What is covered?' for each plan option) and noted uncertainty about physio coverage, then stated the information feels 'obscure' and requires 'a series of' things to figure out.",
+        "stated_signal": "What is covered? If I have this first cover option... If I have the 2nd 1, what is covered?... So I don't know... it feels like to figure out what's happening, what's covered, what's not covered, what's partially covered, there are a series of um.",
+        "rationale": "The participant cannot easily understand the coverage information presented and explicitly states the content is obscure and requires multiple steps to decipher. The stated confusion and observed questioning behaviour both indicate comprehension friction. The participant persists in attempting to understand (not abandoned), but the significant struggle to parse coverage details matches S4 and L3 (struggling but ultimately engaged in problem-solving).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26__web-health-information-bupa_w029",
+        "video_id": "giuliaclemente26__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration with the difficulty of finding clear health insurance information on the website and within the insurance process.",
+        "observed_signal": "Participant stated they need to read everything to find help, expressed confusion about insurance terminology, and reflected on the overall difficulty of obtaining clear information.",
+        "stated_signal": "If I'm looking for help, I don't even say it. I really need to read everything and say, oh, it's there. What I don't understand of whole health insurances is why it is so hard. To have information, to have clear information, I don't know.",
+        "rationale": "The participant explicitly states confusion about insurance terminology (health insurance vs. diagnostic insurance) and expresses that information is not clearly presented, requiring them to read extensively. The stated frustration and reported effort to locate information align with comprehension friction due to unclear or jargon-heavy content. The participant has a master's degree but still struggles, emphasizing the content clarity problem rather than user capability.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 44 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=3, S5=35, S6=4. Representative findings: Participant expressed uncertainty and gave up on completing the cost calculation task, stating the interface was too complex. | Participant expressed frustration with the complexity and lack of clarity in the health insurance coverage process, including the need to call insurers to clarify out-of-pocket costs. | Participant expressed confusion about how retirement home services relate to medical insurance coverage and felt overwhelmed by the information architecture.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

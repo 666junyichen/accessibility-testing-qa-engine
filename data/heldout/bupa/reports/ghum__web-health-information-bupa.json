@@ -1,0 +1,204 @@
+{
+  "video_id": "ghum__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "ghum",
+  "total_windows": 61,
+  "duration_sec": 4199.879,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 49,
+    "by_friction_type": {
+      "F1": 10,
+      "F2": 11,
+      "F3": 7,
+      "F4": 3,
+      "F5": 5,
+      "F6": 12,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 5,
+      "S4": 15,
+      "S5": 29
+    },
+    "by_sentiment": {
+      "E3": 7,
+      "E4": 42
+    },
+    "by_calibrator_score": {
+      "L2": 29,
+      "L3": 20
+    },
+    "signal_alignment_distribution": {
+      "aligned": 47,
+      "conflicted": 1,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "ghum__web-health-information-bupa_w007",
+        "video_id": "ghum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ghum",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant unable to activate video playback and instead navigated to a transcript view as a workaround because the video did not appear clickable.",
+        "observed_signal": "Participant repeatedly cycled through video headings and content descriptions, stated 'it doesn't seem clickable', and ultimately decided to use the transcript view instead of playing the video.",
+        "stated_signal": "Symptoms, it doesn't seem clickable. So I'll view transcript as I can't seem to work out how to make the video play. Inside Health view transcript. And maybe there'll be a way to play the video from there.",
+        "rationale": "The participant observed that video content did not respond to interaction attempts and explicitly stated confusion about how to make the video play. The participant worked around the barrier by accessing the transcript instead, indicating significant component failure. Both observed cycling behaviour and stated frustration align on a barrier that was skipped rather than resolved.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum__web-health-information-bupa_w012",
+        "video_id": "ghum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant searched for specific symptom information but the page structure presented treatment and general cancer information instead, blocking access to the sought content.",
+        "observed_signal": "Participant attempted to find 'symptoms' and 'search for symptoms' but encountered cancer treatment content (chemotherapy, radiotherapy, immunotherapy) and general information instead.",
+        "stated_signal": "Lots of interesting information here that I can read. Not what I'm actually trying to search for symptoms.",
+        "rationale": "The participant could not locate the specific information pathway (symptoms) despite navigating the page. The stated signal confirms intent ('what I'm actually trying to search for') and the observed signal shows the content was not found. This represents a significant component failure where the desired information was not accessible through the available navigation.",
+        "structural_amplification_note": "Screen reader user relying on heading structure to navigate encountered a content organization that did not group symptom-related information accessibly, requiring more cognitive effort to locate target content."
+      },
+      {
+        "window_id": "ghum__web-health-information-bupa_w026",
+        "video_id": "ghum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed preference for video content but stated it is not accessible, forcing reliance on transcript only.",
+        "observed_signal": "Participant closed the transcript and attempted to escape, then continued reading the transcript heading structure aloud.",
+        "stated_signal": "It's not my preferred way to interact with this information, I'd actually like to watch the video and, So far it does not seem possible for me to do that.",
+        "rationale": "The participant explicitly stated that their preferred interaction mode (video) is not available and they cannot find an alternative pathway to access it. The observed escape attempt and forced fallback to transcript reading confirm content access friction. This represents a significant component barrier that the participant worked around rather than resolving.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum__web-health-information-bupa_w033",
+        "video_id": "ghum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ghum",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant reported inability to play any videos on the website, identifying this as a persistent accessibility barrier.",
+        "observed_signal": "Participant attempted to access videos and stated they could not get any of them to play.",
+        "stated_signal": "the website generally has been easy to use other than all the videos, I can't seem to get any of those to play",
+        "rationale": "The participant explicitly stated that videos do not play and characterized this as a notable exception to otherwise smooth navigation. This represents a significant content access failure (F4: unresponsive interface) that blocks video content consumption, fitting S3 as a component failure that was skipped rather than worked around.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum__web-health-information-bupa_w039",
+        "video_id": "ghum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader output from a comparison table is non-functional, rendering blank cells and column headers incomprehensibly, preventing the participant from performing a quick side-by-side comparison.",
+        "observed_signal": "Participant repeatedly described encountering blank columns, blank cells, and garbled screen reader output ('blank blank rotary column 2 blank', 'column 3 blank rotary column 3 just blank blank'). Participant stated inability to do a comparison and called the experience 'utterly useless'.",
+        "stated_signal": "I would expect to see two ticks there... the screen read is not picking up... Utterly useless... I can't just do a quick comparison using this table at all. Cause it's all just blank, blank blank.",
+        "rationale": "The participant is using a screen reader (indicated by references to audio output and 'screen read') and the table structure is not properly exposed to assistive technology. The repeated blank columns, missing cell labels, and inaccessible content structure prevent task completion (a comparison task). The participant expressed significant frustration and explicitly stated the feature is unusable. This is a structural accessibility barrier that was worked around or skipped, fitting F3 and S3.",
+        "structural_amplification_note": "Screen reader user experiencing complete loss of table semantics and cell content due to missing ARIA labels, table headers, or improper markup. Sighted users viewing the same table may see visual content that is simply not exposed to assistive technology."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 49 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=5, S4=15, S5=29. Representative findings: Participant unable to activate video playback and instead navigated to a transcript view as a workaround because the video did not appear clickable. | Participant searched for specific symptom information but the page structure presented treatment and general cancer information instead, blocking access to the sought content. | Participant expressed preference for video content but stated it is not accessible, forcing reliance on transcript only.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 49 findings spanning 7 distinct friction types (F6,F2,F1,F3,F5,F4,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F2 Confidence, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F2,F1,F3,F5,F4,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=49 findings across 7 distinct friction types (F6=12, F2=11, F1=10, F3=7, F5=5, F4=3, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "video_id": "iakhtar1__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "iakhtar1",
+  "total_windows": 76,
+  "duration_sec": 5422.619000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 78,
+    "by_friction_type": {
+      "F1": 25,
+      "F2": 17,
+      "F3": 16,
+      "F4": 8,
+      "F5": 9,
+      "F6": 3
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 2,
+      "S4": 19,
+      "S5": 54,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E2": 3,
+      "E3": 12,
+      "E4": 63
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 52,
+      "L3": 21,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 77,
+      "conflicted": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "iakhtar1__web-health-information-bupa_w050",
+        "video_id": "iakhtar1__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "iakhtar1",
+        "friction_type": "F3",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user unable to access table content showing plan coverage (ticks, crosses, yes/no indicators) because assistive technology did not pick up the information, rendering the comparison table unusable for decision-making.",
+        "observed_signal": "Participant scrolled through the table, heard column headers and labels read aloud, but confirmed no data values (ticks, crosses, yes/no) were being conveyed by the screen reader. Participant stated the table provides no information and is not helpful for making decisions about plan inclusions.",
+        "stated_signal": "This table doesn't give me any information at all... My screen reader doesn't seem to be picking any of that up... there's no nothing that my screen reader can access there. So yeah, that table isn't really helpful for me to make any kind of decision or know what each plan includes.",
+        "rationale": "The participant, a screen reader user, cannot access critical content (plan coverage indicators) within a comparison table that is core to the task outcome. Both observed behaviour (scrolling, hearing blank cells) and stated signal (explicit confirmation that the table is inaccessible and unhelpful) demonstrate accessibility friction. The component task—determining which plan includes a benefit—is blocked because the data is not conveyed to assistive technology, meeting the S2 gate (component task completely blocked).",
+        "structural_amplification_note": "Screen reader user cohort experiences structural amplification: table markup lacks semantic indicators (checkmarks, yes/no values) in a form that assistive technology can parse, making the entire comparison matrix inaccessible. Sighted users likely see visual indicators that are stripped or not exposed to the accessibility tree."
+      },
+      {
+        "window_id": "iakhtar1__web-health-information-bupa_w008",
+        "video_id": "iakhtar1__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "iakhtar1",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate or access an input edit box within the search form despite multiple attempts using keyboard navigation and specific keystroke commands.",
+        "observed_signal": "Participant pressed the 'E' key to search for edit boxes, received a response that 'There are no edit boxes on this page,' and continued cycling through other controls without being able to enter search text.",
+        "stated_signal": "Let me press E, see if there's an edit box there now. There are no edit boxes on this page.",
+        "rationale": "The participant explicitly looked for a text input field to enter search criteria but was unable to find or access one. The absence of an input mechanism in a search form is a significant component failure; the participant was blocked from entering search terms but continued cycling through other controls.",
+        "structural_amplification_note": "Screen reader user attempting to navigate form structure; the missing or inaccessible edit box creates a critical accessibility barrier for keyboard and AT-dependent users who cannot rely on visual scanning."
+      },
+      {
+        "window_id": "iakhtar1__web-health-information-bupa_w051",
+        "video_id": "iakhtar1__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "iakhtar1",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected to find a table on the page but the screen reader reported no tables present, creating uncertainty about whether the content exists or is marked up incorrectly.",
+        "observed_signal": "Participant pressed T to navigate to tables, received 'There are no tables on this page' response twice, then expressed confusion that the page should contain table information despite the absence of detected tables.",
+        "stated_signal": "There are no tables on this page. OK, see there's no tables on this page, but this is specifically about looking at the information in a table.",
+        "rationale": "The participant is using a screen reader (pressing T for table navigation, H for headings) and encountered a mismatch: the task requires finding table information, but no tables are detected by assistive technology. This suggests either missing semantic markup or a content structure issue that blocks AT navigation. The participant expressed clear confusion and the component task (finding table information) cannot proceed via standard AT pathways.",
+        "structural_amplification_note": "Screen reader user; the absence of proper table markup or semantic structure prevents the standard keyboard/AT navigation pattern (T key) from functioning, creating a structural barrier specific to assistive-technology reliance."
+      },
+      {
+        "window_id": "iakhtar1__web-health-information-bupa_w002",
+        "video_id": "iakhtar1__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "iakhtar1",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "conflicted",
+        "finding": "Participant struggled to enter search text correctly, producing garbled characters instead of the intended search term.",
+        "observed_signal": "Participant attempted to type 'buy health insurance' but the input was captured as 'B U X Y A E A L T A L I S S U. R A N C E', suggesting either speech-to-text miscapture or input method confusion.",
+        "stated_signal": "I'm going to put in buy health insurance.",
+        "rationale": "The participant stated a clear intent to search for 'buy health insurance', but the observed input was severely garbled. This represents a breakdown in the interface's responsiveness to the input method (likely speech-to-text or keyboard capture), requiring the participant to recover by proceeding with an incorrect search term or correcting it later. The conflict between stated intent and observed output indicates high friction requiring recovery.",
+        "structural_amplification_note": "This window shows evidence of speech-to-text or assistive input reliance; such users experience structurally higher friction from input capture errors because alternative input methods may be their primary accessibility pathway."
+      },
+      {
+        "window_id": "iakhtar1__web-health-information-bupa_w007",
+        "video_id": "iakhtar1__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "iakhtar1",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant using screen reader could not locate any edit boxes or search field on the page despite navigating to the top and using keyboard shortcuts to find form fields.",
+        "observed_signal": "Participant pressed Control+Home to go to top of page, then pressed E to search for edit boxes. Screen reader announced 'There are no edit boxes on this page.' Participant then attempted to find form fields using keyboard navigation.",
+        "stated_signal": "There are no edit boxes on this page. So let's have a look at the form fields.",
+        "rationale": "The participant is using keyboard navigation and screen reader commands (E for edit boxes, form field listing) to find a search facility. The screen reader reported no edit boxes exist on the page, blocking the expected navigation pattern. The participant stated intention to search for a health condition but encountered an accessibility barrier where the search control was either not present, not properly labeled, or not accessible to keyboard/AT navigation. This represents significant friction requiring workaround (F3 Accessibility Friction) with multiple failed attempts at recovery.",
+        "structural_amplification_note": "Screen reader and keyboard-only user experienced structural amplification: the search field either lacks proper form field semantics, is not keyboard-accessible, or is missing entirely from the accessible navigation layer, making it unreachable via standard AT shortcuts (E for edit boxes)."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 78 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=2, S4=19, S5=54, S6=2. Representative findings: Screen reader user unable to access table content showing plan coverage (ticks, crosses, yes/no indicators) because assistive technology did not pick up the information, rendering the comparison table unusable for decision-making. | Participant was unable to locate or access an input edit box within the search form despite multiple attempts using keyboard navigation and specific keystroke commands. | Participant expected to find a table on the page but the screen reader reported no tables present, creating uncertainty about whether the content exists or is marked up incorrectly.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 78 findings spanning 6 distinct friction types (F1,F2,F3,F5,F4,F6). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F3 Accessibility) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F3,F5,F4,F6",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=78 findings across 6 distinct friction types (F1=25, F2=17, F3=16, F5=9, F4=8, F6=3).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

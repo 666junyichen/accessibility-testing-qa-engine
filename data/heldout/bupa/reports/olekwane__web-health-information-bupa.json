@@ -1,0 +1,190 @@
+{
+  "video_id": "olekwane__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "olekwane",
+  "total_windows": 97,
+  "duration_sec": 6468.827,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 82,
+    "by_friction_type": {
+      "F1": 24,
+      "F2": 13,
+      "F3": 17,
+      "F4": 4,
+      "F5": 11,
+      "F6": 6,
+      "F7": 7
+    },
+    "by_severity": {
+      "S1": 2,
+      "S3": 15,
+      "S4": 12,
+      "S5": 45,
+      "S6": 8
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 10,
+      "E4": 65,
+      "E5": 6
+    },
+    "by_calibrator_score": {
+      "L1": 8,
+      "L2": 45,
+      "L3": 27,
+      "L5": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 81,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "olekwane__web-health-information-bupa_w002",
+        "video_id": "olekwane__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F1",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed dissatisfaction with pricing on the current platform and stated intention to switch to a competitor product.",
+        "observed_signal": "Participant mentioned Claude is asking for more money and stated they need to switch to Gemini instead, indicating they are considering abandoning the current product.",
+        "stated_signal": "Claude is asking me to pay more money. So now I need to go to Gemini.",
+        "rationale": "The participant's stated desire to switch to a competitor due to cost indicates fundamental dissatisfaction with the product's value proposition. This is a blocker to continued product use, as the participant is actively seeking an alternative. The combination of stated intention to leave and negative sentiment (E5) reflects high-friction friction that prevents project outcome achievement.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "olekwane__web-health-information-bupa_w077",
+        "video_id": "olekwane__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not use the website due to poor text and image size variance, creating contrast and readability issues for visual impairment.",
+        "observed_signal": "Participant stated they would not return to the website, identified text size as very small relative to image size, and noted that reducing zoom made the site non-functional.",
+        "stated_signal": "Yeah, I'm not coming back here. It's as simple as that. Text is very small. And the image is larger. So like the variance, variance is an important thing. So like text this size against an image this size makes sense. Text this size against an image this size is also hard for somebody with a visual impairment.",
+        "rationale": "The participant explicitly stated they would not return and that the site is not functional for them even after attempting to adjust zoom. This is a blocking accessibility issue where the primary project outcome (usable website) is not achieved independently. The stated intent to abandon and observed inability to function at any zoom level meet the S1 and L5 gates.",
+        "structural_amplification_note": "Participant with visual impairment experiences structurally higher friction due to inadequate text-to-image size ratios and poor contrast pairing, making the site completely non-functional with or without zoom adjustments."
+      },
+      {
+        "window_id": "olekwane__web-health-information-bupa_w015",
+        "video_id": "olekwane__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant would have struggled to find information about dementia without the search function, indicating the primary navigation pathway (A to Z listing) was inadequate for discovering this health topic.",
+        "observed_signal": "Participant stated the search function was their first option, A to Z would have been second, and other classification methods would not have helped at all.",
+        "stated_signal": "Having not known that it's actually classified as a dementia, I would have probably struggled if you guys didn't have the search function. My first option would have definitely been search. My second option would have been A to Z. That other classification wouldn't have helped me at all.",
+        "rationale": "The participant indicates that without search, they would have struggled to locate dementia information, and the A to Z browsing structure was insufficient as a primary discovery method. The stated difficulty combined with reliance on search as a workaround represents a significant content findability barrier that was only overcome through the search feature, fitting S3 (significant component failure worked around).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "olekwane__web-health-information-bupa_w056",
+        "video_id": "olekwane__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified insufficient color contrast between blue text and white background, indicating an accessibility compliance failure.",
+        "observed_signal": "Participant examined the page and identified a specific accessibility issue with color contrast.",
+        "stated_signal": "Color scheme does not prove sufficient contrast here on some of the blue against white.",
+        "rationale": "The participant observed and explicitly stated a concrete accessibility friction: insufficient contrast between blue and white. This is a structural barrier that affects readability for users with low vision or color blindness. The participant's frustration (E4) and the significant nature of the compliance issue match S3 severity and L3 calibration (significant component failure).",
+        "structural_amplification_note": "Users with low vision, color blindness, or other visual impairments are structurally amplified by insufficient contrast; this is a WCAG 2.1 Level AA failure."
+      },
+      {
+        "window_id": "olekwane__web-health-information-bupa_w056",
+        "video_id": "olekwane__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "olekwane",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed strong frustration about the quantity of accessibility and compliance errors on the website.",
+        "observed_signal": "Participant repeatedly stated 'way too many errors' and questioned how an organization of the site's magnitude and revenue could have such issues.",
+        "stated_signal": "Oh no, way too many errors. Oh no ways, guys. This is way too many errors. For an organization of your magnitude and revenue line. No, it's too many.",
+        "rationale": "The participant's repeated, escalating statements of dismay combined with the observation that multiple compliance violations exist point to widespread accessibility friction. The strong negative emotion (E5) and explicit acknowledgment of systemic issues reflect significant structural barriers affecting the entire experience.",
+        "structural_amplification_note": "Assistive technology users and users with disabilities would encounter multiple compounding barriers; the systemic nature of compliance failures amplifies friction across all accessibility cohorts."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 82 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=2, S3=15, S4=12, S5=45, S6=8. Representative findings: Participant expressed dissatisfaction with pricing on the current platform and stated intention to switch to a competitor product. | Participant could not use the website due to poor text and image size variance, creating contrast and readability issues for visual impairment. | Participant would have struggled to find information about dementia without the search function, indicating the primary navigation pathway (A to Z listing) was inadequate for discovering this health topic.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 82 findings spanning 7 distinct friction types (F1,F3,F2,F5,F7,F6,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F3 Accessibility, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F3,F2,F5,F7,F6,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=82 findings across 7 distinct friction types (F1=24, F3=17, F2=13, F5=11, F7=7, F6=6, F4=4).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

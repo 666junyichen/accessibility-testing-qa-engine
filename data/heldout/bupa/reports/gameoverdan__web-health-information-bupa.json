@@ -1,0 +1,189 @@
+{
+  "video_id": "gameoverdan__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "gameoverdan",
+  "total_windows": 60,
+  "duration_sec": 3954.7129999999997,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 39,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 4,
+      "F3": 18,
+      "F5": 5,
+      "F6": 6,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 8,
+      "S4": 9,
+      "S5": 19,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 3,
+      "E4": 33,
+      "E5": 2
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 17,
+      "L3": 17,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 38,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "gameoverdan__web-health-information-bupa_w030",
+        "video_id": "gameoverdan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot read content due to accessibility issues with white background and dark reader conflict, blocking content visibility.",
+        "observed_signal": "Participant stated inability to read anything with the white background and questioned whether content is hidden by dark reader; searched the page looking for previously visible content.",
+        "stated_signal": "I can't actually read anything with the white background so we're just kinda looking for what wasn't there before. The biggest problem is the fact that there's no accessibility. If it's hidden by a dark reader, that would be a bit ironic, wouldn't it?",
+        "rationale": "The participant explicitly stated inability to read page content due to accessibility and dark reader conflict, blocking the ability to proceed with the task independently. Both observed behaviour (searching for invisible content) and stated signal (cannot read) align on a primary accessibility barrier that prevents task completion.",
+        "structural_amplification_note": "This friction is structurally amplified for users relying on dark reader or other contrast-modification assistive technology. The white background creates a direct conflict with accessibility tools, making the site unusable for this cohort."
+      },
+      {
+        "window_id": "gameoverdan__web-health-information-bupa_w017",
+        "video_id": "gameoverdan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant did not find critical information needed to make a decision about the product, specifically pricing and wait time before use.",
+        "observed_signal": "Participant stated they did not find out how much it would cost and did not find out how long they would have to wait before they could use it, despite navigating the website.",
+        "stated_signal": "I didn't find out how much it would cost. I did not find out how long I would have to wait before I could use it.",
+        "rationale": "The participant explicitly stated that essential information (cost and wait time) was not found on the website, representing a significant barrier to task completion. Although the participant found some information (which plan to choose, what was included), the absence of key pricing and access-time details indicates content not found friction that materially blocks decision-making, matching S3 severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan__web-health-information-bupa_w027",
+        "video_id": "gameoverdan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot find information about Bupa's specific contributions and allocation of partnership funds to Paralympics athletes.",
+        "observed_signal": "Participant asked multiple repeated questions about where Bupa's money goes, what Bupa actually contributes, and whether funds go directly to athletes or the team, indicating they searched the content and did not locate this information.",
+        "stated_signal": "What does Bupa actually do to partner with the Paralympians? Where does that money go? Does that money go directly to athletes? Bupa's actual contribution would be the only improvement that I would make. It'd be better to show just what Bupa is contributing to.",
+        "rationale": "The participant explicitly stated that critical information about Bupa's specific contributions and fund allocation is missing from the site. The repeated questioning and stated improvement suggestion indicate a significant component failure—the participant could not locate required information and expressed frustration about the gap. This constitutes content not found (F6) at S3 severity, as the component task outcome is compromised by the unavailable information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan__web-health-information-bupa_w028",
+        "video_id": "gameoverdan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility menu on the Bupa homepage and identified this as a critical failure for an accessibility feature.",
+        "observed_signal": "Participant navigated to the Bupa homepage for task 6 and reported not finding an accessibility menu despite looking for it.",
+        "stated_signal": "There should be an accessibility menu which I haven't seen so far, which is already I would consider a fail. If you're going to have accessibility issue, if you're gonna have something for accessibility, it should be right there and upfront so that it's not hidden, you should be able to turn it on from the home page so that it becomes immediately accessible.",
+        "rationale": "The participant explicitly stated inability to find the accessibility menu and characterized this as a failed design outcome. The observed signal (unable to locate despite searching) aligns with the stated signal (clear frustration and explicit identification as a fail). This represents a significant component barrier—an accessibility feature that should be prominently discoverable is instead hidden or absent, preventing immediate access to accessibility tools.",
+        "structural_amplification_note": "For users with accessibility needs, inability to locate accessibility controls on the homepage creates a structural barrier to accessing the tools they depend on, amplifying the severity of this missing pathway."
+      },
+      {
+        "window_id": "gameoverdan__web-health-information-bupa_w031",
+        "video_id": "gameoverdan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "gameoverdan",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that contrast levels on the website are not high contrast, identifying a critical accessibility deficiency.",
+        "observed_signal": "Participant navigated to the accessibility statement, read through it, and explicitly noted the absence of high contrast in the interface design.",
+        "stated_signal": "Contrast levels, non-existent, they're not high contrast, this, these, these ticks.",
+        "rationale": "The participant identified a significant accessibility barrier—lack of high contrast—while reviewing the accessibility statement. This is a structural accessibility friction event affecting users who depend on high contrast for readability, even though the participant was able to locate and read the statement. The observed discovery and stated criticism both indicate significant accessibility friction that represents a barrier for affected users.",
+        "structural_amplification_note": "Low-vision users, users with colour blindness, and users with certain cognitive or neurological conditions are structurally impacted by non-existent contrast levels. This is a foundational accessibility failure."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 39 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S3=8, S4=9, S5=19, S6=2. Representative findings: Participant cannot read content due to accessibility issues with white background and dark reader conflict, blocking content visibility. | Participant did not find critical information needed to make a decision about the product, specifically pricing and wait time before use. | Participant cannot find information about Bupa's specific contributions and allocation of partnership funds to Paralympics athletes.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 39 findings spanning 6 distinct friction types (F3,F6,F5,F1,F2,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F3 (Accessibility) as the primary coaching anchor; secondary types (F6 Not Found, F5 Unexpected) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F3,F6,F5,F1,F2,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=39 findings across 6 distinct friction types (F3=18, F6=6, F5=5, F1=4, F2=4, F7=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

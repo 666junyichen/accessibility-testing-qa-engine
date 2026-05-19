@@ -1,0 +1,126 @@
+{
+  "video_id": "manyi_tan__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "manyi_tan",
+  "total_windows": 6,
+  "duration_sec": 692.2490000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 2,
+    "by_friction_type": {
+      "F6": 2
+    },
+    "by_severity": {
+      "S5": 2
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 1
+    },
+    "by_calibrator_score": {
+      "L2": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 2
+    },
+    "top_severity": "S5",
+    "calibrator_aggregate": "L2",
+    "top_findings": [
+      {
+        "window_id": "manyi_tan__web-health-information-bupa_w002",
+        "video_id": "manyi_tan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "manyi_tan",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant required navigation through two pages to locate Bupa's website recommendation, indicating difficulty finding the required information.",
+        "observed_signal": "Participant navigated through 2 pages before finding Bupa's website recommendation.",
+        "stated_signal": "Took me 2 pages to find Buba's website recommendation.",
+        "rationale": "The participant stated explicitly that locating Bupa's website recommendation required navigation across two pages, indicating the information was not immediately discoverable. This represents a brief wayfinding inefficiency; the task was ultimately completed but required extra navigation steps, matching the L2 gate (moderate friction; non-optimal path; task completed).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "manyi_tan__web-health-information-bupa_w003",
+        "video_id": "manyi_tan__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "manyi_tan",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted an initial search term for tooth health information but rejected the results and decided to change keywords to 'orthodontics' instead.",
+        "observed_signal": "Participant stated initial search intent for 'teeth ache', then expressed dissatisfaction with results ('It's not like this. OK.'), and announced a plan to switch search terms to 'orthodontics'.",
+        "stated_signal": "So what I'm looking for is for about teeth teeth ache. It's not like this. OK. Actually, I think I should change the keywords like orthodontics.",
+        "rationale": "The participant could not find relevant health information matching the initial search intent ('teeth ache') and explicitly rejected the results, signalling that the search pathway did not yield expected content. The participant recovered by deciding to refine the search strategy, indicating brief friction without blocking task completion. Both observed behaviour and stated dissatisfaction align on this single friction event.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "adequate",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "acceptable recording with some findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    },
+    {
+      "category": "narration",
+      "title": "Narration could be more consistently explicit",
+      "summary": "The participant provided enough verbal content for analysis, but the session would benefit from more regular think-aloud narration.",
+      "advice": [
+        "Encourage the participant to briefly explain what they are noticing while moving through the task.",
+        "Prefer short, regular verbal updates instead of only commenting after an action is completed.",
+        "Use neutral prompts to invite process narration when long silent stretches appear."
+      ],
+      "trigger_field": "narration_quality",
+      "trigger_value": "adequate",
+      "priority": 1,
+      "evidence_note": "5.1-B marks narration as adequate but not rich.",
+      "tags": [
+        "narration",
+        "template",
+        "session-level"
+      ]
+    }
+  ]
+}

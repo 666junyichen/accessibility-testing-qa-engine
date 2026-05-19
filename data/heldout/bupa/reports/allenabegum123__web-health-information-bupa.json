@@ -1,0 +1,205 @@
+{
+  "video_id": "allenabegum123__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "allenabegum123",
+  "total_windows": 67,
+  "duration_sec": 4654.312000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 26,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 10,
+      "F3": 1,
+      "F4": 3,
+      "F5": 2,
+      "F6": 3,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 6,
+      "S5": 18
+    },
+    "by_sentiment": {
+      "E3": 9,
+      "E4": 16,
+      "none": 1
+    },
+    "by_calibrator_score": {
+      "L2": 18,
+      "L3": 8
+    },
+    "signal_alignment_distribution": {
+      "aligned": 22,
+      "conflicted": 2,
+      "stated_missing": 2
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "allenabegum123__web-health-information-bupa_w042",
+        "video_id": "allenabegum123__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "allenabegum123",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate video content on the page and expressed uncertainty about whether videos were present or accessible.",
+        "observed_signal": "Participant searched the page and did not find video content; proceeded through transcript reading instead.",
+        "stated_signal": "I couldn't find the video, so I don't know if it's because it's a voiceover, but maybe that, if you're saying that there are videos, maybe that's what makes it so inaccessible.",
+        "rationale": "The participant explicitly stated inability to locate videos and expressed confusion about their presence or accessibility. The observed behaviour shows the participant worked around the missing video by reading transcripts instead, indicating a significant component (video access) was skipped or unavailable, matching S3 and L3 (significant friction with workaround).",
+        "structural_amplification_note": "For users relying on captions or alternative formats, missing or inaccessible video content creates structural barriers to information access."
+      },
+      {
+        "window_id": "allenabegum123__web-health-information-bupa_w064",
+        "video_id": "allenabegum123__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "allenabegum123",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accordion section containing health assessment information as instructed and expressed confusion about the task.",
+        "observed_signal": "Participant searched the page, reported not finding the accordion, and instead encountered a create account option that was not part of the expected task flow.",
+        "stated_signal": "I can't really find it though. It's just you, yeah, I start the booking process. I don't see what you, what the, I don't get what the instructions say because they say to because it's going to expand the thing, but like it's not there.",
+        "rationale": "The participant explicitly stated inability to find the required accordion section and articulated confusion about the instructions. The observed behaviour (encountering the booking/account creation path instead) confirms the content pathway was not located. This represents a significant component failure where the primary task step was not achieved.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "allenabegum123__web-health-information-bupa_w002",
+        "video_id": "allenabegum123__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "allenabegum123",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": null,
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered garbled or misread screen reader output when navigating the search field and rotor, resulting in nonsensical character sequences.",
+        "observed_signal": "Participant read aloud fragmented text including 'H. Use the rotor to that Y G H A R E C K A L L F T T H A space space J. Health and social Q I I space search B N N S S T Y T R E R T Y U U T E C O delete E R.' This output does not match coherent page content.",
+        "stated_signal": null,
+        "rationale": "The participant is using a screen reader or similar assistive technology and is receiving garbled or OCR-corrupted output from the search interface. The nonsensical character strings indicate an accessibility layer failure. No explicit frustration was stated, but the repeated garbled output and continued navigation through corrupted text indicate significant accessibility friction requiring multiple attempts to proceed.",
+        "structural_amplification_note": "Screen reader or voice control user experiencing corrupted text-to-speech output from the search field interface, severely amplifying navigation difficulty."
+      },
+      {
+        "window_id": "allenabegum123__web-health-information-bupa_w005",
+        "video_id": "allenabegum123__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "allenabegum123",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant struggled to enter data into form fields with unclear spoken guidance and apparent difficulty with field transitions or data validation.",
+        "observed_signal": "Participant vocalized a sequence of field labels, text input attempts with mixed letters and numbers, navigation cues ('next button'), and repeated attempts at entering postcode and phone number data across multiple steps.",
+        "stated_signal": "So now it's asking for my phone number.",
+        "rationale": "The participant's vocalization shows repeated field entries, navigation steps, and apparent re-entry of data ('Please enter 904'), suggesting either no visible response to submissions or difficulty confirming field acceptance. The consistent re-narration of input attempts and lack of clear progression language indicates friction in form responsiveness or field state feedback. No statement of frustration is present, but the observed pattern of repeated data entry cycles and step-by-step narration points to significant effort and multiple attempts.",
+        "structural_amplification_note": "If the participant is using screen reader or voice input technology, lack of clear form feedback and field state announcements would amplify this friction substantially."
+      },
+      {
+        "window_id": "allenabegum123__web-health-information-bupa_w004",
+        "video_id": "allenabegum123__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "allenabegum123",
+        "friction_type": "F5",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled to enter date of birth in the form fields, cycling through multiple button selections and appearing to misread or misenter numeric values.",
+        "observed_signal": "Participant attempted to enter date of birth by selecting buttons and entering numbers (1 button 2345689 1011 45689 1222 button), then cycled through month and year selectors multiple times with apparent confusion about correct values.",
+        "stated_signal": "Now I'm going to put my date of birth in 1 button 2345689 1011 45689 1222 button. We take next dog year EI 2008, but selected select 2007, 2004, 2003 button.",
+        "rationale": "The participant's observed behaviour shows multiple failed attempts at entering and selecting date values, with cycling through month (mm 12 button 34 button) and year options (2008 selected, then 2007, 2004, 2003). The stated signal confirms the confusion with the process. This represents an unexpected or non-intuitive interface behaviour for date entry that required multiple attempts to recover from, matching S4 severity and L3 calibrator (significant friction; struggle, multiple attempts).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 26 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=6, S5=18. Representative findings: Participant could not locate video content on the page and expressed uncertainty about whether videos were present or accessible. | Participant could not locate the accordion section containing health assessment information as instructed and expressed confusion about the task. | Participant encountered garbled or misread screen reader output when navigating the search field and rotor, resulting in nonsensical character sequences.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 26 findings spanning 7 distinct friction types (F2,F1,F4,F6,F5,F3,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F4 Unresponsive) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F4,F6,F5,F3,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=26 findings across 7 distinct friction types (F2=10, F1=6, F4=3, F6=3, F5=2, F3=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

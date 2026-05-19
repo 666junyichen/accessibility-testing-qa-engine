@@ -1,0 +1,185 @@
+{
+  "video_id": "dsouza_annabelle__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "dsouza_annabelle",
+  "total_windows": 55,
+  "duration_sec": 3570.123,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 20,
+    "by_friction_type": {
+      "F1": 2,
+      "F2": 1,
+      "F3": 3,
+      "F4": 3,
+      "F5": 6,
+      "F6": 5
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 3,
+      "S5": 13,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 13,
+      "L3": 5
+    },
+    "signal_alignment_distribution": {
+      "aligned": 19,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "dsouza_annabelle__web-health-information-bupa_w034",
+        "video_id": "dsouza_annabelle__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "dsouza_annabelle",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified a missing text-to-speech accessibility feature and noted that this limitation affects users who rely on audio output.",
+        "observed_signal": "Participant stated the absence of a read-aloud option and expressed awareness that other users need this capability.",
+        "stated_signal": "It doesn't really have an option anywhere for things to be read out loud. Um, that's not a particular disability I have, but, um, I do know people who like to be able to hear things out loud. Um, so if there was something I could click that could read it out for me, that would be great.",
+        "rationale": "The participant explicitly identified a missing accessibility feature (text-to-speech / read-aloud functionality) that would benefit users with visual or cognitive disabilities. This is a structural accessibility gap rather than a temporary usability issue. The participant's tone shows mild frustration (E4) about a significant missing feature that creates a barrier for a cohort of users, meeting S3 (significant component failure).",
+        "structural_amplification_note": "This friction is structurally amplified for screen reader users and users with visual impairments who depend on audio output to access content. The absence of a native read-aloud option creates a complete barrier for this cohort."
+      },
+      {
+        "window_id": "dsouza_annabelle__web-health-information-bupa_w048",
+        "video_id": "dsouza_annabelle__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "dsouza_annabelle",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the accessibility link is positioned at the bottom of the page, making it difficult for users with disabilities to find without excessive scrolling.",
+        "observed_signal": "Participant did not click the accessibility link but commented on its placement and accessibility implications.",
+        "stated_signal": "accessibility should, according to me, be something that's higher up on the page, just even at the top, on the left or the right or somewhere where, you know, it's easier to find because someone with a disability is already facing a lot of obstacles. They shouldn't have to, um, you know, be scrolling so much to find it at the bottom.",
+        "rationale": "The participant explicitly stated that the accessibility link placement creates a barrier for users with disabilities who must scroll excessively to locate it. This is an accessibility friction event where a critical feature is structurally hard to discover due to poor information architecture. The alignment is strong between stated concern and the accessibility principle violated.",
+        "structural_amplification_note": "Users with disabilities face compounded friction: they need accessibility features but must navigate excessive scrolling to find them, creating a paradoxical barrier for the population most dependent on these features."
+      },
+      {
+        "window_id": "dsouza_annabelle__web-health-information-bupa_w028",
+        "video_id": "dsouza_annabelle__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "dsouza_annabelle",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant had difficulty locating a small, non-prominent accessibility-related section that required scrolling to the bottom of the page, creating a barrier for users with visibility issues.",
+        "observed_signal": "Participant scrolled to the bottom of the page to find the section and described it as very small and not clearly positioned.",
+        "stated_signal": "I had to scroll right to the bottom and even then, it's very, um, it's a very small section here. As someone who has can sometimes have visibility issues and I have trouble finding things. This is not as clear, I would say, as some other aspects of the website. I would definitely recommend it's right at the top in bold somewhere, either on the left or the right corner, because the people who have accessibility issues would definitely have trouble finding it.",
+        "rationale": "The participant observed and explicitly stated that the accessibility content was difficult to find due to its small size and bottom placement. The need to scroll and the emphasis on accessibility barriers for users with visibility issues demonstrates significant friction that required effort to locate. The participant recovered but expressed clear frustration about the design placement.",
+        "structural_amplification_note": "Participant explicitly identified having visibility issues; the small, bottom-placed section materially amplifies friction for users with low vision or visibility difficulties who rely on prominent, accessible content placement."
+      },
+      {
+        "window_id": "dsouza_annabelle__web-health-information-bupa_w032",
+        "video_id": "dsouza_annabelle__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "dsouza_annabelle",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate pricing information on the policy comparison pages and had to scroll repeatedly between pages to search for it.",
+        "observed_signal": "Participant scrolled back and forth multiple times between different policy sections (comprehensive, treatment and care) looking for pricing, then clicked on comprehensive asking 'How much does it cost?'",
+        "stated_signal": "I can't see anything around pricing. I've scrolled down. I'm gonna scroll back up and click on things to see if I can find the pricing involved.",
+        "rationale": "The participant explicitly stated the inability to find pricing information and engaged in repeated scrolling and navigation attempts across multiple sections to locate it. Both the stated signal (expressing the absence of pricing) and observed signal (multiple scroll attempts and section clicks) indicate a content-location failure that required significant effort to pursue, matching S4 and L3 (multiple attempts, material slowdown but task not fully blocked).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "dsouza_annabelle__web-health-information-bupa_w033",
+        "video_id": "dsouza_annabelle__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "dsouza_annabelle",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot see pricing information upfront on the product comparison page and must click through to a separate quote flow to discover costs.",
+        "observed_signal": "Participant clicked on 'Getting a quote' to see pricing, then navigated back to the comparison table. Participant then clicked 'compare cover' and returned to the same comparison table without pricing visible.",
+        "stated_signal": "What I don't like is that it doesn't give me any idea of what pricing is involved, just at an upfront glance. I would like to know personally. What anything costs, even if it's just an estimate, or even if it just says starting at X price or Y price, so I have an idea of where it begins and whether I'd be able to afford it or not.",
+        "rationale": "The participant explicitly stated frustration that pricing is not visible on the comparison table and must be accessed through a separate flow. Both observed navigation (multiple back-and-forth clicks) and stated dissatisfaction confirm that critical pricing information is not found where the participant expected it. This represents a significant barrier to informed decision-making, requiring extra effort and navigation detours.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 20 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=3, S5=13, S6=2. Representative findings: Participant identified a missing text-to-speech accessibility feature and noted that this limitation affects users who rely on audio output. | Participant identified that the accessibility link is positioned at the bottom of the page, making it difficult for users with disabilities to find without excessive scrolling. | Participant had difficulty locating a small, non-prominent accessibility-related section that required scrolling to the bottom of the page, creating a barrier for users with visibility issues.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 20 findings spanning 6 distinct friction types (F5,F6,F3,F4,F1,F2). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F5 (Unexpected) as the primary coaching anchor; secondary types (F6 Not Found, F3 Accessibility) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F5,F6,F3,F4,F1,F2",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=20 findings across 6 distinct friction types (F5=6, F6=5, F3=3, F4=3, F1=2, F2=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

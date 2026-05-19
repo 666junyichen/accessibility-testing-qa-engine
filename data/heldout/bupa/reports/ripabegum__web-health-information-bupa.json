@@ -1,0 +1,207 @@
+{
+  "video_id": "ripabegum__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "ripabegum",
+  "total_windows": 24,
+  "duration_sec": 1552.774,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 19,
+    "by_friction_type": {
+      "F1": 7,
+      "F2": 2,
+      "F3": 1,
+      "F4": 2,
+      "F5": 1,
+      "F6": 4,
+      "F7": 2
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 2,
+      "S4": 4,
+      "S5": 11,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 16
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 12,
+      "L3": 5,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 18,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "ripabegum__web-health-information-bupa_w013",
+        "video_id": "ripabegum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ripabegum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the table required for the task and explicitly stated difficulty finding it.",
+        "observed_signal": "Participant stated 'I'm struggling to find the table' after being instructed to complete task 7 involving opening a new tab and comparing healthcare to quote menu, but could not locate the table on the page.",
+        "stated_signal": "But where is the table? I can't even find the table. I'm struggling to find the table.",
+        "rationale": "The participant's explicit statement and observed inability to locate the table indicate a content wayfinding failure. The component task (comparing healthcare to quote menu) appears blocked by the missing table, matching the S2 gate (overall outcome at risk due to one component task blocked) and L4 (near-abandonment or intervention required).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ripabegum__web-health-information-bupa_w009",
+        "video_id": "ripabegum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ripabegum",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern that critical health content (cancer risk association with hemorrhoids) was missing from the page, creating uncertainty about whether the information adequately addressed their primary worry.",
+        "observed_signal": "Participant stated that hemorrhoids and bleeding information does not address cancer concerns, which is what people worry about and what they personally wanted to know.",
+        "stated_signal": "Hemorrhoids and bleeding, you wanna know if it's cancer. It doesn't have something like that on it, cos that's what people worry about too, cos that's exactly what I was told. That is what I wanted to know.",
+        "rationale": "The participant could not locate information addressing a key health concern (cancer risk) despite the page containing hemorrhoid information. Both observation and statement confirm the gap. This is a significant content-finding barrier that likely affected the usefulness of the health information, matching S3 and L3 (significant friction; component failure worked around).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ripabegum__web-health-information-bupa_w021",
+        "video_id": "ripabegum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ripabegum",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed dissatisfaction with the website and stated they would choose a competitor over it.",
+        "observed_signal": "Participant stated they would not choose this website and would go for 'Beer' (a competitor) after reviewing all three websites.",
+        "stated_signal": "I wouldn't choose this over people. I would go for Beer after looking at all three websites.",
+        "rationale": "The participant's stated preference for a competitor and dismissive assessment ('they would come last') indicates the website design or functionality did not meet expectations relative to alternatives reviewed. This represents significant friction in user satisfaction and competitive positioning, fitting S3 (significant component failure or barrier).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ripabegum__web-health-information-bupa_w014",
+        "video_id": "ripabegum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ripabegum",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot view the comparison table side-by-side and is unable to compare coverage details effectively, despite acknowledging that the information content itself is good.",
+        "observed_signal": "Participant reviewed the table layout and expressed inability to see content side-by-side, stating this prevents comparison of what is covered versus excluded.",
+        "stated_signal": "I don't like this. I would like to see it side to side to see what's covered, what's not covered. By not seeing it side by side, I cannot really comment on the table itself because it's not a table really, is it?",
+        "rationale": "The participant explicitly stated dissatisfaction with the layout and identified a specific accessibility need (side-by-side comparison). The observed behaviour shows the participant attempting to work with a format that does not support the required comparison task. This is excessive effort due to poor layout design; the participant expresses frustration and identifies a clear barrier to efficient use, matching S4 and L3 (significant friction, task partially impeded).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ripabegum__web-health-information-bupa_w023",
+        "video_id": "ripabegum__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "ripabegum",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Appointment search interface exhibited significant delay and slowness, causing the participant to wait through multiple buffering cycles while searching for available appointments.",
+        "observed_signal": "Participant initiated appointment search, experienced visible buffering and delay, waited through the buffering period, and eventually received a result showing no available appointments.",
+        "stated_signal": "Finding appointments is buffering, it's quite buffering for quite a bit actually. Um, Seems a bit slow. The internet seems fine. I don't know what's going on.",
+        "rationale": "Both observed behaviour (visible buffering and wait) and stated frustration (complaint about slow performance, buffering for 'quite a bit') align on unresponsive interface friction. The participant explicitly noted the delay was unusual despite normal internet connectivity, indicating a product-side performance issue. The task proceeded despite the friction, matching S4 and L3 (significant friction, multiple attempts/extra time, task completed).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 19 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=2, S4=4, S5=11, S6=1. Representative findings: Participant could not locate the table required for the task and explicitly stated difficulty finding it. | Participant expressed concern that critical health content (cancer risk association with hemorrhoids) was missing from the page, creating uncertainty about whether the information adequately addressed their primary worry. | Participant expressed dissatisfaction with the website and stated they would choose a competitor over it.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 19 findings spanning 7 distinct friction types (F1,F6,F2,F4,F7,F3,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F2,F4,F7,F3,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=19 findings across 7 distinct friction types (F1=7, F6=4, F2=2, F4=2, F7=2, F3=1, F5=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "video_id": "terryaflint17__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "terryaflint17",
+  "total_windows": 99,
+  "duration_sec": 6392.121999999999,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 18,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 3,
+      "F6": 6,
+      "F7": 1
+    },
+    "by_severity": {
+      "S4": 2,
+      "S5": 16
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 16
+    },
+    "by_calibrator_score": {
+      "L2": 16,
+      "L3": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 18
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "terryaflint17__web-health-information-bupa_w044",
+        "video_id": "terryaflint17__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the accessibility settings feature and expressed frustration about not knowing where to look.",
+        "observed_signal": "Participant stated they could not find anything, acknowledged they should have looked elsewhere, checked for settings with no success, and then resorted to using the search engine to look for 'accessibility settings'.",
+        "stated_signal": "I can't find anything there. I've got no idea where to look. Nothing for settings anywhere.",
+        "rationale": "The participant explicitly stated inability to locate the accessibility settings feature and expressed confusion about where to search. The observed behaviour shows a failed search attempt within the product, followed by abandonment of the browsing method in favour of a search engine workaround. The stated frustration and observed struggle both indicate significant friction with multiple failed attempts before recovery.",
+        "structural_amplification_note": "For a participant seeking accessibility settings, inability to locate this feature may be structurally amplified if the user has accessibility needs and the feature is essential to product usability."
+      },
+      {
+        "window_id": "terryaflint17__web-health-information-bupa_w080",
+        "video_id": "terryaflint17__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled to comprehend the fragmented and grammatically unclear content describing health insurance features and policies.",
+        "observed_signal": "Participant read aloud disjointed phrases about digital GP, NHS app, counseling, and policy renewal terms, with halting delivery and apparent confusion in interpretation.",
+        "stated_signal": "I don't know how to give you a better understand of your current health... These guys help me scared. I just can't.",
+        "rationale": "The participant's verbal delivery reveals difficulty parsing the text: fragmented phrasing, incomplete thoughts ('These guys help me scared. I just can't'), and lack of coherent understanding of the insurance product details. Both observed halting speech and stated confusion indicate significant comprehension friction, requiring multiple attempts to follow the content.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17__web-health-information-bupa_w009",
+        "video_id": "terryaflint17__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about the meaning of 'Member's Choice Advantage' and attempted to find clarification by seeking more information.",
+        "observed_signal": "Participant asked 'what's that mean?' and then said 'Let's just find out more on that,' indicating they did not understand the term and were searching for clarification.",
+        "stated_signal": "what's that mean? Let's just find out more on that.",
+        "rationale": "The participant encountered terminology ('Member's Choice Advantage') that was unclear and explicitly sought clarification. The stated confusion aligns with the observed search for more information. This represents a brief comprehension friction that was addressed through navigation without blocking task progress.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17__web-health-information-bupa_w013",
+        "video_id": "terryaflint17__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about which exercise content was relevant to them and uncertainty about how to proceed with the displayed instructions.",
+        "observed_signal": "Participant read aloud exercise descriptions (stretching, strengthening knees), made uncertain comments ('I don't know what what it looks like'), expressed doubt about applicability ('I'd say'), and asked clarifying questions ('Oh, you mean now or if you may').",
+        "stated_signal": "I don't know what what it looks like. Become a complaint with people, I'd say. Oh, you mean now or if you may.",
+        "rationale": "The participant understood the content was present but was uncertain whether the exercise instructions applied to their situation and what the correct next action was. The stated confusion and observed hesitation both indicate wayfinding and confidence friction. Recovery is evident (participant continued reading), placing this at S5/L2 (noticeable but recoverable friction with brief hesitation).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17__web-health-information-bupa_w020",
+        "video_id": "terryaflint17__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about subscription pricing and plans, uncertain whether subscriptions are required or optional.",
+        "observed_signal": "Participant read aloud the subscription and plan options, then stated 'I don't know what that means' and 'We need subscriptions' with apparent uncertainty.",
+        "stated_signal": "I don't know what that means that. We need subscriptions. So, uh,",
+        "rationale": "The participant encountered unclear messaging about subscription requirements and pricing structure. The stated confusion ('I don't know what that means') combined with trailing uncertainty about whether subscriptions are mandatory indicates comprehension friction. However, the participant recovered by continuing to read content and did not require facilitator intervention, placing this at S5/L2.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 18 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=2, S5=16. Representative findings: Participant could not locate the accessibility settings feature and expressed frustration about not knowing where to look. | Participant struggled to comprehend the fragmented and grammatically unclear content describing health insurance features and policies. | Participant expressed uncertainty about the meaning of 'Member's Choice Advantage' and attempted to find clarification by seeking more information.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 4 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 18 findings spanning 4 distinct friction types (F1,F6,F2,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F2,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=18 findings across 4 distinct friction types (F1=8, F6=6, F2=3, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

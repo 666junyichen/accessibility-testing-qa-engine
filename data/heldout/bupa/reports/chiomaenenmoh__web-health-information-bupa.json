@@ -1,0 +1,187 @@
+{
+  "video_id": "chiomaenenmoh__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "chiomaenenmoh",
+  "total_windows": 97,
+  "duration_sec": 6297.985,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 47,
+    "by_friction_type": {
+      "F1": 12,
+      "F2": 4,
+      "F3": 3,
+      "F4": 2,
+      "F5": 3,
+      "F6": 17,
+      "F7": 6
+    },
+    "by_severity": {
+      "S3": 3,
+      "S4": 1,
+      "S5": 41,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E2": 2,
+      "E3": 10,
+      "E4": 35
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 39,
+      "L3": 4
+    },
+    "signal_alignment_distribution": {
+      "aligned": 46,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "chiomaenenmoh__web-health-information-bupa_w011",
+        "video_id": "chiomaenenmoh__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "chiomaenenmoh",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant's search queries for pancreatic cancer and gamma knife returned no relevant results, and the search by topic pathway did not yield the information needed.",
+        "observed_signal": "Participant searched for 'Pancreatic cancer and the gamma knife', reviewed results, attempted additional searches, and explicitly stated inability to find relevant information.",
+        "stated_signal": "Still not giving me any search results for that. Nothing related to what I want to search for. Not able to find anything related to my search item information by topic.",
+        "rationale": "The participant could not locate the required health information despite multiple search attempts and explicit frustration. Both observed behaviour (repeated unsuccessful searches) and stated signals (direct statement of inability to find content) confirm that a significant component of the task—locating specific medical information—was blocked or severely impeded. The participant continued attempting but did not succeed.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "chiomaenenmoh__web-health-information-bupa_w014",
+        "video_id": "chiomaenenmoh__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "chiomaenenmoh",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate information about brain tumors on the health information site and confirmed the absence of relevant content for their specific condition.",
+        "observed_signal": "Participant searched or browsed the site looking for brain tumor or brain cancer information and found no sections covering these topics.",
+        "stated_signal": "There is good information for other stuff I believe, but specifically I am targeting brain tumor because that's what I suffered from 5 years ago. And it doesn't look like they have much information. Um And also at the time I didn't have. Health insurance because I was contracting. So that would have been something good to have had at the time. However, it doesn't seem like they have any topics related to it.",
+        "rationale": "The participant explicitly stated they cannot find brain tumor or brain cancer information and confirmed the site lacks topics related to their specific health need. Both observed behaviour (unsuccessful search) and stated frustration align to show that required content was not available. This represents a significant component failure—the participant's primary information need went unmet—fitting S3 and the L3 gate (significant friction; the outcome sought was not achieved).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "chiomaenenmoh__web-health-information-bupa_w038",
+        "video_id": "chiomaenenmoh__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "chiomaenenmoh",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that videos on the page are not working, which prevented them from viewing testimonials they expected to see.",
+        "observed_signal": "Participant acknowledged that videos exist on the page but stated they are not functioning.",
+        "stated_signal": "Some testimonials which I believe these videos might be testimonials and they might be saying that stuff. However, the actual videos are not working.",
+        "rationale": "The participant identified a significant barrier: videos that should provide athlete testimonials are non-functional. This is an unresponsive interface issue (F4) that blocked access to meaningful content the participant expected to consume. The statement shows frustration and the friction is substantial enough to warrant S3, as a key content pathway (testimonials) failed, though the participant continued exploring.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "chiomaenenmoh__web-health-information-bupa_w037",
+        "video_id": "chiomaenenmoh__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "chiomaenenmoh",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Videos on the mental health page do not play, forcing the participant to use the transcript as a fallback.",
+        "observed_signal": "Participant attempted to view videos on the mental health page; the videos did not play, so the participant read the transcript instead.",
+        "stated_signal": "The video does not play I guess you can view the transcript though. None of the videos are playing.",
+        "rationale": "The participant explicitly stated that videos are not playing and resorted to the transcript. The observed behaviour shows the participant had to use an alternate pathway (transcript) due to non-responsive video interface. This represents significant friction requiring a workaround, matching S4 and L3.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "chiomaenenmoh__web-health-information-bupa_w010",
+        "video_id": "chiomaenenmoh__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "chiomaenenmoh",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate a specific category in the interface and stated inability to see it, then shifted to search as an alternative strategy.",
+        "observed_signal": "Participant attempted to navigate to a category (T for tumor), stated inability to see it, then mentioned looking under cancer category, found nothing specific, and decided to use search instead.",
+        "stated_signal": "That category Which I can't see, um, we'll go to. T for tumor. See if anything comes up under there. Which I can't see. Um, Also could come under cancer. So I'll look. And Nothing specific really, so um if I try to search. That might be easier.",
+        "rationale": "The participant explicitly stated they could not see or locate the intended category ('Which I can't see'), searched unsuccessfully under a related category, and then recovered by shifting to search functionality. This represents a non-optimal navigation path with brief friction, but the participant identified and executed an alternative strategy without abandoning the task.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 47 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=3, S4=1, S5=41, S6=2. Representative findings: Participant's search queries for pancreatic cancer and gamma knife returned no relevant results, and the search by topic pathway did not yield the information needed. | Participant could not locate information about brain tumors on the health information site and confirmed the absence of relevant content for their specific condition. | Participant discovered that videos on the page are not working, which prevented them from viewing testimonials they expected to see.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 47 findings spanning 7 distinct friction types (F6,F1,F7,F2,F3,F5,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F1 Comprehension, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F1,F7,F2,F3,F5,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=47 findings across 7 distinct friction types (F6=17, F1=12, F7=6, F2=4, F3=3, F5=3, F4=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

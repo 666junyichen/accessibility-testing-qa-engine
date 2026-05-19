@@ -1,0 +1,186 @@
+{
+  "video_id": "margieflint__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "margieflint",
+  "total_windows": 72,
+  "duration_sec": 4710.2970000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 67,
+    "by_friction_type": {
+      "F1": 30,
+      "F2": 13,
+      "F3": 3,
+      "F4": 1,
+      "F5": 3,
+      "F6": 13,
+      "F7": 4
+    },
+    "by_severity": {
+      "S3": 3,
+      "S4": 5,
+      "S5": 56,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 5,
+      "E4": 61
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 55,
+      "L3": 8
+    },
+    "signal_alignment_distribution": {
+      "aligned": 67
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "margieflint__web-health-information-bupa_w007",
+        "video_id": "margieflint__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find the information needed in the A to Z section and used search as a workaround, but search also returned no results.",
+        "observed_signal": "Participant browsed through multiple A to Z categories (Muscles/bones/cancer, Away section with indigestion/knee pain/insomnia, B section with vomiting/vaginal thrush/vascular conditions), then attempted to use the search functionality, which returned no results.",
+        "stated_signal": "Well, it's nothing under that. Let's go to A to Z of Health and see if something's on there. So we're not gonna find anything under those, so let's try typing it in. Mm, nothing has come up with that.",
+        "rationale": "The participant systematically searched multiple pathways (A to Z browsing and search) and found no results. Both stated frustration ('nothing...', 'nothing has come up') and observed behaviour (multiple failed search attempts) indicate the required information was not located through normal means. The participant had to resort to trying 'vomiting' as a last attempt, suggesting the task component was significantly hindered though not fully blocked.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint__web-health-information-bupa_w010",
+        "video_id": "margieflint__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find information matching the specific medical presentation described (intermittent vomiting with negative scans and potential parasitic cause) despite searching the health information site.",
+        "observed_signal": "Participant reviewed content about esophageal cancer and hiatus hernia but explicitly stated multiple times that the information found did not match what they were looking for: 'that's not what I'm after either' and 'There's nothing on there that I can find that treats anything like that.'",
+        "stated_signal": "That's not what I'm after either. There's nothing on there that I can find that treats anything like that. There's nothing much here that.",
+        "rationale": "The participant searched for content addressing a specific medical condition (intermittent vomiting possibly related to parasitic infection from travel) but the site did not contain matching information. The participant expressed frustration and exhaustion ('There's nothing much here that'), indicating significant component failure. The task outcome—finding relevant health information—was not achieved despite multiple search attempts.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint__web-health-information-bupa_w029",
+        "video_id": "margieflint__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant questioned why Paralympian stories are only available on Instagram rather than directly on the website, expressing concern that this excludes people without social media accounts.",
+        "observed_signal": "Participant read aloud the instruction to view stories on Instagram, then paused and explicitly asked why the stories aren't written on the page itself, noting that not everyone has Instagram or Facebook.",
+        "stated_signal": "And what if you don't have Instagram? OK. So, I'm not sure about that because not everyone has Instagram and I certainly don't have Facebook, so, I'd be able to check Instagram, but why aren't they just written here for people to look at?",
+        "rationale": "The participant identified a barrier to accessing key content (Paralympian stories) that is gated behind external social media platforms rather than available directly on the health information website. The stated concern and the observed questioning behaviour both indicate significant friction; the participant cannot locate the stories on the website itself and must leave the product to access them, which is a workaround rather than direct access.",
+        "structural_amplification_note": "This barrier is structurally amplified for users who do not use or have access to social media platforms, reducing inclusive access to health and wellbeing content."
+      },
+      {
+        "window_id": "margieflint__web-health-information-bupa_w009",
+        "video_id": "margieflint__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "margieflint",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant searched multiple times through unrelated content and repeatedly expressed dissatisfaction with search results, unable to locate the specific health information needed.",
+        "observed_signal": "Participant navigated through several search results (proton pump inhibitors, weight loss, gourd, vomiting, reflux, Barrett's esophagus) and repeatedly went back, trying different queries.",
+        "stated_signal": "I don't think that's really what I'm looking for, so we'll go back. I'm not really finding anything that I'm after there.",
+        "rationale": "The participant explicitly stated dissatisfaction with search results multiple times and cycled through several unrelated or partially relevant topics without finding the target information. The observed repeated back-tracking and stated frustration both indicate significant difficulty locating the required content, fitting the L3 gate (significant friction, multiple attempts before recovery or resolution).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "margieflint__web-health-information-bupa_w023",
+        "video_id": "margieflint__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "margieflint",
+        "friction_type": "F5",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant closed a modal or expanded content area and was unable to navigate back to the same location, instead being returned to the start of the page.",
+        "observed_signal": "Participant clicked to close a screen, and the interface returned them to the beginning of the page rather than maintaining their position.",
+        "stated_signal": "I clicked on that, I closed the screen and then it went back to the start. So, I couldn't quite work out how to close that properly.",
+        "rationale": "The participant's close action produced unexpected behaviour—returning to the page start instead of maintaining context—and they stated confusion about the proper close mechanism. This is a navigation disruption that required them to reorient, matching S4 high friction with observed struggle.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 67 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=3, S4=5, S5=56, S6=3. Representative findings: Participant could not find the information needed in the A to Z section and used search as a workaround, but search also returned no results. | Participant could not find information matching the specific medical presentation described (intermittent vomiting with negative scans and potential parasitic cause) despite searching the health information site. | Participant questioned why Paralympian stories are only available on Instagram rather than directly on the website, expressing concern that this excludes people without social media accounts.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 67 findings spanning 7 distinct friction types (F1,F2,F6,F7,F3,F5,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F6,F7,F3,F5,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=67 findings across 7 distinct friction types (F1=30, F2=13, F6=13, F7=4, F3=3, F5=3, F4=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

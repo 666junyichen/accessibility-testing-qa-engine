@@ -1,0 +1,208 @@
+{
+  "video_id": "sharelinsonny__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "sharelinsonny",
+  "total_windows": 82,
+  "duration_sec": 5492.741,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 46,
+    "by_friction_type": {
+      "F1": 13,
+      "F2": 12,
+      "F3": 5,
+      "F5": 2,
+      "F6": 10,
+      "F7": 4
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 8,
+      "S4": 6,
+      "S5": 30
+    },
+    "by_sentiment": {
+      "E2": 2,
+      "E3": 6,
+      "E4": 38
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 30,
+      "L3": 13,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 41,
+      "stated_missing": 5
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "sharelinsonny__web-health-information-bupa_w074",
+        "video_id": "sharelinsonny__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled to find relevant service information for their location and had to abandon the task due to geographic mismatch.",
+        "observed_signal": "Participant stopped attempting the task and stated they did not know any posts for the UK and were based in Australia instead.",
+        "stated_signal": "I couldn't do anything because I, I didn't know any posts for. Um, at the UK. So Since I'm based in Australia.",
+        "rationale": "The participant could not locate relevant content or services for their geographic location (Australia) and abandoned the primary task outcome. This is a blocker-level content not found issue where the product failed to serve the user's fundamental need.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "sharelinsonny__web-health-information-bupa_w074",
+        "video_id": "sharelinsonny__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant was uncertain whether a quote was required before making a booking and stopped the task without completing it.",
+        "observed_signal": "Participant halted progress through the booking flow and stated they would need to go back, expressing doubt about the prerequisite workflow.",
+        "stated_signal": "I probably don't have to um make a quote before I make a booking, right? Cause I thought I have to make a quote.",
+        "rationale": "The participant explicitly expressed uncertainty about the booking workflow and stopped attempting the task, unsure whether a quote step was necessary. Both the hesitation and task abandonment indicate a component task blocker caused by confidence friction regarding process flow.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "sharelinsonny__web-health-information-bupa_w042",
+        "video_id": "sharelinsonny__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that accessibility features are not sufficiently visible or easily discoverable on the homepage, creating a barrier for older or less tech-confident users.",
+        "observed_signal": "Participant reviewed the current page design and articulated concerns about accessibility feature visibility and discoverability.",
+        "stated_signal": "They may not know way to find this page, and even if they do, they might expect simple buttons or tools rather than just read an explanation. I think this could be improved by um like making accessibility options, you know, like more visible on the homepage and adding like quick access tools like text size adjustment or contrast mode or simplify view.",
+        "rationale": "The participant stated that accessibility options are difficult to find and that users may not know how to locate them. This represents a content/pathway discovery friction event where a key feature (accessibility tools) is not accessible to the target cohort. The severity S3 reflects a significant component barrier that impacts usability for older or less tech-confident users.",
+        "structural_amplification_note": "Older adults and users with lower technology confidence experience structurally higher friction when accessibility features are not prominently visible or easily discoverable. This finding directly impacts the accessibility and usability of the product for these cohorts."
+      },
+      {
+        "window_id": "sharelinsonny__web-health-information-bupa_w044",
+        "video_id": "sharelinsonny__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed that accessibility tools on Bupa's accessibility page feel informational rather than practical and not sufficiently visible or interactive.",
+        "observed_signal": "Participant reviewed Bupa's accessibility page and made a reflective assessment comparing its current state to a desired state.",
+        "stated_signal": "Overall it's good that Bupa has an accessibility page, but it feels more informational than practical. By making accessibility tools more visible and interactive will greatly improve the, um, all the experience.",
+        "rationale": "The participant identified a design gap where accessibility tools exist but are not sufficiently discoverable or usable in practice. This represents a significant accessibility friction issue: tools are present but their low visibility and interactivity create a barrier to practical use. The stated concern and observed reflection both point to a meaningful accessibility shortfall.",
+        "structural_amplification_note": "Users relying on assistive technology or requiring accessible features are structurally amplified by tools that are present but not prominent or interactive, reducing their discoverability and practical utility."
+      },
+      {
+        "window_id": "sharelinsonny__web-health-information-bupa_w043",
+        "video_id": "sharelinsonny__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that accessibility features are not easily accessible on the website and expressed expectation that they should be built directly into the site.",
+        "observed_signal": "Participant stated expectation that accessibility features be 'built directly into the website and easy to access at any time' rather than in a dispatch or separate location.",
+        "stated_signal": "I probably wouldn't return to dispatch regularly, so I expect accessibility feature to be built directly into the website and easy to access at any time.",
+        "rationale": "The participant cannot locate or easily access accessibility features integrated into the main website experience and has resorted to using an external dispatch mechanism. This represents a significant content/pathway discovery issue where the expected accessibility integration is absent, matching S3 (barrier worked around or skipped) and L3 (significant friction with multiple attempts or frustration).",
+        "structural_amplification_note": "Users requiring accessibility features experience structural amplification when those features are not discoverable or integrated into the primary interface; this cohort relies on these features for core access."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 46 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=8, S4=6, S5=30. Representative findings: Participant struggled to find relevant service information for their location and had to abandon the task due to geographic mismatch. | Participant was uncertain whether a quote was required before making a booking and stopped the task without completing it. | Participant identified that accessibility features are not sufficiently visible or easily discoverable on the homepage, creating a barrier for older or less tech-confident users.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 46 findings spanning 6 distinct friction types (F1,F2,F6,F3,F7,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F6,F3,F7,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=46 findings across 6 distinct friction types (F1=13, F2=12, F6=10, F3=5, F7=4, F5=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

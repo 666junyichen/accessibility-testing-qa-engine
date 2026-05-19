@@ -1,0 +1,208 @@
+{
+  "video_id": "deanmills1987__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "deanmills1987",
+  "total_windows": 71,
+  "duration_sec": 5009.177,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 36,
+    "by_friction_type": {
+      "F1": 16,
+      "F2": 3,
+      "F3": 5,
+      "F4": 1,
+      "F5": 2,
+      "F6": 8,
+      "F7": 1
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 3,
+      "S4": 8,
+      "S5": 23,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E2": 3,
+      "E3": 1,
+      "E4": 31,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 22,
+      "L3": 11,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 36
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "deanmills1987__web-health-information-bupa_w069",
+        "video_id": "deanmills1987__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F5",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed unwillingness to proceed with payment due to the stated appointment cost of £900.",
+        "observed_signal": "Participant read through form fields and appointment details, then stated a refusal to pay the quoted price.",
+        "stated_signal": "I'm not paying £900 for an appointment.",
+        "rationale": "The participant encountered an unexpected price (£900) for the appointment and explicitly refused to complete the payment step, stating unwillingness to proceed. This represents a blocking friction event where the primary project outcome (completing the appointment booking) cannot be achieved because the participant will not proceed past the payment barrier. The strong negative emotion and stated refusal meet the S1 and L5 gate criteria.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "deanmills1987__web-health-information-bupa_w043",
+        "video_id": "deanmills1987__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern that insufficient labeling and information would confuse new assistive technology users, particularly regarding how to configure accessibility features.",
+        "observed_signal": "Participant reviewed the page and identified missing labels and inadequate guidance on accessibility configuration options.",
+        "stated_signal": "Elements not always been labeled... I think for a new person that will throw them off a lot. I think it needs a lot more information. About what is successful and how to change things that don't work... how to till the contrast, how to make the page bigger, smaller.",
+        "rationale": "The participant, an advanced assistive technology user, identified a structural accessibility gap: missing element labels and absent guidance on accessibility settings configuration. This represents a significant barrier for new AT users attempting to customize the interface, even though the participant themselves could work around it. The stated concern and observed page review align on this friction.",
+        "structural_amplification_note": "Blind and AT-dependent users experience structurally higher friction from unlabeled elements and missing accessibility help documentation. New AT users lack the workarounds an advanced user employs and would face near-complete task impediment."
+      },
+      {
+        "window_id": "deanmills1987__web-health-information-bupa_w043",
+        "video_id": "deanmills1987__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified missing links to assistive technology resources (NVDA, JAWS) that new users would not know exist.",
+        "observed_signal": "Participant noted the absence of links to specific assistive technology tools on the page.",
+        "stated_signal": "Maybe a link to, MVD or Jaws or both actually, because a lot of people won't actually know that these things exist.",
+        "rationale": "The participant observed that critical information (links to common assistive technologies) is not present on the page. For new users, this represents significant friction preventing discovery of tools needed to use the site accessibly. The participant's stated concern directly identifies this content gap.",
+        "structural_amplification_note": "Blind and newly disabled users experience structurally higher friction from absent AT discovery resources; they cannot locate assistive technology solutions without explicit guidance."
+      },
+      {
+        "window_id": "deanmills1987__web-health-information-bupa_w069",
+        "video_id": "deanmills1987__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled to comprehend the form layout and appointment scheduling options, describing them as poorly structured for readability.",
+        "observed_signal": "Participant read aloud fragmented appointment times and dates in a disjointed manner, then explicitly noted that radio button options would be clearer than the current presentation.",
+        "stated_signal": "They could read it better as radio button options appointments, but there are no navigation.",
+        "rationale": "The participant found the scheduling presentation confusing and identified a specific usability improvement (radio buttons), indicating comprehension difficulty with the current date/time format. The fragmented reading pattern and explicit suggestion for structural redesign point to significant friction in understanding the appointment options, though the participant did not fully abandon the task.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "deanmills1987__web-health-information-bupa_w033",
+        "video_id": "deanmills1987__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "deanmills1987",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced significant difficulty locating and playing videos, describing the process as messy and requiring repeated attempts.",
+        "observed_signal": "Participant navigated through multiple page sections, repeatedly attempted to find and play videos, and cycled through several links before achieving playback.",
+        "stated_signal": "It's very hard to find these videos, honestly. I did get the video to play, but it was a lot of mess around.",
+        "rationale": "The participant explicitly stated difficulty finding videos and described the experience as messy. Observed behaviour shows multiple navigation attempts and repeated link cycling before achieving the goal. Both stated frustration and observed struggle indicate significant friction with recovery after multiple attempts, matching the S4 and L3 gates.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 36 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S3=3, S4=8, S5=23, S6=1. Representative findings: Participant expressed unwillingness to proceed with payment due to the stated appointment cost of £900. | Participant expressed concern that insufficient labeling and information would confuse new assistive technology users, particularly regarding how to configure accessibility features. | Participant identified missing links to assistive technology resources (NVDA, JAWS) that new users would not know exist.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 36 findings spanning 7 distinct friction types (F1,F6,F3,F2,F5,F4,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F3 Accessibility) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F3,F2,F5,F4,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=36 findings across 7 distinct friction types (F1=16, F6=8, F3=5, F2=3, F5=2, F4=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

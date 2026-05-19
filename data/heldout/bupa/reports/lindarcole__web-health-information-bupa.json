@@ -1,0 +1,189 @@
+{
+  "video_id": "lindarcole__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "lindarcole",
+  "total_windows": 40,
+  "duration_sec": 2726.584,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 53,
+    "by_friction_type": {
+      "F1": 11,
+      "F2": 9,
+      "F3": 2,
+      "F4": 4,
+      "F5": 4,
+      "F6": 14,
+      "F7": 9
+    },
+    "by_severity": {
+      "S3": 4,
+      "S4": 6,
+      "S5": 38,
+      "S6": 5
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 7,
+      "E4": 44,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 5,
+      "L2": 38,
+      "L3": 9,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 51,
+      "stated_missing": 2
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "lindarcole__web-health-information-bupa_w038",
+        "video_id": "lindarcole__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered no available appointments within 28 days and was forced to call instead of booking online, leading to stated frustration and intent to abandon the task.",
+        "observed_signal": "Participant navigated the appointment booking flow, filtered by date and location, but found no available slots within 28 days and was redirected to a phone-booking pathway.",
+        "stated_signal": "No appointments available within 28 days, few later dates, so that's quite a long way off. I would probably give up at this point, to be honest. I can't even book it online at a time and venue to suit me. So I would find that an absolute turn off to be honest.",
+        "rationale": "The participant could not locate available appointments within the timeframe needed and was unable to complete the self-service booking pathway, forced instead to call. Both observed behaviour (dead-end in the booking flow) and explicit stated intent to abandon ('I would probably give up at this point') indicate severe friction that nearly blocks the component task. The frustration and strong negative emotion (E5) reinforce the high-friction gate.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "lindarcole__web-health-information-bupa_w020",
+        "video_id": "lindarcole__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified a gap in accessibility support: no phone contact option available, only email or postal options, which may be barriers for people with visual differences.",
+        "observed_signal": "Participant reviewed contact options and questioned the lack of phone support as an accessibility alternative.",
+        "stated_signal": "Is there an option for people to call you because that might be easier for people with visual differences.",
+        "rationale": "The participant could not locate a required pathway (phone support) needed to serve users with visual impairments. The stated concern and observed questioning both show that a necessary accessibility feature was not found. This represents a significant gap that forces users toward less-accessible contact methods, matching S3 (significant component failure).",
+        "structural_amplification_note": "Users with visual impairments would experience structurally higher friction when email or postal contact is the only option, as phone contact may be more accessible for individuals who rely on assistive technology."
+      },
+      {
+        "window_id": "lindarcole__web-health-information-bupa_w023",
+        "video_id": "lindarcole__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed disappointment that the cheaper product option is not available online, viewing this as an exclusionary design that discriminates against people with hearing difficulties, anxiety, or speech difficulties.",
+        "observed_signal": "Participant reviewed the table information and identified that the cheaper option is phone-only, not available online.",
+        "stated_signal": "I'm disappointed that your cheaper option is not available online because that immediately excludes people with hearing difficulties who are perhaps less keen on phone use. Immediately excludes those with anxiety or speech difficulties.",
+        "rationale": "The participant identified unexpected behaviour: a design pattern (phone-only availability for the cheaper option) that conflicts with inclusive access expectations and creates barriers for specific user groups. The stated disappointment and explicit recognition of exclusion indicate significant friction rooted in accessibility and equity concerns, matching S3 (significant component failure, barrier worked around or skipped).",
+        "structural_amplification_note": "Participants with hearing difficulties, anxiety, or speech difficulties would experience this as a structural barrier, amplifying the friction beyond the general user population."
+      },
+      {
+        "window_id": "lindarcole__web-health-information-bupa_w028",
+        "video_id": "lindarcole__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed disappointment that the cheaper purchase option is not available online, identifying this as a barrier that excludes people with hearing difficulties, anxiety, or speech difficulties who prefer not to use phone services.",
+        "observed_signal": "Participant stated concern about the exclusion of certain user groups and the limitation of the cheaper option to phone-only availability.",
+        "stated_signal": "I'm disappointed that your cheaper option is not available online because that immediately excludes people with hearing difficulties who are perhaps less keen on phone use. Immediately excludes those with anxiety or speech difficulties.",
+        "rationale": "The participant identified a missing pathway (online purchase of the cheaper option) that creates a significant barrier for a specific user cohort. The stated disappointment and explicit exclusion concern align with observed recognition of a content/functionality gap. This is a component-level barrier that affects accessibility equity, meeting S3 (significant component failure) and L3 (significant friction with frustration).",
+        "structural_amplification_note": "This finding has direct structural amplification for users with hearing difficulties, anxiety, speech difficulties, and those who rely on accessible digital channels. The phone-only constraint for the cheaper option systematically excludes these populations from equal access to pricing options."
+      },
+      {
+        "window_id": "lindarcole__web-health-information-bupa_w012",
+        "video_id": "lindarcole__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "lindarcole",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the Paralympic sponsorship information on the Bupa website and stated they cannot see anything on the right side of the page.",
+        "observed_signal": "Participant scanned the page and explicitly stated 'I can't see anything there. On the right at the.' indicating they looked for but did not find the target content.",
+        "stated_signal": "I can't see anything there. On the right at the.",
+        "rationale": "The participant was assigned to find information about Bupa's Paralympic sponsorship on the UK website but explicitly stated they cannot see the content they are looking for. The observation and statement align: the participant searched the page visually and found the target information not visible or locatable. This represents significant friction in locating required content, matching the L3 gate (significant friction, multiple attempts or detours before recovery or task completion).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 53 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=4, S4=6, S5=38, S6=5. Representative findings: Participant identified a gap in accessibility support: no phone contact option available, only email or postal options, which may be barriers for people with visual differences. | Participant expressed disappointment that the cheaper product option is not available online, viewing this as an exclusionary design that discriminates against people with hearing difficulties, anxiety, or speech difficulties. | Participant expressed disappointment that the cheaper purchase option is not available online, identifying this as a barrier that excludes people with hearing difficulties, anxiety, or speech difficulties who prefer not to use phone services.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 53 findings spanning 7 distinct friction types (F6,F1,F2,F7,F4,F5,F3). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F1 Comprehension, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F1,F2,F7,F4,F5,F3",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=53 findings across 7 distinct friction types (F6=14, F1=11, F2=9, F7=9, F4=4, F5=4, F3=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

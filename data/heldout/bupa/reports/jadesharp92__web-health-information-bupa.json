@@ -1,0 +1,188 @@
+{
+  "video_id": "jadesharp92__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "jadesharp92",
+  "total_windows": 59,
+  "duration_sec": 4272.3640000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 26,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 5,
+      "F3": 14,
+      "F5": 1,
+      "F6": 1,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 8,
+      "S4": 2,
+      "S5": 13,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 6,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 13,
+      "L3": 11,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 24,
+      "stated_missing": 2
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "jadesharp92__web-health-information-bupa_w022",
+        "video_id": "jadesharp92__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "jadesharp92",
+        "friction_type": "F3",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Video player controls are not accessible to screen reader and do not expose any interactive elements, blocking the participant from operating the video playback.",
+        "observed_signal": "Participant attempted to interact with the video player using a screen reader; the controls did not appear or respond to assistive technology.",
+        "stated_signal": "These videos with the screen reader don't seem to want to play. The player controls don't seem to be accessible here to my screen reader, they're not showing at all, which isn't very good.",
+        "rationale": "The participant explicitly stated that screen reader controls are not showing and inaccessible, and observed behaviour confirms the player controls were not exposed to the assistive technology. While transcripts are available as a workaround, the primary video playback pathway is completely blocked for assistive-technology users. This is a component task blocker (S2) with near-abandonment severity (L4).",
+        "structural_amplification_note": "Screen reader user cohort experiences structural blocking on this interaction; unlabeled or hidden video player controls are fundamentally inaccessible to assistive technology, preventing independent use of the video feature."
+      },
+      {
+        "window_id": "jadesharp92__web-health-information-bupa_w030",
+        "video_id": "jadesharp92__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "jadesharp92",
+        "friction_type": "F3",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot effectively navigate a 29-row, 3-column data table because screen readers read linearly and the participant lacks Braille access, making it impossible to understand the table structure and content.",
+        "observed_signal": "Participant attempted to describe how screen readers would read the table (left to right, top to bottom) and acknowledged that without Braille representation, the table structure and meaning would not be accessible.",
+        "stated_signal": "I'm not a fan of tables because visually I can't see what's in each column, what's in each row. And I haven't really had specific training on how to navigate tables. This table, I don't think is going to make any sense to me at all, because I really struggle reading tables on a computer.",
+        "rationale": "The participant is a blind or low-vision user relying on screen reader technology. The observed signal (attempting to parse the table structure and recognizing failure) aligns with the stated signal (explicit statement that the table makes no sense without Braille and due to struggle with screen reader table navigation). This is an accessibility friction event where a critical component (the data table) is not usable with assistive technology, blocking access to that specific content or task.",
+        "structural_amplification_note": "Blind/screen reader users experience structurally amplified friction on tables without proper semantic markup (headers, scopes, summaries) because linear audio rendering destroys the two-dimensional spatial relationships that sighted users perceive visually. The absence of Braille display further reduces access. This cohort requires table structures that expose relationships to AT."
+      },
+      {
+        "window_id": "jadesharp92__web-health-information-bupa_w014",
+        "video_id": "jadesharp92__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "jadesharp92",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader users cannot distinguish between multiple identical 'get a quote' links because the link text lacks context about what is being quoted.",
+        "observed_signal": "Participant identified that tabbing through the page would only expose 'get a quote' as the link label without surrounding text, making it impossible to know what the quote refers to.",
+        "stated_signal": "If I was just tapping around, I wouldn't want to click that link because I wouldn't know what it is that I am getting a quote for. So that link should be renamed to get a quote for, and then what it is that the quote is there for.",
+        "rationale": "The participant, demonstrating screen reader expertise, identified a significant accessibility barrier: non-descriptive link text violates WCAG standards for link naming and forces assistive technology users to either skip the link or activate it without understanding its purpose. This is a structural barrier that requires product remediation, not a recoverable user hesitation.",
+        "structural_amplification_note": "Screen reader users are structurally disadvantaged by generic link text because they navigate by link alone without visual context from surrounding content. Keyboard-only users experience the same friction."
+      },
+      {
+        "window_id": "jadesharp92__web-health-information-bupa_w023",
+        "video_id": "jadesharp92__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "jadesharp92",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Video player controls are not accessible to screen reader users, preventing them from accessing video content and forcing reliance on transcripts as an inferior alternative.",
+        "observed_signal": "Participant (a screen reader user) discovered that player controls are not visible to NVDA and identified this as a barrier that shuts out screen media users from the video content.",
+        "stated_signal": "The player controls are not visible to NVDA, so that needs to be fixed because screen media users like myself are being shut out here, which is a real shame. Because we're missing out on what those Paralympians are actually saying.",
+        "rationale": "The participant explicitly identified a critical accessibility failure: video player controls are not exposed to assistive technology (NVDA), making the primary content (videos) inaccessible. Although transcripts exist as a workaround, the participant stated this is not equivalent and expressed frustration at being shut out. This is a significant component failure that blocks full access to video content for screen reader users, matching S3 and L3.",
+        "structural_amplification_note": "Blind and screen reader users are structurally blocked from video playback controls. This cohort experiences complete exclusion from a core content pathway that sighted users can access naturally. The availability of transcripts does not mitigate the access barrier to the videos themselves."
+      },
+      {
+        "window_id": "jadesharp92__web-health-information-bupa_w024",
+        "video_id": "jadesharp92__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "jadesharp92",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not access video content through the screen reader and missed a substantial part of the page experience as a result.",
+        "observed_signal": "Participant reported inability to hear Paralympians speak or watch videos on the page, stating they missed out on a sole part of the page.",
+        "stated_signal": "I've not been able to hear the Paralympians speak, I've not been able to watch those videos, so I feel like I've missed out on this, on a sole part of, this page here.",
+        "rationale": "The participant, a screen reader user, encountered a barrier with video content that is not accessible with assistive technology. The participant explicitly stated they missed a significant component of the page experience. This is a structural accessibility failure affecting a core content type, meeting S3 (significant component failure) and L3 (struggle with frustration).",
+        "structural_amplification_note": "Screen reader users experience structurally higher friction on video content without proper accessibility markup, captions, or audio descriptions. The participant could not access the full informational and emotional value of the Paralympian videos."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 26 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=8, S4=2, S5=13, S6=1. Representative findings: Video player controls are not accessible to screen reader and do not expose any interactive elements, blocking the participant from operating the video playback. | Participant cannot effectively navigate a 29-row, 3-column data table because screen readers read linearly and the participant lacks Braille access, making it impossible to understand the table structure and content. | Screen reader users cannot distinguish between multiple identical 'get a quote' links because the link text lacks context about what is being quoted.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 26 findings spanning 6 distinct friction types (F3,F2,F1,F5,F6,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F3 (Accessibility) as the primary coaching anchor; secondary types (F2 Confidence, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F3,F2,F1,F5,F6,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=26 findings across 6 distinct friction types (F3=14, F2=5, F1=4, F5=1, F6=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

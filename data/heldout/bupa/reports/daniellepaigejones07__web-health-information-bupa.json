@@ -1,0 +1,186 @@
+{
+  "video_id": "daniellepaigejones07__web-health-information-bupa",
+  "project": "web-health-information-bupa",
+  "tester_name": "daniellepaigejones07",
+  "total_windows": 78,
+  "duration_sec": 5550.46,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 59,
+    "by_friction_type": {
+      "F1": 14,
+      "F2": 11,
+      "F3": 14,
+      "F5": 2,
+      "F6": 7,
+      "F7": 11
+    },
+    "by_severity": {
+      "S3": 7,
+      "S4": 5,
+      "S5": 42,
+      "S6": 5
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 5,
+      "E4": 52,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L1": 6,
+      "L2": 41,
+      "L3": 12
+    },
+    "signal_alignment_distribution": {
+      "aligned": 59
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "daniellepaigejones07__web-health-information-bupa_w008",
+        "video_id": "daniellepaigejones07__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "daniellepaigejones07",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced visual discomfort and strong negative reaction to the bright color scheme (white and bright green), describing it as painful to look at and comparing the design to sleazy car salesmen aesthetics.",
+        "observed_signal": "Participant stated they would avoid websites with such bright colors and expressed physical discomfort ('my eyes are hurting just from looking at it').",
+        "stated_signal": "The bright white and bright green is very like, my eyes are hurting just from looking at it. I probably wouldn't go for any of the websites that are really bright.",
+        "rationale": "The participant experienced accessibility friction related to visual contrast and color intensity, reporting physical pain and expressing intent to avoid the interface. Both observed behaviour (avoidance) and stated signals (eye pain complaint) align on this being a significant barrier that affects usability and user willingness to engage with the product, though the participant did not abandon the current session.",
+        "structural_amplification_note": "Participants with light sensitivity, photophobia, migraines, or certain neurodivergent profiles (e.g., autism) experience structurally amplified friction from high-contrast or intensely bright color schemes."
+      },
+      {
+        "window_id": "daniellepaigejones07__web-health-information-bupa_w007",
+        "video_id": "daniellepaigejones07__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "daniellepaigejones07",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed strong reluctance to read page content due to excessive brightness and stated intention to close the page rather than engage with the material.",
+        "observed_signal": "Participant read the opening policy text aloud, then stated they would close the page due to brightness, and indicated intention to leave rather than continue reading.",
+        "stated_signal": "because the the page is so bright, I probably, I probably would just be like, OK, I really don't wanna read that, um, and so I just close that page down",
+        "rationale": "The participant explicitly stated that page brightness prevents reading engagement and triggers avoidance behaviour (closing the page). This is an accessibility friction issue where visual presentation barriers cause the participant to abandon the content pathway. The stated frustration and observed abandonment intent both indicate significant component failure.",
+        "structural_amplification_note": "Visual brightness sensitivity is a known accessibility barrier that structurally impacts participants with light sensitivity, visual processing disorders, or certain neurodivergent conditions."
+      },
+      {
+        "window_id": "daniellepaigejones07__web-health-information-bupa_w026",
+        "video_id": "daniellepaigejones07__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "daniellepaigejones07",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced significant visual contrast difficulty with white text on dark blue background, stating it was hard for eyes to adjust and indicating she would likely not use that section.",
+        "observed_signal": "Participant described struggling to read white text on dark blue, compared it unfavorably to gray background sections, and stated she probably wouldn't use it.",
+        "stated_signal": "white on the dark blue is like, yeah, really difficult for my eyes to like adjust to. I probably just wouldn't use it.",
+        "rationale": "The participant's observed difficulty with contrast and stated intention to avoid the section indicates a significant accessibility barrier. Poor contrast between text and background is a documented accessibility friction that materially affects usability, meeting S3 (significant component failure). The participant expressed frustration and indicated potential abandonment of that content area.",
+        "structural_amplification_note": "This contrast issue may have amplified friction for participants with color vision deficiency, low vision, or other visual processing differences."
+      },
+      {
+        "window_id": "daniellepaigejones07__web-health-information-bupa_w026",
+        "video_id": "daniellepaigejones07__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "daniellepaigejones07",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant noted that sections are very close together, expressed uncertainty about whether this is a device-specific issue, and indicated she would not use the interface due to this spacing.",
+        "observed_signal": "Participant observed and commented on tight spacing between sections, questioned whether the issue was universal or device-specific, and stated reluctance to use it.",
+        "stated_signal": "these sections aren't honestly so bad, they are very close together. I don't know if that's just what it's like on my computer or whether it's like that on all devices, um, but, again, I probably just wouldn't use it.",
+        "rationale": "The participant identified inadequate spacing as a usability concern, expressed confusion about scope (device vs. universal), and indicated she would abandon use. Tight spacing affects both visual clarity and accessibility for users with motor or cognitive needs, constituting a significant component barrier that affects the participant's willingness to engage.",
+        "structural_amplification_note": "Tight spacing disproportionately affects users with motor control difficulties, cognitive processing needs, or those using touch interfaces on smaller devices."
+      },
+      {
+        "window_id": "daniellepaigejones07__web-health-information-bupa_w056",
+        "video_id": "daniellepaigejones07__web-health-information-bupa",
+        "project": "web-health-information-bupa",
+        "tester_name": "daniellepaigejones07",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed need for additional information beyond what is currently available on the web interface to meet their accessibility requirements.",
+        "observed_signal": "Participant stated they would prefer to call and speak to someone rather than rely solely on reading the web content, citing insufficient information for their accessibility needs.",
+        "stated_signal": "I think sometimes it is really helpful to hear someone like physically say it, and I think after kind of doing um a bit of research and stuff like that, I personally would probably prefer to like call um. Just based on like my accessibility, uh, needs, um, I kind of need a bit more information that's kind of...",
+        "rationale": "The participant identified a gap in available information—they could not find sufficient detail within the web interface to meet their accessibility needs and stated they would need to seek information through an external pathway (phone call). This represents significant friction where a component of the task (obtaining complete accessible information) cannot be fully satisfied by the product as presented.",
+        "structural_amplification_note": "Participant with specific accessibility requirements experienced amplified friction due to insufficient information depth or alternative format availability in the web interface to meet their stated needs."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 59 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=7, S4=5, S5=42, S6=5. Representative findings: Participant experienced visual discomfort and strong negative reaction to the bright color scheme (white and bright green), describing it as painful to look at and comparing the design to sleazy car salesmen aesthetics. | Participant expressed strong reluctance to read page content due to excessive brightness and stated intention to close the page rather than engage with the material. | Participant experienced significant visual contrast difficulty with white text on dark blue background, stating it was hard for eyes to adjust and indicating she would likely not use that section.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 59 findings spanning 6 distinct friction types (F1,F3,F2,F7,F6,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F3 Accessibility, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F3,F2,F7,F6,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=59 findings across 6 distinct friction types (F1=14, F3=14, F2=11, F7=11, F6=7, F5=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}
