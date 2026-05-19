@@ -4,7 +4,7 @@ Date: 2026-05-18
 
 ## Current Status
 
-The project is in final technical closeout. The next blocking step is the official Bupa held-out pipeline run.
+The project is in final technical closeout. The next blocking step is the corrected official Bupa held-out pipeline run.
 
 Bupa scope is fixed at 21 collated videos. The earlier 42 count was 21 MP4 files plus 21 VTT sidecars.
 
@@ -22,6 +22,14 @@ Current lane/key status:
 - Processed Bupa project key must be `web-health-information-bupa`.
 - `web-health-information-bupa` maps to R6 `cross_check_lane=with_overrides`.
 - `bupa-uk` is only a source/S3 folder alias. It must not be used as the processed `project` value because it falls back to `dev_only`.
+
+R7 first-run review status:
+
+- R7 produced a first Bupa run on 2026-05-18 with 21/21 reports.
+- Review found that the generated `windows.csv` did not use the frozen dev windowing logic and lacked required columns such as `duration`.
+- As a result, the first-run reports had `duration_s=0` and should not be treated as final.
+- `scripts/build_bupa_processed_inputs.py` has been corrected to use manifest-aware metadata and the frozen `src/preprocessing/window_splitter.py` logic.
+- R7 should rerun preprocessing, Layer 3, postprocess, and report generation from the corrected script before downstream R6/R3/R5/R8 tasks begin.
 
 ## Freeze Boundary
 

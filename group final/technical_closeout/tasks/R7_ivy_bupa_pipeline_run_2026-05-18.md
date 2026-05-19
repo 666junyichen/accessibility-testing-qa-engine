@@ -89,11 +89,23 @@ Generate or verify:
 
 Suggested first preprocessing step:
 
+```bash
+python scripts/build_bupa_processed_inputs.py \
+  --manifest data/heldout/bupa/processed/manifest.csv \
+  --transcript-dir data/heldout/bupa/raw/transcribe-output/web-health-information-bupa \
+  --output-dir data/heldout/bupa/processed
+```
+
+This script should:
+
 1. Read `data/heldout/bupa/processed/manifest.csv`.
 2. Read the 21 transcript JSON files under `data/heldout/bupa/raw/transcribe-output/web-health-information-bupa/`.
 3. Use manifest-aware metadata mapping to build Bupa-specific `segments.csv` and `items.csv`.
-4. Generate Bupa-specific `windows.csv` from those files.
-5. Do not reuse `data/processed/windows.csv`; that file belongs to the dev set.
+4. Generate Bupa-specific `windows.csv` using the frozen `src/preprocessing/window_splitter.py` logic.
+5. Preserve manifest `video_id` values in the final `windows.csv`.
+6. Do not reuse `data/processed/windows.csv`; that file belongs to the dev set.
+
+If `windows.csv` is regenerated, rerun Layer 3 and report generation afterwards so downstream outputs match the current windows.
 
 Final report generation should use explicit Bupa paths, for example:
 
