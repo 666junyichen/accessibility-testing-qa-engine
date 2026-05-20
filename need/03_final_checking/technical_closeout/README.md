@@ -61,6 +61,10 @@ Primary corrected run record:
 
 `evidence/bupa_corrected_pipeline_run_2026-05-19.md`
 
+Data preparation provenance:
+
+`evidence/R1_youwei_bupa_data_preparation.md`
+
 Supporting review summary:
 
 `evidence/bupa_supporting_review_summary_2026-05-20.md`

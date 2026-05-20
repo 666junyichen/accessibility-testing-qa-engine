@@ -106,7 +106,7 @@ session-level decision. The cap mechanism is detailed in §5.
 
 Decision rationale for v2 is documented in W9 Progress Report §1.2.2
 (876-window p10 percentile reasoning) and verified in
-[`notebooks/03_layer1_validation.ipynb`](../notebooks/03_layer1_validation.ipynb)
+[`need/01_final_report/research_notebooks/03_layer1_validation.ipynb`](../need/01_final_report/research_notebooks/03_layer1_validation.ipynb)
 (precision/recall analysis on six dev samples). v2 has been retained;
 no rollback recommended.
 

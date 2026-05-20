@@ -159,7 +159,7 @@ Gate 2 required Nix's explicit sign-off before the held-out run. Final status (s
 - **Freeze 3** — Step 6.1 fusion I/O schema: signed off by Nix on 2026-05-07.
 - **Freeze 4** — R6 mapping rules: signed off by Nix on 2026-05-07.
 
-**Held-out status as of 2026-05-20: ✅ completed.** The corrected Bupa evaluation processed 21 collated videos with 21/21 reports, 813 filtered L3 findings, and zero failed reports. The Bupa outputs were used only for evaluation and were not used to tune prompts, schemas, fusion, post-processing, R6 scoring, or coaching logic. See `group final/technical_closeout/evidence/bupa_evaluation_summary_2026-05-20.md` and `group final/technical_closeout/evidence/final_technical_verification_2026-05-20.md`.
+**Held-out status as of 2026-05-20: ✅ completed.** The corrected Bupa evaluation processed 21 collated videos with 21/21 reports, 813 filtered L3 findings, and zero failed reports. The Bupa outputs were used only for evaluation and were not used to tune prompts, schemas, fusion, post-processing, R6 scoring, or coaching logic. See `need/03_final_checking/technical_closeout/evidence/bupa_evaluation_summary_2026-05-20.md` and `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`.
 
 ---
 

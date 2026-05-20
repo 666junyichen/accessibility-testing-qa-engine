@@ -28,7 +28,7 @@ pip install -r requirements.txt
 - Bupa held-out: 21 transcripts, 1,252 windows, 813 filtered L3 findings,
   21 reports, 21 R6 performance rows, zero failed reports.
 - Demo: `app/streamlit_demo.py` reads precomputed dev55 artifacts.
-- Technical closeout: `group final/technical_closeout/` contains the Bupa run,
+- Technical closeout: `need/03_final_checking/technical_closeout/` contains the Bupa run,
   supporting review summary, evaluation synthesis, and final verification note.
 
 ## Contents
@@ -74,19 +74,24 @@ pip install -r requirements.txt
 | `data/processed/` | Reproducible CSV / JSON artifacts consumed by Layer 1, Layer 2, Layer 3, fusion, performance tracking, and reports. |
 | `src/` | Core Python modules for parsing, preprocessing, rule detection, clustering, LLM postprocessing, fusion, coaching, and tracking. |
 | `scripts/` | CLI-style orchestration helpers for Layer 3, postprocessing, pipeline reports, ablation, dev55 sync, and performance outputs. |
-| `notebooks/` | EDA and experimental notebooks used to inspect transcript, structured, and clustering behavior. |
 | `docs/` | Governance notes, design docs, ablation findings, case studies, prompt notes, freeze rules, and Step 8.1 scope records. |
 | `app/` | Streamlit demo that reads precomputed `dev55` report artifacts. |
 | `tests/` | Unit and regression tests for preprocessing, Layer 2 utilities, fusion, coaching, and performance tracking. |
+| `need/` | Non-runtime support material for Final Report, presentation, final checking, and technical handoff. |
 
 Raw client inputs stay under `data/raw/`. Downstream modules read reproducible
 artifacts from `data/processed/`. Large generated files should be regenerated
 from scripts where possible rather than manually edited.
 
+`need/` is intentionally separate from the runtime project structure. It
+contains research notebooks, final checking notes, presentation support, and
+school-report fact packs. Code, tests, and reproducible pipeline outputs should
+not depend on files inside `need/`.
+
 ### Data reality and scope
 
-The data scope follows `PROJECT.md` section 2, with the current local governance
-mirror in `docs/eval_freeze.md`. Canonical label and scoring references are:
+The data scope follows the current repository README and the governance mirror
+in `docs/eval_freeze.md`. Canonical label and scoring references are:
 
 | Reference | Purpose |
 |---|---|
@@ -175,7 +180,7 @@ Known structured-data limitation:
 - Therefore `assignment_id`, `task_id`, and `task_title` should not be treated as fully recoverable ground truth.
 - Task context is useful for project-level interpretation, but task-level joins should remain documented as incomplete unless a richer export is provided later.
 
-Structured EDA in `notebooks/02_structured_data_eda.ipynb` uses this snapshot to
+Structured EDA in `need/01_final_report/research_notebooks/02_structured_data_eda.ipynb` uses this snapshot to
 inspect project coverage, tester participation, task distributions, Timeguide
 fields, actual-duration vs expected-duration behavior, and survey availability.
 
@@ -295,7 +300,7 @@ extract_all_metadata(
 )
 ```
 ## Step 2.1 — Transcript Data EDA
-- **Notebook**: `notebooks/01_transcript_eda.ipynb`
+- **Notebook**: `need/01_final_report/research_notebooks/01_transcript_eda.ipynb`
 - Performs exploratory data analysis on transcript-derived data for **6 development-sample videos**
 - Development samples:
   - `ghum_wa`
@@ -314,7 +319,9 @@ extract_all_metadata(
   - `ghum_wa` shows an anomalously high average WPM (~220), which requires verification
   - around **12% of words** fall below confidence **0.8**, suggesting the current `LOW_AUDIO_QUALITY` threshold of 0.7 may be too permissive
   - `terryaflint17_suncorp` is the clearest sparse-narration prototype (`narration_density` ≈ 0.23)
-- Uses processed transcript/audio tables such as `windows.csv`, `segments.csv`, `items.csv`, and `audio_features.csv`
+- Uses processed transcript/audio tables such as `windows.csv`, `segments.csv`,
+  regenerable `items.csv`, and `audio_features.csv`. `data/processed/items.csv`
+  is intentionally gitignored because it is a large intermediate artifact.
 - Output: notebook-based summary tables and visualizations (no fixed CSV output)
 
 ```python
@@ -355,7 +362,7 @@ print(narration_density_by_video)
 ```
 
 ## Step 2.2 - Structured Data EDA
-- **Notebook**: `notebooks/02_structured_data_eda.ipynb`
+- **Notebook**: `need/01_final_report/research_notebooks/02_structured_data_eda.ipynb`
 - Performs exploratory data analysis on the current local structured-data snapshot
 - Structured scope in the current snapshot:
   - full structured EDA for the 3 development projects (`department-of-premier-and-cabinet-wa`, `suncorp-insurance`, `the-university-of-queensland`)
@@ -405,8 +412,8 @@ duration_ratio = video_metadata["duration_ratio"].describe()
 ## Step 2.3 — EDA Report
 - **Report**: `docs/eda_report.md`
 - Consolidates findings from:
-  - Step 2.1 — Transcript Data EDA (`notebooks/01_transcript_eda.ipynb`)
-  - Step 2.2 — Structured Data EDA (`notebooks/02_structured_data_eda.ipynb`)
+  - Step 2.1 — Transcript Data EDA (`need/01_final_report/research_notebooks/01_transcript_eda.ipynb`)
+  - Step 2.2 — Structured Data EDA (`need/01_final_report/research_notebooks/02_structured_data_eda.ipynb`)
 - Summarises key data quality issues, prototype cases, and implications for Layer 1 rule design
 - Main report themes:
   - dataset coverage and development-sample scope
@@ -461,7 +468,7 @@ detect_flags(
 
 
 ## Step 3.2 — Layer 1 Validation on Development Samples
-- **Notebook**: `notebooks/03_layer1_validation.ipynb`
+- **Notebook**: `need/01_final_report/research_notebooks/03_layer1_validation.ipynb`
 - Validates Layer 1 on **6 development samples** through manual inspection, threshold review, and precision/recall analysis
 - Threshold recalibration applied 2026-04-22: `LOW_AUDIO_QUALITY` raised 0.7 → **0.75**, `SPARSE_NARRATION` raised 0.2 → **0.3**; flag count changed from 214 → **278** across all 55 dev videos (+29 LOW_AUDIO_QUALITY, +35 SPARSE_NARRATION; EXCESSIVE_SILENCE and DURATION_ANOMALY unchanged)
 - Rule assessment (v2 — post-recalibration):
@@ -572,7 +579,7 @@ python -m src.layer2.feature_engineering
 
 **模块：** `src/layer2/cluster_utils.py`（4 纯函数：fit_kmeans / fit_dbscan / build_cluster_summary / pca_project）
 
-**Orchestration：** `notebooks/04_layer2_clustering.ipynb`
+**Orchestration：** `need/01_final_report/research_notebooks/04_layer2_clustering.ipynb`
 
 **算法配置：**
 - KMeans：k ∈ {2,3,4,5}，n_init=10，random_state=42，silhouette + elbow + cluster size 人工选 `final_k`
@@ -707,7 +714,7 @@ python scripts\migrate_r3_annotations_to_canonical.py
 ```
 
 ### R8 Manual Annotation Set + Kappa Agreement Check
-- **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `notebooks/04_kappa_agreement.ipynb`
+- **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `need/01_final_report/research_notebooks/04_kappa_agreement.ipynb`
 - **Inputs:** `docs/l3_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
 - **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen's kappa per dimension
 - Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3, using the Round 5 canonical schema.
@@ -741,11 +748,11 @@ python scripts\migrate_r3_annotations_to_canonical.py
 # Usage
 python scripts\annotate_r8_round1_updated.py
 # Then open and run:
-notebooks/04_kappa_agreement.ipynb
+need/01_final_report/research_notebooks/04_kappa_agreement.ipynb
 ```
 
 ## Step 5.4 — LLM Kappa
-- **Notebook**: `notebooks/04_kappa_agreement.ipynb` (Section 10)
+- **Notebook**: `need/01_final_report/research_notebooks/04_kappa_agreement.ipynb` (Section 10)
 - **Inputs:**
   - `data/processed/layer3_findings_filtered.csv` (2,133 findings, pseudo-positives removed)
   - `data/processed/layer3_video_assessments.csv` (57 videos, 5.1-B video-level labels)
@@ -764,7 +771,7 @@ notebooks/04_kappa_agreement.ipynb
 #   data/annotations/r8_manual_annotations_round1.csv
 
 # Open and run Section 10 of:
-notebooks/04_kappa_agreement.ipynb
+need/01_final_report/research_notebooks/04_kappa_agreement.ipynb
 
 # Section 10 depends on variables defined in Sections 1-3 (helper functions).
 # Always run the full notebook from top, or at minimum run:
@@ -1223,7 +1230,7 @@ assuming the same development transcribe JSON and local video/audio availability
 ```powershell
 python src/layer1/rule_detector.py
 python src/layer2/feature_engineering.py
-jupyter nbconvert --to notebook --execute notebooks/04_layer2_clustering.ipynb --output 04_layer2_clustering.executed.ipynb
+jupyter nbconvert --to notebook --execute need/01_final_report/research_notebooks/04_layer2_clustering.ipynb --output 04_layer2_clustering.executed.ipynb
 ```
 
 Expected current processed outputs:

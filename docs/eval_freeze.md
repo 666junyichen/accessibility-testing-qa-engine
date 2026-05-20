@@ -4,7 +4,7 @@
 >
 > **2026-05-20 状态**：Gate 1 / Gate 2 已完成，Bupa 21-video corrected held-out evaluation 已完成并通过最终技术 verification。Bupa 结果不得反哺 prompt、schema、fusion、postprocess、R6 scoring 或 coaching logic。
 >
-> 本文档由 Round 4 (2026-04-20) CC↔Codex 协商收敛产出。后续改动必须同步更新 `PROJECT.md §9`。
+> 本文档由 Round 4 (2026-04-20) CC↔Codex 协商收敛产出。后续改动必须同步更新 `README.md` 的 evaluation / data-scope section。
 
 ---
 
@@ -98,4 +98,4 @@ Gate 未全绿前，Bupa collated 仅允许：
 - final verification：pytest 155 passed；dev55 sync 55/55 passed；Bupa reports readable and ID-aligned。
 - documented caveats：Bupa Layer 1 / Layer 2 未重跑；one submission per tester 不能做 longitudinal trajectory validation；`manyi_tan` 为 short evidence-density case。
 
-*Owner: Nix (R2 + Lead) · 最近更新: 2026-05-20 · 关联: `PROJECT.md` / `group final/technical_closeout/evidence/final_technical_verification_2026-05-20.md`*
+*Owner: Nix (R2 + Lead) · 最近更新: 2026-05-20 · 关联: `README.md` / `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`*

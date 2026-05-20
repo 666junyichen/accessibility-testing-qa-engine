@@ -2,7 +2,7 @@
 
 Step 4.2: pure functions for fitting KMeans / DBSCAN, building per-cluster
 summary + composition, and 2D PCA projection for visualization. No I/O, no
-plotting; orchestrated by notebooks/04_layer2_clustering.ipynb.
+plotting; orchestrated by need/01_final_report/research_notebooks/04_layer2_clustering.ipynb.
 """
 
 from __future__ import annotations

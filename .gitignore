@@ -8,3 +8,4 @@ venv/
 *.log
 outputs/
 data/processed/items.csv
+trash/
