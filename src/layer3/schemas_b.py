@@ -23,8 +23,8 @@
                       主持人对参与者的直接引导/提示证据：
                       - none: 无明显引导
                       - explicit: 主持人显式告知操作路径 / 直接给答案
-                      （二值版，Round 7 E1 决议；后续可能扩展到三值
-                      {none, minimal, directive}，见 TODO D6）
+                      （当前交付版保持二值；未来 production 版本可评估
+                      是否扩展到 {none, minimal, directive}）
 """
 
 from pydantic import BaseModel

@@ -1,6 +1,6 @@
-# Deprecated
+# Merged into Layer 3 Design
 
-> Deprecated -> see `docs/l3_design.md`.
+> Forward reference: see `docs/l3_design.md`.
 
 This document was merged into the unified Layer 3 design reference for W10 Step
 9.2-B. Keep schema details in `src/layer3/schemas_a.py` and

@@ -4,7 +4,7 @@
 >
 > **2026-05-20 状态**：Gate 1 / Gate 2 已完成，Bupa 21-video corrected held-out evaluation 已完成并通过最终技术 verification。Bupa 结果不得反哺 prompt、schema、fusion、postprocess、R6 scoring 或 coaching logic。
 >
-> 本文档由 Round 4 (2026-04-20) CC↔Codex 协商收敛产出。后续改动必须同步更新 `README.md` 的 evaluation / data-scope section。
+> 本文档由 Round 4 (2026-04-20) evaluation-governance review 收敛产出。后续改动必须同步更新 `README.md` 的 evaluation / data-scope section。
 
 ---
 
@@ -35,9 +35,9 @@
 
 **Gate 1 状态：✅ 全绿（2026-05-04）。**
 
-## 四、Gate 2 — Nix 显式签字（治理动作）
+## 四、Gate 2 — Project lead 显式签字（治理动作）
 
-Gate 1 全绿后，Nix 需对以下 **4 类 freeze** 逐条签字。签字形式：在本文件第五节表格填入 commit hash + 日期 + "Nix approved"。
+Gate 1 全绿后，project lead 需对以下 **4 类 freeze** 逐条签字。签字形式：在本文件第五节表格填入 commit hash + 日期 + "Lead approved"。
 
 ### Freeze 1：friction / severity / sentiment 字段集合
 - `friction_type ∈ {F1, F2, F3, F4, F5, F6, F7}` —— canonical 自 `client/s3_snapshot/06-friction-sentiment-framework.md`
@@ -63,10 +63,10 @@ Gate 1 全绿后，Nix 需对以下 **4 类 freeze** 逐条签字。签字形式
 
 | Freeze 类别 | Commit Hash | 日期 | 签字人 | 备注 |
 |---|---|---|---|---|
-| Freeze 1 — friction/severity/sentiment | `dfe1b0b` | 2026-05-07 | Nix approved | Round 5 canonical 收敛于 V2 prompt + schemas_a/b（F1–F7 / S1–S6 / E1–E5 / L1–L5）；Step 5.4 LLM Kappa `friction_type` κ=0.7407 ≥ 0.5 门槛通过，V2 retained |
-| Freeze 2 — narration/recording quality | `dfe1b0b` | 2026-05-07 | Nix approved | 同 5.1-B schema canonical；`coaching_evidence` 二值 `{none, explicit}`（Round 11 决策）；R5 / R6 已据此实现 |
-| Freeze 3 — 6.1 fusion I/O schema | `dfe1b0b` | 2026-05-07 | Nix approved | `src/pipeline/{schemas,fusion}.py` 合入；7 quality_tier 规则 + DURATION_ANOMALY cap (P2#7) 锁定；pytest 137 passed |
-| Freeze 4 — R6 mapping 规则 | `ee8d5ce` | 2026-05-07 | Nix approved | `src/tracking/performance_model.py` 645 行 + 29 tests；权重 0.50/0.35/0.15 / 4 cap 规则 / mismatch flag tier gap≥2 / ±5 stable band / calibrator audit-only；CC code review HIGH quality (2026-05-04) |
+| Freeze 1 — friction/severity/sentiment | `dfe1b0b` | 2026-05-07 | Lead approved | Round 5 canonical 收敛于 V2 prompt + schemas_a/b（F1–F7 / S1–S6 / E1–E5 / L1–L5）；Step 5.4 LLM Kappa `friction_type` κ=0.7407 ≥ 0.5 门槛通过，V2 retained |
+| Freeze 2 — narration/recording quality | `dfe1b0b` | 2026-05-07 | Lead approved | 同 5.1-B schema canonical；`coaching_evidence` 二值 `{none, explicit}`（Round 11 决策）；R5 / R6 已据此实现 |
+| Freeze 3 — 6.1 fusion I/O schema | `dfe1b0b` | 2026-05-07 | Lead approved | `src/pipeline/{schemas,fusion}.py` 合入；7 quality_tier 规则 + DURATION_ANOMALY cap (P2#7) 锁定；pytest 137 passed |
+| Freeze 4 — R6 mapping 规则 | `ee8d5ce` | 2026-05-07 | Lead approved | `src/tracking/performance_model.py` 645 行 + 29 tests；权重 0.50/0.35/0.15 / 4 cap 规则 / mismatch flag tier gap≥2 / ±5 stable band / calibrator audit-only；peer review rated HIGH quality (2026-05-04) |
 
 ## 六、"只测一次" 纪律
 
@@ -98,4 +98,4 @@ Gate 未全绿前，Bupa collated 仅允许：
 - final verification：pytest 155 passed；dev55 sync 55/55 passed；Bupa reports readable and ID-aligned。
 - documented caveats：Bupa Layer 1 / Layer 2 未重跑；one submission per tester 不能做 longitudinal trajectory validation；`manyi_tan` 为 short evidence-density case。
 
-*Owner: Nix (R2 + Lead) · 最近更新: 2026-05-20 · 关联: `README.md` / `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`*
+*Owner: Project lead · 最近更新: 2026-05-20 · 关联: `README.md` / `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`*

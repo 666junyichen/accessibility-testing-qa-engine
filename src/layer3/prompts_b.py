@@ -10,9 +10,9 @@
 
 本模块不调用 LLM API，仅负责 prompt 文本装配。
 
-R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
-==========================================================================
-2 处需要 R3 精修 prompt 正文。文件内 search `R3 TODO` 可快速跳转。
+Prompt design anchors（2026-04-22，基于 round-1 Kappa 分析列出）
+===============================================================
+2 处设计锚点保留在 prompt 正文附近。文件内 search `DESIGN NOTE` 可快速跳转。
 
   Item 5. DEFINITIONS_PROMPT > recording_quality 边界
           当前 round-1 Kappa=0.00 (R3/R8 分歧完全随机或同值塌陷)。
@@ -26,10 +26,10 @@ R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
             - 例 B：narration_quality=sparse + recording_quality=acceptable + coaching_evidence=explicit
                     (如果 14 条里没有 explicit 案例，可构造合理的 moderator 明确引导场景)
 
-Canonical 纪律：R3 **不可** 新增/改名 schema 字段，尤其 coaching_evidence 保
-二值 (`none` / `explicit`) — Round 11 决策已锁。Pydantic 真源是 `schemas_b.py`。
+Canonical 纪律：schema 字段已锁定，尤其 coaching_evidence 保持二值
+(`none` / `explicit`) — Round 11 决策已锁。Pydantic 真源是 `schemas_b.py`。
 
-完成后 Nix 跑 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
+修改后运行 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
 """
 
 import json
@@ -79,7 +79,7 @@ no commentary, no preamble.
 """
 
 # -----------------------------------------------------------------
-# [R3 TODO item 5]: recording_quality boundary refinement
+# [DESIGN NOTE item 5]: recording_quality boundary refinement
 #   Round-1 Kappa=0.00 → R3 and R8 disagree or labels collapsed to single value.
 #   In DEFINITIONS_PROMPT below, expand poor/acceptable/good with concrete
 #   audio-integrity signs (NOT production/video quality):
@@ -132,15 +132,16 @@ Judging rules:
 """
 
 # -----------------------------------------------------------------
-# [R3 TODO item 6]: Few-shot examples for 5.1-B
-#   Fill below list with 2 complete VideoAssessment dicts (3-field shape:
+# [DESIGN NOTE item 6]: Few-shot examples for 5.1-B
+#   The list below preserves two complete VideoAssessment dicts (3-field shape:
 #   narration_quality / recording_quality / coaching_evidence).
 #
 #   Suggested coverage:
 #     - Example A: rich + good + none (ideal think-aloud session)
 #     - Example B: sparse + acceptable + explicit (moderator-guided session)
 #
-#   If empty, prompt stays identical to round-1 骨架 (single OUTPUT_EXAMPLE).
+#   These examples keep the video-level prompt stable while documenting
+#   expected output shape for the current schema.
 # -----------------------------------------------------------------
 FEW_SHOT_EXAMPLES_B: list = [
     {

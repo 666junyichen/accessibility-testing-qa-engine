@@ -30,7 +30,7 @@ Review of `src/layer3/schemas_b.py` and `src/layer3/prompts_b.py` from pipeline 
 - **Enum Values**: none, explicit
 - **Pipeline Compatibility**: 
   - Supports coaching module (6.2) as primary evidence
-  - Binary scale may be too coarse - TODO mentions potential expansion to {none, minimal, directive}
+  - Binary scale may be too coarse - prior roadmap mentions potential expansion to {none, minimal, directive}
   - Suitable for JSON serialization
 - **Suggestions**: 
   - Evaluate if binary scale sufficient or needs expansion

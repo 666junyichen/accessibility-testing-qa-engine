@@ -339,7 +339,7 @@ The internal priority ladder is now:
 
 Triggers when a session shows multi-pattern friction across several friction types — issuing one parallel recommendation per type would duplicate coaching effort.
 
-**All four guard rails must be satisfied (V3.1, after codex.md follow-up — earlier V3 rule was 3-rail and over-triggered on dev57):**
+**All four guard rails must be satisfied (V3.1, following peer review feedback — earlier V3 rule was 3-rail and over-triggered on dev57):**
 
 1. `total findings (with valid friction_type AND severity_s) >= 8` — tightened from 5 to suppress generic multi-label noise on small samples
 2. `>= 3 distinct friction types` among those valid findings

@@ -6,7 +6,7 @@ repository structure.
 ## Not Restored
 
 - Internal task briefs for individual members.
-- WeChat / transfer messages.
+- Chat / transfer messages.
 - Intermediate input packs.
 - Raw member-return documents.
 - Reconciliation drafts.
@@ -26,4 +26,3 @@ technical conclusions have been consolidated into:
 If a reviewer needs provenance, the raw process files remain recoverable from
 git history or the separate local `group final` workspace, but they should not
 be submitted as final client/school-facing materials.
-

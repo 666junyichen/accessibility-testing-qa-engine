@@ -131,7 +131,7 @@ If `l1.duration_anomaly == True`: D3 = min(D3, 60) (cap, not penalty stacking).
 raw = 0.50 · D1 + 0.35 · D2 + 0.15 · D3
 ```
 
-> **heuristic v1.** The 0.50 / 0.35 / 0.15 split is a defensible-but-not-validated heuristic locked in W9 (P2#8a, Nix-confirmed). It has *not* been calibrated against held-out data. The ratio is intended to favor D1 (narration is the upstream prerequisite — without it D2 is mostly noise), then D2, then D3 (D3 mostly disqualifies extreme cases via the cap, not the weight). Weights are revisited once (a) per-tester sketch is reviewed and (b) Final Report cycle opens; until then any consumer of these numbers should treat them as a v1 working point, not as anointed weights.
+> **heuristic v1.** The 0.50 / 0.35 / 0.15 split is a defensible-but-not-validated heuristic locked in W9 (P2#8a, lead-confirmed). It has *not* been calibrated against held-out data. The ratio is intended to favor D1 (narration is the upstream prerequisite — without it D2 is mostly noise), then D2, then D3 (D3 mostly disqualifies extreme cases via the cap, not the weight). Weights are revisited once (a) per-tester sketch is reviewed and (b) Final Report cycle opens; until then any consumer of these numbers should treat them as a v1 working point, not as anointed weights.
 
 Sentiment (E1–E5) deliberately does **not** enter `raw`. Per `06`, E3 is excluded from aggregation, and E4/E5 *about a product* should not penalize the tester. We instead surface sentiment in the per-tester layer as a *facet*, not as a score input.
 
@@ -286,4 +286,3 @@ def build_per_tester_table(records: list[PerformanceRecord]) -> list[TesterTraje
 No file I/O lives in the scoring functions — same pattern as `src/pipeline/fusion.py`. A thin loader `load_reports(reports_dir)` is provided as a convenience for the analysis script and tests; it's the only function that reads disk.
 
 Schemas (`PerformanceRecord`, `TesterTrajectory`) live alongside the functions and use pydantic with `extra="forbid"` to mirror the discipline in `src/pipeline/schemas.py`.
-

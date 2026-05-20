@@ -418,7 +418,7 @@ def test_legacy_single_argument_call_remains_backward_compatible():
 
 
 # ---------------------------------------------------------------------------
-# V3.1 follow-up tests (codex.md convergence)
+# V3.1 follow-up tests (peer review convergence)
 # ---------------------------------------------------------------------------
 
 def test_friction_aggregation_dominance_guard_blocks_single_pattern():

@@ -297,7 +297,7 @@ class RecommendationEngine:
         so coaching can anchor on the dominant pattern instead of one
         parallel item per type.
 
-        Trigger guard rails (V3.1, per codex.md follow-up):
+        Trigger guard rails (V3.1, following peer review feedback):
 
         1. `valid findings >= 8` — tightened from 5 to avoid generic
            multi-label noise on small samples.

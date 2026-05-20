@@ -13,9 +13,9 @@
 
 本模块不调用 LLM API，仅负责 prompt 文本装配。
 
-R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
-==========================================================================
-4 处需要 R3 精修 prompt 正文。文件内 search `R3 TODO` 可快速跳转。
+Prompt design anchors（2026-04-22，基于 round-1 Kappa 分析列出）
+===============================================================
+4 处设计锚点保留在 prompt 正文附近。文件内 search `DESIGN NOTE` 可快速跳转。
 
   Item 1. TAXONOMY_PROMPT > Severity 段 > S4 vs S5 边界
           当前 round-1 Kappa raw=0.34 / weighted=0.61，分歧集中在邻级。
@@ -38,10 +38,10 @@ R3 Co-write checklist（2026-04-22，R2 Nix 基于 round-1 Kappa 分析列出）
           当前只 1 条 F6 样例，可增加 1-2 条覆盖 F1/F3/F7 等其他类型。
           非必做。
 
-Canonical 纪律：R3 **不可** 新增/改名 schema 字段。所有修改只在 prompt 字符串内部
-文字层面。Pydantic schema 真源是 `schemas_a.py`。
+Canonical 纪律：schema 字段已锁定；所有修改只在 prompt 字符串内部文字层面。
+Pydantic schema 真源是 `schemas_a.py`。
 
-完成后 Nix 跑 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
+修改后运行 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
 """
 
 import json
@@ -162,7 +162,7 @@ Return only valid JSON. No markdown fences, no commentary, no preamble.
 """
 
 # -----------------------------------------------------------------
-# [R3 TODO item 1]: Severity S4 vs S5 boundary refinement
+# [DESIGN NOTE item 1]: Severity S4 vs S5 boundary refinement
 #   Round-1 Kappa raw=0.34, weighted=0.61. Disagreement on adjacent levels.
 #   In TAXONOMY_PROMPT below, expand S4 and S5 definitions with concrete signs:
 #     S4 suggested: multiple failed attempts / detour / substantial extra time /
@@ -171,7 +171,7 @@ Return only valid JSON. No markdown fences, no commentary, no preamble.
 #                   non-optimal path but recovered quickly / no task risk
 #   Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Severity
 #
-# [R3 TODO item 2]: Sentiment E2 vs E3 boundary refinement
+# [DESIGN NOTE item 2]: Sentiment E2 vs E3 boundary refinement
 #   Round-1 Kappa=0.22 (fair). Disagreement on expressed mild positive vs neutral.
 #   In TAXONOMY_PROMPT below, expand E2 and E3 definitions:
 #     E2 suggested: any expressed mild positive valence ("ok good", "nice that
@@ -279,19 +279,18 @@ Extraction rules:
 """
 
 # -----------------------------------------------------------------
-# [R3 TODO item 3]: Few-shot examples for 5.1-A
-#   Fill below list with 3 complete finding dicts (same 10-field shape as
-#   OUTPUT_EXAMPLE), one per signal_alignment value. Examples are injected into
-#   the user prompt automatically when non-empty.
+# [DESIGN NOTE item 3]: Few-shot examples for 5.1-A
+#   The list below preserves three complete finding dicts (same 10-field shape
+#   as OUTPUT_EXAMPLE), one per signal_alignment value. Examples are injected
+#   into the user prompt automatically when non-empty.
 #
 #   Required coverage (one example each):
 #     - signal_alignment="aligned"          (observed ≈ stated)
 #     - signal_alignment="conflicted"       (observed != stated; score to lower)
 #     - signal_alignment="stated_missing"   (stated_signal=null, sentiment_e=null)
 #
-#   If empty, prompt stays identical to round-1 骨架 (single OUTPUT_EXAMPLE).
-#   Nix's smoke test (Sharelinsonny_wa_w000 → F6/S2/E3/L4) is a ready-to-use
-#   `aligned` example template.
+#   The aligned example is based on the Sharelinsonny_wa_w000 smoke-test
+#   template (F6/S2/E3/L4).
 # -----------------------------------------------------------------
 FEW_SHOT_EXAMPLES: list = [
     {
@@ -423,8 +422,8 @@ COMPLETE_OUTPUT_EXAMPLES: list[dict] = [
 ]
 
 # -----------------------------------------------------------------
-# [R3 TODO item 4, OPTIONAL]: Enrich OUTPUT_EXAMPLE above with more friction
-# types (current only F6). Non-critical — few-shot coverage matters more.
+# [DESIGN NOTE item 4]: OUTPUT_EXAMPLE remains intentionally compact. Broader
+# friction-type coverage is supplied through FEW_SHOT_EXAMPLES above.
 # -----------------------------------------------------------------
 
 USER_PROMPT_TEMPLATE = """

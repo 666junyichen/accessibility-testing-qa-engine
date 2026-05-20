@@ -699,10 +699,10 @@ python scripts\filter_l3_ok_contamination.py
 
 | File | Audience | Purpose | Round 5 evaluation source |
 |------|----------|---------|--------------------------|
-| `r3_manual_annotations_round1.csv` | R3 / Nix review | Legacy R3 round-1 annotation input | No |
-| `r3_manual_annotations_round1_canonical.csv` | R3 / R8 / Nix | R3 canonical annotation output with 14 completed rows | Yes |
+| `r3_manual_annotations_round1.csv` | Initial reviewer / lead review | Legacy R3 round-1 annotation input | No |
+| `r3_manual_annotations_round1_canonical.csv` | Primary reviewer / independent reviewer / lead review | R3 canonical annotation output with 14 completed rows | Yes |
 | `round1_blind_for_r8.csv` | R8 independent annotation | Context-only blind sample | No |
-| `r8_manual_annotations_round1.csv` | R8 / Nix | R8 canonical annotation output | Yes |
+| `r8_manual_annotations_round1.csv` | Independent reviewer / lead review | R8 canonical annotation output | Yes |
 | `window_semantic_labels_template_canonical.csv` | Future annotators | Empty canonical annotation template | No |
 
 ```powershell
