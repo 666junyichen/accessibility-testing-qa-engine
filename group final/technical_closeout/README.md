@@ -1,10 +1,10 @@
 # Technical Closeout - Bupa Held-out Run
 
-Date: 2026-05-19
+Date: 2026-05-20
 
 ## Current Status
 
-The project is in final technical closeout. The corrected official Bupa held-out pipeline run has been completed and committed-ready in held-out paths.
+The project technical closeout is complete. The corrected official Bupa held-out pipeline run, downstream member reviews, R8 evaluation summary, and final verification checks have all been completed.
 
 Bupa scope is fixed at 21 collated videos. The earlier 42 count was 21 MP4 files plus 21 VTT sidecars.
 
@@ -57,19 +57,25 @@ Primary corrected run record:
 
 `submissions/bupa_corrected_pipeline_run_2026-05-19.md`
 
+Final Bupa evaluation summary:
+
+`submissions/R8_bupa_evaluation_summary_2026-05-20.md`
+
+Final verification note:
+
+`submissions/final_technical_verification_2026-05-20.md`
+
 Earlier R7 first-run note:
 
 `submissions/R7_ivy_bupa_pipeline_demo_2026-05-18.md`
 
-## Remaining Technical Dependencies
-
-After the corrected Bupa reports and processed CSVs are available:
+## Technical Dependency Status
 
 - R6 performance outputs have been generated in `data/heldout/bupa/performance/`.
 - R3 case-study notes have been returned.
 - R5 coaching review has been returned.
 - R6 performance review/sign-off has been returned.
-- R8 writes the Bupa held-out evaluation summary next.
-- The final technical reconciliation happens after the member outputs return.
+- R8 Bupa held-out evaluation summary has been returned and reviewed.
+- Final verification commands passed.
 
-Do not start Final Report prose, presentation bullet points, contribution statement, AI usage statement, or signatures from this folder.
+No further project-system iteration should be performed from Bupa outputs. Remaining work now belongs to Final Report, final project status/demo checking, presentation/video, contribution statement, AI acknowledgement, client handover, and Q&A preparation.

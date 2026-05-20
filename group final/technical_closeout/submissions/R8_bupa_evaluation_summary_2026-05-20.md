@@ -132,13 +132,13 @@ Cap distribution:
 
 ## 4. Main Qualitative Patterns
 
-**Friction type concentration.** F1 (trust, value, satisfaction) is the dominant friction type at 233 findings (28.7%), followed by F2 (navigation, findability, 151, 18.6%) and F6 (information architecture, discoverability, 145, 17.8%). These three together account for 65.1% of all filtered findings. The Bupa site's primary friction burden falls on content findability and trust signals rather than on interaction mechanics. F3 (accessibility, 115) and F5 (comprehension, 74) together contribute another 23.2%, indicating that accessibility and clarity issues are a secondary but substantial signal.
+**Friction type concentration.** F1 (Comprehension Friction) is the dominant friction type at 233 findings (28.7%), followed by F2 (Confidence Friction, 151, 18.6%) and F6 (Content Not Found, 145, 17.8%). These three together account for 65.1% of all filtered findings. The Bupa site's primary friction burden falls on comprehension, confidence, and content-discovery issues rather than on pure interface response mechanics. F3 (Accessibility Friction, 115) and F5 (Unexpected Behaviour, 74) together contribute another 23.2%, indicating that accessibility and unexpected-response issues are a secondary but substantial signal.
 
 **Severity profile: bimodal.** 84.0% of findings fall at S5 (minor, 569) or S4 (moderate, 114). The bulk of friction is recoverable. However, 7 sessions contain at least one S1 or S2 finding, and these sessions all resolve to a poor report quality tier. The bimodal pattern — a majority of low-severity findings across most sessions alongside a concentrated set of task-blocking findings in a minority of sessions — is structurally consistent with the R3 case studies.
 
-**Sentiment.** E4 (negative/frustrated) accounts for 682 of 812 non-blank sentiment labels (84.0%). E3 (neutral/mixed) contributes 103 (12.7%). E2 (positive, 16) and E5 (strongly negative, 11) are minor. The Bupa held-out set skews toward negative participant sentiment, consistent with the high volume of findability and trust friction.
+**Sentiment.** E4 (negative/frustrated) accounts for 682 of 812 non-blank sentiment labels (84.0%). E3 (neutral/mixed) contributes 103 (12.7%). E2 (positive, 16) and E5 (strongly negative, 11) are minor. The Bupa held-out set skews toward negative participant sentiment, consistent with the high volume of comprehension, confidence, and content-discovery friction.
 
-**Calibrator score.** L2 (medium confidence, 560, 68.9%) is the dominant calibrator tier, with L3 (189, 23.2%) second. L1 (54), L4 (6), and L5 (4) are minor. The model operates comfortably in its middle confidence range across most Bupa windows.
+**Calibrator score.** L2 (560, 68.9%) is the dominant calibrator tier, with L3 (189, 23.2%) second. L1 (54), L4 (6), and L5 (4) are minor. This means most Bupa findings sit in the lower-to-mid calibrator-strength range, while only a small number of findings reach the strongest L4/L5 repair-concern levels.
 
 **Narration quality.** 20 of 21 sessions were rated rich for narration. This supports using the Layer 3 evidence as primary qualitative signal across the held-out set. The one exception is manyi_tan (adequate narration, 6 windows, 2 findings), which has materially reduced evidence density.
 
