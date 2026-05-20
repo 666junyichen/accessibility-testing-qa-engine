@@ -8,6 +8,7 @@ R8，R3/R5/R6 的 Bupa notes 都已经回来了，我这边也整理到仓库的
 
 这次主要用这些文件：
 
+- `group final/technical_closeout/submissions/R8_bupa_evaluation_input_pack_2026-05-20.md`
 - `group final/technical_closeout/submissions/bupa_corrected_pipeline_run_2026-05-19.md`
 - `group final/technical_closeout/submissions/R3_bupa_case_studies_2026-05-19.md`
 - `group final/technical_closeout/submissions/R5_bupa_coaching_review_2026-05-19.md`
