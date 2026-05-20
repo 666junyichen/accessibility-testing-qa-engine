@@ -66,10 +66,10 @@ Earlier R7 first-run note:
 After the corrected Bupa reports and processed CSVs are available:
 
 - R6 performance outputs have been generated in `data/heldout/bupa/performance/`.
-- R6 still needs to review/sign off the generated performance outputs.
-- R3 writes Bupa case studies.
-- R5 reviews Bupa coaching recommendations.
-- R8 writes the Bupa held-out evaluation summary.
+- R3 case-study notes have been returned.
+- R5 coaching review has been returned.
+- R6 performance review/sign-off has been returned.
+- R8 writes the Bupa held-out evaluation summary next.
 - The final technical reconciliation happens after the member outputs return.
 
 Do not start Final Report prose, presentation bullet points, contribution statement, AI usage statement, or signatures from this folder.
