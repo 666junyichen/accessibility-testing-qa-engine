@@ -48,7 +48,7 @@ _TIER_RANK: dict[str, int] = {
 # Calibrator label → implied tier rank. L1 means "minor friction reported"
 # which corresponds to a Leading-tier session experience; L5 means "blocking"
 # which corresponds to Foundational. Higher L = more severe friction = lower
-# implied tier. (Audit-only — see §4.7 of docs/performance tracking.md.)
+# implied tier. (Audit-only — see §4.7 of docs/performance_tracking.md.)
 _CALIBRATOR_IMPLIED_TIER_RANK: dict[str, int] = {
     "L1": 4,  # Leading
     "L2": 3,  # Proficient
@@ -154,7 +154,7 @@ class TesterTrajectory(BaseModel):
     # `(project, video_id)` ordered proxy — NOT a real chronological timestamp.
     # Surfaced in the per-tester CSV so downstream readers know this is a
     # longitudinal sketch, not a true time series. See §5.1 / §7 of
-    # docs/performance tracking.md.
+    # docs/performance_tracking.md.
     ordering_basis: Literal[
         "submission_timestamp", "project_video_id_proxy"
     ] = "project_video_id_proxy"

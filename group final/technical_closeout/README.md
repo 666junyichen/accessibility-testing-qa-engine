@@ -4,7 +4,7 @@ Date: 2026-05-20
 
 ## Current Status
 
-The project technical closeout is complete. The corrected official Bupa held-out pipeline run, downstream member reviews, R8 evaluation summary, and final verification checks have all been completed.
+The project technical closeout is complete. The corrected official Bupa held-out pipeline run, supporting technical review summary, evaluation summary, and final verification checks have all been completed.
 
 Bupa scope is fixed at 21 collated videos. The earlier 42 count was 21 MP4 files plus 21 VTT sidecars.
 
@@ -25,7 +25,7 @@ Current lane/key status:
 
 Corrected run status:
 
-- R7 produced a first Bupa run on 2026-05-18 with 21/21 reports.
+- An earlier first Bupa run on 2026-05-18 produced 21/21 reports.
 - Review found that the first generated `windows.csv` did not use the frozen dev windowing logic and lacked required columns such as `duration`.
 - `scripts/build_bupa_processed_inputs.py` was corrected to use manifest-aware metadata and the frozen `src/preprocessing/window_splitter.py` logic.
 - The corrected official run was executed on 2026-05-19.
@@ -59,32 +59,25 @@ Clean final handoff index:
 
 Primary corrected run record:
 
-`submissions/bupa_corrected_pipeline_run_2026-05-19.md`
+`evidence/bupa_corrected_pipeline_run_2026-05-19.md`
+
+Supporting review summary:
+
+`evidence/bupa_supporting_review_summary_2026-05-20.md`
 
 Final Bupa evaluation summary:
 
-`submissions/R8_bupa_evaluation_summary_2026-05-20.md`
+`evidence/bupa_evaluation_summary_2026-05-20.md`
 
 Final verification note:
 
-`submissions/final_technical_verification_2026-05-20.md`
-
-Earlier R7 first-run note:
-
-`submissions/R7_ivy_bupa_pipeline_demo_2026-05-18.md`
-
-Internal coordination records such as `tasks/`, `messages_to_send_*.md`, and
-`submissions/R8_bupa_evaluation_input_pack_2026-05-20.md` are retained for
-traceability only. They are not final report prose and should not be sent as
-client/school-facing evidence unless a reviewer asks for process history.
+`evidence/final_technical_verification_2026-05-20.md`
 
 ## Technical Dependency Status
 
 - R6 performance outputs have been generated in `data/heldout/bupa/performance/`.
-- R3 case-study notes have been returned.
-- R5 coaching review has been returned.
-- R6 performance review/sign-off has been returned.
-- R8 Bupa held-out evaluation summary has been returned and reviewed.
+- Supporting case-study, coaching, and performance-review conclusions have been consolidated into `evidence/bupa_supporting_review_summary_2026-05-20.md`.
+- Bupa held-out evaluation summary has been completed and reviewed.
 - Final verification commands passed.
 
 No further project-system iteration should be performed from Bupa outputs. Remaining work now belongs to Final Report, final project status/demo checking, presentation/video, contribution statement, AI acknowledgement, client handover, and Q&A preparation.

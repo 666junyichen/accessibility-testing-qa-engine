@@ -54,11 +54,11 @@ ids_aligned True
 zero_duration 0
 ```
 
-## R8 Review
+## Evaluation Summary Review
 
-R8 returned:
+Reviewed file:
 
-`group final/technical_closeout/submissions/R8_bupa_evaluation_summary_2026-05-20.md`
+`group final/technical_closeout/evidence/bupa_evaluation_summary_2026-05-20.md`
 
 Review result:
 
@@ -66,8 +66,8 @@ Review result:
 - Report quality tier distribution matches `_summary.csv`: acceptable=14, poor=7.
 - R6 tester-performance tier distribution matches performance CSVs: Leading=14, Proficient=2, Developing=5, Foundational=0.
 - Bupa `cross_check_lane` is `with_overrides` for all 21 performance rows.
-- R8 correctly preserves the distinction between report quality tier and R6 tester-performance tier.
-- R8 correctly preserves Bupa limitations: Layer 1 / Layer 2 not regenerated, no longitudinal trajectory interpretation, no tuning from Bupa.
+- The evaluation summary correctly preserves the distinction between report quality tier and R6 tester-performance tier.
+- The evaluation summary correctly preserves Bupa limitations: Layer 1 / Layer 2 not regenerated, no longitudinal trajectory interpretation, no tuning from Bupa.
 
 Small review correction applied:
 
@@ -83,13 +83,13 @@ Small review correction applied:
 
 ## Streamlit Demo Check
 
-No new Streamlit code was changed during the R8 review. The latest returned R7 demo note records that the Streamlit dev55 demo passed:
+No new Streamlit code was changed during final verification. The Streamlit dev55 demo had already passed:
 
 - Single Video view
 - Tester Trajectory view
 - Cohort Overview view
 
-This final verification therefore relies on the R7 demo sanity note for UI status.
+This final verification therefore relies on the previous demo sanity check for UI status.
 
 ## Final Technical Caveats To Preserve
 

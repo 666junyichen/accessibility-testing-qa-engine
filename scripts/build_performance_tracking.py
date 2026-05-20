@@ -2,7 +2,7 @@
 
 Reads the canonical Step 5.1 outputs (findings + video assessments) plus the
 optional auxiliary CSVs (windows, layer-1 flags) and writes the two performance
-tracking tables described in `docs/performance tracking.md`.
+tracking tables described in `docs/performance_tracking.md`.
 
 Default paths are project-relative (resolved from this file's location), so the
 script is runnable on any clone:

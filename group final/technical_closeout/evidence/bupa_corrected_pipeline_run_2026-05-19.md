@@ -172,7 +172,7 @@ No dev-set Layer 1 or Layer 2 artifacts were reused. This should be reported as 
 
 The corrected Bupa held-out pipeline run is complete and ready for downstream evaluation work:
 
-- R6 performance/scoring outputs
-- R3 case study review
-- R5 coaching recommendation review
-- R8 held-out evaluation summary
+- performance/scoring outputs
+- case-study review
+- coaching recommendation review
+- held-out evaluation summary

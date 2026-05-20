@@ -169,7 +169,7 @@ So the validated claims in this demo stop at the official development evidence b
 - Ablation distributions and implications: `docs/ablation_study.md:41-100`
 - Case-study overview and `ghum_uq` narrative: `docs/case_studies.md:35-98`
 - `ghum_uq` report evidence: `data/processed/reports/dev55/ghum_uq.json:23-212`
-- Performance tracking output scope: `docs/performance tracking.md:12-15`
+- Performance tracking output scope: `docs/performance_tracking.md:12-15`
 
 ---
 
@@ -204,7 +204,7 @@ So the final takeaway is simple: what is validated now is a traceable dev-set re
 - Tester-dominated Layer 2 warning: `docs/cluster_interpretation.md:3-12`
 - 5.1-B and sentiment confidence caveats: `docs/evaluation_design.md:79-101`, `docs/evaluation_design.md:215-228`
 - L3 dependence in ablation: `docs/ablation_study.md:78-100`
-- R6 heuristic-v1 weights and ordered-proxy caveat: `docs/performance tracking.md:128-149`, `docs/performance tracking.md:203-223`, `docs/performance tracking.md:269-272`
+- R6 heuristic-v1 weights and ordered-proxy caveat: `docs/performance_tracking.md:128-149`, `docs/performance_tracking.md:203-223`, `docs/performance_tracking.md:269-272`
 - Coaching engine extensions and future direction: `docs/coaching_templates.md:294-355`, `docs/coaching_templates.md:394-404`
 
 ---

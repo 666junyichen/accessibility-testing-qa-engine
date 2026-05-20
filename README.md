@@ -29,7 +29,7 @@ pip install -r requirements.txt
   21 reports, 21 R6 performance rows, zero failed reports.
 - Demo: `app/streamlit_demo.py` reads precomputed dev55 artifacts.
 - Technical closeout: `group final/technical_closeout/` contains the Bupa run,
-  member technical reviews, R8 synthesis, and final verification note.
+  supporting review summary, evaluation synthesis, and final verification note.
 
 ## Contents
 - [Step 0.1 - Repository and Environment Setup](#step-01---repository-and-environment-setup)
@@ -215,7 +215,7 @@ Current processed artifact inventory:
 |---|---|---:|---|
 | Transcript parser | `data/processed/transcripts.csv` | 57 rows | One full transcript row per generated development video. |
 | Transcript parser | `data/processed/segments.csv` | 26,191 rows | Segment-level transcript spans from `results.audio_segments`. |
-| Transcript parser | `data/processed/items.csv` | 529,957 rows | Word-level timing and confidence table from `results.items`; large intermediate artifact. |
+| Transcript parser | `data/processed/items.csv` | Regenerable, gitignored intermediate | Word-level timing and confidence table from `results.items`; used when rebuilding windows from raw transcripts. |
 | Windowing | `data/processed/windows.csv` | 3,331 rows | Approximately 60-second analysis windows across 57 videos. |
 | Audio features | `data/processed/audio_features.csv` | 876 rows | Window-level silence, narration density, words-per-minute, confidence, and silence duration features. |
 | Video metadata | `data/processed/video_metadata.csv` | 15 rows | Sample video metadata and duration-ratio checks. |
@@ -548,7 +548,7 @@ print(flags['flag'].value_counts())
 - Outputs:
   - `data/processed/feature_matrix_raw.csv` (876 windows)
   - `data/processed/feature_matrix_scaled.csv` (876 windows)
-  - `data/processed/feature_engineering_imputation.log` (per-column nan_count / nan_rate / filled)
+  - optional local imputation log (gitignored; per-column nan_count / nan_rate / filled)
 - Scope: L2-only; not used by L3 / R5 / R6
 - Dev-set sanity (qualitative): `ghum` `avg_sentence_length ≈ 10.4`, `terryaflint17` ≈ `6.3`, `reneerussell99` ≈ `26.3` (outlier flagged for Step 4.2 review)
 
@@ -561,7 +561,7 @@ python -m src.layer2.feature_engineering
 # Writes:
 #   data/processed/feature_matrix_raw.csv
 #   data/processed/feature_matrix_scaled.csv
-#   data/processed/feature_engineering_imputation.log
+#   optional local imputation log
 ```
 
 ## Step 4.2 — Layer 2 Clustering
@@ -870,7 +870,7 @@ enabling grounded coaching from 5.1-A evidence.
 - **Module**: `src/tracking/performance_model.py`
 - **Tests**: `tests/test_performance_model.py` (33 tests)
 - **Script**: `scripts/build_performance_tracking.py`
-- **Document**: `docs/performance tracking.md`
+- **Document**: `docs/performance_tracking.md`
 - **Inputs**:
   - `data/processed/layer3_findings_filtered.csv` (5.1-A finding-level rows)
   - `data/processed/layer3_video_assessments.csv` (5.1-B video-level rows)
@@ -880,7 +880,7 @@ enabling grounded coaching from 5.1-A evidence.
   - `data/processed/performance/per_tester.csv` (27 rows — per-tester aggregate, trajectory, persistent friction)
 
 ### SMP alignment principle
-R6 adopts SMP **score language** — 0–100 scale, four-tier output (Foundational / Developing / Proficient / Leading), cap-based severity rules. R6 does **not** reproduce SMP Model B, does not own product-accessibility scoring, and does not inject any SMP cohort weighting into the scoring chain. R6 produces *tester-performance-dimension aggregation*; Model B remains the SMP-side product scorer. Mapping to the four SMP design docs (`01-scoring-model-success-criteria.md` / `02-scoring-model-comparison-A-B-C-D.md` / `03-scoring-model-assessment-ABDC2.md` / `04-model-E-reworked-cap-based.md`) is documented section-by-section in `docs/performance tracking.md` §2.
+R6 adopts SMP **score language** — 0–100 scale, four-tier output (Foundational / Developing / Proficient / Leading), cap-based severity rules. R6 does **not** reproduce SMP Model B, does not own product-accessibility scoring, and does not inject any SMP cohort weighting into the scoring chain. R6 produces *tester-performance-dimension aggregation*; Model B remains the SMP-side product scorer. Mapping to the four SMP design docs (`01-scoring-model-success-criteria.md` / `02-scoring-model-comparison-A-B-C-D.md` / `03-scoring-model-assessment-ABDC2.md` / `04-model-E-reworked-cap-based.md`) is documented section-by-section in `docs/performance_tracking.md` §2.
 
 ### Per-submission scoring
 

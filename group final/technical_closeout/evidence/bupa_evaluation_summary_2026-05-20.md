@@ -1,4 +1,4 @@
-# R8 Bupa Held-out Evaluation Summary
+# Bupa Held-out Evaluation Summary
 
 Date: 2026-05-20
 
@@ -8,7 +8,7 @@ Date: 2026-05-20
 
 The corrected Bupa held-out pipeline run is complete. All 21 videos were processed end-to-end with zero failures at any stage. This run replaces the earlier partial Bupa run that produced zero-duration report artifacts; the root cause was that the windowing script built `windows.csv` via a separate fixed-window path that omitted required fields such as `duration`. The preprocessing script was corrected before this official run to read the Bupa manifest explicitly and reuse the frozen dev windowing implementation from `src/preprocessing/window_splitter.py`.
 
-The manyi_tan provenance question raised in R6's sign-off has been resolved. The corrected pipeline produced 21 transcript JSON files, and `manyi_tan__web-health-information-bupa` is present in both `data/heldout/bupa/processed/transcripts.csv` and `data/heldout/bupa/performance/per_submission.csv`. The reconciliation note confirms the current repository is 21/21 at every stage.
+The `manyi_tan` provenance question has been resolved. The corrected pipeline produced 21 transcript JSON files, and `manyi_tan__web-health-information-bupa` is present in both `data/heldout/bupa/processed/transcripts.csv` and `data/heldout/bupa/performance/per_submission.csv`. The current repository is 21/21 at every stage.
 
 ---
 
@@ -134,7 +134,7 @@ Cap distribution:
 
 **Friction type concentration.** F1 (Comprehension Friction) is the dominant friction type at 233 findings (28.7%), followed by F2 (Confidence Friction, 151, 18.6%) and F6 (Content Not Found, 145, 17.8%). These three together account for 65.1% of all filtered findings. The Bupa site's primary friction burden falls on comprehension, confidence, and content-discovery issues rather than on pure interface response mechanics. F3 (Accessibility Friction, 115) and F5 (Unexpected Behaviour, 74) together contribute another 23.2%, indicating that accessibility and unexpected-response issues are a secondary but substantial signal.
 
-**Severity profile: bimodal.** 84.0% of findings fall at S5 (medium, 569) or S4 (high, 114). The bulk of friction is recoverable or non-blocking. However, 7 sessions contain at least one S1 or S2 finding, and these sessions all resolve to a poor report quality tier. The bimodal pattern — a majority of recoverable findings across most sessions alongside a concentrated set of task-blocking findings in a minority of sessions — is structurally consistent with the R3 case studies.
+**Severity profile: bimodal.** 84.0% of findings fall at S5 (medium, 569) or S4 (high, 114). The bulk of friction is recoverable or non-blocking. However, 7 sessions contain at least one S1 or S2 finding, and these sessions all resolve to a poor report quality tier. The bimodal pattern — a majority of recoverable findings across most sessions alongside a concentrated set of task-blocking findings in a minority of sessions — is structurally consistent with the case-study evidence.
 
 **Sentiment.** E4 (negative/frustrated) accounts for 682 of 812 non-blank sentiment labels (84.0%). E3 (neutral/indifferent) contributes 103 (12.7%). E2 (positive, 16) and E5 (negative/angry, 11) are minor. The Bupa held-out set skews toward negative participant sentiment, consistent with the high volume of comprehension, confidence, and content-discovery friction.
 
@@ -171,7 +171,7 @@ All 5 Developing scores are cap-driven rather than driven by low uncapped compos
 
 This is working as designed under the W9-locked scoring contract. The caps at 55.0 and 65.0 are product-risk signals: the tested product presented serious blocking friction. The uncapped composites for these testers were higher (ranging from 87.1 to 91.5), meaning the testers did surface friction effectively — the cap reflects the severity of what was found, not narration or surfacing failure.
 
-R6 confirmed no scoring rules, caps, lane mappings, or tier boundaries need to change based on the Bupa run.
+The performance review confirmed that no scoring rules, caps, lane mappings, or tier boundaries need to change based on the Bupa run.
 
 ### 5.3 Trajectory note
 
@@ -179,27 +179,27 @@ Because Bupa has one submission per tester, the per-tester trajectory fields —
 
 ---
 
-## 6. R3/R5 Review Synthesis
+## 6. Supporting Review Synthesis
 
-### 6.1 R3 case-study notes
+### 6.1 Case-study evidence
 
-R3 returned qualitative notes for 6 Bupa sessions. These are selected evidence examples chosen to span tier extremes, evidence density variation, and failure mode variety. They are not a statistically representative sample of all 21 sessions.
+Six Bupa sessions were selected as qualitative evidence examples spanning tier extremes, evidence-density variation, and failure-mode variety. They are not a statistically representative sample of all 21 sessions.
 
-**olekwane__web-health-information-bupa** (poor tier, S1, 82 findings, 97 windows, rich narration, good recording): The strongest product-risk case in the Bupa set. Friction combines concrete accessibility breakdowns — readability, semantic markup, focus management — with loss of trust in the product offer. R3 identifies this as a case where accessibility and comprehension failures compound into both exclusion risk and commercial risk.
+**olekwane__web-health-information-bupa** (poor tier, S1, 82 findings, 97 windows, rich narration, good recording): The strongest product-risk case in the Bupa set. Friction combines concrete accessibility breakdowns — readability, semantic markup, focus management — with loss of trust in the product offer. This case shows how accessibility and comprehension failures compound into both exclusion risk and commercial risk.
 
-**iakhtar1__web-health-information-bupa** (poor tier, S2, 78 findings, 76 windows, rich narration, acceptable recording): The clearest screen-reader accessibility case. The product prevents a screen-reader user from accessing plan comparison and search functions needed for decision-making. Inaccessible comparison-table markup and absent search-field exposure are specifically evidenced. R3 notes that fine-grained claims should stay close to reported finding text given acceptable (not good) recording quality.
+**iakhtar1__web-health-information-bupa** (poor tier, S2, 78 findings, 76 windows, rich narration, acceptable recording): The clearest screen-reader accessibility case. The product prevents a screen-reader user from accessing plan comparison and search functions needed for decision-making. Inaccessible comparison-table markup and absent search-field exposure are specifically evidenced. Fine-grained claims should stay close to reported finding text given acceptable (not good) recording quality.
 
-**sharelinsonny__web-health-information-bupa** (poor tier, S1, 46 findings, 82 windows, rich narration, acceptable recording): A pathway-level failure rather than a single broken interaction. Location fit, booking prerequisites, and accessibility support discoverability all fail to sustain task completion. R3 identifies this as product risk around service discoverability and decision confidence.
+**sharelinsonny__web-health-information-bupa** (poor tier, S1, 46 findings, 82 windows, rich narration, acceptable recording): A pathway-level failure rather than a single broken interaction. Location fit, booking prerequisites, and accessibility support discoverability all fail to sustain task completion. This is product risk around service discoverability and decision confidence.
 
 **margieflint__web-health-information-bupa** (acceptable tier, S3, 67 findings, 72 windows, rich narration, good recording): A contrast case showing that acceptable-tier sessions can still contain dense, repeated content-not-found and comprehension costs. A large volume of F1/F2/F6 friction is present without a single hard blocker. Useful for illustrating cumulative failure without catastrophic breakdown.
 
 **daniellepaigejones07__web-health-information-bupa** (acceptable tier, S3, 59 findings, 78 windows, rich narration, good recording): A medium-severity visual discomfort and contrast access-cost case. The participant can continue but colour scheme and brightness create sustained visual strain across multiple windows. Supports a claim about access cost rather than a one-off annoyance.
 
-**manyi_tan__web-health-information-bupa** (acceptable tier, S5, 2 findings, 6 windows, adequate narration, acceptable recording): An evidence-limit example. Only mild findability friction is surfaced. R3 uses this case to show how a short session can still produce valid findings without supporting broader product conclusions. Claims from this session should stay within its sample-size constraint.
+**manyi_tan__web-health-information-bupa** (acceptable tier, S5, 2 findings, 6 windows, adequate narration, acceptable recording): An evidence-limit example. Only mild findability friction is surfaced. This case shows how a short session can still produce valid findings without supporting broader product conclusions. Claims from this session should stay within its sample-size constraint.
 
-### 6.2 R5 coaching review
+### 6.2 Coaching review
 
-R5 reviewed a representative sample of 8 videos and returned an overall judgement of **PASS WITH CAVEATS**.
+The coaching review sampled 8 representative videos and produced an overall judgement of **PASS WITH CAVEATS**.
 
 Coaching recommendation totals across all 21 Bupa sessions:
 
@@ -219,14 +219,14 @@ Priority distribution:
 | 2 | 12 |
 | 1 | 1 |
 
-R5 findings:
+Coaching findings:
 
 - Severity recommendations are generally well-grounded in high-friction evidence. Strong examples identified: iakhtar1 (severity grounded in real accessibility barriers), sharelinsonny (severity and aggregation coexist without conflicting priorities), gracieha22 (correctly avoids over-triggering aggregation), manyi_tan (narration recommendation appropriately conservative given sparse verbalisation).
 - Friction-aggregation recommendations are technically correct but occasionally feel generic and have lower actionability.
 - Recording recommendations are template-driven rather than highly contextual.
 - Coaching specificity varies: some outputs are highly grounded, others are more category-level summaries.
 
-R5 judged none of these as recommendation correctness failures. The V3.1 friction-aggregation logic represents a material improvement over earlier broader triggering behaviour.
+None of these caveats are recommendation correctness failures. The V3.1 friction-aggregation logic represents a material improvement over earlier broader triggering behaviour.
 
 ---
 
@@ -240,9 +240,9 @@ R5 judged none of these as recommendation correctness failures. The V3.1 frictio
 
 **Evaluation-only boundary maintained.** No tuning was performed using Bupa outputs. This is both a strength (clean external validation) and a constraint: any mismatches between Bupa results and dev-set expectations cannot be corrected from the Bupa side.
 
-**R3 cases are selected examples.** The 6 qualitative cases were chosen to cover failure mode variety and tier extremes, not to be statistically representative. Claims derived from R3 notes should be attributed to specific cases, not generalised across the full Bupa set.
+**Case studies are selected examples.** The 6 qualitative cases were chosen to cover failure mode variety and tier extremes, not to be statistically representative. Claims derived from these notes should be attributed to specific cases, not generalised across the full Bupa set.
 
-**R5 coaching caveats.** Coaching output specificity is variable, and aggregation and recording recommendations can be generic. These are quality caveats, not correctness failures, but they limit the precision of coaching-based conclusions in the Final Report.
+**Coaching caveats.** Coaching output specificity is variable, and aggregation and recording recommendations can be generic. These are quality caveats, not correctness failures, but they limit the precision of coaching-based conclusions in the Final Report.
 
 **manyi_tan session sparseness.** With only 6 windows, 2 findings, adequate narration, and acceptable recording, manyi_tan provides materially less evidence than any other Bupa session. It is usable as an evidence-limit example only.
 
@@ -254,9 +254,9 @@ The Bupa held-out evaluation run is technically complete and ready to be referen
 
 - The pipeline processed all 21 Bupa videos without failures at any stage, with zero schema errors, JSON errors, or API errors across both Layer 3 inference passes.
 - Report quality tiers (14 acceptable, 7 poor) and R6 tester-performance tiers (14 Leading, 2 Proficient, 5 Developing, 0 Foundational) are internally consistent with the locked scoring contracts.
-- R6 confirmed that no scoring rules, caps, lane mappings, or tier boundaries require adjustment based on the Bupa run.
-- R3 and R5 reviews have been returned and integrated; neither raises correctness failures.
-- The manyi_tan provenance issue is resolved: 21 rows are confirmed in all performance and report files; reconciliation is complete.
+- Performance review confirmed that no scoring rules, caps, lane mappings, or tier boundaries require adjustment based on the Bupa run.
+- Case-study and coaching evidence have been integrated; neither raises correctness failures.
+- The `manyi_tan` provenance issue is resolved: 21 rows are confirmed in all performance and report files.
 - The Layer 1 / Layer 2 limitation is documented and requires no corrective action within the held-out evaluation scope.
 
 When the Final Report references Bupa results, three standard caveats apply: (1) L1/L2 were not regenerated, so cross-layer evidence is absent; (2) one submission per tester precludes longitudinal trajectory interpretation; (3) the evaluation boundary — no tuning from Bupa — was maintained throughout.

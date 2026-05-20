@@ -17,26 +17,27 @@ submission packaging, not project-system development.
 | Functional area | Final artefacts | Status |
 |---|---|---|
 | Transcript parsing and windowing | `data/processed/{transcripts,segments,windows}.csv`; `data/heldout/bupa/processed/{transcripts,segments,windows}.csv` | Complete |
-| Layer 1 rule detection | `src/features/rule_detector.py`; `data/processed/layer1_flags.csv`; `docs/layer1_design.md` | Complete for dev; Bupa L1 not regenerated and documented as caveat |
-| Layer 2 clustering | `src/features/feature_engineering.py`; `src/clustering/cluster_utils.py`; `data/processed/layer2_*`; `docs/cluster_interpretation.md` | Complete as exploratory supporting signal |
+| Layer 1 rule detection | `src/layer1/rule_detector.py`; `data/processed/layer1_flags.csv`; `docs/layer1_design.md` | Complete for dev; Bupa L1 not regenerated and documented as caveat |
+| Layer 2 clustering | `src/layer2/feature_engineering.py`; `src/layer2/cluster_utils.py`; `data/processed/layer2_*`; `docs/cluster_interpretation.md` | Complete as exploratory supporting signal |
 | Layer 3 LLM findings | `src/layer3/*`; `data/processed/layer3_findings_filtered.csv`; `data/heldout/bupa/processed/layer3_findings_filtered.csv` | Complete |
 | Fusion reports | `src/pipeline/*`; `scripts/run_pipeline.py`; `data/processed/reports/`; `data/heldout/bupa/reports/` | Complete |
 | Coaching recommendations | `src/coaching/recommendation_engine.py`; `docs/coaching_templates.md`; report JSON `coaching_recommendations` | Complete |
 | Performance tracking | `src/tracking/performance_model.py`; `scripts/build_performance_tracking.py`; `data/processed/performance/`; `data/heldout/bupa/performance/` | Complete |
 | Streamlit demo | `app/streamlit_demo.py`; `app/components.py`; `app/styles.py` | Complete for dev55 demo |
 | Evaluation governance | `docs/eval_freeze.md`; `docs/evaluation_design.md` | Complete |
-| Bupa held-out closeout | `submissions/bupa_corrected_pipeline_run_2026-05-19.md`; `submissions/R8_bupa_evaluation_summary_2026-05-20.md`; `submissions/final_technical_verification_2026-05-20.md` | Complete |
+| Bupa held-out closeout | `evidence/bupa_corrected_pipeline_run_2026-05-19.md`; `evidence/bupa_supporting_review_summary_2026-05-20.md`; `evidence/bupa_evaluation_summary_2026-05-20.md`; `evidence/final_technical_verification_2026-05-20.md` | Complete |
 
 ## Final Evidence Files
 
-- `submissions/bupa_corrected_pipeline_run_2026-05-19.md`
-- `submissions/R8_bupa_evaluation_summary_2026-05-20.md`
-- `submissions/final_technical_verification_2026-05-20.md`
+- `evidence/bupa_corrected_pipeline_run_2026-05-19.md`
+- `evidence/bupa_supporting_review_summary_2026-05-20.md`
+- `evidence/bupa_evaluation_summary_2026-05-20.md`
+- `evidence/final_technical_verification_2026-05-20.md`
 - `README.md`
 
-Supporting member technical notes remain in `submissions/` for traceability.
-Internal task briefs, transfer messages, and input packs are coordination
-records rather than final handoff evidence.
+Internal task briefs, transfer messages, input packs, and raw member-return
+documents are not part of the final project repository. Their necessary
+technical conclusions have been consolidated into the supporting review summary.
 
 ## Verification Summary
 
