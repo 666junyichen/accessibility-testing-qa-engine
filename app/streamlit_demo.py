@@ -323,10 +323,9 @@ def _render_overview(
 ) -> None:
     # 5.1-B session-level assessment
     st.markdown("##### Session-level assessment (Layer 3-B)")
-    cols = st.columns(3)
+    cols = st.columns(2)
     cols[0].metric("Narration", str(assessment.get("narration_quality") or "—"))
     cols[1].metric("Recording", str(assessment.get("recording_quality") or "—"))
-    cols[2].metric("Coaching evidence", str(assessment.get("coaching_evidence") or "—"))
 
     # R6 dimension breakdown (only if available)
     if submission_row is not None:
@@ -440,10 +439,7 @@ def _render_findings(
 
 def _render_coaching(coaching: list[dict[str, Any]]) -> None:
     if not coaching:
-        st.info(
-            "No coaching recommendations were generated. "
-            "Narration / recording / coaching_evidence are all in their neutral default."
-        )
+        st.info("No coaching recommendations were generated for this report.")
         return
     sorted_recs = sorted(coaching, key=lambda r: r.get("priority", 99))
     for rec in sorted_recs:
