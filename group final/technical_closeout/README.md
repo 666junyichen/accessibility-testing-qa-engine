@@ -53,6 +53,10 @@ Any weakness found on Bupa should be recorded as a limitation or future-work ite
 
 ## Run Record
 
+Clean final handoff index:
+
+`FINAL_TECHNICAL_HANDOFF.md`
+
 Primary corrected run record:
 
 `submissions/bupa_corrected_pipeline_run_2026-05-19.md`
@@ -68,6 +72,11 @@ Final verification note:
 Earlier R7 first-run note:
 
 `submissions/R7_ivy_bupa_pipeline_demo_2026-05-18.md`
+
+Internal coordination records such as `tasks/`, `messages_to_send_*.md`, and
+`submissions/R8_bupa_evaluation_input_pack_2026-05-20.md` are retained for
+traceability only. They are not final report prose and should not be sent as
+client/school-facing evidence unless a reviewer asks for process history.
 
 ## Technical Dependency Status
 

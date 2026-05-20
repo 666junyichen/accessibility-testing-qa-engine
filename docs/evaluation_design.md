@@ -27,7 +27,7 @@ The partition specification—including exact counts, the two transcript-failure
 | Partition | Content | Size | Role |
 |---|---|---|---|
 | **dev set** | AAMI + UQ + DPC-WA collated | 55 videos (57 − 2) | Prompt tuning, Kappa annotation, ablation, rotating validation |
-| **held-out** | Bupa collated | 42 videos | One-time final evaluation (Gate 1 ∧ Gate 2 required) |
+| **held-out** | Bupa collated | 21 videos | One-time final evaluation completed after Gate 1 ∧ Gate 2 |
 | **not included** | Brighton raw + Bupa raw | — | No aligned metadata; excluded from all evaluation |
 
 **Annotation iron rule**: Human annotation for Kappa is restricted to the dev set. Post-hoc qualitative audit of Bupa held-out must not feed back into schema or prompt design.
@@ -102,19 +102,13 @@ However, LLM V2 vs R8 κ = 0.0: the LLM assigns `rich` to all 14 videos. Where `
 
 ---
 
-### 3.4 Implementation Guidance
+### 3.4 Reporting Guidance
 
-The lower-confidence rules map naturally to a `field_confidence` dict on `QualityReport`. Recommended non-blocking addition to `src/pipeline/schemas.py`:
-
-```python
-class QualityReport(BaseModel):
-    ...
-    field_confidence: dict[str, str] | None = None
-    # e.g. {"sentiment_e": "low", "calibrator_score_l": "medium-low",
-    #        "recording_quality": "low", "narration_quality": "medium"}
-```
-
-This is optional and non-blocking. Adoption before Final Report generation is recommended so downstream consumers can inspect confidence programmatically.
+The lower-confidence rules were treated as interpretation guidance rather than
+as a new `QualityReport` schema field. Final analysis should keep
+`sentiment_e`, `calibrator_score_l`, and classifier-generated 5.1-B labels as
+caveated supporting signals, while using `friction_type`, `severity_s`, report
+tier, and case-study evidence as the primary evaluative claims.
 
 ---
 
@@ -158,14 +152,14 @@ The Bupa held-out set's validity as a final benchmark depends on the guarantee t
 
 ### Four Freeze Categories (Gate 2)
 
-Gate 2 requires Nix's explicit sign-off before any held-out run. Current status (see `docs/eval_freeze.md §四–五`):
+Gate 2 required Nix's explicit sign-off before the held-out run. Final status (see `docs/eval_freeze.md §四–五`):
 
-- **Freeze 1** — `friction_type / severity / sentiment / score_L` definitions: *Round 5 converged (canonical F1–F7 / S1–S6 / E1–E5 / L1–L5); pending Nix sign-off*
-- **Freeze 2** — `narration_quality / recording_quality / coaching_evidence` enumerations: *Round 5 / Round 11 converged (`coaching_evidence` two-valued `{none, explicit}`); pending Nix sign-off*
-- **Freeze 3** — Step 6.1 fusion I/O schema: *code merged in `dfe1b0b`, pytest 133 passed; pending Nix sign-off*
-- **Freeze 4** — R6 mapping rules: *design + reference module landed (commit `ee8d5ce`, CC review HIGH quality 2026-05-04); pending Nix sign-off*
+- **Freeze 1** — `friction_type / severity / sentiment / score_L` definitions: signed off by Nix on 2026-05-07.
+- **Freeze 2** — `narration_quality / recording_quality / coaching_evidence` enumerations: signed off by Nix on 2026-05-07.
+- **Freeze 3** — Step 6.1 fusion I/O schema: signed off by Nix on 2026-05-07.
+- **Freeze 4** — R6 mapping rules: signed off by Nix on 2026-05-07.
 
-**Gate 1 status as of 2026-05-04: ✅ all green.** Held-out execution is blocked solely by Gate 2 sign-off + Bupa transcription budget (~$90–125). Pre-freeze, Bupa collated 42 videos may only be used for coverage statistics and structural data distribution comparisons; LLM inference and human annotation are prohibited. See `docs/eval_freeze.md §七`.
+**Held-out status as of 2026-05-20: ✅ completed.** The corrected Bupa evaluation processed 21 collated videos with 21/21 reports, 813 filtered L3 findings, and zero failed reports. The Bupa outputs were used only for evaluation and were not used to tune prompts, schemas, fusion, post-processing, R6 scoring, or coaching logic. See `group final/technical_closeout/submissions/R8_bupa_evaluation_summary_2026-05-20.md` and `final_technical_verification_2026-05-20.md`.
 
 ---
 
@@ -224,8 +218,8 @@ UQ sessions concentrate F4/F5 (authentication and form barriers) with a higher S
 
 ### Limitations
 
-- The 14-window sample is small and unevenly distributed across projects (UQ ×6, AAMI ×5, DPC-WA ×3). Per-project κ stratification is therefore not pursued; combined-κ values are the primary inter-annotator metric. Whether project-specific friction patterns are uniformly recognised cannot be tightly validated at this sample size — Step 8.4 round-2 annotation is reserved for this if the held-out Bupa run surfaces project-level instability.
-- The 5.1-B LLM default bias means that video-level quality labels in the production pipeline should not be treated as classifier-generated assessments — they are outputs of a known-biased module pending prompt calibration.
+- The 14-window sample is small and unevenly distributed across projects (UQ ×6, AAMI ×5, DPC-WA ×3). Per-project κ stratification is therefore not pursued; combined-κ values are the primary inter-annotator metric. Whether project-specific friction patterns are uniformly recognised cannot be tightly validated at this sample size.
+- The 5.1-B LLM default bias means that video-level quality labels in the production pipeline should not be treated as standalone classifier-generated assessments. They are retained as known-lower-confidence supporting fields, not as primary final claims.
 
 ---
 
@@ -243,5 +237,3 @@ For Final Report authors and downstream pipeline consumers. All κ values from n
 | `recording_quality` | 5.1-B | 0.0 (92.9% agree) | 0.0118 (raw) | **`low`** | Both (LC-3) |
 
 Rules LC-1 through LC-4 in §3.3 are the normative definitions. This table is a reference summary only. Where R3 vs R8 and LLM vs R8 diverge, the "Driving comparison" column identifies which value sets the confidence tier.
-
-

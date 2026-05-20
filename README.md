@@ -1,25 +1,35 @@
+# CS20 Intelligent Tester Quality Assessment & Coaching Engine
+
+Internal decision-support prototype for See Me Please tester-submission review.
+The system turns AWS Transcribe outputs into transcript windows, quality flags,
+LLM friction findings, per-video quality reports, coaching recommendations,
+tester-performance tables, and a Streamlit review demo.
+
+**Final technical status (2026-05-20):** dev55 is stable, the corrected Bupa
+21-video held-out evaluation is complete, and final verification passed
+`pytest` (155 tests), `sync_dev55.py --check` (55/55), performance-table
+regeneration, and Bupa report readability / ID-alignment checks. Bupa outputs
+are evaluation-only and must not be used for post-hoc tuning.
+
 ## Data Source
-AWS S3 bucket:
-usyd-03-2025-cs20-1-proj-assets
-
-## Structure
-- data/raw: raw data (S3)
-- data/processed: processed data
-- src: core code
-- notebooks: experiments
-- outputs: results
-
-## Pipeline
-MP4 → JSON → Parser → Analysis
+AWS S3 bucket: `usyd-03-2025-cs20-1-proj-assets`
 
 ## Environment
 Python 3.10+
 
 ## Setup
+```bash
 pip install -r requirements.txt
+```
 
-## Usage
-Run notebooks or scripts in src/ for data processing and analysis.
+## Functional Coverage
+- Dev pipeline: 57 generated reports, with 55 official `dev55` reports after
+  excluding two transcription-failure edge cases.
+- Bupa held-out: 21 transcripts, 1,252 windows, 813 filtered L3 findings,
+  21 reports, 21 R6 performance rows, zero failed reports.
+- Demo: `app/streamlit_demo.py` reads precomputed dev55 artifacts.
+- Technical closeout: `group final/technical_closeout/` contains the Bupa run,
+  member technical reviews, R8 synthesis, and final verification note.
 
 ## Contents
 - [Step 0.1 - Repository and Environment Setup](#step-01---repository-and-environment-setup)
@@ -39,7 +49,10 @@ Run notebooks or scripts in src/ for data processing and analysis.
 - [Step 4.2 — Layer 2 Clustering](#step-42--layer-2-clustering)
 - [Step 4.3 - R3 Cluster Interpretation Preparation](#step-43---r3-cluster-interpretation-preparation)
 - [Step 5.1 - Prompt Design (Round 5 canonical)](#step-51---prompt-design-round-5-canonical)
+- [Step 5.2 - Layer 3 LLM Classification and Postprocessing](#step-52---layer-3-llm-classification-and-postprocessing)
 - [Step 5.3 - R3 Manual Annotation Set](#step-53---r3-manual-annotation-set)
+- [Step 5.4 - LLM Kappa](#step-54--llm-kappa)
+- [Step 6.1 - Fusion and QualityReport Generation](#step-61--fusion-and-qualityreport-generation)
 - [Step 6.2 — Coaching Recommendation Engine](#step-62--coaching-recommendation-engine)
 - [Step 6.3 — Performance Tracking](#step-63--performance-tracking)
 - [Step 7.1 - Pipeline Orchestration](#step-71--pipeline-orchestration-fusion-runner)
@@ -88,7 +101,7 @@ Current project coverage:
 | DPC-WA (`department-of-premier-and-cabinet-wa`) | Collated project, assignment, and task CSVs | 17 JSON outputs | No local survey CSVs | Dev source; 16 official `dev55` reports after excluding one transcription failure. |
 | AAMI / Suncorp (`suncorp-insurance`) | Collated project, assignment, and task CSVs | 21 JSON outputs | No local survey CSVs | Dev source; 20 official `dev55` reports after excluding one transcription failure. |
 | UQ (`the-university-of-queensland`) | Collated project, assignment, task, and survey CSVs | 19 JSON outputs | 4 survey CSVs present | Dev source; 19 official `dev55` reports. |
-| Bupa (`bupa-uk`) | Survey-only CSVs currently present locally; collated held-out videos are not pulled in W10 | Not run in W10 | 4 survey CSVs present | Held-out evaluation target: 42 videos, only after budget approval and freeze gates. |
+| Bupa (`web-health-information-bupa`) | Held-out inputs and transcript JSONs under `data/heldout/bupa/` | 21 JSON outputs | 4 survey CSVs present | Corrected full held-out evaluation completed on 21 collated videos. |
 | Brighton | Raw-only package outside current local repo snapshot | Not run | Not available locally | Not included because collated metadata / survey / task alignment is unavailable. |
 
 Evaluation split from `docs/eval_freeze.md`:
@@ -96,11 +109,11 @@ Evaluation split from `docs/eval_freeze.md`:
 | Split | Contents | Size | Rationale |
 |---|---|---:|---|
 | Development set | Old 3 collated projects: AAMI 21 + UQ 19 + DPC-WA 17, with 2 transcription failures excluded for formal reporting | 55 videos | Prompt tuning, schema finalisation, manual Kappa checks, ablation, rotating validation, and demo reports. |
-| Held-out set | Bupa collated videos | 42 videos | Reserved for one-time evaluation only after Gate 1 and Gate 2 are both approved. |
+| Held-out set | Bupa collated videos | 21 videos | Completed as one-time post-freeze evaluation after Gate 1 and Gate 2 approval. |
 | Not included | Brighton raw package and Bupa raw package | Brighton raw 105 + Bupa raw 315 noted in governance docs | Excluded because raw-only assets cannot be aligned reliably to collated tasks / survey / reporting scope. |
 
 ## Step 0.2 - AWS Transcribe Export Collection
-- **Status**: completed for the three development projects; held-out Bupa is not started in W10.
+- **Status**: completed for the three development projects and the corrected Bupa held-out run.
 - **Input source**: S3 collated MP4 assets for the development projects.
 - **Local JSON path**: `data/raw/transcribe-output/`
 - **Parser**: `src/data/transcript_parser.py`
@@ -152,7 +165,7 @@ Structured data currently available in the repository:
 | `data/raw/department-of-premier-and-cabinet-wa/` | Project CSV, assignment CSV, 14 task rows | DPC-WA dev structured context. |
 | `data/raw/suncorp-insurance/` | Project CSV, assignment CSV, 11 task rows | AAMI / Suncorp dev structured context. |
 | `data/raw/the-university-of-queensland/` | Project CSV, assignment CSV, 10 task rows, 4 survey CSVs | UQ dev structured and survey context. |
-| `data/raw/bupa-uk/` | 4 survey CSVs: 580 answers, 43 questions, 20 responses, survey metadata | Held-out survey context only; Bupa videos are not pulled in W10. |
+| `data/raw/bupa-uk/` | 4 survey CSVs: 580 answers, 43 questions, 20 responses, survey metadata | Survey context for the Bupa held-out evaluation; processed held-out videos and transcripts are stored under `data/heldout/bupa/`. |
 | `data/raw/tester_video_mapping.csv` | Local mapping helper | Practical bridge for video filename, project, and tester identity where recoverable. |
 
 Known structured-data limitation:
@@ -202,7 +215,7 @@ Current processed artifact inventory:
 |---|---|---:|---|
 | Transcript parser | `data/processed/transcripts.csv` | 57 rows | One full transcript row per generated development video. |
 | Transcript parser | `data/processed/segments.csv` | 26,191 rows | Segment-level transcript spans from `results.audio_segments`. |
-| Transcript parser | `data/processed/items.csv` | Regenerable, not currently present in this checkout | Word-level timing and confidence table from `results.items`; large intermediate artifact. |
+| Transcript parser | `data/processed/items.csv` | 529,957 rows | Word-level timing and confidence table from `results.items`; large intermediate artifact. |
 | Windowing | `data/processed/windows.csv` | 3,331 rows | Approximately 60-second analysis windows across 57 videos. |
 | Audio features | `data/processed/audio_features.csv` | 876 rows | Window-level silence, narration density, words-per-minute, confidence, and silence duration features. |
 | Video metadata | `data/processed/video_metadata.csv` | 15 rows | Sample video metadata and duration-ratio checks. |
@@ -636,6 +649,37 @@ messages = build_messages(
 )
 ```
 
+## Step 5.2 - Layer 3 LLM Classification and Postprocessing
+- **Module**: `src/layer3/llm_classifier.py`
+- **Runner**: `scripts/run_layer3_dev.py`
+- **Postprocess CLI**: `scripts/postprocess_layer3.py`
+- **Filter CLI**: `scripts/filter_l3_ok_contamination.py`
+- **Inputs**:
+  - `data/processed/windows.csv`
+  - `src/layer3/prompts_a.py` / `src/layer3/prompts_b.py`
+  - `src/layer3/schemas_a.py` / `src/layer3/schemas_b.py`
+- **Outputs**:
+  - `data/processed/layer3_findings.csv` (2,219 raw flattened findings)
+  - `data/processed/layer3_findings_filtered.csv` (2,133 production findings)
+  - `data/processed/layer3_video_assessments.csv` (57 video-level assessments)
+
+Step 5.2 invokes AWS Bedrock with the canonical 5.1-A / 5.1-B prompts, repairs
+and validates JSON through Pydantic schemas, checkpoints raw results under
+`outputs/`, then flattens accepted rows into reproducible CSV artifacts. The
+filtered finding table is the L3 evidence consumed by fusion, coaching, R6
+performance tracking, ablation, case studies, and Bupa held-out reporting.
+
+```powershell
+# Dry-run request construction
+python scripts\run_layer3_dev.py --level A --input data/processed/windows.csv --limit 3 --dry-run
+python scripts\run_layer3_dev.py --level B --input data/processed/windows.csv --limit 3 --dry-run
+
+# Postprocess raw model outputs after an approved run
+python scripts\postprocess_layer3.py --level A
+python scripts\postprocess_layer3.py --level B
+python scripts\filter_l3_ok_contamination.py
+```
+
 ## Step 5.3 - R3 Manual Annotation Set
 - **Legacy setup script**: `scripts/create_r3_manual_annotation_round1.py`
 - **Canonical migration script**: `scripts/migrate_r3_annotations_to_canonical.py`
@@ -732,27 +776,58 @@ notebooks/04_kappa_agreement.ipynb
 ```
 
 
+## Step 6.1 — Fusion and QualityReport Generation
+- **Module**: `src/pipeline/fusion.py`
+- **Schema**: `src/pipeline/schemas.py`
+- **Tests**: `tests/test_fusion.py`
+- **Batch runner**: `scripts/run_pipeline.py`
+- **Inputs**:
+  - `data/processed/windows.csv`
+  - `data/processed/layer1_flags.csv`
+  - `data/processed/layer2_cluster_assignments.csv`
+  - `data/processed/layer3_findings_filtered.csv`
+  - `data/processed/layer3_video_assessments.csv`
+- **Outputs**:
+  - `data/processed/reports/*.json`
+  - `data/processed/reports/_summary.csv`
+  - `data/processed/reports/dev55/*.json`
+  - `data/processed/reports/_summary_dev55.csv`
+
+Step 6.1 binds the three-layer evidence stack into one `QualityReport` per
+video. L1 contributes rule flags, L2 contributes exploratory cluster context,
+L3 contributes finding distributions and video-level assessment, and the fusion
+rule computes the final `good` / `acceptable` / `poor` tier. The module also
+passes finding-level evidence into the coaching engine so severity and
+friction-aggregation recommendations are included in the report JSON.
+
+```powershell
+python scripts\run_pipeline.py --all --output-dir data/processed/reports
+python scripts\sync_dev55.py --check
+```
+
 ## Step 6.2 — Coaching Recommendation Engine
 - **Module**: `src/coaching/recommendation_engine.py`
-- **Tests**: `tests/test_recommendation_engine.py` (12 tests covering MVP + severity-aware extension logic)
+- **Tests**: `tests/test_recommendation_engine.py` (26 tests covering MVP, severity-aware, friction-aggregation, meta, suppression, and edge cases)
 - **Templates**: `docs/coaching_templates.md`
 - **Inputs**:
   - one `VideoAssessment` row from 5.1-B (`narration_quality` / `recording_quality` / `coaching_evidence`)
   - optional 5.1-A finding-level records (`severity_s`, representative finding text)
 - **Output**: zero or more `Recommendation` objects, each with `category`, `title`, `summary`, ordered `advice[]`, integer `priority`, optional `evidence_note`, and `tags[]`.
 
-  The V2 extension additionally supports:
+  The V3.1 engine additionally supports:
   - severity-aware recommendation routing
   - representative finding evidence injection
   - finding-level priority escalation
+  - friction-type aggregation across multi-pattern submissions
+  - meta recommendations that combine sparse narration and weak recording
 
 ### Trigger logic (MVP, template-based)
 - **Narration templates** keyed off `narration_quality` (`none` / `sparse` / `adequate` / `rich`) — produce coaching focused on think-aloud density and framing language
 - **Recording templates** keyed off `recording_quality` (`poor` / `acceptable` / `good`) — produce coaching on audio capture, mic placement, ambient noise
 - **Moderation templates** keyed off `coaching_evidence` (`explicit` / `none`, two-valued per Round 11) — flag explicit moderator intervention so review teams can spot tester guidance leakage
 
-### V2 Severity-aware Extension
-The V2 extension optionally consumes Step 5.1-A finding-level outputs and introduces severity-aware recommendation orchestration.
+### V3.1 Finding-aware Extension
+The V3.1 extension consumes Step 5.1-A finding-level outputs and introduces severity-aware and friction-aggregation orchestration.
 
 #### Severity routing
 - `S1` / `S2`
@@ -778,25 +853,24 @@ engine.generate(assessment)
 ```
 
 ### Boundaries
-- **Partial 5.1-A support**:
-  the current extension consumes only `severity_s` and representative finding text from Step 5.1-A.
-  It does not yet support:
-  - friction-type (`F1–F7`) aggregation
-  - timestamp-aware recommendation synthesis
-  - multi-finding coaching compression
-  - contextual LLM-generated coaching
+- The current engine is deterministic and template-based. It does not generate free-form coaching with an LLM at report time.
+- Timestamp-aware recommendation synthesis remains future work; report consumers should use finding timestamps directly for detailed review.
 - **No coupling to R6 calibrator-mismatch flag**: per W9 P1#8b lock-in, coaching priority is **not** auto-bumped from R6 audit signals; R5 and R6 stay decoupled by hard constraint.
 
 ## Result on dev 57
-Across 57 reports, the V2 extension introduces more differentiated coaching behaviour through severity-aware recommendation routing.
-High-severity findings (`S1` / `S2`) now generate elevated coaching priority and inject representative findings into `evidence_note`. Narration-driven recommendations remain common in the `acceptable` recording slice, while recording-focused coaching dominates the 5 recording-`poor` sessions.
-The extension preserves backward compatibility with the original session-level API while enabling more grounded coaching recommendations from 5.1-A evidence.
+Across 57 reports, V3.1 produces more differentiated coaching behaviour through
+severity-aware recommendations, friction-aggregation, and meta suppression.
+High-severity findings (`S1` / `S2`) generate elevated priority and inject
+representative findings into `evidence_note`; mixed-friction sessions receive
+one aggregation item when they pass the distribution guards. The extension
+preserves backward compatibility with the original session-level API while
+enabling grounded coaching from 5.1-A evidence.
 
 ## Step 6.3 — Performance Tracking
 - **Module**: `src/tracking/performance_model.py`
-- **Tests**: `tests/test_performance_model.py` (24 tests)
+- **Tests**: `tests/test_performance_model.py` (33 tests)
 - **Script**: `scripts/build_performance_tracking.py`
-- **Document**: `docs/performance_tracking_design.md`
+- **Document**: `docs/performance tracking.md`
 - **Inputs**:
   - `data/processed/layer3_findings_filtered.csv` (5.1-A finding-level rows)
   - `data/processed/layer3_video_assessments.csv` (5.1-B video-level rows)
@@ -806,7 +880,7 @@ The extension preserves backward compatibility with the original session-level A
   - `data/processed/performance/per_tester.csv` (27 rows — per-tester aggregate, trajectory, persistent friction)
 
 ### SMP alignment principle
-R6 adopts SMP **score language** — 0–100 scale, four-tier output (Foundational / Developing / Proficient / Leading), cap-based severity rules. R6 does **not** reproduce SMP Model B, does not own product-accessibility scoring, and does not inject any SMP cohort weighting into the scoring chain. R6 produces *tester-performance-dimension aggregation*; Model B remains the SMP-side product scorer. Mapping to the four SMP design docs (`01-scoring-model-success-criteria.md` / `02-scoring-model-comparison-A-B-C-D.md` / `03-scoring-model-assessment-ABDC2.md` / `04-model-E-reworked-cap-based.md`) is documented section-by-section in `docs/performance_tracking_design.md` §2.
+R6 adopts SMP **score language** — 0–100 scale, four-tier output (Foundational / Developing / Proficient / Leading), cap-based severity rules. R6 does **not** reproduce SMP Model B, does not own product-accessibility scoring, and does not inject any SMP cohort weighting into the scoring chain. R6 produces *tester-performance-dimension aggregation*; Model B remains the SMP-side product scorer. Mapping to the four SMP design docs (`01-scoring-model-success-criteria.md` / `02-scoring-model-comparison-A-B-C-D.md` / `03-scoring-model-assessment-ABDC2.md` / `04-model-E-reworked-cap-based.md`) is documented section-by-section in `docs/performance tracking.md` §2.
 
 ### Per-submission scoring
 
@@ -858,8 +932,8 @@ For each tester with ≥2 non-low-evidence submissions:
 Worked example — `Sharelinsonny_suncorp`: D1=90, D2=83.7, D3=70 → raw=84.8; ≥2 S2 cap binds → final 65.0 / Developing. The cap-based shape is binding here, exactly as Model E intends.
 
 ### Boundaries
-- W9 deliverable is design + reference module + per-tester sketch on dev 57. It does not constitute Freeze 4 (R6 mapping rules) sign-off — that's `docs/eval_freeze.md` Gate 2 territory and requires Nix's explicit approval after the rotating-validation results land.
-- Bupa held-out is out of scope until Gate 1 ∧ Gate 2 are green. R6 mapping must not be run on Bupa data prior to that.
+- W9 deliverable was design + reference module + per-tester sketch on dev 57. Freeze 4 sign-off was later completed through `docs/eval_freeze.md` Gate 2.
+- Bupa R6 mapping has now been generated for the 21-video held-out set as an evaluation-only artefact. The Bupa outputs must not be used to tune R6 rules, caps, thresholds, or coaching logic.
 
 ```python
 
@@ -1102,9 +1176,10 @@ L3 is the binding signal under the current fusion rules — without finding-leve
 
 The target smoke-test outcome is that a new contributor can reach the existing
 development report state within about one hour once AWS SSO, S3, Bedrock, and
-local video/audio prerequisites are available. Bupa held-out data must not be
-pulled or run until the budget approval and freeze gates in `docs/eval_freeze.md`
-are both satisfied.
+local video/audio prerequisites are available. The Bupa held-out evaluation has
+already been completed after budget approval and freeze-gate sign-off; reruns
+should be treated as verification/reproduction only and must not be used for
+post-hoc tuning.
 
 ### 1. Clone, environment, and AWS identity
 
