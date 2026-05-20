@@ -61,8 +61,8 @@ def parse_segments(json_path):
 
 def extract_metadata(file_path):
     """
-    从路径和文件名提取 metadata
-    例子:
+    Extract project and tester metadata from the path and filename.
+    Example:
     data/raw/transcribe-output/department-of-premier-and-cabinet-wa/project_xxx_ghum_video-job.json
     """
     file_path = Path(file_path)

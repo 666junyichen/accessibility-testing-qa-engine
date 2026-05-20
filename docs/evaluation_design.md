@@ -22,7 +22,7 @@ Downstream consumers—Final Report authors, Step 6.2 coaching engine, R6 Perfor
 
 ## 2. Dual-Track Evaluation Architecture
 
-The partition specification—including exact counts, the two transcript-failure exclusions, and the "not included" category—is defined in `docs/eval_freeze.md §一`. Summary:
+The partition specification, including exact counts, the two transcript-failure exclusions, and the "not included" category, is defined in `docs/eval_freeze.md` Section 1. Summary:
 
 | Partition | Content | Size | Role |
 |---|---|---|---|
@@ -148,18 +148,18 @@ Case 4 shows the correct posture when L1 quality flags co-exist with a severe L3
 
 ### Why "Only Once"
 
-The Bupa held-out set's validity as a final benchmark depends on the guarantee that no pipeline design decision was informed by its contents—even informally. The "only-once" rule is operationalised through six invalidation triggers in `docs/eval_freeze.md §六`: any post-run change to prompts (5.1-A/B, 5.2, 5.3, 5.4), 4.2 clustering parameters, 5.x JSON schema, 6.1 fusion rules or weights, R6 mapping rules, or post-processing thresholds voids the Bupa numbers and requires re-running from Gate 1.
+The Bupa held-out set's validity as a final benchmark depends on the guarantee that no pipeline design decision was informed by its contents, even informally. The "only-once" rule is operationalised through six invalidation triggers in `docs/eval_freeze.md` Section 6: any post-run change to prompts (5.1-A/B, 5.2, 5.3, 5.4), 4.2 clustering parameters, 5.x JSON schema, 6.1 fusion rules or weights, R6 mapping rules, or post-processing thresholds voids the Bupa numbers and requires re-running from Gate 1.
 
 ### Four Freeze Categories (Gate 2)
 
-Gate 2 required project-lead explicit sign-off before the held-out run. Final status (see `docs/eval_freeze.md §四–五`):
+Gate 2 required project-lead explicit sign-off before the held-out run. Final status (see `docs/eval_freeze.md` Sections 4-5):
 
 - **Freeze 1** — `friction_type / severity / sentiment / score_L` definitions: signed off by project lead on 2026-05-07.
 - **Freeze 2** — `narration_quality / recording_quality / coaching_evidence` enumerations: signed off by project lead on 2026-05-07.
 - **Freeze 3** — Step 6.1 fusion I/O schema: signed off by project lead on 2026-05-07.
 - **Freeze 4** — R6 mapping rules: signed off by project lead on 2026-05-07.
 
-**Held-out status as of 2026-05-20: ✅ completed.** The corrected Bupa evaluation processed 21 collated videos with 21/21 reports, 813 filtered L3 findings, and zero failed reports. The Bupa outputs were used only for evaluation and were not used to tune prompts, schemas, fusion, post-processing, R6 scoring, or coaching logic. See `need/03_final_checking/technical_closeout/evidence/bupa_evaluation_summary_2026-05-20.md` and `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`.
+**Held-out status as of 2026-05-20: completed.** The corrected Bupa evaluation processed 21 collated videos with 21/21 reports, 813 filtered L3 findings, and zero failed reports. The Bupa outputs were used only for evaluation and were not used to tune prompts, schemas, fusion, post-processing, R6 scoring, or coaching logic. Reproducible held-out outputs are stored under `data/heldout/bupa/`.
 
 ---
 

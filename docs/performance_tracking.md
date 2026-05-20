@@ -250,7 +250,7 @@ Per-tester `sentiment_distribution = sum of E1..E5 across submissions` — surfa
 - **AAMI / Bupa lane** — when the per-tester layer is later cross-checked against an SMP score (Step 8.5 territory), the comparison is against `score-overrides.csv` values (post-C3).
 - **UQ lane** — the per-tester layer is cross-checked against raw survey only, not against overrides. The output CSV carries a `cross_check_lane ∈ {with_overrides, raw_only, dev_only}` column so downstream readers don't silently treat empty UQ overrides as "we agree with SMP on UQ" — they're "no override exists" in the first place.
 
-Lanes are pre-populated for known dev projects (`suncorp` / `wa` → `with_overrides`, `uq` → `raw_only`); Bupa held-out 触发后会消费此字段, so the column already exists when Step 8.5 needs it.
+Lanes are pre-populated for known development projects (`suncorp` / `wa` -> `with_overrides`, `uq` -> `raw_only`); Bupa held-out processing consumes the same field, so the column already exists when Step 8.5 needs it.
 
 ---
 

@@ -1,47 +1,37 @@
 """Prompt templates for Step 5.1-A (finding-level classification).
 
-字段对照
-========
+This module assembles prompts for the Round 5 canonical finding-level schema.
+Each transcript window may produce zero, one, or multiple friction findings.
 
-本模块产出 Round 5 canonical schema 约定的 finding-level 输出（1:N）：
-单个 transcript window 允许 0..N 条 findings。
+Schema definitions live in `schemas_a.py`. Label references are:
+- F1-F7 / S1-S6 / E1-E5 from
+  `client/s3_snapshot/06-friction-sentiment-framework.md`
+- L1-L5 / signal_alignment / structural_amplification_note from
+  `client/s3_snapshot/07-friction-score-calibrator-prompt.md`
 
-字段定义见 `schemas_a.py` 模块 docstring。分类依据：
-- F1-F7 / S1-S6 / E1-E5   源自 `client/s3_snapshot/06-friction-sentiment-framework.md`
-- L1-L5 / signal_alignment / structural_amplification_note
-                           源自 `client/s3_snapshot/07-friction-score-calibrator-prompt.md`
+This module does not call an LLM API; it only assembles prompt text.
 
-本模块不调用 LLM API，仅负责 prompt 文本装配。
+Prompt design anchors from the 2026-04-22 round-1 Kappa review are retained
+near the relevant prompt text. Search for `DESIGN NOTE` to find them.
 
-Prompt design anchors（2026-04-22，基于 round-1 Kappa 分析列出）
-===============================================================
-4 处设计锚点保留在 prompt 正文附近。文件内 search `DESIGN NOTE` 可快速跳转。
+Item 1. TAXONOMY_PROMPT > Severity > S4 vs S5 boundary
+        Round-1 Kappa was raw=0.34 / weighted=0.61, with disagreements
+        concentrated between adjacent severity levels.
 
-  Item 1. TAXONOMY_PROMPT > Severity 段 > S4 vs S5 边界
-          当前 round-1 Kappa raw=0.34 / weighted=0.61，分歧集中在邻级。
-          Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Severity
+Item 2. TAXONOMY_PROMPT > Sentiment > E2 vs E3 boundary
+        Round-1 Kappa was 0.22 (fair), with Positive/Satisfied often
+        confused with Neutral/Indifferent.
 
-  Item 2. TAXONOMY_PROMPT > Sentiment 段 > E2 vs E3 边界
-          当前 round-1 Kappa=0.22（fair），Positive/Satisfied vs Neutral/Indifferent 混淆。
-          Reference: client/s3_snapshot/06-friction-sentiment-framework.md §Sentiment
+Item 3. FEW_SHOT_EXAMPLES
+        The examples should cover aligned, conflicted, and stated_missing
+        signal-alignment cases.
 
-  Item 3. FEW_SHOT_EXAMPLES 常量（当前空 list）
-          至少填 3 条 finding 例子，覆盖 signal_alignment 三档：
-            - aligned：observed 和 stated 一致
-              (推荐：今日 smoke test Sharelinsonny_wa_w000 F6/S2/E3/L4 ChatGPT 绕道)
-            - conflicted：observed 和 stated 矛盾
-              (从 r3_manual_annotations_round1_canonical.csv 里挑；没有就构造)
-            - stated_missing：窗口内无口头表达
-              (从 data/processed/layer1_flags.csv 里 SPARSE_NARRATION flag 窗口挑)
+Item 4. OUTPUT_EXAMPLE
+        The base example covers F6. Additional examples can cover F1, F3,
+        and F7 if future work extends the prompt package.
 
-  Item 4. OUTPUT_EXAMPLE 可选扩充
-          当前只 1 条 F6 样例，可增加 1-2 条覆盖 F1/F3/F7 等其他类型。
-          非必做。
-
-Canonical 纪律：schema 字段已锁定；所有修改只在 prompt 字符串内部文字层面。
-Pydantic schema 真源是 `schemas_a.py`。
-
-修改后运行 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
+Canonical discipline: schema fields are locked; prompt changes should stay
+inside prompt text. The Pydantic source of truth is `schemas_a.py`.
 """
 
 import json
@@ -296,13 +286,13 @@ FEW_SHOT_EXAMPLES: list = [
     {
         "finding": (
             "Participant could not find the required pathway in the site and "
-            "used ChatGPT as an external workaround to continue."
+            "used an external website as a workaround to continue."
         ),
         "observed_signal": (
             "Participant searched the page, opened unrelated areas, then left "
-            "the product flow to ask ChatGPT for the next step."
+            "the product flow to look up the next step externally."
         ),
-        "stated_signal": "I cannot find it here, so I will use ChatGPT.",
+        "stated_signal": "I cannot find it here, so I will look it up elsewhere.",
         "signal_alignment": "aligned",
         "friction_type": "F6",
         "severity_s": "S2",

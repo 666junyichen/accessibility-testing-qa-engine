@@ -1,35 +1,27 @@
 """Prompt templates for Step 5.1-B (video/session-level assessment).
 
-字段对照
-========
+Step 5.1-B is decoupled from 5.1-A: it uses a separate prompt, runs once per
+full video transcript, and returns the three fields defined in `schemas_b.py`.
 
-与 5.1-A 解耦：独立 prompt、独立输入粒度（整段 transcript，per video 一次）。
-输出 3 字段，字段定义见 `schemas_b.py` 模块 docstring。
+The outputs are used as confidence weights in Step 6.1 fusion and as the main
+session-quality basis for Step 6.2 coaching recommendations.
 
-用途：6.1 fusion 时作为置信度 weight；6.2 Coaching 建议的主轴基底。
+This module does not call an LLM API; it only assembles prompt text.
 
-本模块不调用 LLM API，仅负责 prompt 文本装配。
+Prompt design anchors from the 2026-04-22 round-1 Kappa review are retained
+near the relevant prompt text. Search for `DESIGN NOTE` to find them.
 
-Prompt design anchors（2026-04-22，基于 round-1 Kappa 分析列出）
-===============================================================
-2 处设计锚点保留在 prompt 正文附近。文件内 search `DESIGN NOTE` 可快速跳转。
+Item 5. DEFINITIONS_PROMPT > recording_quality boundary
+        Round-1 Kappa was 0.00, so the prompt explicitly separates recording
+        completeness / analysis usability from production-level audio quality.
 
-  Item 5. DEFINITIONS_PROMPT > recording_quality 边界
-          当前 round-1 Kappa=0.00 (R3/R8 分歧完全随机或同值塌陷)。
-          需区分 "录音完整性/可分析性" vs "制作层面的音质" 的边界。
-          典型信号：静音段长度 / gap 数 / 麦克风 clipping / 背景噪声程度
+Item 6. FEW_SHOT_EXAMPLES_B
+        Future examples should cover one rich/good/none ideal think-aloud
+        session and one sparse/acceptable/explicit moderated session.
 
-  Item 6. FEW_SHOT_EXAMPLES_B 常量（当前空 list）
-          至少填 2 条完整 video-level 例子，建议覆盖：
-            - 例 A：narration_quality=rich + recording_quality=good + coaching_evidence=none
-                    (主动 think-aloud 的理想 session)
-            - 例 B：narration_quality=sparse + recording_quality=acceptable + coaching_evidence=explicit
-                    (如果 14 条里没有 explicit 案例，可构造合理的 moderator 明确引导场景)
-
-Canonical 纪律：schema 字段已锁定，尤其 coaching_evidence 保持二值
-(`none` / `explicit`) — Round 11 决策已锁。Pydantic 真源是 `schemas_b.py`。
-
-修改后运行 `pytest tests/test_llm_classifier.py` 验证装配仍通过。
+Canonical discipline: schema fields are locked. In particular,
+`coaching_evidence` remains the binary enum `none | explicit`. The Pydantic
+source of truth is `schemas_b.py`.
 """
 
 import json

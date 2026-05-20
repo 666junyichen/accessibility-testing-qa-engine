@@ -1,101 +1,146 @@
 # Held-out Evaluation Freeze Checklist
 
-> 本文档是 CS20 held-out 评估的**治理工件**。任何"跑 Bupa held-out"的动作，必须同时满足 Gate 1 ∧ Gate 2。Gate 未全绿前跑 held-out 视为 **held-out 失效**，后续 Bupa 数值全部作废。
->
-> **2026-05-20 状态**：Gate 1 / Gate 2 已完成，Bupa 21-video corrected held-out evaluation 已完成并通过最终技术 verification。Bupa 结果不得反哺 prompt、schema、fusion、postprocess、R6 scoring 或 coaching logic。
->
-> 本文档由 Round 4 (2026-04-20) evaluation-governance review 收敛产出。后续改动必须同步更新 `README.md` 的 evaluation / data-scope section。
+This document is the governance record for CS20 held-out evaluation. Any Bupa
+held-out run must satisfy both Gate 1 and Gate 2. A run before both gates are
+complete is invalid, and the resulting Bupa metrics must not be reported.
+
+Final status on 2026-05-20: Gate 1 and Gate 2 were complete, the corrected
+21-video Bupa held-out evaluation was completed, and final technical
+verification passed. Bupa results must not feed back into prompts, schemas,
+fusion, post-processing, R6 scoring, or coaching logic.
+
+This document was consolidated from the Round 4 evaluation-governance review on
+2026-04-20. Any future update must also update the evaluation and data-scope
+sections in `README.md`.
 
 ---
 
-## 一、数据切分（不可变）
+## 1. Immutable Data Split
 
-| 分区 | 内容 | 体量 | 用途 |
-|---|---|---|---|
-| **dev set** | 老 3 项目 collated：AAMI 21 + UQ 19 + DPC-WA 17（实际 57 含 2 份转录失败 → 55） | 55 视频 | prompt 调参 / schema 定稿 / 标注 Kappa / ablation / rotating validation |
-| **held-out** | Bupa collated | 21 视频 | **冻结后一次性评估已完成**（corrected Bupa technical closeout） |
-| **不纳入** | Brighton raw（105）+ Bupa raw（315） | — | 无 collated/survey/tasks 元数据，无法对齐 |
+| Split | Contents | Size | Purpose |
+|---|---|---:|---|
+| Development set | Three older collated projects: AAMI 21 + UQ 19 + DPC-WA 17, with two transcription failures excluded from formal reporting | 55 videos | Prompt tuning, schema finalisation, manual Kappa checks, ablation, rotating validation |
+| Held-out | Bupa collated videos | 21 videos | Completed once after final freeze |
+| Not included | Brighton raw package and Bupa raw package | Brighton raw 105 + Bupa raw 315 | Excluded because raw-only assets cannot be aligned reliably to collated tasks, survey data, or reporting scope |
 
-**Annotation 铁律**：人工标注（Kappa 主集）严格限 dev set。Bupa held-out 只允许在 **final freeze 后**做极小量 post-hoc qualitative audit，且结论**不得反哺设计**。
+Annotation rule: the human annotation set used for Kappa is strictly limited to
+the development set. Bupa held-out may only receive a small post-hoc qualitative
+audit after final freeze, and those findings must not feed back into design.
 
-## 二、Dev-internal Validation
+## 2. Development-Internal Validation
 
-- **Rotating 单元**：`AAMI` ↔ `UQ` 双轮 project-wise rotating。DPC-WA 永远在 fit 池里，只贡献多样性。
-- **Rotating 层级**：放在 **6.1 fusion 层**（不是 5.2 LLM 全量重跑，避免 token 成本翻倍）。
-- **Prompt 跨项目稳定性**：放在 **5.4** 做 project-stratified evaluation（label 分布 / 低置信度占比 / 人工标注对齐），5.2 在全 dev 上只跑一次。
-- **切分粒度**：video/tester/project group split，**不切窗口**。
+- Rotating unit: `AAMI` and `UQ` form the two project-wise rotating validation
+  rounds. DPC-WA remains in the fit pool as a diversity source.
+- Rotating layer: validation is placed at Step 6.1 fusion, not a full Step 5.2
+  rerun, to avoid doubling token cost.
+- Prompt cross-project stability: Step 5.4 performs project-stratified
+  evaluation through label distributions, low-confidence rates, and human
+  annotation alignment. Step 5.2 runs once on the full development set.
+- Split grain: video/tester/project group split, not window split.
 
-## 三、Gate 1 — 代码完成态（客观可验证）
+## 3. Gate 1 - Objectively Verifiable Code Completion
 
-- [x] Step 6.1 `fusion_*.py` 代码合并到主分支 — `src/pipeline/{schemas,fusion}.py`，commit `dfe1b0b`（2026-04-23）
-- [x] Step 6.1 pytest 全绿（含 fusion rule unit test + R6 mapping unit test）— **133 passed**（2026-05-04 基线，含 fusion 10 + R6 performance_model 29）
-- [x] 5.1-A / 5.1-B prompt 有 pinned 版本号 + commit hash — V2 canonical，commit `dfe1b0b`（2026-04-23）；R3 few-shot 注入 commit `d015fcf`
-- [x] 5.2 LLM classifier 在 dev 55 视频上完成一次全量推理，输出 artefact 落盘 — `data/processed/layer3_findings.csv` (2,219) + `layer3_findings_filtered.csv` (2,133) + `layer3_video_assessments.csv` (57)，commit `dfe1b0b`
-- [x] 5.4 project-stratified evaluation 报告产出（含 AAMI/UQ/DPC-WA 三项目分布对比）— commits `a2e1e18` / `ae42f50`（2026-04-25），`friction_type` κ = 0.7407 ≥ 0.5 门槛通过，V2 retained
+- [x] Step 6.1 `fusion_*.py` merged to the main branch:
+  `src/pipeline/{schemas,fusion}.py`, commit `dfe1b0b` on 2026-04-23.
+- [x] Step 6.1 pytest passed, including fusion rule and R6 mapping unit tests:
+  133 passed on the 2026-05-04 baseline.
+- [x] Step 5.1-A and Step 5.1-B prompts have pinned versions and commit
+  hashes: V2 canonical at commit `dfe1b0b`; R3 few-shot injection at commit
+  `d015fcf`.
+- [x] Step 5.2 classifier completed one full development-set inference pass:
+  `data/processed/layer3_findings.csv` (2,219 rows),
+  `layer3_findings_filtered.csv` (2,133 rows), and
+  `layer3_video_assessments.csv` (57 rows), commit `dfe1b0b`.
+- [x] Step 5.4 project-stratified evaluation completed: commits `a2e1e18` and
+  `ae42f50` on 2026-04-25. `friction_type` Kappa was 0.7407, above the 0.5
+  threshold, so V2 was retained.
 
-**Gate 1 状态：✅ 全绿（2026-05-04）。**
+Gate 1 status: complete on 2026-05-04.
 
-## 四、Gate 2 — Project lead 显式签字（治理动作）
+## 4. Gate 2 - Project-Lead Sign-Off
 
-Gate 1 全绿后，project lead 需对以下 **4 类 freeze** 逐条签字。签字形式：在本文件第五节表格填入 commit hash + 日期 + "Lead approved"。
+After Gate 1, the project lead signed off four freeze categories by recording
+the commit hash, date, and approval status in Section 5.
 
-### Freeze 1：friction / severity / sentiment 字段集合
-- `friction_type ∈ {F1, F2, F3, F4, F5, F6, F7}` —— canonical 自 `client/s3_snapshot/06-friction-sentiment-framework.md`
-- `severity ∈ {S1, S2, S3, S4, S5, S6}` —— canonical，**替换**早期自造的 5 级 Blocker/Severe/High/Medium/Low
-- `sentiment ∈ {E1, E2, E3, E4, E5}` —— E3 neutral 按 SMP 规则排除聚合
-- `score_L ∈ {L1, L2, L3, L4, L5}` —— calibrator 专用（见 `client/s3_snapshot/07-friction-score-calibrator-prompt.md`），与 S1-S6 **并存不映射**（Round 5 提案 P1，待定）
+### Freeze 1: friction / severity / sentiment field set
 
-### Freeze 2：narration / recording quality 字段集合（5.1-B）
-- `narration_quality` —— 枚举 + 定义（Round 5 提案 P5，待定）
-- `recording_quality` —— 枚举 + 定义
-- `coaching_evidence` —— 枚举 + 定义
+- `friction_type in {F1, F2, F3, F4, F5, F6, F7}` from
+  `client/s3_snapshot/06-friction-sentiment-framework.md`.
+- `severity in {S1, S2, S3, S4, S5, S6}` as the canonical client-aligned
+  severity scale, replacing the earlier custom five-level scale.
+- `sentiment in {E1, E2, E3, E4, E5}` with E3 neutral excluded from aggregate
+  sentiment according to the client framework.
+- `score_L in {L1, L2, L3, L4, L5}` from
+  `client/s3_snapshot/07-friction-score-calibrator-prompt.md`; it remains
+  separate from S1-S6 and is not mapped into severity.
 
-### Freeze 3：6.1 Fusion 输入/输出 schema
-- Input：5.2 classifier 输出（每窗口一条，字段集合 = Freeze 1 所列）+ 5.1-B 视频级 tester-behavior 字段
-- Output：per-tester × per-task quality judgement + coaching recommendation seed + 置信度
-- Fusion rule：L1 规则 / L2 聚类 / L3 LLM 的合议规则（权重、冲突裁决、兜底策略）
+### Freeze 2: narration / recording quality field set
 
-### Freeze 4：R6 Mapping 规则
-- 从 5.x/6.1 输出到 R6 Performance Tracking 的字段映射
-- 跨 tester / 跨 project 聚合的归一化规则
+- `narration_quality` enum and definitions.
+- `recording_quality` enum and definitions.
+- `coaching_evidence` enum and definitions.
 
-## 五、Freeze 签字记录
+### Freeze 3: Step 6.1 fusion input/output schema
 
-| Freeze 类别 | Commit Hash | 日期 | 签字人 | 备注 |
+- Input: Step 5.2 classifier output per window plus Step 5.1-B video-level
+  tester-behaviour fields.
+- Output: per-tester x per-task quality judgement, coaching recommendation
+  seed, and confidence.
+- Fusion rule: consensus rules across Layer 1 rules, Layer 2 clustering, and
+  Layer 3 classification, including weights, conflict handling, and fallbacks.
+
+### Freeze 4: R6 mapping rules
+
+- Mapping from Step 5.x / Step 6.1 outputs to R6 Performance Tracking fields.
+- Normalisation rules across testers and projects.
+
+## 5. Freeze Sign-Off Record
+
+| Freeze category | Commit hash | Date | Sign-off | Notes |
 |---|---|---|---|---|
-| Freeze 1 — friction/severity/sentiment | `dfe1b0b` | 2026-05-07 | Lead approved | Round 5 canonical 收敛于 V2 prompt + schemas_a/b（F1–F7 / S1–S6 / E1–E5 / L1–L5）；Step 5.4 LLM Kappa `friction_type` κ=0.7407 ≥ 0.5 门槛通过，V2 retained |
-| Freeze 2 — narration/recording quality | `dfe1b0b` | 2026-05-07 | Lead approved | 同 5.1-B schema canonical；`coaching_evidence` 二值 `{none, explicit}`（Round 11 决策）；R5 / R6 已据此实现 |
-| Freeze 3 — 6.1 fusion I/O schema | `dfe1b0b` | 2026-05-07 | Lead approved | `src/pipeline/{schemas,fusion}.py` 合入；7 quality_tier 规则 + DURATION_ANOMALY cap (P2#7) 锁定；pytest 137 passed |
-| Freeze 4 — R6 mapping 规则 | `ee8d5ce` | 2026-05-07 | Lead approved | `src/tracking/performance_model.py` 645 行 + 29 tests；权重 0.50/0.35/0.15 / 4 cap 规则 / mismatch flag tier gap≥2 / ±5 stable band / calibrator audit-only；peer review rated HIGH quality (2026-05-04) |
+| Freeze 1 - friction/severity/sentiment | `dfe1b0b` | 2026-05-07 | Lead approved | Round 5 canonical V2 prompt and `schemas_a/b`; Step 5.4 `friction_type` Kappa 0.7407 >= 0.5, V2 retained |
+| Freeze 2 - narration/recording quality | `dfe1b0b` | 2026-05-07 | Lead approved | Step 5.1-B schema canonical; `coaching_evidence` remains binary: `none` or `explicit` |
+| Freeze 3 - Step 6.1 fusion I/O schema | `dfe1b0b` | 2026-05-07 | Lead approved | `src/pipeline/{schemas,fusion}.py`; seven `quality_tier` rules plus `DURATION_ANOMALY` cap locked |
+| Freeze 4 - R6 mapping rules | `ee8d5ce` | 2026-05-07 | Lead approved | `src/tracking/performance_model.py`; weights 0.50 / 0.35 / 0.15, four cap rules, tier-gap mismatch flag, stable band, and calibrator audit-only rule |
 
-## 六、"只测一次" 纪律
+## 6. Only-Once Rule
 
-Bupa held-out 跑完后，下列任一层改动都视为 held-out 失效，必须重走 Gate 1 + Gate 2，并且 Bupa 之前的数值结果作废：
+After the Bupa held-out run, changes to any of the following surfaces invalidate
+the Bupa metrics and require Gate 1 and Gate 2 to be repeated:
 
-1. Prompt（5.1-A / 5.1-B / 5.2 / 5.3 / 5.4）
-2. 4.2 参数（final_k / min_samples / eps / 特征集合）
-3. 5.x JSON schema 任一字段增删改
-4. 6.1 fusion rule / 权重
-5. R6 mapping 规则
-6. 后处理规则（置信度阈值、低置信度丢弃策略）
+1. Prompts: Step 5.1-A, 5.1-B, 5.2, 5.3, or 5.4.
+2. Step 4.2 clustering parameters: `final_k`, `min_samples`, `eps`, or feature
+   set.
+3. Step 5.x JSON schema fields.
+4. Step 6.1 fusion rules or weights.
+5. R6 mapping rules.
+6. Post-processing rules, including confidence thresholds and low-confidence
+   filtering.
 
-## 七、Bupa held-out 允许的动作（freeze 前）
+## 7. Permitted Bupa Actions Before Freeze
 
-Gate 未全绿前，Bupa collated 仅允许：
+Before both gates are complete, Bupa collated data may only be used for:
 
-- ✅ coverage 统计（视频数 / tester 数 / task 数 / 时长分布）
-- ✅ 结构化数据分布对比（survey label 分布与 dev 的差异）
-- ❌ 任何 LLM prompt 调用 / classifier 推理 / 人工标注
-- ❌ 任何基于 Bupa 结果的 schema/prompt 回调
+- Coverage statistics: video count, tester count, task count, and duration
+  distribution.
+- Structured-data distribution comparison, such as survey-label distribution
+  versus the development set.
 
----
+Before freeze, Bupa collated data must not be used for LLM prompt calls,
+classifier inference, human annotation, or schema/prompt feedback.
 
-## 八、Bupa held-out 结果状态（2026-05-20）
+## 8. Bupa Held-Out Result Status on 2026-05-20
 
-- corrected Bupa scope：21 collated videos。
-- corrected run：21 transcripts / 1252 windows / Level B 21/21 / Level A 1252/1252 / filtered findings 813 / reports 21/21 / zero-duration 0。
-- downstream reviews：R3 / R5 / R6 / R8 均返回并归档。
-- final verification：pytest 155 passed；dev55 sync 55/55 passed；Bupa reports readable and ID-aligned。
-- documented caveats：Bupa Layer 1 / Layer 2 未重跑；one submission per tester 不能做 longitudinal trajectory validation；`manyi_tan` 为 short evidence-density case。
+- Corrected Bupa scope: 21 collated videos.
+- Corrected run: 21 transcripts, 1,252 windows, Level B 21/21, Level A
+  1,252/1,252, 813 filtered findings, 21/21 reports, and zero zero-duration
+  reports.
+- Downstream reviews: R3, R5, R6, and R8 reviews were returned and archived.
+- Final verification: pytest 155 passed, dev55 sync 55/55 passed, and Bupa
+  reports were readable and ID-aligned.
+- Documented caveats: Bupa Layer 1 and Layer 2 were not rerun; the one
+  submission per tester structure does not support longitudinal trajectory
+  validation; `manyi_tan` is a short evidence-density case.
 
-*Owner: Project lead · 最近更新: 2026-05-20 · 关联: `README.md` / `need/03_final_checking/technical_closeout/evidence/final_technical_verification_2026-05-20.md`*
+Owner: project lead. Last updated: 2026-05-20. Related records: `README.md`,
+`docs/evaluation_design.md`, and `data/heldout/bupa/`.

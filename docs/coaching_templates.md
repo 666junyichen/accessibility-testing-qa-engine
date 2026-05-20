@@ -373,7 +373,7 @@ When narration is `adequate` / `rich`, or recording is `good`, the meta builder 
 
 ### Eval-freeze posture
 
-Per `docs/eval_freeze.md §六`, the only-once trigger list covers prompts, 4.2 parameters, 5.x JSON schema, 6.1 fusion rules / weights, R6 mapping, and post-processing thresholds. Step 6.2 coaching content is **not** in that list. The V3 expansion only adds items to `QualityReport.coaching_recommendations` and does not alter any frozen surface, so it does not invalidate Bupa held-out.
+Per `docs/eval_freeze.md` Section 6, the only-once trigger list covers prompts, 4.2 parameters, 5.x JSON schema, 6.1 fusion rules / weights, R6 mapping, and post-processing thresholds. Step 6.2 coaching content is **not** in that list. The V3 expansion only adds items to `QualityReport.coaching_recommendations` and does not alter any frozen surface, so it does not invalidate Bupa held-out.
 
 ---
 

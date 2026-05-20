@@ -1,37 +1,38 @@
 """Pydantic schema for Step 5.1-A (finding-level classification).
 
-字段文档（中文）
-================
+`findings` is the list of friction events detected in one transcript window.
+The empty list `[]` means no friction was detected. A single window may contain
+multiple findings.
 
-`findings`
-    本窗口识别出的 friction 列表。允许空数组 `[]`，表示窗口无摩擦。
-    同一窗口可有多条 finding（1:N）。
+Each finding uses the Round 5 canonical ten-field shape:
 
-每条 finding 的 10 个字段（顺序对齐 Round 5 canonical）：
-
-`finding`           一句话描述本次 friction 事件（来自 07 原文首字段）
-`observed_signal`   参与者实际做了什么（行为侧证据）
-`stated_signal`     参与者说了什么（陈述侧证据）。可 null，当窗口内无口头
-                    表达时填 null，并将 signal_alignment 设为 stated_missing
-`signal_alignment`  {aligned, conflicted, stated_missing}
-                    aligned: observed 与 stated 一致
-                    conflicted: 两者矛盾（此时按 observed 打低分，不平均）
-                    stated_missing: stated_signal 为 null 时使用（工程扩展，
-                    非 07 原文）
-`friction_type`     F1-F7 或 null。null 仅作为 LLM shell finding 防御层，
-                    classifier 后处理会丢弃该 finding
-`severity_s`        S1-S6 或 null。null 仅作为 LLM shell finding 防御层，
-                    classifier 后处理会丢弃该 finding
-`sentiment_e`       E1-E5 或 null。纪律：
-                    - 参与者有口头表达 → 至少 E3（不得 null）
-                    - 窗口无任何口头表达 → null（与 stated_signal=null 同步）
-                    - E3（neutral/indifferent）≠ null（无情绪证据）
-`calibrator_score_l` L1-L5 或 null。null 仅作为 LLM shell finding 防御层，
-                    classifier 后处理会丢弃该 finding
-`rationale`         2-3 句综合说明，需引用 observed/stated 与 gate 定义
+`finding`
+    One-sentence description of the friction event.
+`observed_signal`
+    Behavioural evidence: what the participant did.
+`stated_signal`
+    Verbal evidence: what the participant said. Use null when the window has
+    no relevant utterance and set `signal_alignment` to `stated_missing`.
+`signal_alignment`
+    `aligned`, `conflicted`, or `stated_missing`.
+`friction_type`
+    F1-F7 or null. Null is accepted only as a defensive shell value and is
+    dropped by classifier post-processing.
+`severity_s`
+    S1-S6 or null. Null is accepted only as a defensive shell value and is
+    dropped by classifier post-processing.
+`sentiment_e`
+    E1-E5 or null. Spoken evidence should receive at least E3; windows with no
+    relevant utterance use null in sync with `stated_signal`.
+`calibrator_score_l`
+    L1-L5 or null. Null is accepted only as a defensive shell value and is
+    dropped by classifier post-processing.
+`rationale`
+    Two to three sentences tying observed/stated evidence to the gate
+    definitions.
 `structural_amplification_note`
-                    若 cohort（Blind/ND/ESL 等）造成结构性放大，填描述；
-                    否则 null。仅描述，不对分数加权
+    Optional cohort or accessibility amplification note. It is descriptive
+    only and does not weight the score.
 """
 
 from typing import Literal, Optional

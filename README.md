@@ -28,8 +28,9 @@ pip install -r requirements.txt
 - Bupa held-out: 21 transcripts, 1,252 windows, 813 filtered L3 findings,
   21 reports, 21 R6 performance rows, zero failed reports.
 - Demo: `app/streamlit_demo.py` reads precomputed dev55 artifacts.
-- Technical closeout: `need/03_final_checking/technical_closeout/` contains the Bupa run,
-  supporting review summary, evaluation synthesis, and final verification note.
+- Held-out evidence: reproducible Bupa outputs live under `data/heldout/bupa/`;
+  governance and evaluation synthesis live in `docs/eval_freeze.md` and
+  `docs/evaluation_design.md`.
 
 ## Contents
 - [Step 0.1 - Repository and Environment Setup](#step-01---repository-and-environment-setup)
@@ -77,16 +78,10 @@ pip install -r requirements.txt
 | `docs/` | Governance notes, design docs, ablation findings, case studies, prompt notes, freeze rules, and Step 8.1 scope records. |
 | `app/` | Streamlit demo that reads precomputed `dev55` report artifacts. |
 | `tests/` | Unit and regression tests for preprocessing, Layer 2 utilities, fusion, coaching, and performance tracking. |
-| `need/` | Non-runtime support material for Final Report, presentation, final checking, and technical handoff. |
 
 Raw client inputs stay under `data/raw/`. Downstream modules read reproducible
 artifacts from `data/processed/`. Large generated files should be regenerated
 from scripts where possible rather than manually edited.
-
-`need/` is intentionally separate from the runtime project structure. It
-contains research notebooks, final checking notes, presentation support, and
-school-report fact packs. Code, tests, and reproducible pipeline outputs should
-not depend on files inside `need/`.
 
 ### Data reality and scope
 
@@ -180,9 +175,9 @@ Known structured-data limitation:
 - Therefore `assignment_id`, `task_id`, and `task_title` should not be treated as fully recoverable ground truth.
 - Task context is useful for project-level interpretation, but task-level joins should remain documented as incomplete unless a richer export is provided later.
 
-Structured EDA in `need/01_final_report/research_notebooks/02_structured_data_eda.ipynb` uses this snapshot to
-inspect project coverage, tester participation, task distributions, Timeguide
-fields, actual-duration vs expected-duration behavior, and survey availability.
+The structured-data review used this snapshot to inspect project coverage,
+tester participation, task distributions, Timeguide fields, actual-duration vs
+expected-duration behavior, and survey availability.
 
 ## Step 0.4 - End-to-End Data Flow
 - **Status**: documented for W10 Step 9.2-A.
@@ -300,7 +295,8 @@ extract_all_metadata(
 )
 ```
 ## Step 2.1 — Transcript Data EDA
-- **Notebook**: `need/01_final_report/research_notebooks/01_transcript_eda.ipynb`
+- **Review artifact**: transcript EDA summary retained in this README; extended
+  report-support material is archived outside the runtime repository.
 - Performs exploratory data analysis on transcript-derived data for **6 development-sample videos**
 - Development samples:
   - `ghum_wa`
@@ -362,7 +358,8 @@ print(narration_density_by_video)
 ```
 
 ## Step 2.2 - Structured Data EDA
-- **Notebook**: `need/01_final_report/research_notebooks/02_structured_data_eda.ipynb`
+- **Review artifact**: structured-data EDA summary retained in this README;
+  extended report-support material is archived outside the runtime repository.
 - Performs exploratory data analysis on the current local structured-data snapshot
 - Structured scope in the current snapshot:
   - full structured EDA for the 3 development projects (`department-of-premier-and-cabinet-wa`, `suncorp-insurance`, `the-university-of-queensland`)
@@ -410,10 +407,10 @@ duration_ratio = video_metadata["duration_ratio"].describe()
 ```
 
 ## Step 2.3 — EDA Report
-- **Report**: `docs/eda_report.md`
+- **Summary location**: this README and `docs/layer1_design.md`
 - Consolidates findings from:
-  - Step 2.1 — Transcript Data EDA (`need/01_final_report/research_notebooks/01_transcript_eda.ipynb`)
-  - Step 2.2 — Structured Data EDA (`need/01_final_report/research_notebooks/02_structured_data_eda.ipynb`)
+  - Step 2.1 — Transcript Data EDA
+  - Step 2.2 — Structured Data EDA
 - Summarises key data quality issues, prototype cases, and implications for Layer 1 rule design
 - Main report themes:
   - dataset coverage and development-sample scope
@@ -429,12 +426,13 @@ duration_ratio = video_metadata["duration_ratio"].describe()
   - `terryaflint17_suncorp` is the clearest sparse-narration prototype (`narration_density` = 0.233) — `SPARSE_NARRATION` threshold raised from 0.2 → **0.3** (applied 2026-04-22)
   - actual recording durations are shorter than Timeguide expectations (**mean duration ratio = 0.53**); 3 videos flagged as `DURATION_ANOMALY` (ratio < 0.3)
   - 18 testers appear across multiple projects; survey EDA covers UQ + Bupa only (AAMI/Suncorp survey files not present locally)
-- Output: `docs/eda_report.md` — integrated markdown report for W7/W8 discussion and Layer 1 calibration reference
+- Output: integrated README summary plus Layer 1 calibration rationale in
+  `docs/layer1_design.md`.
 
 ```python
 # Usage
 from pathlib import Path
-report_path = Path("docs/eda_report.md")
+report_path = Path("docs/layer1_design.md")
 print(report_path.read_text(encoding="utf-8")[:1000])  # preview first part of the report
 ```
 
@@ -468,7 +466,8 @@ detect_flags(
 
 
 ## Step 3.2 — Layer 1 Validation on Development Samples
-- **Notebook**: `need/01_final_report/research_notebooks/03_layer1_validation.ipynb`
+- **Validation record**: threshold outcomes are summarised below and in
+  `docs/layer1_design.md`.
 - Validates Layer 1 on **6 development samples** through manual inspection, threshold review, and precision/recall analysis
 - Threshold recalibration applied 2026-04-22: `LOW_AUDIO_QUALITY` raised 0.7 → **0.75**, `SPARSE_NARRATION` raised 0.2 → **0.3**; flag count changed from 214 → **278** across all 55 dev videos (+29 LOW_AUDIO_QUALITY, +35 SPARSE_NARRATION; EXCESSIVE_SILENCE and DURATION_ANOMALY unchanged)
 - Rule assessment (v2 — post-recalibration):
@@ -573,27 +572,39 @@ python -m src.layer2.feature_engineering
 
 ## Step 4.2 — Layer 2 Clustering
 
-在 876 个 60s 窗口的 7 维 standardized feature space 上运行 KMeans + DBSCAN exploratory clustering。
+Runs exploratory KMeans and DBSCAN clustering over 876 60-second windows in a
+seven-feature standardized space.
 
-**输入：** `data/processed/feature_matrix_scaled.csv`（scaled）+ `data/processed/feature_matrix_raw.csv`（summary 用）
+**Inputs:** `data/processed/feature_matrix_scaled.csv` for model fitting and
+`data/processed/feature_matrix_raw.csv` for cluster summaries.
 
-**模块：** `src/layer2/cluster_utils.py`（4 纯函数：fit_kmeans / fit_dbscan / build_cluster_summary / pca_project）
+**Module:** `src/layer2/cluster_utils.py` provides `fit_kmeans`, `fit_dbscan`,
+`build_cluster_summary`, and `pca_project`.
 
-**Orchestration：** `need/01_final_report/research_notebooks/04_layer2_clustering.ipynb`
+**Orchestration:** `scripts/run_layer2_clustering.py`
 
-**算法配置：**
-- KMeans：k ∈ {2,3,4,5}，n_init=10，random_state=42，silhouette + elbow + cluster size 人工选 `final_k`
-- DBSCAN：`min_samples ∈ {7, 14}` 双档对比，k-distance plot 人选 eps；两档都可用时 notebook 写理由人工选一档，不预设偏好
-- `primary_cluster_id = kmeans_cluster_id`（无条件继承，不做小簇 -1 保护）
-- Round 1 先用启发式默认参数（`final_k=3` / `min_samples=7` / `eps=0.8`）跑通 pipeline；后续参数优化环节依据上述指标重选并更新 notebook 决策 cell。
+**Algorithm configuration:**
+- KMeans: `k in {2,3,4,5}`, `n_init=10`, `random_state=42`; silhouette,
+  elbow, and cluster-size checks informed the selected `final_k`.
+- DBSCAN: `min_samples in {7,14}` and k-distance review were used during
+  exploration; the retained baseline is `min_samples=7`, `eps=0.8`.
+- `primary_cluster_id = kmeans_cluster_id`.
+- Round 1 retained the heuristic baseline (`final_k=3`, `min_samples=7`,
+  `eps=0.8`) so downstream joins remain stable.
 
-**输出：**
-- `data/processed/layer2_cluster_assignments.csv`（876 行 × 7 列，R3 4.3 join key）
-- `data/processed/layer2_cluster_summary.csv`（每簇一行，raw feature mean/std，ddof=0）
-- `data/processed/layer2_cluster_composition.csv`（long-form：algorithm × cluster_id × dimension × value × count）
-- `outputs/figures/layer2_{silhouette,kdist,pca,tsne}.png`（gitignored，二进制图）
+**Outputs:**
+- `data/processed/layer2_cluster_assignments.csv` (876 rows x 7 columns,
+  consumed by Step 4.3 joins)
+- `data/processed/layer2_cluster_summary.csv` (one row per cluster, raw feature
+  mean/std with `ddof=0`)
+- `data/processed/layer2_cluster_composition.csv` (long form:
+  `algorithm x cluster_id x dimension x value x count`)
 
-**边界声明：** fixed L1 v1 thresholds + 6 dev sample exploratory；DBSCAN 仅对照不进下游 join；若 cluster 结构被单一 tester 主导（当前观察值：`tester_name = terryaflint17`），唯一后续动作 = 扩样 + 第二轮 4.2，不在当前样本做剔除实验。高级算法（HDBSCAN / GMM / Spectral）属于 Future Work。
+**Boundary statement:** Layer 2 clustering is exploratory evidence, not a
+quality label. DBSCAN is retained for comparison only and does not drive
+downstream joins. If clusters are dominated by a single tester, the correct
+response is sample expansion rather than exclusion experiments on the current
+small sample. HDBSCAN, GMM, and spectral clustering remain future work.
 
 ### Round-2 Diagnostic (2026-04-22)
 
@@ -714,7 +725,8 @@ python scripts\migrate_r3_annotations_to_canonical.py
 ```
 
 ### R8 Manual Annotation Set + Kappa Agreement Check
-- **Script / Notebook:** `scripts/annotate_r8_round1_updated.py`, `need/01_final_report/research_notebooks/04_kappa_agreement.ipynb`
+- **Script / summary:** `scripts/annotate_r8_round1_updated.py`,
+  `docs/evaluation_design.md`
 - **Inputs:** `docs/l3_design.md`, `data/annotations/round1_blind_for_r8.csv`, `data/annotations/r3_manual_annotations_round1_canonical.csv`
 - **Outputs:** `data/annotations/r8_manual_annotations_round1.csv`, agreement tables, and Cohen's kappa per dimension
 - Creates the R8 independent first-round manual annotation file for the same 14-window sample used in Step 5.3, using the Round 5 canonical schema.
@@ -740,19 +752,19 @@ python scripts\migrate_r3_annotations_to_canonical.py
 |---|---|---|
 | `r3_manual_annotations_round1_canonical.csv` | R3 canonical annotation | Completed Round 5 schema output for the 14-window sample |
 | `r8_manual_annotations_round1.csv` | R8 independent annotation | Blind manual annotation output (Round 5 schema) |
-| `04_kappa_agreement.ipynb` | Team / review | Agreement calculation and disagreement inspection |
+| `docs/evaluation_design.md` | Team / review | Agreement calculation, disagreement inspection, and confidence-propagation summary |
 
 > **Methodology, full Kappa tables, and downstream confidence-propagation rules are documented in [`docs/evaluation_design.md`](docs/evaluation_design.md) (§3.2 dimension grouping, §3.3 LC-1 to LC-4 rules, §7 Step 5.4 evaluation).** This README section covers the operational artefacts only.
 
 ```python
 # Usage
 python scripts\annotate_r8_round1_updated.py
-# Then open and run:
-need/01_final_report/research_notebooks/04_kappa_agreement.ipynb
+# Then review the committed evaluation summary:
+docs\evaluation_design.md
 ```
 
 ## Step 5.4 — LLM Kappa
-- **Notebook**: `need/01_final_report/research_notebooks/04_kappa_agreement.ipynb` (Section 10)
+- **Summary**: `docs/evaluation_design.md`
 - **Inputs:**
   - `data/processed/layer3_findings_filtered.csv` (2,133 findings, pseudo-positives removed)
   - `data/processed/layer3_video_assessments.csv` (57 videos, 5.1-B video-level labels)
@@ -764,22 +776,14 @@ need/01_final_report/research_notebooks/04_kappa_agreement.ipynb
 > **Full result tables (LLM V2 vs R8 across all 8 dimensions), R3 vs R8 reference comparison, error pattern analysis, and confidence-propagation rules are in [`docs/evaluation_design.md`](docs/evaluation_design.md) §3.2 + §7.**
 
 ```python
-# Usage — Step 5.4 LLM Kappa (Section 10 of notebook)
+# Usage - Step 5.4 LLM Kappa
 # Inputs required:
 #   data/processed/layer3_findings_filtered.csv
 #   data/processed/layer3_video_assessments.csv
 #   data/annotations/r8_manual_annotations_round1.csv
 
-# Open and run Section 10 of:
-need/01_final_report/research_notebooks/04_kappa_agreement.ipynb
-
-# Section 10 depends on variables defined in Sections 1-3 (helper functions).
-# Always run the full notebook from top, or at minimum run:
-#   Cell 1  — imports
-#   Cell 7  — helper functions (compute_kappa, sev_weighted, cal_weighted, crosstab_and_disagree)
-#   Cell 21 — LLM load + join + 6-dimension kappa
-#   Cell 22 — error cases
-#   Cell 23 — conclusion (markdown, no run needed)
+# Committed result summary:
+docs\evaluation_design.md
 ```
 
 
@@ -1230,7 +1234,7 @@ assuming the same development transcribe JSON and local video/audio availability
 ```powershell
 python src/layer1/rule_detector.py
 python src/layer2/feature_engineering.py
-jupyter nbconvert --to notebook --execute need/01_final_report/research_notebooks/04_layer2_clustering.ipynb --output 04_layer2_clustering.executed.ipynb
+python scripts/run_layer2_clustering.py
 ```
 
 Expected current processed outputs:

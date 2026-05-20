@@ -102,7 +102,7 @@ class RecommendationEngine:
           today; sentiment_e and calibrator_score_l are reserved for later
         - priorities here are an internal display-ordering signal; they do
           not share a scale with R6 score or fusion quality_tier
-        - per ``docs/eval_freeze.md §六``, Step 6.2 coaching content is not
+        - per ``docs/eval_freeze.md`` Section 6, Step 6.2 coaching content is not
           a freeze trigger — extending categories here does not invalidate
           held-out
     """

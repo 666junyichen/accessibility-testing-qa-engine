@@ -104,11 +104,9 @@ session-level decision. The cap mechanism is detailed in §5.
 | v1 | `653b239` | 2026-04-12 | Initial calibration from manual inspection of 6 dev samples | 214 |
 | v2 | `ae92fb2` | 2026-04-22 | `LOW_AUDIO_QUALITY` 0.7 → 0.75; `SPARSE_NARRATION` 0.2 → 0.3; other two thresholds unchanged | 278 |
 
-Decision rationale for v2 is documented in W9 Progress Report §1.2.2
-(876-window p10 percentile reasoning) and verified in
-[`need/01_final_report/research_notebooks/03_layer1_validation.ipynb`](../need/01_final_report/research_notebooks/03_layer1_validation.ipynb)
-(precision/recall analysis on six dev samples). v2 has been retained;
-no rollback recommended.
+Decision rationale for v2 is documented through the 876-window p10 percentile
+reasoning and six-sample precision/recall validation summary. v2 has been
+retained; no rollback is recommended.
 
 The v2 flag distribution across the 55-video dev set:
 
