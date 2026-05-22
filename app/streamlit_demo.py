@@ -140,6 +140,7 @@ def _multiselect_all(
 def _sidebar(
     summary_df: Optional[pd.DataFrame],
     report_files: list[str],
+    per_submission_df: Optional[pd.DataFrame],
 ) -> tuple[str, Optional[str]]:
     """Render sidebar; return (view_name, selected_video_or_None)."""
     st.sidebar.markdown("## SMP Demo")
@@ -158,20 +159,36 @@ def _sidebar(
     # Build options pool
     if summary_df is not None and "video_id" in summary_df.columns:
         opts = summary_df.copy()
+        if "tier" in opts.columns:
+            opts = opts.rename(columns={"tier": "report_quality"})
     else:
         opts = pd.DataFrame({"video_id": [Path(f).stem for f in report_files]})
         opts["project"] = "?"
-        opts["tier"] = "?"
+        opts["report_quality"] = "?"
         opts["tester"] = "?"
 
-    for col in ["project", "tier", "tester"]:
+    if (
+        per_submission_df is not None
+        and {"video_id", "tier"}.issubset(per_submission_df.columns)
+    ):
+        perf_cols = ["video_id", "tier"]
+        if "score" in per_submission_df.columns:
+            perf_cols.append("score")
+        perf = per_submission_df[perf_cols].rename(columns={"tier": "performance_tier"})
+        opts = opts.merge(perf, on="video_id", how="left")
+
+    for col in ["project", "report_quality", "tester", "performance_tier"]:
         if col not in opts.columns:
             opts[col] = "?"
+    opts["tier"] = opts["performance_tier"].fillna("?")
 
     tier_pick = _multiselect_all(
         st.sidebar,
-        "Tier",
-        options=["poor", "acceptable", "good"],
+        "Performance tier",
+        options=[
+            t for t in ["Leading", "Proficient", "Developing", "Foundational"]
+            if t in set(opts["tier"].dropna())
+        ] or ["?"],
         key="filter_tier",
     )
 
@@ -198,8 +215,8 @@ def _sidebar(
 
     st.sidebar.caption(f"Showing {len(filtered)} of {len(opts)} videos")
 
-    # Sort: poor first for demo flow
-    tier_rank = {"poor": 0, "acceptable": 1, "good": 2}
+    # Sort by the client-facing performance tier.
+    tier_rank = {"Leading": 0, "Proficient": 1, "Developing": 2, "Foundational": 3}
     if "tier" in filtered.columns:
         filtered = filtered.assign(
             _r=filtered["tier"].map(lambda t: tier_rank.get(t, 99))
@@ -232,12 +249,14 @@ def _sidebar(
             [
                 f"**Tester**: `{selected_row.get('tester', '—')}`",
                 f"**Project**: `{C.project_short(selected_row.get('project'))}`",
-                f"**Tier**: `{selected_row.get('tier', '—')}`",
+                f"**Performance tier**: `{selected_row.get('tier', '—')}`",
             ]
         )
     )
-    if "reason" in selected_row and pd.notna(selected_row.get("reason")):
-        st.sidebar.caption(str(selected_row.get("reason")))
+    if "score" in selected_row and pd.notna(selected_row.get("score")):
+        st.sidebar.caption(f"Score: {float(selected_row.get('score')):.0f}/100")
+    if "report_quality" in selected_row and pd.notna(selected_row.get("report_quality")):
+        st.sidebar.caption(f"Report quality risk: {selected_row.get('report_quality')}")
     return view, selected
 
 
@@ -259,10 +278,12 @@ def _view_single_video(
 
     cap_reasons: list[str] = []
     score: Optional[float] = None
+    performance_tier: Optional[str] = None
     if submission_row is not None:
         cap_raw = submission_row.get("cap_reasons")
         if isinstance(cap_raw, str) and cap_raw.strip() and cap_raw.lower() != "nan":
             cap_reasons = [c.strip() for c in cap_raw.split("|") if c.strip()]
+        performance_tier = str(submission_row.get("tier") or "") or None
         try:
             score = float(submission_row.get("score"))
             if pd.isna(score):
@@ -283,7 +304,8 @@ def _view_single_video(
     C.hero_card(
         title=video_id,
         subtitle=f"{report.get('tester_name', '?')} · {C.project_short(report.get('project'))}",
-        tier=overall.get("quality_tier"),
+        tier=performance_tier or overall.get("quality_tier"),
+        tier_label="Performance tier" if performance_tier else "Report quality",
         stats=stats,
         cap_reasons=cap_reasons,
     )
@@ -294,12 +316,11 @@ def _view_single_video(
         [
             ("Tester", str(report.get("tester_name") or "—")),
             ("Project", C.project_short(report.get("project"))),
+            ("Report quality risk", str(overall.get("quality_tier") or "—")),
             ("Top severity", str(l3f.get("top_severity") or "—")),
-            ("Reason", str(reasoning[0] if reasoning else "—")),
+            ("Risk reason", str(reasoning[0] if reasoning else "—")),
         ]
     )
-    if reasoning:
-        st.caption("Tier reasoning:  " + "  ·  ".join(escape_safe(r) for r in reasoning))
 
     tab_overview, tab_findings, tab_coaching, tab_layers = st.tabs(
         ["Overview", f"Findings ({l3f.get('total_findings', 0)})",
@@ -645,6 +666,17 @@ def _view_cohort_overview(
         st.warning("`_summary_dev55.csv` unavailable.")
         return
 
+    cohort_submission_df = per_submission_df
+    if (
+        cohort_submission_df is not None
+        and "video_id" in cohort_submission_df.columns
+        and "video_id" in summary_df.columns
+    ):
+        official_ids = set(summary_df["video_id"].dropna())
+        cohort_submission_df = cohort_submission_df[
+            cohort_submission_df["video_id"].isin(official_ids)
+        ].copy()
+
     n_videos = len(summary_df)
     n_testers = (
         per_tester_df["tester_name"].nunique() if per_tester_df is not None
@@ -652,15 +684,15 @@ def _view_cohort_overview(
     )
     cap_str = "—"
     median_score_str = "—"
-    if per_submission_df is not None and not per_submission_df.empty:
+    if cohort_submission_df is not None and not cohort_submission_df.empty:
         cap_count = (
-            per_submission_df["cap_applied"].notna().sum()
-            - (per_submission_df["cap_applied"] == "").sum()
-            if "cap_applied" in per_submission_df.columns else 0
+            cohort_submission_df["cap_applied"].notna().sum()
+            - (cohort_submission_df["cap_applied"] == "").sum()
+            if "cap_applied" in cohort_submission_df.columns else 0
         )
-        cap_str = f"{cap_count} / {len(per_submission_df)} ({100.0 * cap_count / len(per_submission_df):.0f}%)"
+        cap_str = f"{cap_count} / {len(cohort_submission_df)} ({100.0 * cap_count / len(cohort_submission_df):.0f}%)"
         try:
-            median_score_str = f"{per_submission_df['score'].median():.0f}"
+            median_score_str = f"{cohort_submission_df['score'].median():.0f}"
         except (KeyError, TypeError):
             pass
 
@@ -677,34 +709,74 @@ def _view_cohort_overview(
     )
 
     # R6 4-tier distribution (the meaningful view; fusion 3-tier omitted to avoid duplicate)
-    if per_submission_df is not None and "tier" in per_submission_df.columns:
+    if cohort_submission_df is not None and "tier" in cohort_submission_df.columns:
         st.markdown("##### Per-submission score tier (R6, post-cap)")
         order = ["Leading", "Proficient", "Developing", "Foundational"]
-        counts = per_submission_df["tier"].value_counts()
+        counts = cohort_submission_df["tier"].value_counts()
         ordered = {t: int(counts.get(t, 0)) for t in order if counts.get(t, 0) > 0}
         # use TIER_COLORS keyed by lowercase
         color_map = {t: S.TIER_COLORS[t.lower()] for t in ordered if t.lower() in S.TIER_COLORS}
         # distribution_bar takes literal keys; pass the cased keys to keep labels readable
         C.distribution_bar(ordered, color_map=color_map)
 
-    # Per-project tier breakdown — short names
-    if "project" in summary_df.columns and "tier" in summary_df.columns:
-        st.markdown("##### Per-project tier (fusion output)")
-        cohort = summary_df.copy()
+    # Per-project tier breakdown — use the client-facing R6 four-tier vocabulary.
+    if (
+        cohort_submission_df is not None
+        and {"project", "tier"}.issubset(cohort_submission_df.columns)
+    ):
+        st.markdown("##### Per-project performance tier (R6, post-cap)")
+        order = ["Leading", "Proficient", "Developing", "Foundational"]
+        color_range = [
+            S.TIER_COLORS["leading"]["border"],
+            S.TIER_COLORS["proficient"]["border"],
+            S.TIER_COLORS["developing"]["border"],
+            S.TIER_COLORS["foundational"]["border"],
+        ]
+        cohort = cohort_submission_df.copy()
         cohort["project_s"] = cohort["project"].map(C.project_short)
-        proj_tier = cohort.groupby(["project_s", "tier"]).size().unstack(fill_value=0)
-        # ensure column ordering poor->acceptable->good for visual flow
-        for col in ["poor", "acceptable", "good"]:
-            if col not in proj_tier.columns:
-                proj_tier[col] = 0
-        proj_tier = proj_tier[["poor", "acceptable", "good"]]
-        st.bar_chart(proj_tier, height=220)
+        proj_tier = (
+            cohort.groupby(["project_s", "tier"])
+            .size()
+            .reset_index(name="count")
+        )
+        proj_tier["tier"] = pd.Categorical(proj_tier["tier"], categories=order, ordered=True)
+        chart = (
+            alt.Chart(proj_tier)
+            .mark_bar()
+            .encode(
+                x=alt.X(
+                    "project_s:N",
+                    title=None,
+                    axis=alt.Axis(labelAngle=0, labelFontSize=12),
+                ),
+                y=alt.Y(
+                    "count:Q",
+                    title="Submissions",
+                    axis=alt.Axis(grid=True, gridColor=S.SLATE_100),
+                ),
+                color=alt.Color(
+                    "tier:N",
+                    title="Performance tier",
+                    scale=alt.Scale(domain=order, range=color_range),
+                    sort=order,
+                ),
+                order=alt.Order("tier:N", sort="ascending"),
+                tooltip=[
+                    alt.Tooltip("project_s:N", title="Project"),
+                    alt.Tooltip("tier:N", title="Performance tier"),
+                    alt.Tooltip("count:Q", title="Submissions"),
+                ],
+            )
+            .properties(height=240)
+            .configure_view(stroke=None)
+        )
+        st.altair_chart(chart, use_container_width=True)
 
     # Top friction (horizontal bar of F1-F7 frequency)
-    if per_submission_df is not None and "top_friction_types" in per_submission_df.columns:
+    if cohort_submission_df is not None and "top_friction_types" in cohort_submission_df.columns:
         st.markdown("##### Top friction types — frequency in submission top-3")
         all_ft: list[str] = []
-        for v in per_submission_df["top_friction_types"].dropna():
+        for v in cohort_submission_df["top_friction_types"].dropna():
             all_ft.extend(_safe_split_csv(v))
         if all_ft:
             ft_counts = pd.Series(all_ft).value_counts().reindex(
@@ -822,7 +894,7 @@ def main() -> None:
     per_submission_df = _load_csv(str(PER_SUBMISSION_PATH))
     per_tester_df = _load_csv(str(PER_TESTER_PATH))
 
-    view, selected_video = _sidebar(summary_df, report_files)
+    view, selected_video = _sidebar(summary_df, report_files, per_submission_df)
 
     if view == "Single Video":
         if not selected_video:

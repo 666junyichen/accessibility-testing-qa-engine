@@ -59,6 +59,7 @@ def hero_card(
     title: str,
     subtitle: str,
     tier: Optional[str] = None,
+    tier_label: str = "Tier",
     stats: Iterable[tuple[str, str]] = (),
     cap_reasons: Optional[Iterable[str]] = None,
 ) -> None:
@@ -66,7 +67,7 @@ def hero_card(
     tier_html = ""
     if tier:
         tier_html = (
-            f'<div class="smp-hero-stat"><span class="label">Tier</span>'
+            f'<div class="smp-hero-stat"><span class="label">{escape(tier_label)}</span>'
             f'<span class="value">{tier_badge(tier, large=True)}</span></div>'
         )
     stat_html = "".join(
