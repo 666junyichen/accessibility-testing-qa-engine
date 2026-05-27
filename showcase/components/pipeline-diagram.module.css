@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  min-height: 180px;
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 242, 233, 0.86));
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -22% auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(13, 92, 99, 0.18), transparent 65%);
+}
+
+.index {
+  color: var(--signal);
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.84rem;
+  letter-spacing: 0.18em;
+}
+
+.card h3 {
+  margin-top: 14px;
+  font-size: 1.3rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.card p:last-child {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 22ch;
+}
+
+@media (max-width: 920px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

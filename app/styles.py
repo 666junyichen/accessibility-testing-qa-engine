@@ -73,15 +73,15 @@ SENTIMENT_LABELS = {
 
 # Project shortname (full slug -> demo label)
 PROJECT_SHORTNAMES = {
-    "department-of-premier-and-cabinet-wa": "DPC-WA",
-    "suncorp-insurance": "AAMI",
-    "the-university-of-queensland": "UQ",
-    "web-health-information": "Bupa",
-    "web-health-information-bupa": "Bupa",
-    "digital-brochure": "Brighton",
-    "wa": "DPC-WA",
-    "suncorp": "AAMI",
-    "uq": "UQ",
+    "department-of-premier-and-cabinet-wa": "Case WA",
+    "suncorp-insurance": "Case Service",
+    "the-university-of-queensland": "Junyi Chen",
+    "web-health-information": "Case Health",
+    "web-health-information-bupa": "Case Health",
+    "digital-brochure": "Case Brighton",
+    "wa": "Case WA",
+    "suncorp": "Case Service",
+    "uq": "Junyi Chen",
 }
 
 

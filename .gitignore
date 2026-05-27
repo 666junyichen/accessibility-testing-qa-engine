@@ -9,3 +9,7 @@ venv/
 outputs/
 data/processed/items.csv
 trash/
+showcase/node_modules/
+showcase/.next/
+showcase/out/
+.superpowers/

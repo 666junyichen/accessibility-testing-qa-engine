@@ -1,0 +1,207 @@
+.shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+}
+
+.sidebar,
+.summaryCard,
+.card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 251, 244, 0.92);
+}
+
+.sidebar {
+  padding: 20px;
+}
+
+.sidebarLabel,
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.caseList {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.caseButton,
+.caseButtonActive {
+  width: 100%;
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  text-align: left;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.caseButton:hover,
+.caseButtonActive:hover {
+  transform: translateY(-1px);
+}
+
+.caseButtonActive {
+  border-color: rgba(13, 92, 99, 0.38);
+  background: linear-gradient(180deg, rgba(219, 239, 240, 0.9), rgba(255, 255, 255, 0.9));
+}
+
+.caseButton span,
+.caseButtonActive span {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.caseButton small,
+.caseButtonActive small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.panel {
+  display: grid;
+  gap: 18px;
+}
+
+.summaryCard {
+  padding: 24px;
+}
+
+.summaryCard h3,
+.recommendationCard h4 {
+  margin-top: 10px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.summaryCard h3 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.badgeRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.tierBadge,
+.scoreBadge,
+.severity,
+.friction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.88rem;
+}
+
+.tierBadge {
+  background: rgba(13, 92, 99, 0.12);
+  color: var(--accent);
+}
+
+.scoreBadge {
+  background: rgba(180, 79, 46, 0.12);
+  color: var(--signal);
+}
+
+.reportQuality {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.metrics,
+.columns {
+  display: grid;
+  gap: 14px;
+}
+
+.metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.metricCard {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
+}
+
+.metricCard p {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.metricCard strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.35rem;
+}
+
+.columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+  padding: 22px;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.findingCard,
+.recommendationCard {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 16px;
+}
+
+.findingMeta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.severity {
+  background: rgba(180, 79, 46, 0.12);
+  color: var(--signal);
+}
+
+.friction {
+  background: rgba(28, 24, 20, 0.08);
+  color: var(--ink);
+}
+
+.findingCard p,
+.recommendationCard p,
+.empty {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.empty {
+  padding: 24px;
+}
+
+@media (max-width: 920px) {
+  .shell,
+  .columns,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}

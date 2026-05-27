@@ -1,0 +1,60 @@
+:root {
+  --surface: #faf9f7;
+  --surface-low: #f4f3f1;
+  --surface-high: #ffffff;
+  --ink: #1a1c1b;
+  --muted: #3f4945;
+  --muted-strong: #45504b;
+  --line: #e5e3de;
+  --primary: #00342b;
+  --secondary: #9a442c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--surface);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(26, 28, 27, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 28, 27, 0.025) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.55;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 90%);
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  transition: all 160ms ease;
+}
