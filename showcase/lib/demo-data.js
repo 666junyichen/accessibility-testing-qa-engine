@@ -1,7 +1,12 @@
 export const navigationItems = [
-  { id: "single-video", label: "Single Video" },
-  { id: "tester-trajectory", label: "Tester Trajectory" },
-  { id: "cohort-overview", label: "Cohort Overview" },
+  { id: "single-video", label: "Single Video", active: true },
+  { id: "tester-trajectory", label: "Tester Trajectory", active: false },
+  { id: "cohort-overview", label: "Cohort Overview", active: false },
+];
+
+export const sidebarFilters = [
+  "Tier · all (3)",
+  "Project · all (3)",
 ];
 
 export const pipelineSteps = [
@@ -23,157 +28,152 @@ export const pipelineSteps = [
   },
 ];
 
-export const capabilityChips = [
-  "Transcript Analysis",
-  "Quality Signals",
-  "Structured Findings",
-  "Coaching Support",
-];
-
 export const demoCases = [
   {
-    id: "case-a",
-    label: "Case A",
-    workspaceId: "4823-XJ",
-    sessionId: "492-B",
-    duration: "12:04 / 45:00",
-    sector: "Education portal",
-    analystNote: "Repeated task switching exposed navigation friction and low confidence around secondary actions.",
+    id: "sharelinsonny-wa",
+    label: "Sharelinsonny_wa",
+    tester: "Sharelinsonny",
+    project: "DPC-WA",
+    sector: "DPC-WA",
+    performanceTier: "POOR",
+    score: "65/100",
+    findingsCount: 40,
+    windowCount: 105,
+    duration: "119m 19s",
+    capReason: ">=2 S2 task-blockers",
+    topSeverity: "S2",
+    reason: "task-blocking friction: S1/S2 present",
+    tierReasoning: "task-blocking friction: S1/S2 present",
     summary: {
-      title: "Navigation friction during repeated task switching",
-      tier: "Watch",
-      score: 72,
-      reportQuality: "Multiple medium-severity findings with coaching follow-up required.",
+      title: "task-blocking friction: S1/S2 present",
+      tier: "POOR",
+      score: 65,
+      reportQuality: "task-blocking friction: S1/S2 present",
     },
     findings: [
       {
-        severity: "High Risk",
-        timestamp: "04:12",
+        severity: "S2",
         friction: "F6",
-        note: "Tester bypassed the secondary navigation structure before confirming screen reader access.",
-        coaching: "Review navigation verification steps before progressing to account actions.",
+        note: "Critical action remained hard to discover after the user changed navigation path.",
       },
       {
-        severity: "Standard",
-        timestamp: "08:45",
-        friction: "F2",
-        note: "Valid aria-label coverage was identified on the submit action after a brief hesitation.",
-        coaching: "Keep the evidence snippet because it supports the positive report outcome.",
+        severity: "S3",
+        friction: "F7",
+        note: "Repeated correction loops increased task effort before recovery.",
       },
     ],
     recommendations: [
       {
         title: "Review navigation verification",
-        detail: "Require explicit confirmation of secondary navigation and assistive support before progressing.",
+        detail: "Call out missing pathway confirmation explicitly when summarizing blocked flows.",
       },
       {
-        title: "Capture stronger evidence anchors",
-        detail: "Pause on blocked states long enough to support the final written finding.",
+        title: "Strengthen evidence anchors",
+        detail: "Pause on the blocking moment long enough to support the report rationale.",
+      },
+      {
+        title: "Preserve coaching traceability",
+        detail: "Connect each improvement action to the exact friction pattern it addresses.",
       },
     ],
-    metrics: [
-      { label: "Signals reviewed", value: "18" },
-      { label: "High-priority findings", value: "2" },
-      { label: "Coaching actions", value: "2" },
+    sessionAssessment: [
+      { label: "Narration", value: "rich" },
+      { label: "Recording", value: "acceptable" },
+      { label: "Coaching evidence", value: "none" },
     ],
-  },
-  {
-    id: "case-b",
-    label: "Case B",
-    workspaceId: "5180-ZP",
-    sessionId: "715-C",
-    duration: "18:31 / 33:00",
-    sector: "Service dashboard",
-    analystNote: "The main interaction path was stable, but recording quality reduced confidence on one key sequence.",
-    summary: {
-      title: "Low-friction path with isolated recording caveats",
-      tier: "Strong",
-      score: 88,
-      reportQuality: "Mostly clear signals with one recording caveat and low escalation risk.",
+    scoreBreakdown: [
+      { label: "Raw composite", value: "84.5" },
+      { label: "D1 Narration", value: "90.0" },
+      { label: "D2 Friction", value: "82.9" },
+      { label: "D3 Recording", value: "70.0" },
+    ],
+    metrics: [
+      { label: "Findings", value: "40" },
+      { label: "Windows", value: "105" },
+      { label: "Top severity", value: "S2" },
+    ],
+    severityDistribution: [
+      { label: "S2 · 2", value: 5, tone: "warning" },
+      { label: "S3 · 2", value: 5, tone: "warm" },
+      { label: "S4 · 1", value: 4, tone: "good" },
+      { label: "S5 · 32", value: 76, tone: "neutral" },
+      { label: "S6 · 3", value: 10, tone: "cool" },
+    ],
+    frictionTypes: [
+      { label: "F1 · 15", value: 30 },
+      { label: "F2 · 11", value: 22 },
+      { label: "F4 · 2", value: 8 },
+      { label: "F5 · 1", value: 5 },
+      { label: "F6 · 10", value: 20 },
+      { label: "F7 · 1", value: 5 },
+    ],
+    sentimentDistribution: [
+      { label: "E3 · 26", value: 62 },
+      { label: "E4 · 14", value: 38 },
+    ],
+    trajectory: {
+      summary: "Score trend indicates improvement over repeat submissions, with blockage handling still the main recurring weakness.",
+      sessions: [
+        { label: "S1", value: 58 },
+        { label: "S2", value: 60 },
+        { label: "S3", value: 65 },
+      ],
     },
-    findings: [
-      {
-        severity: "Standard",
-        timestamp: "03:27",
-        friction: "F2",
-        note: "User confidence dipped briefly during account setup, but recovery was immediate.",
-        coaching: "Capture the hesitation in the narrative while preserving the overall positive assessment.",
-      },
-      {
-        severity: "Recording",
-        timestamp: "14:18",
-        friction: "F7",
-        note: "Audio clipping reduced certainty when interpreting the final confirmation step.",
-        coaching: "Flag the evidence caveat and recommend a quieter retest environment.",
-      },
-    ],
-    recommendations: [
-      {
-        title: "Flag recording caveats clearly",
-        detail: "Keep positive findings intact while separating evidence-confidence issues from UX issues.",
-      },
-    ],
-    metrics: [
-      { label: "Signals reviewed", value: "12" },
-      { label: "High-priority findings", value: "0" },
-      { label: "Coaching actions", value: "1" },
-    ],
+    cohort: {
+      totalAudits: "55",
+      averageScore: "74.8",
+      criticalMisses: "7",
+    },
   },
 ];
 
 export const trajectoryData = {
   title: "Tester Trajectory",
-  subtitle:
-    "Score stability, recurring friction, and reviewer interpretation across sequential submissions.",
+  subtitle: "Trajectory summary for the selected tester across repeated submissions.",
   sessions: [
-    { label: "S1", score: 46 },
-    { label: "S2", score: 58 },
-    { label: "S3", score: 54 },
-    { label: "S4", score: 73 },
-    { label: "S5", score: 82 },
+    { label: "S1", score: 58 },
+    { label: "S2", score: 60 },
+    { label: "S3", score: 65 },
   ],
   persistentFriction: [
-    "Complex table navigation",
-    "Dynamic modal focus handling",
-    "Low-confidence narration during recovery steps",
+    "Task-blocking friction",
+    "Secondary navigation uncertainty",
+    "Recovery evidence gaps",
   ],
   summary:
-    "Consistent improvement in core WCAG issue identification, with the main remaining gap concentrated in advanced state changes and dynamic content transitions.",
+    "Trajectory remains volatile around blocked flows, but overall reviewer output improved across later sessions.",
 };
 
 export const cohortOverview = {
   stats: [
-    { label: "Total audits", value: "1,248", tone: "default" },
-    { label: "Avg quality score", value: "92.4%", tone: "default" },
-    { label: "Critical misses", value: "14", tone: "warning" },
-    { label: "Top-tier testers", value: "28", tone: "muted" },
+    { label: "Total audits", value: "55", tone: "default" },
+    { label: "Avg score", value: "74.8", tone: "default" },
+    { label: "Critical misses", value: "7", tone: "warning" },
+    { label: "Top-tier testers", value: "12", tone: "muted" },
   ],
   panels: [
     {
       title: "Tier Distribution",
-      body: "Leading and proficient reviewers make up the dominant share, while a smaller developing group drives most intervention planning.",
+      body: "The current cohort skews toward mid-tier performance, with a smaller group of severe blocker-heavy sessions driving review attention.",
     },
     {
-      title: "Review Operations",
-      body: "Cohort-level summaries help internal reviewers spot where escalation guidance or coaching templates should be standardized.",
+      title: "Operational Note",
+      body: "This overview is intended to help internal reviewers compare submissions and spot recurring coaching priorities.",
     },
   ],
 };
 
 export const contributions = [
   {
-    title: "Review Workflow",
-    detail:
-      "Built and refined the reviewer-facing flow for transcript evidence, quality signals, and structured findings.",
+    title: "Review workflow implementation",
+    detail: "Built the reviewer-facing flow for transcript evidence, findings, and coaching output presentation.",
   },
   {
-    title: "Layered Analysis",
-    detail:
-      "Contributed to the rule, clustering, and LLM-supported pipeline that turns raw evidence into reportable findings.",
+    title: "Layered assessment support",
+    detail: "Contributed to the rule, LLM, and scoring pipeline that powers the summary cards and quality judgments.",
   },
   {
-    title: "Demo Presentation",
-    detail:
-      "Shaped the polished web demo layer so the final project outcome can be presented as a coherent product experience.",
+    title: "Demo presentation",
+    detail: "Helped shape and present the final demo experience used to communicate project outcomes.",
   },
 ];

@@ -1,9 +1,6 @@
 export const siteCopy = {
-  ownerName: "Junyi Chen",
-  productName: "A11y Reviewer",
-  projectName: "Accessibility Testing QA Engine",
-  intro:
-    "An internal review platform for auditing accessibility testing sessions, surfacing quality signals, and standardizing how reviewer findings are documented.",
-  subIntro:
-    "This web demo presents the final project structure in a polished workstation format, centered on single-session review, tester-level trajectories, and cohort-level oversight.",
+  productName: "SMP Demo",
+  sidebarCaption: "Tester quality assessment & coaching prototype",
+  pageTitle: "Intelligent Tester Quality Assessment",
+  pageSubtitle: "See Me Please decision-support prototype",
 };

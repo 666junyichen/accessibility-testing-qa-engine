@@ -1,231 +1,224 @@
 import {
-  capabilityChips,
   cohortOverview,
   contributions,
   demoCases,
   navigationItems,
+  sidebarFilters,
   trajectoryData,
 } from "../lib/demo-data";
-import { siteCopy } from "../lib/site-copy";
 import styles from "./page.module.css";
 
 const activeCase = demoCases[0];
-const maxTrajectoryScore = Math.max(...trajectoryData.sessions.map((session) => session.score));
 
 export default function Page() {
   return (
     <div className={styles.appShell}>
       <aside className={styles.sidebar}>
-        <div className={styles.sidebarHeader}>
-          <h2>{activeCase.label}</h2>
-          <p>ID: {activeCase.workspaceId}</p>
+        <div className={styles.sidebarBrand}>
+          <h2>SMP Demo</h2>
+          <p>Tester quality assessment &amp; coaching prototype</p>
         </div>
 
-        <nav className={styles.sideNav}>
-          {navigationItems.map((item, index) => (
+        <nav className={styles.sidebarNav}>
+          {navigationItems.map((item) => (
             <a
               key={item.id}
-              className={index === 0 ? styles.navLinkActive : styles.navLink}
               href={`#${item.id}`}
+              className={item.active ? styles.navItemActive : styles.navItem}
             >
+              <span className={item.active ? styles.navDotActive : styles.navDot} />
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className={styles.sidebarFooter}>
-          <button type="button" className={styles.auditButton}>
-            Run New Audit
-          </button>
-          <div className={styles.supportLinks}>
-            <span>Documentation</span>
-            <span>Support</span>
+        <div className={styles.sidebarControls}>
+          {sidebarFilters.map((filter) => (
+            <button key={filter} type="button" className={styles.filterButton}>
+              {filter}
+              <span className={styles.chevron}>⌄</span>
+            </button>
+          ))}
+
+          <p className={styles.sidebarMeta}>Showing 55 of 55 videos</p>
+          <div className={styles.selectorBlock}>
+            <span className={styles.selectorLabel}>Video (55)</span>
+            <button type="button" className={styles.videoSelect}>
+              <span className={styles.navDotActive} />
+              <span className={styles.videoSelectText}>{activeCase.label}</span>
+              <span className={styles.chevron}>⌄</span>
+            </button>
+          </div>
+
+          <div className={styles.sidebarDetails}>
+            <p>
+              <strong>Tester:</strong> <span>{activeCase.tester}</span>
+            </p>
+            <p>
+              <strong>Project:</strong> <span>{activeCase.project}</span>
+            </p>
+            <p>
+              <strong>Tier:</strong> <span>{activeCase.performanceTier}</span>
+            </p>
+            <p>{activeCase.reason}</p>
           </div>
         </div>
       </aside>
 
       <div className={styles.contentShell}>
         <header className={styles.topBar}>
-          <div className={styles.brand}>{siteCopy.productName}</div>
-          <div className={styles.topTabs}>
-            <span className={styles.topTabActive}>Dashboard</span>
-            <span className={styles.topTab}>Sessions</span>
-            <span className={styles.topTab}>Reports</span>
-            <span className={styles.topTab}>Settings</span>
-          </div>
-          <div className={styles.topActions}>
-            <span>Alerts</span>
-            <span>Profile</span>
-          </div>
+          <span className={styles.deployLabel}>Deploy</span>
         </header>
 
         <main className={styles.main}>
-          <section className={styles.hero}>
-            <p className={styles.owner}>{siteCopy.ownerName}</p>
-            <h1>{siteCopy.projectName}</h1>
-            <p className={styles.heroLead}>{siteCopy.intro}</p>
-            <p className={styles.heroSubLead}>{siteCopy.subIntro}</p>
-            <div className={styles.chipRow}>
-              {capabilityChips.map((chip) => (
-                <span key={chip} className={styles.chip}>
-                  {chip}
-                </span>
+          <section className={styles.heroSection}>
+            <div className={styles.heroRule} />
+            <h1>Intelligent Tester Quality Assessment</h1>
+            <p>See Me Please decision-support prototype</p>
+          </section>
+
+          <section id="single-video" className={styles.summaryCard}>
+            <div className={styles.summaryHeader}>
+              <div>
+                <h2>{activeCase.label}</h2>
+                <p>
+                  {activeCase.tester} · {activeCase.project}
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.summaryStats}>
+              <div className={styles.summaryStat}>
+                <span>TIER</span>
+                <strong className={styles.tierPill}>{activeCase.performanceTier}</strong>
+              </div>
+              <div className={styles.summaryStat}>
+                <span>SCORE</span>
+                <strong>{activeCase.score}</strong>
+              </div>
+              <div className={styles.summaryStat}>
+                <span>FINDINGS</span>
+                <strong>{activeCase.findingsCount}</strong>
+              </div>
+              <div className={styles.summaryStat}>
+                <span>WINDOWS</span>
+                <strong>{activeCase.windowCount}</strong>
+              </div>
+              <div className={styles.summaryStat}>
+                <span>DURATION</span>
+                <strong>{activeCase.duration}</strong>
+              </div>
+            </div>
+
+            <p className={styles.capReason}>Cap reasons: {activeCase.capReason}</p>
+          </section>
+
+          <section className={styles.metaGrid}>
+            <article className={styles.metaCard}>
+              <span>TESTER</span>
+              <strong>{activeCase.tester}</strong>
+            </article>
+            <article className={styles.metaCard}>
+              <span>PROJECT</span>
+              <strong>{activeCase.project}</strong>
+            </article>
+            <article className={styles.metaCard}>
+              <span>TOP SEVERITY</span>
+              <strong>{activeCase.topSeverity}</strong>
+            </article>
+            <article className={styles.metaCard}>
+              <span>REASON</span>
+              <strong>{activeCase.reason}</strong>
+            </article>
+          </section>
+
+          <p className={styles.reasoningText}>Tier reasoning: {activeCase.tierReasoning}</p>
+
+          <div className={styles.tabRow}>
+            <span className={styles.activeTab}>Overview</span>
+            <span className={styles.tab}>Findings ({activeCase.findingsCount})</span>
+            <span className={styles.tab}>Coaching ({activeCase.recommendations.length})</span>
+            <span className={styles.tab}>Layer detail</span>
+          </div>
+
+          <section className={styles.sectionBlock}>
+            <h3>SESSION-LEVEL ASSESSMENT (LAYER 3-B)</h3>
+            <div className={styles.infoGrid}>
+              {activeCase.sessionAssessment.map((item) => (
+                <article key={item.label} className={styles.infoCard}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
               ))}
             </div>
           </section>
 
-          <section id="single-video" className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>Single Video Review</h2>
-              <p>{activeCase.summary.reportQuality}</p>
+          <section className={styles.sectionBlock}>
+            <h3>R6 SCORE BREAKDOWN</h3>
+            <div className={styles.infoGrid}>
+              {activeCase.scoreBreakdown.map((item) => (
+                <article key={item.label} className={styles.infoCard}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
+              ))}
             </div>
+            <p className={styles.footnote}>
+              Weights: D1·0.50 + D2·0.35 + D3·0.15 → raw composite. Caps bind after raw.
+            </p>
+          </section>
 
-            <div className={styles.singleVideoGrid}>
-              <article className={styles.videoStageCard}>
-                <div className={styles.videoStage}>
-                  <div className={styles.videoGlow} />
-                  <div className={styles.playButton}>▶</div>
-                  <div className={styles.videoOverlay}>
-                    <span>SESSION: {activeCase.sessionId}</span>
-                    <span>{activeCase.duration}</span>
-                  </div>
+          <section className={styles.sectionBlock}>
+            <h3>SEVERITY DISTRIBUTION</h3>
+            <div className={styles.distributionBar}>
+              {activeCase.severityDistribution.map((item) => (
+                <div
+                  key={item.label}
+                  className={`${styles.distributionSegment} ${styles[`tone${item.tone[0].toUpperCase()}${item.tone.slice(1)}`] ?? ""}`}
+                  style={{ flex: item.value }}
+                >
+                  {item.label}
                 </div>
-                <div className={styles.videoSummary}>
-                  <div>
-                    <p className={styles.panelLabel}>Session Summary</p>
-                    <h3>{activeCase.summary.title}</h3>
-                  </div>
-                  <div className={styles.metricBadges}>
-                    <span className={styles.tierBadge}>{activeCase.summary.tier}</span>
-                    <span className={styles.scoreBadge}>{activeCase.summary.score}/100</span>
-                  </div>
-                </div>
-                <p className={styles.analystNote}>{activeCase.analystNote}</p>
-                <div className={styles.metricsRow}>
-                  {activeCase.metrics.map((metric) => (
-                    <div key={metric.label} className={styles.metricCard}>
-                      <span>{metric.label}</span>
-                      <strong>{metric.value}</strong>
-                    </div>
-                  ))}
-                </div>
-              </article>
-
-              <aside className={styles.inspectorCard}>
-                <h3>Inspector Findings</h3>
-                <div className={styles.findingStack}>
-                  {activeCase.findings.map((finding) => (
-                    <article key={`${finding.timestamp}-${finding.note}`} className={styles.findingCard}>
-                      <div className={styles.findingTopRow}>
-                        <span
-                          className={
-                            finding.severity === "High Risk"
-                              ? styles.riskChip
-                              : finding.severity === "Recording"
-                                ? styles.recordingChip
-                                : styles.standardChip
-                          }
-                        >
-                          {finding.severity}
-                        </span>
-                        <span className={styles.timestamp}>{finding.timestamp}</span>
-                      </div>
-                      <p className={styles.findingText}>{finding.note}</p>
-                      <div className={styles.coachingRow}>
-                        <span>Coaching</span>
-                        <p>{finding.coaching}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </aside>
+              ))}
             </div>
           </section>
 
-          <section id="tester-trajectory" className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>Tester Trajectory</h2>
-              <p>{trajectoryData.subtitle}</p>
-            </div>
-
-            <div className={styles.trajectoryCard}>
-              <div className={styles.chart}>
-                {trajectoryData.sessions.map((session) => (
-                  <div key={session.label} className={styles.barColumn}>
-                    <div
-                      className={styles.bar}
-                      style={{ height: `${Math.max(20, (session.score / maxTrajectoryScore) * 100)}%` }}
-                    />
-                    <span>{session.label}</span>
+          <div className={styles.doubleSection}>
+            <section className={styles.sectionBlock}>
+              <h3>FRICTION TYPES</h3>
+              <div className={styles.miniBar}>
+                {activeCase.frictionTypes.map((item) => (
+                  <div key={item.label} className={styles.miniSegment} style={{ flex: item.value }}>
+                    {item.label}
                   </div>
                 ))}
               </div>
+            </section>
 
-              <div className={styles.trajectoryNotes}>
-                <div>
-                  <p className={styles.panelLabel}>Persistent Friction</p>
-                  <ul className={styles.bulletList}>
-                    {trajectoryData.persistentFriction.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className={styles.panelLabel}>Performance Summary</p>
-                  <p className={styles.noteBody}>{trajectoryData.summary}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="cohort-overview" className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>Cohort Overview</h2>
-              <p>Aggregated quality, escalation, and reviewer coverage across the broader demo scope.</p>
-            </div>
-
-            <div className={styles.statsGrid}>
-              {cohortOverview.stats.map((stat) => (
-                <article
-                  key={stat.label}
-                  className={
-                    stat.tone === "warning"
-                      ? styles.statCardWarning
-                      : stat.tone === "muted"
-                        ? styles.statCardMuted
-                        : styles.statCard
-                  }
-                >
-                  <span>{stat.label}</span>
-                  <strong>{stat.value}</strong>
-                </article>
-              ))}
-            </div>
-
-            <div className={styles.cohortPanels}>
-              {cohortOverview.panels.map((panel) => (
-                <article key={panel.title} className={styles.cohortPanel}>
-                  <p className={styles.panelLabel}>{panel.title}</p>
-                  <p className={styles.noteBody}>{panel.body}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>What I Completed</h2>
-              <p>Core implementation and final presentation responsibilities carried through the project demo.</p>
-            </div>
-
-            <div className={styles.contributionCard}>
-              {contributions.map((item) => (
-                <article key={item.title} className={styles.contributionItem}>
-                  <div className={styles.checkMark}>✓</div>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.detail}</p>
+            <section className={styles.sectionBlock}>
+              <h3>SENTIMENT</h3>
+              <div className={styles.miniBar}>
+                {activeCase.sentimentDistribution.map((item) => (
+                  <div key={item.label} className={styles.miniSegment} style={{ flex: item.value }}>
+                    {item.label}
                   </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <section id="tester-trajectory" className={styles.sectionBlock}>
+            <h3>TESTER TRAJECTORY</h3>
+            <p className={styles.sectionCopy}>{trajectoryData.summary}</p>
+          </section>
+
+          <section id="cohort-overview" className={styles.sectionBlock}>
+            <h3>COHORT OVERVIEW</h3>
+            <div className={styles.infoGrid}>
+              {cohortOverview.stats.map((item) => (
+                <article key={item.label} className={styles.infoCard}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
                 </article>
               ))}
             </div>
