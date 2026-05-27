@@ -1,4 +1,4 @@
-# CS20 Intelligent Tester Quality Assessment & Coaching Engine
+# Intelligent Tester Quality Assessment & Coaching Engine
 
 Internal decision-support prototype for See Me Please tester-submission review.
 The system turns AWS Transcribe outputs into transcript windows, quality flags,
