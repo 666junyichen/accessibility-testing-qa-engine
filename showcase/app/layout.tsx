@@ -1,25 +1,6 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import "./globals.css";
-
-const displayFont = Source_Serif_4({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const bodyFont = Hanken_Grotesk({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const monoFont = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
 
 export const metadata: Metadata = {
   title: "Accessibility Testing QA Engine",
@@ -30,7 +11,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
+      <body
+        style={
+          {
+            "--font-display": '"Georgia", "Times New Roman", serif',
+            "--font-body": '"Segoe UI", "Helvetica Neue", Arial, sans-serif',
+            "--font-mono": '"Consolas", "SFMono-Regular", "Courier New", monospace',
+          } as CSSProperties
+        }
+      >
         {children}
       </body>
     </html>

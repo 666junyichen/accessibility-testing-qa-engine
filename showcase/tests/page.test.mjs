@@ -9,8 +9,8 @@ const showcaseRoot = path.resolve(testDir, "..");
 
 test("landing page includes hero and demo sections", () => {
   const page = readFileSync(path.join(showcaseRoot, "app/page.tsx"), "utf8");
-  assert.match(page, /SMP Demo/);
-  assert.match(page, /Intelligent Tester Quality Assessment/);
+  assert.match(page, /siteCopy\.productName/);
+  assert.match(page, /siteCopy\.pageTitle/);
   assert.match(page, /Overview/);
   assert.match(page, /Findings/);
   assert.match(page, /Coaching/);

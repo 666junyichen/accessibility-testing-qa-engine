@@ -1,22 +1,17 @@
-import {
-  cohortOverview,
-  contributions,
-  demoCases,
-  navigationItems,
-  sidebarFilters,
-  trajectoryData,
-} from "../lib/demo-data";
+import { getShowcaseData } from "../lib/real-showcase-data";
+import { siteCopy } from "../lib/site-copy";
 import styles from "./page.module.css";
 
-const activeCase = demoCases[0];
+export default async function Page() {
+  const { activeCase, cohortOverview, navigationItems, sidebarFilters, totalVideos, trajectoryData } =
+    await getShowcaseData();
 
-export default function Page() {
   return (
     <div className={styles.appShell}>
       <aside className={styles.sidebar}>
         <div className={styles.sidebarBrand}>
-          <h2>SMP Demo</h2>
-          <p>Tester quality assessment &amp; coaching prototype</p>
+          <h2>{siteCopy.productName}</h2>
+          <p>{siteCopy.sidebarCaption}</p>
         </div>
 
         <nav className={styles.sidebarNav}>
@@ -36,17 +31,17 @@ export default function Page() {
           {sidebarFilters.map((filter) => (
             <button key={filter} type="button" className={styles.filterButton}>
               {filter}
-              <span className={styles.chevron}>⌄</span>
+              <span className={styles.chevron}>v</span>
             </button>
           ))}
 
-          <p className={styles.sidebarMeta}>Showing 55 of 55 videos</p>
+          <p className={styles.sidebarMeta}>Showing {totalVideos} of {totalVideos} videos</p>
           <div className={styles.selectorBlock}>
-            <span className={styles.selectorLabel}>Video (55)</span>
+            <span className={styles.selectorLabel}>Video ({totalVideos})</span>
             <button type="button" className={styles.videoSelect}>
               <span className={styles.navDotActive} />
               <span className={styles.videoSelectText}>{activeCase.label}</span>
-              <span className={styles.chevron}>⌄</span>
+              <span className={styles.chevron}>v</span>
             </button>
           </div>
 
@@ -73,8 +68,8 @@ export default function Page() {
         <main className={styles.main}>
           <section className={styles.heroSection}>
             <div className={styles.heroRule} />
-            <h1>Intelligent Tester Quality Assessment</h1>
-            <p>See Me Please decision-support prototype</p>
+            <h1>{siteCopy.pageTitle}</h1>
+            <p>{siteCopy.pageSubtitle}</p>
           </section>
 
           <section id="single-video" className={styles.summaryCard}>
@@ -82,7 +77,7 @@ export default function Page() {
               <div>
                 <h2>{activeCase.label}</h2>
                 <p>
-                  {activeCase.tester} · {activeCase.project}
+                  {activeCase.tester} - {activeCase.project}
                 </p>
               </div>
             </div>
@@ -164,7 +159,7 @@ export default function Page() {
               ))}
             </div>
             <p className={styles.footnote}>
-              Weights: D1·0.50 + D2·0.35 + D3·0.15 → raw composite. Caps bind after raw.
+              Weights: D1 0.50 + D2 0.35 + D3 0.15 -&gt; raw composite. Caps bind after raw.
             </p>
           </section>
 
