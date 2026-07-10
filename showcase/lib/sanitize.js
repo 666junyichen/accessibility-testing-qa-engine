@@ -6,7 +6,7 @@ const restrictedPatterns = [
 export function sanitizePublicLabel(value) {
   let output = value;
   for (const pattern of restrictedPatterns) {
-    output = output.replace(pattern, "Junyi Chen");
+    output = output.replace(pattern, "University Project");
   }
   return output.replace(/\s+/g, " ").trim();
 }

@@ -5,7 +5,7 @@ import { containsRestrictedSchoolName, sanitizePublicLabel } from "../lib/saniti
 test("sanitizePublicLabel removes school references", () => {
   assert.equal(
     sanitizePublicLabel("The University of Queensland Accessibility Review"),
-    "Junyi Chen Accessibility Review",
+    "University Project Accessibility Review",
   );
 });
 

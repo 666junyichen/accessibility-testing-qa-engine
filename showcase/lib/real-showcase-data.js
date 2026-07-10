@@ -10,7 +10,7 @@ const candidateRoots = [path.resolve(__dirname, ".."), path.resolve(__dirname, "
 const projectLabelMap = {
   "department-of-premier-and-cabinet-wa": "DPC-WA",
   "suncorp-insurance": "Suncorp",
-  "the-university-of-queensland": "Junyi Chen",
+  "the-university-of-queensland": "University Project",
 };
 
 function resolveDataPath(...segments) {
