@@ -1,0 +1,58 @@
+video_id,tester_name,project,score,tier,raw_score,d1_narration,d2_friction_surfacing,d3_recording,cap_applied,cap_reasons,total_findings,total_windows,top_friction_types,calibrator_aggregate,calibrator_aggregate_mismatch_flag,low_evidence,cross_check_lane
+Sharelinsonny_wa,Sharelinsonny,department-of-premier-and-cabinet-wa,65.0,Developing,84.5,90.0,82.9,70.0,65.0,>=2 S2 task-blockers,40,105,"F1,F2,F6",L2,False,False,with_overrides
+Sharelinsonny_suncorp,Sharelinsonny,suncorp-insurance,65.0,Developing,84.8,90.0,83.7,70.0,65.0,>=2 S2 task-blockers,27,81,"F1,F6,F2",L2,False,False,with_overrides
+Sharelinsonny_uq,Sharelinsonny,the-university-of-queensland,55.0,Developing,85.5,90.0,85.8,70.0,55.0,S1 project-level blocker present,29,61,"F1,F2,F6",L2,False,False,raw_only
+asma_suncorp,asma,suncorp-insurance,65.0,Developing,87.3,90.0,90.9,70.0,65.0,>=2 S2 task-blockers,30,63,"F6,F1,F7",L3,False,False,with_overrides
+asma_uq,asma,the-university-of-queensland,87.6,Leading,87.6,90.0,91.8,70.0,,,40,63,"F1,F6,F2",L2,False,False,raw_only
+carlpatrickrobinson_suncorp,carlpatrickrobinson,suncorp-insurance,84.7,Proficient,84.7,90.0,83.3,70.0,,,6,15,"F6,F1,F2",L2,False,False,with_overrides
+carlpatrickrobinson_uq,carlpatrickrobinson,the-university-of-queensland,55.0,Developing,85.2,90.0,84.8,70.0,55.0,S1 project-level blocker present,8,18,"F4,F2,F3",L2,False,False,raw_only
+fjone7_suncorp,fjone7,suncorp-insurance,87.3,Leading,87.3,90.0,90.8,70.0,,,56,106,"F6,F1,F2",L2,False,False,with_overrides
+fjone7_uq,fjone7,the-university-of-queensland,65.0,Developing,87.0,90.0,90.0,70.0,65.0,>=2 S2 task-blockers,60,113,"F1,F2,F3",L2,False,False,raw_only
+gameoverdan_suncorp,gameoverdan,suncorp-insurance,65.0,Developing,89.2,90.0,96.2,70.0,65.0,>=2 S2 task-blockers,50,53,"F6,F3,F7",L3,False,False,with_overrides
+gameoverdan_uq,gameoverdan,the-university-of-queensland,55.0,Developing,89.2,90.0,96.2,70.0,55.0,S1 project-level blocker present,52,46,"F3,F1,F2",L3,False,False,raw_only
+ghum_wa,ghum,department-of-premier-and-cabinet-wa,55.0,Developing,87.6,90.0,91.6,70.0,55.0,S1 project-level blocker present,61,83,"F2,F3,F1",L2,False,False,with_overrides
+ghum_suncorp,ghum,suncorp-insurance,55.0,Developing,88.4,90.0,93.9,70.0,55.0,S1 project-level blocker present; >=2 S2 task-blockers,76,77,"F6,F1,F2",L3,False,False,with_overrides
+ghum_uq,ghum,the-university-of-queensland,55.0,Developing,88.4,90.0,94.1,70.0,55.0,S1 project-level blocker present; >=2 S2 task-blockers,93,85,"F2,F3,F1",L3,False,False,raw_only
+giuliaclemente26_wa,giuliaclemente26,department-of-premier-and-cabinet-wa,87.3,Leading,87.3,90.0,90.8,70.0,,,91,71,"F2,F1,F7",L2,False,False,with_overrides
+giuliaclemente26_suncorp,giuliaclemente26,suncorp-insurance,88.0,Leading,88.0,90.0,93.0,70.0,,,27,31,"F1,F2,F6",L2,False,False,with_overrides
+giuliaclemente26_uq,giuliaclemente26,the-university-of-queensland,87.4,Leading,87.4,90.0,91.1,70.0,,,54,56,"F1,F2,F4",L2,False,False,raw_only
+gracieha22_wa,gracieha22,department-of-premier-and-cabinet-wa,84.5,Proficient,84.5,90.0,83.0,70.0,,,14,36,"F2,F1,F3",L2,False,False,with_overrides
+gracieha22_suncorp,gracieha22,suncorp-insurance,87.2,Leading,87.2,90.0,90.7,70.0,,,15,20,"F5,F6,F2",L2,False,False,with_overrides
+gracieha22_uq,gracieha22,the-university-of-queensland,82.9,Proficient,82.9,90.0,78.3,70.0,,,7,24,"F1,F4,F5",L2,False,False,raw_only
+info_wa,info,department-of-premier-and-cabinet-wa,87.3,Leading,87.3,90.0,90.8,70.0,,,77,60,"F3,F1,F2",L2,False,False,with_overrides
+info_suncorp,info,suncorp-insurance,55.0,Developing,88.5,90.0,94.4,70.0,55.0,S1 project-level blocker present; >=2 S2 task-blockers,59,54,"F2,F6,F5",L3,False,False,with_overrides
+jenniferparry7_uq,jenniferparry7,the-university-of-queensland,55.0,Developing,84.6,90.0,83.0,70.0,55.0,S1 project-level blocker present,9,23,"F2,F4,F1",L2,False,False,raw_only
+kweslake_uq,kweslake,the-university-of-queensland,88.5,Leading,88.5,90.0,94.2,70.0,,,24,33,"F3,F5,F7",L2,False,False,raw_only
+laurenrosemetzler_wa,laurenrosemetzler,department-of-premier-and-cabinet-wa,65.0,Developing,87.7,90.0,83.4,90.0,65.0,>=2 S2 task-blockers,23,59,"F6,F5,F7",L2,False,False,with_overrides
+laurenrosemetzler_suncorp,laurenrosemetzler,suncorp-insurance,90.8,Leading,90.8,90.0,92.4,90.0,,,34,50,"F5,F2,F1",L2,False,False,with_overrides
+laurenrosemetzler_uq,laurenrosemetzler,the-university-of-queensland,90.4,Leading,90.4,90.0,91.1,90.0,,,36,57,"F1,F2,F7",L2,False,False,raw_only
+margieflint_wa,margieflint,department-of-premier-and-cabinet-wa,87.8,Leading,87.8,90.0,92.2,70.0,,,79,75,"F1,F6,F2",L2,False,False,with_overrides
+margieflint_suncorp,margieflint,suncorp-insurance,87.9,Leading,87.9,90.0,92.7,70.0,,,64,70,"F6,F1,F2",L2,False,False,with_overrides
+margieflint_uq,margieflint,the-university-of-queensland,55.0,Developing,88.5,90.0,94.3,70.0,55.0,S1 project-level blocker present; >=2 S2 task-blockers,46,73,"F4,F6,F2",L3,False,False,raw_only
+marychaunguyen_wa,marychaunguyen,department-of-premier-and-cabinet-wa,55.0,Developing,87.7,90.0,91.9,70.0,55.0,S1 project-level blocker present,43,64,"F1,F3,F2",L2,False,False,with_overrides
+marychaunguyen_suncorp,marychaunguyen,suncorp-insurance,55.0,Developing,88.6,90.0,94.5,70.0,55.0,S1 project-level blocker present,31,49,"F6,F1,F2",L3,False,False,with_overrides
+marychaunguyen_uq,marychaunguyen,the-university-of-queensland,65.0,Developing,88.2,90.0,93.5,70.0,65.0,>=2 S2 task-blockers,20,32,"F1,F2,F4",L2,False,False,raw_only
+mgblackwell2001_suncorp,mgblackwell2001,suncorp-insurance,70.0,Proficient,72.9,75.0,83.9,40.0,70.0,recording_quality == poor,15,42,"F1,F2,F6",L2,False,False,with_overrides
+oliviamitchell22_suncorp,oliviamitchell22,suncorp-insurance,88.2,Leading,88.2,90.0,93.5,70.0,,,26,25,"F6,F2,F1",L2,False,False,with_overrides
+praveshuprety307_wa,praveshuprety307,department-of-premier-and-cabinet-wa,86.4,Leading,86.4,90.0,88.3,70.0,,,30,59,"F2,F1,F7",L2,False,False,with_overrides
+rae_suncorp,rae,suncorp-insurance,90.6,Leading,90.6,90.0,91.8,90.0,,,50,84,"F6,F2,F1",L2,False,False,with_overrides
+rae_uq,rae,the-university-of-queensland,65.0,Developing,87.4,90.0,91.2,70.0,65.0,>=2 S2 task-blockers,35,60,"F2,F1,F6",L2,False,False,raw_only
+ramazankawish_wa,ramazankawish,department-of-premier-and-cabinet-wa,55.0,Developing,85.5,90.0,85.6,70.0,55.0,S1 project-level blocker present,34,77,"F2,F6,F1",L2,False,False,with_overrides
+ramazankawish_suncorp,ramazankawish,suncorp-insurance,88.0,Leading,88.0,90.0,92.8,70.0,,,38,71,"F6,F1,F2",L3,True,False,with_overrides
+ramazankawish_uq,ramazankawish,the-university-of-queensland,55.0,Developing,88.3,90.0,93.7,70.0,55.0,S1 project-level blocker present; >=2 S2 task-blockers,78,104,"F2,F4,F6",L3,False,False,raw_only
+reececraigie_wa,reececraigie,department-of-premier-and-cabinet-wa,85.0,Leading,85.0,90.0,84.3,70.0,,,34,81,"F1,F2,F5",L2,False,False,with_overrides
+reececraigie_suncorp,reececraigie,suncorp-insurance,88.0,Leading,88.0,90.0,84.3,90.0,,,26,72,"F2,F6,F1",L2,False,False,with_overrides
+reececraigie_uq,reececraigie,the-university-of-queensland,87.3,Leading,87.3,90.0,82.3,90.0,,,20,62,"F2,F6,F1",L2,False,False,raw_only
+reneerussell99_wa,reneerussell99,department-of-premier-and-cabinet-wa,88.5,Leading,88.5,90.0,85.8,90.0,,,15,33,"F1,F2,F3",L2,False,False,with_overrides
+reneerussell99_suncorp,reneerussell99,suncorp-insurance,89.2,Leading,89.2,90.0,87.7,90.0,,,14,30,"F6,F2,F1",L2,False,False,with_overrides
+reneerussell99_uq,reneerussell99,the-university-of-queensland,90.4,Leading,90.4,90.0,91.0,90.0,,,20,36,"F4,F5,F2",L2,False,False,raw_only
+tacitdesign_wa,tacitdesign,department-of-premier-and-cabinet-wa,65.0,Developing,87.1,90.0,90.3,70.0,65.0,>=2 S2 task-blockers,72,136,"F1,F3,F4",L2,False,False,with_overrides
+terryaflint17_wa,terryaflint17,department-of-premier-and-cabinet-wa,55.0,Developing,83.0,90.0,78.6,70.0,55.0,S1 project-level blocker present,16,73,"F2,F6,F1",L2,False,False,with_overrides
+terryaflint17_suncorp,terryaflint17,suncorp-insurance,55.0,Developing,80.3,90.0,83.7,40.0,55.0,S1 project-level blocker present; recording_quality == poor,22,73,"F6,F1,F2",L3,False,False,with_overrides
+terryaflint17_uq,terryaflint17,the-university-of-queensland,55.0,Developing,87.5,90.0,91.4,70.0,55.0,S1 project-level blocker present,43,78,"F6,F2,F4",L2,False,False,raw_only
+thanoptions_wa,thanoptions,department-of-premier-and-cabinet-wa,47.5,Foundational,47.5,55.0,40.0,40.0,,,0,2,,,False,True,with_overrides
+thanoptions_suncorp,thanoptions,suncorp-insurance,70.0,Proficient,79.3,90.0,80.8,40.0,70.0,recording_quality == poor,7,36,"F1,F2",L2,False,False,with_overrides
+thanoptions_uq,thanoptions,the-university-of-queensland,55.0,Developing,87.8,90.0,92.2,70.0,55.0,S1 project-level blocker present,41,59,"F1,F2,F6",L2,False,False,raw_only
+tharayil_wa,tharayil,department-of-premier-and-cabinet-wa,87.4,Leading,87.4,90.0,91.2,70.0,,,57,55,"F1,F2,F5",L2,False,False,with_overrides
+tianarosie1_wa,tianarosie1,department-of-premier-and-cabinet-wa,55.0,Developing,88.5,90.0,94.4,70.0,55.0,S1 project-level blocker present,59,76,"F3,F1,F2",L2,False,False,with_overrides
+troyparnell_suncorp,troyparnell,suncorp-insurance,32.5,Foundational,32.5,25.0,40.0,40.0,,,0,1,,,False,True,with_overrides

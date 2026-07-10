@@ -1,19 +1,30 @@
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { sanitizePublicLabel } from "./sanitize.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const repoRoot = path.resolve(__dirname, "..", "..");
-
-const reportPath = path.join(repoRoot, "data", "processed", "reports", "dev55", "Sharelinsonny_wa.json");
-const summaryPath = path.join(repoRoot, "data", "processed", "reports", "_summary_dev55.csv");
-const submissionPath = path.join(repoRoot, "data", "processed", "performance", "per_submission.csv");
+const candidateRoots = [
+  path.resolve(__dirname, ".."),
+  path.resolve(__dirname, "..", ".."),
+];
 
 const projectLabelMap = {
   "department-of-premier-and-cabinet-wa": "DPC-WA",
   "suncorp-insurance": "Suncorp",
 };
+
+function resolveDataPath(...segments) {
+  for (const root of candidateRoots) {
+    const candidate = path.join(root, "data", "processed", ...segments);
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return path.join(candidateRoots[0], "data", "processed", ...segments);
+}
 
 function parseCsv(text) {
   const rows = [];
@@ -153,6 +164,10 @@ function buildTrajectorySummary(trajectoryRows) {
 }
 
 export async function getShowcaseData() {
+  const reportPath = resolveDataPath("reports", "dev55", "Sharelinsonny_wa.json");
+  const summaryPath = resolveDataPath("reports", "_summary_dev55.csv");
+  const submissionPath = resolveDataPath("performance", "per_submission.csv");
+
   const [reportText, summaryText, submissionText] = await Promise.all([
     readFile(reportPath, "utf8"),
     readFile(summaryPath, "utf8"),
