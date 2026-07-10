@@ -1,0 +1,199 @@
+{
+  "video_id": "jenniferparry7_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "jenniferparry7",
+  "total_windows": 23,
+  "duration_sec": 1543.1999999999998,
+  "l1": {
+    "flag_counts": {
+      "DURATION_ANOMALY": 1,
+      "LOW_AUDIO_QUALITY": 9
+    },
+    "total_flags": 10,
+    "flagged_window_ids": [
+      "jenniferparry7_uq_w010",
+      "jenniferparry7_uq_w011",
+      "jenniferparry7_uq_w014",
+      "jenniferparry7_uq_w015",
+      "jenniferparry7_uq_w016",
+      "jenniferparry7_uq_w018",
+      "jenniferparry7_uq_w019",
+      "jenniferparry7_uq_w020",
+      "jenniferparry7_uq_w022"
+    ],
+    "duration_anomaly": true
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 0.6086956521739131,
+    "cluster_distribution": {
+      "0": 3,
+      "1": 6,
+      "2": 14
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 9,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 4,
+      "F3": 1,
+      "F4": 2,
+      "F6": 1
+    },
+    "by_severity": {
+      "S1": 1,
+      "S5": 8
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 6,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L2": 8,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 8,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "jenniferparry7_uq_w022",
+        "video_id": "jenniferparry7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "jenniferparry7",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a registration or account access barrier and was unable to proceed past it to complete the task.",
+        "observed_signal": "Participant navigated through Google account sign-in pages, email verification prompts, and account recovery steps, then explicitly stated inability to proceed and abandoned the workflow.",
+        "stated_signal": "I'm not doing this. I think this is as far as we'll be able to go. We can't get past this registration page.",
+        "rationale": "The participant faced an unresponsive or blocking authentication/registration interface that prevented access to the university postgraduate course discovery task. Both observed behaviour (repeated navigation through account steps without progress) and stated signal (explicit statement that progress is impossible) indicate task abandonment due to a system blocker, matching the S1 and L5 gate definitions.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "jenniferparry7_uq_w005",
+        "video_id": "jenniferparry7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "jenniferparry7",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a mandatory residential status prompt that blocked further navigation on the university website.",
+        "observed_signal": "Participant read through the residential status options (domestic Australian, New Zealand citizen, permanent resident, humanitarian) and noted that the system prompts for residential status before allowing continuation.",
+        "stated_signal": "So it seems to prompt me for my residential status before you can go any further.",
+        "rationale": "The participant identified that the interface requires residential status selection before proceeding, creating a wayfinding and confidence barrier. The statement indicates recognition of this gating requirement without expressed frustration, and the participant continued reading the options, suggesting brief hesitation rather than abandonment or severe blockage.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "jenniferparry7_uq_w007",
+        "video_id": "jenniferparry7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "jenniferparry7",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about which search entry point to use when presented with multiple similar options on the page.",
+        "observed_signal": "Participant encountered a search button, a 'Find your program' command placeholder, and a browse option, then paused before selecting one.",
+        "stated_signal": "I don't know which one to use. There's a search button or find your program. So, um, why it would be called a program, I'm not sure, rather than degree.",
+        "rationale": "The participant stated explicit uncertainty about which pathway to take and questioned the terminology used ('program' vs 'degree'). Observed hesitation before proceeding combined with stated confusion indicates wayfinding and comprehension friction. Recovery appears imminent ('I'll try the...'), making this a brief friction event at the S5 level.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "jenniferparry7_uq_w013",
+        "video_id": "jenniferparry7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "jenniferparry7",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expected to find cost and fees information on the current page but could not locate it despite the page label indicating it should be there.",
+        "observed_signal": "Participant searched the page, noted that fees and scholarships information was labeled as being on the same page, but stated they could not find it on the current page they were viewing.",
+        "stated_signal": "I thought there was an option about costs, but I think it was further up. It says it's on the same page, yet I couldn't find it on this page.",
+        "rationale": "The participant explicitly stated they could not locate the expected content despite the page indicating it was present. This is a content discovery friction event where the participant expressed uncertainty and difficulty but was still able to recognize the mismatch and consider alternative navigation (searching further up). The friction is noticeable but recoverable, fitting S5 and L2.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "jenniferparry7_uq_w012",
+        "video_id": "jenniferparry7_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "jenniferparry7",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about terminology, noting that the distinction between 'programs' and 'courses' was unclear and should be defined on the front page.",
+        "observed_signal": "Participant read through course information and commented on the terminology naming convention.",
+        "stated_signal": "He's a courses. OK, that explains why a program is called a program. I think that definition needs to be on the front page.",
+        "rationale": "The participant identified a comprehension issue with jargon—specifically the conflation of 'program' and 'course' terminology. The stated concern and observation align; the participant recovered and continued browsing, indicating brief but noticeable friction without task blockage.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 9 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S5=8. Representative findings: Participant encountered a registration or account access barrier and was unable to proceed past it to complete the task. | Participant encountered a mandatory residential status prompt that blocked further navigation on the university website. | Participant expressed uncertainty about which search entry point to use when presented with multiple similar options on the page.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

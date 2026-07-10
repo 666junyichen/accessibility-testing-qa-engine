@@ -1,0 +1,206 @@
+{
+  "video_id": "tharayil_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "tharayil",
+  "total_windows": 55,
+  "duration_sec": 3598.6720000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 57,
+    "by_friction_type": {
+      "F1": 17,
+      "F2": 16,
+      "F3": 3,
+      "F4": 2,
+      "F5": 13,
+      "F6": 6
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 4,
+      "S4": 4,
+      "S5": 45,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 24,
+      "E4": 33
+    },
+    "by_calibrator_score": {
+      "L1": 7,
+      "L2": 41,
+      "L3": 8,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 55,
+      "stated_missing": 2
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "tharayil_wa_w054",
+        "video_id": "tharayil_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tharayil",
+        "friction_type": "F5",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Clicking the feedback button took the participant to the top of the page instead of opening a feedback form, preventing completion of the feedback task.",
+        "observed_signal": "Participant clicked on the feedback button and was redirected to the top of the page rather than to a feedback form.",
+        "stated_signal": "Nothing happens, just takes me to the top of the page. So the short answer is I cannot provide feedback, because clicking on this button takes me to the top of the page rather than opening a feedback form.",
+        "rationale": "The participant's observed action (click leading to page-top redirect) and stated expectation (expecting a feedback form) both show the interface responded in an unexpected way. The button label promised feedback functionality but delivered navigation instead, blocking the feedback component task and requiring external resolution.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "tharayil_wa_w004",
+        "video_id": "tharayil_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tharayil",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed significant hesitation about using the support services due to concerns about privacy, anonymity, and personal safety, indicating unaddressed content gaps about how confidentiality is protected.",
+        "observed_signal": "Participant did not click on or explore the support phone numbers or websites mentioned on the page; instead, verbally articulated multiple safety and privacy concerns that prevented action.",
+        "stated_signal": "I'd be a bit hesitant to call them because I'm worried about the anonymity of my call... will I be in any kind of danger... I would need like a little bit more research so that I have this confirmation from the police or whoever that is, that my name remains anonymous, so that I'm not in any kind of physical danger myself.",
+        "rationale": "The participant understood the content and identified the support pathways but could not proceed due to unaddressed comprehension gaps regarding confidentiality, anonymity protection, and safety guarantees. The stated concerns directly cite missing or unclear information about how privacy is protected when calling support services. Both observed hesitation and explicit statements about needing confirmation align at high friction; the participant knows what to do but lacks critical information needed to take action confidently.",
+        "structural_amplification_note": "For individuals experiencing or fleeing domestic violence, especially those from communities where language barriers or cultural factors may increase isolation, the absence of explicit confidentiality guarantees in accessible language materially amplifies friction and safety concerns."
+      },
+      {
+        "window_id": "tharayil_wa_w003",
+        "video_id": "tharayil_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tharayil",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant chose to leave the government website and search externally, finding a third-party support resource instead.",
+        "observed_signal": "Participant stated they would open a tab and search for 'abusive behavior,' then referenced finding the 1800 Respect site rather than continuing to explore the Family and Domestic Violence page.",
+        "stated_signal": "If I'm using the internet, please show us where you would go to learn more about situations like this. So let me open your tab. Abusive. Behavior... There is this uh site called 1800 Respect.",
+        "rationale": "The participant did not locate a suitable information pathway on the government page and instead chose to exit and search externally, finding an alternative resource. The task asked the participant to explore the page to find support, but they abandoned that pathway in favour of an external search. This indicates the required information was not accessible or discoverable on the presented page.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "tharayil_wa_w018",
+        "video_id": "tharayil_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tharayil",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Language-specific links (Tamil, Hindi) became non-functional after the initial click and remained unresponsive to subsequent attempts.",
+        "observed_signal": "Participant clicked on Tamil link with no response, tried again with no result, then clicked Hindi link multiple times with no visible interaction or page change.",
+        "stated_signal": "The link is not working when you click on it. Nope, it's not working. I'm clicking on it, but nothing happens. Now nothing is working.",
+        "rationale": "Both observed behaviour (repeated clicks with no visible response) and stated signal (explicit statement that links are not working) align to show an unresponsive interface. The participant made multiple attempts across different language options and expressed clear frustration. This constitutes significant component failure in the multi-language pathway exploration task.",
+        "structural_amplification_note": "This barrier is particularly impactful for ESL or multilingual users who rely on translated content pathways to access information in their preferred language."
+      },
+      {
+        "window_id": "tharayil_wa_w028",
+        "video_id": "tharayil_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tharayil",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the page's categorical sections (Women's, Men's, Kids) exclude LGBTQ+ and transgender communities, raising concerns about representativeness and inclusivity of support pathways.",
+        "observed_signal": "Participant opened the Women's Domestic Helpline in a new tab, then returned to the page and analyzed the section categories (women, men, kids), explicitly noting the absence of LGBTQ+ and transgender options.",
+        "stated_signal": "What does each section mean? So I would think this is for women's domestic violence helpline, men's domestic violence. Kids, um. And then thinking about like people who are like transgenders, or, you know, any of the LGBTQ communities. They would probably find. They they're not here, women, men, or aid. So, from an LGBTQ community perspective, they might feel left out.",
+        "rationale": "The participant could not locate a relevant information pathway for LGBTQ+ and transgender users within the page's categorical structure. Both the observed exploration and explicit statement confirm that this user group's support needs are not discoverable through the current organization. This represents a significant content gap that creates a barrier for a specific cohort, matching S3 (significant component failure) and L3 (struggle with frustration).",
+        "structural_amplification_note": "LGBTQ+ and transgender users experience structurally higher friction on this page because support pathways are organized exclusively around gender-binary and age categories, with no inclusive alternative pathway or representation of their needs."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 57 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=4, S4=4, S5=45, S6=3. Representative findings: Clicking the feedback button took the participant to the top of the page instead of opening a feedback form, preventing completion of the feedback task. | Participant expressed significant hesitation about using the support services due to concerns about privacy, anonymity, and personal safety, indicating unaddressed content gaps about how confidentiality is protected. | Participant chose to leave the government website and search externally, finding a third-party support resource instead.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 57 findings spanning 6 distinct friction types (F1,F2,F5,F6,F3,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F5 Unexpected) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F5,F6,F3,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=57 findings across 6 distinct friction types (F1=17, F2=16, F5=13, F6=6, F3=3, F4=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

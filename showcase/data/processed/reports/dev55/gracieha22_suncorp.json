@@ -1,0 +1,182 @@
+{
+  "video_id": "gracieha22_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "gracieha22",
+  "total_windows": 20,
+  "duration_sec": 1299.256,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 15,
+    "by_friction_type": {
+      "F1": 1,
+      "F2": 3,
+      "F3": 2,
+      "F5": 5,
+      "F6": 4
+    },
+    "by_severity": {
+      "S4": 1,
+      "S5": 13,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 6,
+      "E4": 9
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 13,
+      "L3": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 15
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "gracieha22_suncorp_w011",
+        "video_id": "gracieha22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gracieha22",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the emergency response page despite scrolling and attempting to navigate, expressing confusion about the navigation structure.",
+        "observed_signal": "Participant scrolled down multiple times looking for the emergency response page, encountered unrelated content (insurance driving test, disaster preparation), and stated uncertainty about whether the link would take them to the correct page.",
+        "stated_signal": "I am trying to find the emergency response page, so I'm gonna scroll down, uh, nope. Uh, nope, no, that's just insurance driving test... I thought that would take me straight to that page, um.",
+        "rationale": "The participant actively searched for specific information (emergency response page) but encountered multiple irrelevant results and was uncertain whether navigation links led to the correct destination. Both observed behaviour (repeated scrolling, encountering wrong content) and stated signal (explicit statements of not finding it and confusion about navigation) indicate significant wayfinding friction with multiple failed attempts before recovery.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_suncorp_w001",
+        "video_id": "gracieha22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gracieha22",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that horizontal scrolling was required to view additional content but noted they would not have known to scroll unless they discovered it by accident.",
+        "observed_signal": "Participant used mouse to scroll horizontally across the homepage and then stated they probably wouldn't have known to scroll unless they discovered it.",
+        "stated_signal": "I probably wouldn't have known to scroll across unless [I discovered it].",
+        "rationale": "The participant explicitly identified uncertainty about a required interaction (horizontal scrolling) and stated they would not have discovered it intuitively. Both observed discovery and stated uncertainty point to wayfinding friction, but the participant did successfully complete the action, indicating recoverable friction rather than a blocker. This matches S5 (noticeable but recoverable) and L2 (hesitation with task completion).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_suncorp_w010",
+        "video_id": "gracieha22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gracieha22",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed difficulty with PDF display contrast and stated need to zoom in to read text comfortably.",
+        "observed_signal": "Participant described wishing for a dark mode option for PDFs and mentioned having to zoom in to make text easier to see.",
+        "stated_signal": "I wish there was a darker version, like as in, uh, white text and, uh, on black background as an option for PDFs, um, as it becomes very glaring, the text, I have to sometimes zoom in to make it so that the text is a bit easier to see.",
+        "rationale": "The participant explicitly stated accessibility friction related to PDF contrast and readability, requiring a workaround (zoom) to make content usable. This is an accessibility barrier that impacts content consumption but does not fully block task completion; the participant was able to proceed with their navigation.",
+        "structural_amplification_note": "Visual accessibility needs (contrast sensitivity, potential low vision) are structurally amplified by high-contrast, high-glare PDF rendering without dark mode options."
+      },
+      {
+        "window_id": "gracieha22_suncorp_w007",
+        "video_id": "gracieha22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gracieha22",
+        "friction_type": "F3",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant opened a PDF document with a bright white background that conflicted with their preferred dark mode usage, creating visual discomfort.",
+        "observed_signal": "Participant opened the PDF policy document and then commented on the brightness and contrast relative to their usual dark mode preference.",
+        "stated_signal": "This is a lot brighter for me. Generally I use dark modes.",
+        "rationale": "The participant expressed discomfort with the visual presentation of the PDF (high brightness without dark mode option), which is an accessibility friction point. The stated concern aligns with the observed action of opening the document and then commenting negatively. While this creates friction for the participant, they did not abandon the task or require intervention, matching S5 and L2 (noticeable but recoverable friction with mild hesitation).",
+        "structural_amplification_note": "Users with light-sensitivity conditions or those dependent on dark-mode accessibility settings experience structurally higher friction when PDFs lack theme customization options."
+      },
+      {
+        "window_id": "gracieha22_suncorp_w007",
+        "video_id": "gracieha22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to navigate within the PDF but was unable to move to other locations, then resorted to reading through the document linearly.",
+        "observed_signal": "Participant stated 'I can't go to the other locations' and indicated they would read through the document instead, suggesting an attempted navigation action failed.",
+        "stated_signal": "I can't go to. The other locations. Um, so I'm just gonna read through it.",
+        "rationale": "The participant expected to navigate to specific locations within the PDF (an expected PDF behaviour) but the interface did not respond as anticipated. They adapted by reading through sequentially instead. This is unexpected behaviour that created a minor detour but did not block task completion, matching S5 and L2.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 15 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=1, S5=13, S6=1. Representative findings: Participant could not locate the emergency response page despite scrolling and attempting to navigate, expressing confusion about the navigation structure. | Participant discovered that horizontal scrolling was required to view additional content but noted they would not have known to scroll unless they discovered it by accident. | Participant expressed difficulty with PDF display contrast and stated need to zoom in to read text comfortably.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "video_id": "rae_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "rae",
+  "total_windows": 84,
+  "duration_sec": 5513.2519999999995,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 50,
+    "by_friction_type": {
+      "F1": 10,
+      "F2": 13,
+      "F3": 7,
+      "F6": 16,
+      "F7": 4
+    },
+    "by_severity": {
+      "S3": 6,
+      "S4": 6,
+      "S5": 38
+    },
+    "by_sentiment": {
+      "E3": 9,
+      "E4": 41
+    },
+    "by_calibrator_score": {
+      "L2": 38,
+      "L3": 12
+    },
+    "signal_alignment_distribution": {
+      "aligned": 48,
+      "stated_missing": 2
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "rae_suncorp_w018",
+        "video_id": "rae_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "rae",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant identified that product disclosure statements are overwhelming and difficult to read, particularly as a low-vision user, and expressed a need for simplified or easy-to-read alternatives.",
+        "observed_signal": "Participant did not attempt to access or read a PDS during this window; instead, they reflected on the general problem of document complexity and accessibility.",
+        "stated_signal": "I know product disclosure statements are, you know, they they have to be what they are, um. But I guess my only thing would be, is there. Um Opportunity to potentially Um, have like a. A easy to read version of a PDS or um. You know, because I know for myself, when they're quite large documents, It can be quite overwhelming. I'm vision impaired, low vision as well, and yes, I've got resources and things that help me with reading, but if there's, you know, if there's ever an opportunity to have things broken down and written more simply to reduce having to do that amount of reading.",
+        "rationale": "The participant articulated a significant comprehension barrier: large, complex product disclosure statements become overwhelming despite having assistive technology resources. The stated friction reflects structural difficulty with jargon and document complexity. This is a component-level barrier to understanding financial hardship support options; the participant can work around it but must expend considerable effort and cognitive load.",
+        "structural_amplification_note": "Low-vision users experience structurally amplified friction with long, dense documents. Even with assistive technology resources, the cognitive load of parsing complex terminology and large documents remains high and contributes to the likelihood of missing critical information about hardship support."
+      },
+      {
+        "window_id": "rae_suncorp_w039",
+        "video_id": "rae_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "rae",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration while browsing through insurance document sections and could not locate information relevant to the financial hardship task.",
+        "observed_signal": "Participant scrolled through general exclusions, coverage details, optional information, and special meanings sections without finding financial hardship or payment support information.",
+        "stated_signal": "It's just so frustrating. Like, very specific topic, like...",
+        "rationale": "The participant actively searched through multiple document sections but could not locate information about financial hardship support, fees for late/missed payments, or hardship options. The explicit statement of frustration combined with the inability to find the required information within the product navigation indicates significant friction with a workaround attempted but unsuccessful within the viewed window.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_suncorp_w051",
+        "video_id": "rae_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "rae",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate relevant information on the website and indicated they would need to resort to consulting the PDS document rather than finding it online.",
+        "observed_signal": "Participant stated they were 'not having much luck' navigating the site, decided to go back to home, considered the home and contents page, but then indicated they would need to look at the PDS again to find the information.",
+        "stated_signal": "I'm not having much luck here. I think I'd probably have to look at the PDS again, to be honest.",
+        "rationale": "The participant was unable to locate information about financial hardship support and fees on the website, expressing frustration and indicating they would need to resort to the PDS document as a workaround. This represents content not found within the online experience and a significant barrier to self-service, as the task explicitly stated a preference to 'sort this out yourself online if possible.' The participant's shift to an external document indicates the pathway was not discoverable.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_suncorp_w067",
+        "video_id": "rae_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "rae",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern about not finding a clear schedule of fees applicable to their financial hardship situation and uncertainty about how long support would be available.",
+        "observed_signal": "Participant navigated through the product but did not locate or reference finding a specific fee schedule or hardship support duration documentation.",
+        "stated_signal": "I'd like to see is there a schedule of fees because I'm on financial hardship, or, you know, how long can I be supported to keep my cover in place.",
+        "rationale": "The participant explicitly stated a need to find specific information (fee schedule and hardship support duration) that they could not locate in the product. This is a content-not-found friction event directly relevant to the task of understanding financial hardship support options. The stated concern combined with no evidence of finding the needed information indicates significant friction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_suncorp_w075",
+        "video_id": "rae_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "rae",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant found no information about fees or penalties for late or missed payments despite scrolling through available content.",
+        "observed_signal": "Participant scrolled down through the FAQ or information section and reviewed content about policy cancellation terms but did not locate fee or penalty information.",
+        "stated_signal": "I didn't say anything about being charged a fee or a penalty.",
+        "rationale": "The participant explicitly stated that fee and penalty information was not available in the content reviewed, which was a key part of the task brief (understanding what fees might apply if payment is late or missed). The participant found related information (cancellation terms) but the specific support element for fees was absent, representing a significant component barrier that was skipped rather than resolved.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 50 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=6, S4=6, S5=38. Representative findings: Participant identified that product disclosure statements are overwhelming and difficult to read, particularly as a low-vision user, and expressed a need for simplified or easy-to-read alternatives. | Participant expressed frustration while browsing through insurance document sections and could not locate information relevant to the financial hardship task. | Participant could not locate relevant information on the website and indicated they would need to resort to consulting the PDS document rather than finding it online.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 50 findings spanning 5 distinct friction types (F6,F2,F1,F3,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F2 Confidence, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F2,F1,F3,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=50 findings across 5 distinct friction types (F6=16, F2=13, F1=10, F3=7, F7=4).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

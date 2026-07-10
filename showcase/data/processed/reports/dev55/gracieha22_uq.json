@@ -1,0 +1,180 @@
+{
+  "video_id": "gracieha22_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "gracieha22",
+  "total_windows": 24,
+  "duration_sec": 1643.76,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 7,
+    "by_friction_type": {
+      "F1": 2,
+      "F4": 2,
+      "F5": 2,
+      "F6": 1
+    },
+    "by_severity": {
+      "S5": 6,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 5
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 6
+    },
+    "signal_alignment_distribution": {
+      "aligned": 6,
+      "stated_missing": 1
+    },
+    "top_severity": "S5",
+    "calibrator_aggregate": "L2",
+    "top_findings": [
+      {
+        "window_id": "gracieha22_uq_w005",
+        "video_id": "gracieha22_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gracieha22",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant was uncertain whether the postgraduate course was offered online or in-person and required clarification from the page content.",
+        "observed_signal": "Participant read the location information and questioned the delivery mode, then self-answered by re-reading the page.",
+        "stated_signal": "Um, I'm a bit confused, so is, is this saying that it's all online, or would I have to go in person?",
+        "rationale": "The participant expressed confusion about the delivery mode, indicating unclear or ambiguous communication of this key course attribute. However, the participant recovered by re-reading the location field ('Saint Lucia') and self-corrected without facilitator intervention, suggesting brief hesitation rather than sustained comprehension failure.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_uq_w005",
+        "video_id": "gracieha22_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gracieha22",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration that the university website lacks depth of information and actionable navigation beyond basic course details.",
+        "observed_signal": "Participant noted the simplicity of the website structure and absence of helpful content or navigation pathways.",
+        "stated_signal": "It's a pretty simple university website, there's nothing, you can go straight to, you can see what you can do, um, Your your events so I assume for upcoming uh things, but there's nothing.",
+        "rationale": "The participant identified missing or hard-to-find information pathways (events, further details beyond basics) and expressed disappointment with the website's limited navigation and content depth. The task continued without abandonment, but the stated frustration and observed critique indicate noticeable friction in discovering substantive information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_uq_w009",
+        "video_id": "gracieha22_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gracieha22",
+        "friction_type": "F5",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unexpected search behaviour where entering 'Business masters' did not return results, requiring clarification that the search requires the actual program name rather than degree type.",
+        "observed_signal": "Participant typed 'Business masters' into the search field, received no results, then tried 'business' and appeared to realize the search interface required a different input approach.",
+        "stated_signal": "So that's not a program. Can I do just business? Search, OK, so I have to search the actual, right, so I can't just do masters, OK.",
+        "rationale": "The participant expected 'Business masters' to be a valid search input but the interface did not return results, creating unexpected behaviour. The participant quickly adjusted their search strategy and recovered, demonstrating noticeable but recoverable friction without blocking task progress. The neutral tone and brief hesitation align with S5 and L2 calibration.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_uq_w011",
+        "video_id": "gracieha22_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gracieha22",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about search functionality, stating that typing 'master of Business' directly did not work as expected and suggested the need for better keyword definition.",
+        "observed_signal": "Participant attempted to search for a specific course ('master of Business') and reported that the search did not function as anticipated.",
+        "stated_signal": "It was a bit confusing. I couldn't just type master of Business. If I know what course I wanna do, I will just type it in. Maybe the keywords being able to define that as well.",
+        "rationale": "The participant stated confusion about search behaviour and suggested that keyword definition was unclear or inadequate. The stated frustration and observed search difficulty both indicate comprehension friction with the search interface. The participant recovered and proceeded with the application process, placing this in the recoverable friction category.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gracieha22_uq_w018",
+        "video_id": "gracieha22_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "gracieha22",
+        "friction_type": "F4",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not determine whether a file upload was in progress because there was no visible progress indicator, leading to uncertainty about the upload status.",
+        "observed_signal": "Participant clicked to upload a document and then questioned whether it had actually uploaded, noting that they would not have known the upload was happening.",
+        "stated_signal": "How would I have known that it was uploading, I wouldn't have known. I would assume it's been done. Um, that's been uploaded... I assume that bar was supposed to move or I'm not sure if it's the dark mode that's causing it to do something with that... some indicator to say, or it's in the process of being uploaded.",
+        "rationale": "The participant's observed hesitation and stated confusion both indicate that the interface did not provide a visible response (expected progress bar or indicator) during the upload action. The participant recovered by assuming the action completed, but the lack of feedback caused brief uncertainty and expressed frustration about the missing affordance.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    },
+    {
+      "category": "severity",
+      "title": "Monitor repeated low-severity friction patterns",
+      "summary": "The session contains 7 low-severity finding-level issues. Individually they are minor, but repetition may still indicate a pattern.",
+      "advice": [
+        "Review whether repeated low-severity findings point to the same underlying issue.",
+        "Combine minor findings into one coaching theme rather than treating each separately.",
+        "Use this as a lower-priority follow-up after higher-severity issues are addressed."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S5/S6",
+      "priority": 2,
+      "evidence_note": "5.1-A severity distribution: S5=6, S6=1. Representative findings: Participant was uncertain whether the postgraduate course was offered online or in-person and required clarification from the page content. | Participant expressed frustration that the university website lacks depth of information and actionable navigation beyond basic course details. | Participant encountered an unexpected search behaviour where entering 'Business masters' did not return results, requiring clarification that the search requires the actual program name rather than degree type.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "low-priority"
+      ]
+    }
+  ]
+}

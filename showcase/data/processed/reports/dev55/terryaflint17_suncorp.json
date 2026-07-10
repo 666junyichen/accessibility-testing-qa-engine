@@ -1,0 +1,259 @@
+{
+  "video_id": "terryaflint17_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "terryaflint17",
+  "total_windows": 73,
+  "duration_sec": 4756.378000000001,
+  "l1": {
+    "flag_counts": {
+      "EXCESSIVE_SILENCE": 38,
+      "LOW_AUDIO_QUALITY": 28,
+      "SPARSE_NARRATION": 15
+    },
+    "total_flags": 81,
+    "flagged_window_ids": [
+      "terryaflint17_suncorp_w001",
+      "terryaflint17_suncorp_w003",
+      "terryaflint17_suncorp_w004",
+      "terryaflint17_suncorp_w005",
+      "terryaflint17_suncorp_w007",
+      "terryaflint17_suncorp_w008",
+      "terryaflint17_suncorp_w009",
+      "terryaflint17_suncorp_w013",
+      "terryaflint17_suncorp_w014",
+      "terryaflint17_suncorp_w015",
+      "terryaflint17_suncorp_w016",
+      "terryaflint17_suncorp_w017",
+      "terryaflint17_suncorp_w023",
+      "terryaflint17_suncorp_w028",
+      "terryaflint17_suncorp_w029",
+      "terryaflint17_suncorp_w030",
+      "terryaflint17_suncorp_w031",
+      "terryaflint17_suncorp_w032",
+      "terryaflint17_suncorp_w033",
+      "terryaflint17_suncorp_w034",
+      "terryaflint17_suncorp_w035",
+      "terryaflint17_suncorp_w036",
+      "terryaflint17_suncorp_w037",
+      "terryaflint17_suncorp_w038",
+      "terryaflint17_suncorp_w039",
+      "terryaflint17_suncorp_w040",
+      "terryaflint17_suncorp_w041",
+      "terryaflint17_suncorp_w042",
+      "terryaflint17_suncorp_w044",
+      "terryaflint17_suncorp_w047",
+      "terryaflint17_suncorp_w048",
+      "terryaflint17_suncorp_w052",
+      "terryaflint17_suncorp_w053",
+      "terryaflint17_suncorp_w054",
+      "terryaflint17_suncorp_w056",
+      "terryaflint17_suncorp_w057",
+      "terryaflint17_suncorp_w059",
+      "terryaflint17_suncorp_w060",
+      "terryaflint17_suncorp_w061",
+      "terryaflint17_suncorp_w062",
+      "terryaflint17_suncorp_w063",
+      "terryaflint17_suncorp_w065",
+      "terryaflint17_suncorp_w066",
+      "terryaflint17_suncorp_w067",
+      "terryaflint17_suncorp_w068",
+      "terryaflint17_suncorp_w069",
+      "terryaflint17_suncorp_w070",
+      "terryaflint17_suncorp_w071",
+      "terryaflint17_suncorp_w072"
+    ],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 1,
+    "dominant_cluster_pct": 1.0,
+    "cluster_distribution": {
+      "1": 73
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 22,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 4,
+      "F4": 1,
+      "F6": 13
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 3,
+      "S4": 3,
+      "S5": 14
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L2": 14,
+      "L3": 6,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 22
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "terryaflint17_suncorp_w051",
+        "video_id": "terryaflint17_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find information about financial hardship support on the website and abandoned the search after checking multiple pages.",
+        "observed_signal": "Participant navigated through several pages (emergency response, claims, weather events, payments), then stated intention to stop and go back, indicating no relevant content was located.",
+        "stated_signal": "Never gave me information on financial hardship. With the URL shakes me there, I don't I'm gonna do that, I'm gonna go back. And there was nothing It's on the Amy web page.",
+        "rationale": "The participant explicitly stated that the required information on financial hardship was not found anywhere on the website despite checking multiple sections. The stated frustration aligns with the observed behaviour of cycling through unrelated pages and then abandoning the search. This is a blocker because the primary task outcome (finding financial hardship support information) was not achieved independently.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_suncorp_w000",
+        "video_id": "terryaflint17_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant did not proceed with exploring the insurer's website for financial hardship support and instead decided to use Google as an external search mechanism.",
+        "observed_signal": "Participant read aloud from what appears to be marketing or navigation text, then stated 'first thing, we go to Google' rather than navigating within the product to find the relevant support information.",
+        "stated_signal": "Want to know what I wanna I wanna know what they cover. For home and contents. That sounds like that's what this. Alright, so what we do, first thing, we go to Google.",
+        "rationale": "The participant could not locate or was not confident in finding financial hardship information within the insurer's website and chose to resort to an external search tool (Google) as a workaround. This indicates that the required pathway was not found or was not discoverable enough to keep the participant within the product flow, making this a component task blocker that required external intervention.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_suncorp_w043",
+        "video_id": "terryaflint17_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "terryaflint17",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant's internet connection failed during the task, causing content to disappear and interrupting progress.",
+        "observed_signal": "Participant was navigating content, attempted to go back to review information, and then reported that content disappeared from the screen.",
+        "stated_signal": "Oh, my internet is dreadful, dreadful storm.",
+        "rationale": "The participant observed a loss of interface response (content disappeared) and attributed it to internet failure. This is an unresponsive interface event caused by environmental factors beyond the product. The participant expressed frustration and was unable to continue the task flow, fitting S3 (significant component failure).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_suncorp_w070",
+        "video_id": "terryaflint17_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find a direct pathway to financial hardship information and defaulted to using the virtual assistant because no other option was apparent.",
+        "observed_signal": "Participant stated they looked for someone (staff/contact option) to help, could not find them, and then decided they would have to ask the virtual assistant instead.",
+        "stated_signal": "It looks like I have to ask the virtual assistant cos I can't find anyone.",
+        "rationale": "The participant explicitly stated inability to locate the required information pathway (financial hardship support/contact options) and resorted to a fallback (virtual assistant) rather than finding the intended self-service route. The statement and observed resignation to the fallback both indicate significant friction; the component task of finding financial hardship information was not completed via the preferred pathway, matching the S3 gate (significant component failure or barrier worked around).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_suncorp_w072",
+        "video_id": "terryaflint17_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot access fee or excess information without obtaining a quote, and expresses disappointment that this information is not readily available upfront.",
+        "observed_signal": "Participant searched for information about excess and fees, encountered a quote requirement, and expressed that the information should be available without that step.",
+        "stated_signal": "So you're not gonna tell me till I make a, get a quote, I'd say. That's very disappointing. And should be readily available, just have him sit up.",
+        "rationale": "The participant needed to understand fees and excess information as part of the financial hardship task but could not locate this information without a quote gate. The stated disappointment and observed inability to access the required content without proceeding through an intermediate step represent significant friction that blocks the direct self-service path the participant preferred.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "poor",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "recording unusable"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality limits reliable downstream analysis",
+      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "advice": [
+        "Treat this session as low-confidence evidence.",
+        "Improve recording setup and audio checks before the next session begins.",
+        "Consider excluding this session from analyses that require detailed behavioural evidence."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "poor",
+      "priority": 5,
+      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "tags": [
+        "recording",
+        "reliability",
+        "analysis-risk"
+      ]
+    },
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 22 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=3, S4=3, S5=14. Representative findings: Participant could not find information about financial hardship support on the website and abandoned the search after checking multiple pages. | Participant did not proceed with exploring the insurer's website for financial hardship support and instead decided to use Google as an external search mechanism. | Participant's internet connection failed during the task, causing content to disappear and interrupting progress.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 4 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 22 findings spanning 4 distinct friction types (F6,F1,F2,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F1 Comprehension, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F1,F2,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=22 findings across 4 distinct friction types (F6=13, F1=4, F2=4, F4=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

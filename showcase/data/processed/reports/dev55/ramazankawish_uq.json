@@ -1,0 +1,218 @@
+{
+  "video_id": "ramazankawish_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "ramazankawish",
+  "total_windows": 104,
+  "duration_sec": 7260.075,
+  "l1": {
+    "flag_counts": {
+      "LOW_AUDIO_QUALITY": 2
+    },
+    "total_flags": 2,
+    "flagged_window_ids": [
+      "ramazankawish_uq_w060",
+      "ramazankawish_uq_w061"
+    ],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 0.9807692307692307,
+    "cluster_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 102
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 78,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 32,
+      "F3": 4,
+      "F4": 14,
+      "F5": 6,
+      "F6": 12,
+      "F7": 6
+    },
+    "by_severity": {
+      "S1": 3,
+      "S2": 4,
+      "S3": 3,
+      "S4": 20,
+      "S5": 48
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 4,
+      "E4": 72,
+      "E5": 1
+    },
+    "by_calibrator_score": {
+      "L2": 48,
+      "L3": 23,
+      "L4": 4,
+      "L5": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 77,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "ramazankawish_uq_w083",
+        "video_id": "ramazankawish_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ramazankawish",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to log in but the action failed repeatedly, preventing task progression.",
+        "observed_signal": "Participant initiated a login action that did not complete successfully; the action was repeated without success.",
+        "stated_signal": "Why it doesn't work. Oh my gosh. I don't know why it didn't work again. No way",
+        "rationale": "The participant explicitly stated frustration twice ('I don't know why it didn't work again') and the login action produced no visible success response. The repeated failure prevented access to the system needed to begin the task, blocking the primary project outcome. Strong negative emotion (E5) and blocking severity (L5) reflect inability to proceed independently.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_uq_w088",
+        "video_id": "ramazankawish_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ramazankawish",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to sign in with provided credentials and could not proceed with the task.",
+        "observed_signal": "Participant attempted to sign in multiple times with provided IDs but was unable to access the system.",
+        "stated_signal": "I was not able to do this part. The reason is I cannot sign in. I met the few of them IDs and stuff, um, but it didn't work. Um, so I was completely blocked.",
+        "rationale": "The participant explicitly stated sign-in failure and reported being 'completely blocked.' The observed inability to authenticate prevented task initiation. This is a project-level blocker where the primary objective could not be achieved independently, matching S1 and L5 (blocking; task not completed).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_uq_w100",
+        "video_id": "ramazankawish_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant stated they could not find task details and are blocked from proceeding with the assigned task.",
+        "observed_signal": "Participant expressed inability to locate task details and stated they cannot proceed; they then pivoted to exploring a different section (feedback form) instead of completing the assigned task.",
+        "stated_signal": "I'm not able to um to find it. The task details here, so I cannot do it. I'm blocked, uh, I cannot, uh, proceed.",
+        "rationale": "The participant explicitly stated they cannot find the task details and cannot proceed, indicating the primary project outcome (discovering information on postgraduate courses) cannot be achieved independently. The participant abandoned the assigned task pathway, meeting the S1 blocker and L5 gate definition.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_uq_w041",
+        "video_id": "ramazankawish_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ramazankawish",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unresponsive application button labeled 'Incomplete application' that did not respond to clicks, blocking progress.",
+        "observed_signal": "Participant clicked on the application completion button multiple times with no visible response or state change.",
+        "stated_signal": "I cannot go to the application to complete it because it says um. Incomplete application. I click anywhere it doesn't work. What should I do here?",
+        "rationale": "The participant's clicks produced no visible response or feedback, and the participant explicitly stated the button 'doesn't work' and asked for guidance. Both observed behaviour (repeated clicking with no result) and stated signal (confusion and helplessness) confirm an unresponsive interface blocking task progression. The participant cannot proceed independently without external intervention or product fix.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_uq_w046",
+        "video_id": "ramazankawish_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ramazankawish",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a failed login or account creation attempt and expressed frustration about needing to retry or create a new account.",
+        "observed_signal": "Participant attempted to log in or create an account, re-entered a password, and reported that the action did not succeed.",
+        "stated_signal": "I think I know what is wrong here. Hopefully this time it works. I'll redo the password as well, ah. Islam it should work. If it doesn't work, I have to make another ID. That's it. It didn't work.",
+        "rationale": "The participant's stated signals and observed behaviour both indicate an interface that failed to respond correctly to a login or account creation action. The participant expressed anticipation of success, took corrective action (redo password), but the system still did not respond as expected. This blocks access to the task workflow and requires either facilitator intervention or account recreation, fitting S2 (task blocker on account access).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 78 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=3, S2=4, S3=3, S4=20, S5=48. Representative findings: Participant attempted to log in but the action failed repeatedly, preventing task progression. | Participant was unable to sign in with provided credentials and could not proceed with the task. | Participant stated they could not find task details and are blocked from proceeding with the assigned task.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 78 findings spanning 7 distinct friction types (F2,F4,F6,F5,F7,F1,F3). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F4 Unresponsive, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F4,F6,F5,F7,F1,F3",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=78 findings across 7 distinct friction types (F2=32, F4=14, F6=12, F5=6, F7=6, F1=4, F3=4).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

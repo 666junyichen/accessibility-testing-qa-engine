@@ -1,0 +1,210 @@
+{
+  "video_id": "ramazankawish_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "ramazankawish",
+  "total_windows": 77,
+  "duration_sec": 5204.459000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 2,
+    "dominant_cluster_pct": 1.0,
+    "cluster_distribution": {
+      "2": 77
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 34,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 12,
+      "F4": 1,
+      "F5": 2,
+      "F6": 9,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 1,
+      "S4": 2,
+      "S5": 27,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 16,
+      "E4": 18
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 25,
+      "L3": 3,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 32,
+      "stated_missing": 2
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "ramazankawish_wa_w019",
+        "video_id": "ramazankawish_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant raised concern that people experiencing coercive control without phone or internet access cannot contact support services through the available pathways.",
+        "observed_signal": "Participant articulated a critical accessibility gap during exploration, noting that vulnerable populations lacking device access are blocked from contacting support.",
+        "stated_signal": "If a person is experiencing coercive control, doesn't have access to the phone or internet, these sort of things, it's really hard for them to contact themselves.",
+        "rationale": "The participant identified that the information pathways and support contact mechanisms are fundamentally inaccessible to a primary user group (people experiencing domestic violence without device access). This is a blocker for the vulnerable population this service is designed to serve, matching the S1/L5 gate where the project outcome cannot be achieved for a core user segment.",
+        "structural_amplification_note": "Structurally blocks access for people experiencing domestic violence who have had internet or phone access restricted as a form of coercive control—the exact population most in need of this resource."
+      },
+      {
+        "window_id": "ramazankawish_wa_w003",
+        "video_id": "ramazankawish_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant decided to leave the website and use Google instead to search for domestic violence information, indicating the current page did not meet their information-seeking needs.",
+        "observed_signal": "Participant stated they would go to Google to search for domestic violence information rather than continue exploring the current website.",
+        "stated_signal": "If I'm the person, I will go to Google most of the time I'm doing, and then type there um. How to get information. Information. About Domestic violence.",
+        "rationale": "The participant could not locate or did not find sufficient relevant pathways on the current website to address their stated need (finding trustworthy information about domestic violence support). The decision to abandon the site and use an external search engine (Google) indicates a component task—finding appropriate information on the current page—was blocked, requiring external workaround. This matches S2 and L4 criteria.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_wa_w019",
+        "video_id": "ramazankawish_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the website lacks a visible phone number for domestic violence support, requiring external search knowledge and language proficiency to access critical helpline information.",
+        "observed_signal": "Participant explored the page and noted the absence of a phone number, then stated that finding support helplines requires searching externally and possessing technology and English knowledge.",
+        "stated_signal": "There is no phone number to be called. When you search for domestic violence helpline, then there is a number you can find it, but you have to have a bit of technology knowledge and also some English knowledge to understand those things.",
+        "rationale": "The participant observed that critical support contact information (phone number) was not found on the page and required external searching. The stated concern and observed barrier both indicate that a person seeking immediate help would not locate this pathway independently, representing a significant component failure for users in crisis or with limited digital literacy.",
+        "structural_amplification_note": "This barrier is structurally amplified for ESL users and those with low technology literacy who need immediate crisis support but cannot access external search or comprehend English-language instructions."
+      },
+      {
+        "window_id": "ramazankawish_wa_w010",
+        "video_id": "ramazankawish_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ramazankawish",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified content on coercive control but expressed concern about the safety implications of calling authorities, indicating uncertainty about what help-seeking pathway is safe and appropriate.",
+        "observed_signal": "Participant stated 'Now I want to look for how to get help and help my neighbor in a safe way' and expressed worry that 'if I call the authorities to seek help, and then the husband finds out it's going to get worse before the help arrives. Something bad will happen to her.'",
+        "stated_signal": "I want to look for how to get help and help my neighbor in a safe way. If I call the authorities and the husband finds out, it will get worse before help arrives.",
+        "rationale": "The participant understands the coercive control situation but is uncertain which action pathway is safe and appropriate, creating decision friction. Both observed concern about escalation risk and stated worry about the consequences of calling authorities align on high friction. This matches S4 because it represents significant difficulty in choosing a safe intervention pathway that materially affects next steps, without complete task blockage.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ramazankawish_wa_w075",
+        "video_id": "ramazankawish_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "ramazankawish",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the feedback page and struggled to find domestic violence information on the page.",
+        "observed_signal": "Participant searched the page, mentioned looking for a feedback page and domestic violence content, considered clicking 'court safe' as an alternative pathway, and looked for options at the end of headings.",
+        "stated_signal": "I'm struggling to find the feedback page, to be honest. Do we have domestic violence here? ... I think at the end of each headline headings there is. Um, An option to put your feet back. No, actually it's not.",
+        "rationale": "The participant explicitly stated difficulty finding the feedback page and domestic violence information. Observed behaviour shows active searching and uncertainty about navigation patterns (looking for options at the end of headings). Both stated frustration and searching behaviour indicate significant friction with multiple failed attempts to locate information.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 34 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=1, S4=2, S5=27, S6=2. Representative findings: Participant raised concern that people experiencing coercive control without phone or internet access cannot contact support services through the available pathways. | Participant decided to leave the website and use Google instead to search for domestic violence information, indicating the current page did not meet their information-seeking needs. | Participant identified that the website lacks a visible phone number for domestic violence support, requiring external search knowledge and language proficiency to access critical helpline information.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 34 findings spanning 6 distinct friction types (F2,F6,F1,F5,F7,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F6 Not Found, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F6,F1,F5,F7,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=34 findings across 6 distinct friction types (F2=12, F6=9, F1=8, F5=2, F7=2, F4=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

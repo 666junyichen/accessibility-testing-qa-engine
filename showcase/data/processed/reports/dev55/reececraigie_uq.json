@@ -1,0 +1,183 @@
+{
+  "video_id": "reececraigie_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "reececraigie",
+  "total_windows": 62,
+  "duration_sec": 4117.097,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 20,
+    "by_friction_type": {
+      "F1": 3,
+      "F2": 9,
+      "F4": 1,
+      "F5": 1,
+      "F6": 6
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 1,
+      "S5": 16,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 17
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 16,
+      "L3": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 20
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "reececraigie_uq_w056",
+        "video_id": "reececraigie_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reececraigie",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unexpected redirect to a login portal when clicking a technical support link, which blocked access because they did not have an account yet.",
+        "observed_signal": "Participant clicked on a technical support link, was redirected to a login portal, expressed confusion about why this happened, and stated they hit a dead end.",
+        "stated_signal": "But I don't have an account yet. Why is it doing that? I've hit a dead end there.",
+        "rationale": "The participant's observed behaviour shows they encountered an unexpected redirect and their stated confusion confirms the mismatch between what they expected (a support pathway open to prospective students) and what actually occurred (a login requirement). The participant had to abandon this path and find an alternative, indicating a significant component barrier that required workaround.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_uq_w061",
+        "video_id": "reececraigie_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration about difficulty locating contact information on university websites, describing a pattern where contact options are hidden or deprioritized behind online processes.",
+        "observed_signal": "Participant closed the task window and made a concluding statement about the website experience.",
+        "stated_signal": "We do a lot of, I think there's just a culture of hiding people to contact us, that's what it feels like as a user of many sites... It's like do it online and contact us at the last, at the last, at the last resort... Surely if you've registered an account, it should be pretty, you should get pretty quick access to this stuff.",
+        "rationale": "The participant could not locate or access contact pathways easily and expressed clear frustration about this design pattern across multiple sites. The stated signal directly aligns with the observed signal of task conclusion; the participant identified a significant barrier to information discovery (contact options) that required workaround or resignation. This represents a component task failure (finding contact information) that was skipped or abandoned.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_uq_w006",
+        "video_id": "reececraigie_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the University of Queensland on the first page of Google search results and had to navigate to page two without success.",
+        "observed_signal": "Participant conducted a Google search, reviewed results on the first page listing other universities (Swinburne, RMIT, University of Southern Queensland, University of the Sunshine Coast, Griffith University, Charles Sturt), then moved to page two but still could not find University of Queensland.",
+        "stated_signal": "University of Queensland is not appearing on the first page. I'm on page two of a Google search, I cannot find University of Queensland.",
+        "rationale": "The participant explicitly stated the target university was not appearing in search results and demonstrated multiple search attempts across pages without locating it. The observed behaviour (searching, navigating to page two, continuing to search) and stated frustration ('I cannot find University of Queensland') both indicate significant friction in content discovery. This represents a detour that materially slows progress toward the task objective of discovering postgraduate course information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_uq_w004",
+        "video_id": "reececraigie_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant noticed search results were showing primarily New South Wales universities instead of Queensland universities, which was not aligned with the task context of exploring University of Queensland.",
+        "observed_signal": "Participant scrolled through search results, noted University of New South Wales appearing prominently, and explicitly stated awareness that results were not focused on University of Queensland despite the task being framed around that institution.",
+        "stated_signal": "I'm only seeing New South Wales schools. Um, You know, I guess the University of Queensland, you know, for me, being organic in this sense and understanding that this is for the University of Queensland. Perhaps I, I am not seeing...",
+        "rationale": "The participant observed and verbally acknowledged that the search results did not surface the expected institution (University of Queensland) prominently enough. The participant did not abandon the task but expressed mild frustration about the misalignment between expected and actual results. This represents a brief orientation issue that was recognized but recovery remained possible.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_uq_w015",
+        "video_id": "reececraigie_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate Aboriginal support information prominently displayed on the website and had to search for it after self-identification.",
+        "observed_signal": "Participant browsed the page and noted the absence of visible Aboriginal support highlights, stating it should be 'front and center' rather than hidden behind a self-identification step.",
+        "stated_signal": "I couldn't see anything in terms of the Aboriginal supports or units that may be available. Things like this could be front and center opposed to, you know, once people self-identify, then it's an offering.",
+        "rationale": "The participant identified a gap in content discoverability—Aboriginal support information is not readily visible without active searching or self-identification. This represents a wayfinding and content access friction event. The participant expressed mild frustration about the design choice (burying support behind self-identification), indicating a usability concern relevant to prospective student discovery.",
+        "structural_amplification_note": "This finding may disproportionately affect Indigenous prospective students who seek up-front visibility of culturally relevant support services as a key decision factor in university selection."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 20 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=1, S5=16, S6=1. Representative findings: Participant encountered an unexpected redirect to a login portal when clicking a technical support link, which blocked access because they did not have an account yet. | Participant expressed frustration about difficulty locating contact information on university websites, describing a pattern where contact options are hidden or deprioritized behind online processes. | Participant could not locate the University of Queensland on the first page of Google search results and had to navigate to page two without success.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 20 findings spanning 5 distinct friction types (F2,F6,F1,F4,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F6 Not Found, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F6,F1,F4,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=20 findings across 5 distinct friction types (F2=9, F6=6, F1=3, F4=1, F5=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

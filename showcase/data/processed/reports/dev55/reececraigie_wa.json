@@ -1,0 +1,206 @@
+{
+  "video_id": "reececraigie_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "reececraigie",
+  "total_windows": 81,
+  "duration_sec": 5452.557,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 34,
+    "by_friction_type": {
+      "F1": 12,
+      "F2": 12,
+      "F4": 1,
+      "F5": 4,
+      "F6": 4,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 2,
+      "S4": 1,
+      "S5": 27,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 20,
+      "E4": 14
+    },
+    "by_calibrator_score": {
+      "L1": 6,
+      "L2": 24,
+      "L3": 3,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 31,
+      "stated_missing": 3
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "reececraigie_wa_w005",
+        "video_id": "reececraigie_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the assigned page exploration task and instead used Google search to find welfare check information, demonstrating that the Family and Domestic Violence page did not contain or clearly surface the specific information pathway they were seeking.",
+        "observed_signal": "Participant stated they were looking for welfare check information, then opened Chrome and used Google search with the query 'Welfare check Western Australia' rather than continuing to explore the assigned page.",
+        "stated_signal": "I'm just organically, I'm looking for welfare check. Um, and I'm looking at what's popping up in my automated Google search. I am using Chrome, and I do trust Google for these things.",
+        "rationale": "The participant could not locate or did not find the welfare check pathway within the assigned page exploration task and resolved this by switching to an external search engine. Both observed behaviour (leaving the page) and stated signal (explicitly stating preference for Google search) indicate the required information pathway was not accessible through the intended interface. This represents a component task blocker requiring external workaround, matching S2 and L4 severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_wa_w017",
+        "video_id": "reececraigie_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified missing functionality for reporting concerns about family members or neighbors experiencing coercive control, noting the absence of a reporting pathway.",
+        "observed_signal": "Participant clicked on 'helplines and support services', reviewed the content, and explicitly stated that a reporting mechanism for third-party concerns about coercive control was not available.",
+        "stated_signal": "I haven't found it yet. I have witnessed coercive control... I want to report instances of coercive control... I think there needs to be something like, if you're worried about a family member, you're worried about a neighbor or something.",
+        "rationale": "The participant actively searched the helplines and support services section but could not locate a third-party reporting pathway for coercive control. Both observed behaviour (unsuccessful search through available content) and stated signal (explicit articulation of missing functionality) indicate content was not found. This represents a significant barrier to a potential use case, though the participant recovered by articulating the gap rather than abandoning the task.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_wa_w061",
+        "video_id": "reececraigie_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reececraigie",
+        "friction_type": "F7",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed dissatisfaction with the condensed layout of navigation elements at the top of the page and decided to close the task.",
+        "observed_signal": "Participant reviewed the WA Police drop-down menu, Search for family near you drop-down menu, and Aboriginal and Torres Strait Islanders section, then stated they were going to close off the task.",
+        "stated_signal": "it's more condensed in that top end, that's just scraping the barrel. With that being said, I'm going to close off this task, thank you.",
+        "rationale": "The participant observed excessive condensation of navigation elements and decided to abandon the exploration task rather than continue. Both stated frustration ('scraping the barrel') and observed task abandonment indicate significant friction with the page layout and navigation structure, meeting the S3 gate (significant component failure or barrier skipped).",
+        "structural_amplification_note": "As an Aboriginal consultant, the participant may have been particularly attuned to the representation and navigation of culturally relevant sections (Aboriginal and Torres Strait Islanders), and the condensed layout of these pathways created a barrier to meaningful exploration."
+      },
+      {
+        "window_id": "reececraigie_wa_w008",
+        "video_id": "reececraigie_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reececraigie",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about what information pathway to take after learning about restrictions, indicating need for guidance on next steps.",
+        "observed_signal": "Participant stated they would call the number to ask for guidance on which route to take, expressing concern about where disclosures and reports go and what outcomes they lead to.",
+        "stated_signal": "I would need more education on this stuff. I would call this number and say, look, this has been disclosed to me, which route should I go? I want it to be on record, I want it to be reported. Where do these things go?",
+        "rationale": "The participant understood the content but expressed significant uncertainty about what action to take next and where disclosure/reporting processes lead. The stated need to call for clarification and the repeated question about routing ('which route should I go?', 'where do these things go?') indicates confidence friction requiring external intervention to proceed confidently. This matches S4 (major difficulty slowing progress) and L3 (struggle and frustration before recovery).",
+        "structural_amplification_note": "As an Aboriginal consultant exploring support pathways for vulnerable populations, the participant's need for clarity on reporting routes and case outcomes reflects genuine systemic uncertainty that may be amplified for vulnerable users unfamiliar with institutional processes."
+      },
+      {
+        "window_id": "reececraigie_wa_w002",
+        "video_id": "reececraigie_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "reececraigie",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about the plain-English clarity of terminology used on the page, specifically questioning whether 'coercive' is appropriately accessible for the target audience.",
+        "observed_signal": "Participant stated that 'coercive is not a plain...is not a plain English term' and described it as 'quite advanced' when assessing its effectiveness in encouraging victims to seek help.",
+        "stated_signal": "Coercive is not a plain English term. I think it is quite advanced if we're looking at really getting people to come up, come out and say, hey, I'm a victim.",
+        "rationale": "The participant identified a comprehension barrier: the term 'coercive' is not plain English and creates an accessibility gap for the intended audience of people experiencing domestic violence. The participant recovered by understanding the concept through context (psychological control example), but the friction stems from the initial terminology choice creating unnecessary cognitive load for vulnerable users.",
+        "structural_amplification_note": "ESL speakers and people in crisis or high stress may experience structurally amplified friction from advanced terminology, as cognitive resources are already depleted and plain language is critical for safety resource accessibility."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 34 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=2, S4=1, S5=27, S6=3. Representative findings: Participant abandoned the assigned page exploration task and instead used Google search to find welfare check information, demonstrating that the Family and Domestic Violence page did not contain or clearly surface the specific information pathway they were seeking. | Participant identified missing functionality for reporting concerns about family members or neighbors experiencing coercive control, noting the absence of a reporting pathway. | Participant expressed dissatisfaction with the condensed layout of navigation elements at the top of the page and decided to close the task.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 34 findings spanning 6 distinct friction types (F1,F2,F5,F6,F4,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F5 Unexpected) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F5,F6,F4,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=34 findings across 6 distinct friction types (F1=12, F2=12, F5=4, F6=4, F4=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

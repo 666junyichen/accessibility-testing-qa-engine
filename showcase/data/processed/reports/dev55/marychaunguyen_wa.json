@@ -1,0 +1,209 @@
+{
+  "video_id": "marychaunguyen_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "marychaunguyen",
+  "total_windows": 64,
+  "duration_sec": 4562.3859999999995,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 43,
+    "by_friction_type": {
+      "F1": 15,
+      "F2": 7,
+      "F3": 13,
+      "F4": 3,
+      "F5": 1,
+      "F6": 3,
+      "F7": 1
+    },
+    "by_severity": {
+      "S1": 2,
+      "S3": 5,
+      "S4": 9,
+      "S5": 26,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 13,
+      "E4": 24,
+      "none": 6
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 25,
+      "L3": 14,
+      "L5": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 35,
+      "conflicted": 1,
+      "stated_missing": 7
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "marychaunguyen_wa_w013",
+        "video_id": "marychaunguyen_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": null,
+        "calibrator_score_l": "L5",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered a corrupted or scrambled transcript output that made it impossible to identify coherent navigation actions or pathway exploration on the Family and Domestic Violence page.",
+        "observed_signal": "The transcript window contains fragmented text including repeated 'exit' commands, partial menu button references, and overlapping audio transcription artifacts that do not form a coherent narrative of the participant's actions.",
+        "stated_signal": null,
+        "rationale": "The transcript is unintelligible and does not contain extractable evidence of the participant's observed behaviour or stated reasoning. Without a readable transcript, the task objective (exploring pathways and explaining navigation choices) cannot be assessed. This appears to be a data capture or transcription failure rather than user friction, but it blocks any valid finding extraction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "marychaunguyen_wa_w046",
+        "video_id": "marychaunguyen_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": null,
+        "calibrator_score_l": "L5",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered severely degraded or corrupted transcript content that prevented coherent understanding of their navigation choices and reasoning.",
+        "observed_signal": "The transcript window contains predominantly garbled, fragmented, and nonsensical text output (e.g., 'Wink is external, blink, bullet', repeated 'wink' strings, partial phone numbers, page number fragments) that does not reflect coherent user speech or screen reader output.",
+        "stated_signal": "The participant's actual statement cannot be reliably extracted from the transcript window due to pervasive corruption.",
+        "rationale": "The transcript is too corrupted to extract meaningful friction evidence about the participant's actual experience. This appears to be a data capture or transcription failure rather than a user-facing product friction. The window does not contain sufficient valid content to assess whether the participant successfully completed the task of exploring information pathways.",
+        "structural_amplification_note": "If this corruption is representative of how the platform outputs content to screen readers or other assistive technology, it would represent a critical accessibility breakdown for AT users."
+      },
+      {
+        "window_id": "marychaunguyen_wa_w023",
+        "video_id": "marychaunguyen_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": null,
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered multiple 'link not found' errors while exploring the content pathway.",
+        "observed_signal": "Participant's screen reader announced 'link not found' multiple times as the participant attempted to navigate through various sections and in-page links on the coercive control and helplines pages.",
+        "stated_signal": null,
+        "rationale": "The repeated 'link not found' announcements indicate that expected navigation pathways or resources were unavailable or broken. This prevented the participant from following intended information pathways and represents a significant barrier to content discovery and task completion.",
+        "structural_amplification_note": "Screen-reader user was unable to detect the presence or absence of links through visual feedback alone, making 'link not found' errors more disorienting and harder to work around than for sighted users."
+      },
+      {
+        "window_id": "marychaunguyen_wa_w026",
+        "video_id": "marychaunguyen_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user encountered non-functional touch interaction on the Family and Domestic Violence page, with VoiceOver unable to recognize or pick up interactive elements.",
+        "observed_signal": "Participant placed fingers around the screen to activate VoiceOver, heard repeated 'ding' sounds indicating no recognition of interactive content, and experienced failure to access page elements.",
+        "stated_signal": "I'm having the same issue here, so I put my fingers around the screen, as you can hear, ding ding ding, that means it's not recognizing or picking up anything that doesn't work for me.",
+        "rationale": "The participant's VoiceOver gestures failed to activate any interactive elements on the page, confirmed by both the auditory feedback (repeated dings) and explicit statement that nothing was recognized. This accessibility barrier prevented normal interaction with the content, representing significant friction on a core exploration task.",
+        "structural_amplification_note": "Screen reader and touch gesture reliance made this accessibility failure particularly severe for this blind or low-vision user; the page's failure to respond to standard VoiceOver interactions blocked the primary navigation pathway."
+      },
+      {
+        "window_id": "marychaunguyen_wa_w048",
+        "video_id": "marychaunguyen_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "marychaunguyen",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": null,
+        "calibrator_score_l": "L3",
+        "signal_alignment": "stated_missing",
+        "finding": "Participant encountered garbled, fragmented text output that made the coercive control content difficult to parse and understand.",
+        "observed_signal": "Participant read aloud severely malformed text with incomplete sentences, repetitive fragments, missing words, and broken list structures (e.g., 'lists up', 'List.', 'Listart', incomplete phone numbers like '1,800-18', 'www.b. refresh button').",
+        "stated_signal": null,
+        "rationale": "The transcript shows systematic text degradation affecting comprehension of critical safety information (coercive control definitions, helpline numbers, support resources). Although the participant continued reading without explicit complaint, the observed garbling of content structure, phone numbers, and website addresses creates a severe barrier to understanding and action. This represents significant component failure that may prevent users from accessing help resources correctly.",
+        "structural_amplification_note": "This friction is structurally amplified for screen reader users and those with cognitive accessibility needs, as the malformed list markers ('List.', 'list up', 'Listart') and fragmented sentence structure would create additional parsing difficulty."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 43 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=2, S3=5, S4=9, S5=26, S6=1. Representative findings: Participant encountered a corrupted or scrambled transcript output that made it impossible to identify coherent navigation actions or pathway exploration on the Family and Domestic Violence page. | Participant encountered severely degraded or corrupted transcript content that prevented coherent understanding of their navigation choices and reasoning. | Participant encountered multiple 'link not found' errors while exploring the content pathway.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 43 findings spanning 7 distinct friction types (F1,F3,F2,F4,F6,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F3 Accessibility, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F3,F2,F4,F6,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=43 findings across 7 distinct friction types (F1=15, F3=13, F2=7, F4=3, F6=3, F5=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "video_id": "laurenrosemetzler_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "laurenrosemetzler",
+  "total_windows": 57,
+  "duration_sec": 3813.196,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 36,
+    "by_friction_type": {
+      "F1": 13,
+      "F2": 9,
+      "F3": 3,
+      "F4": 2,
+      "F5": 3,
+      "F6": 2,
+      "F7": 4
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 1,
+      "S4": 2,
+      "S5": 29,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 34
+    },
+    "by_calibrator_score": {
+      "L1": 3,
+      "L2": 29,
+      "L3": 3,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 36
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "laurenrosemetzler_uq_w051",
+        "video_id": "laurenrosemetzler_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant entered an incorrect password and could not proceed because there was no visible forgot password option or password visibility toggle.",
+        "observed_signal": "Participant attempted to log in, received a password error message, and stated uncertainty about how to recover from the error or verify their typing.",
+        "stated_signal": "Looks like my password is incorrect. And I don't even remember my password at this point. So, um, maybe if I had a prompt that says forgot password, that would be very helpful, um, to take me to a forgot password page, um, because oftentimes I create passwords and forget them. Um, And then also, if I can again have my passport, have an icon um where I can see, I can switch to seeing what the, what I'm typing in my password, because oftentimes I type out the wrong thing, and it takes me a while to figure it out.",
+        "rationale": "The participant clearly stated the absence of a forgot password prompt and lack of a password visibility toggle, both of which prevented task progression. The observed attempt to log in combined with the stated frustration about missing recovery and verification options indicates confidence friction blocking the component task. This is S2 severity because the overall project objective (discovering postgraduate course information) cannot proceed without authentication.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_uq_w030",
+        "video_id": "laurenrosemetzler_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot differentiate between similar master's program titles and cannot access detailed information to compare them before applying.",
+        "observed_signal": "Participant searched for 'master of Business', found results, but stated there is no way to click into the results to see details about what each program entails versus similar programs like master of business administration.",
+        "stated_signal": "There's no way for me to click into this to see more about what master business entails versus master business administration.",
+        "rationale": "The participant explicitly identified that critical information needed to make an informed enrollment decision is not accessible from the search results. The inability to compare program offerings before applying represents a significant barrier to the task objective of determining which university program is right for the user. The participant expressed frustration and had to backtrack, indicating a worked-around component failure.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_uq_w025",
+        "video_id": "laurenrosemetzler_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant entered a password multiple times but received no feedback on why the entries were rejected, and requested a password visibility toggle to debug the mismatch.",
+        "observed_signal": "Participant typed a password, received a 'password doesn't match' error, re-entered it multiple times with frustration, and expressed a wish for a visibility icon to see what was being entered.",
+        "stated_signal": "My password doesn't match. What the heck? How the heck am I putting that in wrong? I wish they had that little icon, eye icon, so I could actually see how I'm putting it in wrong.",
+        "rationale": "The participant's repeated password entry attempts produced only an error message without diagnostic feedback or a mechanism to verify input. Both the observed repeated attempts and stated frustration indicate that the interface failed to provide responsive guidance to resolve the mismatch, creating significant friction requiring multiple recovery cycles.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "laurenrosemetzler_uq_w026",
+        "video_id": "laurenrosemetzler_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant struggled with password entry visibility and could not verify their input, making it difficult to confirm whether spelling mistakes were made.",
+        "observed_signal": "Participant repeatedly attempted password entry, expressed confusion about the current state, and stated difficulty with the lack of a visibility toggle.",
+        "stated_signal": "What the heck? How's that's still not the same. I would like to have an eye icon here so I could switch into seeing the password. Cause this is something I actually really struggle with is if I make a mistake in spelling, um, sometimes I can't remember or maybe I don't even see it or know that I've made a mistake.",
+        "rationale": "The participant explicitly requested an accessibility feature (password visibility toggle) that would help verify input and prevent undetected mistakes. The absence of this feature created repeated failed attempts and clear frustration. Both observed struggling behaviour and stated articulation of the accessibility gap align on significant friction requiring multiple attempts to proceed.",
+        "structural_amplification_note": "Users who struggle with spelling verification or have visual processing differences experience structurally higher friction on password fields without visibility toggles, as they cannot independently confirm correctness without external assistance."
+      },
+      {
+        "window_id": "laurenrosemetzler_uq_w003",
+        "video_id": "laurenrosemetzler_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "laurenrosemetzler",
+        "friction_type": "F6",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed frustration that a relevant search result (law master's guide) was positioned too low in the search results and would have been missed without adding location specificity.",
+        "observed_signal": "Participant noted the law master's guide result and stated a wish that it appeared higher, then explained that removing 'Queensland' from the search would cause them not to see it at all.",
+        "stated_signal": "I do wish that it was further up in the results, though, because I would probably click this one based on these search results. Um, and then, yeah, if I was to take out Queensland, then Actually, um, I wouldn't even see that option at all.",
+        "rationale": "The participant identified a key resource (law master's guide) but expressed concern about its ranking and visibility in search results. While the participant ultimately found the resource and could complete the task, the friction centres on the difficulty of locating relevant content without query refinement. This represents medium friction that slowed navigation but did not block task completion.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 36 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=1, S4=2, S5=29, S6=3. Representative findings: Participant entered an incorrect password and could not proceed because there was no visible forgot password option or password visibility toggle. | Participant cannot differentiate between similar master's program titles and cannot access detailed information to compare them before applying. | Participant entered a password multiple times but received no feedback on why the entries were rejected, and requested a password visibility toggle to debug the mismatch.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 36 findings spanning 7 distinct friction types (F1,F2,F7,F3,F5,F4,F6). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F7,F3,F5,F4,F6",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=36 findings across 7 distinct friction types (F1=13, F2=9, F7=4, F3=3, F5=3, F4=2, F6=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

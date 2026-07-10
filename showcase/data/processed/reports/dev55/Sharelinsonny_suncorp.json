@@ -1,0 +1,204 @@
+{
+  "video_id": "Sharelinsonny_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "Sharelinsonny",
+  "total_windows": 81,
+  "duration_sec": 5273.988,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 27,
+    "by_friction_type": {
+      "F1": 9,
+      "F2": 5,
+      "F3": 1,
+      "F5": 3,
+      "F6": 6,
+      "F7": 3
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 4,
+      "S4": 2,
+      "S5": 19
+    },
+    "by_sentiment": {
+      "E3": 7,
+      "E4": 20
+    },
+    "by_calibrator_score": {
+      "L2": 19,
+      "L3": 6,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 26,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "Sharelinsonny_suncorp_w036",
+        "video_id": "Sharelinsonny_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the financial hardship information and explicitly stated inability to find it.",
+        "observed_signal": "Participant searched the page or interface, paused, and did not proceed to locate the required information.",
+        "stated_signal": "I don't know. I couldn't, I don't know how to find it.",
+        "rationale": "The participant's stated inability to find the financial hardship support information and observed search failure both indicate the required content pathway was not located. The explicit statement 'I don't know how to find it' combined with lack of recovery attempt places this at S2 (component task blocked) and L4 (severe friction near abandonment), as the primary task outcome depends on locating this information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_suncorp_w075",
+        "video_id": "Sharelinsonny_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find the information needed to complete the task and explicitly stated this impediment.",
+        "observed_signal": "Participant reviewed page content (resources) but did not locate relevant information about financial hardship support, fees, or payment flexibility.",
+        "stated_signal": "I don't find what I'm trying to find.",
+        "rationale": "The participant's stated inability to find required information aligns with observed unsuccessful search behaviour. The task objective was to locate hardship support options and fee information; the participant's explicit statement that they cannot find what they are looking for indicates a component task blocker, fitting S2 and L4 gate severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_suncorp_w037",
+        "video_id": "Sharelinsonny_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that accessing documents requires creating an account with AME, which was an unexpected barrier to obtaining the information needed.",
+        "observed_signal": "Participant stated the requirement to create an account and then pivoted to searching for home building insurance instead of proceeding with account creation.",
+        "stated_signal": "Rather than you, you want to get the documents, but you need to create you an account with AME. OK, I'll find it.",
+        "rationale": "The participant encountered an unexpected requirement (account creation) that was not anticipated as part of the task flow. The participant's pivot away from the expected pathway and neutral but resigned tone ('OK, I'll find it') indicate they recognized a significant barrier. This represents unexpected behaviour relative to the goal of self-service exploration of financial hardship support.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_suncorp_w041",
+        "video_id": "Sharelinsonny_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that PDF documents lack user-friendly formatting and are difficult to access on mobile devices or with assistive technologies due to long text blocks and minimal visual structure.",
+        "observed_signal": "Participant discussed the limitations of downloaded PDF documents as a content delivery method, noting accessibility barriers for mobile users and those relying on assistive technologies.",
+        "stated_signal": "Download PDF is convenient, but it could be challenging for some users, like especially on mobile device or for people who rely on assistive technologies. Long blocks of text and minimal visual can make it harder for user, different reading abilities and to fully understand the content.",
+        "rationale": "The participant identified genuine accessibility barriers in the current PDF-based delivery method, stating that assistive technology users, mobile users, and those with varying reading abilities face significant friction. This is a structural accessibility failure affecting a cohort of users, matching S3 (significant component failure) and L3 (struggle and frustration documented).",
+        "structural_amplification_note": "Assistive technology users, mobile device users, and those with diverse reading abilities experience structurally amplified friction when content is delivered solely as long-form PDFs without visual hierarchy or responsive design."
+      },
+      {
+        "window_id": "Sharelinsonny_suncorp_w041",
+        "video_id": "Sharelinsonny_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant noted that financial hardship documents lack simpler, upfront explanations and are not formatted in a user-friendly manner.",
+        "observed_signal": "Participant critiqued the structure and clarity of financial hardship exclusion and claims documentation, suggesting the need for simpler summaries and examples.",
+        "stated_signal": "If there were summaries, example, a simpler explanation upfront, that would really help. Make the documents more user friendly.",
+        "rationale": "The participant explicitly stated that the content is difficult to understand due to lack of plain-language summaries and clear examples upfront. This comprehension friction is tied to complex terminology and poor writing structure in the financial hardship materials, creating a significant barrier to understanding key policy information needed for the task.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 27 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=4, S4=2, S5=19. Representative findings: Participant could not locate the financial hardship information and explicitly stated inability to find it. | Participant could not find the information needed to complete the task and explicitly stated this impediment. | Participant discovered that accessing documents requires creating an account with AME, which was an unexpected barrier to obtaining the information needed.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 27 findings spanning 6 distinct friction types (F1,F6,F2,F5,F7,F3). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F6 Not Found, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F6,F2,F5,F7,F3",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=27 findings across 6 distinct friction types (F1=9, F6=6, F2=5, F5=3, F7=3, F3=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

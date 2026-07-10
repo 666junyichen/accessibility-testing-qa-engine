@@ -1,0 +1,206 @@
+{
+  "video_id": "gameoverdan_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "gameoverdan",
+  "total_windows": 53,
+  "duration_sec": 3525.1770000000006,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 50,
+    "by_friction_type": {
+      "F1": 3,
+      "F2": 3,
+      "F3": 8,
+      "F5": 5,
+      "F6": 25,
+      "F7": 6
+    },
+    "by_severity": {
+      "S2": 5,
+      "S3": 11,
+      "S4": 16,
+      "S5": 17,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 48
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 17,
+      "L3": 28,
+      "L4": 4
+    },
+    "signal_alignment_distribution": {
+      "aligned": 49,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "gameoverdan_suncorp_w036",
+        "video_id": "gameoverdan_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the financial hardship information on the website despite extensive searching and explicitly stated frustration with visibility.",
+        "observed_signal": "Participant searched through the website multiple times looking for financial hardship information, then stated they could not find it and moved on to the next task.",
+        "stated_signal": "I truly can't find it. Um, I've probably looked at it a million times, but it's not jumping out to slap me in the face, so I'm not gonna see it. Um, I guess this one is a, a no go on my, my end.",
+        "rationale": "The participant's stated inability to locate the financial hardship content after repeated searches, combined with the explicit decision to abandon the task ('a no go on my end'), indicates a component task blocker. The stated frustration and observed search behaviour both point to content not found, matching the S2 gate where the overall project outcome could be compromised by this missing pathway.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_suncorp_w038",
+        "video_id": "gameoverdan_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that the recommended support pathway (AMI app) was not accessible to them and expressed unwillingness to install it, leaving the primary resolution path unavailable.",
+        "observed_signal": "Participant searched for information on missed payments, found a result directing to the AMI app, and explicitly stated they do not have and will not install the app.",
+        "stated_signal": "I don't have the AMI app and I, I, I won't be installing that.",
+        "rationale": "The participant located information about missed payment support, but the primary pathway disclosed (AMI app) is not available to them and they rejected it. This blocks the component task of finding online self-service support for missed payments, though the overall task of understanding support options remains partially achievable through other channels. The stated refusal and observed inability to proceed via the recommended path indicate S2 (task component blocked) and L4 (severe friction requiring alternative approach).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_suncorp_w034",
+        "video_id": "gameoverdan_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot locate information about what happens if a payment is missed or fails, despite reviewing multiple menu options.",
+        "observed_signal": "Participant reviewed Policy documents, Make a payment, Receive reminders, Delay payment options, and How do I cancel my policy sections but did not find the needed information.",
+        "stated_signal": "I genuinely cannot seem to find out what happens if I fail to make a payment.",
+        "rationale": "The participant explicitly stated inability to find critical information about payment failure consequences, which is a core component of the task (understanding fees and support options when struggling to pay). The observed signal shows systematic searching through available menu items without success, and the stated signal confirms genuine frustration. This is a task blocker for one key component outcome despite the overall navigation continuing.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_suncorp_w045",
+        "video_id": "gameoverdan_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the financial hardship information on the website despite multiple search attempts.",
+        "observed_signal": "Participant searched the page multiple times, expressed repeated inability to find the content, and stated the information was not visually prominent.",
+        "stated_signal": "I truly can't find it. Um, I've probably looked at it a million times, but it's not jumping out to slap me in the face, so I'm not gonna see it.",
+        "rationale": "The participant explicitly stated inability to locate the financial hardship support information despite repeated attempts. Both observed behaviour (multiple searches) and stated frustration indicate the required content was not findable. The task outcome (locating financial hardship information) was blocked, making this S2 rather than a recoverable search delay, matching the L4 gate for near-abandonment.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "gameoverdan_suncorp_w042",
+        "video_id": "gameoverdan_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "gameoverdan",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate information about consequences of missed or late payments despite searching the site, though they found payment instructions.",
+        "observed_signal": "Participant navigated to site map, opened multiple areas, and explicitly stated they could find how to make a payment but not what happens if payment is not made.",
+        "stated_signal": "I can find how to make a payment. I just can't find what happens if I don't make a payment.",
+        "rationale": "The participant directly stated that required information (consequences of non-payment and support options—core to the task) is not found on the site, despite active searching. The asymmetry (finding payment instructions but not hardship support) indicates a content pathway gap. This is a component task blocker because the participant cannot independently access the specific information needed to address their financial hardship concern.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 50 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=5, S3=11, S4=16, S5=17, S6=1. Representative findings: Participant could not locate the financial hardship information on the website despite extensive searching and explicitly stated frustration with visibility. | Participant discovered that the recommended support pathway (AMI app) was not accessible to them and expressed unwillingness to install it, leaving the primary resolution path unavailable. | Participant cannot locate information about what happens if a payment is missed or fails, despite reviewing multiple menu options.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 50 findings spanning 6 distinct friction types (F6,F3,F7,F5,F1,F2). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F3 Accessibility, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F3,F7,F5,F1,F2",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=50 findings across 6 distinct friction types (F6=25, F3=8, F7=6, F5=5, F1=3, F2=3).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

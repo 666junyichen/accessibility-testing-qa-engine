@@ -1,0 +1,181 @@
+{
+  "video_id": "reececraigie_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "reececraigie",
+  "total_windows": 72,
+  "duration_sec": 4699.216,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 26,
+    "by_friction_type": {
+      "F1": 3,
+      "F2": 12,
+      "F5": 1,
+      "F6": 9,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 5,
+      "S5": 20
+    },
+    "by_sentiment": {
+      "E3": 7,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L2": 20,
+      "L3": 6
+    },
+    "signal_alignment_distribution": {
+      "aligned": 26
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "reececraigie_suncorp_w055",
+        "video_id": "reececraigie_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was routed to the bushfire hub instead of financial hardship information and expressed that this was not the relevant pathway for their task.",
+        "observed_signal": "Participant landed on the bushfire hub page and immediately assessed it as off-topic.",
+        "stated_signal": "And I'm taken to the bushfire hub. OK. But I'm not I'd be using bushfire, but I'd want to land here. There's definitely work, in my view, there's definitely work to be done.",
+        "rationale": "The participant could not locate the correct pathway to financial hardship information and instead arrived at an irrelevant section (bushfire support). The stated and observed signals both indicate the participant recognised the mismatch. This is a task blocker for the financial hardship component, as the participant would need to backtrack or find an alternative route to access the correct information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_suncorp_w043",
+        "video_id": "reececraigie_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed suspicion that the insurer is deliberately hiding financial hardship information, indicating low trust in the website's transparency.",
+        "observed_signal": "Participant stated they felt the information location should have been easier to find and expressed a gut feeling that the company is hiding something intentionally.",
+        "stated_signal": "I felt like it should've been a bit higher. My gut is saying, you're hiding this for a reason.",
+        "rationale": "The participant struggled to locate hardship support information and attributed the difficulty to deliberate concealment rather than poor design. Both observed difficulty (felt location should be higher) and stated suspicion (gut feeling about hiding) point to a significant barrier to trust and content discovery. This represents a component task failure—the participant did not successfully locate or access the hardship information as instructed.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_suncorp_w052",
+        "video_id": "reececraigie_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate the financial hardship or payment support information and expressed uncertainty about whether the content exists on the site.",
+        "observed_signal": "Participant navigated to 'urgent assistance' but did not find the expected financial hardship support pathway. Participant then hesitated and questioned whether the content was available.",
+        "stated_signal": "I haven't been able to find it. Now I'm drawn to urgent assistance, uh. Is this some, uh, now I'm thinking, is this something um that.",
+        "rationale": "The participant explicitly stated inability to locate the required information ('I haven't been able to find it') and followed a potentially incorrect pathway (urgent assistance instead of payment/hardship support). The hesitation and incomplete thought ('is this something um that') indicate confusion about whether the resource exists. This represents significant friction in a core task component.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_suncorp_w050",
+        "video_id": "reececraigie_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reececraigie",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant had to use an Incognito search to find emergency/hardship information that should have been accessible through normal navigation, indicating the pathway was not discoverable through standard site structure.",
+        "observed_signal": "Participant stated they had to open an Incognito window to search for emergency response information and noted it was not front and center on the site.",
+        "stated_signal": "I had to do an Incognito one... I'm looking for emergency response and it's not front and center. It was through an incognito search.",
+        "rationale": "The participant explicitly stated that critical hardship support information (emergency response) was not discoverable via normal navigation and required an external workaround (Incognito search). This is a content-not-found friction event where the required pathway existed but was hidden or poorly signposted. The participant's frustration tone and the need for a technical workaround indicate significant friction, though the information was ultimately located.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "reececraigie_suncorp_w050",
+        "video_id": "reececraigie_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "reececraigie",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed concern that a person in genuine financial distress would be in a state of panic and would likely abandon the self-service pathway to call instead, suggesting the online experience does not adequately support the task under real emotional conditions.",
+        "observed_signal": "Participant stated unprompted that they would be calling, describing a state of panic, and framed the search difficulty as a structural problem.",
+        "stated_signal": "I would be calling as I'm on here looking panic... you'd be in a state of panic. And you'd want to get things done, right? So there's problem one.",
+        "rationale": "The participant identified that the lack of immediate access to hardship information creates confidence friction—uncertainty about whether self-service is viable—that would cause task abandonment in a real scenario. This is not a simple wayfinding hesitation but a structural barrier to task completion under stress. The participant's labeling of this as 'problem one' indicates recognized severity.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "good",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 26 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=5, S5=20. Representative findings: Participant was routed to the bushfire hub instead of financial hardship information and expressed that this was not the relevant pathway for their task. | Participant expressed suspicion that the insurer is deliberately hiding financial hardship information, indicating low trust in the website's transparency. | Participant could not locate the financial hardship or payment support information and expressed uncertainty about whether the content exists on the site.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 26 findings spanning 5 distinct friction types (F2,F6,F1,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F6 Not Found, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F6,F1,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=26 findings across 5 distinct friction types (F2=12, F6=9, F1=3, F5=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    }
+  ]
+}

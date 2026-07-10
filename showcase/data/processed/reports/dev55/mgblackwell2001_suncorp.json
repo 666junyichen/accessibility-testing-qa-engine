@@ -1,0 +1,199 @@
+{
+  "video_id": "mgblackwell2001_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "mgblackwell2001",
+  "total_windows": 42,
+  "duration_sec": 2786.0739999999996,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 15,
+    "by_friction_type": {
+      "F1": 5,
+      "F2": 5,
+      "F6": 4,
+      "F7": 1
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 1,
+      "S5": 12
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 14
+    },
+    "by_calibrator_score": {
+      "L2": 12,
+      "L3": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 15
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "mgblackwell2001_suncorp_w032",
+        "video_id": "mgblackwell2001_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "mgblackwell2001",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed preference for online self-service but found no suitable online contact method and decided to resort to making a phone call instead.",
+        "observed_signal": "Participant reviewed contact options, noted the absence of online contact information for a specific person (Amy), and stated intention to make a phone call despite earlier preference.",
+        "stated_signal": "I was, I would prefer to do that all online I'm going to make a phone call. There isn't any contact information for Amy specifically.",
+        "rationale": "The participant could not locate the required online contact pathway (particularly for a specific contact person) and was forced to abandon the stated preference for self-service and resort to phone contact. This represents a significant component failure—the task required finding online support, but the absence of adequate online contact information forced a workaround to a different channel. The expressed frustration ('I find that TSI') aligns with the observed friction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "mgblackwell2001_suncorp_w037",
+        "video_id": "mgblackwell2001_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "mgblackwell2001",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed a strong preference to handle the task online but found no suitable contact information, forcing a shift to phone-based resolution.",
+        "observed_signal": "Participant stated intention to resolve online, then immediately pivoted to making a phone call after discovering lack of specific contact information.",
+        "stated_signal": "I would prefer to do that all online. I'm going to make a phone call. There isn't any contact information for Amy specifically.",
+        "rationale": "The participant could not locate the required contact pathway (specific contact information for support) on the website and abandoned the self-service approach to resort to phone contact. This represents a significant component failure—the preferred online pathway was not available—forcing a workaround. The stated preference conflict and observed pivot both indicate F6 (Content Not Found) at S3 severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "mgblackwell2001_suncorp_w040",
+        "video_id": "mgblackwell2001_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "mgblackwell2001",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate a search or self-help function on the website and expressed confusion about the absence of this feature.",
+        "observed_signal": "Participant searched the website interface and determined that no search function was available for finding information independently.",
+        "stated_signal": "I don't ID. It doesn't seem like there's a such function on this website, so I find that extremely confusing.",
+        "rationale": "The participant explicitly stated confusion about the absence of a search or self-service function needed to independently locate hardship information, which was a core task objective. The stated frustration and observed inability to find the pathway align, indicating significant friction with multiple failed attempts to locate the required feature.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "mgblackwell2001_suncorp_w004",
+        "video_id": "mgblackwell2001_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "mgblackwell2001",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about where to start looking for financial hardship information and stated uncertainty about which insurance product pages to consult.",
+        "observed_signal": "Participant did not navigate to or explore specific content areas; stated confusion about what to look at first.",
+        "stated_signal": "I think it's a bit confusing. There isn't anything directly. I would want to know like an about page because I have no idea on real estate. I wouldn't know what to look at first with um. Home insurance or any kind of insurance, honestly.",
+        "rationale": "The participant expressed wayfinding uncertainty and stated they did not know where to begin their search for financial hardship support. The observed hesitation and stated confusion both indicate confidence friction rather than blocked task completion; the participant is still at the exploration stage. This is brief, recoverable confusion without multiple failed attempts.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "mgblackwell2001_suncorp_w011",
+        "video_id": "mgblackwell2001_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "mgblackwell2001",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about exclusions in the insurance policy, specifically noting chips and scratches are excluded from coverage.",
+        "observed_signal": "Participant read through policy content and paused at the exclusions section.",
+        "stated_signal": "I find that strange. That chips and scratches are excluded from this cover.",
+        "rationale": "The participant encountered policy language that was unexpected or unclear regarding what is and is not covered. The stated expression of finding it 'strange' indicates mild comprehension friction—the exclusion logic was confusing or counterintuitive. This is a brief hesitation over content clarity without blocking task progress.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "adequate",
+    "recording_quality": "poor",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "recording unusable"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality limits reliable downstream analysis",
+      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "advice": [
+        "Treat this session as low-confidence evidence.",
+        "Improve recording setup and audio checks before the next session begins.",
+        "Consider excluding this session from analyses that require detailed behavioural evidence."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "poor",
+      "priority": 5,
+      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "tags": [
+        "recording",
+        "reliability",
+        "analysis-risk"
+      ]
+    },
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 15 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=1, S5=12. Representative findings: Participant expressed preference for online self-service but found no suitable online contact method and decided to resort to making a phone call instead. | Participant expressed a strong preference to handle the task online but found no suitable contact information, forcing a shift to phone-based resolution. | Participant could not locate a search or self-help function on the website and expressed confusion about the absence of this feature.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "narration",
+      "title": "Narration could be more consistently explicit",
+      "summary": "The participant provided enough verbal content for analysis, but the session would benefit from more regular think-aloud narration.",
+      "advice": [
+        "Encourage the participant to briefly explain what they are noticing while moving through the task.",
+        "Prefer short, regular verbal updates instead of only commenting after an action is completed.",
+        "Use neutral prompts to invite process narration when long silent stretches appear."
+      ],
+      "trigger_field": "narration_quality",
+      "trigger_value": "adequate",
+      "priority": 1,
+      "evidence_note": "5.1-B marks narration as adequate but not rich.",
+      "tags": [
+        "narration",
+        "template",
+        "session-level"
+      ]
+    }
+  ]
+}

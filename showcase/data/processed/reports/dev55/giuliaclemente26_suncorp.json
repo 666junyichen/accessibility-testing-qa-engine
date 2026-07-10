@@ -1,0 +1,204 @@
+{
+  "video_id": "giuliaclemente26_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "giuliaclemente26",
+  "total_windows": 31,
+  "duration_sec": 2036.7590000000002,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 27,
+    "by_friction_type": {
+      "F1": 10,
+      "F2": 8,
+      "F3": 1,
+      "F5": 2,
+      "F6": 5,
+      "F7": 1
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 5,
+      "S4": 3,
+      "S5": 18
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 26
+    },
+    "by_calibrator_score": {
+      "L2": 18,
+      "L3": 8,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 26,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "giuliaclemente26_suncorp_w024",
+        "video_id": "giuliaclemente26_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate information about financial hardship support and explicitly stated the absence of relevant content.",
+        "observed_signal": "Participant searched through general payment information, manual payments, and claims sections but did not find financial hardship or support content.",
+        "stated_signal": "I'm trying to figure out what's... No, I don't see anything about financial. Our ship. No, it's not for teens.",
+        "rationale": "The participant explicitly stated inability to find financial hardship information ('No, I don't see anything about financial') and observed behaviour confirms they reviewed multiple sections without locating the required support pathway. This is a component task blocker because the core objective—finding financial hardship support—was not achieved independently within the product.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_suncorp_w005",
+        "video_id": "giuliaclemente26_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant refused to proceed with the support pathway because it required sharing a phone number, citing concern about unsolicited messages.",
+        "observed_signal": "Participant stated 'I'm not gonna do this' and abandoned the pathway upon encountering a phone number request, then pivoted to external research (QBE ratings, Canstar).",
+        "stated_signal": "they asked me for my phone number, they're not gonna send me messages, I don't want that.",
+        "rationale": "The participant understood what was being asked (confidence friction, not comprehension) but was unwilling to proceed due to privacy concern and uncertainty about the consequence of sharing contact details. The participant did not complete the self-serve pathway and instead used external research, indicating a significant component failure within the assigned task. Both observed abandonment and stated objection align on this friction event.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_suncorp_w019",
+        "video_id": "giuliaclemente26_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not understand which home insurance product option matched their needs and stated they would need to contact someone for clarification.",
+        "observed_signal": "Participant read the insurance product options (home insurance, home building insurance) aloud and did not proceed to select one; instead stated intention to contact support.",
+        "stated_signal": "How do I know which one is home with things inside? OK, so here I wouldn't understand where to go to understand what's the policy for um temporary accommodation, so I will probably get in touch with someone and ask for clarification on this.",
+        "rationale": "The participant explicitly stated they do not understand the distinction between product options and cannot determine which applies to their situation. They abandoned the self-service pathway and decided to contact support instead, indicating significant comprehension friction that blocked the online task component.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_suncorp_w022",
+        "video_id": "giuliaclemente26_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F2",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not access financial hardship information because the assistant required login before providing help, blocking the self-serve pathway.",
+        "observed_signal": "Participant attempted to use the assistant to find financial hardship information but was blocked by a login requirement and abandoned that pathway.",
+        "stated_signal": "I can't use the assistant because the assistant wants me to log in before helping me. I also have big doubts that it's gonna be able to help me.",
+        "rationale": "The participant identified that the assistant required login, expressed uncertainty about whether it would help, and stated inability to proceed via that route. The observed abandonment of the assistant pathway combined with stated doubt and frustration indicates significant friction. The participant still needed to find an alternative route, representing a barrier that was skipped rather than resolved.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_suncorp_w026",
+        "video_id": "giuliaclemente26_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed difficulty locating financial hardship support information and stated they would not have found it independently without guidance.",
+        "observed_signal": "Participant navigated through content, identified options to discuss, but then indicated the information required contacting support and was not self-service discoverable.",
+        "stated_signal": "I'm not sure I would have found it, um. I mean, I wouldn't have found it.",
+        "rationale": "The participant explicitly stated they would not have found the financial hardship support pathway independently. This indicates the required information or entry point is not easily locatable through self-service navigation. The strong negative statement and the participant's clear sense that discovery was not obvious meets the S3/L3 gate for significant component failure.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 27 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=5, S4=3, S5=18. Representative findings: Participant could not locate information about financial hardship support and explicitly stated the absence of relevant content. | Participant refused to proceed with the support pathway because it required sharing a phone number, citing concern about unsolicited messages. | Participant could not understand which home insurance product option matched their needs and stated they would need to contact someone for clarification.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 27 findings spanning 6 distinct friction types (F1,F2,F6,F5,F3,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F6,F5,F3,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=27 findings across 6 distinct friction types (F1=10, F2=8, F6=5, F5=2, F3=1, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

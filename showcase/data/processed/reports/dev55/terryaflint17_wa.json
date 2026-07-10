@@ -1,0 +1,249 @@
+{
+  "video_id": "terryaflint17_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "terryaflint17",
+  "total_windows": 73,
+  "duration_sec": 4865.054999999999,
+  "l1": {
+    "flag_counts": {
+      "EXCESSIVE_SILENCE": 36,
+      "LOW_AUDIO_QUALITY": 10,
+      "SPARSE_NARRATION": 18
+    },
+    "total_flags": 64,
+    "flagged_window_ids": [
+      "terryaflint17_wa_w004",
+      "terryaflint17_wa_w005",
+      "terryaflint17_wa_w006",
+      "terryaflint17_wa_w007",
+      "terryaflint17_wa_w011",
+      "terryaflint17_wa_w012",
+      "terryaflint17_wa_w014",
+      "terryaflint17_wa_w018",
+      "terryaflint17_wa_w019",
+      "terryaflint17_wa_w021",
+      "terryaflint17_wa_w023",
+      "terryaflint17_wa_w024",
+      "terryaflint17_wa_w025",
+      "terryaflint17_wa_w029",
+      "terryaflint17_wa_w030",
+      "terryaflint17_wa_w036",
+      "terryaflint17_wa_w039",
+      "terryaflint17_wa_w040",
+      "terryaflint17_wa_w045",
+      "terryaflint17_wa_w046",
+      "terryaflint17_wa_w047",
+      "terryaflint17_wa_w052",
+      "terryaflint17_wa_w053",
+      "terryaflint17_wa_w054",
+      "terryaflint17_wa_w055",
+      "terryaflint17_wa_w056",
+      "terryaflint17_wa_w057",
+      "terryaflint17_wa_w059",
+      "terryaflint17_wa_w060",
+      "terryaflint17_wa_w061",
+      "terryaflint17_wa_w062",
+      "terryaflint17_wa_w064",
+      "terryaflint17_wa_w065",
+      "terryaflint17_wa_w066",
+      "terryaflint17_wa_w068",
+      "terryaflint17_wa_w069",
+      "terryaflint17_wa_w070",
+      "terryaflint17_wa_w071"
+    ],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 1,
+    "dominant_cluster_pct": 0.9726027397260274,
+    "cluster_distribution": {
+      "1": 71,
+      "2": 2
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 16,
+    "by_friction_type": {
+      "F1": 4,
+      "F2": 6,
+      "F5": 1,
+      "F6": 5
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 1,
+      "S5": 13
+    },
+    "by_sentiment": {
+      "E3": 4,
+      "E4": 12
+    },
+    "by_calibrator_score": {
+      "L2": 13,
+      "L3": 1,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 15,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "terryaflint17_wa_w002",
+        "video_id": "terryaflint17_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant abandoned the assigned task and switched to using Google search instead of exploring the provided page.",
+        "observed_signal": "Participant stopped engaging with the page content and stated intent to 'go on Google' to search for domestic abuse information.",
+        "stated_signal": "So let's. Go on Google And put in there Tell you why. Types Oh Domestic. Abuse",
+        "rationale": "The participant did not locate or find value in the information pathways on the Family and Domestic Violence page and chose to seek information externally via Google instead. Both observed behaviour (leaving the page) and stated intent (announcing the switch to Google) indicate the task objective—exploring page sections and links to understand available information—was not achieved. This is a blocking outcome requiring product change or interface redesign to retain exploratory engagement.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_wa_w005",
+        "video_id": "terryaflint17_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F5",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant accidentally navigated away from the task page and expressed confusion about what happened before deciding to return to Google instead of continuing.",
+        "observed_signal": "Participant clicked or navigated to an unexpected location, then stated confusion about being off the page and indicated intent to abandon the task by going back to Google.",
+        "stated_signal": "Oh no, gone off there again. And like What is going out. Was there a really guy? I don't have to worry about this one. Go back to Google.",
+        "rationale": "The participant's observed behaviour (unintended navigation away from the task page) and stated signals (confusion, expressed desire to abandon) both indicate an unexpected interface behaviour that disrupted task continuity. The decision to return to Google rather than recover within the product suggests the component task (exploring information pathways on this page) was blocked, meeting the S2 and L4 gates.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_wa_w048",
+        "video_id": "terryaflint17_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed inability to find resources on the page relevant to their situation.",
+        "observed_signal": "Participant stated they cannot find anything useful, indicating they explored or attempted to locate information without success.",
+        "stated_signal": "I can Find anything.",
+        "rationale": "The participant explicitly stated inability to find resources ('I can Find anything' interpreted as negation in context of task). This indicates Content Not Found friction during the exploration task. The expressed frustration and inability to locate relevant pathways represents significant component failure, matching S3 and L3 (struggle to find needed information).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_wa_w000",
+        "video_id": "terryaflint17_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about the meaning of the term 'coercive control' when asked to define it, despite providing a description based on personal understanding.",
+        "observed_signal": "Participant was asked to define 'coercive control' and responded with 'I don't know. What do you think...' before offering an interpretation based on their own experience.",
+        "stated_signal": "I don't know. What do you think the term coercive control means?",
+        "rationale": "The participant expressed explicit uncertainty about the terminology ('I don't know') and deferred to the facilitator for clarification. This indicates comprehension friction with unfamiliar or unclear terminology. However, the participant recovered by providing a contextual interpretation based on personal knowledge, suggesting mild rather than severe friction. The matter-of-fact tone and quick recovery support S5 and L2 scoring.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_wa_w009",
+        "video_id": "terryaflint17_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "terryaflint17",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered unfamiliar terminology (gaslighting, love bombing) while reading about abuse signs and expressed uncertainty about their meaning.",
+        "observed_signal": "Participant read aloud content describing signs of abuse including 'Gas lighting' and 'Love bombing', then paused and asked 'I'm not sure what they are.'",
+        "stated_signal": "Gas lighting, yeah, I'm not sure what they are. Love bombing, I've heard of that, guess I've heard of gas oil, is that what it means?",
+        "rationale": "The participant encountered jargon (gaslighting, love bombing) used to describe abuse types on the page and stated explicit uncertainty about their definitions. This is a comprehension friction event where terminology was not explained or accessible. The participant recovered by continuing to read, indicating brief hesitation rather than a complete block.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 16 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=1, S5=13. Representative findings: Participant abandoned the assigned task and switched to using Google search instead of exploring the provided page. | Participant accidentally navigated away from the task page and expressed confusion about what happened before deciding to return to Google instead of continuing. | Participant expressed inability to find resources on the page relevant to their situation.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 4 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 16 findings spanning 4 distinct friction types (F2,F6,F1,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F6 Not Found, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F6,F1,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=16 findings across 4 distinct friction types (F2=6, F6=5, F1=4, F5=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

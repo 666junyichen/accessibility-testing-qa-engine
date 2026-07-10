@@ -1,0 +1,274 @@
+{
+  "video_id": "terryaflint17_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "terryaflint17",
+  "total_windows": 78,
+  "duration_sec": 5609.599000000002,
+  "l1": {
+    "flag_counts": {
+      "EXCESSIVE_SILENCE": 58,
+      "LOW_AUDIO_QUALITY": 14,
+      "SPARSE_NARRATION": 45
+    },
+    "total_flags": 117,
+    "flagged_window_ids": [
+      "terryaflint17_uq_w010",
+      "terryaflint17_uq_w011",
+      "terryaflint17_uq_w012",
+      "terryaflint17_uq_w013",
+      "terryaflint17_uq_w014",
+      "terryaflint17_uq_w015",
+      "terryaflint17_uq_w017",
+      "terryaflint17_uq_w018",
+      "terryaflint17_uq_w019",
+      "terryaflint17_uq_w020",
+      "terryaflint17_uq_w021",
+      "terryaflint17_uq_w023",
+      "terryaflint17_uq_w024",
+      "terryaflint17_uq_w025",
+      "terryaflint17_uq_w026",
+      "terryaflint17_uq_w027",
+      "terryaflint17_uq_w028",
+      "terryaflint17_uq_w029",
+      "terryaflint17_uq_w030",
+      "terryaflint17_uq_w031",
+      "terryaflint17_uq_w032",
+      "terryaflint17_uq_w033",
+      "terryaflint17_uq_w034",
+      "terryaflint17_uq_w035",
+      "terryaflint17_uq_w036",
+      "terryaflint17_uq_w037",
+      "terryaflint17_uq_w038",
+      "terryaflint17_uq_w039",
+      "terryaflint17_uq_w040",
+      "terryaflint17_uq_w041",
+      "terryaflint17_uq_w042",
+      "terryaflint17_uq_w043",
+      "terryaflint17_uq_w044",
+      "terryaflint17_uq_w045",
+      "terryaflint17_uq_w046",
+      "terryaflint17_uq_w047",
+      "terryaflint17_uq_w048",
+      "terryaflint17_uq_w049",
+      "terryaflint17_uq_w050",
+      "terryaflint17_uq_w051",
+      "terryaflint17_uq_w052",
+      "terryaflint17_uq_w053",
+      "terryaflint17_uq_w054",
+      "terryaflint17_uq_w055",
+      "terryaflint17_uq_w059",
+      "terryaflint17_uq_w060",
+      "terryaflint17_uq_w062",
+      "terryaflint17_uq_w065",
+      "terryaflint17_uq_w066",
+      "terryaflint17_uq_w067",
+      "terryaflint17_uq_w068",
+      "terryaflint17_uq_w069",
+      "terryaflint17_uq_w071",
+      "terryaflint17_uq_w072",
+      "terryaflint17_uq_w073",
+      "terryaflint17_uq_w074",
+      "terryaflint17_uq_w075",
+      "terryaflint17_uq_w076"
+    ],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 1,
+    "dominant_cluster_pct": 0.9230769230769231,
+    "cluster_distribution": {
+      "1": 72,
+      "2": 6
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 43,
+    "by_friction_type": {
+      "F2": 11,
+      "F4": 8,
+      "F5": 8,
+      "F6": 14,
+      "F7": 2
+    },
+    "by_severity": {
+      "S1": 2,
+      "S2": 1,
+      "S3": 5,
+      "S4": 6,
+      "S5": 28,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 6,
+      "E4": 33,
+      "E5": 4
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 28,
+      "L3": 11,
+      "L4": 1,
+      "L5": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 42,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "terryaflint17_uq_w048",
+        "video_id": "terryaflint17_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "terryaflint17",
+        "friction_type": "F4",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered login failure and was unable to proceed, expressing frustration and resignation.",
+        "observed_signal": "Participant attempted to log in, received an incorrect credentials error, attempted to register again, and verbally expressed giving up.",
+        "stated_signal": "Oh, I just give up. Go back. Oh dear. Username and password, it's incorrect. Oh, I have to register again. Am I gonna be, this is ridiculous.",
+        "rationale": "The participant's observed inability to complete login and stated resignation ('I just give up', 'this is ridiculous') both indicate a blocking issue. The participant cannot proceed with the assigned task of discovering postgraduate course information without successful authentication, meeting the S1 and L5 gates for project-level blocker.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_uq_w070",
+        "video_id": "terryaflint17_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E5",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant disengaged from the task midway, stating that information about Queensland universities was not relevant to their interest, and stopped recording.",
+        "observed_signal": "Participant stated 'the Queensland, Tess patton is not talking to me, I'm gonna stop the recording' and ended the session.",
+        "stated_signal": "the Queensland, Tess patton is not talking to me, I'm gonna stop the recording.",
+        "rationale": "The participant could not locate or engage with information relevant to their search interest and abandoned the task before completion. The stated disengagement and observed task termination both indicate the primary project outcome was not achieved independently. This meets the S1 blocker and L5 gate criteria.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_uq_w043",
+        "video_id": "terryaflint17_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "terryaflint17",
+        "friction_type": "F5",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a form with required fields (country, state) that had no available options, preventing task progression.",
+        "observed_signal": "Participant attempted to interact with form fields but reported no options were present; stated inability to proceed with the form.",
+        "stated_signal": "I still don't understand this bill is required. Country, state and there's no fuel. No, no options. So I'm not gonna be able to go ahead with it, am I, so that's wrong.",
+        "rationale": "The participant's observed inability to access form options aligns with their stated frustration about missing functionality. The form responded in an unexpected way (required fields with no selectable options), which is a classic unexpected behaviour friction. The participant was blocked from proceeding with this component of the task, meeting the S2 threshold (component task blocked).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_uq_w001",
+        "video_id": "terryaflint17_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate university postgraduate programs matching their geographic preference and expressed frustration that search results were returning irrelevant locations.",
+        "observed_signal": "Participant reviewed search results mentioning Barcelona and UK universities, then explicitly stated dissatisfaction with the geographic scope and a preference for eastern seaboard Australia options.",
+        "stated_signal": "I'm not really finding any. Her degrees. Um, or any university that I'm looking for that I'm really interested in at this stage, I'd like some close to me or in for eastern seaboard Australia.",
+        "rationale": "The participant explicitly stated inability to find programs matching stated criteria (geography and program type) and expressed clear frustration. The search results returned were not aligned with the user's needs, representing a significant barrier to the core task objective of discovering suitable postgraduate programs. The participant did not abandon the task but clearly encountered substantial friction in locating relevant information.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "terryaflint17_uq_w008",
+        "video_id": "terryaflint17_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "terryaflint17",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate postgraduate course information on the University of Queensland website despite searching, and concluded the site was not effective for finding the needed information.",
+        "observed_signal": "Participant navigated through the site, encountered undergraduate content, and then stated dissatisfaction with the search outcome.",
+        "stated_signal": "You postgraduate. Doesn't look like I have that one, after all that, hm. I don't think this is terribly good finding information that I'm after. I don't think really of anything stood out for me. None. And don't think any of them really stood out for me.",
+        "rationale": "The participant explicitly stated difficulty locating postgraduate information and expressed frustration after effort ('after all that'). The observed navigation attempt combined with stated inability to find the required content and lack of standout results indicates a significant search barrier that was worked around or abandoned rather than fully resolved.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 43 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=2, S2=1, S3=5, S4=6, S5=28, S6=1. Representative findings: Participant encountered login failure and was unable to proceed, expressing frustration and resignation. | Participant disengaged from the task midway, stating that information about Queensland universities was not relevant to their interest, and stopped recording. | Participant encountered a form with required fields (country, state) that had no available options, preventing task progression.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 43 findings spanning 5 distinct friction types (F6,F2,F4,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F2 Confidence, F4 Unresponsive) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F2,F4,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=43 findings across 5 distinct friction types (F6=14, F2=11, F4=8, F5=8, F7=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

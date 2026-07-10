@@ -1,0 +1,203 @@
+{
+  "video_id": "kweslake_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "kweslake",
+  "total_windows": 33,
+  "duration_sec": 2684.819,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 24,
+    "by_friction_type": {
+      "F1": 2,
+      "F2": 2,
+      "F3": 13,
+      "F5": 4,
+      "F7": 3
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 9,
+      "S5": 12,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 3,
+      "E4": 21
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 12,
+      "L3": 11
+    },
+    "signal_alignment_distribution": {
+      "aligned": 23,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "kweslake_uq_w015",
+        "video_id": "kweslake_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "kweslake",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that password creation with system requirements is extremely challenging for people with low vision during account registration.",
+        "observed_signal": "Participant discussed the difficulty of creating a password matching system requirements, then switched off a setting (invert) and expressed frustration with an expletive.",
+        "stated_signal": "A person with low vision will find that extremely challenging trying to navigate, even creating a password that matches the system requirements or the software requirements.",
+        "rationale": "The participant explicitly stated that password entry with system requirements is extremely challenging for low-vision users, citing accessibility barriers. The observed frustration (expletive) and attempt to switch off a visual setting align with the stated accessibility friction. This represents a significant component failure in account setup for assistive technology users.",
+        "structural_amplification_note": "Low-vision users and those relying on screen magnification experience structurally amplified friction when password creation requires visual matching of complex system requirements, as visual feedback and contrast are compromised."
+      },
+      {
+        "window_id": "kweslake_uq_w025",
+        "video_id": "kweslake_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "kweslake",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant's screen display was adversely affected by an accessibility setting (invert mode) that automatically triggered dark mode, preventing them from viewing documents they needed to upload.",
+        "observed_signal": "Participant stated that invert mode was on, which automatically turned the screen to dark mode, and they needed to turn off invert to see the documents they were going to upload.",
+        "stated_signal": "with the invert on. It means my software automatically turns to dark mode because previously I changed it, so I need to turn off the invert to be able to see the documents that I'm going to upload.",
+        "rationale": "The participant experienced an accessibility feature (invert/high contrast mode) that created an unintended conflict with dark mode, rendering documents unreadable. This is an accessibility friction event where an assistive or accessibility setting caused a barrier to task completion. The participant had to work around the issue by disabling the accessibility feature, indicating a significant component failure.",
+        "structural_amplification_note": "This friction is structurally amplified for users relying on invert or high-contrast accessibility settings. The conflict between the accessibility feature and the system's automatic dark mode response creates a barrier specific to users with visual accessibility needs."
+      },
+      {
+        "window_id": "kweslake_uq_w008",
+        "video_id": "kweslake_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "kweslake",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant required a phone magnifier app to read content on the screen due to insufficient contrast or text size.",
+        "observed_signal": "Participant stated they needed to use a magnifier app on their phone to help read the screen, and described adjusting for black text on white background contrast.",
+        "stated_signal": "So I'm gonna go use the magnifier on my phone now to help me read that, so I've got an app on my phone, it's a magnifier. I've got the black mostly. As opposed to and and reduce the white on the page.",
+        "rationale": "The participant experienced accessibility friction requiring an external workaround (phone magnifier) to access content on the screen. The stated need for magnification and contrast adjustment, combined with the observed action of retrieving a separate device, indicates significant accessibility barrier that materially slows progress but does not fully block the task. This represents a structural accessibility issue affecting readability.",
+        "structural_amplification_note": "Low-vision users experience structurally amplified friction when text contrast, size, or zoom capabilities are insufficient. Reliance on external magnification devices indicates the product's native accessibility features are inadequate for this participant's visual requirements."
+      },
+      {
+        "window_id": "kweslake_uq_w007",
+        "video_id": "kweslake_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "kweslake",
+        "friction_type": "F3",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not read white text on the page and had to invert the page to access the content.",
+        "observed_signal": "Participant stated the text was hard to read, closed the content, then explicitly inverted the page as a workaround to continue.",
+        "stated_signal": "And it's really hard to read because it is white. I don't actually know what the contents are, so I'm just going to close out of it. ... the white again. So it is creating, uh, making it much more difficult, so I'll go to invert the page.",
+        "rationale": "The participant encountered a contrast or colour accessibility issue (white text) that prevented them from reading page content. They explicitly stated the difficulty and required an external workaround (page inversion) to proceed. The repeated mention of 'white' and the need to invert indicates significant friction with accessibility properties, matching S4 and L3.",
+        "structural_amplification_note": "This friction is structurally amplified for users with low vision, colour blindness, or those relying on default high-contrast modes or assistive technology."
+      },
+      {
+        "window_id": "kweslake_uq_w010",
+        "video_id": "kweslake_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "kweslake",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced cognitive overload from excessive text volume when expanding content sections, despite initially finding the layout acceptable.",
+        "observed_signal": "Participant expanded multiple sections and continued reading through expanded content while expressing concern about the volume of text.",
+        "stated_signal": "It's a lot of reading. There is a lot of text can be overwhelming for a deaf person. Initially it looked not too bad, not overwhelming, but as I click on and expand, there is a lot of reading, a lot of words, a lot of text.",
+        "rationale": "The participant explicitly stated that expanded content sections contain excessive text that becomes overwhelming when navigating deeper into the material. Observed behaviour (continuing to read and expand sections) combined with stated concern about cumulative cognitive load represents significant friction through excessive effort, meeting the S4 and L3 gates (major difficulty that materially slows progress but does not fully block the task).",
+        "structural_amplification_note": "Deaf users relying on text-based content experience structurally amplified friction from excessive reading load, as they cannot benefit from alternative auditory presentations and must sustain visual focus on dense text blocks."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 24 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=9, S5=12, S6=1. Representative findings: Participant identified that password creation with system requirements is extremely challenging for people with low vision during account registration. | Participant's screen display was adversely affected by an accessibility setting (invert mode) that automatically triggered dark mode, preventing them from viewing documents they needed to upload. | Participant required a phone magnifier app to read content on the screen due to insufficient contrast or text size.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 5 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 24 findings spanning 5 distinct friction types (F3,F5,F7,F1,F2). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F3 (Accessibility) as the primary coaching anchor; secondary types (F5 Unexpected, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F3,F5,F7,F1,F2",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=24 findings across 5 distinct friction types (F3=13, F5=4, F7=3, F1=2, F2=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

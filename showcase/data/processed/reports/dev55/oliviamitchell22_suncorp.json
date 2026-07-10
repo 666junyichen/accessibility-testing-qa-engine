@@ -1,0 +1,203 @@
+{
+  "video_id": "oliviamitchell22_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "oliviamitchell22",
+  "total_windows": 25,
+  "duration_sec": 1609.867,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 26,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 7,
+      "F5": 4,
+      "F6": 9
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 5,
+      "S4": 3,
+      "S5": 16,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 4,
+      "E4": 22
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 15,
+      "L3": 8,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 26
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "oliviamitchell22_suncorp_w014",
+        "video_id": "oliviamitchell22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "oliviamitchell22",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant using screen reader and Zoom could not locate the product disclosure statement anywhere on the website despite exhaustively navigating the entire page.",
+        "observed_signal": "Participant reported going up and down the whole website using Zoom and VoiceOver, listening to all options, but found no heading or content related to product disclosure statement.",
+        "stated_signal": "I for the life of me cannot find it at all, gone up and down the whole page, listened to all the options, and nothing at all says anything about product disclosure statement, so, I don't know where it is, if so, it did not I did not hear the heading with my screen reader, and I can't see it with my Zoom.",
+        "rationale": "The participant explicitly stated and demonstrated exhaustive search failure across the entire website using both assistive technology (VoiceOver) and magnification (Zoom). The required information pathway was not discoverable through accessible means, blocking the specific component task of locating the disclosure statement. This represents a task-blocker severity with near-abandonment signal (participant's frustration and effort intensity).",
+        "structural_amplification_note": "Screen reader user experienced structural friction: the product disclosure statement heading was either not marked up semantically, not announced by VoiceOver, or completely absent from the accessible navigation tree. Zoom user also could not locate it visually, suggesting it may be missing or hidden from both assistive technology and visual presentation."
+      },
+      {
+        "window_id": "oliviamitchell22_suncorp_w009",
+        "video_id": "oliviamitchell22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "oliviamitchell22",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered confusing and intimidating content when exploring a specific product section and abandoned the pathway due to fear of the interface.",
+        "observed_signal": "Participant clicked on the home and property section, saw the content, said 'this looks really scary' and 'I have no idea what this means', then immediately went back to the previous section.",
+        "stated_signal": "This looks really scary. I have no idea what this means.",
+        "rationale": "The participant encountered content they could not comprehend and described it as scary, leading them to abandon that pathway and revert to a previous section. The combination of stated incomprehension and emotional avoidance, paired with the observed abandonment of the section, indicates significant friction where a component task was skipped. This matches S3 and the L3 gate (significant friction, task completed through workaround/skipped pathway).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "oliviamitchell22_suncorp_w021",
+        "video_id": "oliviamitchell22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "oliviamitchell22",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not locate a search function on the homepage and was unable to find relevant financial hardship information online, requiring them to consider calling customer support instead.",
+        "observed_signal": "Participant searched the homepage for information and a search function, stated they could not find either, and concluded they would need to call.",
+        "stated_signal": "I wasn't able to find anything on the web, on the thing, and I don't think that there's, I'm sorry, on the homepage, and I can't find a search function, so that's a bit, that would be the type of thing that I would then feel like I would need to call up about.",
+        "rationale": "The participant explicitly stated they could not find search functionality or relevant information on the homepage despite searching. This forced them to consider abandoning the self-service pathway and resorting to phone support, representing a significant component failure (the online task pathway). The friction is severe because it blocks the preferred self-service option, though an alternative pathway (calling) exists.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "oliviamitchell22_suncorp_w020",
+        "video_id": "oliviamitchell22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "oliviamitchell22",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about whether support options exist to temporarily amend or defer payments and could not find this information online.",
+        "observed_signal": "Participant looked at the menu and searched for support information but did not locate any pathway to modify payment terms or access hardship options.",
+        "stated_signal": "I just don't know if there's any form of like, situation where you can amend it momentarily. I would definitely prefer to do this online.",
+        "rationale": "The participant explicitly stated uncertainty about whether a payment modification pathway exists and could not locate it despite checking the menu. The stated frustration and observed search failure both indicate the required information was not found. This represents a significant component barrier (financial hardship support options) that the participant could not overcome online, matching S3 and L3.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "oliviamitchell22_suncorp_w020",
+        "video_id": "oliviamitchell22_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "oliviamitchell22",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant perceived insufficient support resources available on the platform for their financial hardship situation.",
+        "observed_signal": "Participant reviewed available information and expressed dissatisfaction with the level of support presented.",
+        "stated_signal": "It's just don't seem like as many, as much support as you would probably want.",
+        "rationale": "The participant stated that the visible support options appear inadequate for their needs. This indicates content or pathways necessary to complete the task (understanding available hardship support) were not sufficiently discoverable or comprehensive, matching S3 (significant component failure) and the observed difficulty level.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 26 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=5, S4=3, S5=16, S6=1. Representative findings: Participant using screen reader and Zoom could not locate the product disclosure statement anywhere on the website despite exhaustively navigating the entire page. | Participant encountered confusing and intimidating content when exploring a specific product section and abandoned the pathway due to fear of the interface. | Participant could not locate a search function on the homepage and was unable to find relevant financial hardship information online, requiring them to consider calling customer support instead.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 4 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 26 findings spanning 4 distinct friction types (F6,F2,F1,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F2 Confidence, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F2,F1,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=26 findings across 4 distinct friction types (F6=9, F2=7, F1=6, F5=4).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "video_id": "Sharelinsonny_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "Sharelinsonny",
+  "total_windows": 61,
+  "duration_sec": 4098.803,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 29,
+    "by_friction_type": {
+      "F1": 16,
+      "F2": 6,
+      "F6": 4,
+      "F7": 3
+    },
+    "by_severity": {
+      "S1": 1,
+      "S5": 27,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 6,
+      "E4": 23
+    },
+    "by_calibrator_score": {
+      "L1": 1,
+      "L2": 27,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 28,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "Sharelinsonny_uq_w060",
+        "video_id": "Sharelinsonny_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F6",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an unexpected or missing option during task progression and expressed inability to proceed, leading to task abandonment.",
+        "observed_signal": "Participant stated 'There's no option' and then indicated confusion about what to do next ('What should I do?'). Subsequently, the participant decided to discontinue the task, stating 'I think I don't want to continue this one more' and 'I think I'll wrap up now.'",
+        "stated_signal": "There's no option, so, OK... What should I do?... I think I don't want to continue this one more, so, since there's so much. I think I'll do that next time. I think I'm gonna wrap up now.",
+        "rationale": "The participant explicitly reported that a required option was not available ('There's no option') and subsequently abandoned the task without completing the primary objective. Both stated and observed signals indicate the participant could not locate or access a necessary pathway to proceed with discovering postgraduate course information. This matches the S1 blocker gate: the primary project outcome was not achieved independently, and the participant ceased engagement.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_uq_w016",
+        "video_id": "Sharelinsonny_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F7",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant felt overwhelmed by the large number of options and links on the site, despite finding the program relatively easy to locate.",
+        "observed_signal": "Participant navigated the site and located the program but expressed concern about the volume of options and links presented.",
+        "stated_signal": "It's fairly easy to find the program, but there are a lot of options and links, which I can feel a bit of like, um, overwhelming at first.",
+        "rationale": "The participant successfully completed the task of locating the program but explicitly stated feeling overwhelmed by the number of options and links. This represents excessive cognitive effort required to parse and navigate the interface, though the task was ultimately completed. The friction is noticeable and recoverable but materially slows the user's confidence in navigation.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_uq_w016",
+        "video_id": "Sharelinsonny_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered academic terminology that required pausing to confirm correct section placement.",
+        "observed_signal": "Participant paused navigation to verify terminology and ensure correct section selection.",
+        "stated_signal": "Sometimes the terminology feels a bit academic, and I have to pause to make sure I'm in the right section.",
+        "rationale": "The participant explicitly stated that academic terminology caused them to pause and verify their location, indicating comprehension friction with jargon. The task was ultimately completed, but the participant experienced noticeable hesitation due to unclear or overly technical language, matching the S5/L2 gate for brief friction requiring clarification.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_uq_w017",
+        "video_id": "Sharelinsonny_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about locating key information sections like program structure and fees on the postgraduate course page.",
+        "observed_signal": "Participant described scrolling down the page looking for headings like 'program structure' to find answers about program duration, flexibility, and fees.",
+        "stated_signal": "I'm thinking about a common question I have as a prospective student, so for example, like how long the program take? And also like, is it flexible or available part-time or what is the course? Are the fees like listed clearly? Like, to find this answer, I scroll down the page and look for heading like program structure.",
+        "rationale": "The participant articulated uncertainty about where to find critical information (program duration, flexibility, fees) and described a search strategy (scrolling for headings) to locate it. This indicates wayfinding uncertainty about content location on the page. The participant recovered by using a reasonable search method, representing brief hesitation rather than a blocker.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "Sharelinsonny_uq_w018",
+        "video_id": "Sharelinsonny_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "Sharelinsonny",
+        "friction_type": "F7",
+        "severity_s": "S5",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced friction navigating the postgraduate course information due to content being spread across multiple page sections, requiring more clicking and effort than expected.",
+        "observed_signal": "Participant read through fee information and navigation structure, then described the overall layout as logical but scattered across multiple sections.",
+        "stated_signal": "The navigation overall fields logical, but it does require a bit of effort. Like information is there, but sometimes it's spread across multiple sections of page, which means clicking around more than I expected. So it's not confusing, but it's not always fast either.",
+        "rationale": "The participant clearly stated that finding information required more effort and clicking than expected, though they acknowledged it was not confusing. The friction is excessive effort (F7) caused by scattered content across multiple page sections. The participant completed the task of reviewing course information but with a non-optimal path and deliberate hesitation about the effort required, fitting S5 and L2.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 29 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S5=27, S6=1. Representative findings: Participant encountered an unexpected or missing option during task progression and expressed inability to proceed, leading to task abandonment. | Participant felt overwhelmed by the large number of options and links on the site, despite finding the program relatively easy to locate. | Participant encountered academic terminology that required pausing to confirm correct section placement.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

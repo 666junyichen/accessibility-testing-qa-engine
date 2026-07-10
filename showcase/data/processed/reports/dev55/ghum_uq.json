@@ -1,0 +1,213 @@
+{
+  "video_id": "ghum_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "ghum",
+  "total_windows": 85,
+  "duration_sec": 5780.146999999999,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 1.0,
+    "dominant_cluster_id": 0,
+    "dominant_cluster_pct": 0.9411764705882353,
+    "cluster_distribution": {
+      "0": 80,
+      "2": 5
+    },
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 93,
+    "by_friction_type": {
+      "F1": 17,
+      "F2": 24,
+      "F3": 23,
+      "F4": 9,
+      "F5": 12,
+      "F6": 3,
+      "F7": 5
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 3,
+      "S3": 6,
+      "S4": 43,
+      "S5": 40
+    },
+    "by_sentiment": {
+      "E2": 1,
+      "E3": 25,
+      "E4": 60,
+      "none": 7
+    },
+    "by_calibrator_score": {
+      "L2": 40,
+      "L3": 48,
+      "L4": 4,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 78,
+      "conflicted": 3,
+      "stated_missing": 12
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "ghum_uq_w077",
+        "video_id": "ghum_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ghum",
+        "friction_type": "F5",
+        "severity_s": "S1",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant became trapped in a Google Authenticator setup flow that was unrelated to the assigned task of discovering postgraduate course information.",
+        "observed_signal": "Participant navigated through multiple authenticator screens (scanner, QR code, setup key, code entry fields) and remained focused on completing the authentication process rather than returning to the task objective.",
+        "stated_signal": "Looks like there aren't Google authenticated codes here at a code button. Add an authenticator code in, scanner to my code, button to a setup key, scan it to my code... [continued narration of authenticator interface elements and codes]",
+        "rationale": "The participant's observed behaviour shows they became diverted into an authentication setup flow and did not return to the primary task of discovering postgraduate course information. The stated signal confirms they were reading and interacting with authenticator elements rather than the intended search pathway. This represents an unexpected interface behaviour that blocked the primary project outcome.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_uq_w027",
+        "video_id": "ghum_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ghum",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant searched for 'Business Law' with Master's Coursework filter applied and received zero matching results, indicating a content-not-found outcome.",
+        "observed_signal": "Participant navigated the University of Queensland program search interface, applied filters (Award Type: Master's Coursework, Study Type: Any), entered 'Business Law' as the keyword, and the search returned 'No matching programs'.",
+        "stated_signal": "Search now about research for business law. No. Matching programs.",
+        "rationale": "The participant explicitly encountered a zero-result state for a valid search query. Although the participant did not express frustration verbally, the observed inability to locate matching programs on a targeted search represents a task component blocker. The participant moved on without attempting alternative filters or search terms, suggesting the outcome blocked progression within that search pathway.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_uq_w058",
+        "video_id": "ghum_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ghum",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a 'Heading not found' error message while attempting to submit the application form.",
+        "observed_signal": "Participant navigated through form fields, attempted submission, and received an error dialog stating 'Heading not found' from the University of Queensland web content interface.",
+        "stated_signal": "Oh yeah, I got a message. Heading not found.",
+        "rationale": "The participant explicitly encountered a system error ('Heading not found') that prevented forward progress at the submission stage. The observed error dialog and stated acknowledgment both indicate an unresponsive or broken interface state. Although the participant continued after the error, the blocking nature of the submission failure at a critical juncture meets S2 (overall outcome achieved but one component task completely blocked) and L4 (near-abandonment or facilitator intervention territory).",
+        "structural_amplification_note": "If the participant was using a screen reader, the 'Heading not found' error is likely a structural accessibility failure in the form markup, indicating missing semantic headings required for AT navigation."
+      },
+      {
+        "window_id": "ghum_uq_w075",
+        "video_id": "ghum_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ghum",
+        "friction_type": "F2",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an authentication barrier requiring a six-digit code from an authenticator app but expressed uncertainty about whether they have signed in with an authenticator app, blocking progression.",
+        "observed_signal": "Participant read aloud the authentication prompt multiple times, stated 'Um, how have I signed an authenticator app?' and then attempted to scan or manually enter a QR code, but the flow remained unresolved in the transcript.",
+        "stated_signal": "Um, how have I signed an authenticator app?",
+        "rationale": "The participant expressed explicit uncertainty about whether they have the required authenticator app set up, which blocks completion of the login task needed to access course information. The stated confusion and the inability to proceed without external help or account setup indicate a task blocker for this component of the workflow.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "ghum_uq_w054",
+        "video_id": "ghum_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "ghum",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "conflicted",
+        "finding": "The transcript contains fragmented, incoherent system output or screen reader text that does not form a coherent narrative of the participant's task progression.",
+        "observed_signal": "The window transcript consists of overlapping UI labels, button names, and repeated form field descriptions without clear sequential task progression or completion.",
+        "stated_signal": "Yes, OK, cool.",
+        "rationale": "The transcript appears to be either corrupted screen reader output, accessibility tree labels, or a failed recording transcription, suggesting a significant accessibility or recording capture issue. The fragmented nature of the window, combined with the lack of coherent task flow, indicates substantial friction in understanding what the participant actually accomplished or encountered, blocking reliable task analysis.",
+        "structural_amplification_note": "This friction pattern is structurally amplified for assistive-technology users if the underlying interface has poor labeling or grouping; the fragmented transcript output suggests possible accessibility tree problems."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 93 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=3, S3=6, S4=43, S5=40. Representative findings: Participant became trapped in a Google Authenticator setup flow that was unrelated to the assigned task of discovering postgraduate course information. | Participant searched for 'Business Law' with Master's Coursework filter applied and received zero matching results, indicating a content-not-found outcome. | Participant encountered a 'Heading not found' error message while attempting to submit the application form.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 93 findings spanning 7 distinct friction types (F2,F3,F1,F5,F4,F7,F6). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F3 Accessibility, F1 Comprehension) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F3,F1,F5,F4,F7,F6",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=93 findings across 7 distinct friction types (F2=24, F3=23, F1=17, F5=12, F4=9, F7=5, F6=3).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

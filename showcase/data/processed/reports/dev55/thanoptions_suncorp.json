@@ -1,0 +1,176 @@
+{
+  "video_id": "thanoptions_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "thanoptions",
+  "total_windows": 36,
+  "duration_sec": 2729.591,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 7,
+    "by_friction_type": {
+      "F1": 6,
+      "F2": 1
+    },
+    "by_severity": {
+      "S4": 3,
+      "S5": 4
+    },
+    "by_sentiment": {
+      "E4": 7
+    },
+    "by_calibrator_score": {
+      "L2": 4,
+      "L3": 3
+    },
+    "signal_alignment_distribution": {
+      "aligned": 7
+    },
+    "top_severity": "S4",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "thanoptions_suncorp_w012",
+        "video_id": "thanoptions_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot understand the English content and terminology used on the page and expresses need for language support or translations.",
+        "observed_signal": "Participant stated inability to understand terminology and expressed frustration about needing someone to explain English words; suggested translations or video alternatives would help.",
+        "stated_signal": "I have no idea what that means, um, so I need someone to come and explain the English words to me and need some language makes that, um... maybe translations that I don't actually read the information and just watching video on exactly what's women. But translated into site um this patient would be much better.",
+        "rationale": "The participant explicitly stated inability to understand the terminology and language used on the page. The stated need for external help (someone to explain) and preference for alternative modalities (video, translations) indicates comprehension friction that blocks independent progress. Multiple attempts to articulate the problem and repeated expressions of confusion align with S4 (major difficulty materially slowing progress) and L3 (significant friction with frustration).",
+        "structural_amplification_note": "ESL cohort experiences structurally amplified friction when product content uses unexplained jargon or complex terminology without translation or multimodal alternatives. Participant's need for external language support to proceed is a direct accessibility barrier for non-native English speakers."
+      },
+      {
+        "window_id": "thanoptions_suncorp_w025",
+        "video_id": "thanoptions_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed strong negative emotion about the current state or interface, describing it as 'fucking messy'.",
+        "observed_signal": "Participant made a verbal outburst with profanity while apparently reviewing or navigating the interface.",
+        "stated_signal": "I think it's fucking messy.",
+        "rationale": "The participant's explicit negative language and the unfinished, fragmented nature of the transcript suggest significant comprehension or clarity friction with the interface design or information architecture. The strong profanity indicates frustration beyond minor hesitation, placing this at S4 (high friction) rather than low severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "thanoptions_suncorp_w028",
+        "video_id": "thanoptions_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about the content structure and stated difficulty understanding how information is organized and translated into usable guidance.",
+        "observed_signal": "Participant made multiple fragmented statements expressing inability to comprehend the layout and connection between content sections.",
+        "stated_signal": "It doesn't make sense. You don't get any turned up. Don't ask them questions about it. It's a parts something and then translate to the paragraph and it's regation, then we find that paragraph and then translate that to be able to ci which you know you understand it wouldn't.",
+        "rationale": "The participant's stated signals repeatedly express inability to understand the content structure and how information relates. The fragmented, struggling articulation combined with explicit statements of non-comprehension indicate significant comprehension friction. The participant is struggling to parse and make sense of how information is presented and connected, which matches S4 (major difficulty materially slowing progress) and L3 (significant friction with frustration).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "thanoptions_suncorp_w001",
+        "video_id": "thanoptions_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered unclear or jargon-heavy language in the insurance comparison display that they chose not to read.",
+        "observed_signal": "Participant viewed the insurance options page, noted the presence of unfamiliar terminology, and explicitly stated they were not reading those words before moving forward to compare coverage details.",
+        "stated_signal": "there's a lot of uh deliship words there that I'm not really um reading.",
+        "rationale": "The participant identified jargon or unclear terminology in the insurance options page and explicitly stated they were not engaging with it due to comprehension difficulty. Despite this, they recovered by focusing on the clearly visible coverage details section, completing the comparison task without full blockage. This represents noticeable but recoverable comprehension friction.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "thanoptions_suncorp_w009",
+        "video_id": "thanoptions_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "thanoptions",
+        "friction_type": "F2",
+        "severity_s": "S5",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L2",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed confusion about information architecture, stating preference for separated insurance categories rather than combined business and personal insurance navigation.",
+        "observed_signal": "Participant made statements comparing current navigation structure unfavorably to a separated model, mentioning difficulty distinguishing between business and personal insurance options.",
+        "stated_signal": "I don't like that. I like when it's separate, you know, it's coming in and it's just says we in business and it's all separate so I can see the beginning. What's the insurance and go straight to the insurance and then without having to basically got some steps.",
+        "rationale": "The participant expressed dissatisfaction with the current information architecture and stated a preference for clearer categorization. This indicates wayfinding uncertainty about how to distinguish and access relevant insurance information. The verbal expression of dislike combined with the stated preference for separation shows F2 (confidence/wayfinding friction), but recovery is implied by the participant's ability to articulate the desired structure, placing it at S5 (medium friction with quick recovery).",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "poor",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "recording unusable"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "recording",
+      "title": "Recording quality limits reliable downstream analysis",
+      "summary": "The session recording is broken, incomplete, or substantially degraded, which weakens the reliability of interpretation.",
+      "advice": [
+        "Treat this session as low-confidence evidence.",
+        "Improve recording setup and audio checks before the next session begins.",
+        "Consider excluding this session from analyses that require detailed behavioural evidence."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "poor",
+      "priority": 5,
+      "evidence_note": "5.1-B marks the session as barely usable for analysis.",
+      "tags": [
+        "recording",
+        "reliability",
+        "analysis-risk"
+      ]
+    },
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 7 finding-level issue(s), with the highest severity at S4.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S4",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S4=3, S5=4. Representative findings: Participant cannot understand the English content and terminology used on the page and expresses need for language support or translations. | Participant expressed strong negative emotion about the current state or interface, describing it as 'fucking messy'. | Participant expressed confusion about the content structure and stated difficulty understanding how information is organized and translated into usable guidance.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    }
+  ]
+}

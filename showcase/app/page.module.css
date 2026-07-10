@@ -1,6 +1,6 @@
 .appShell {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
   min-height: 100vh;
   background: #f5f7fb;
   color: #1f2937;
@@ -29,7 +29,8 @@
 .footnote,
 .sectionCopy,
 .summaryHeader p,
-.capReason {
+.capReason,
+.cardMeta {
   color: #94a3b8;
 }
 
@@ -39,9 +40,16 @@
   line-height: 1.55;
 }
 
-.sidebarNav {
+.sidebarNav,
+.sidebarControls,
+.selectorBlock,
+.sidebarDetails,
+.stackList,
+.chipRow,
+.projectGrid,
+.trajectoryGrid {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .navItem,
@@ -49,14 +57,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
   color: #475569;
   font-size: 0.98rem;
-  text-decoration: none;
+  cursor: pointer;
 }
 
 .navItemActive {
   color: #334155;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .navDot,
@@ -75,16 +87,13 @@
   box-shadow: inset 0 0 0 2px #ffffff;
 }
 
-.sidebarControls {
-  display: grid;
-  gap: 14px;
+.selectorLabel {
+  color: #64748b;
+  font-size: 0.92rem;
 }
 
-.filterButton,
-.videoSelect {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.selectField {
+  width: 100%;
   border: 1px solid #d7dde7;
   border-radius: 12px;
   background: #ffffff;
@@ -93,35 +102,7 @@
   font-size: 0.95rem;
 }
 
-.chevron {
-  color: #64748b;
-}
-
-.selectorBlock {
-  display: grid;
-  gap: 10px;
-}
-
-.selectorLabel {
-  color: #64748b;
-  font-size: 0.92rem;
-}
-
-.videoSelect {
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.videoSelectText {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .sidebarDetails {
-  display: grid;
-  gap: 8px;
   color: #64748b;
   font-size: 0.95rem;
   line-height: 1.55;
@@ -137,7 +118,7 @@
 
 .contentShell {
   display: grid;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: 48px 1fr;
 }
 
 .topBar {
@@ -145,11 +126,6 @@
   justify-content: flex-end;
   align-items: center;
   padding: 0 22px;
-}
-
-.deployLabel {
-  color: #64748b;
-  font-size: 0.9rem;
 }
 
 .languageToggle {
@@ -198,13 +174,19 @@
   font-size: 1rem;
 }
 
-.summaryCard {
-  border-radius: 16px;
+.summaryCard,
+.metaCard,
+.infoCard,
+.contentCard {
   border: 1px solid #e6ebf2;
-  border-left: 4px solid #d61f3a;
+  border-radius: 14px;
   background: #ffffff;
-  padding: 28px 26px 18px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.summaryCard {
+  border-left: 4px solid #d61f3a;
+  padding: 28px 26px 18px;
 }
 
 .summaryHeader h2 {
@@ -215,12 +197,17 @@
   font-weight: 800;
 }
 
-.summaryStats {
+.summaryStats,
+.metaGrid,
+.infoGrid {
   display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.summaryStats {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 20px;
-  padding-top: 8px;
 }
 
 .summaryStat span,
@@ -244,50 +231,54 @@
   font-weight: 800;
 }
 
-.tierPill {
+.metaCard,
+.infoCard,
+.contentCard {
+  padding: 16px 18px;
+}
+
+.tierPill,
+.findingBadge,
+.findingBadgeMuted,
+.grayChip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ff7d7d;
   border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.tierPill {
+  border: 1px solid #ff7d7d;
   background: #fff2f2;
-  padding: 8px 14px;
   color: #c2410c !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.08em;
 }
 
-.capReason {
+.findingBadge {
+  background: #fff1f2;
+  color: #d61f3a;
+}
+
+.findingBadgeMuted,
+.grayChip {
+  background: #eef2f7;
+  color: #475569;
+}
+
+.capReason,
+.reasoningText,
+.footnote,
+.sectionCopy {
   margin-top: 14px;
-  border-top: 1px solid #edf2f7;
-  padding-top: 14px;
-  font-size: 0.88rem;
-}
-
-.metaGrid,
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.metaCard,
-.infoCard {
-  border: 1px solid #e6ebf2;
-  border-radius: 14px;
-  background: #ffffff;
-  padding: 16px 18px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-}
-
-.reasoningText {
-  margin-top: 18px;
-  font-size: 0.96rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .tabRow {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-top: 18px;
   border-bottom: 1px solid #dbe3ee;
@@ -296,8 +287,11 @@
 
 .tab,
 .activeTab {
+  border: 0;
+  background: transparent;
   color: #64748b;
   font-size: 0.95rem;
+  cursor: pointer;
 }
 
 .activeTab {
@@ -311,20 +305,22 @@
   margin-top: 20px;
 }
 
-.sectionBlock h3 {
+.sectionBlock h3,
+.contentCard h4 {
   margin: 0 0 14px;
   color: #1e293b;
   font-family: var(--font-body);
+}
+
+.sectionBlock h3 {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 
-.footnote,
-.sectionCopy {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+.contentCard h4 {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .distributionBar,
@@ -345,6 +341,7 @@
   color: #475569;
   font-size: 0.74rem;
   font-weight: 700;
+  padding: 0 8px;
 }
 
 .toneWarning {
@@ -374,11 +371,69 @@
   margin-top: 4px;
 }
 
+.findingHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.findingMeta {
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+.contentCard p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.chartWrap {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.chart {
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+}
+
+.chartGrid {
+  stroke: #dbe4ef;
+  stroke-width: 1;
+}
+
+.chartLine {
+  fill: none;
+  stroke: #d61f3a;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.chartPoint {
+  fill: #d61f3a;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.chartAxisLabel {
+  fill: #64748b;
+  font-size: 11px;
+}
+
+.projectGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (max-width: 1200px) {
   .summaryStats,
   .metaGrid,
   .infoGrid,
-  .doubleSection {
+  .doubleSection,
+  .projectGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -395,7 +450,8 @@
   .summaryStats,
   .metaGrid,
   .infoGrid,
-  .doubleSection {
+  .doubleSection,
+  .projectGrid {
     grid-template-columns: 1fr;
   }
 }

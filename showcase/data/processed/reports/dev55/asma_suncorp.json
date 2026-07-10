@@ -1,0 +1,203 @@
+{
+  "video_id": "asma_suncorp",
+  "project": "suncorp-insurance",
+  "tester_name": "asma",
+  "total_windows": 63,
+  "duration_sec": 4984.2880000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 30,
+    "by_friction_type": {
+      "F1": 9,
+      "F2": 1,
+      "F3": 3,
+      "F4": 1,
+      "F6": 10,
+      "F7": 6
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 3,
+      "S4": 10,
+      "S5": 15
+    },
+    "by_sentiment": {
+      "E3": 1,
+      "E4": 29
+    },
+    "by_calibrator_score": {
+      "L2": 15,
+      "L3": 13,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 30
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "asma_suncorp_w025",
+        "video_id": "asma_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "asma",
+        "friction_type": "F6",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant described the task as very confusing and stated they could not find all the required information independently.",
+        "observed_signal": "Participant attempted to search for information but did not complete an independent search; instead copied content and asked for external help before finishing their own exploration.",
+        "stated_signal": "This question seems very like confusing and I couldn't find all the information for myself.",
+        "rationale": "The participant stated explicitly that they could not find the information needed for the task and resorted to external help (copying content and asking someone else) rather than completing an independent search. This represents a component task blocker where the primary outcome (finding information about financial hardship support online independently) was not achieved without intervention, fitting the S2 and L4 gates.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "asma_suncorp_w056",
+        "video_id": "asma_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "asma",
+        "friction_type": "F1",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed inability to understand the content or information structure and stated they would need to contact the helpline instead of finding the information online.",
+        "observed_signal": "Participant navigated the page but did not complete the online self-service task; instead indicated reliance on external support (helpline) as a fallback.",
+        "stated_signal": "I don't understand the forces of anything... it could be just still contact like the helpline... I couldn't find is a good step.",
+        "rationale": "The participant stated they did not understand the content and could not locate what they needed online, necessitating external support (helpline contact). This represents a comprehension and information-finding failure for the online self-service component of the task, meeting the S2 gate (overall outcome potentially achieved but one component task blocked) and L4 calibrator (severe friction requiring external workaround).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "asma_suncorp_w030",
+        "video_id": "asma_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "asma",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed strong difficulty with PDF files on the platform, stating they require account access and are hard to navigate, edit, and understand, particularly for users with limited English or technology experience.",
+        "observed_signal": "Participant discussed checking whether PDFs would be easy to understand and explicitly stated PDFs are not easy to read or understand, especially for users with limited English or limited technology understanding.",
+        "stated_signal": "I don't find it easy, anything related to PBA. Because with all this stuff that's happening with the PDF, you must have an account. You can't open any PDF... It's really hard to bring changes in terms of PDF... anybody with limited English or they have like any limited understanding of the technology or the digital devices. PDF is not the thing that while that uh they find it easy to read or maybe to understand this.",
+        "rationale": "The participant identified a significant accessibility barrier: PDFs require an account, lack interactivity (editing, highlighting), and are difficult for users with limited English or digital literacy. This is a structural accessibility friction that affects a component of the task (accessing financial hardship information likely provided in PDF format). The participant's stated frustration aligns with their observed critical evaluation of the accessibility gap.",
+        "structural_amplification_note": "Users with limited English proficiency, lower digital literacy, or those relying on assistive technologies experience structurally amplified friction with PDF-based content that lacks interactivity and account-gating. This cohort faces a compounded barrier beyond the general user experience."
+      },
+      {
+        "window_id": "asma_suncorp_w029",
+        "video_id": "asma_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "asma",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that people with limited English or limited understanding of insurance policies and products cannot easily find information about financial hardship support on the website.",
+        "observed_signal": "Participant reviewed terms, conditions, and disclosure documents during the task and explicitly stated the difficulty in accessing relevant options.",
+        "stated_signal": "You couldn't find like good access to option. Anybody with limited English or anybody with limited understanding about the policies, about the insurance and products and everything that Couldn't find this information easily, so that's quite a huge challenge.",
+        "rationale": "The participant explicitly identified a comprehension barrier affecting users with limited English or insurance literacy. The stated concern aligns with the observed difficulty in navigating the terms, conditions, and disclosure materials. This represents a significant component failure affecting a subset of users attempting the financial hardship task, matching S3 severity and L3 calibration.",
+        "structural_amplification_note": "ESL and cognitively diverse users experience structurally amplified friction due to complex insurance jargon, policy terminology, and dense document formats (PDF, disclosure statements) that are not simplified or made accessible for users with limited English proficiency or lower insurance literacy."
+      },
+      {
+        "window_id": "asma_suncorp_w042",
+        "video_id": "asma_suncorp",
+        "project": "suncorp-insurance",
+        "tester_name": "asma",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed difficulty understanding the financial hardship support options and indicated they would prefer to contact the helpline instead of self-serving online.",
+        "observed_signal": "Participant articulated confusion about the content and stated they would resort to calling the helpline rather than navigating the online information.",
+        "stated_signal": "I don't understand the forces of anything so people just still contact like the helpline and because sometimes you. It's much easier to. It's. Because we, I couldn't find is a good step.",
+        "rationale": "The participant explicitly stated they do not understand the content presented and indicated they could not find clear guidance on next steps. This comprehension failure led them to abandon the self-service approach and resort to the helpline, which was the task goal to avoid. The significant barrier to understanding content that directly impeded the primary task objective aligns with S3 and L3.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 30 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=3, S4=10, S5=15. Representative findings: Participant described the task as very confusing and stated they could not find all the required information independently. | Participant expressed inability to understand the content or information structure and stated they would need to contact the helpline instead of finding the information online. | Participant expressed strong difficulty with PDF files on the platform, stating they require account access and are hard to navigate, edit, and understand, particularly for users with limited English or technology experience.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 30 findings spanning 6 distinct friction types (F6,F1,F7,F3,F2,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F6 (Not Found) as the primary coaching anchor; secondary types (F1 Comprehension, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F6,F1,F7,F3,F2,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=30 findings across 6 distinct friction types (F6=10, F1=9, F7=6, F3=3, F2=1, F4=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

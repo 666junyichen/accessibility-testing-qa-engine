@@ -1,0 +1,205 @@
+{
+  "video_id": "praveshuprety307_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "praveshuprety307",
+  "total_windows": 59,
+  "duration_sec": 4004.385,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 30,
+    "by_friction_type": {
+      "F1": 7,
+      "F2": 11,
+      "F3": 1,
+      "F4": 1,
+      "F5": 2,
+      "F6": 3,
+      "F7": 5
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 3,
+      "S5": 23,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 11,
+      "E4": 19
+    },
+    "by_calibrator_score": {
+      "L1": 5,
+      "L2": 20,
+      "L3": 5
+    },
+    "signal_alignment_distribution": {
+      "aligned": 29,
+      "conflicted": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "praveshuprety307_wa_w032",
+        "video_id": "praveshuprety307_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "praveshuprety307",
+        "friction_type": "F7",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant discovered that subcontent under sections on the Family and Domestic Violence page is difficult for people to access, despite the content being available.",
+        "observed_signal": "Participant clicked through the 'Understand family and domestic violence' link, navigated to gaslighting content, found multiple subcontents, and then commented on access difficulty.",
+        "stated_signal": "There are so many subcontents under this sections, but people find it very hard to access it.",
+        "rationale": "The participant observed and explicitly stated that while information exists in multiple nested subcontents, the structure creates barriers to access. This is a significant component failure in content discoverability and organization, matching F7 (excessive effort due to structural complexity) and S3 (significant barrier worked around or skipped). The tone reflects frustration with the information architecture.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "praveshuprety307_wa_w054",
+        "video_id": "praveshuprety307_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "praveshuprety307",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an error or limitation when attempting to send feedback in text form and could not proceed with that action.",
+        "observed_signal": "Participant stated they were not able to send feedback in text form, then pivoted to an alternative action ('I'm gonna read this book').",
+        "stated_signal": "I'm not able to send the feedback in the text form.",
+        "rationale": "The participant's explicit statement that feedback submission failed aligns with observed behaviour of abandoning that pathway. This represents a blocked component action within the broader exploration task, causing the participant to divert to an alternative. The frustration cue ('So sensitive', 'I don't understand') reinforces the friction severity.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "praveshuprety307_wa_w027",
+        "video_id": "praveshuprety307_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "praveshuprety307",
+        "friction_type": "F1",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant found the page content insufficient and poorly organized, with only one paragraph explaining key concepts and unclear navigation between related topics.",
+        "observed_signal": "Participant clicked through sections including 'What is coercive control' and 'What is family and domestic violence', then expressed that the page lacks adequate content depth and organization.",
+        "stated_signal": "I think the purpose of the page is, I think, clearly not defined because when I visit this link, what is primarily and domestic violence. If the page has the purpose. It should be, the page should have more content, right? It should not, the page should not end only with this content and the and and and a different link. You could have had more content, right, in in friendly what is family and domestic violence. This is not only the, there's just one paragraph for the sake of explaining.",
+        "rationale": "The participant's observed navigation and stated critique both indicate comprehension friction stemming from inadequate content depth and unclear page purpose. The participant understands what is presented but judges the information insufficient and poorly structured, causing significant frustration and uncertainty about whether the page meets their exploratory needs.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "praveshuprety307_wa_w027",
+        "video_id": "praveshuprety307_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "praveshuprety307",
+        "friction_type": "F2",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed uncertainty about the page's intended purpose and scope, indicating unclear information hierarchy or labeling.",
+        "observed_signal": "After exploring multiple linked sections, participant articulated that the page's purpose is not clearly defined.",
+        "stated_signal": "I think the purpose of the page is, I think, clearly not defined.",
+        "rationale": "The participant's stated confusion about page purpose combined with the observed exploration pattern indicates confidence friction. While the participant navigated the page, the lack of clear purpose definition left them uncertain whether they had found what they needed or whether further navigation was warranted.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "praveshuprety307_wa_w053",
+        "video_id": "praveshuprety307_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "praveshuprety307",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant was unable to locate the feedback submission section on the website despite explicitly stating the intent to find and use it.",
+        "observed_signal": "Participant stated the need to find where to submit feedback about coercive control information, then said 'let me try' and 'let's find this section where I can submit the feedback,' but no evidence of successfully locating or accessing a feedback mechanism is present in the transcript.",
+        "stated_signal": "So let's find this section where I can submit the feedback. Let me try.",
+        "rationale": "The participant explicitly stated the goal to find a feedback submission pathway but the transcript ends before success is demonstrated. The stated intent to search and the inability to locate the required section align, indicating significant friction and multiple search attempts anticipated. This matches the S4/L3 gate for major difficulty that materially slows progress.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 30 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=3, S5=23, S6=2. Representative findings: Participant discovered that subcontent under sections on the Family and Domestic Violence page is difficult for people to access, despite the content being available. | Participant encountered an error or limitation when attempting to send feedback in text form and could not proceed with that action. | Participant found the page content insufficient and poorly organized, with only one paragraph explaining key concepts and unclear navigation between related topics.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 30 findings spanning 7 distinct friction types (F2,F1,F7,F6,F5,F3,F4). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F7,F6,F5,F3,F4",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=30 findings across 7 distinct friction types (F2=11, F1=7, F7=5, F6=3, F5=2, F3=1, F4=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

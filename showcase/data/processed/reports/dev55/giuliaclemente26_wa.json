@@ -1,0 +1,205 @@
+{
+  "video_id": "giuliaclemente26_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "giuliaclemente26",
+  "total_windows": 71,
+  "duration_sec": 4725.674,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 91,
+    "by_friction_type": {
+      "F1": 21,
+      "F2": 24,
+      "F3": 7,
+      "F4": 11,
+      "F5": 9,
+      "F6": 6,
+      "F7": 13
+    },
+    "by_severity": {
+      "S3": 2,
+      "S4": 6,
+      "S5": 71,
+      "S6": 12
+    },
+    "by_sentiment": {
+      "E3": 36,
+      "E4": 55
+    },
+    "by_calibrator_score": {
+      "L1": 21,
+      "L2": 62,
+      "L3": 8
+    },
+    "signal_alignment_distribution": {
+      "aligned": 90,
+      "stated_missing": 1
+    },
+    "top_severity": "S3",
+    "calibrator_aggregate": "L3",
+    "top_findings": [
+      {
+        "window_id": "giuliaclemente26_wa_w013",
+        "video_id": "giuliaclemente26_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F7",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a PDF resource that requires language translation, necessitating a multi-step external workaround (download, upload to AI tool) to access in their preferred language.",
+        "observed_signal": "Participant identified a 20-page PDF, paused, and began describing the steps needed to translate it (download, then upload to AI), then attempted to test if an alternative was working.",
+        "stated_signal": "It's problematic, so this is 20 pages. Um, it's a PDF, so for me to access it in my language, it will mean probably download. And then upload. Into. Upload into some kind of AI.",
+        "rationale": "The participant explicitly stated the PDF presents a barrier to access in their language and identified an excessive workaround (download, external upload to AI tool). This is a significant component failure requiring an external workaround, fitting S3. The participant's frustration (\"problematic\") and the complexity of the required effort align to L3 (significant friction with frustration).",
+        "structural_amplification_note": "For ESL or multilingual users, PDF-only content without native language support or built-in translation creates a structurally higher barrier. The requirement to use external AI tools amplifies effort and reduces independence."
+      },
+      {
+        "window_id": "giuliaclemente26_wa_w019",
+        "video_id": "giuliaclemente26_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that video content is only available in English, creating a barrier for non-English speakers who need to access support information.",
+        "observed_signal": "Participant was drawn to the video but stated it would not be available in their language, only in English, and noted the same issue applied to other videos on the page.",
+        "stated_signal": "I'm drawn to the video. However, this video won't be um available in my language, it will only be in English. Same for these videos.",
+        "rationale": "The participant cannot access a key information pathway (video content) due to language unavailability, which is a significant barrier for non-English speakers seeking domestic violence support. The observed lack of language options and the participant's stated concern both indicate a structural content gap that blocks access to information for this user.",
+        "structural_amplification_note": "Language accessibility is a critical structural barrier for ESL and multilingual users seeking support information on sensitive topics like domestic violence. Video-only content without translation or captions prevents non-English speakers from accessing potentially life-saving resources."
+      },
+      {
+        "window_id": "giuliaclemente26_wa_w017",
+        "video_id": "giuliaclemente26_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to use the Italian language option but it did not function, then attempted to use Google Translate extension which also did not work.",
+        "observed_signal": "Participant clicked on Italian language option, observed it was not working, then attempted to activate Google Translate extension which also failed to work.",
+        "stated_signal": "If I click on Italian, it's not working, so I'm gonna use um the Google Translate extension. Which is not working. Why? Hm, why is it not working?",
+        "rationale": "The participant's stated expectation that both the Italian language option and Google Translate would function did not match the interface response. Both tools failed to respond or produce visible results, blocking the participant's ability to access content in their preferred language. The repeated failed attempts and expressed frustration (Why? Hm, why is it not working?) indicate significant friction that required recovery.",
+        "structural_amplification_note": "For ESL or non-English-primary speakers, the failure of language and translation tools creates a structural barrier to accessing content, amplifying the impact of the unresponsive interface."
+      },
+      {
+        "window_id": "giuliaclemente26_wa_w028",
+        "video_id": "giuliaclemente26_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F4",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant experienced repeated friction when navigating internal page links because translation controls would disappear, requiring constant retranslation of the interface.",
+        "observed_signal": "Participant clicked on internal links that led to different sections of the page and encountered a pattern where translation features became unavailable, forcing repeated re-engagement with translation controls.",
+        "stated_signal": "It's quite annoying to have to constantly retranslate where is the translation, and sometimes the translation disappears.",
+        "rationale": "The participant explicitly stated annoyance at the repetitive need to retranslate and the disappearance of translation controls. The observed pattern of clicking internal links combined with stated frustration about translation persistence demonstrates significant friction that required repeated corrective effort. This matches S4 (major difficulty that materially slows progress) and L3 (significant friction with frustration and multiple attempts).",
+        "structural_amplification_note": "This issue structurally amplifies friction for participants using translated interfaces, as translation state loss creates repeated cognitive and navigational burdens across page interactions."
+      },
+      {
+        "window_id": "giuliaclemente26_wa_w031",
+        "video_id": "giuliaclemente26_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered duplicate resources across navigation pathways, creating confusion about whether content was genuinely different or redundant.",
+        "observed_signal": "Participant clicked through multiple sections and discovered the same resource appearing in different locations (Home > Department of Communities > My Situation appearing twice). Participant stated 'I got lost' and expressed uncertainty about whether resources were the same or different.",
+        "stated_signal": "Why are these different? They're the same, OK, they're the same. I got lost. Having twice the same resource, which happens for multiple resources, I expect to see something new, but I see... I wonder, I think you should choose.",
+        "rationale": "The participant's exploration was disrupted by duplicate resources appearing in multiple navigation paths. Both observed cycling through redundant content and stated confusion ('I got lost', 'I expect to see something new') indicate the participant could not locate genuinely distinct information pathways. This matches S4 and L3: significant friction with multiple attempts and expressed frustration, though the task of exploration itself continued.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "acceptable",
+    "reasoning": [
+      "multiple medium-severity findings"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Review high-friction moments before lower-level issues",
+      "summary": "The session contains 91 finding-level issue(s), with the highest severity at S3.",
+      "advice": [
+        "Identify the common pattern behind the higher-severity findings.",
+        "Focus coaching on the most disruptive parts of the session first.",
+        "Avoid treating all findings as equal when severity levels differ."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S3",
+      "priority": 4,
+      "evidence_note": "5.1-A severity distribution: S3=2, S4=6, S5=71, S6=12. Representative findings: Participant encountered a PDF resource that requires language translation, necessitating a multi-step external workaround (download, upload to AI tool) to access in their preferred language. | Participant identified that video content is only available in English, creating a barrier for non-English speakers who need to access support information. | Participant attempted to use the Italian language option but it did not function, then attempted to use Google Translate extension which also did not work.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "targeted-coaching"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 91 findings spanning 7 distinct friction types (F2,F1,F7,F4,F5,F3,F6). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F7 Excessive Effort) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F7,F4,F5,F3,F6",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=91 findings across 7 distinct friction types (F2=24, F1=21, F7=13, F4=11, F5=9, F3=7, F6=6).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

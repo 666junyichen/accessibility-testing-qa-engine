@@ -1,0 +1,207 @@
+{
+  "video_id": "giuliaclemente26_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "giuliaclemente26",
+  "total_windows": 56,
+  "duration_sec": 3780.5280000000002,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 54,
+    "by_friction_type": {
+      "F1": 22,
+      "F2": 13,
+      "F3": 1,
+      "F4": 9,
+      "F5": 1,
+      "F6": 6,
+      "F7": 2
+    },
+    "by_severity": {
+      "S2": 1,
+      "S3": 3,
+      "S4": 3,
+      "S5": 45,
+      "S6": 2
+    },
+    "by_sentiment": {
+      "E3": 2,
+      "E4": 52
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 45,
+      "L3": 6,
+      "L4": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 53,
+      "stated_missing": 1
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "giuliaclemente26_uq_w040",
+        "video_id": "giuliaclemente26_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant attempted to share screen but the action did not work, preventing screen recording needed for the task.",
+        "observed_signal": "Participant stated intention to share screen, but the action failed to execute. Participant expressed confusion about why it was not working.",
+        "stated_signal": "I wanna share my screen, which is not working. Why?",
+        "rationale": "The participant's screen-sharing action produced no visible response, blocking the ability to record and demonstrate the search process as required by task step 3. Both observed behaviour (failed action) and stated signal (expressed confusion and questioning why it failed) align on this unresponsive interface event. The task outcome depended on this functionality, making it a component task blocker.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_uq_w002",
+        "video_id": "giuliaclemente26_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F4",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered an obstruction from a chatbot overlay that prevented viewing the website content during screen sharing.",
+        "observed_signal": "Participant attempted to view university websites but reported that a chatbot interface obscured the page content, making it impossible to see the underlying website.",
+        "stated_signal": "on these websites where the chatbot want to talk to you, is that you don't see the, you don't see the website anymore, you just see stuff, um, translate.",
+        "rationale": "The participant clearly stated that the chatbot overlay prevents visibility of the website content, blocking access to information needed for the task. This is an unresponsive or intrusive interface issue that creates a significant barrier; the participant had to work around it rather than access the intended content directly. The friction is structural (UI blocking content) and expressed with evident frustration.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_uq_w025",
+        "video_id": "giuliaclemente26_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find law-related postgraduate programs in the search results and indicated intention to seek external assistance.",
+        "observed_signal": "Participant reviewed the postgraduate specializations list (9 listed), noted that law was not mentioned, and stated they would contact someone externally before proceeding.",
+        "stated_signal": "law is not mentioned here. Um, at this stage, I would get in touch with someone like before.",
+        "rationale": "The participant was unable to locate law-related postgraduate information within the search results and explicitly indicated they would resort to external assistance (contacting someone) to proceed. This constitutes content not found that triggered a workaround pathway, matching S3 (significant component failure worked around) and L3 (struggle with external workaround).",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_uq_w047",
+        "video_id": "giuliaclemente26_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a non-functional form and could not locate downloadable resources for postgraduate course information.",
+        "observed_signal": "Participant attempted to find downloadable resources, encountered a form that was not working, and explicitly stated inability to find any downloadable resource.",
+        "stated_signal": "I can't find any resource to download unless it's um. It's a form It's not working. Yeah, no apologies, I can't find any downloadable resource.",
+        "rationale": "The participant needed downloadable resources to complete their research and encountered both a broken form and inability to locate the needed content. The stated frustration ('It's not working') and explicit statement of failure to find resources ('I can't find any downloadable resource') indicate significant friction. The participant worked around this by deciding to use AI translation as an alternative, indicating a barrier that was worked around rather than fully blocking the task.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "giuliaclemente26_uq_w026",
+        "video_id": "giuliaclemente26_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "giuliaclemente26",
+        "friction_type": "F7",
+        "severity_s": "S4",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant expressed inability to confidently determine program suitability due to overwhelming volume of information requiring review, and stated the effort would be prohibitive across multiple programs.",
+        "observed_signal": "Participant reviewed available program information on the page and paused, then indicated they cannot be sure the program is the right choice and noted the considerable amount of information to process.",
+        "stated_signal": "At a glance, I can't really be sure that this is the right thing for me, and there's quite a lot of information to go through. If I had to do this for 2 or 3 programs, it would be a considerable amount of time in a different language, so it will be clunky.",
+        "rationale": "The participant explicitly stated that the task requires excessive cognitive and temporal effort—reviewing multiple programs would be 'clunky' and time-consuming, particularly in a non-native language context. The participant expressed frustration and uncertainty about their ability to make a confident decision, indicating significant friction that materially slows progress on the core task of determining program suitability, though the outcome is not fully blocked.",
+        "structural_amplification_note": "As an ESL participant, the cognitive load of processing large volumes of program information in English is structurally amplified, compounding the inherent effort required to compare multiple postgraduate programs."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 54 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=1, S3=3, S4=3, S5=45, S6=2. Representative findings: Participant attempted to share screen but the action did not work, preventing screen recording needed for the task. | Participant encountered an obstruction from a chatbot overlay that prevented viewing the website content during screen sharing. | Participant could not find law-related postgraduate programs in the search results and indicated intention to seek external assistance.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 54 findings spanning 7 distinct friction types (F1,F2,F4,F6,F7,F3,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F4 Unresponsive) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F4,F6,F7,F3,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=54 findings across 7 distinct friction types (F1=22, F2=13, F4=9, F6=6, F7=2, F3=1, F5=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

@@ -1,18 +1,16 @@
 import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { sanitizePublicLabel } from "./sanitize.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const candidateRoots = [
-  path.resolve(__dirname, ".."),
-  path.resolve(__dirname, "..", ".."),
-];
+const candidateRoots = [path.resolve(__dirname, ".."), path.resolve(__dirname, "..", "..")];
 
 const projectLabelMap = {
   "department-of-premier-and-cabinet-wa": "DPC-WA",
   "suncorp-insurance": "Suncorp",
+  "the-university-of-queensland": "Junyi Chen",
 };
 
 function resolveDataPath(...segments) {
@@ -79,8 +77,13 @@ function parseCsv(text) {
   );
 }
 
+function safeNumber(value, fallback = 0) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 function formatDuration(durationSec) {
-  const totalSeconds = Math.round(Number(durationSec) || 0);
+  const totalSeconds = Math.round(safeNumber(durationSec));
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
@@ -98,7 +101,7 @@ function formatProjectLabel(project) {
     return mapped;
   }
 
-  const title = project
+  const title = String(project ?? "")
     .split("-")
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -107,162 +110,325 @@ function formatProjectLabel(project) {
   return sanitizePublicLabel(title);
 }
 
-function buildDistribution(items, toneByKey = {}) {
-  return Object.entries(items).map(([label, count]) => ({
+function normalizeTier(value) {
+  const tier = String(value ?? "").trim();
+  if (!tier) {
+    return "Unknown";
+  }
+
+  const lower = tier.toLowerCase();
+  if (lower === "poor") {
+    return "Developing";
+  }
+  if (lower === "acceptable") {
+    return "Proficient";
+  }
+  if (lower === "good") {
+    return "Leading";
+  }
+
+  return tier.charAt(0).toUpperCase() + tier.slice(1);
+}
+
+function buildDistribution(entries, toneByKey = {}) {
+  return Object.entries(entries ?? {}).map(([label, count]) => ({
+    key: label,
     label: `${label} - ${count}`,
-    value: Number(count),
+    value: safeNumber(count),
     tone: toneByKey[label] ?? "neutral",
   }));
 }
 
-function normalizeTier(value) {
-  return String(value ?? "").toUpperCase();
-}
-
 function averageScore(rows) {
-  const scores = rows
-    .map((row) => Number(row.score))
-    .filter((value) => Number.isFinite(value));
-
+  const scores = rows.map((row) => safeNumber(row.score, Number.NaN)).filter((value) => Number.isFinite(value));
   if (scores.length === 0) {
     return "0.0";
   }
 
-  const total = scores.reduce((sum, value) => sum + value, 0);
-  return (total / scores.length).toFixed(1);
+  return (scores.reduce((sum, value) => sum + value, 0) / scores.length).toFixed(1);
 }
 
-function countCriticalRows(summaryRows) {
-  return summaryRows.filter((row) => ["S1", "S2"].includes(row.top_severity)).length;
-}
-
-function countLeadingRows(submissionRows) {
-  return submissionRows.filter((row) => row.tier === "Leading").length;
-}
-
-function buildTrajectoryRows(submissionRows, testerName) {
-  return submissionRows
-    .filter((row) => row.tester_name === testerName)
-    .map((row) => ({
-      label: formatProjectLabel(row.project),
-      score: Number(row.score),
-      capReason: row.cap_reasons || "No cap applied",
-    }));
-}
-
-function buildTrajectorySummary(trajectoryRows) {
-  if (trajectoryRows.length === 0) {
-    return "No additional tester trajectory rows were available in the processed dataset.";
+function parseJsonLikeObject(value) {
+  if (!value || typeof value !== "string") {
+    return {};
   }
 
-  const scores = trajectoryRows.map((row) => row.score);
-  const best = Math.max(...scores);
-  const worst = Math.min(...scores);
-  const repeatedCaps = trajectoryRows.filter((row) => /S1|S2/i.test(row.capReason)).length;
+  try {
+    return JSON.parse(value);
+  } catch {
+    try {
+      return JSON.parse(value.replace(/'/g, "\""));
+    } catch {
+      return {};
+    }
+  }
+}
 
-  return `Across ${trajectoryRows.length} processed submissions, scores range from ${worst.toFixed(1)} to ${best.toFixed(1)}. Task-blocking cap reasons recur in ${repeatedCaps} submission(s), so blocked-pathway handling remains the main coaching priority.`;
+function firstReason(report, summaryRow) {
+  return (
+    summaryRow?.reason ||
+    report?.overall?.reasoning?.[0] ||
+    "No report-quality reason was generated."
+  );
+}
+
+function tierTone(tier) {
+  const value = String(tier ?? "").toLowerCase();
+  if (value.includes("leading")) {
+    return "good";
+  }
+  if (value.includes("proficient")) {
+    return "cool";
+  }
+  if (value.includes("developing")) {
+    return "warm";
+  }
+  if (value.includes("foundational") || value.includes("poor")) {
+    return "warning";
+  }
+  return "neutral";
+}
+
+function buildVideoLabel(videoId, tester, projectLabel) {
+  return sanitizePublicLabel(`${tester} - ${projectLabel} - ${videoId.replaceAll("_", " ")}`);
+}
+
+function buildSingleVideoData(videoId, report, summaryRow, submissionRow) {
+  const topSeverity = report?.l3_findings?.top_severity || summaryRow?.top_severity || "N/A";
+  const score = safeNumber(submissionRow?.score, Number.NaN);
+  const tier = normalizeTier(submissionRow?.tier || report?.overall?.quality_tier || summaryRow?.tier);
+  const reason = firstReason(report, summaryRow);
+  const projectLabel = formatProjectLabel(report?.project || summaryRow?.project);
+  const tester = report?.tester_name || summaryRow?.tester || submissionRow?.tester_name || "Unknown tester";
+  const duration = report?.duration_sec ? formatDuration(report.duration_sec) : formatDuration(summaryRow?.duration_s);
+  const findingsCount = safeNumber(report?.l3_findings?.total_findings ?? summaryRow?.l3_findings);
+  const windowCount = safeNumber(report?.total_windows ?? summaryRow?.windows);
+
+  return {
+    id: videoId,
+    label: buildVideoLabel(videoId, tester, projectLabel),
+    rawVideoId: videoId,
+    tester,
+    project: projectLabel,
+    performanceTier: tier,
+    score: Number.isFinite(score) ? `${Math.round(score)}/100` : "N/A",
+    scoreValue: Number.isFinite(score) ? score : null,
+    findingsCount,
+    windowCount,
+    duration,
+    capReason: submissionRow?.cap_reasons || "No cap applied",
+    topSeverity,
+    reason,
+    tierReasoning: reason,
+    summary: {
+      title: reason,
+      tier,
+      score: Number.isFinite(score) ? Math.round(score) : null,
+    },
+    findings: (report?.l3_findings?.top_findings || []).map((finding) => ({
+      severity: finding.severity_s,
+      friction: finding.friction_type,
+      note: sanitizePublicLabel(finding.finding),
+      rationale: sanitizePublicLabel(finding.rationale || ""),
+      sentiment: finding.sentiment_e || "N/A",
+      windowId: finding.window_id || "",
+    })),
+    recommendations: (report?.coaching_recommendations || []).map((recommendation) => ({
+      title: sanitizePublicLabel(recommendation.title),
+      detail: sanitizePublicLabel(recommendation.summary),
+      priority: safeNumber(recommendation.priority, 99),
+    })),
+    sessionAssessment: [
+      { label: "Narration", value: report?.l3_assessment?.narration_quality || "N/A" },
+      { label: "Recording", value: report?.l3_assessment?.recording_quality || "N/A" },
+      { label: "Coaching evidence", value: report?.l3_assessment?.coaching_evidence || "N/A" },
+    ],
+    scoreBreakdown: [
+      { label: "Raw composite", value: submissionRow?.raw_score || "N/A" },
+      { label: "D1 Narration", value: submissionRow?.d1_narration || "N/A" },
+      { label: "D2 Friction", value: submissionRow?.d2_friction_surfacing || "N/A" },
+      { label: "D3 Recording", value: submissionRow?.d3_recording || "N/A" },
+    ],
+    severityDistribution: buildDistribution(report?.l3_findings?.by_severity, {
+      S1: "warning",
+      S2: "warning",
+      S3: "warm",
+      S4: "good",
+      S5: "neutral",
+      S6: "cool",
+    }),
+    frictionTypes: buildDistribution(report?.l3_findings?.by_friction_type),
+    sentimentDistribution: buildDistribution(report?.l3_findings?.by_sentiment),
+    layerDetails: {
+      l1: {
+        totalFlags: safeNumber(report?.l1?.total_flags),
+        durationAnomaly: Boolean(report?.l1?.duration_anomaly),
+        flaggedWindows: (report?.l1?.flagged_window_ids || []).length,
+      },
+      l2: {
+        coverage: report?.l2?.coverage ?? "N/A",
+        dominantClusterId: report?.l2?.dominant_cluster_id ?? "N/A",
+        dominantClusterPct: report?.l2?.dominant_cluster_pct ?? "N/A",
+        caveat: report?.l2?.caveat || "",
+      },
+    },
+  };
+}
+
+function buildTesterData(perTesterRows) {
+  return perTesterRows.map((row) => {
+    const projects = String(row.projects || "")
+      .split(",")
+      .filter(Boolean)
+      .map((project) => formatProjectLabel(project));
+    const submissionIds = String(row.submission_video_ids || "").split(",").filter(Boolean);
+    const submissionScores = String(row.submission_scores || "")
+      .split(",")
+      .map((value) => safeNumber(value, Number.NaN));
+    const submissionTiers = String(row.submission_tiers || "").split(",").filter(Boolean);
+    const trajectory = submissionIds.map((videoId, index) => ({
+      videoId,
+      label: projects[index] || sanitizePublicLabel(videoId.replaceAll("_", " ")),
+      score: Number.isFinite(submissionScores[index]) ? submissionScores[index] : null,
+      tier: normalizeTier(submissionTiers[index] || ""),
+    }));
+
+    return {
+      id: row.tester_name,
+      tester: row.tester_name,
+      label: `${row.tester_name} (${safeNumber(row.submission_count)} submissions)`,
+      tier: normalizeTier(row.tier),
+      aggregateScore: row.score,
+      direction: row.direction || "stable",
+      delta: row.delta_first_to_last || "0",
+      submissionsScored: safeNumber(row.submission_count_scored),
+      submissionsTotal: safeNumber(row.submission_count),
+      projects,
+      persistentFrictionTypes: String(row.persistent_friction_types || "").split(",").filter(Boolean),
+      sentimentDistribution: buildDistribution(parseJsonLikeObject(row.sentiment_distribution)),
+      lanes: String(row.cross_check_lanes || "").split(",").filter(Boolean),
+      orderingBasis: row.ordering_basis || "project order",
+      trajectory,
+    };
+  });
+}
+
+function buildCohortOverview(summaryRows, submissionRows) {
+  const projectLabels = Array.from(new Set(summaryRows.map((row) => formatProjectLabel(row.project))));
+  const tierCounts = submissionRows.reduce((accumulator, row) => {
+    const tier = normalizeTier(row.tier);
+    accumulator[tier] = (accumulator[tier] || 0) + 1;
+    return accumulator;
+  }, {});
+
+  const projectBreakdown = projectLabels.map((projectLabel) => {
+    const projectRows = submissionRows.filter((row) => formatProjectLabel(row.project) === projectLabel);
+    const tiers = ["Leading", "Proficient", "Developing", "Foundational"].map((tier) => ({
+      label: tier,
+      value: projectRows.filter((row) => normalizeTier(row.tier) === tier).length,
+      tone: tierTone(tier),
+    }));
+
+    return {
+      project: projectLabel,
+      videos: projectRows.length,
+      averageScore:
+        projectRows.length > 0
+          ? (
+              projectRows.reduce((sum, row) => sum + safeNumber(row.score), 0) /
+              projectRows.length
+            ).toFixed(1)
+          : "0.0",
+      tiers,
+    };
+  });
+
+  return {
+    stats: [
+      { label: "Total audits", value: String(summaryRows.length), tone: "default" },
+      { label: "Avg score", value: averageScore(submissionRows), tone: "default" },
+      {
+        label: "Critical sessions",
+        value: String(summaryRows.filter((row) => ["S1", "S2"].includes(row.top_severity)).length),
+        tone: "warning",
+      },
+      {
+        label: "Leading reviews",
+        value: String(submissionRows.filter((row) => normalizeTier(row.tier) === "Leading").length),
+        tone: "good",
+      },
+    ],
+    tierDistribution: ["Leading", "Proficient", "Developing", "Foundational"].map((tier) => ({
+      label: tier,
+      value: tierCounts[tier] || 0,
+      tone: tierTone(tier),
+    })),
+    projectBreakdown,
+  };
 }
 
 export async function getShowcaseData() {
-  const reportPath = resolveDataPath("reports", "dev55", "Sharelinsonny_wa.json");
+  const reportDir = resolveDataPath("reports", "dev55");
   const summaryPath = resolveDataPath("reports", "_summary_dev55.csv");
   const submissionPath = resolveDataPath("performance", "per_submission.csv");
+  const perTesterPath = resolveDataPath("performance", "per_tester.csv");
 
-  const [reportText, summaryText, submissionText] = await Promise.all([
-    readFile(reportPath, "utf8"),
+  const [summaryText, submissionText, perTesterText, reportFileNames] = await Promise.all([
     readFile(summaryPath, "utf8"),
     readFile(submissionPath, "utf8"),
+    readFile(perTesterPath, "utf8"),
+    readdir(reportDir),
   ]);
 
-  const report = JSON.parse(reportText);
+  const reportEntries = await Promise.all(
+    reportFileNames
+      .filter((fileName) => fileName.endsWith(".json"))
+      .map(async (fileName) => {
+        const reportText = await readFile(path.join(reportDir, fileName), "utf8");
+        const report = JSON.parse(reportText);
+        return [report.video_id || fileName.replace(/\.json$/i, ""), report];
+      }),
+  );
+
+  const reportMap = new Map(reportEntries);
   const summaryRows = parseCsv(summaryText);
   const submissionRows = parseCsv(submissionText);
+  const perTesterRows = parseCsv(perTesterText);
 
-  const activeSummary =
-    summaryRows.find((row) => row.video_id === report.video_id) ??
-    summaryRows.find((row) => row.video_id === "Sharelinsonny_wa");
-  const activeSubmission =
-    submissionRows.find((row) => row.video_id === report.video_id) ??
-    submissionRows.find((row) => row.video_id === "Sharelinsonny_wa");
+  const submissionMap = new Map(submissionRows.map((row) => [row.video_id, row]));
+  const videos = summaryRows
+    .map((summaryRow) =>
+      buildSingleVideoData(
+        summaryRow.video_id,
+        reportMap.get(summaryRow.video_id),
+        summaryRow,
+        submissionMap.get(summaryRow.video_id),
+      ),
+    )
+    .sort((left, right) => {
+      const leftScore = left.scoreValue ?? -1;
+      const rightScore = right.scoreValue ?? -1;
+      if (rightScore !== leftScore) {
+        return rightScore - leftScore;
+      }
+      return left.label.localeCompare(right.label);
+    });
 
-  const activeProject = formatProjectLabel(report.project);
-  const severityDistribution = buildDistribution(report.l3_findings.by_severity, {
-    S2: "warning",
-    S3: "warm",
-    S4: "good",
-    S5: "neutral",
-    S6: "cool",
-  });
-  const frictionTypes = buildDistribution(report.l3_findings.by_friction_type);
-  const sentimentDistribution = buildDistribution(report.l3_findings.by_sentiment);
-  const trajectoryRows = buildTrajectoryRows(submissionRows, report.tester_name);
+  const testers = buildTesterData(perTesterRows).sort((left, right) => left.tester.localeCompare(right.tester));
 
   return {
     navigationItems: [
-      { id: "single-video", label: "Single Video", active: true },
-      { id: "tester-trajectory", label: "Tester Trajectory", active: false },
-      { id: "cohort-overview", label: "Cohort Overview", active: false },
+      { id: "single-video", label: "Single Video" },
+      { id: "tester-trajectory", label: "Tester Trajectory" },
+      { id: "cohort-overview", label: "Cohort Overview" },
     ],
-    sidebarFilters: [
-      `Tier - all (${new Set(summaryRows.map((row) => row.tier)).size})`,
-      `Project - all (${new Set(summaryRows.map((row) => formatProjectLabel(row.project))).size})`,
-    ],
-    totalVideos: summaryRows.length,
-    activeCase: {
-      id: "sharelinsonny-wa",
-      label: report.video_id,
-      tester: report.tester_name,
-      project: activeProject,
-      performanceTier: normalizeTier(report.overall.quality_tier),
-      score: `${Math.round(Number(activeSubmission?.score ?? 0))}/100`,
-      findingsCount: report.l3_findings.total_findings,
-      windowCount: report.total_windows,
-      duration: formatDuration(report.duration_sec),
-      capReason: activeSubmission?.cap_reasons ?? "No cap applied",
-      topSeverity: report.l3_findings.top_severity,
-      reason: activeSummary?.reason ?? report.overall.reasoning[0] ?? "",
-      tierReasoning: report.overall.reasoning[0] ?? "",
-      summary: {
-        title: report.overall.reasoning[0] ?? "Processed accessibility QA summary",
-        tier: normalizeTier(report.overall.quality_tier),
-        score: Math.round(Number(activeSubmission?.score ?? 0)),
-        reportQuality: report.overall.reasoning[0] ?? "",
-      },
-      findings: report.l3_findings.top_findings.slice(0, 5).map((finding) => ({
-        severity: finding.severity_s,
-        friction: finding.friction_type,
-        note: finding.finding,
-      })),
-      recommendations: report.coaching_recommendations.slice(0, 3).map((recommendation) => ({
-        title: recommendation.title,
-        detail: recommendation.summary,
-      })),
-      sessionAssessment: [
-        { label: "Narration", value: report.l3_assessment.narration_quality },
-        { label: "Recording", value: report.l3_assessment.recording_quality },
-        { label: "Coaching evidence", value: report.l3_assessment.coaching_evidence },
-      ],
-      scoreBreakdown: [
-        { label: "Raw composite", value: activeSubmission?.raw_score ?? "0.0" },
-        { label: "D1 Narration", value: activeSubmission?.d1_narration ?? "0.0" },
-        { label: "D2 Friction", value: activeSubmission?.d2_friction_surfacing ?? "0.0" },
-        { label: "D3 Recording", value: activeSubmission?.d3_recording ?? "0.0" },
-      ],
-      severityDistribution,
-      frictionTypes,
-      sentimentDistribution,
+    filterOptions: {
+      tiers: ["All", ...Array.from(new Set(videos.map((video) => video.performanceTier)))],
+      projects: ["All", ...Array.from(new Set(videos.map((video) => video.project)))],
     },
-    trajectoryData: {
-      summary: buildTrajectorySummary(trajectoryRows),
-      sessions: trajectoryRows,
-    },
-    cohortOverview: {
-      stats: [
-        { label: "Total audits", value: String(summaryRows.length), tone: "default" },
-        { label: "Avg score", value: averageScore(submissionRows), tone: "default" },
-        { label: "Critical sessions", value: String(countCriticalRows(summaryRows)), tone: "warning" },
-        { label: "Leading reviews", value: String(countLeadingRows(submissionRows)), tone: "muted" },
-      ],
-    },
+    totalVideos: videos.length,
+    videos,
+    testers,
+    cohortOverview: buildCohortOverview(summaryRows, submissionRows),
   };
 }

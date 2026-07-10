@@ -1,0 +1,207 @@
+{
+  "video_id": "tianarosie1_wa",
+  "project": "department-of-premier-and-cabinet-wa",
+  "tester_name": "tianarosie1",
+  "total_windows": 76,
+  "duration_sec": 5401.302000000001,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 59,
+    "by_friction_type": {
+      "F1": 14,
+      "F2": 8,
+      "F3": 25,
+      "F4": 2,
+      "F5": 2,
+      "F6": 7,
+      "F7": 1
+    },
+    "by_severity": {
+      "S1": 1,
+      "S3": 16,
+      "S4": 10,
+      "S5": 31,
+      "S6": 1
+    },
+    "by_sentiment": {
+      "E3": 6,
+      "E4": 53
+    },
+    "by_calibrator_score": {
+      "L1": 2,
+      "L2": 30,
+      "L3": 26,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 58,
+      "stated_missing": 1
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "tianarosie1_wa_w034",
+        "video_id": "tianarosie1_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tianarosie1",
+        "friction_type": "F3",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant using a screen reader cannot access page content because the interface only outputs heading level labels with no accompanying text, making the page unreadable.",
+        "observed_signal": "Participant's assistive technology reads only 'heading level 2' repeatedly with no text content. Participant states they can see text visually but cannot determine what it says.",
+        "stated_signal": "Unfortunately, it's not accessible at all. Like, not even a bit. Um, It's just reading heading level 2, heading level 2, heading level 2, heading level 2, and there's no more information that I can read. And if I actually use my vision, I can see that there's text on the screen, but I can't actually see what it says.",
+        "rationale": "Both observed behaviour (screen reader outputting only heading labels with no text) and stated signal (explicit statement that the page is not accessible and no information can be read) indicate complete accessibility failure. The participant cannot proceed with the exploration task assigned. This blocks the primary project outcome and meets the S1/L5 gate for a blocker where the participant cannot continue independently.",
+        "structural_amplification_note": "Screen reader user is structurally unable to access content due to missing text labels, heading associations, and semantic markup. The visual text that exists is inaccessible to both assistive technology and the participant's low-vision needs."
+      },
+      {
+        "window_id": "tianarosie1_wa_w005",
+        "video_id": "tianarosie1_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tianarosie1",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Screen reader user cannot identify the names of external helpline links; the accessible label reads only 'link is external' without disclosing the actual helpline name.",
+        "observed_signal": "Participant navigated to helpline links and reported that the screen reader announces only 'link is external' and generic text like 'link' or 'Crisis' without the actual helpline name (e.g., 'Kids Helpline').",
+        "stated_signal": "The 3rd hotline down doesn't read what the link actually is, it just says to me link is external, which obviously means that it goes outside the government website, but it doesn't actually tell me what the link is called. Same with this one. I assume it's kids helpline, but it doesn't say that. For me, my screen reader just reads it out as link. Um. Crisis.",
+        "rationale": "The participant explicitly identified an accessibility barrier: link labels are missing or inadequate for screen reader users. The observed behaviour—reliance on assumption ('I assume it's kids helpline') and confusion about link identity—combined with the stated frustration confirms significant friction in identifying content. This is a structural accessibility failure affecting assistive technology users.",
+        "structural_amplification_note": "Screen reader user is experiencing structurally amplified friction due to missing or inadequate link labels. Sighted users can see the helpline name visually, but the accessible name attribute does not include the helpline identifier, forcing the AT user to guess or rely on context."
+      },
+      {
+        "window_id": "tianarosie1_wa_w006",
+        "video_id": "tianarosie1_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tianarosie1",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "External links on the page lack descriptive text and only announce 'Link is external' without indicating the link destination or purpose, making them inaccessible.",
+        "observed_signal": "Participant encountered multiple links that announced only 'Link is external' repeatedly without readable link text; participant was unable to determine what each link leads to.",
+        "stated_signal": "All of the links are not reading the names of the links. It just says, Link is external, it doesn't actually say what the link leads to. Link is external, Link is external, Link is external, link is external. Something huge for this page that would make it a lot more accessible for me and for anyone else is to change those links so that they are actually readable.",
+        "rationale": "The participant is using a screen reader or similar assistive technology and explicitly identified that external links lack descriptive anchor text, only announcing 'Link is external' repeatedly. This is a structural accessibility failure that prevents the participant from understanding link purpose before activation. The participant's stated frustration and clear articulation of the barrier align with observed inability to read link destinations.",
+        "structural_amplification_note": "Screen reader or assistive technology user; the generic 'Link is external' announcement fails to convey link semantics or destination, rendering external links non-functional for accessibility. This is a structural barrier for AT users attempting to navigate the Family and Domestic Violence support pathways."
+      },
+      {
+        "window_id": "tianarosie1_wa_w021",
+        "video_id": "tianarosie1_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tianarosie1",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified missing content for women experiencing coercive control and expressed concern that the page is biased toward men.",
+        "observed_signal": "Participant read through content about coercive control and noted the absence of corresponding information for women.",
+        "stated_signal": "I don't like that there's only information for men on how to change their behavior. And no information for women. I think it's very biased, um, the page here against sort of men against women, and not acknowledging the fact that of course there are women who use coercive control against their male partners.",
+        "rationale": "The participant could not locate relevant information pathways for women experiencing or using coercive control, which was a significant gap in content discovery during the exploration task. The stated concern about bias and missing information aligns with the observed inability to find a parallel pathway for women, constituting a content gap that materially affects the page's comprehensiveness for the stated audience.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "tianarosie1_wa_w022",
+        "video_id": "tianarosie1_wa",
+        "project": "department-of-premier-and-cabinet-wa",
+        "tester_name": "tianarosie1",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that the coercive control support section only links to male-focused resources, leaving women without a clear pathway to help.",
+        "observed_signal": "Participant read the section aloud and explicitly noted the absence of support information for women.",
+        "stated_signal": "This section that says you're worried you might be using coercive control, what should you do, only has a link to the support service if you're a man... there are also women, and then the women don't know where to go.",
+        "rationale": "The participant discovered that a significant user group (women) cannot locate the support pathway they need from this section; only male-specific resources are provided. This is a content not found issue for a substantial portion of the audience. The participant's frustration and the structural barrier (missing content for women) indicate significant component failure.",
+        "structural_amplification_note": "This friction disproportionately affects women seeking information about their own coercive control behaviours; the page fails to provide equitable pathways."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 59 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S3=16, S4=10, S5=31, S6=1. Representative findings: Participant using a screen reader cannot access page content because the interface only outputs heading level labels with no accompanying text, making the page unreadable. | Screen reader user cannot identify the names of external helpline links; the accessible label reads only 'link is external' without disclosing the actual helpline name. | External links on the page lack descriptive text and only announce 'Link is external' without indicating the link destination or purpose, making them inaccessible.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 59 findings spanning 7 distinct friction types (F3,F1,F2,F6,F4,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F3 (Accessibility) as the primary coaching anchor; secondary types (F1 Comprehension, F2 Confidence) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F3,F1,F2,F6,F4,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=59 findings across 7 distinct friction types (F3=25, F1=14, F2=8, F6=7, F4=2, F5=2, F7=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

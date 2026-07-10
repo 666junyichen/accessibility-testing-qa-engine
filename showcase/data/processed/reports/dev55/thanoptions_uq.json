@@ -1,0 +1,207 @@
+{
+  "video_id": "thanoptions_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "thanoptions",
+  "total_windows": 59,
+  "duration_sec": 4580.8820000000005,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 41,
+    "by_friction_type": {
+      "F1": 27,
+      "F2": 6,
+      "F3": 2,
+      "F4": 2,
+      "F5": 1,
+      "F6": 3
+    },
+    "by_severity": {
+      "S1": 1,
+      "S2": 1,
+      "S3": 5,
+      "S4": 2,
+      "S5": 29,
+      "S6": 3
+    },
+    "by_sentiment": {
+      "E3": 9,
+      "E4": 32
+    },
+    "by_calibrator_score": {
+      "L1": 4,
+      "L2": 28,
+      "L3": 7,
+      "L4": 1,
+      "L5": 1
+    },
+    "signal_alignment_distribution": {
+      "aligned": 41
+    },
+    "top_severity": "S1",
+    "calibrator_aggregate": "L5",
+    "top_findings": [
+      {
+        "window_id": "thanoptions_uq_w039",
+        "video_id": "thanoptions_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S1",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L5",
+        "signal_alignment": "aligned",
+        "finding": "Participant explicitly stated inability to understand the English language used in the task instructions.",
+        "observed_signal": "Participant paused and stated comprehension difficulty with the English language presented to them.",
+        "stated_signal": "I can't really understand this English, but yeah, keep going.",
+        "rationale": "The participant cannot understand the task instructions due to language complexity or clarity, which is a comprehension friction event. This directly prevents independent task initiation and completion, meeting the S1 blocker criterion (project outcome not achieved independently). The stated signal aligns with the observed inability to proceed.",
+        "structural_amplification_note": "ESL or non-native English speaker cohort experiences structural amplification on comprehension-dependent tasks. Complex task wording and phrasing create barrier to task entry."
+      },
+      {
+        "window_id": "thanoptions_uq_w047",
+        "video_id": "thanoptions_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S2",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant cannot understand the English-language application page and would require an interpreter to proceed with confidence.",
+        "observed_signal": "Participant read the page and stated inability to comprehend it fully, identifying specific concerns about application fees and refunds that require clear understanding.",
+        "stated_signal": "There's a lot of English there for me to read. I don't really understand it. I would need an interpreter to come and translate this page for me. I might understand some bits of it, but I don't want to just kind of guess my way through it and then make the application and get it all wrong. I need to understand it very clearly before I can proceed.",
+        "rationale": "The participant explicitly stated they do not understand the English content and require external support (interpreter) to proceed with the application task. This comprehension barrier prevents independent task completion without facilitator intervention or external accommodation, matching the S2 and L4 gates. The stated concern about making errors without full understanding indicates high stakes and loss of confidence.",
+        "structural_amplification_note": "Deaf participant reliant on Auslan interpretation; English-only content without alternative modalities creates structural barrier requiring external accommodation to access university application materials."
+      },
+      {
+        "window_id": "thanoptions_uq_w009",
+        "video_id": "thanoptions_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "thanoptions",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that complex terminology on the webpage would be inaccessible to deaf users and requested Auslan translation video support.",
+        "observed_signal": "Participant read through the page content (financial support, rankings information) and stated concern about terminology accessibility.",
+        "stated_signal": "My English isn't great, so I'll try my best to understand it, but I think it would be good if there was an Auslan translation video, so I could just watch the video in my language. The words that are used, like the terminology, I think, it means that deaf people wouldn't really understand.",
+        "rationale": "The participant explicitly stated that terminology used on the page creates a comprehension barrier for deaf users and advocated for Auslan translation as an accessibility need. This is a structural accessibility friction event where content does not meet accessibility requirements (lack of alternative formats for deaf/hard-of-hearing users). The participant is able to continue but has identified a significant barrier to full accessibility.",
+        "structural_amplification_note": "Deaf or hard-of-hearing users experience structural friction when content relies solely on written English without alternative formats like Auslan video translation or captions. Complex terminology compounds this barrier, making the content less accessible to this cohort."
+      },
+      {
+        "window_id": "thanoptions_uq_w013",
+        "video_id": "thanoptions_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "thanoptions",
+        "friction_type": "F1",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that walls of text on university websites are inaccessible and difficult for deaf users to process, indicating comprehension friction with the current content format.",
+        "observed_signal": "Participant read page content aloud and commented on the difficulty; no task action was taken in this window, but the participant was evaluating website content structure.",
+        "stated_signal": "There's a lot of just English words, like if it's a wall of text, they wouldn't bother to read it because it would be too difficult to understand. Deaf people really need little YouTube videos or that kind of thing to quickly read the gist of the web page.",
+        "rationale": "The participant explicitly stated that dense text content is too difficult for deaf users to process and identified this as a significant barrier to understanding web pages. The stated signal and observed reflection both confirm comprehension friction caused by unclear, text-heavy presentation rather than accessible alternatives. This represents a significant component failure in content accessibility design.",
+        "structural_amplification_note": "Deaf and hard-of-hearing users experience structurally amplified friction when universities rely on text-only content without video or visual scaffolding; captions and transcripts alone do not address cognitive load from dense prose."
+      },
+      {
+        "window_id": "thanoptions_uq_w012",
+        "video_id": "thanoptions_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "thanoptions",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified that automatic captions on Zoom are insufficient for deaf accessibility and noted the absence of interpreter provision on the disability services page.",
+        "observed_signal": "Participant reviewed the disability services for staff page, noted the mention of automatic captions on Zoom, and searched for information about interpreters but found no mention of them.",
+        "stated_signal": "For deaf people, captions are still a little bit hard to understand, especially because teachers speak quickly or terminology might be difficult. It would be much better to have an interpreter there. I don't see any mention of interpreters though.",
+        "rationale": "The participant explicitly stated that required accessibility information (interpreter services) is not found on the disability services page. Both stated concern and observed evidence of searching without finding the needed content indicate significant content gap friction. This represents a barrier to equitable access for deaf students that was worked around or noted as absent.",
+        "structural_amplification_note": "Deaf and hard-of-hearing users experience structurally amplified friction when interpreter services are not documented or visible on accessibility support pages. The absence of this critical accommodation represents a gap in accessible information architecture."
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 41 finding-level issue(s), including task-blocking or near-blocking severity (S1).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S1",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S1=1, S2=1, S3=5, S4=2, S5=29, S6=3. Representative findings: Participant explicitly stated inability to understand the English language used in the task instructions. | Participant cannot understand the English-language application page and would require an interpreter to proceed with confidence. | Participant identified that complex terminology on the webpage would be inaccessible to deaf users and requested Auslan translation video support.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 6 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 41 findings spanning 6 distinct friction types (F1,F2,F6,F3,F4,F5). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F1 (Comprehension) as the primary coaching anchor; secondary types (F2 Confidence, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F1,F2,F6,F3,F4,F5",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=41 findings across 6 distinct friction types (F1=27, F2=6, F6=3, F3=2, F4=2, F5=1).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}

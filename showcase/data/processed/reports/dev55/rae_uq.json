@@ -1,0 +1,204 @@
+{
+  "video_id": "rae_uq",
+  "project": "the-university-of-queensland",
+  "tester_name": "rae",
+  "total_windows": 60,
+  "duration_sec": 4018.342,
+  "l1": {
+    "flag_counts": {},
+    "total_flags": 0,
+    "flagged_window_ids": [],
+    "duration_anomaly": false
+  },
+  "l2": {
+    "coverage": 0.0,
+    "dominant_cluster_id": null,
+    "dominant_cluster_pct": null,
+    "cluster_distribution": {},
+    "caveat": "tester-dominated, exploratory (Step 4.2 round-2)"
+  },
+  "l3_findings": {
+    "total_findings": 35,
+    "by_friction_type": {
+      "F1": 8,
+      "F2": 10,
+      "F3": 2,
+      "F4": 5,
+      "F5": 2,
+      "F6": 6,
+      "F7": 2
+    },
+    "by_severity": {
+      "S2": 2,
+      "S3": 3,
+      "S4": 1,
+      "S5": 29
+    },
+    "by_sentiment": {
+      "E3": 7,
+      "E4": 28
+    },
+    "by_calibrator_score": {
+      "L2": 29,
+      "L3": 4,
+      "L4": 2
+    },
+    "signal_alignment_distribution": {
+      "aligned": 35
+    },
+    "top_severity": "S2",
+    "calibrator_aggregate": "L4",
+    "top_findings": [
+      {
+        "window_id": "rae_uq_w045",
+        "video_id": "rae_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "rae",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant encountered a verification code error due to using a fake email address and could not proceed further with the enrollment pathway.",
+        "observed_signal": "Participant attempted to enter a verification code, received an 'code entered is incorrect, please try again' error message, and stated they could not proceed because they had provided a fake email address.",
+        "stated_signal": "because that's a fake email address, so I wouldn't be actually getting it, um, so the code entered is incorrect, please try again, so I can't really proceed too much further with that",
+        "rationale": "The participant's observed inability to proceed and explicit statement that they 'can't really proceed too much further' indicate a task blocker on the enrollment component. The system provided no workaround or alternative pathway when the email verification failed, requiring the participant to abandon this pathway. This is a component task blocker (S2) rather than a full project blocker because the participant was able to pivot to finding enrollment information through the logged-in student view.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_uq_w046",
+        "video_id": "rae_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "rae",
+        "friction_type": "F4",
+        "severity_s": "S2",
+        "sentiment_e": "E3",
+        "calibrator_score_l": "L4",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not complete the verification process due to using a fake email address and could not receive the verification code.",
+        "observed_signal": "Participant attempted to use the verification code process but stated they could not complete it successfully because they used a made-up email address.",
+        "stated_signal": "I can't do it successfully only because I can't get the verification code because I've used a fake email like a made up email address.",
+        "rationale": "The participant's stated inability to receive the verification code due to using a fake email represents a blocking action in the authentication flow. While the overall task was not abandoned, this component task (completing verification) was completely blocked, matching the S2 gate. The interface did not respond with the expected verification code delivery.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_uq_w040",
+        "video_id": "rae_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "rae",
+        "friction_type": "F6",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant could not find the information needed and expressed frustration about the search outcome, then considered an alternative pathway (inquiry form) as a workaround.",
+        "observed_signal": "Participant searched the page, stated multiple times 'I'm not finding anything here,' and then shifted to considering submitting an inquiry rather than locating the desired resource.",
+        "stated_signal": "I'm not finding anything here. Unless she just send us an inquiry. I'm not finding anything.",
+        "rationale": "The participant explicitly stated multiple times that they cannot find the required information on the page. Observed behaviour shows the participant abandoning the direct search and pivoting to an indirect workaround (inquiry form). This represents a significant component failure where the primary information-finding task was not achieved through the expected pathway, matching S3 and L3.",
+        "structural_amplification_note": null
+      },
+      {
+        "window_id": "rae_uq_w046",
+        "video_id": "rae_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "rae",
+        "friction_type": "F3",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant identified a potential accessibility barrier in the authentication method options available.",
+        "observed_signal": "Participant raised a concern about the limited authentication options (authenticator app or email only) and specifically mentioned potential difficulty for people with vision impairment.",
+        "stated_signal": "The only thing is maybe because it does only have the two options of an authenticator app or, Um, via email, potentially for some people, particularly with vision impairment, um",
+        "rationale": "The participant explicitly identified that the two-option authentication method (authenticator app or email) may create accessibility friction for users with vision impairment. This is a significant component barrier that was not worked around during the session but was recognized as a design limitation. The concern represents observed friction in the accessibility pathway.",
+        "structural_amplification_note": "Users with vision impairment would experience structural amplification due to the limited authentication methods available; authenticator apps and email-based verification may both present usability barriers for assistive technology reliance."
+      },
+      {
+        "window_id": "rae_uq_w055",
+        "video_id": "rae_uq",
+        "project": "the-university-of-queensland",
+        "tester_name": "rae",
+        "friction_type": "F5",
+        "severity_s": "S3",
+        "sentiment_e": "E4",
+        "calibrator_score_l": "L3",
+        "signal_alignment": "aligned",
+        "finding": "Participant became uncertain about the relevance of search results after clicking a contact link and encountering an unrelated admissions portal page, leading to task abandonment.",
+        "observed_signal": "Participant clicked on 'contact QTech' link, landed on a Queensland admissions services page, then stated they would not spend more time on this part and moved on.",
+        "stated_signal": "I'm not sure, I I'll, I won't spend too much longer on this part.",
+        "rationale": "The participant expected a help section or relevant contact information but received an unrelated admissions portal page instead. Both the observed behaviour (clicking away and abandoning the search path) and stated uncertainty align to show unexpected interface behaviour that caused the participant to skip a component of the discovery task rather than persist.",
+        "structural_amplification_note": null
+      }
+    ]
+  },
+  "l3_assessment": {
+    "narration_quality": "rich",
+    "recording_quality": "acceptable",
+    "coaching_evidence": "none"
+  },
+  "overall": {
+    "quality_tier": "poor",
+    "reasoning": [
+      "task-blocking friction: S1/S2 present"
+    ]
+  },
+  "coaching_recommendations": [
+    {
+      "category": "severity",
+      "title": "Prioritise task-blocking friction before general coaching",
+      "summary": "The session contains 35 finding-level issue(s), including task-blocking or near-blocking severity (S2).",
+      "advice": [
+        "Review the highest-severity findings before applying general coaching templates.",
+        "Prioritise issues that prevented or substantially disrupted task completion.",
+        "Use the highest-severity findings to guide focused follow-up coaching."
+      ],
+      "trigger_field": "severity_s",
+      "trigger_value": "S2",
+      "priority": 5,
+      "evidence_note": "5.1-A severity distribution: S2=2, S3=3, S4=1, S5=29. Representative findings: Participant encountered a verification code error due to using a fake email address and could not proceed further with the enrollment pathway. | Participant could not complete the verification process due to using a fake email address and could not receive the verification code. | Participant could not find the information needed and expressed frustration about the search outcome, then considered an alternative pathway (inquiry form) as a workaround.",
+      "tags": [
+        "severity",
+        "finding-level",
+        "high-priority"
+      ]
+    },
+    {
+      "category": "friction-aggregation",
+      "title": "Multi-pattern friction across 7 categories — anchor coaching on the dominant pattern",
+      "summary": "This session shows 35 findings spanning 7 distinct friction types (F2,F1,F6,F4,F3,F5,F7). Coaching should follow the dominant pattern first rather than issuing one item per type.",
+      "advice": [
+        "After addressing any severity-priority recommendation first, use this aggregation to group the remaining coaching themes — do not treat the two as parallel.",
+        "Treat F2 (Confidence) as the primary coaching anchor; secondary types (F1 Comprehension, F6 Not Found) provide supporting context.",
+        "Avoid issuing parallel recommendations for each friction type when patterns interact within the same session."
+      ],
+      "trigger_field": "friction_type_distribution",
+      "trigger_value": "F2,F1,F6,F4,F3,F5,F7",
+      "priority": 4,
+      "evidence_note": "5.1-A: total=35 findings across 7 distinct friction types (F2=10, F1=8, F6=6, F4=5, F3=2, F5=2, F7=2).",
+      "tags": [
+        "friction-aggregation",
+        "finding-level",
+        "multi-pattern"
+      ]
+    },
+    {
+      "category": "recording",
+      "title": "Recording quality is usable but should be improved",
+      "summary": "The session is still usable for analysis, but defects in the recording may reduce confidence in detailed interpretation.",
+      "advice": [
+        "Check microphone clarity and ambient noise before starting future sessions.",
+        "Reduce clipping, brief audio gaps, or interruptions where possible.",
+        "Mark this session as usable with caution if fine-grained analysis is required."
+      ],
+      "trigger_field": "recording_quality",
+      "trigger_value": "acceptable",
+      "priority": 2,
+      "evidence_note": "5.1-B marks recording quality as acceptable rather than good.",
+      "tags": [
+        "recording",
+        "quality",
+        "session-level"
+      ]
+    }
+  ]
+}
