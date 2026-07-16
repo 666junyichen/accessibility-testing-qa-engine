@@ -128,6 +128,11 @@ const copy = {
       "tester-trajectory": "Tester Trajectory",
       "cohort-overview": "Cohort Overview",
     },
+    viewDescriptions: {
+      "single-video": "Single submission",
+      "tester-trajectory": "Same tester across submissions",
+      "cohort-overview": "Whole cohort distribution",
+    },
     filters: {
       tier: "Performance tier",
       project: "Project",
@@ -159,11 +164,10 @@ const copy = {
       reason: "Risk reason",
       capReason: "Cap reasons",
       tierReasoning: "Tier reasoning",
+      delta: "Delta",
       totalFindings: "Total findings",
       topFriction: "Top friction",
-      visibleBands: "Visible severity bands",
       visibleTypes: "Visible friction types",
-      sort: "Sort",
       totalFlags: "Total flags",
       durationAnomaly: "Duration anomaly",
       flaggedWindows: "Flagged windows",
@@ -178,6 +182,12 @@ const copy = {
       projectBreakdown: "Per-project performance tier",
       averageScore: "Average score",
       videos: "Videos",
+      lane: "Lane",
+      ordering: "Ordering",
+    },
+    helper: {
+      project: "Project means the tested website or client account, not your own software project.",
+      tier: "Tier guide: Leading, Proficient, Developing, Foundational.",
     },
     headings: {
       sessionAssessment: "Session-level assessment (Layer 3-B)",
@@ -203,9 +213,6 @@ const copy = {
       yes: "Yes",
       no: "No",
       footnote: "Weights: D1 0.50 + D2 0.35 + D3 0.15 -> raw composite. Caps bind after raw.",
-      stable: "stable",
-      improving: "improving",
-      declining: "declining",
     },
   },
   zh: {
@@ -218,6 +225,11 @@ const copy = {
       "single-video": "单视频",
       "tester-trajectory": "测试员轨迹",
       "cohort-overview": "群组概览",
+    },
+    viewDescriptions: {
+      "single-video": "单条提交",
+      "tester-trajectory": "同一人跨提交",
+      "cohort-overview": "全体分布",
     },
     filters: {
       tier: "表现等级",
@@ -250,11 +262,10 @@ const copy = {
       reason: "风险原因",
       capReason: "封顶原因",
       tierReasoning: "等级判断",
+      delta: "变化幅度",
       totalFindings: "发现总数",
       topFriction: "主要摩擦类型",
-      visibleBands: "可见严重层级",
       visibleTypes: "可见摩擦类型",
-      sort: "排序方式",
       totalFlags: "规则标记数",
       durationAnomaly: "时长异常",
       flaggedWindows: "标记窗口",
@@ -266,9 +277,15 @@ const copy = {
       submissions: "提交数",
       persistentFriction: "持续出现的摩擦类型",
       sentimentRollup: "情绪汇总",
-      projectBreakdown: "按项目的表现等级分布",
+      projectBreakdown: "按项目划分的表现等级分布",
       averageScore: "平均分",
       videos: "视频数",
+      lane: "轨道",
+      ordering: "排序依据",
+    },
+    helper: {
+      project: "这里的“项目”指被测试的网站或客户项目，不是你自己的简历项目。",
+      tier: "等级说明：Leading 领先，Proficient 稳定，Developing 发展中，Foundational 基础。",
     },
     headings: {
       sessionAssessment: "会话级评估（Layer 3-B）",
@@ -286,17 +303,14 @@ const copy = {
     },
     empty: {
       noVideos: "当前筛选条件下没有视频。",
-      noFindings: "该提交暂无可展示的发现项。",
-      noCoaching: "该提交暂无辅导建议。",
-      noTrajectory: "该测试员暂无可展示的评分轨迹。",
+      noFindings: "该提交暂时没有可展示的发现项。",
+      noCoaching: "该提交暂时没有辅导建议。",
+      noTrajectory: "该测试员暂时没有可展示的评分轨迹。",
     },
     misc: {
       yes: "是",
       no: "否",
       footnote: "权重：D1 0.50 + D2 0.35 + D3 0.15 -> 原始综合分。封顶规则会在原始分之后生效。",
-      stable: "稳定",
-      improving: "上升",
-      declining: "下降",
     },
   },
 } as const;
@@ -320,11 +334,11 @@ const phraseMap: Record<string, string> = {
   "Total audits": "总评审数",
   "Avg score": "平均分",
   "Critical sessions": "关键问题会话",
-  "Leading reviews": "高表现评审",
-  Leading: "Leading",
-  Proficient: "Proficient",
-  Developing: "Developing",
-  Foundational: "Foundational",
+  "Leading reviews": "领先档评审",
+  Leading: "Leading（领先）",
+  Proficient: "Proficient（稳定）",
+  Developing: "Developing（发展中）",
+  Foundational: "Foundational（基础）",
   "No cap applied": "未触发封顶",
   "task-blocking friction: S1/S2 present": "存在 S1/S2 级任务阻塞摩擦",
   ">=2 S2 task-blockers": "至少存在 2 个 S2 级任务阻塞",
@@ -332,11 +346,26 @@ const phraseMap: Record<string, string> = {
   "multiple medium-severity findings": "存在多个中等级别问题",
 };
 
+const tierNotes: Record<string, string> = {
+  Leading: "领先，高质量完成",
+  Proficient: "稳定，整体可靠",
+  Developing: "发展中，仍有改进空间",
+  Foundational: "基础阶段，需要更多支持",
+};
+
 function t(value: string, language: Language) {
   if (language === "en") {
     return value;
   }
   return phraseMap[value] ?? value;
+}
+
+function tierLabel(value: string, language: Language) {
+  if (language === "zh") {
+    return t(value, language);
+  }
+
+  return tierNotes[value] ? `${value} (${tierNotes[value]})` : value;
 }
 
 function toneClass(tone: string | undefined) {
@@ -383,7 +412,9 @@ function LineChart({
   const chartHeight = height - paddingY * 2;
 
   const coords = points.map((point, index) => {
-    const x = paddingX + (points.length === 1 ? chartWidth / 2 : (chartWidth * index) / (points.length - 1));
+    const x =
+      paddingX +
+      (points.length === 1 ? chartWidth / 2 : (chartWidth * index) / (points.length - 1));
     const y = paddingY + chartHeight - ((point.score ?? 0) / 100) * chartHeight;
     return { ...point, x, y };
   });
@@ -423,11 +454,13 @@ function SelectField({
   value,
   onChange,
   options,
+  helper,
 }: {
   label: string;
   value: string;
   onChange: ChangeEventHandler<HTMLSelectElement>;
   options: Array<{ value: string; label: string }>;
+  helper?: string;
 }) {
   return (
     <label className={styles.selectorBlock}>
@@ -439,6 +472,7 @@ function SelectField({
           </option>
         ))}
       </select>
+      {helper ? <span className={styles.selectorHelper}>{helper}</span> : null}
     </label>
   );
 }
@@ -501,16 +535,23 @@ export function ShowcasePageClient({
 
         <nav className={styles.sidebarNav}>
           {navigationItems.map((item) => {
+            const viewKey = item.id as ViewKey;
             const active = item.id === view;
+
             return (
               <button
                 key={item.id}
                 type="button"
                 className={active ? styles.navItemActive : styles.navItem}
-                onClick={() => setView(item.id as ViewKey)}
+                onClick={() => setView(viewKey)}
               >
-                <span className={active ? styles.navDotActive : styles.navDot} />
-                {localized.views[item.id as ViewKey]}
+                <span className={styles.navDotWrap}>
+                  <span className={active ? styles.navDotActive : styles.navDot} />
+                </span>
+                <span className={styles.navText}>
+                  <span>{localized.views[viewKey]}</span>
+                  <span className={styles.navHint}>{localized.viewDescriptions[viewKey]}</span>
+                </span>
               </button>
             );
           })}
@@ -523,15 +564,20 @@ export function ShowcasePageClient({
                 label={localized.filters.tier}
                 value={selectedTier}
                 onChange={(event) => setSelectedTier(event.target.value)}
+                helper={localized.helper.tier}
                 options={filterOptions.tiers.map((option) => ({
                   value: option,
-                  label: option === "All" ? localized.filters.all : t(option, language),
+                  label:
+                    option === "All"
+                      ? localized.filters.all
+                      : tierLabel(option, language),
                 }))}
               />
               <SelectField
                 label={localized.filters.project}
                 value={selectedProject}
                 onChange={(event) => setSelectedProject(event.target.value)}
+                helper={localized.helper.project}
                 options={filterOptions.projects.map((option) => ({
                   value: option,
                   label: option === "All" ? localized.filters.all : option,
@@ -558,7 +604,7 @@ export function ShowcasePageClient({
                     <strong>{localized.labels.project}:</strong> <span>{activeVideo.project}</span>
                   </p>
                   <p>
-                    <strong>{localized.labels.tier}:</strong> <span>{t(activeVideo.performanceTier, language)}</span>
+                    <strong>{localized.labels.tier}:</strong> <span>{tierLabel(activeVideo.performanceTier, language)}</span>
                   </p>
                   <p>
                     <strong>{localized.sidebar.score}:</strong> {activeVideo.score}
@@ -582,7 +628,7 @@ export function ShowcasePageClient({
               {activeTester ? (
                 <div className={styles.sidebarDetails}>
                   <p>
-                    <strong>{localized.labels.tier}:</strong> <span>{t(activeTester.tier, language)}</span>
+                    <strong>{localized.labels.tier}:</strong> <span>{tierLabel(activeTester.tier, language)}</span>
                   </p>
                   <p>
                     <strong>{localized.labels.aggregate}:</strong> {activeTester.aggregateScore}
@@ -637,7 +683,7 @@ export function ShowcasePageClient({
                 <div className={styles.summaryStats}>
                   <div className={styles.summaryStat}>
                     <span>{localized.labels.tier}</span>
-                    <strong className={styles.tierPill}>{t(activeVideo.performanceTier, language)}</strong>
+                    <strong className={styles.tierPill}>{tierLabel(activeVideo.performanceTier, language)}</strong>
                   </div>
                   <div className={styles.summaryStat}>
                     <span>{localized.labels.score}</span>
@@ -857,7 +903,7 @@ export function ShowcasePageClient({
                 <div className={styles.summaryHeader}>
                   <div>
                     <h2>{activeTester.tester}</h2>
-                    <p>{activeTester.projects.join(" · ")}</p>
+                    <p>{activeTester.projects.join(" / ")}</p>
                   </div>
                 </div>
                 <div className={styles.summaryStats}>
@@ -867,7 +913,7 @@ export function ShowcasePageClient({
                   </div>
                   <div className={styles.summaryStat}>
                     <span>{localized.labels.tier}</span>
-                    <strong className={styles.tierPill}>{t(activeTester.tier, language)}</strong>
+                    <strong className={styles.tierPill}>{tierLabel(activeTester.tier, language)}</strong>
                   </div>
                   <div className={styles.summaryStat}>
                     <span>{localized.labels.direction}</span>
@@ -880,7 +926,7 @@ export function ShowcasePageClient({
                     </strong>
                   </div>
                   <div className={styles.summaryStat}>
-                    <span>Δ</span>
+                    <span>{localized.labels.delta}</span>
                     <strong>{activeTester.delta}</strong>
                   </div>
                 </div>
@@ -896,7 +942,7 @@ export function ShowcasePageClient({
                         <article key={item.videoId} className={styles.infoCard}>
                           <span>{item.label}</span>
                           <strong>{item.score === null ? "N/A" : `${Math.round(item.score)}/100`}</strong>
-                          <p className={styles.cardMeta}>{t(item.tier, language)}</p>
+                          <p className={styles.cardMeta}>{tierLabel(item.tier, language)}</p>
                         </article>
                       ))}
                     </div>
@@ -926,11 +972,11 @@ export function ShowcasePageClient({
               <section className={styles.sectionBlock}>
                 <div className={styles.infoGrid}>
                   <article className={styles.infoCard}>
-                    <span>Lane</span>
+                    <span>{localized.labels.lane}</span>
                     <strong>{activeTester.lanes.join(", ") || "N/A"}</strong>
                   </article>
                   <article className={styles.infoCard}>
-                    <span>Ordering</span>
+                    <span>{localized.labels.ordering}</span>
                     <strong>{activeTester.orderingBasis}</strong>
                   </article>
                 </div>
@@ -944,7 +990,7 @@ export function ShowcasePageClient({
                 <div className={styles.summaryHeader}>
                   <div>
                     <h2>{localized.headings.cohort}</h2>
-                    <p>{totalVideos} official development videos</p>
+                    <p>{language === "zh" ? `${totalVideos} 个正式开发视频` : `${totalVideos} official development videos`}</p>
                   </div>
                 </div>
                 <div className={styles.summaryStats}>
@@ -969,7 +1015,7 @@ export function ShowcasePageClient({
                     <article key={project.project} className={styles.contentCard}>
                       <h4>{project.project}</h4>
                       <p className={styles.cardMeta}>
-                        {localized.labels.videos}: {project.videos} · {localized.labels.averageScore}: {project.averageScore}
+                        {localized.labels.videos}: {project.videos} / {localized.labels.averageScore}: {project.averageScore}
                       </p>
                       <MiniBar items={project.tiers.map((item) => ({ ...item, key: `${project.project}-${item.label}` }))} />
                     </article>
