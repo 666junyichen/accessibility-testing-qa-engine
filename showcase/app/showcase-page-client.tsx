@@ -16,6 +16,12 @@ type DistributionItem = {
   tone?: string;
 };
 
+const distributionPalettes = {
+  severity: ["#f6c445", "#f59e0b", "#a3e635", "#4ade80", "#60a5fa", "#818cf8", "#c084fc"],
+  friction: ["#38bdf8", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#14b8a6", "#ec4899", "#64748b"],
+  sentiment: ["#7dd3fc", "#34d399", "#fbbf24", "#fb7185", "#a78bfa", "#94a3b8"],
+} as const;
+
 type VideoRecord = {
   id: string;
   label: string;
@@ -376,20 +382,59 @@ function toneClass(tone: string | undefined) {
   return styles.toneNeutral;
 }
 
-function MiniBar({ items }: { items: DistributionItem[] }) {
+function formatPercent(value: number, total: number) {
+  if (!total) return "0%";
+  return `${Math.round((value / total) * 100)}%`;
+}
+
+function MiniBar({
+  items,
+  palette = distributionPalettes.severity,
+}: {
+  items: DistributionItem[];
+  palette?: readonly string[];
+}) {
   const total = items.reduce((sum, item) => sum + item.value, 0) || 1;
   return (
-    <div className={styles.miniBar}>
-      {items.map((item) => (
-        <div
-          key={`${item.key}-${item.label}`}
-          className={`${styles.miniSegment} ${toneClass(item.tone)}`}
-          style={{ flex: item.value || 1 }}
-          title={`${item.label} (${Math.round((item.value / total) * 100)}%)`}
-        >
-          {item.label}
-        </div>
-      ))}
+    <div className={styles.distributionWrap}>
+      <div className={styles.miniBar}>
+        {items.map((item, index) => {
+          const color = palette[index % palette.length];
+          const itemPercent = formatPercent(item.value, total);
+
+          return (
+            <div
+              key={`${item.key}-${item.label}`}
+              className={`${styles.miniSegment} ${toneClass(item.tone)}`}
+              style={{ flex: item.value || 1, backgroundColor: color }}
+              title={`${item.label}: ${item.value} (${itemPercent})`}
+            >
+              <span className={styles.segmentLabel}>{item.label}</span>
+              <span className={styles.segmentValue}>{item.value}</span>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className={styles.distributionLegend}>
+        {items.map((item, index) => {
+          const color = palette[index % palette.length];
+          const itemPercent = formatPercent(item.value, total);
+
+          return (
+            <article key={`${item.key}-${item.label}-legend`} className={styles.legendCard}>
+              <div className={styles.legendHeader}>
+                <span className={styles.legendSwatch} style={{ backgroundColor: color }} />
+                <strong>{item.label}</strong>
+              </div>
+              <div className={styles.legendStats}>
+                <span>{item.value}</span>
+                <span>{itemPercent}</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -775,17 +820,17 @@ export function ShowcasePageClient({
 
                   <section className={styles.sectionBlock}>
                     <h3>{localized.headings.severityDistribution}</h3>
-                    <MiniBar items={activeVideo.severityDistribution} />
+                    <MiniBar items={activeVideo.severityDistribution} palette={distributionPalettes.severity} />
                   </section>
 
                   <div className={styles.doubleSection}>
                     <section className={styles.sectionBlock}>
                       <h3>{localized.headings.frictionTypes}</h3>
-                      <MiniBar items={activeVideo.frictionTypes} />
+                      <MiniBar items={activeVideo.frictionTypes} palette={distributionPalettes.friction} />
                     </section>
                     <section className={styles.sectionBlock}>
                       <h3>{localized.headings.sentiment}</h3>
-                      <MiniBar items={activeVideo.sentimentDistribution} />
+                      <MiniBar items={activeVideo.sentimentDistribution} palette={distributionPalettes.sentiment} />
                     </section>
                   </div>
                 </>
@@ -965,7 +1010,7 @@ export function ShowcasePageClient({
                 </section>
                 <section className={styles.sectionBlock}>
                   <h3>{localized.labels.sentimentRollup}</h3>
-                  <MiniBar items={activeTester.sentimentDistribution} />
+                  <MiniBar items={activeTester.sentimentDistribution} palette={distributionPalettes.sentiment} />
                 </section>
               </div>
 
@@ -1005,7 +1050,10 @@ export function ShowcasePageClient({
 
               <section className={styles.sectionBlock}>
                 <h3>{localized.headings.tierDistribution}</h3>
-                <MiniBar items={cohortOverview.tierDistribution.map((item) => ({ ...item, key: item.label }))} />
+                <MiniBar
+                  items={cohortOverview.tierDistribution.map((item) => ({ ...item, key: item.label }))}
+                  palette={distributionPalettes.severity}
+                />
               </section>
 
               <section className={styles.sectionBlock}>
@@ -1017,7 +1065,10 @@ export function ShowcasePageClient({
                       <p className={styles.cardMeta}>
                         {localized.labels.videos}: {project.videos} / {localized.labels.averageScore}: {project.averageScore}
                       </p>
-                      <MiniBar items={project.tiers.map((item) => ({ ...item, key: `${project.project}-${item.label}` }))} />
+                      <MiniBar
+                        items={project.tiers.map((item) => ({ ...item, key: `${project.project}-${item.label}` }))}
+                        palette={distributionPalettes.severity}
+                      />
                     </article>
                   ))}
                 </div>
