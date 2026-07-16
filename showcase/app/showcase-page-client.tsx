@@ -186,7 +186,7 @@ const copy = {
       ordering: "Ordering",
     },
     helper: {
-      project: "Project means the tested website or client account, not your own software project.",
+      project: "Three different video sources.",
       tier: "Tier guide: Leading, Proficient, Developing, Foundational.",
     },
     headings: {
@@ -284,7 +284,7 @@ const copy = {
       ordering: "排序依据",
     },
     helper: {
-      project: "这里的“项目”指被测试的网站或客户项目，不是你自己的简历项目。",
+      project: "这里表示 3 个不同的视频来源。",
       tier: "等级说明：Leading 领先，Proficient 稳定，Developing 发展中，Foundational 基础。",
     },
     headings: {
