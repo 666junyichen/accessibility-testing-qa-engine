@@ -359,6 +359,32 @@ const tierNotes: Record<string, string> = {
   Foundational: "基础阶段，需要更多支持",
 };
 
+const severityNotes: Record<string, string> = {
+  S1: "项目级阻塞",
+  S2: "任务阻塞",
+  S3: "高强度摩擦",
+  S4: "明显摩擦",
+  S5: "中等摩擦",
+  S6: "轻微摩擦",
+};
+
+const frictionNotes: Record<string, string> = {
+  F1: "理解障碍",
+  F2: "信心/确认障碍",
+  F3: "无障碍访问障碍",
+  F4: "界面无响应",
+  F5: "系统行为不符合预期",
+  F6: "找不到内容或入口",
+  F7: "操作成本过高",
+};
+
+const priorityNotes: Record<string, string> = {
+  P1: "最高优先级",
+  P2: "高优先级",
+  P3: "中优先级",
+  P4: "模式级辅导建议",
+};
+
 function t(value: string, language: Language) {
   if (language === "en") {
     return value;
@@ -372,6 +398,12 @@ function tierLabel(value: string, language: Language) {
   }
 
   return tierNotes[value] ? `${value} (${tierNotes[value]})` : value;
+}
+
+function codedLabel(value: string, language: Language, notes: Record<string, string>) {
+  const note = notes[value];
+  if (!note) return value;
+  return language === "zh" ? `${value} ${note}` : `${value} (${note})`;
 }
 
 function toneClass(tone: string | undefined) {
@@ -764,7 +796,7 @@ export function ShowcasePageClient({
                 </article>
                 <article className={styles.metaCard}>
                   <span>{localized.labels.topSeverity}</span>
-                  <strong>{activeVideo.topSeverity}</strong>
+                  <strong>{codedLabel(activeVideo.topSeverity, language, severityNotes)}</strong>
                 </article>
                 <article className={styles.metaCard}>
                   <span>{localized.labels.reason}</span>
@@ -839,6 +871,11 @@ export function ShowcasePageClient({
               {activeTab === "findings" ? (
                 <section className={styles.sectionBlock}>
                   <h3>{localized.headings.keyFindings}</h3>
+                  <p className={styles.sectionCopy}>
+                    {language === "zh"
+                      ? "S = 严重级别，F = 摩擦类型。例如 S3 表示高强度摩擦，F5 表示系统行为不符合预期。"
+                      : "S = severity level, F = friction type. For example, S3 means severe friction and F5 means unexpected behaviour."}
+                  </p>
                   <div className={styles.infoGrid}>
                     <article className={styles.infoCard}>
                       <span>{localized.labels.totalFindings}</span>
@@ -846,11 +883,15 @@ export function ShowcasePageClient({
                     </article>
                     <article className={styles.infoCard}>
                       <span>{localized.labels.topSeverity}</span>
-                      <strong>{activeVideo.topSeverity}</strong>
+                      <strong>{codedLabel(activeVideo.topSeverity, language, severityNotes)}</strong>
                     </article>
                     <article className={styles.infoCard}>
                       <span>{localized.labels.topFriction}</span>
-                      <strong>{activeVideo.findings[0]?.friction ?? "N/A"}</strong>
+                      <strong>
+                        {activeVideo.findings[0]?.friction
+                          ? codedLabel(activeVideo.findings[0].friction, language, frictionNotes)
+                          : "N/A"}
+                      </strong>
                     </article>
                     <article className={styles.infoCard}>
                       <span>{localized.labels.visibleTypes}</span>
@@ -864,8 +905,8 @@ export function ShowcasePageClient({
                       {activeVideo.findings.map((finding) => (
                         <article key={`${finding.windowId}-${finding.note}`} className={styles.contentCard}>
                           <div className={styles.findingHeader}>
-                            <span className={styles.findingBadge}>{finding.severity}</span>
-                            <span className={styles.findingBadgeMuted}>{finding.friction}</span>
+                            <span className={styles.findingBadge}>{codedLabel(finding.severity, language, severityNotes)}</span>
+                            <span className={styles.findingBadgeMuted}>{codedLabel(finding.friction, language, frictionNotes)}</span>
                             <span className={styles.findingMeta}>{finding.windowId}</span>
                           </div>
                           <h4>{finding.note}</h4>
@@ -880,6 +921,11 @@ export function ShowcasePageClient({
               {activeTab === "coaching" ? (
                 <section className={styles.sectionBlock}>
                   <h3>{localized.headings.coaching}</h3>
+                  <p className={styles.sectionCopy}>
+                    {language === "zh"
+                      ? "P = 建议优先级。例如 P4 表示模式级辅导建议，适合用于总结一类重复出现的问题。"
+                      : "P = coaching priority. For example, P4 means a pattern-level coaching recommendation."}
+                  </p>
                   {activeVideo.recommendations.length === 0 ? (
                     <p className={styles.sectionCopy}>{localized.empty.noCoaching}</p>
                   ) : (
@@ -887,7 +933,9 @@ export function ShowcasePageClient({
                       {activeVideo.recommendations.map((item) => (
                         <article key={item.title} className={styles.contentCard}>
                           <div className={styles.findingHeader}>
-                            <span className={styles.findingBadgeMuted}>P{item.priority}</span>
+                            <span className={styles.findingBadgeMuted}>
+                              {codedLabel(`P${item.priority}`, language, priorityNotes)}
+                            </span>
                           </div>
                           <h4>{item.title}</h4>
                           <p>{item.detail}</p>
